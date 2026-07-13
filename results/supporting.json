@@ -1,0 +1,224 @@
+{
+  "contamination": {
+    "full_benign_cleared": {
+      "n": 1657,
+      "exact_dup_malicious": 20,
+      "same_family_as_malicious": 135,
+      "has_sensitive_selector": 3,
+      "upper_bound_pct": 8.1,
+      "strong_evidence_pct": 1.2
+    },
+    "random_100_sample": {
+      "n": 100,
+      "exact_dup_malicious": 2,
+      "same_family_as_malicious": 13,
+      "has_sensitive_selector": 0,
+      "upper_bound_pct": 13.0,
+      "strong_evidence_pct": 2.0
+    }
+  },
+  "latency": {
+    "per_contract_ms_mean": 3.3673539094161242,
+    "per_contract_ms_p50": 2.4691669968888164,
+    "per_contract_ms_p95": 10.672912822337821,
+    "batched_ms_per_contract": 3.1814984732773155,
+    "n_timed": 300
+  },
+  "explanation": {
+    "n_cases": 50,
+    "nn_malicious_rate": 0.34,
+    "random_nn_baseline": 0.327,
+    "fired_signal_coverage": 1.0,
+    "mean_nn_similarity": 0.538,
+    "median_nn_similarity": 0.637,
+    "high_sim_threshold": 0.7,
+    "high_sim_n": 23,
+    "high_sim_malicious_rate": 0.652,
+    "cases": [
+      {
+        "address": "0x068315334224a8433971b72504434e741a034e35",
+        "nn_class": "benign_cleared",
+        "nn_family": "F00825",
+        "nn_similarity": 0.195,
+        "fired_signals": [
+          "delegatecall"
+        ]
+      },
+      {
+        "address": "0xa283d9f6be0e452ea7615466f23830be0311ab1e",
+        "nn_class": "malicious",
+        "nn_family": "F00136",
+        "nn_similarity": 0.719,
+        "fired_signals": [
+          "external_call"
+        ]
+      },
+      {
+        "address": "0x916a0b8fdc003c43213b7abc50fcb85a17ce6a6b",
+        "nn_class": "benign_cleared",
+        "nn_family": "F00825",
+        "nn_similarity": 0.195,
+        "fired_signals": [
+          "delegatecall"
+        ]
+      },
+      {
+        "address": "0xb7fef9033507eee348d59102b6856c66051b8040",
+        "nn_class": "benign_cleared",
+        "nn_family": "F00825",
+        "nn_similarity": 0.195,
+        "fired_signals": [
+          "delegatecall"
+        ]
+      },
+      {
+        "address": "0x84340f560c20b1076f1a6ea97207a55d145d4447",
+        "nn_class": "malicious",
+        "nn_family": "F00066",
+        "nn_similarity": 0.82,
+        "fired_signals": [
+          "external_call"
+        ]
+      },
+      {
+        "address": "0x9b5a419dfa37301323062aefe9e570a1231e8168",
+        "nn_class": "benign_cleared",
+        "nn_family": "F01038",
+        "nn_similarity": 0.766,
+        "fired_signals": [
+          "external_call"
+        ]
+      },
+      {
+        "address": "0x611652ff9caa7f1ef6c2b76da2d4d8ed7c565a77",
+        "nn_class": "malicious",
+        "nn_family": "F00068",
+        "nn_similarity": 0.781,
+        "fired_signals": [
+          "external_call"
+        ]
+      },
+      {
+        "address": "0x8e7d36600b034e6b7e0266419ec899c36499f066",
+        "nn_class": "benign_cleared",
+        "nn_family": "F00701",
+        "nn_similarity": 0.617,
+        "fired_signals": [
+          "external_call"
+        ]
+      },
+      {
+        "address": "0x895013bd5e4dec7df9ac9aa3d56e3764c625bdf3",
+        "nn_class": "benign_cleared",
+        "nn_family": "F00825",
+        "nn_similarity": 0.195,
+        "fired_signals": [
+          "delegatecall"
+        ]
+      },
+      {
+        "address": "0x4248c289a3bdc032423ab31902e7b37d42e2d27c",
+        "nn_class": "malicious",
+        "nn_family": "F00175",
+        "nn_similarity": 0.32,
+        "fired_signals": [
+          "external_call"
+        ]
+      }
+    ]
+  },
+  "synthetic_signer": {
+    "DISCLAIMER": "SYNTHETIC illustrative profiles; no real victim/signer data exists (stripped for ethics). Fixed ETH=$3000. Not an evaluation metric.",
+    "eth_usd": 3000.0,
+    "profiles": {
+      "retail": {
+        "native_eth": 0.5,
+        "erc20_usd": 1200,
+        "nft_usd": 0,
+        "approvals": 2
+      },
+      "active": {
+        "native_eth": 8.0,
+        "erc20_usd": 45000,
+        "nft_usd": 6000,
+        "approvals": 12
+      },
+      "whale": {
+        "native_eth": 140.0,
+        "erc20_usd": 900000,
+        "nft_usd": 250000,
+        "approvals": 30
+      }
+    },
+    "cases": {
+      "erc20_drainer": {
+        "example_address": "0x6b8efeb4a4d1c7d7378b64451bd87cf5578a0b26",
+        "capability": {
+          "retail": {
+            "illustrative_loss_usd": 2700.0,
+            "at_risk_approvals": 2
+          },
+          "active": {
+            "illustrative_loss_usd": 69000.0,
+            "at_risk_approvals": 12
+          },
+          "whale": {
+            "illustrative_loss_usd": 1320000.0,
+            "at_risk_approvals": 30
+          }
+        }
+      },
+      "approval_abuser": {
+        "example_address": "0x6b8efeb4a4d1c7d7378b64451bd87cf5578a0b26",
+        "capability": {
+          "retail": {
+            "illustrative_loss_usd": 2700.0,
+            "at_risk_approvals": 2
+          },
+          "active": {
+            "illustrative_loss_usd": 69000.0,
+            "at_risk_approvals": 12
+          },
+          "whale": {
+            "illustrative_loss_usd": 1320000.0,
+            "at_risk_approvals": 30
+          }
+        }
+      },
+      "nft_sweeper": {
+        "example_address": "0x5dd1bb746a75d3fe4bda877ec0d2122f73fb2a12",
+        "capability": {
+          "retail": {
+            "illustrative_loss_usd": 2700.0,
+            "at_risk_approvals": 0
+          },
+          "active": {
+            "illustrative_loss_usd": 75000.0,
+            "at_risk_approvals": 0
+          },
+          "whale": {
+            "illustrative_loss_usd": 1570000.0,
+            "at_risk_approvals": 0
+          }
+        }
+      },
+      "dynamic_sink": {
+        "example_address": "0x7196f386cd5adfa125895540450c77bdcf0534b3",
+        "capability": {
+          "retail": {
+            "illustrative_loss_usd": 1500.0,
+            "at_risk_approvals": 0
+          },
+          "active": {
+            "illustrative_loss_usd": 24000.0,
+            "at_risk_approvals": 0
+          },
+          "whale": {
+            "illustrative_loss_usd": 420000.0,
+            "at_risk_approvals": 0
+          }
+        }
+      }
+    }
+  }
+}
