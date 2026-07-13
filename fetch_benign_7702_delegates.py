@@ -41,30 +41,106 @@ RPCS = {
 }
 
 # ---------------------------------------------------------------------------
-# SEED delegate implementations. THESE ADDRESSES ARE PLACEHOLDERS / EXAMPLES.
-# You MUST replace each with the official deployed implementation address from the
-# project's docs before using the output as ground-truth benign. The point of this
-# scaffold is the STRUCTURE + provenance tracking, not the specific hex.
+# SEED delegate implementations, verified against each project's official
+# docs/GitHub (see source_url per row). Two of the ten nameable families were
+# deliberately SKIPPED because no canonical, officially-deployed address could
+# be confirmed:
+#   - Safe (SafeEIP7702): Safe's own docs (docs.safe.global/advanced/eip-7702/7702-safe)
+#     state the 7702 contracts are "experimental" and "not yet audited"; the
+#     5afe/safe-eip7702 repo is a POC with no deployed address published.
+#   - Ithaca/Odyssey "simple-7702": ithacaxyz/odyssey-examples's SimpleDelegateContract
+#     is a `forge create` tutorial contract meant to be freshly deployed by
+#     whoever runs the walkthrough (local anvil node) -- there is no persistent
+#     official mainnet/testnet address to cite.
 #
-# Legitimate 7702 delegate families to cover (find official addresses for each):
-#   - MetaMask "delegator" / EIP-7702 smart account
-#   - Safe (7702 module / SafeEIP7702)
-#   - Ambire
-#   - ZeroDev Kernel (7702 variant)
-#   - Biconomy Nexus (7702)
-#   - OKX smart account
-#   - Coinbase Smart Wallet (if 7702-enabled)
-#   - Uniswap's 7702 delegate (Calibur / minimal)
-#   - Ithaca / Odyssey "simple 7702" reference impl
-#   - Alchemy Modular Account (7702)
+# For the rest, most of these implementations are deployed via a deterministic
+# CREATE2 factory at the SAME address on every chain the project supports, so
+# one address maps to several chain rows below -- but each (project, chain) row
+# below is only included where the project's own source explicitly names that
+# chain as supported/deployed.
 # ---------------------------------------------------------------------------
 SEED_DELEGATES = [
     # project, source_url (official provenance), chain, address
-    ("REPLACE_MetaMask_Delegator", "https://docs.metamask.io/", "ethereum", "0x0000000000000000000000000000000000000000"),
-    ("REPLACE_Safe_7702",          "https://docs.safe.global/",  "ethereum", "0x0000000000000000000000000000000000000000"),
-    ("REPLACE_Ambire",             "https://github.com/AmbireTech","ethereum","0x0000000000000000000000000000000000000000"),
-    ("REPLACE_ZeroDev_Kernel",     "https://docs.zerodev.app/",  "ethereum", "0x0000000000000000000000000000000000000000"),
-    # ... add the rest, and duplicate rows across chains where the impl is deployed.
+
+    # MetaMask EIP7702StatelessDeleGatorImpl v1.3.0 -- CREATE2, same address on
+    # every chain MetaMask lists as a deployment target.
+    # Source: https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "ethereum", "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "base",     "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "bnb",      "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "polygon",  "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "arbitrum", "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "optimism", "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+    ("MetaMask_EIP7702StatelessDeleGator", "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md", "gnosis",   "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B"),
+
+    # Ambire's own EIP_7702_AMBIRE_ACCOUNT constant. Only listing chains
+    # explicitly named in Ambire's own sources (repo constant is chain-agnostic;
+    # blog names Ethereum + BNB Chain as live).
+    # Source: https://github.com/AmbireTech/ambire-common/blob/v2/src/consts/deploy.ts
+    ("Ambire_EIP7702Account", "https://github.com/AmbireTech/ambire-common/blob/v2/src/consts/deploy.ts", "ethereum", "0x5A7FC11397E9a8AD41BF10bf13F22B0a63f96f6d"),
+    ("Ambire_EIP7702Account", "https://github.com/AmbireTech/ambire-common/blob/v2/src/consts/deploy.ts", "bnb",      "0x5A7FC11397E9a8AD41BF10bf13F22B0a63f96f6d"),
+
+    # ZeroDev Kernel v0.3.3 -- KERNEL_7702_DELEGATION_ADDRESS. Chains taken from
+    # the SDK's own FAST_POLLING_CHAIN_IDS = [1, 10, 56, 137, 8453, 42161, 84532]
+    # (84532 = Base Sepolia testnet, excluded here).
+    # Source: https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "ethereum", "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "optimism", "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "bnb",      "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "polygon",  "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "base",     "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+    ("ZeroDev_Kernel_v3.3_7702", "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts", "arbitrum", "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28"),
+
+    # Biconomy Nexus Implementation v1.3.1, MEE Contracts Suite v2.2.1 (latest
+    # at research time). Chains per docs.biconomy.io/contracts-and-audits/supported-chains.
+    # Source: https://docs.biconomy.io/contracts-and-audits
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "ethereum", "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "base",     "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "polygon",  "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "arbitrum", "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "optimism", "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "bnb",      "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+    ("Biconomy_Nexus_v1.3.1", "https://docs.biconomy.io/contracts-and-audits", "gnosis",   "0x0000000020fe2F30453074aD916eDeB653eC7E9D"),
+
+    # OKX Smart Wallet SmartWalletEntry (production implementation contract).
+    # Chains per repo README: "Ethereum / X Layer / Base / Optimism / Arbitrum / BSC / Polygon".
+    # Source: https://github.com/okxlabs/okx-smart-wallet-evm
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "ethereum", "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "base",     "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "optimism", "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "arbitrum", "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "bnb",      "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+    ("OKX_SmartWalletEntry", "https://github.com/okxlabs/okx-smart-wallet-evm", "polygon",  "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4"),
+
+    # Uniswap Calibur v1.1.0 (current mainnet version; supersedes the older
+    # v1.0.0 address used only on Monad/Robinhood Chain, not in our chain set).
+    # Source: https://developers.uniswap.org/docs/protocols/smart-wallet/deployments
+    ("Uniswap_Calibur_v1.1.0", "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments", "ethereum", "0x000000005c84F8Fd50b21CAC312528A64437030e"),
+    ("Uniswap_Calibur_v1.1.0", "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments", "base",     "0x000000005c84F8Fd50b21CAC312528A64437030e"),
+    ("Uniswap_Calibur_v1.1.0", "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments", "optimism", "0x000000005c84F8Fd50b21CAC312528A64437030e"),
+    ("Uniswap_Calibur_v1.1.0", "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments", "bnb",      "0x000000005c84F8Fd50b21CAC312528A64437030e"),
+    ("Uniswap_Calibur_v1.1.0", "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments", "arbitrum", "0x000000005c84F8Fd50b21CAC312528A64437030e"),
+
+    # Alchemy SemiModularAccount7702 (Modular Account v2, EIP-7702 variant).
+    # Docs state "same address across all EVM chains"; chains per
+    # alchemy.com/docs/wallets/supported-chains (mainnets only, subset relevant here).
+    # Source: https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "ethereum", "0x69007702764179f14F51cdce752f4f775d74E139"),
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "base",     "0x69007702764179f14F51cdce752f4f775d74E139"),
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "bnb",      "0x69007702764179f14F51cdce752f4f775d74E139"),
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "arbitrum", "0x69007702764179f14F51cdce752f4f775d74E139"),
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "optimism", "0x69007702764179f14F51cdce752f4f775d74E139"),
+    ("Alchemy_SemiModularAccount7702", "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses", "polygon",  "0x69007702764179f14F51cdce752f4f775d74E139"),
+
+    # Coinbase Smart Wallet EIP7702Proxy. Chains per docs.base.org "Full Support"
+    # list for Base Account (Zora/Avalanche excluded -- not in our chain set).
+    # Source: https://github.com/base/eip-7702-proxy
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "base",     "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "arbitrum", "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "optimism", "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "polygon",  "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "bnb",      "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
+    ("Coinbase_EIP7702Proxy", "https://github.com/base/eip-7702-proxy", "ethereum", "0x7702cb554e6bFb442cb743A7dF23154544a7176C"),
 ]
 
 def rpc_getcode(url, address, retries=3, timeout=20):
@@ -74,8 +150,13 @@ def rpc_getcode(url, address, retries=3, timeout=20):
     }).encode()
     for attempt in range(retries):
         try:
-            req = urllib.request.Request(url, data=payload,
-                                         headers={"Content-Type": "application/json"})
+            # Some public RPC endpoints sit behind Cloudflare bot-protection that
+            # 403s urllib's default (absent) User-Agent; a browser-like UA clears it.
+            req = urllib.request.Request(url, data=payload, headers={
+                "Content-Type": "application/json",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+            })
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 obj = json.loads(resp.read().decode())
             return obj.get("result", "0x")
