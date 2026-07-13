@@ -1,0 +1,32 @@
+{
+  "0.75": {
+    "n_families": 1120,
+    "singletons": 749,
+    "singleton_pct": 66.9,
+    "largest": 89,
+    "cross_chain": 160,
+    "cross_chain_pct": 14.3,
+    "cross_class": 49,
+    "cross_class_pct": 4.4
+  },
+  "0.85": {
+    "n_families": 1329,
+    "singletons": 912,
+    "singleton_pct": 68.6,
+    "largest": 58,
+    "cross_chain": 184,
+    "cross_chain_pct": 13.8,
+    "cross_class": 44,
+    "cross_class_pct": 3.3
+  },
+  "0.9": {
+    "n_families": 1511,
+    "singletons": 1083,
+    "singleton_pct": 71.7,
+    "largest": 48,
+    "cross_chain": 196,
+    "cross_chain_pct": 13.0,
+    "cross_class": 36,
+    "cross_class_pct": 2.4
+  }
+}
