@@ -1,0 +1,120 @@
+#include "../clientlib/decompiler_imports.dl"
+#include "../clientlib/loops_semantics.dl"
+#include "../clientlib/guards.dl"
+#include "../clientlib/vulnerability_macros.dl"
+
+// Utility: Public function selectors
+.decl AM_FunctionSelector(func: Function, funcSign: symbol)
+.output AM_FunctionSelector
+AM_FunctionSelector(func, funcSign) :-
+  PublicFunctionSelector(func, funcSign).
+
+// Utility: Link statements to their enclosing function
+.decl AM_Statement_Function(stmt: Statement, func: Function)
+.output AM_Statement_Function
+AM_Statement_Function(stmt, func) :-
+  Statement_Function(stmt, func).
+
+AM_Statement_Function(stmt, caller) :-
+  InFunction(block, caller),
+  CallGraphEdge(block, callee),
+  AM_Statement_Function(stmt, callee).
+
+// Utility: Get called function's signature string from call statement
+.decl AM_CallStmtSigName(callStmt: Statement, sigText: symbol)
+.output AM_CallStmtSigName
+AM_CallStmtSigName(callStmt, sigText) :-
+  StatementUsesMemory_ActualMemoryArg(callStmt, _, 0, callFuncSigVar),
+  Variable_Value(callFuncSigVar, callFuncSig),
+  ConstantPossibleSigHash(callFuncSig, _, sigText).
+
+// Utility: Function name (e.g., fallback(), receive()) and signature
+.decl AM_FuncInfo(func: Function, funcText: symbol, funcSig: Value)
+.output AM_FuncInfo
+AM_FuncInfo(func, funcText, funcSig) :-
+  PublicFunctionSelector(func, _),
+  HighLevelFunctionName(func, rawFuncText),
+  ConstantPossibleSigHash(funcSig, _, rawFuncText),
+  (
+    (rawFuncText != "0xeeeeeeee", rawFuncText != "0x00000000", funcText = rawFuncText);
+    (rawFuncText = "0xeeeeeeee", funcText = "receive()");
+    (rawFuncText = "0x00000000", funcText = "fallback()")
+  ).
+
+.decl AM_Visualize_ExternalCallInfo(
+    func: Function,
+    callStmt: Statement,
+    callOp: Opcode,
+    calleeVar: Variable,
+    numArg: number,
+    numRet: number,
+    sigText: symbol,
+    callFuncSig: symbol
+)
+.output AM_Visualize_ExternalCallInfo
+AM_Visualize_ExternalCallInfo(func, callStmt, callOp, calleeVar, numArg, numRet, sigText, funcText) :-
+  AM_Analysis_ExternalCallInfo(func, callStmt, callOp, calleeVar, numArg, numRet),
+  (AM_CallStmtSigName(callStmt, sigText); (!AM_CallStmtSigName(callStmt, _), sigText = "UnkownCall")),
+  (AM_FuncInfo(func, funcText, _); (!AM_FuncInfo(func, _, _), funcText = "UnkownFunc")).
+
+.decl AM_Analysis_ExternalCallInfo(
+    func: Function,
+    callStmt: Statement,
+    callOp: Opcode,
+    calleeVar: Variable,
+    numArg: number,
+    numRet: number
+)
+.output AM_Analysis_ExternalCallInfo
+AM_Analysis_ExternalCallInfo(func, callStmt, callOp, calleeVar, numArg, numRet) :-
+  PublicFunctionSelector(func, _),
+  AM_Statement_Function(callStmt, func),
+  (CALL(callStmt, _, calleeVar, _, _, _, _, _, _);
+   DELEGATECALL(callStmt, _, calleeVar, _, _, _, _, _)),
+  Statement_Opcode(callStmt, callOp),
+  ExternalCall_NumOfArgs(callStmt, numArg),
+  numRet = count: ExternalCall_ActualReturn(callStmt, _, _).
+
+// Function name prefix matches for flashloan hooks
+.decl AM_Prefix(id: symbol, prefix: symbol, len: number)
+AM_Prefix("AM_Detect_FlashloanCall", "receiveFlashLoan", 16).
+AM_Prefix("AM_Detect_FlashloanCall", "onFlashLoan", 11).
+AM_Prefix("AM_Detect_FlashloanCall", "uniswapV3FlashCallback", 22).
+AM_Prefix("AM_Detect_FlashloanCall", "callFunction", 12).
+AM_Prefix("AM_Detect_FlashloanCall", "executeOperation", 16).
+AM_Prefix("AM_Detect_FlashloanCall", "uniswapV2Call", 13).
+
+// Detect flashloan-like call usage
+.decl AM_Detect_FlashloanCall(func: Function, funcSig: symbol, callStmt: Statement, callSigText: symbol, callFuncSig: Value)
+.output AM_Detect_FlashloanCall
+AM_Detect_FlashloanCall(func, funcSig, callStmt, callSigText, callFuncSig) :-
+  AM_Visualize_ExternalCallInfo(func, callStmt, _, _, _, _, callSigText, funcSig),
+  AM_Analysis_ExternalCallInfo(func, callStmt, _, _, _, _),
+  StatementUsesMemory_ActualMemoryArg(callStmt, _, 0, callFuncSigVar),
+  Variable_Value(callFuncSigVar, callFuncSig),
+  AM_Prefix("AM_Detect_FlashloanCall", prefix, prefixLen),
+  prefix = substr(funcSig, 0 , prefixLen).
+
+// Function name prefix matches for sensitive / suspicious signatures
+AM_Prefix("AM_Detect_SensitiveSigName", "attack", 6).
+AM_Prefix("AM_Detect_SensitiveSigName", "hack", 4).
+AM_Prefix("AM_Detect_SensitiveSigName", "sweep", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "steal", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "drain", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "exploit", 7).
+AM_Prefix("AM_Detect_SensitiveSigName", "pwn", 3).
+AM_Prefix("AM_Detect_SensitiveSigName", "Attack", 6).
+AM_Prefix("AM_Detect_SensitiveSigName", "Hack", 4).
+AM_Prefix("AM_Detect_SensitiveSigName", "Sweep", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "Steal", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "Drain", 5).
+AM_Prefix("AM_Detect_SensitiveSigName", "Exploit", 7).
+AM_Prefix("AM_Detect_SensitiveSigName", "Pwn", 3).
+
+// Detect public functions with suspicious name prefixes
+.decl AM_Detect_SensitiveSigName(func: Function, funcSig: symbol)
+.output AM_Detect_SensitiveSigName
+AM_Detect_SensitiveSigName(func, funcSig) :-
+  AM_FuncInfo(func, funcSig, _),
+  AM_Prefix("AM_Detect_SensitiveSigName", prefix, prefixLen),
+  prefix = substr(funcSig, 0 , prefixLen).
