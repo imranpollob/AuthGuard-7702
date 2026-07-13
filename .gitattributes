@@ -1,0 +1,4 @@
+PhishingHook[[:space:]]Zenodo[[:space:]]artifact/artifact/dataset/contracts/contracts/benign.txt filter=lfs diff=lfs merge=lfs -text
+PhishingHook[[:space:]]Zenodo[[:space:]]artifact/artifact/dataset/opcodes.csv filter=lfs diff=lfs merge=lfs -text
+PhishingHook[[:space:]]Zenodo[[:space:]]artifact/artifact/dataset/bytecodes/bytecodes/phishing_bytecodes.txt filter=lfs diff=lfs merge=lfs -text
+PhishingHook[[:space:]]Zenodo[[:space:]]artifact/artifact/dataset/bytecodes/bytecodes/benign_bytecodes.txt filter=lfs diff=lfs merge=lfs -text
