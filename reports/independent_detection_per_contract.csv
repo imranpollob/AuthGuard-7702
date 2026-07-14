@@ -1,0 +1,10 @@
+target,maliciousness,novelty,blocklist,sensitive_name_rule_approx,external_call_structural_overapprox,selector_lr,opcode_rf,opcode_xgb,authguard
+0x0727ca41efc85f75cef26ee48f825893b4836786,malicious_high,known_family,0,0,1,0,1,1,1
+0x0e04736a85433445ef602d07946671685ec94647,uncertain,truly_novel,0,0,1,1,0,0,0
+0x545940f521452b4138b360ad55e28667ea07a8bf,malicious_medium,truly_novel,0,0,1,1,0,0,1
+0x88cf071b4bf5facab6712070a671f71282188d46,uncertain,truly_novel,0,0,1,0,1,1,1
+0x99c0b9dd3ead519927e29af2c2a39ae43dfb9dce,uncertain,truly_novel,0,1,1,1,1,1,1
+0xa3560611a7acd82481193aa210b56cae847ac491,malicious_medium,known_family,0,0,1,1,1,1,1
+0xa845c74344fc9405b1fcf712f04668979573c1bf,likely_benign,truly_novel,0,0,1,0,0,0,0
+0xb6785b782571980b3ddb5d40659f4861ff15aa02,malicious_high,exact_known,1,0,1,1,1,1,1
+0xeb96daa7a587ea46ead1a2c2ed596cddd279ce54,uncertain,truly_novel,0,0,1,1,0,0,0

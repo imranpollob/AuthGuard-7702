@@ -1,0 +1,355 @@
+{
+  "frozen_thresholds": {
+    "opcode_rf": 0.39172619047619067,
+    "opcode_xgb": 0.5792364478111267,
+    "authguard": 0.4918324649333954,
+    "selector_lr": 0.268767774105072
+  },
+  "detection_on_independent": {
+    "confirmed_malicious_all": {
+      "n": 4,
+      "blocklist": {
+        "detected": 1,
+        "rate_wilson": [
+          0.25,
+          0.046,
+          0.699
+        ]
+      },
+      "sensitive_name_rule_approx": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.49
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "detected": 4,
+        "rate_wilson": [
+          1.0,
+          0.51,
+          1
+        ]
+      },
+      "selector_lr": {
+        "detected": 3,
+        "rate_wilson": [
+          0.75,
+          0.301,
+          0.954
+        ]
+      },
+      "opcode_rf": {
+        "detected": 3,
+        "rate_wilson": [
+          0.75,
+          0.301,
+          0.954
+        ]
+      },
+      "opcode_xgb": {
+        "detected": 3,
+        "rate_wilson": [
+          0.75,
+          0.301,
+          0.954
+        ]
+      },
+      "authguard": {
+        "detected": 4,
+        "rate_wilson": [
+          1.0,
+          0.51,
+          1
+        ]
+      }
+    },
+    "confirmed_malicious_truly_novel": {
+      "n": 1,
+      "blocklist": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.793
+        ]
+      },
+      "sensitive_name_rule_approx": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.793
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "detected": 1,
+        "rate_wilson": [
+          1.0,
+          0.207,
+          1
+        ]
+      },
+      "selector_lr": {
+        "detected": 1,
+        "rate_wilson": [
+          1.0,
+          0.207,
+          1
+        ]
+      },
+      "opcode_rf": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.793
+        ]
+      },
+      "opcode_xgb": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.793
+        ]
+      },
+      "authguard": {
+        "detected": 1,
+        "rate_wilson": [
+          1.0,
+          0.207,
+          1
+        ]
+      }
+    },
+    "confirmed_malicious_known_family_or_exact": {
+      "n": 3,
+      "blocklist": {
+        "detected": 1,
+        "rate_wilson": [
+          0.333,
+          0.061,
+          0.792
+        ]
+      },
+      "sensitive_name_rule_approx": {
+        "detected": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.562
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "detected": 3,
+        "rate_wilson": [
+          1.0,
+          0.438,
+          1
+        ]
+      },
+      "selector_lr": {
+        "detected": 2,
+        "rate_wilson": [
+          0.667,
+          0.208,
+          0.939
+        ]
+      },
+      "opcode_rf": {
+        "detected": 3,
+        "rate_wilson": [
+          1.0,
+          0.438,
+          1
+        ]
+      },
+      "opcode_xgb": {
+        "detected": 3,
+        "rate_wilson": [
+          1.0,
+          0.438,
+          1
+        ]
+      },
+      "authguard": {
+        "detected": 3,
+        "rate_wilson": [
+          1.0,
+          0.438,
+          1
+        ]
+      }
+    }
+  },
+  "false_positive_controls": {
+    "benign_AA": {
+      "n": 8,
+      "in_training": false,
+      "sensitive_name_rule_approx": {
+        "flagged": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.324
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "flagged": 8,
+        "rate_wilson": [
+          1.0,
+          0.676,
+          1
+        ]
+      },
+      "selector_lr": {
+        "flagged": 2,
+        "rate_wilson": [
+          0.25,
+          0.071,
+          0.591
+        ]
+      },
+      "opcode_rf": {
+        "flagged": 1,
+        "rate_wilson": [
+          0.125,
+          0.022,
+          0.471
+        ]
+      },
+      "opcode_xgb": {
+        "flagged": 1,
+        "rate_wilson": [
+          0.125,
+          0.022,
+          0.471
+        ]
+      },
+      "authguard": {
+        "flagged": 1,
+        "rate_wilson": [
+          0.125,
+          0.022,
+          0.471
+        ]
+      }
+    },
+    "benign_general": {
+      "n": 800,
+      "in_training": false,
+      "sensitive_name_rule_approx": {
+        "flagged": 0,
+        "rate_wilson": [
+          0.0,
+          0,
+          0.005
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "flagged": 704,
+        "rate_wilson": [
+          0.88,
+          0.856,
+          0.901
+        ]
+      },
+      "selector_lr": {
+        "flagged": 234,
+        "rate_wilson": [
+          0.292,
+          0.262,
+          0.325
+        ]
+      },
+      "opcode_rf": {
+        "flagged": 27,
+        "rate_wilson": [
+          0.034,
+          0.023,
+          0.049
+        ]
+      },
+      "opcode_xgb": {
+        "flagged": 29,
+        "rate_wilson": [
+          0.036,
+          0.025,
+          0.052
+        ]
+      },
+      "authguard": {
+        "flagged": 10,
+        "rate_wilson": [
+          0.013,
+          0.007,
+          0.023
+        ]
+      }
+    },
+    "benign_cleared": {
+      "n": 1657,
+      "in_training": true,
+      "sensitive_name_rule_approx": {
+        "flagged": 3,
+        "rate_wilson": [
+          0.002,
+          0.001,
+          0.005
+        ]
+      },
+      "external_call_structural_overapprox": {
+        "flagged": 1532,
+        "rate_wilson": [
+          0.925,
+          0.911,
+          0.936
+        ]
+      },
+      "selector_lr": {
+        "flagged": 569,
+        "rate_wilson": [
+          0.343,
+          0.321,
+          0.367
+        ]
+      },
+      "opcode_rf": {
+        "flagged": 24,
+        "rate_wilson": [
+          0.014,
+          0.01,
+          0.021
+        ]
+      },
+      "opcode_xgb": {
+        "flagged": 17,
+        "rate_wilson": [
+          0.01,
+          0.006,
+          0.016
+        ]
+      },
+      "authguard": {
+        "flagged": 22,
+        "rate_wilson": [
+          0.013,
+          0.009,
+          0.02
+        ]
+      }
+    }
+  },
+  "methods": [
+    "blocklist",
+    "sensitive_name_rule_approx",
+    "external_call_structural_overapprox",
+    "selector_lr",
+    "opcode_rf",
+    "opcode_xgb",
+    "authguard"
+  ],
+  "note": "EXPLORATORY: truly-novel confirmed N=1; no quantitative superiority claim. Full USENIX pipeline NOT executed; no claim about it."
+}
