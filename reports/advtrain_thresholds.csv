@@ -1,0 +1,26 @@
+fold,model,threshold
+0,opcode-histogram RF,0.37188888888888894
+0,opcode-histogram XGBoost,0.15034663677215576
+0,opcode-histogram XGBoost-aug,0.125714510679245
+0,AuthGuard-M0,0.052188288420438766
+0,AuthGuard-aug,0.178082674741745
+1,opcode-histogram RF,0.43961111111111106
+1,opcode-histogram XGBoost,0.45222756266593933
+1,opcode-histogram XGBoost-aug,0.26694703102111816
+1,AuthGuard-M0,0.17717821896076202
+1,AuthGuard-aug,0.2105175256729126
+2,opcode-histogram RF,0.4036111111111111
+2,opcode-histogram XGBoost,0.5660461187362671
+2,opcode-histogram XGBoost-aug,0.6647403240203857
+2,AuthGuard-M0,0.42892998456954956
+2,AuthGuard-aug,0.3440796434879303
+3,opcode-histogram RF,0.19
+3,opcode-histogram XGBoost,0.006690102629363537
+3,opcode-histogram XGBoost-aug,0.02190498635172844
+3,AuthGuard-M0,0.010610450059175491
+3,AuthGuard-aug,0.028578748926520348
+4,opcode-histogram RF,0.29
+4,opcode-histogram XGBoost,0.06591802835464478
+4,opcode-histogram XGBoost-aug,0.024812884628772736
+4,AuthGuard-M0,0.004764581099152565
+4,AuthGuard-aug,0.0054489802569150925

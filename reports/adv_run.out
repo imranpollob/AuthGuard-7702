@@ -1,0 +1,23 @@
+
+=== FOLD 0: train-fit=1470 val=490 test=490 ===
+  fold 0 done in 60s | AG-M0 M3 rec=0.572 AG-aug M3 rec=0.507
+
+=== FOLD 1: train-fit=1470 val=490 test=490 ===
+  fold 1 done in 60s | AG-M0 M3 rec=0.753 AG-aug M3 rec=0.825
+
+=== FOLD 2: train-fit=1470 val=490 test=490 ===
+  fold 2 done in 63s | AG-M0 M3 rec=0.639 AG-aug M3 rec=0.697
+
+=== FOLD 3: train-fit=1470 val=490 test=490 ===
+  fold 3 done in 61s | AG-M0 M3 rec=0.981 AG-aug M3 rec=0.981
+
+=== FOLD 4: train-fit=1470 val=490 test=490 ===
+  fold 4 done in 62s | AG-M0 M3 rec=0.991 AG-aug M3 rec=0.996
+
+======================================================================
+SURFACE (held-out gating numbers):
+  [M3] AuthGuard-M0 recall=0.787 AUPRC=0.754 | AuthGuard-aug recall=0.801 AUPRC=0.814 | benign_flag(aug)=0.196
+  [F200] AuthGuard-M0 recall=0.624 AUPRC=0.596 | AuthGuard-aug recall=0.790 AUPRC=0.750 | benign_flag(aug)=0.275
+  [F200] opcode-XGB recall=0.606 -> XGB-aug recall=0.701 benign_flag(aug)=0.324
+  [M0 clean] AuthGuard-M0 AUPRC=0.830 -> AuthGuard-aug AUPRC=0.849 (recall M0 0.797->0.761)
+======================================================================

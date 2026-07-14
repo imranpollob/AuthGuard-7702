@@ -1,0 +1,4 @@
+,n_malicious,both_detect,M0_only,aug_only,neither,benign_newly_flagged_by_aug,benign_corrected_by_aug,singleton_recall_M0,singleton_recall_aug,family_macro_recall_M0,family_macro_recall_aug
+M0,793.0,585.0,52.0,27.0,129.0,30.0,82.0,0.841,0.823,0.851,0.841
+M3,793.0,595.0,35.0,46.0,117.0,43.0,178.0,0.85,0.876,0.854,0.875
+F200,793.0,478.0,26.0,154.0,135.0,113.0,190.0,0.655,0.85,0.674,0.844
