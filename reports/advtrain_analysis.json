@@ -1,0 +1,348 @@
+{
+  "T6_shortcut": {
+    "AuthGuard-M0": {
+      "M0": {
+        "malicious_flag_rate": [
+          0.803,
+          0.774,
+          0.829
+        ],
+        "benign_flag_rate": [
+          0.189,
+          0.171,
+          0.209
+        ],
+        "precision": 0.67,
+        "mal_score_mean": 0.562,
+        "ben_score_mean": 0.071
+      },
+      "F25": {
+        "malicious_flag_rate": [
+          0.779,
+          0.749,
+          0.807
+        ],
+        "benign_flag_rate": [
+          0.264,
+          0.243,
+          0.285
+        ],
+        "precision": 0.586,
+        "mal_score_mean": 0.503,
+        "ben_score_mean": 0.085
+      },
+      "F50": {
+        "malicious_flag_rate": [
+          0.762,
+          0.731,
+          0.79
+        ],
+        "benign_flag_rate": [
+          0.279,
+          0.258,
+          0.301
+        ],
+        "precision": 0.567,
+        "mal_score_mean": 0.426,
+        "ben_score_mean": 0.084
+      },
+      "F100": {
+        "malicious_flag_rate": [
+          0.723,
+          0.69,
+          0.753
+        ],
+        "benign_flag_rate": [
+          0.299,
+          0.278,
+          0.322
+        ],
+        "precision": 0.536,
+        "mal_score_mean": 0.322,
+        "ben_score_mean": 0.079
+      },
+      "F200": {
+        "malicious_flag_rate": [
+          0.636,
+          0.601,
+          0.668
+        ],
+        "benign_flag_rate": [
+          0.313,
+          0.291,
+          0.335
+        ],
+        "precision": 0.493,
+        "mal_score_mean": 0.196,
+        "ben_score_mean": 0.076
+      }
+    },
+    "AuthGuard-aug": {
+      "M0": {
+        "malicious_flag_rate": [
+          0.772,
+          0.741,
+          0.8
+        ],
+        "benign_flag_rate": [
+          0.158,
+          0.141,
+          0.176
+        ],
+        "precision": 0.7,
+        "mal_score_mean": 0.585,
+        "ben_score_mean": 0.062
+      },
+      "F25": {
+        "malicious_flag_rate": [
+          0.816,
+          0.787,
+          0.841
+        ],
+        "benign_flag_rate": [
+          0.193,
+          0.174,
+          0.212
+        ],
+        "precision": 0.67,
+        "mal_score_mean": 0.593,
+        "ben_score_mean": 0.077
+      },
+      "F50": {
+        "malicious_flag_rate": [
+          0.82,
+          0.791,
+          0.845
+        ],
+        "benign_flag_rate": [
+          0.221,
+          0.202,
+          0.242
+        ],
+        "precision": 0.639,
+        "mal_score_mean": 0.588,
+        "ben_score_mean": 0.088
+      },
+      "F100": {
+        "malicious_flag_rate": [
+          0.817,
+          0.789,
+          0.843
+        ],
+        "benign_flag_rate": [
+          0.232,
+          0.212,
+          0.253
+        ],
+        "precision": 0.628,
+        "mal_score_mean": 0.556,
+        "ben_score_mean": 0.095
+      },
+      "F200": {
+        "malicious_flag_rate": [
+          0.797,
+          0.768,
+          0.824
+        ],
+        "benign_flag_rate": [
+          0.266,
+          0.245,
+          0.288
+        ],
+        "precision": 0.589,
+        "mal_score_mean": 0.473,
+        "ben_score_mean": 0.092
+      }
+    },
+    "opcode-histogram XGBoost-aug": {
+      "M0": {
+        "malicious_flag_rate": [
+          0.726,
+          0.694,
+          0.756
+        ],
+        "benign_flag_rate": [
+          0.209,
+          0.19,
+          0.229
+        ],
+        "precision": 0.625,
+        "mal_score_mean": 0.547,
+        "ben_score_mean": 0.098
+      },
+      "F25": {
+        "malicious_flag_rate": [
+          0.739,
+          0.707,
+          0.768
+        ],
+        "benign_flag_rate": [
+          0.226,
+          0.207,
+          0.247
+        ],
+        "precision": 0.61,
+        "mal_score_mean": 0.542,
+        "ben_score_mean": 0.109
+      },
+      "F50": {
+        "malicious_flag_rate": [
+          0.753,
+          0.722,
+          0.782
+        ],
+        "benign_flag_rate": [
+          0.245,
+          0.225,
+          0.266
+        ],
+        "precision": 0.595,
+        "mal_score_mean": 0.532,
+        "ben_score_mean": 0.114
+      },
+      "F100": {
+        "malicious_flag_rate": [
+          0.753,
+          0.722,
+          0.782
+        ],
+        "benign_flag_rate": [
+          0.279,
+          0.258,
+          0.302
+        ],
+        "precision": 0.563,
+        "mal_score_mean": 0.533,
+        "ben_score_mean": 0.123
+      },
+      "F200": {
+        "malicious_flag_rate": [
+          0.709,
+          0.676,
+          0.739
+        ],
+        "benign_flag_rate": [
+          0.326,
+          0.304,
+          0.349
+        ],
+        "precision": 0.51,
+        "mal_score_mean": 0.449,
+        "ben_score_mean": 0.127
+      }
+    }
+  },
+  "T7_contract_level": {
+    "M0": {
+      "n_malicious": 793,
+      "both_detect": 585,
+      "M0_only": 52,
+      "aug_only": 27,
+      "neither": 129,
+      "benign_newly_flagged_by_aug": 30,
+      "benign_corrected_by_aug": 82,
+      "singleton_recall_M0": 0.841,
+      "singleton_recall_aug": 0.823,
+      "family_macro_recall_M0": 0.851,
+      "family_macro_recall_aug": 0.841
+    },
+    "M3": {
+      "n_malicious": 793,
+      "both_detect": 595,
+      "M0_only": 35,
+      "aug_only": 46,
+      "neither": 117,
+      "benign_newly_flagged_by_aug": 43,
+      "benign_corrected_by_aug": 178,
+      "singleton_recall_M0": 0.85,
+      "singleton_recall_aug": 0.876,
+      "family_macro_recall_M0": 0.854,
+      "family_macro_recall_aug": 0.875
+    },
+    "F200": {
+      "n_malicious": 793,
+      "both_detect": 478,
+      "M0_only": 26,
+      "aug_only": 154,
+      "neither": 135,
+      "benign_newly_flagged_by_aug": 113,
+      "benign_corrected_by_aug": 190,
+      "singleton_recall_M0": 0.655,
+      "singleton_recall_aug": 0.85,
+      "family_macro_recall_M0": 0.674,
+      "family_macro_recall_aug": 0.844
+    }
+  },
+  "T8_paired_bootstrap": {
+    "M0": {
+      "cond": "M0",
+      "n_mal": 793,
+      "recall_M0": 0.803,
+      "recall_aug": 0.772,
+      "recall_diff_aug_minus_M0": -0.032,
+      "recall_diff_CI95": [
+        -0.053,
+        -0.009
+      ],
+      "benign_FPR_M0": 0.189,
+      "benign_FPR_aug": 0.158,
+      "benign_FPR_diff": -0.031
+    },
+    "M2": {
+      "cond": "M2",
+      "n_mal": 793,
+      "recall_M0": 0.794,
+      "recall_aug": 0.808,
+      "recall_diff_aug_minus_M0": 0.014,
+      "recall_diff_CI95": [
+        -0.009,
+        0.037
+      ],
+      "benign_FPR_M0": 0.27,
+      "benign_FPR_aug": 0.189,
+      "benign_FPR_diff": -0.081
+    },
+    "M3": {
+      "cond": "M3",
+      "n_mal": 793,
+      "recall_M0": 0.794,
+      "recall_aug": 0.808,
+      "recall_diff_aug_minus_M0": 0.014,
+      "recall_diff_CI95": [
+        -0.009,
+        0.037
+      ],
+      "benign_FPR_M0": 0.27,
+      "benign_FPR_aug": 0.189,
+      "benign_FPR_diff": -0.081
+    },
+    "F100": {
+      "cond": "F100",
+      "n_mal": 793,
+      "recall_M0": 0.723,
+      "recall_aug": 0.817,
+      "recall_diff_aug_minus_M0": 0.095,
+      "recall_diff_CI95": [
+        0.066,
+        0.124
+      ],
+      "benign_FPR_M0": 0.299,
+      "benign_FPR_aug": 0.232,
+      "benign_FPR_diff": -0.068
+    },
+    "F200": {
+      "cond": "F200",
+      "n_mal": 793,
+      "recall_M0": 0.636,
+      "recall_aug": 0.797,
+      "recall_diff_aug_minus_M0": 0.161,
+      "recall_diff_CI95": [
+        0.131,
+        0.193
+      ],
+      "benign_FPR_M0": 0.313,
+      "benign_FPR_aug": 0.266,
+      "benign_FPR_diff": -0.046
+    }
+  }
+}

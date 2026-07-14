@@ -1,0 +1,21 @@
+ALL LEAKAGE ASSERTIONS PASSED (assertions raise on failure)
+fold 0: assert1 source-overlap(train/val/test)=0 (expect 0)
+fold 0: assert2 family-overlap(train/val/test)=0 (expect 0)
+fold 0: assert3/4 bytecode-hash overlap(train/test)=0 (expect 0)
+fold 0: assert5 mutant-family-inheritance ok=True
+fold 1: assert1 source-overlap(train/val/test)=0 (expect 0)
+fold 1: assert2 family-overlap(train/val/test)=0 (expect 0)
+fold 1: assert3/4 bytecode-hash overlap(train/test)=0 (expect 0)
+fold 1: assert5 mutant-family-inheritance ok=True
+fold 2: assert1 source-overlap(train/val/test)=0 (expect 0)
+fold 2: assert2 family-overlap(train/val/test)=0 (expect 0)
+fold 2: assert3/4 bytecode-hash overlap(train/test)=0 (expect 0)
+fold 2: assert5 mutant-family-inheritance ok=True
+fold 3: assert1 source-overlap(train/val/test)=0 (expect 0)
+fold 3: assert2 family-overlap(train/val/test)=0 (expect 0)
+fold 3: assert3/4 bytecode-hash overlap(train/test)=0 (expect 0)
+fold 3: assert5 mutant-family-inheritance ok=True
+fold 4: assert1 source-overlap(train/val/test)=0 (expect 0)
+fold 4: assert2 family-overlap(train/val/test)=0 (expect 0)
+fold 4: assert3/4 bytecode-hash overlap(train/test)=0 (expect 0)
+fold 4: assert5 mutant-family-inheritance ok=True
