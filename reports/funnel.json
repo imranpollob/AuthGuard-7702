@@ -1,0 +1,27 @@
+{
+  "funnel": {
+    "blacklist_unique_addresses": 7915,
+    "with_verified_7702_delegate_usage(accounts delegating)": 49,
+    "unique_delegate_targets(candidate delegates, I3-verified)": 9,
+    "independently_confirmed_malicious(I4 medium+)": 4,
+    "confirmed_malicious_not_in_USENIX_793": 3,
+    "confirmed_malicious_not_exact_bytecode_overlap": 3,
+    "confirmed_malicious_not_family_overlap": 1,
+    "confirmed_malicious_TRULY_NOVEL": 1
+  },
+  "subset_census_over_9_targets": {
+    "known_family": 2,
+    "truly_novel": 6,
+    "exact_known": 1
+  },
+  "maliciousness_census_over_9_targets": {
+    "malicious_high": 2,
+    "uncertain": 4,
+    "malicious_medium": 2,
+    "likely_benign": 1
+  },
+  "n_unverified_contract_addresses": 1256,
+  "truly_novel_confirmed_targets": [
+    "0x545940f521452b4138b360ad55e28667ea07a8bf"
+  ]
+}

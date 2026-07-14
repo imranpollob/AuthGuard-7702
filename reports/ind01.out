@@ -1,0 +1,18 @@
+[T1] inventory: {"master_blacklist_set.txt": {"lines": 7915, "valid": 7915, "malformed": 0, "unique": 7915}, "all_across_hard.txt": {"lines": 495, "valid": 495, "malformed": 0, "unique": 495}} union 7915
+[T2] eth_getCode on mainnet for 7915 unique addresses...
+  getcode 500/7915
+  getcode 1000/7915
+  getcode 1500/7915
+  getcode 2000/7915
+  getcode 2500/7915
+  getcode 3000/7915
+  getcode 3500/7915
+  getcode 4000/7915
+  getcode 4500/7915
+  getcode 5000/7915
+  getcode 5500/7915
+  getcode 6000/7915
+  getcode 6500/7915
+  getcode 7000/7915
+  getcode 7500/7915
+[T2] mainnet classification: {"unique": 7915, "with_contract_code": 958, "eoa_or_empty": 4807, "is_7702_designator": 33, "fetch_fail": 2150}

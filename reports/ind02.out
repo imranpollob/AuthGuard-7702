@@ -1,0 +1,7 @@
+[retry] 2150 fetch-fails to retry
+  retry 400/2150 recovered=400
+  retry 800/2150 recovered=800
+  retry 1200/2150 recovered=1200
+  retry 1600/2150 recovered=1600
+  retry 2000/2150 recovered=2000
+[retry] final classification: {'EOA_OR_EMPTY': 6610, 'CONTRACT_CODE': 1256, 'DESIGNATOR_7702': 49}

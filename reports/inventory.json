@@ -1,0 +1,19 @@
+{
+  "per_file": {
+    "master_blacklist_set.txt": {
+      "lines": 7915,
+      "valid": 7915,
+      "malformed": 0,
+      "unique": 7915
+    },
+    "all_across_hard.txt": {
+      "lines": 495,
+      "valid": 495,
+      "malformed": 0,
+      "unique": 495
+    }
+  },
+  "cross_file_overlap": 495,
+  "union_unique": 7915,
+  "note": "No chain/label/source metadata present in either file; both are bare address lists. File mtime 2023-12-05 predates EIP-7702 mainnet activation (Pectra, 2025). Blacklist membership alone is NOT evidence of malicious EIP-7702 delegate usage."
+}
