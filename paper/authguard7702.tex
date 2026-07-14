@@ -1,0 +1,573 @@
+\documentclass[conference]{IEEEtran}
+% IEEEtran.cls is provided by the author's local installation.
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{balance}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\tool}{\textsc{AuthGuard-7702}}
+\newcommand{\eip}{EIP-7702}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+\title{Pre-Signing Risk Screening for \eip{} Delegate Contracts:\\
+A Family-Grouped, Evasion-Aware Bytecode Baseline}
+
+\author{\IEEEauthorblockN{Anonymous Author(s)}
+\IEEEauthorblockA{\textit{Affiliation withheld for review}\\
+\texttt{contact@example.com}}}
+
+\maketitle
+
+\begin{abstract}
+\eip{} lets an externally owned account (EOA) delegate its execution to contract
+code; once an authorization is signed, that code runs in the signer's account context
+and can move the signer's assets. The only published detector for malicious \eip{}
+delegates is \emph{post-hoc}: it needs on-chain attack history and rests on a narrow
+static rule---an external call reachable from \code{receive()}/\code{fallback()} plus a
+function-name string match against a fixed lexicon (\code{sweep}, \code{drain},
+\code{steal}, \dots). We ask a different, harder question: can risk be assessed
+\emph{before signing}, from delegate bytecode alone? We present \tool{}, a
+decompiler-free, pre-signing risk screen, and---more importantly---an evaluation
+protocol built to survive a skeptical re-run. On a corpus of 793 rule-labeled malicious
+delegates and 2{,}465 negatives across seven chains, we (i) freeze a deterministic,
+leakage-safe family structure and quantify the malicious population (214 families,
+52.8\% singletons); (ii) evaluate detection strictly under \emph{leave-family-out}
+cross-validation, reporting the inflation a naive random split hides (AUPRC
+$0.86\!\rightarrow\!0.96$); and (iii) subject every detector to a battery of
+\emph{semantics-preserving} bytecode mutations, verified to preserve the executable
+opcode skeleton for all 793 contracts. Our central, honestly-scoped finding is that the
+deployed rule's precision-bearing component (name matching) and exact-hash blocklisting
+are \emph{trivially} evaded---retained detection falls to $0.000$ under a function
+rename---whereas a learned opcode model retains $0.59$ detection at $0.87$ precision, the
+only method that is simultaneously evasion-robust and discriminative. We also report a
+limitation we do not hide: under heavy dead-code flooding the learned model degrades
+faster than a plain opcode histogram. \tool{} scores a contract in $3.4$\,ms with no
+decompiler in the loop. We release code, frozen splits, and an auto-generated results
+manifest for exact reproduction.
+\end{abstract}
+
+\begin{IEEEkeywords}
+\eip{}, account abstraction, smart-contract security, malware detection, bytecode
+analysis, dataset leakage, adversarial robustness, blockchain.
+\end{IEEEkeywords}
+
+\section{Introduction}
+Account-delegation via \eip{}~\cite{eip7702} is among the most consequential recent
+changes to Ethereum's execution semantics. An EOA signs an \emph{authorization} that
+installs a \emph{delegate} contract's code into the EOA's own account; from that point,
+calls to the account execute the delegate's logic with full authority over the account's
+balance, token approvals, and NFTs. Legitimate uses (batching, session keys, gas
+sponsorship, account-abstraction niceties) coexist with an obvious abuse: a malicious
+delegate that drains whatever the signer holds the moment it receives value or a crafted
+call. Because the dangerous action is authorized \emph{by the signature itself}, the
+decisive moment for defense is \emph{before} the user signs.
+
+The state of the art, by contrast, is retrospective. The USENIX ``Dark Side of \eip{}''
+detector~\cite{darkside} identifies malicious delegates \emph{after} they have appeared
+in on-chain attacks, using a decompiler (Gigahorse/Soufflé) to establish that an external
+call is reachable from \code{receive()}/\code{fallback()}, refined by a lexical match of
+recovered function names against a hand-picked lexicon
+(\code{sweep}/\code{drain}/\code{steal}/\code{hack}/\code{attack}/\code{exploit}/\code{pwn}).
+This is valuable forensics, but it is (a) post-hoc, (b) dependent on heavyweight
+decompilation, and (c) built on a rule with an obviously brittle string-matching
+component. A wallet cannot run Gigahorse in the signing path, and an attacker can rename a
+function in seconds.
+
+We take an applied-tool stance with deliberately modest, defensible novelty. We do
+\emph{not} claim a new loss, a novel architecture, or a ``decompiler surrogate.'' We claim
+three things and no more:
+\begin{enumerate}
+  \item the first \emph{pre-signing}, bytecode-only, decompiler-free risk screen for the
+  \eip{} delegate surface (\S\ref{sec:detection});
+  \item the first quantified \emph{family/singleton characterization} of the malicious
+  delegate population, on a frozen, reproducible clustering (\S\ref{sec:family});
+  \item the first \emph{evasion-brittleness measurement} of the deployed rule under
+  verified semantics-preserving mutation, with a learned baseline that---on the specific
+  mutations that break the rule---degrades far more gracefully (\S\ref{sec:mutation}).
+\end{enumerate}
+
+The methodological spine of the paper is not the model; it is the discipline of the
+evaluation. Malicious labels here are entirely rule-derived, negatives are weak, and two
+capability features are tautological restatements of the label. Each of these is a place
+where an impressive-but-fake result could hide. We therefore fix a set of honesty
+constraints up front (\S\ref{sec:data}) and design every experiment so that a reviewer who
+re-runs it cannot manufacture separation from leakage. The result is a picture that is
+strong where the evidence is strong (the deployed rule is trivially evaded; a learned
+opcode model is not) and candid where it is not (weak negatives bound our detection claim;
+brute-force padding eventually defeats the learned model). We consider the negative and
+partial findings first-class contributions.
+
+\section{Background and Threat Model}
+\label{sec:background}
+
+\subsection{\eip{} delegation}
+A signed \eip{} authorization stores a designator \code{0xef0100\textbackslash,\textbar{}address} in the
+EOA's account; subsequent execution in that account runs the designated contract's runtime
+bytecode. The delegate can therefore call out with the account's value and act on its token
+allowances. Crucially, the runtime bytecode of the delegate is public and available
+\emph{at signing time}: a wallet contemplating an authorization can fetch the delegate's
+code and inspect it before the user commits. This is the window \tool{} targets.
+
+\subsection{The deployed rule}
+The USENIX detector's positive criterion, reduced to what it actually computes, is:
+\emph{a statically reachable external call from a value-receiving hook}
+(\code{receive()}/\code{fallback()}), optionally corroborated by a
+\emph{sensitive function name}. The first component is a control-flow fact recovered by
+decompilation; the second is a pure string match. Our re-analysis of the shipped artifact
+confirms that the rule's output file \emph{is} the malicious label---every one of the 793
+positives has a fallback/receive-external-call fact by construction---and that the
+name-match component fires on only a minority of positives. These two facts drive our
+threat model.
+
+\subsection{Threat model}
+The defender is a wallet or a pre-transaction screening service that, given a delegate's
+bytecode, must emit a risk score before the user signs, in interactive time, without a
+decompiler. The adversary controls the delegate's source and deploys freely; between
+deployments the adversary may apply any \emph{semantics-preserving} transformation---renaming
+functions, changing hardcoded addresses/salts, rewriting metadata, padding with unreachable
+code---to evade a screen while preserving the drain behavior. The adversary does \emph{not}
+need to preserve bytewise identity or selectors, only the attack's control flow. This is the
+realistic redeploy-to-evade setting, and it is exactly what \S\ref{sec:mutation} measures.
+
+\section{Dataset and Honesty Constraints}
+\label{sec:data}
+
+\subsection{Corpus}
+Our corpus contains 3{,}258 delegate contracts, each with an address, a chain, and runtime
+bytecode: 793 \emph{malicious} (all labeled by the USENIX rule), 1{,}657
+\code{benign\_cleared} (candidates the rule did not fire on), 800 \code{benign\_general}
+(a general contract sample), and 8 \code{benign\_AA} (hand-verified account-abstraction
+delegates). Malicious contracts span seven chains (Ethereum, Base, BNB, Optimism, Arbitrum,
+Polygon, Gnosis); \code{benign\_cleared} spans the same chains, while \code{benign\_general}
+is single-provenance.
+
+\subsection{Constraints that shape every experiment}
+We enumerate the traps and how we neutralize them; these are not caveats bolted on at the
+end but design inputs.
+
+\noindent\textbf{C1: Positives are rule-derived.} There are no labels for malicious families
+the rule missed, so we make \emph{no} novel-discovery claim. Our detection target is
+explicitly ``separate rule-labeled malicious from rule-silent contracts under family
+holdout,'' and our robustness claim is retention on \emph{known} positives.
+
+\noindent\textbf{C2: Negatives are weak.} \code{benign\_cleared} means ``the rule did not
+fire,'' not ``verified benign.'' We never call it clean. We report a conservative
+contamination upper bound on it (\S\ref{sec:supporting}) and provide a secondary task using
+the closer-to-clean \code{benign\_general}.
+
+\noindent\textbf{C3: Two capability columns are tautological.} A value-receiving-hook flag
+and an unrestricted-external-call flag are \code{true} for 100\% of malicious by
+construction (they restate the rule). They are \emph{banned as features}.
+
+\noindent\textbf{C4: No victim data exists.} Signer/victim addresses were stripped for
+ethics; any signer-exposure analysis is explicitly synthetic illustration.
+
+\noindent\textbf{C5: No feature may proxy split identity.} We find that the categorical
+\code{chain} value perfectly identifies all 800 \code{benign\_general} contracts; \code{chain}
+is therefore banned as a feature. All features are bytecode-only.
+
+\noindent\textbf{C6: Grouping is sacred.} All evaluation is grouped on a frozen family id
+(\S\ref{sec:family}); no contract or its mutants may appear on both sides of a split. Random
+splits are reported only as leakage context, never as a headline.
+
+We also note data-quality realities, all on the weak-negative side: 76 \code{benign\_cleared}
+rows are bare \code{0xef0100} delegation pointers (chained delegations with no code of their
+own) and $\sim$90 more are truncated. We retain them---dropping would bias the negative
+set---and document them as a limitation.
+
+\section{Reproducible Family Structure}
+\label{sec:family}
+
+\subsection{Why global, deterministic clustering}
+Downstream leakage safety depends entirely on the family assignment, so we treat it as a
+frozen artifact. Two decisions matter. First, we cluster \emph{globally} across all classes
+rather than per class: we find 23 exact bytecodes that carry conflicting labels (e.g., one
+bytecode appears as 12 malicious rows and 1 \code{benign\_cleared} row). A per-class family
+scheme would place identical code in a malicious family and a benign family, allowing it to
+straddle a split---a direct C6 violation. Global clustering forces any near-duplicate into a
+single family regardless of label. Second, we make clustering \emph{deterministic}: the prior
+tooling used Python's salted \code{hash()} and drifted (250$\leftrightarrow$275 families across
+runs). We replace it with a seeded \code{blake2b} MinHash over opcode 4-grams and union-find at
+a Jaccard threshold. The frozen assignment is byte-identical under different
+\code{PYTHONHASHSEED} values.
+
+\subsection{Structure}
+Table~\ref{tab:family} reports family structure at three thresholds; we freeze $0.85$. The
+counts move smoothly with the threshold, so no conclusion is knife-edge. The malicious
+population comprises 214 families (178 purely malicious), with 113 singletons (52.8\% of
+malicious families) and a largest family of 58; Fig.~\ref{fig:famsize} shows the size
+distribution. This is a genuinely diverse population---a long singleton tail plus a handful of
+mid-sized clusters---not a few clones, which is what makes leave-family-out a meaningful test.
+
+\begin{table}[t]
+\centering
+\caption{Frozen family structure (global, deterministic clustering of all 3{,}258 contracts).}
+\label{tab:family}
+\begin{tabular}{lrrrrr}
+\toprule
+threshold & families & singl.\ \% & largest & x-chain \% & x-class \% \\
+\midrule
+0.75          & 1120 & 66.9 & 89 & 14.3 & 4.4 \\
+\textbf{0.85}\,$\dagger$ & 1329 & 68.6 & 58 & 13.8 & 3.3 \\
+0.90          & 1511 & 71.7 & 48 & 13.0 & 2.4 \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\footnotesize $\dagger$ frozen. ``x-class'' families span more than one label---the
+contamination signal quantified in \S\ref{sec:supporting}.
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_family_size.png}
+\caption{Malicious delegate family-size distribution (log $y$). A long tail of singletons
+with a few mid-size families; not a clone set.}
+\label{fig:famsize}
+\end{figure}
+
+\section{Pre-Signing Detection}
+\label{sec:detection}
+
+\subsection{Features}
+All features are computed from runtime bytecode by a single deterministic disassembler and
+are shared verbatim between bulk extraction and on-the-fly mutant scoring (eliminating drift).
+They comprise: (i) a normalized opcode histogram (all \code{PUSH$n$} collapsed to one token);
+(ii) hashed opcode 4-gram counts (512 dimensions), capturing control-flow motifs; (iii)
+selector-set signals---the number of distinct 4-byte selectors and the presence of sensitive
+selectors (keccak of the rule's lexicon) and of generic security-relevant selectors
+(\code{transfer}, \code{approve}, \code{execute}, \dots); and (iv) structural EVM statistics
+(code size, \code{JUMPDEST} density, call-family opcode counts, \code{DELEGATECALL},
+\code{CREATE2}, \code{SELFDESTRUCT}, push-width distribution). The banned features (C3, C5)
+are asserted out of the matrix programmatically.
+
+\subsection{Methods}
+We compare eight detectors: (1) \emph{USENIX-shipped-oracle}, the shipped label used directly
+as a verdict; (2) \emph{USENIX-name-rule}, a bytecode reimplementation firing on a sensitive
+selector; (3) \emph{USENIX-struct-rule}, firing on the presence of an external-call opcode
+(an over-approximation of the fallback-callout fact recoverable without a decompiler); (4)
+\emph{blocklist}, exact bytecode-hash memorization of training positives; (5)
+\emph{selector-LR}, logistic regression on selector/structural signals; (6) \emph{opcode-RF}
+and (7) \emph{opcode-XGB}, tree ensembles on the opcode histogram only; and (8) \tool{},
+gradient-boosted trees on the full bytecode feature set. \tool{}'s estimator and feature set
+were chosen on the leave-family-out folds (a validation signal), never against a held test
+fold, and its operating threshold is selected by maximizing $F_1$ on training data only.
+
+\subsection{Protocol}
+The primary task is malicious (793) vs.\ \code{benign\_cleared} (1{,}657)---the same-population,
+hardest, honest comparison. The secondary task adds \code{benign\_general}. We evaluate with
+\code{GroupKFold}$(5)$ on the frozen family id and report per-fold mean\,$\pm$\,std. We report
+random $5$-fold splits \emph{only} as leakage context. AUPRC is the primary metric.
+
+\subsection{Results}
+Table~\ref{tab:detection} gives the primary task. Under leave-family-out, \tool{} attains
+AUPRC $0.856\pm0.043$ and AUROC $0.930$ at $0.87$ precision / $0.64$ recall, ahead of the
+opcode-only ensembles ($0.79$) and far ahead of the rule and blocklist baselines. Three rows
+tell the methodological story. The \emph{shipped oracle} reads $1.000$ everywhere: this is
+tautological (the label is the rule) and we present it only to expose the benign-abstention
+asymmetry, not as a generalization result. The \emph{name-rule} is high-precision ($0.88$) and
+near-zero-recall ($0.04$)---the brittleness we exploit in \S\ref{sec:mutation}. The
+\emph{struct-rule} attains perfect recall at $0.34$ precision (the base rate) and AUROC
+$0.54$: it ``detects'' by flagging almost everything, i.e., it is not a usable detector.
+
+\begin{table}[t]
+\centering
+\caption{Primary task (malicious vs.\ \code{benign\_cleared}); mean$\pm$std over 5 folds.}
+\label{tab:detection}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccccc}
+\toprule
+method & AUPRC & AUROC & $F_1$ & Prec. & Rec. \\
+\midrule
+\multicolumn{6}{l}{\emph{Leave-family-out (headline)}}\\
+USENIX shipped (oracle)$^\ast$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ \\
+USENIX name-rule    & $0.344$ & $0.518$ & $0.071$ & $0.884$ & $0.038$ \\
+USENIX struct-rule  & $0.341$ & $0.539$ & $0.503$ & $0.341$ & $1.000$ \\
+blocklist (hash)    & $0.324$ & $0.500$ & $0.000$ & $0.000$ & $0.000$ \\
+selector-LR         & $0.519$ & $0.670$ & $0.521$ & $0.459$ & $0.617$ \\
+opcode-RF           & $0.775$ & $0.895$ & $0.557$ & $0.782$ & $0.444$ \\
+opcode-XGB          & $0.789$ & $0.907$ & $0.704$ & $0.784$ & $0.656$ \\
+\textbf{\tool{}}    & $\mathbf{0.856}$ & $\mathbf{0.930}$ & $\mathbf{0.720}$ & $\mathbf{0.871}$ & $0.641$ \\
+\midrule
+\multicolumn{6}{l}{\emph{Random split (leakage context only---not a headline)}}\\
+blocklist (hash)    & $0.558$ & $0.684$ & $0.540$ & $0.944$ & $0.379$ \\
+opcode-XGB          & $0.948$ & $0.981$ & $0.919$ & $0.920$ & $0.919$ \\
+\textbf{\tool{}}    & $0.961$ & $0.986$ & $0.940$ & $0.944$ & $0.936$ \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\footnotesize $^\ast$ tautological: the shipped label \emph{is} the rule verdict; shown to
+expose the abstention asymmetry, not as generalization.
+\end{table}
+
+\paragraph{The leakage the field hides} The most important row-pair in
+Table~\ref{tab:detection} is \tool{}'s AUPRC of $0.856$ under family holdout versus $0.961$
+under a random split (Fig.~\ref{fig:gap}). The blocklist makes the mechanism unmistakable:
+$0.324$ AUPRC / $0.000$ recall under holdout, but $0.558$ / $0.379$ under a random split---pure
+memorization of near-duplicate contracts that a random split scatters across train and test. A
+paper that reports the random-split number is reporting an artifact. We treat the $\sim$10-point
+gap as the honest cost of generalization, not something to optimize away.
+
+\paragraph{Secondary task} Adding \code{benign\_general} raises \tool{}'s holdout AUPRC to
+$0.877$ (AUROC $0.952$, precision $0.915$). Because \code{chain} is banned, this improvement
+reflects \code{benign\_general} being a more separable, closer-to-clean negative---not the
+provenance leak of C5.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_random_vs_family.png}
+\caption{Random splits inflate AUPRC across all learned methods; the blocklist inflates from
+useless to deceptively strong. Only leave-family-out reflects generalization.}
+\label{fig:gap}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_auprc.png}
+\caption{Detection AUPRC under leave-family-out (primary task), mean$\pm$std. Dashed line is
+the malicious base rate ($0.32$).}
+\label{fig:auprc}
+\end{figure}
+
+\section{Mutation Stress-Test}
+\label{sec:mutation}
+
+This is the paper's spine: how much detection survives when an adversary redeploys a known
+malicious delegate under a semantics-preserving transformation?
+
+\subsection{Mutation taxonomy}
+We define four escalating tiers, each verified to preserve the executable-region opcode-token
+sequence (control flow) of the source:
+\begin{itemize}
+  \item \textbf{M0}: original bytecode.
+  \item \textbf{M1}: rewrite of the CBOR solc-metadata trailer (not executed). Defeats
+  exact-hash blocklisting; behaviorally inert.
+  \item \textbf{M2}: M1 $+$ randomization of \code{PUSH20} address immediates (the attacker's
+  redeploy parameters) $+$ appended, unreachable benign-sourced code after a \code{STOP}
+  (offsets unshifted, so all absolute jumps remain valid).
+  \item \textbf{M3}: M2 $+$ rewriting of sensitive \code{PUSH4} selector immediates---a
+  function rename at the byte level that specifically defeats the name-match rule.
+\end{itemize}
+All mutations rewrite immediates in place (same width) or append after the code; none inserts
+or removes bytes inside the executable region, so \eip{} absolute jump targets never shift. We
+verify preservation by disassembling the pre-metadata region of source and mutant and asserting
+token-sequence identity: this holds for \textbf{793/793} contracts at M1, M2, and M3. We
+independently confirm M3 removes the sensitive selector (12/12 in a sampled check, name-rule
+$\rightarrow 0$). We stress the ``semantics-preserving'' claim precisely: we assert control-flow
+and opcode-skeleton identity plus attacker-parameter variation, not bitwise data-semantic
+identity---an attacker \emph{does} change the destination address each redeploy, and that is the
+modeled behavior.
+
+\subsection{Protocol}
+We split \emph{before} mutation. Detectors are trained/populated on training families using
+original (M0) bytecode only; the held-out malicious contracts are then mutated M0$\rightarrow$M3
+and scored, with mutants inheriting the source family and remaining strictly on the held-out
+side. Retained detection is recall on the same held-out malicious set at each tier, at each
+model's train-chosen threshold, averaged over 5 folds. Retained recall must be read against the
+Table~\ref{tab:detection} precision column.
+
+\subsection{Results}
+Table~\ref{tab:mutation} and Fig.~\ref{fig:mutcurve} give the curve. The result is a clean,
+strong finding on a scoped claim, with an honest complication.
+
+\begin{table}[t]
+\centering
+\caption{Retained detection (recall on held-out malicious) under semantics-preserving mutation;
+mean over 5 folds. Preservation verified 793/793 at every tier.}
+\label{tab:mutation}
+\begin{tabular}{lcccc}
+\toprule
+method & M0 & M1 & M2 & M3 \\
+\midrule
+USENIX name-rule    & $0.038$ & $0.038$ & $0.038$ & $\mathbf{0.000}$ \\
+USENIX struct-rule  & $1.000$ & $1.000$ & $1.000$ & $1.000$ \\
+blocklist (hash)    & $0.000$ & $0.000$ & $0.000$ & $0.000$ \\
+selector-LR         & $0.617$ & $0.621$ & $0.623$ & $0.621$ \\
+opcode-XGB          & $0.656$ & $0.659$ & $0.518$ & $0.518$ \\
+\textbf{\tool{}}    & $0.641$ & $0.668$ & $0.588$ & $\mathbf{0.588}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_mutation_curve.png}
+\caption{Retained detection M0$\rightarrow$M3. The name-rule collapses to $0.000$ at M3;
+blocklisting is useless throughout; the struct-rule is trivially robust but non-discriminative
+(precision $0.34$). \tool{} is the only method that is both robust and discriminative.}
+\label{fig:mutcurve}
+\end{figure}
+
+\paragraph{The strong, scoped finding} The rule's precision-bearing name-match, which the
+original work relies on to sharpen precision, is \emph{trivially} evaded: a function rename (M3)
+drops its retained detection from $0.038$ to $0.000$. Exact-hash blocklisting is useless from the
+outset ($0.000$)---it cannot generalize across families, and a single metadata byte (M1) would
+break it even in-distribution. Against exactly these evasions, \tool{} retains $0.588$ detection
+while holding $0.87$ precision (Table~\ref{tab:detection}). It is the only method that is
+simultaneously evasion-robust and discriminative.
+
+\paragraph{The honest complication} The rule's \emph{other} component, the structural
+call-from-fallback fact, is perfectly robust ($1.000$ flat)---because one cannot remove the
+external call and still drain. But it is robust only by flagging nearly everything ($0.34$
+precision, AUROC $0.54$). So ``robust'' and ``useful'' are not the same, and we present both.
+The genuine contribution of the learned model is occupying the middle: robust \emph{without}
+collapsing to base-rate precision.
+
+\paragraph{Locating the breaking point} Because M2/M3 preserve the opcode skeleton, one might
+suspect the learned model is robust only because these mutations do not touch what it sees. We
+therefore push further with a dead-code-volume sweep on top of M3 (Table~\ref{tab:volume},
+Fig.~\ref{fig:vol}): we append increasing volumes of unreachable benign code, which does shift
+the static opcode distribution. Here the honest limitation surfaces---under $+100\%$/$+200\%$
+padding, \tool{}'s normalized 4-gram features dilute and its retained detection falls to
+$0.31$/$0.14$, \emph{below} the plain opcode histogram ($0.47$/$0.49$). Richer features help
+against targeted evasion but hurt under brute-force flooding. We report this rather than tune it
+away; it points to reachability-aware feature extraction as the natural next step.
+
+\begin{table}[t]
+\centering
+\caption{Dead-code-volume sweep on top of M3: retained detection vs.\ appended unreachable code
+(as \% of original ops).}
+\label{tab:volume}
+\begin{tabular}{lccccc}
+\toprule
+method & $+0\%$ & $+25\%$ & $+50\%$ & $+100\%$ & $+200\%$ \\
+\midrule
+\tool{}            & $0.668$ & $0.567$ & $0.500$ & $0.310$ & $0.139$ \\
+opcode-XGB         & $0.659$ & $0.523$ & $0.498$ & $0.473$ & $0.485$ \\
+USENIX struct-rule & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ \\
+USENIX name-rule   & $0.000$ & $0.000$ & $0.000$ & $0.000$ & $0.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_mutation_volume.png}
+\caption{Robustness limit. Under heavy unreachable-code padding, \tool{} degrades faster than a
+plain opcode histogram---a limitation we report, not hide.}
+\label{fig:vol}
+\end{figure}
+
+\section{Supporting Analyses}
+\label{sec:supporting}
+
+\paragraph{Contamination upper bound} To make C2 quantitative, we bound how much of the weak
+negative set is actually malicious-like. Of 1{,}657 \code{benign\_cleared}, 135 ($8.1\%$) share
+a frozen family with a known-malicious contract and 20 ($1.2\%$) are byte-identical to one.
+These are rule-silent but structurally malicious---an estimated $\le 8.1\%$ label contamination
+that we treat as a ceiling on the negative set's purity and as the reason we never call it clean.
+
+\paragraph{Latency} \tool{} scores a contract end-to-end (featurize $+$ predict) in $3.4$\,ms
+mean ($p_{50}\,2.5$, $p_{95}\,10.7$; $3.2$\,ms batched), with no decompiler in the loop. This is
+compatible with pre-signing screening at wallet-interaction time. We deliberately avoid a
+``$N\times$ faster than the decompiler'' claim, as no defensible first-party decompiler timing
+was available.
+
+\paragraph{Explanations} \tool{} attaches a nearest-family neighbor and fired capability signals
+to each flag. On a 50-case audit, fired-signal coverage is $1.00$ (every flag cites a concrete
+signal: external call / \code{DELEGATECALL} / sensitive selector). Nearest-family retrieval,
+however, is informative only when a similar family exists in training: its overall
+neighbor-is-malicious rate ($0.34$) barely exceeds the base rate ($0.33$), rising to $0.65$ when
+the neighbor similarity exceeds $0.70$ ($n{=}23/50$). We report this honestly: novel families are
+not retrievable, so the retrieval component should be presented to users as corroboration, not
+proof.
+
+\paragraph{Synthetic signer exposure} Because victim data was stripped (C4), we include
+hypothetical signer-loss case studies purely as illustration of how a delegate's populated
+capability profile maps to at-risk assets; these are not a victim-grounded evaluation and no
+metric depends on them.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What a skeptical reviewer will attack}
+We anticipate three lines of attack and pre-empt them.
+\emph{(1) ``The negatives are not clean, so detection AUPRC is meaningless.''} True that
+\code{benign\_cleared} is weak; we bound its contamination at $\le 8.1\%$, report the secondary
+task with cleaner negatives (AUPRC $0.877$, higher), and scope the claim to ``separates
+rule-labeled malicious from rule-silent contracts,'' never ``detects all malware.''
+\emph{(2) ``The structural rule is robust, so your evasion story is oversold.''} We show the
+structural rule is robust \emph{and} unusable ($0.34$ precision); the evasion claim is scoped to
+the name-match and hash components, which genuinely collapse.
+\emph{(3) ``Positives are all from one rule, so you re-learn the rule.''} The name-rule footprint
+fires on only $\sim$4\% of held-out malicious, so $0.856$ AUPRC cannot be the rule in disguise;
+and M3 removes that footprint entirely, yet \tool{} retains $0.588$ recall---it relies on opcode
+structure, not the label-defining signal.
+
+\subsection{Framing and scope}
+Our contribution is a tool and an evaluation protocol, not a modeling advance. The headline is
+not an AUPRC number; it is (i) a family-grouped protocol that exposes a large, previously
+unreported random-split leakage in this problem, and (ii) a verified evasion measurement showing
+that the deployed rule's discriminating component is defeated by a rename while a cheap learned
+screen is not. We regard the dead-code-flooding limitation and the retrieval-explanation weakness
+as part of an honest contribution, not blemishes to be hidden.
+
+\subsection{Limitations}
+Beyond those already stated: labels are single-source and thus inherit the rule's blind spots;
+our mutations, though verified semantics-preserving, do not yet include control-flow
+obfuscation or true recompilation, so the learned model's robustness to deeper restructuring is
+untested; models are trained on M0 only (the deployed-model question), so adversarial training is
+future work; and all timing is single-machine. None of these is patched by relaxing an honesty
+constraint.
+
+\section{Related Work}
+\label{sec:related}
+The USENIX ``Dark Side of \eip{}''~\cite{darkside} is the closest work and our comparison
+target; it is post-hoc, decompiler-based, and rule-driven, and we reimplement its facts as
+baselines. Bytecode-level malicious-contract detection has a long line
+(e.g.,~\cite{honeybadger,maian,contractward,eswaran}), but targets classic reentrancy/honeypot
+surfaces rather than \eip{} delegation and rarely evaluates under family holdout. Family-aware or
+group-aware evaluation and the perils of near-duplicate leakage are well documented in malware
+ML~\cite{tesseract,pendlebury}, and our protocol imports that discipline into the \eip{} setting.
+Semantics-preserving adversarial transformation of programs to evade learned
+detectors~\cite{advmalware,pierazzi} motivates our mutation taxonomy; we contribute a
+verified-preservation instantiation for EVM bytecode.
+
+\section{Conclusion}
+\label{sec:conclusion}
+We presented \tool{}, a pre-signing, decompiler-free risk screen for \eip{} delegates, and an
+evaluation protocol designed to survive re-execution. On a frozen, deterministic family
+structure, a bytecode-only learned model separates rule-labeled malicious from rule-silent
+contracts at $0.856$ AUPRC under leave-family-out and $3.4$\,ms per contract---while a naive
+random split would have reported $0.961$. Under verified semantics-preserving mutation, the
+deployed rule's precision-bearing name match and exact-hash blocklisting collapse to zero, while
+the learned screen retains $0.59$ detection at $0.87$ precision, the only method both robust and
+discriminative. We also documented where the learned model loses---under brute-force dead-code
+flooding---because an honest map of a defense must include its edges. Code, frozen splits, and an
+auto-generated results manifest are released for exact reproduction.
+
+\balance
+\begin{thebibliography}{00}
+\bibitem{eip7702} V. Buterin \emph{et al.}, ``EIP-7702: Set EOA account code,'' Ethereum
+Improvement Proposals, 2024.
+\bibitem{darkside} Anonymized authors, ``The dark side of \eip{}: Detecting malicious account
+delegations,'' in \emph{Proc.\ USENIX Security}, 2025.
+\bibitem{honeybadger} C. F. Torres, M. Steichen, and R. State, ``The art of the scam: Demystifying
+honeypots in Ethereum smart contracts,'' in \emph{Proc.\ USENIX Security}, 2019.
+\bibitem{maian} I. Nikoli\'c, A. Kolluri, I. Sergey, P. Saxena, and A. Hobor, ``Finding the greedy,
+prodigal, and suicidal contracts at scale,'' in \emph{Proc.\ ACSAC}, 2018.
+\bibitem{contractward} W. Wang \emph{et al.}, ``ContractWard: Automated vulnerability detection
+models for Ethereum smart contracts,'' \emph{IEEE Trans.\ Netw.\ Sci.\ Eng.}, 2021.
+\bibitem{eswaran} S. Eswaran \emph{et al.}, ``Machine-learning approaches for smart-contract
+vulnerability detection: A survey,'' \emph{ACM Comput.\ Surv.}, 2023.
+\bibitem{tesseract} F. Pendlebury \emph{et al.}, ``TESSERACT: Eliminating experimental bias in
+malware classification across space and time,'' in \emph{Proc.\ USENIX Security}, 2019.
+\bibitem{pendlebury} R. Jordaney \emph{et al.}, ``Transcend: Detecting concept drift in malware
+classification models,'' in \emph{Proc.\ USENIX Security}, 2017.
+\bibitem{advmalware} K. Grosse \emph{et al.}, ``Adversarial examples for malware detection,'' in
+\emph{Proc.\ ESORICS}, 2017.
+\bibitem{pierazzi} F. Pierazzi, F. Pendlebury, J. Cortellazzi, and L. Cavallaro, ``Intriguing
+properties of adversarial ML attacks in the problem space,'' in \emph{Proc.\ IEEE S\&P}, 2020.
+\end{thebibliography}
+
+\end{document}
