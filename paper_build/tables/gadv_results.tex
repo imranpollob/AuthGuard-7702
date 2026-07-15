@@ -1,0 +1,27 @@
+\begin{table*}[t]
+  \centering
+  \caption{G-ADV five-fold means on clean M0 and held-out M3 and pure-M0 F200. AUPRC is threshold-free; precision, recall, and benign FPR use thresholds selected on separate clean-M0 validation families. XGB denotes XGBoost; bold marks the best value per condition and metric.}
+  \label{tab:gadv-results}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \begin{tabular}{@{}llcccc@{}}
+    \toprule
+    Condition & Model & AUPRC & Precision & Recall & FPR \\
+    \midrule
+    Clean M0 & Opcode-histogram XGB & .757 & .677 & .661 & .161 \\
+             & Opcode-histogram XGB-aug & .752 & .610 & .779 & .284 \\
+             & AuthGuard-M0 & .819 & .720 & .759 & .134 \\
+             & AuthGuard-aug & \textbf{.863} & \textbf{.763} & \textbf{.807} & \textbf{.108} \\
+    \midrule
+    Held-out M3 & Opcode-histogram XGB & .695 & .640 & .675 & .201 \\
+                & Opcode-histogram XGB-aug & .723 & .600 & \textbf{.807} & .304 \\
+                & AuthGuard-M0 & .768 & .663 & .767 & .181 \\
+                & AuthGuard-aug & \textbf{.825} & \textbf{.743} & .796 & \textbf{.120} \\
+    \midrule
+    Held-out pure-M0 F200 & Opcode-histogram XGB & .529 & .489 & .601 & .347 \\
+                          & Opcode-histogram XGB-aug & .696 & .538 & \textbf{.756} & .386 \\
+                          & AuthGuard-M0 & .561 & .512 & .484 & .217 \\
+                          & AuthGuard-aug & \textbf{.758} & \textbf{.654} & .727 & \textbf{.174} \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
