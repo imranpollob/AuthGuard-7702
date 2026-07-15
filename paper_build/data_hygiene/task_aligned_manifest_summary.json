@@ -1,0 +1,27 @@
+{
+  "conflicting_exact_hash_groups_candidate": 23,
+  "conflicting_exact_hash_groups_original": 23,
+  "cross_class_exact_hash_groups_after_cleaning": 0,
+  "cross_class_families": 28,
+  "designator_recovered_cross_family_duplicate_excluded": 29,
+  "designator_recovered_retained": 3,
+  "designator_rows": 76,
+  "designator_unresolved_excluded": 44,
+  "designator_verified_runtime_recovered": 32,
+  "exact_duplicate_hash_groups": 233,
+  "exact_duplicate_rows": 787,
+  "global_singleton_families": 856,
+  "malicious_bearing_families": 209,
+  "malicious_member_singleton_families": 112,
+  "original_rows": 3258,
+  "quarantined_conflict_rows": 103,
+  "retained_class_balance_malicious_fraction_primary": 0.318859649122807,
+  "retained_class_counts": {
+    "benign_AA": 5,
+    "benign_cleared": 1553,
+    "benign_general": 797,
+    "malicious": 727
+  },
+  "retained_families": 1258,
+  "retained_rows": 3082
+}

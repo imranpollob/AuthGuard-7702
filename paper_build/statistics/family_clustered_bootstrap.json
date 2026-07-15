@@ -1,0 +1,201 @@
+{
+  "method": "paired family-clustered percentile bootstrap; sample frozen test families with replacement and retain every contract in each sampled family",
+  "base_seed": 7702,
+  "replicates": 10000,
+  "results": {
+    "original": {
+      "M0": {
+        "cohort": "original",
+        "condition": "M0",
+        "seed": 60377791207522696,
+        "bootstrap_replicates": 10000,
+        "n_families": 890,
+        "n_contracts": 2450,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.8032786885245902,
+            "FPR": 0.18949909474954738,
+            "AUPRC": 0.8343682971758083
+          },
+          "AuthGuard-aug": {
+            "recall": 0.7717528373266078,
+            "FPR": 0.15811707905853953,
+            "AUPRC": 0.8564817692376105
+          }
+        },
+        "recall_diff_aug_minus_M0": -0.031525851197982346,
+        "recall_diff_CI95": [
+          -0.12078854814746032,
+          0.038149117982817934
+        ],
+        "FPR_diff_aug_minus_M0": -0.03138201569100785,
+        "FPR_diff_CI95": [
+          -0.05487467547054674,
+          -0.011398890433953413
+        ]
+      },
+      "M3": {
+        "cohort": "original",
+        "condition": "M3",
+        "seed": 272281110926029739,
+        "bootstrap_replicates": 10000,
+        "n_families": 890,
+        "n_contracts": 2450,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.7944514501891551,
+            "FPR": 0.2703681351840676,
+            "AUPRC": 0.7694638691531986
+          },
+          "AuthGuard-aug": {
+            "recall": 0.8083228247162674,
+            "FPR": 0.18889559444779722,
+            "AUPRC": 0.8307879123631832
+          }
+        },
+        "recall_diff_aug_minus_M0": 0.01387137452711229,
+        "recall_diff_CI95": [
+          -0.01773366261398173,
+          0.04976864944695824
+        ],
+        "FPR_diff_aug_minus_M0": -0.08147254073627039,
+        "FPR_diff_CI95": [
+          -0.10725759907050711,
+          -0.057307705311299896
+        ]
+      },
+      "F200": {
+        "cohort": "original",
+        "condition": "F200",
+        "seed": 10783681712424482387,
+        "bootstrap_replicates": 10000,
+        "n_families": 890,
+        "n_contracts": 2450,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.6355611601513241,
+            "FPR": 0.31261315630657815,
+            "AUPRC": 0.5419130699041619
+          },
+          "AuthGuard-aug": {
+            "recall": 0.7969735182849937,
+            "FPR": 0.26614363307181654,
+            "AUPRC": 0.7619467415518285
+          }
+        },
+        "recall_diff_aug_minus_M0": 0.1614123581336696,
+        "recall_diff_CI95": [
+          0.06820378876134367,
+          0.28479593353688515
+        ],
+        "FPR_diff_aug_minus_M0": -0.04646952323476161,
+        "FPR_diff_CI95": [
+          -0.07896363368701374,
+          -0.01355233400754911
+        ],
+        "AUPRC_diff_aug_minus_M0": 0.22003367164766663,
+        "AUPRC_diff_CI95": [
+          0.1510805582882089,
+          0.29024059706659505
+        ]
+      }
+    },
+    "task_aligned_v1": {
+      "M0": {
+        "cohort": "task_aligned_v1",
+        "condition": "M0",
+        "seed": 8932520769858181723,
+        "bootstrap_replicates": 10000,
+        "n_families": 819,
+        "n_contracts": 2280,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.7537826685006878,
+            "FPR": 0.13522215067611076,
+            "AUPRC": 0.8178718386070507
+          },
+          "AuthGuard-aug": {
+            "recall": 0.797799174690509,
+            "FPR": 0.11139729555698648,
+            "AUPRC": 0.8553933766440832
+          }
+        },
+        "recall_diff_aug_minus_M0": 0.044016506189821225,
+        "recall_diff_CI95": [
+          -0.04523461428811615,
+          0.13297917114406474
+        ],
+        "FPR_diff_aug_minus_M0": -0.023824855119124286,
+        "FPR_diff_CI95": [
+          -0.04810457616617861,
+          -0.0013553228463743271
+        ]
+      },
+      "M3": {
+        "cohort": "task_aligned_v1",
+        "condition": "M3",
+        "seed": 10249156864706068338,
+        "bootstrap_replicates": 10000,
+        "n_families": 819,
+        "n_contracts": 2280,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.7620357634112792,
+            "FPR": 0.18480360592401804,
+            "AUPRC": 0.7794323043010133
+          },
+          "AuthGuard-aug": {
+            "recall": 0.7854195323246217,
+            "FPR": 0.12556342562781714,
+            "AUPRC": 0.832470866786933
+          }
+        },
+        "recall_diff_aug_minus_M0": 0.023383768913342484,
+        "recall_diff_CI95": [
+          -0.04000554785020807,
+          0.07994389901823273
+        ],
+        "FPR_diff_aug_minus_M0": -0.0592401802962009,
+        "FPR_diff_CI95": [
+          -0.08317104257412344,
+          -0.03687163304524977
+        ]
+      },
+      "F200": {
+        "cohort": "task_aligned_v1",
+        "condition": "F200",
+        "seed": 8264433621027970751,
+        "bootstrap_replicates": 10000,
+        "n_families": 819,
+        "n_contracts": 2280,
+        "point": {
+          "AuthGuard-M0": {
+            "recall": 0.4484181568088033,
+            "FPR": 0.22794591113972956,
+            "AUPRC": 0.5080699915560161
+          },
+          "AuthGuard-aug": {
+            "recall": 0.7015130674002751,
+            "FPR": 0.17900837089504185,
+            "AUPRC": 0.7560577923739021
+          }
+        },
+        "recall_diff_aug_minus_M0": 0.25309491059147177,
+        "recall_diff_CI95": [
+          0.1444220733710223,
+          0.37894920868605075
+        ],
+        "FPR_diff_aug_minus_M0": -0.048937540244687716,
+        "FPR_diff_CI95": [
+          -0.08559208586600117,
+          -0.013879479997660076
+        ],
+        "AUPRC_diff_aug_minus_M0": 0.24798780081788607,
+        "AUPRC_diff_CI95": [
+          0.17689451640553538,
+          0.3216060772266022
+        ]
+      }
+    }
+  }
+}

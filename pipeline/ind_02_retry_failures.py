@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV = os.path.join(ROOT, "reports", "getcode_mainnet.csv")
 LOG = os.path.join(ROOT, "network_query_log.csv")
-UA = "Mozilla/5.0 (AuthGuard-7702 research; read-only eth_getCode; contact polboy777@gmail.com)"
+UA = "AuthGuard-7702 anonymous research audit (read-only eth_getCode)"
 ENDPOINTS = ["https://ethereum-rpc.publicnode.com", "https://rpc.ankr.com/eth",
              "https://eth.llamarpc.com", "https://ethereum.blockpi.network/v1/rpc/public"]
 BATCH = 20

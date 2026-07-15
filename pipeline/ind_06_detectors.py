@@ -28,7 +28,7 @@ from ag_features import featurize, build_sensitive_selector_set
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "results"); REP = os.path.join(ROOT, "reports")
-UA = "Mozilla/5.0 (AuthGuard-7702 research; read-only; contact polboy777@gmail.com)"
+UA = "AuthGuard-7702 anonymous research audit (read-only)"
 EP = "https://ethereum-rpc.publicnode.com"
 SENS = build_sensitive_selector_set()
 
