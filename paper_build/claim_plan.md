@@ -1,110 +1,93 @@
-# Claim Plan
+# Claim Plan — Task-Aligned v1
 
 ## Claim discipline
 
-The paper should claim an implemented bytecode-scoring prototype and rigorous evaluation, not a novel classifier or complete wallet product. Every maliciousness claim is scoped to USENIX-artifact positives versus rule-silent weak negatives unless explicitly described as an exploratory independent case.
+The paper should claim an implemented bytecode-scoring prototype and a task-aligned, leakage-controlled evaluation—not a novel classifier, verified maliciousness oracle, or complete wallet product. Every classification result is scoped to USENIX-artifact positives versus rule-silent weak negatives. Original-cohort values are sensitivity evidence only.
 
-Do not use “first,” “novel,” or “state of the art” until a current, documented literature audit supports the exact wording. The contribution sentences below intentionally avoid priority claims.
+Do not use “first,” “novel,” “state of the art,” “semantics-preserving,” “formally verified,” or “robust to arbitrary evasion.”
 
-## Proposed contribution sentences
+## Defensible contribution sentences
 
-1. **Practical scorer.** We present AuthGuard-7702, an implemented bytecode-only, decompiler-free risk-scoring prototype for screening EIP-7702 delegate code before authorization; it separates USENIX-artifact positives from rule-silent delegates at 0.856 AUPRC under five-fold family-grouped evaluation, while local feature extraction plus prediction averages 3.37 ms per contract.
+1. **Practical scorer.** We present AuthGuard-7702, an implemented bytecode-only, decompiler-free risk-scoring prototype for screening EIP-7702 delegate runtime code before authorization; it separates 727 USENIX-artifact positives from 1,553 rule-silent delegates at **0.881 ± 0.028 AUPRC** over five preserved family folds, while local feature extraction plus prediction averages **3.411 ms per contract** on an Apple M1.
 
-2. **Leakage-resistant evaluation.** We freeze a deterministic global similarity grouping of 3,258 contracts into 1,329 families and show that a random split inflates AuthGuard AUPRC from 0.856 to 0.961, while an exact-hash blocklist rises from 0.324 to 0.558, exposing memorization that family-grouped testing removes.
+2. **Task-aligned family evaluation.** We audit 76 delegation designators and 23 cross-class exact-bytecode conflicts, freeze an outcome-blind exclusion/recovery policy, and evaluate 3,082 task-aligned samples in 1,258 retained frozen families. AuthGuard reaches **0.975 AUPRC under a seeded random diagnostic versus 0.881 under family grouping**, and the exact-hash blocklist reaches 0.551 versus 0.321; family-grouped testing controls related-bytecode leakage and provides a more demanding generalization estimate.
 
-3. **Evasion and augmentation.** We provide a structure-preserving M0--M3 evasion benchmark and a source-balanced, family-disjoint augmentation procedure that, under the stricter G-ADV protocol, improves held-out pure-M0 +200% flooding recall from 0.624 to 0.790 and AUPRC from 0.596 to 0.750 while reducing benign FPR from 0.314 to 0.275, with a small clean-recall reduction disclosed.
+3. **Evasion benchmark and augmentation.** We provide a checker-defined structure-preserving M0–M3 benchmark and source-balanced family-disjoint augmentation. Under G-ADV, augmentation changes held-out pure-M0 F200 fold-mean recall/AUPRC/FPR from **0.484/0.561/0.217 to 0.727/0.758/0.174**; the paired family-clustered pooled recall gain is **0.253 (95% CI [0.144, 0.379])**, with fold heterogeneity and residual false positives disclosed.
 
 ## Core claim matrix
 
-| ID | Safe claim | Evidence | Required qualification | Section/float |
+| ID | Safe claim | Evidence | Required qualification | Planned location |
 |---|---|---|---|---|
-| C1 | AuthGuard is an implemented bytecode scorer for a pre-signing decision point | feature/training/prediction code; G-DET; local runtime | scorer core only; no wallet/RPC path implemented or timed | Design, RQ1, runtime sentence |
-| C2 | AuthGuard reaches 0.856 ± 0.043 AUPRC under family-grouped evaluation | G-DET JSON | target is rule-derived positives vs weak rule-silent negatives; five outer folds | Table 2 |
-| C3 | Random splitting inflates AuthGuard AUPRC by about 0.10 | G-DET family/random outputs | diagnostic on this dataset; do not generalize to all prior studies | Figure 2 |
-| C4 | Frozen global grouping prevents identical cross-class code from being split by class | frozen CSV; 23 conflicting exact bytecodes | groups are MinHash-estimated opcode similarity clusters, not attacker attribution | Methodology/Table 1 |
-| C5 | Sensitive selector rewriting reduces the sensitive-name approximation’s retained recall to zero at M3 | G-MUT | approximation only; full USENIX pipeline not run | Table 3 |
-| C6 | AuthGuard retains 0.588 recall at M3 under G-MUT | G-MUT | in-sample training threshold; structure-preserving checker, not execution equivalence | Table 3 |
-| C7 | The compound G-VOL +200% condition reduces AuthGuard retained recall to about 0.139 | G-VOL | separate M3-style compound condition; not the G-ADV F200 baseline | limitations only |
-| C8 | G-ADV augmentation improves held-out pure-M0 +200% robustness | G-ADV fold means | F200 is a held-out severity generated from M0, not M3; residual FPR is high | Table 4/Figure 3 |
-| C9 | G-ADV augmentation has a clean operating-point tradeoff | G-ADV and paired CSV | AUPRC/FPR improve while recall falls; never say “no clean cost” | Table 4/discussion |
-| C10 | Independent generalization is unresolved | preregistered independent funnel | exactly one truly novel confirmed positive; INSUFFICIENT DATA | limitations |
+| C1 | AuthGuard is an implemented scorer for a pre-signing integration point | feature/model code; G-DET; runtime protocol | scorer core only; wallet/RPC/UI path not implemented or timed | design, RQ1, runtime |
+| C2 | Task-aligned AuthGuard reaches .881 ± .028 family AUPRC | task-aligned G-DET | rule-derived positives vs weak negatives; five preserved outer folds | Table 2 |
+| C3 | Random evaluation is more optimistic on this corpus | G-DET family/random outputs | AuthGuard gap .094; diagnostic, not a universal estimate | Figure 2 |
+| C4 | Outcome-blind hygiene removes designator inputs and cross-class exact conflicts | protocol, designator audit, conflict audit, manifest | 176 exclusions; three recovered runtime rows retained; no relabeling/reclustering | dataset/Table 1 |
+| C5 | Family grouping controls related-bytecode leakage | frozen IDs/folds; exact-hash assertions | similarity families are not attacker attribution; same-class duplicates remain within families | methodology |
+| C6 | Sensitive selector rewriting reduces the name approximation's retained recall to zero | G-MUT | approximation only; full USENIX pipeline unexecuted | Table 3 |
+| C7 | AuthGuard retains .530 recall at M3 | G-MUT | checker-defined structure preservation, not execution equivalence | Table 3 |
+| C8 | Compound G-VOL F200 reduces AuthGuard recall to .130 | G-VOL | distinct from pure-M0 G-ADV F200; not recovered by tested augmentation | limitations |
+| C9 | G-ADV augmentation improves aggregate F200 robustness | fold means, paired file, family bootstrap | distinguish fold means from pooled differences; effects heterogeneous; residual FPR .174 | Table 4/Figure 3 |
+| C10 | Clean and M3 recall changes are uncertain under family resampling | family bootstrap | clean CI [-.045,.133]; M3 CI [-.040,.080] include zero | results/discussion |
+| C11 | Local scorer-core mean is 3.411 ms, p95 9.514 ms | frozen runtime benchmark | Apple M1; preloaded bytecode; excludes network/wallet/model loading | runtime sentence |
+| C12 | Independent generalization is unresolved | independent funnel | exactly one novel confirmed positive; insufficient for inference | limitations |
 
-## Wording required for baselines
+## Required terminology
 
 Use exactly:
 
 - **sensitive-name rule approximation**;
 - **external-call structural over-approximation**;
-- **full USENIX Gigahorse/Datalog pipeline** when discussing the unexecuted system.
+- **full USENIX Gigahorse/Datalog pipeline**;
+- **family-grouped testing controls related-bytecode leakage and provides a more demanding generalization estimate**;
+- **structure-preserving transformations under our opcode-skeleton checker**.
 
-Do not shorten the first two to “USENIX detector.” Do not claim AuthGuard beats the full pipeline.
+Never label either approximation as the “USENIX detector,” and never claim AuthGuard beats the full pipeline.
 
-## Mutation wording
+## Statistical policy
 
-Safe:
+- Main G-DET and G-ADV tables use five-fold means; report population SD only where specified.
+- Paired pooled values must be labeled pooled and kept distinct from fold means.
+- Inferential robustness claims use the 10,000-replicate family-clustered paired bootstrap.
+- F200 supports aggregate improvement: recall +.253 [.144,.379], FPR -.049 [-.086,-.014], and AUPRC +.248 [.177,.322].
+- Clean and M3 recall intervals include zero; do not claim statistically resolved recall gains for those conditions.
+- The old contract-level interval is superseded and must not appear in the submission.
 
-- “structure-preserving transformations under our opcode-skeleton checker”;
-- “attack-capability-preserving by construction for the modeled redeployment parameters,” only when clearly presented as the threat-model assumption;
-- “793/793 variants preserved the original pre-metadata opcode-token sequence.”
+## Dataset and mutation policy
 
-Unsafe:
+- State that the observation unit is chain/address and that 233 same-class exact groups covering 787 observations remain, controlled within frozen family folds.
+- State that 115/1,553 weak negatives share a positive-bearing similarity family; call 7.4% a conservative malicious-like-family heuristic, not contamination truth.
+- Report 32/76 runtimes recovered, 3 safely retained, 29 excluded as cross-family exact duplicates, 44 unresolved, and 73 total designator-source exclusions.
+- Report complete quarantine of 23 conflicting hashes/103 rows and zero retained cross-class exact hashes.
+- “727/727 variants preserved the original pre-metadata opcode-token sequence” is allowed only with the checker limitation.
 
-- “semantics-preserving”;
-- “behaviorally equivalent”;
-- “formally verified”;
-- “control-flow equivalent” without qualification;
-- “robust to arbitrary evasion.”
+## Runtime policy
 
-## Statistical claim policy
+Safe wording: “On an Apple M1 local evaluation environment, preloaded-bytecode feature extraction plus model prediction averaged 3.411 ms per contract (p95 9.514 ms; 3,000 single-contract calls); timed 300-contract batches averaged 3.197 ms per contract.”
 
-- Main G-DET and G-ADV tables use fold means.
-- Paired contract-level values may be used for direction and confusion counts.
-- The current +200% interval [0.131, 0.193] is not family-clustered. Do not call it leakage-safe statistical confidence in the final paper until the bootstrap resamples frozen families.
-- If a family-clustered interval is not produced, omit the interval and report fold means plus family-macro/singleton results.
-- State aggregation whenever pooled values differ from fold means.
+Unsafe: “end-to-end wallet latency,” “network-inclusive latency,” “complete pre-signing latency,” “real-time” without a boundary, or a speedup against Gigahorse.
 
-## Runtime claim policy
+## Claims to omit
 
-Safe: “On the local evaluation environment, feature extraction plus model prediction averaged 3.37 ms per contract (p95 10.67 ms; n=300).”
+- AuthGuard discovers missed malicious families or generalizes independently at scale.
+- `benign_cleared` is verified benign, or 7.4% is its true contamination rate.
+- Family grouping “removes memorization” or proves attacker-level independence.
+- Mutations are semantically or behaviorally equivalent.
+- Augmentation recovered the G-VOL compound F200 result.
+- Clean/M3 recall gains are statistically established.
+- Robustness is complete; AuthGuard-aug still has .174 fold-mean FPR at F200.
+- The estimator is a research novelty or the full USENIX pipeline was reproduced.
+- A deployed wallet warning UI, production RPC/cache path, user study, or end-to-end benchmark exists.
 
-Required additions before submission: hardware/OS and dependency versions.
+## Exact abstract-safe numeric set
 
-Unsafe:
+Use no more than three numeric result clauses:
 
-- “end-to-end wallet latency”;
-- “complete pre-signing latency”;
-- “network-inclusive latency”;
-- “N× faster than Gigahorse”;
-- “real-time” without defining the boundary.
+- task-aligned G-DET family/random AuthGuard AUPRC: **.881 ± .028 / .975 ± .012**;
+- G-ADV pure-M0 F200 fold-mean recall/AUPRC/FPR: **.484/.561/.217 → .727/.758/.174**;
+- family-clustered F200 pooled recall difference: **+.253, 95% CI [.144,.379]**.
 
-## Claims to omit from the main paper
-
-- AuthGuard discovers malicious families missed by the positive-label rule.
-- AuthGuard generalizes to independently sourced malicious delegates at scale.
-- AuthGuard is superior to the full USENIX system.
-- The external-call structural over-approximation is a useful detector merely because recall is 1.0.
-- `benign_cleared` is clean or verified benign.
-- The 8.1% heuristic is the true contamination rate.
-- Augmentation recovered the G-VOL 0.139 compound worst case.
-- Augmentation has no clean cost.
-- The classifier architecture is a research novelty.
-- The system includes a deployed wallet warning UI, network fetch path, or user study.
-- The explanation/nearest-family component is a validated production explanation system.
-- Any “first,” “novel,” or “state-of-the-art” wording without a completed literature matrix.
-
-## Abstract-safe numeric set
-
-Use at most these numbers:
-
-- G-DET family/random AUPRC: 0.856 / 0.961.
-- G-ADV pure-M0 +200% recall: 0.624 → 0.790.
-- G-ADV pure-M0 +200% AUPRC: 0.596 → 0.750.
-- Local scorer-core mean: 3.37 ms, if runtime provenance is completed.
-
-If space is tight, omit latency from the abstract before omitting the clean-recall qualification.
+Latency may replace, not supplement, one of these clauses if the abstract becomes crowded. Always retain the rule-derived-label and scorer-boundary qualifications.
 
 ## Proposed title
 
-**AuthGuard-7702: Family-Grouped, Evasion-Aware Bytecode Risk Screening Before EIP-7702 Authorization**
-
-This title is anonymous, avoids priority/model-novelty claims, and foregrounds the tool decision point plus the two strongest methodological contributions.
+**AuthGuard-7702: Task-Aligned, Family-Grouped Bytecode Risk Screening for EIP-7702 Delegation**

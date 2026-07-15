@@ -1,0 +1,6 @@
+ALL TASK-ALIGNED LEAKAGE ASSERTIONS PASSED
+fold 0: source/family/hash overlap=0; mutant inheritance=True
+fold 1: source/family/hash overlap=0; mutant inheritance=True
+fold 2: source/family/hash overlap=0; mutant inheritance=True
+fold 3: source/family/hash overlap=0; mutant inheritance=True
+fold 4: source/family/hash overlap=0; mutant inheritance=True

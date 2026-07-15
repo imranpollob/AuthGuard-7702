@@ -1,217 +1,194 @@
-# AuthGuard-7702 Evidence Audit
+# AuthGuard-7702 Evidence Audit — Task-Aligned v1
 
-Audit date: 2026-07-15  
-Purpose: establish what the repository supports before drafting an anonymous, eight-page ICTAI 2026 paper.
+Audit updated: 2026-07-15  
+Status: task-validity gate completed before paper drafting.
 
 ## Audit conclusion
 
-The repository supports a defensible AI-tools paper about an implemented bytecode risk scorer, family-grouped evaluation, an evasion benchmark, and leakage-safe adversarial augmentation. The existing paper is not an authoritative source and should not be revised by copying its claims. It predates G-ADV, uses disallowed terminology, overstates several baselines, and does not match the required section order.
+The original 3,258-row cohort was not fully aligned with a bytecode-only delegate-runtime task: it contained 76 EIP-7702 designators and 23 exact-bytecode hashes carrying conflicting class labels. An outcome-blind policy was frozen and hashed before reruns. The resulting v1 manifest contains 3,082 samples, no designator used as runtime input, no cross-class exact hash, and no retained exact hash spanning frozen families.
 
-The evidence does **not** currently support describing AuthGuard-7702 as a complete wallet-integrated pre-signing product. The implemented core consists of bytecode preprocessing, feature extraction, model training, thresholding inside evaluation pipelines, and prediction. No standalone AuthGuard inference command, serialized deployment model, authorization parser, wallet integration, production code-fetch path, or user-warning interface was found. The paper should call it an implemented **bytecode-scoring research prototype** and depict wallet/RPC integration as external context unless those missing modules are added.
+All four experiment groups were rerun with preserved original outer family-fold identities and unchanged features, hyperparameters, seeds, threshold procedures, mutation recipes, augmentation recipes, and source weights. Several results changed materially. The paper must use the task-aligned numbers in this audit and retain the original numbers only as a sensitivity comparison.
 
-## Evidence hierarchy used
+The implementation remains an evaluation-grade bytecode-scoring prototype: bytecode preprocessing, feature extraction, model training, thresholding, mutation, and prediction are implemented. A wallet authorization parser, production RPC/cache adapter, warning UI, and deployable serialized model/CLI are not part of the evaluated artifact and are not required if the paper keeps this boundary explicit.
 
-1. Raw datasets and frozen assignments.
-2. Machine-readable experiment outputs and paired predictions.
-3. Training, inference, mutation, and analysis code.
-4. Assertion logs and generated reports.
-5. Narrative reports.
-6. The current LaTeX paper, which is treated only as a list of claims to audit.
+## Frozen task-alignment policy
 
-When sources disagreed, levels 1--3 controlled the finding.
+- Protocol: `paper_build/data_hygiene/task_alignment_protocol.md`.
+- Protocol SHA-256: `6368be0b35c5b4aca6e067b3fb57aabf7db90a18b4bc6d43c9e969abae16083b`.
+- Task-aligned dataset SHA-256: `147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f`.
+- No original dataset, family, feature, fold, or result artifact was overwritten.
+- No row was relabeled from a model prediction.
+- No family was reclustered or reassigned.
 
-## Artifacts inspected
+## Designator resolution
 
-| Evidence area | Primary artifacts inspected |
-|---|---|
-| Current paper and references | `paper/authguard7702.tex`; no `.bib` file found |
-| Requested reports | all named files under `reports/`, including reconciliation, narrative, evaluation, claim, table, figure, discussion, gap, synthesis, and adversarial-training reports |
-| Dataset and labels | `capability_dataset.csv`; `USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl`; supporting Phase 0/reconciliation reports |
-| Family assignment | `family_assignment_frozen.csv`; `results/family_structure.json`; `pipeline/01_freeze_families.py`; `pipeline/ag_common.py` |
-| Features | `results/feature_meta.json`; both feature `.npz` files; `pipeline/02_features.py`; `pipeline/ag_features.py` |
-| G-DET | `results/detection_results.json`; `pipeline/03_detection.py` |
-| G-MUT and G-VOL | `results/mutation_curve.json`; `results/mutation_preservation.json`; `results/mutation_volume.json`; `pipeline/04_mutations.py` |
-| G-ADV | `advtrain_results.json`; `paired_results.csv`; `reports/advtrain_*`; `pipeline/adv_run.py`; `pipeline/adv_analysis.py` |
-| Runtime and contamination | `results/supporting.json`; `pipeline/05_supporting.py` |
-| Independent set | independent-set protocol, funnel, targets, per-contract predictions, detector output, and `pipeline/ind_*.py` |
-| Figures | all ten PNG files under `figures/`, including visual inspection of the principal detection, family, mutation, flooding, and G-ADV plots |
+All 76 designator rows represented delegating accounts, not verified delegate runtime inputs.
 
-## Verified dataset facts
+| Outcome | Rows |
+|---|---:|
+| verified target runtime recovered | 32 |
+| recovered from existing repository target row | 29 |
+| recovered through read-only `eth_getCode` | 3 |
+| recovered but excluded because exact runtime existed in another frozen family | 29 |
+| recovered and safely retained | 3 |
+| unresolved and excluded | 44 |
+| total designator-source exclusions | 73 |
 
-Directly recomputed from `capability_dataset.csv`:
+The 29 cross-family recoveries could not be retained while simultaneously preserving the source row’s original family and preventing exact input leakage. They were excluded rather than reassigned. The three retained recoveries were previously absent target runtimes obtained read-only on BNB Chain and did not duplicate any dataset bytecode.
 
-| Subset | Contracts | Distinct frozen families bearing the subset | Subset-member singleton families | Role and label status |
+Direct audit: `paper_build/data_hygiene/designator_audit.csv`.
+
+## Exact-bytecode conflict quarantine
+
+- 23 original normalized-bytecode hashes carried more than one class.
+- They covered 103 rows: 66 malicious, 31 `benign_cleared`, 3 `benign_general`, and 3 `benign_AA`.
+- Every complete group was quarantined; no favorable-class-only removal or relabeling occurred.
+- No additional conflict was induced by the three retained runtime recoveries.
+- Task-aligned cross-class exact hashes: 0.
+
+The conflicts are consistent with unresolved label noise and/or contextual dual use. Bytecode alone cannot disambiguate them. Direct audit: `paper_build/data_hygiene/conflicting_bytecodes.csv`.
+
+## Verified task-aligned dataset
+
+| Subset | Samples | Frozen families bearing subset | Subset-member singleton families | Role |
 |---|---:|---:|---:|---|
-| malicious | 793 | 214 | 113 (52.8% of malicious-bearing families) | positives derived from the USENIX artifact |
-| benign_cleared | 1,657 | 711 | 464 | rule-silent, weak primary negatives |
-| benign_general | 800 | 440 | 364 | general-contract secondary negatives; single provenance |
-| benign_AA | 8 | 8 | 8 | small hand-verified control only |
-| **Total** | **3,258** | **1,329 global families** | **912 global singletons** | all rows have a unique `(chain,address)` key |
+| malicious | 727 | 209 | 112 (53.6%) | USENIX-artifact positives |
+| `benign_cleared` | 1,553 | 635 | 399 | rule-silent weak primary negatives |
+| `benign_general` | 797 | 437 | 361 | secondary negatives |
+| `benign_AA` | 5 | 5 | 5 | small verified control |
+| **Total** | **3,082** | **1,258 global retained families** | **856 global singletons** | task-aligned v1 |
 
 Additional checks:
 
-- The class totals sum to 3,258.
-- The frozen family CSV has 3,258 rows and matches `(address, chain, class)` row-for-row with the dataset.
-- There are 2,616 distinct normalized bytecodes and 2,961 distinct addresses; addresses reused across chains are kept as distinct samples.
-- There are 23 exact bytecodes with more than one class label, covering 103 rows. Global clustering prevents these identical bytecodes from crossing family splits.
-- Twenty `benign_cleared` rows are byte-identical to a malicious row.
-- Seventy-six `benign_cleared` rows are bare EIP-7702 designators (`ef0100 || address`), not delegate runtime bytecode.
-- The raw USENIX `eoa_detect/detect_result.jsonl` contains 793 address objects (the final physical line contains concatenated JSON objects, so `wc -l` reports 792 and must not be used as the record count).
-- Positive labels are derived from the USENIX artifact. The repository does not provide independently adjudicated ground truth at useful scale.
+- Primary malicious fraction: 0.31886.
+- Largest retained family: 58.
+- Malicious-bearing families: 209.
+- Malicious-member singleton families: 112.
+- Cross-class similarity families: 28; none is an exact-bytecode conflict.
+- Same-class exact duplicate groups: 233, covering 787 rows.
+- Exact hashes spanning frozen families: 0.
+- Families spanning stored primary or secondary outer folds: 0.
 
-## Verified family facts
+Same-class duplicates remain because the observation unit retains chain/address rows; their dependence is controlled by the preserved global family folds.
 
-The frozen assignment is global and deterministic in code: seeded BLAKE2b-based, 128-permutation MinHash estimates over opcode 4-grams, followed by union-find. The similarity is a **MinHash-estimated** Jaccard value, not an exact all-pairs Jaccard computation.
+## Feature and estimator verification
 
-At the frozen estimated-similarity threshold of 0.85:
-
-- 1,329 global families.
-- 912 global singleton families (68.6%).
-- largest global family: 58 contracts.
-- 184 cross-chain families (13.8%).
-- 44 cross-class families (3.3%).
-- the 793 positives occupy 214 families.
-- 178 families are purely malicious; 36 malicious-bearing families also contain another class.
-- 113 malicious-bearing families contain one malicious member (52.8%).
-- largest malicious membership in one family: 58.
-
-Threshold sensitivity from the frozen machine-readable artifact:
-
-| Estimated threshold | Global families | Singleton % | Largest | Cross-chain % | Cross-class % |
-|---:|---:|---:|---:|---:|---:|
-| 0.75 | 1,120 | 66.9 | 89 | 14.3 | 4.4 |
-| **0.85** | **1,329** | **68.6** | **58** | **13.8** | **3.3** |
-| 0.90 | 1,511 | 71.7 | 48 | 13.0 | 2.4 |
-
-Use “five-fold family-grouped cross-validation” in the paper. The code has five outer test folds; for G-DET/G-MUT, each outer model is trained on the other four folds. Calling this simply “leave-one-family-out” would be misleading because one family is not held out per run.
-
-## Verified feature and implementation facts
-
-- `features_dense.npz` is finite `float32` with shape `(3258, 261)`.
-- `features_ngram.npz` is finite `float32` with shape `(3258, 512)`.
-- Dense features contain a 225-bin normalized opcode histogram plus 36 structural/selector features.
-- Hashed opcode 4-grams add 512 dimensions, for 773 total model inputs in AuthGuard.
-- The feature implementation is shared between bulk extraction and mutation-time inference through `pipeline/ag_features.py`.
-- Explicitly banned inputs are the two label-derived capability fields, chain, class, and family ID.
-- The AuthGuard estimator is standard XGBoost with 300 trees, maximum depth 6, learning rate 0.1, subsampling 0.9, and column sampling 0.8. It is not a modeling novelty.
-- Prediction is implemented and exercised inside the evaluation scripts. A deployable pre-signing application interface is not present.
+- Dense feature shape: `(3082, 261)`.
+- Hashed opcode 4-gram shape: `(3082, 512)`.
+- AuthGuard input dimension: 773.
+- The same `pipeline/ag_features.py` implementation produced training and mutation-time features.
+- Banned inputs remain label-derived capability fields, chain, class, and family ID.
+- Estimator remains standard XGBoost: 300 trees, depth 6, learning rate 0.1, subsample 0.9, column sample 0.8, seed 7702.
 
 ## Protocol ledger
 
-| Group | Population and split | Threshold protocol | Conditions | Permitted comparison scope |
+| Group | Task-aligned population/split | Threshold | Conditions | Comparison scope |
 |---|---|---|---|---|
-| G-DET | 793 malicious vs 1,657 `benign_cleared`; five outer family folds; four folds train each run | max-F1 on in-sample training predictions | clean M0; separate random KFold context | primary detection and random-split inflation only |
-| G-MUT | same outer family folds; train on M0, mutate held-out positives only | same in-sample train threshold as G-DET-style model | cumulative M0--M3 | retained recall within this mutation protocol |
-| G-VOL | same family-grouped model style; held-out positives | in-sample train threshold | metadata/address/selector mutation with variable dead-code flood | compound mutation-plus-flood limitation only |
-| G-ADV | five outer family tests; one different outer fold used as validation; remaining three folds train-fit | max-F1 on clean-M0 validation families | seen: M0, M1, M2, F25, F50, F100; held out: M3 and pure-M0 F200 | AuthGuard-M0 vs AuthGuard-aug and augmentation baselines only |
+| G-DET | 727 malicious vs 1,553 `benign_cleared`; preserved five outer family folds | max-F1 on training predictions | M0; seeded random diagnostic separately | primary detection and split sensitivity |
+| G-MUT | same preserved folds; train M0; mutate 727 held-out positives across folds | G-DET-style training threshold | cumulative M0--M3 | retained recall within G-MUT |
+| G-VOL | preserved folds and M0 training | training threshold | M3-style compound transform plus variable flood | compound flooding limitation |
+| G-ADV | preserved test fold; next original fold validation; remaining three train-fit | max-F1 on clean validation families | held-out M3 and pure-M0 F200 | M0 vs augmented models within G-ADV |
 
-Consequences:
+The seeded random diagnostic necessarily receives new row assignments after exclusions; its KFold implementation and seed are unchanged. Fixed family folds are read from stored original fold IDs and are not rebalanced.
 
-- G-DET AUPRC 0.856 and G-ADV clean AUPRC 0.830 are not contradictory; G-ADV trains on fewer families and selects thresholds on a separate validation fold. AUPRC itself is threshold-free.
-- G-VOL 0.139 and G-ADV 0.624 are not the same attack. The former is a compound selector/address/metadata mutation plus heavy flooding; G-ADV F200 is pure-M0 plus 200% flooding.
-- No table column or plot axis may directly compare values across these groups.
+## Revised G-DET results
 
-## Result verification summary
+Task-aligned primary results, five preserved outer folds:
 
-### G-DET
+- AuthGuard AUPRC: **0.881 ± 0.028**.
+- AUROC: 0.943.
+- precision: 0.869.
+- recall: 0.576.
+- F1: 0.673.
+- random-split AUPRC: **0.975 ± 0.012**.
+- random-minus-family AUPRC gap: **0.094**.
+- opcode-XGB AUPRC: 0.784; opcode-RF: 0.744; selector-LR: 0.515.
+- blocklist: 0.321 family-grouped versus 0.551 random.
 
-The primary artifact verifies:
+Original-to-v1 AuthGuard changes: family AUPRC +0.025, random AUPRC +0.015, and gap -0.010. The safe interpretation is: **family-grouped testing controls related-bytecode leakage and provides a more demanding generalization estimate**.
 
-- AuthGuard family-grouped AUPRC: 0.8565 ± 0.0435.
-- AuthGuard random-split AUPRC: 0.9608 ± 0.0175.
-- absolute inflation: 0.1043 (round to 0.105 or “about 0.10”).
-- family-grouped AUROC 0.9297, precision 0.8706, recall 0.6410, F1 0.7202.
-- opcode-XGB family-grouped AUPRC 0.7893; opcode-RF 0.7753; selector-LR 0.5189.
-- blocklist AUPRC 0.3237 with zero recall under family grouping, versus 0.5584 AUPRC and 0.3789 recall under random splits.
+## Revised G-MUT results
 
-The “shipped oracle” row reads the label and is tautological. It should be omitted from the main results table or isolated as a label-provenance sanity check, never presented as a detector baseline.
+Retained recall M0--M3:
 
-### G-MUT
+- sensitive-name rule approximation: 0.043, 0.043, 0.043, 0.000.
+- external-call structural over-approximation: 1.000 at every tier, but non-discriminative under G-DET.
+- blocklist: 0.000 at every tier.
+- selector-LR: 0.618, 0.619, 0.614, 0.613.
+- opcode-XGB: 0.544, 0.603, 0.463, 0.463.
+- AuthGuard: **0.576, 0.608, 0.530, 0.530**.
 
-`results/mutation_preservation.json` records 793/793 opcode-skeleton checks at M1, M2, and M3. This verifies structure preservation under the repository’s checker; it does **not** verify EVM execution equivalence.
+AuthGuard M3 is 0.058 lower than the original result. The structure checker passed 727/727 retained positives at M1, M2, and M3. It verifies the repository’s opcode-skeleton condition, not EVM execution equivalence.
 
-Retained recall (mean over the five folds):
+The full USENIX Gigahorse/Datalog pipeline was not executed. Use only “sensitive-name rule approximation” and “external-call structural over-approximation.”
 
-- sensitive-name rule approximation: 0.038, 0.038, 0.038, 0.000 for M0--M3.
-- external-call structural over-approximation: 1.000 at all tiers, but it is non-discriminative.
-- blocklist: 0.000 at all tiers under family holdout.
-- opcode-XGB: 0.656, 0.659, 0.518, 0.518.
-- AuthGuard: 0.641, 0.668, 0.588, 0.588.
+## Revised G-VOL result
 
-The full Gigahorse/Datalog USENIX pipeline was not executed. These two lightweight approximations must not be called “the USENIX detector,” and AuthGuard must not be claimed to beat the full system.
+AuthGuard compound M3-style retained recall at +0%, +25%, +50%, +100%, and +200% flooding is 0.608, 0.527, 0.474, 0.291, and **0.130**. Opcode-XGB is 0.603, 0.426, 0.410, 0.342, and **0.279**.
 
-### G-VOL
+G-VOL remains separate from G-ADV. Do not imply augmentation recovered the 0.130 compound condition.
 
-The compound M3-style mutation with variable dead-code flooding yields AuthGuard retained recall of 0.668, 0.567, 0.500, 0.310, and 0.139 at +0%, +25%, +50%, +100%, and +200%. Opcode-XGB yields 0.659, 0.523, 0.498, 0.473, and 0.485. This is a limitation/motivation result, not the G-ADV baseline.
+## Revised G-ADV results
 
-### G-ADV
+Fold means under the stricter preserved test/validation/train-fit protocol:
 
-Fold-mean results from `advtrain_results.json`:
+| Condition | Model | AUPRC | Precision | Recall | FPR |
+|---|---|---:|---:|---:|---:|
+| clean M0 | AuthGuard-M0 | 0.819 | 0.720 | 0.759 | 0.134 |
+| clean M0 | AuthGuard-aug | 0.863 | 0.763 | 0.807 | 0.108 |
+| held-out M3 | AuthGuard-M0 | 0.768 | 0.663 | 0.767 | 0.181 |
+| held-out M3 | AuthGuard-aug | 0.825 | 0.743 | 0.796 | 0.120 |
+| held-out pure-M0 F200 | AuthGuard-M0 | 0.561 | 0.512 | 0.484 | 0.217 |
+| held-out pure-M0 F200 | AuthGuard-aug | 0.758 | 0.654 | 0.727 | 0.174 |
 
-- clean M0 AUPRC: AuthGuard-M0 0.830; AuthGuard-aug 0.849.
-- clean M0 recall: 0.797 → 0.761; clean FPR: 0.192 → 0.164.
-- held-out M3 AUPRC: 0.754 → 0.814; recall: 0.787 → 0.801; FPR: 0.276 → 0.196.
-- held-out pure-M0 +200% flooding AUPRC: 0.596 → 0.750; recall: 0.624 → 0.790; FPR: 0.314 → 0.275.
-- opcode-XGB-aug reaches 0.701 recall and 0.688 AUPRC at +200%, below AuthGuard-aug under the same G-ADV protocol.
-- +200% singleton-family recall: 0.655 → 0.850; family-macro recall: 0.674 → 0.844.
+F200 singleton recall is 0.554→0.830; family-macro recall is 0.556→0.800. Opcode-XGB-aug reaches 0.756 fold-mean F200 recall but with 0.386 FPR; AuthGuard-aug’s FPR is 0.174.
 
-The paired prediction file contains one row for every one of 2,450 samples × 8 conditions × 5 models = 98,000 rows. Contract-level pooled values differ slightly from fold means, as expected.
+## Family-clustered paired uncertainty
 
-The existing paired bootstrap gives a +200% pooled recall change of 0.636 → 0.797 and a 95% interval [0.131, 0.193]. However, `pipeline/adv_analysis.py` resamples contracts independently rather than resampling frozen families. Because contracts within a family are dependent, this interval should not be a submission headline until a family-clustered paired bootstrap is produced. The directional result and aggregate metrics remain valid.
+Ten thousand fixed-seed replicates sample frozen test families with replacement and preserve model pairing.
 
-“No clean cost” is unsafe. Clean AUPRC improves and clean FPR falls, but pooled clean recall falls from 0.803 to 0.772; the current contract-level paired interval for the recall change is [-0.053, -0.009]. State the tradeoff.
+Task-aligned pooled differences, AuthGuard-aug minus AuthGuard-M0:
 
-## Supporting evidence
+- clean recall: +0.044, 95% CI [-0.045, 0.133].
+- clean FPR: -0.024, 95% CI [-0.048, -0.001].
+- M3 recall: +0.023, 95% CI [-0.040, 0.080].
+- M3 FPR: -0.059, 95% CI [-0.083, -0.037].
+- F200 recall: **+0.253, 95% CI [0.144, 0.379]**.
+- F200 FPR: **-0.049, 95% CI [-0.086, -0.014]**.
+- F200 AUPRC: **+0.248, 95% CI [0.177, 0.322]**.
 
-- `benign_cleared` contamination upper bound: 135/1,657 (8.1%) share a malicious-bearing family; 20/1,657 (1.2%) are exact malicious-bytecode duplicates. This is a heuristic upper bound, not an adjudicated contamination rate.
-- Local latency: mean 3.367 ms, p50 2.469 ms, p95 10.673 ms, and batched 3.181 ms/contract over 300 timed samples.
-- Latency includes feature extraction plus model prediction. It excludes authorization parsing, RPC/network fetch, caching, wallet UI, and warning presentation.
-- The artifact does not record sufficient hardware/OS and timing methodology metadata to make the latency fully reproducible.
-- Independent malicious-set result: **INSUFFICIENT DATA**. Only one truly novel, independently confirmed malicious delegate survived the preregistered funnel. The 1/1 AuthGuard outcome is an anecdotal case study, not quantitative generalization or superiority evidence.
+The old contract-resampled interval is superseded and must not appear as a submission headline.
 
-## Current-paper conflicts requiring removal or rewrite
+## Runtime provenance
 
-1. The author/affiliation/contact block should be removed for double-blind submission, not filled with placeholder identities.
-2. “Semantics-preserving” appears repeatedly; replace it with “structure-preserving” or narrowly “attack-capability-preserving” only where justified.
-3. “First” appears in all three current contribution claims without a complete literature audit; remove it.
-4. Baselines named `USENIX name-rule` and `USENIX struct-rule` must become **sensitive-name rule approximation** and **external-call structural over-approximation**.
-5. The current paper implies more of the full USENIX detector than was executed. State explicitly that Gigahorse/Datalog was not run.
-6. The current paper predates G-ADV and therefore omits the stricter protocol, augmentation gains, clean-recall reduction, and residual high FPR.
-7. The current paper uses G-DET precision beside G-MUT recall in prose. Keep protocols and operating points self-contained.
-8. The claim that AuthGuard is “the only method simultaneously robust and discriminative” is too broad; scope any comparison to the evaluated baselines and transformations.
-9. The online architecture report includes unimplemented authorization parsing, RPC fetch, and warning modules. Draw those outside the implemented-prototype boundary.
-10. The embedded reference list has only ten items, lacks a `.bib` source, anonymizes a cited work’s authors, and is insufficient for a defensible novelty/related-work claim.
-11. The current EIP-7702 designator LaTeX renders incorrectly (`\textbackslash,\textbar{}`); use a properly typeset concatenation expression later.
+Frozen local benchmark: Apple M1, 8 GiB, macOS 26.5.1 arm64, Python 3.13.9, XGBoost 3.3.0, NumPy 2.3.4, scikit-learn 1.9.0.
 
-## Figure audit
+- 30 warm-up calls and 3,000 timed batch-size-1 calls.
+- mean: **3.411 ms**; p50: 2.499 ms; p95: **9.514 ms**; p99: 16.578 ms.
+- ten timed 300-contract batches: **3.197 ms/contract** mean.
 
-- `fig_random_vs_family.png` contains the unsupported title phrase “the leakage every prior split hides” and old baseline naming. Regenerate.
-- `fig_mutation_curve.png` says “semantics-preserving” and uses old baseline naming. Regenerate.
-- `fig_mutation_volume.png` has a clipped title and should be appendix-only or replaced by one limitation sentence.
-- `fig_advtrain_heldout.png` is useful but must identify G-ADV in the caption and explain its error bars. It should not be visually paired as if directly comparable to G-MUT/G-VOL.
-- `fig_advtrain_scoredist.png` is legible but too large for the eight-page main paper and needs clearer treatment of fold-varying validation thresholds.
-- `fig_family_size.png` is accurate but expendable because Table 1 can carry the necessary counts.
+Bytecode was already in memory. Model training/loading, RPC, authorization parsing, caching, UI, and wallet integration were excluded. Call this local feature extraction plus model prediction, not end-to-end wallet latency.
 
-## Double-blind audit
+## Independent evidence and limitations
 
-The paper itself contains placeholder author/affiliation/contact content that should be removed. The repository also contains a personal email address in the user-agent strings of `pipeline/ind_01_inventory_getcode.py`, `ind_02_retry_failures.py`, `ind_03_targets_overlap.py`, `ind_04_maliciousness.py`, and `ind_06_detectors.py`. This does not affect the manuscript, but any code artifact supplied during anonymous review must be scrubbed and rechecked for paths, metadata, repository URLs, and identities.
+- Independent malicious-set verdict remains **INSUFFICIENT DATA** with one truly novel confirmed positive.
+- Positive labels remain derived from the USENIX artifact.
+- `benign_cleared` remains a weak negative set; 115/1,553 rows (7.4%) share a retained similarity family with a positive and zero are exact positive duplicates. Treat 7.4% as a conservative malicious-like-family heuristic, not a measured contamination rate.
+- Mutations are structure-preserving under the checker, not execution-equivalent.
+- Compound M3 + F200 was not evaluated under G-ADV.
+- Full USENIX pipeline and wallet-level evaluation were not run.
+- F200 AuthGuard-aug residual FPR is 0.174; robustness is improved, not complete.
+- Fold-level G-ADV effects are heterogeneous even though the family-clustered F200 intervals exclude zero.
 
-## Missing artifacts and readiness gates
+## Anonymity and remaining drafting gates
 
-### Must resolve before strong paper claims
+Personal HTTP user-agent email strings and first-party local absolute paths were removed; path-bearing Python bytecode caches were deleted. See `paper_build/anonymity_precheck.md`.
 
-- A family-clustered paired bootstrap (or another family-aware paired uncertainty analysis) for G-ADV.
-- A precise implementation boundary. Either add a standalone scorer/model artifact, or explicitly present the existing implementation as an evaluation-grade bytecode-scoring prototype.
-- A verified, current bibliography/related-work matrix. Until then, do not use “first,” “novel,” or “state of the art.”
-- A LaTeX build environment and compiled page-count log. No TeX engine is installed in the current environment, so the current manuscript’s page count could not be verified.
-- Runtime provenance: hardware/OS, dependency versions, warm-up policy, and timing repetition details if the 3.37 ms value is retained.
+Before submission, still required:
 
-### Evidence that is absent but does not block a correctly scoped paper
+- verified current bibliography/related-work matrix;
+- removal of the entire placeholder author block from the LaTeX paper;
+- regenerated figures with task-aligned values and safe terminology;
+- an IEEE LaTeX build and page-count check.
 
-- Full USENIX Gigahorse/Datalog execution.
-- Large rule-independent malicious validation set.
-- EVM execution-equivalence testing for mutations.
-- G-ADV evaluation of the compound M3 + 200% flooding condition.
-- Complete network/wallet latency and a wallet user study.
-
-These absences block the corresponding stronger claims, not the evidence-supported paper outlined in this build plan.
+These items do not require another data-validity rerun unless the frozen dataset or protocol changes.

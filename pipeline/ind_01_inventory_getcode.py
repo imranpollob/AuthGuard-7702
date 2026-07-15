@@ -23,7 +23,7 @@ RPCS = {
 }
 ADDR_RE = re.compile(r"0x[0-9a-fA-F]{40}")
 BATCH = 50
-UA = "Mozilla/5.0 (AuthGuard-7702 research; read-only eth_getCode; contact polboy777@gmail.com)"
+UA = "AuthGuard-7702 anonymous research audit (read-only eth_getCode)"
 
 
 def now():

@@ -96,7 +96,7 @@ I verified this holds in practice, not just in the README's claim:
 
 Checks performed:
 - `grep -rniE "second|seconds| ms |millisecond|runtime|per contract|throughput|took [0-9]"` across all `.md/.py/.sh/.yaml/.txt` in the USENIX artifact: the only hit is an unrelated API-retry backoff message (`"Retrying in {delay} seconds..."` in `composite_detect/get_code/get_contract_address.py`) — not a decompiler timing claim.
-- `find ... -iname "*.pdf"`: 0 results anywhere under `/Users/imranpollob/Coding/unzipped` — the USENIX paper itself is not part of this artifact bundle, so no paper-quoted timing figure is retrievable locally.
+- `find ... -iname "*.pdf"`: 0 results anywhere under `<WORKSPACE>` — the USENIX paper itself is not part of this artifact bundle, so no paper-quoted timing figure is retrievable locally.
 - `find ... -iregex ".*gigahorse.*"`: 0 results — the `gigahorse-toolchain` the scripts assume (`./gigahorse.py`, `./gigahorse/clients/analyze.dl` per `run_analysis.sh` and the README's reproduction guide) is not vendored in this artifact; it's an external dependency (`github.com/nevillegrech/gigahorse-toolchain`).
 - `which souffle`: not found. Soufflé (the C++ Datalog engine Gigahorse compiles its `.dl` rules to) is not installed, and installing it requires a full C++ toolchain build (cmake, a C++17 compiler, several hours on first build) — this is exactly the "nontrivial installation" case your instructions said to skip.
 
@@ -143,7 +143,7 @@ Reused the D1/D2/D3 clustering logic from `bracket_family_count.py` (opcode-4-gr
 
 ### `capability_dataset.csv`
 
-Written to `/Users/imranpollob/Coding/unzipped/capability_dataset.csv`, 3,258 data rows, columns: `address, chain, family_id_d3, class, bytecode, cap_value_receiving_hook, cap_transfer_native, cap_move_erc20, cap_move_nft, cap_grant_approval, cap_unrestricted_external_call, cap_attacker_controlled_sink`.
+Written to `<WORKSPACE>/capability_dataset.csv`, 3,258 data rows, columns: `address, chain, family_id_d3, class, bytecode, cap_value_receiving_hook, cap_transfer_native, cap_move_erc20, cap_move_nft, cap_grant_approval, cap_unrestricted_external_call, cap_attacker_controlled_sink`.
 
 `class` breakdown: `malicious`=793, `benign_cleared`=1657, `benign_general`=800, `benign_AA`=8. **Note:** your Task 6 spec listed only 3 class values (`malicious|benign_cleared|benign_general`); I added a 4th, `benign_AA`, for the 8 verified account-abstraction delegates built in the prior session, rather than silently dropping them or folding them into `benign_general` (where they'd misleadingly look like a random web sample instead of hand-verified legitimate implementations). Say the word if you'd rather I merge or drop that group.
 

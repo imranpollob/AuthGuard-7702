@@ -1,171 +1,142 @@
-# Exact Table and Figure Plan for the Eight-Page Paper
+# Exact Table and Figure Plan — Task-Aligned v1
 
-Main-paper limit: **four tables and three figures**. All other plots/tables move to an anonymous supplement or are reduced to prose.
+Main-paper budget: four tables and three figures. All result floats use task-aligned artifacts. Original-cohort values stay in the artifact sensitivity report.
 
 ## Main tables
 
-### Table 1 — Dataset and frozen family composition
+### Table 1 — Task-aligned dataset and frozen-family composition
 
-Protocol: dataset/family metadata, not an evaluation group.  
-Placement: Section 6, one column.  
-Source: `capability_dataset.csv`, `family_assignment_frozen.csv`.
+Protocol: dataset audit, not an evaluation group. Placement: methodology, one column. Source: `data_hygiene/task_aligned_dataset_v1.csv` and audit CSVs.
 
-Exact columns:
+Columns: `subset | observations | families bearing subset | subset-member singletons | source/role`.
 
-`subset | contracts | families bearing subset | member-singleton families | label source / role`
+Rows:
 
-Exact rows:
+- malicious | 727 | 209 | 112 (53.6%) | USENIX-artifact positives
+- `benign_cleared` | 1,553 | 635 | 399 | rule-silent weak primary negatives
+- `benign_general` | 797 | 437 | 361 | secondary negatives
+- `benign_AA` | 5 | 5 | 5 | small verified control
 
-- malicious | 793 | 214 | 113 (52.8%) | USENIX-artifact positives
-- `benign_cleared` | 1,657 | 711 | 464 | rule-silent weak primary negatives
-- `benign_general` | 800 | 440 | 364 | general secondary negatives
-- `benign_AA` | 8 | 8 | 8 | hand-verified small control
+Table note: 3,082 observations in 1,258 retained frozen families, including 856 global singletons. Families can bear more than one subset, so family counts must not be summed. Audit removed 73 designator-source rows and quarantined 23 conflicting hashes/103 rows; three verified unique delegate runtimes were retained. The exclusions total 176 and do not overlap.
 
-Table note: global frozen structure is 1,329 families, 912 global singletons (68.6%), largest 58. Families can bear multiple subsets, so the family column must not be summed.
-
-Caption requirement: “Dataset and frozen global MinHash-estimated family structure at threshold 0.85.”
+Caption: “Task-aligned chain/address observations and preserved global similarity-family structure; no retained cross-class exact bytecode and no exact bytecode spans frozen families.”
 
 ### Table 2 — G-DET family-grouped performance
 
-Protocol: **G-DET only**.  
-Placement: Section 7/RQ1, one column using compact abbreviations.  
-Source: `results/detection_results.json`.
+Protocol: **G-DET only**. Placement: RQ1, one column. Source: `data_hygiene/task_aligned_detection_results.json`.
 
-Exact columns:
+Columns: `method | AUPRC ± SD | AUROC | precision | recall | F1`.
 
-`method | AUPRC ± SD | AUROC | precision | recall | F1`
+Rows:
 
-Exact rows:
+- sensitive-name rule approximation | .344 ± .094 | .520 | .884 | .043 | .079
+- external-call structural over-approximation | .328 ± .078 | .518 | .328 | 1.000 | .489
+- blocklist | .321 ± .077 | .500 | .000 | .000 | .000
+- selector-LR | .515 ± .066 | .666 | .449 | .618 | .512
+- opcode-RF | .744 ± .085 | .878 | .842 | .297 | .426
+- opcode-XGB | .784 ± .081 | .883 | .798 | .544 | .626
+- **AuthGuard** | **.881 ± .028** | **.943** | **.869** | **.576** | **.673**
 
-- sensitive-name rule approximation | .344 ± .093 | .518 | .884 | .038 | .071
-- external-call structural over-approximation | .341 ± .084 | .539 | .341 | 1.000 | .503
-- blocklist | .324 ± .078 | .500 | .000 | .000 | .000
-- selector-LR | .519 ± .068 | .670 | .459 | .617 | .521
-- opcode-RF | .775 ± .076 | .895 | .782 | .444 | .557
-- opcode-XGB | .789 ± .060 | .907 | .784 | .656 | .704
-- **AuthGuard** | **.856 ± .043** | **.930** | **.871** | .641 | **.720**
+Omit the tautological class-reading oracle. Caption must state five preserved outer family folds, artifact-derived positives versus weak negatives, fold-mean aggregation, and training-prediction thresholds.
 
-Omit the tautological shipped-oracle row. Caption must state five outer family folds and that operating-point thresholds use training predictions. If space is tight, drop AUROC before dropping precision/recall.
+### Table 3 — G-MUT retained recall under M0–M3
 
-### Table 3 — G-MUT retained recall under M0--M3
+Protocol: **G-MUT only**. Placement: RQ3, one column. Source: task-aligned mutation curve and preservation JSON.
 
-Protocol: **G-MUT only**.  
-Placement: Section 7/RQ3, one column.  
-Source: `results/mutation_curve.json`, `results/mutation_preservation.json`.
+Columns: `method | M0 | M1 | M2 | M3`.
 
-Exact columns:
+Rows:
 
-`method | M0 | M1 | M2 | M3`
-
-Exact rows:
-
-- sensitive-name rule approximation | .038 | .038 | .038 | .000
+- sensitive-name rule approximation | .043 | .043 | .043 | .000
 - external-call structural over-approximation | 1.000 | 1.000 | 1.000 | 1.000
 - blocklist | .000 | .000 | .000 | .000
-- selector-LR | .617 | .621 | .623 | .621
-- opcode-XGB | .656 | .659 | .518 | .518
-- **AuthGuard** | **.641** | **.668** | **.588** | **.588**
+- selector-LR | .618 | .619 | .614 | .613
+- opcode-XGB | .544 | .603 | .463 | .463
+- **AuthGuard** | **.576** | **.608** | **.530** | **.530**
 
-Caption requirement: “G-MUT retained recall on held-out positive families under cumulative structure-preserving mutations; 793/793 passed the opcode-skeleton checker at M1--M3.” Do not mention semantic equivalence.
+Caption: “G-MUT fold-mean retained recall on held-out positive families under cumulative structure-preserving transformations; all 727 retained positive variants passed the opcode-skeleton checker at M1–M3.” The caption must state that this is not an execution-equivalence test.
 
 ### Table 4 — G-ADV clean and held-out AuthGuard outcomes
 
-Protocol: **G-ADV only**.  
-Placement: Section 7/RQ4, compact one-column table; use `M0`, `M3`, and `F200` labels defined in the text.  
-Source: `advtrain_results.json`.
+Protocol: **G-ADV only**. Placement: RQ4, compact one-column table. Source: `data_hygiene/task_aligned_advtrain_results.json`.
 
-Exact columns:
+Columns: `condition | model | AUPRC | precision | recall | FPR`.
 
-`condition | model | AUPRC | precision | recall | FPR`
+Rows:
 
-Exact rows:
+- clean M0 | AuthGuard-M0 | .819 | .720 | .759 | .134
+- clean M0 | AuthGuard-aug | .863 | .763 | .807 | .108
+- held-out M3 | AuthGuard-M0 | .768 | .663 | .767 | .181
+- held-out M3 | AuthGuard-aug | .825 | .743 | .796 | .120
+- held-out pure-M0 F200 | AuthGuard-M0 | .561 | .512 | .484 | .217
+- held-out pure-M0 F200 | AuthGuard-aug | .758 | .654 | .727 | .174
 
-- clean M0 | AuthGuard-M0 | .830 | .693 | .797 | .192
-- clean M0 | AuthGuard-aug | .849 | .720 | .761 | .164
-- held-out M3 | AuthGuard-M0 | .754 | .613 | .787 | .276
-- held-out M3 | AuthGuard-aug | .814 | .686 | .801 | .196
-- held-out pure-M0 F200 | AuthGuard-M0 | .596 | .525 | .624 | .314
-- held-out pure-M0 F200 | AuthGuard-aug | .750 | .615 | .790 | .275
-
-Table note: F200 is a held-out flooding severity generated from M0; it is not the compound G-VOL condition. Mention opcode-XGB-aug’s F200 recall 0.701 in prose rather than adding more rows.
+Table note: values are five-fold means. F200 is a held-out severity generated from M0, not compound G-VOL. Family-clustered pooled differences belong in the caption/prose, not as additional table rows: recall +.253 [.144,.379], FPR -.049 [-.086,-.014], AUPRC +.248 [.177,.322].
 
 ## Main figures
 
-### Figure 1 — AuthGuard prototype and integration boundary
+### Figure 1 — Implemented scorer and integration boundary
 
-Status: **new vector figure required**; do not reuse the current prose-only architecture.  
-Placement: Section 5, one column.
+Status: new vector figure required. Placement: design section, one column.
 
 Exact content:
 
-- solid implemented path: `runtime bytecode → deterministic disassembly/features → AuthGuard XGBoost → risk score/threshold`;
-- solid offline path: `labeled corpus → frozen global families → family split → optional source-balanced variants → trained model + threshold`;
-- dashed external context: `wallet authorization / RPC or cache / user warning`;
-- explicit timing brace only over feature extraction + prediction: `3.37 ms mean locally`;
-- no explanation/calibration component.
-
-Caption must distinguish implemented scorer modules from unimplemented integration context.
+- solid online scorer: `verified runtime bytecode → deterministic disassembly/features → AuthGuard XGBoost → score/threshold`;
+- solid offline path: `task-aligned manifest → preserved family folds → optional source-balanced variants → trained model/threshold`;
+- dashed external context: `authorization parser / RPC or cache / wallet warning`;
+- timing brace over only feature extraction plus prediction: `3.411 ms mean; p95 9.514 ms, Apple M1`;
+- no claim that a standalone CLI, wallet integration, UI, or network path was evaluated.
 
 ### Figure 2 — Random versus family-grouped AUPRC
 
-Status: **regenerate** `figures/fig_random_vs_family.png`.  
-Protocol: **G-DET only**.  
-Placement: Section 7/RQ2, one column.  
-Source: `results/detection_results.json`.
+Status: regenerate from task-aligned G-DET. Placement: RQ2, one column.
 
-Exact plotted methods and pairs:
+Pairs:
 
-- blocklist: .324 family / .558 random;
-- selector-LR: .519 / .558;
-- opcode-RF: .775 / .941;
-- opcode-XGB: .789 / .948;
-- AuthGuard: .856 / .961.
+- blocklist: .321 family / .551 random;
+- selector-LR: .515 / .559;
+- opcode-RF: .744 / .969;
+- opcode-XGB: .784 / .965;
+- AuthGuard: .881 / .975.
 
-Exclude the sensitive-name approximation from this plot because its gap is negligible and it crowds the figure. Replace the current title with “Random versus family-grouped AUPRC (G-DET).” Legend: “family-grouped” and “random.” Remove “honest,” “leaks,” and any universal claim about prior work.
+Title: “Random versus family-grouped AUPRC (G-DET, task-aligned v1).” Legend: “family-grouped” and “seeded random diagnostic.” Caption must include: “family-grouped testing controls related-bytecode leakage and provides a more demanding generalization estimate.” Do not use “honest,” “leaks,” or “removes memorization.”
 
-### Figure 3 — G-ADV held-out robustness and false-positive tradeoff
+### Figure 3 — G-ADV held-out robustness and FPR
 
-Status: **regenerate** `figures/fig_advtrain_heldout.png`.  
-Protocol: **G-ADV only**.  
-Placement: Section 7/RQ4, one column.  
-Source: `advtrain_results.json`; family-aware uncertainty should be added if produced.
+Status: regenerate from task-aligned G-ADV. Placement: RQ4, one column.
 
-Exact panels:
+Panels:
 
-- panel (a): AuthGuard-M0 versus AuthGuard-aug recall at held-out M3 and pure-M0 F200;
-- panel (b): corresponding benign FPR;
-- direct labels: M3 `.787→.801` recall and `.276→.196` FPR; F200 `.624→.790` recall and `.314→.275` FPR.
+- (a) fold-mean recall for AuthGuard-M0 versus AuthGuard-aug at M3 (.767→.796) and pure-M0 F200 (.484→.727);
+- (b) fold-mean benign FPR at M3 (.181→.120) and F200 (.217→.174);
+- annotate the family-clustered **pooled differences**, separately labeled from fold means: M3 recall +.023 [-.040,.080], M3 FPR -.059 [-.083,-.037], F200 recall +.253 [.144,.379], F200 FPR -.049 [-.086,-.014].
 
-Do not place G-MUT or G-VOL values on either axis. If uncertainty bars remain, caption exactly what is resampled; remove the current unexplained fold-SD bars if they obscure the paired comparison.
+Do not draw family-bootstrap CIs as though they were confidence intervals around fold means. Do not mix G-MUT or G-VOL values into this figure. Caption must state 10,000 family-resampled paired replicates and fixed seed 7702.
 
-## Results retained in prose, not main floats
+## Results retained in prose
 
-- G-VOL compound +200% AuthGuard recall 0.139 versus opcode-XGB 0.485: one limitation sentence.
-- G-ADV clean AUPRC/recall/FPR tradeoff: already in Table 4; discuss in one sentence.
-- G-ADV F200 singleton recall 0.655 → 0.850 and family-macro recall 0.674 → 0.844: one sentence.
-- Local latency 3.37 ms mean / 10.67 ms p95: one sentence after hardware provenance is recorded.
-- Independent-set verdict: one limitation sentence, “INSUFFICIENT DATA (N=1).”
+- G-VOL compound F200 recall: AuthGuard .130, opcode-XGB .279; explicitly not the G-ADV condition.
+- F200 singleton recall .554→.830 and family-macro recall .556→.800.
+- Opcode-XGB-aug F200 fold-mean recall .756 with FPR .386, versus AuthGuard-aug .727/.174.
+- Local scorer-core mean 3.411 ms, p95 9.514 ms over 3,000 single calls; 300-contract batches 3.197 ms/contract.
+- Independent verdict: “INSUFFICIENT DATA (N=1).”
+- Task-alignment sensitivity: original values only in a clearly labeled artifact/supplement table, never as current headlines.
 
-## Supplement/artifact-only floats
+## Supplement/artifact-only material
 
-- family threshold sensitivity table (0.75/0.85/0.90);
-- `fig_family_size.png`;
-- `fig_auprc.png` (redundant with Table 2);
-- `fig_mutation_curve.png` after terminology/baseline-name regeneration (redundant with Table 3 in the main paper);
-- `fig_mutation_volume.png` after fixing clipped title and protocol label;
-- `fig_advtrain_clean.png` and `fig_advtrain_seen.png`;
-- `fig_advtrain_scoredist.png` after clarifying fold-varying thresholds;
-- `fig_independent_funnel.png`;
-- per-fold and full baseline G-ADV tables.
+- complete 76-row designator audit and 23-group conflict audit;
+- original-versus-task-aligned comparison;
+- family threshold sensitivity;
+- family-size and redundant AUPRC plots;
+- full G-VOL sweep;
+- G-ADV clean/seen score distributions and per-fold tables;
+- independent-set funnel.
 
-## Protocol and visual hygiene checklist
+## Visual and protocol hygiene
 
-- Every results caption begins with or contains `G-DET`, `G-MUT`, `G-VOL`, or `G-ADV`.
-- Never put G-VOL 0.139 beside G-ADV 0.624/0.790 as though it were a before/after pair.
-- Never put G-DET 0.856 beside G-ADV 0.830/0.849 in one model-comparison column.
-- Use “structure-preserving,” not “semantics-preserving.”
-- Use the required approximation names; never label the plots “USENIX detector.”
-- Avoid red/green-only encodings; use colorblind-safe colors plus markers/hatching.
-- Use vector PDF/TikZ for the new architecture and regenerated plots when possible.
-- Ensure all text remains legible at IEEE one-column width and all titles fit without clipping.
-- Captions must state whether values are fold means, pooled values, SDs, or confidence intervals.
+- Every result caption names G-DET, G-MUT, G-VOL, or G-ADV and states fold mean, pooled value, SD, or family-clustered CI.
+- Never present G-VOL .130 beside G-ADV .484/.727 as a before/after pair.
+- Never put G-DET .881 beside G-ADV .819/.863 in an unlabeled model-comparison column.
+- Use required approximation names and checker-scoped “structure-preserving” wording.
+- Use colorblind-safe colors plus redundant markers/hatching; prefer vector PDF/TikZ.
+- Inspect all regenerated image/PDF metadata for anonymity and ensure legibility at IEEE one-column width.
