@@ -1,0 +1,24 @@
+\section{Problem Definition and Threat Model}
+\label{sec:problem_threat}
+
+\subsection{Risk-scoring task}
+
+Let $b\in\mathcal{B}$ denote the normalized runtime bytecode of the address named by an EIP-7702 authorization. It is not the authority account's $\mathtt{0xef0100}$ designator. A deterministic feature map $\phi:\mathcal{B}\rightarrow\mathbb{R}^{d}$ produces bytecode-derived features, and a fitted model returns
+\begin{equation}
+  s=f_{\theta}(\phi(b))\in[0,1].
+\end{equation}
+Given a threshold $\tau$ frozen by the applicable training or validation protocol, an external integration may emit the binary warning
+\begin{equation}
+  \hat{y}=\mathbb{1}[s\geq\tau].
+\end{equation}
+The score is a classifier output, not a calibrated probability of theft, and a warning is not an authorization decision.
+
+The primary classification target separates USENIX-artifact positives from rule-silent weak negatives after outcome-blind task alignment. These labels define empirical class membership, not perfect malicious/benign ground truth: positives inherit the coverage of the source artifact, and weak negatives may include undetected or dual-use code. The primary evaluation population is the task-aligned malicious and \texttt{benign\_cleared} subsets; other negative subsets are secondary controls. Exact bytecode with conflicting class labels is quarantined because $b$ alone cannot resolve contextual disagreement.
+
+At the pre-authorization information boundary, the defender receives or retrieves only the target's runtime bytecode before the signer authorizes delegation. The scorer does not observe future transactions, signer holdings, address reputation, verified source, decompiler output, or source-label capability fields. A family-grouped split assigns every retained member of a frozen related-bytecode family to one outer fold, and each test family is absent from model fitting and threshold selection. This controls related-bytecode leakage and provides a more demanding generalization estimate, but does not establish organizational or attacker independence.
+
+\subsection{Adversary and scope}
+
+The attacker may deploy a new delegate or reuse an existing runtime and may attempt to preserve its harmful structure while changing its representation. In scope are metadata replacement, embedded-address changes, selector rewriting, and appended dead code, individually or in the tested cumulative recipes. Generated variants inherit the source family and are structure-preserving transformations under our opcode-skeleton checker. The defender is assumed to obtain the corresponding runtime before authorization and run the local scorer; evaluation holds related families out.
+
+Out of scope are arbitrary recompilation, dynamic control-flow obfuscation, and transformations beyond the checker's syntactic invariant. We do not establish formal EVM execution equivalence. Also excluded are signer-specific portfolio or allowance context, future transaction history, malicious behavior absent from the source labels, and policy decisions that combine the score with other signals. The evaluated artifact omits production RPC and cache adapters, authorization parsing, model deployment, wallet integration, and warning-interface latency. G-ADV does not evaluate or recover the compound M3-plus-F200 condition from G-VOL; that combined case remains unresolved.
