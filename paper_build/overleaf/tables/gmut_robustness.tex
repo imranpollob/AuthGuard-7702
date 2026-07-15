@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \centering
+  \caption{G-MUT five-fold mean retained recall on held-out positive families under cumulative M0--M3 transformations. All 727 positives passed the opcode-token checker at M1--M3; this is not an execution-equivalence test.}
+  \label{tab:gmut-robustness}
+  \scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    Method & M0 & M1 & M2 & M3 \\
+    \midrule
+    Sens.-name approx. & .043 & .043 & .043 & .000 \\
+    Ext.-call over-approx. & 1.000 & 1.000 & 1.000 & 1.000 \\
+    Exact-hash blocklist & .000 & .000 & .000 & .000 \\
+    Selector-LR & .618 & .619 & .614 & .613 \\
+    Opcode-histogram XGB & .544 & .603 & .463 & .463 \\
+    AuthGuard & .576 & .608 & .530 & .530 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{1pt}
+
+  \parbox{\columnwidth}{\scriptsize Sens.: sensitive; Ext.: external; XGB: XGBoost.}
+\end{table}

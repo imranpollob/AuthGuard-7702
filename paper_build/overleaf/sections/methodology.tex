@@ -5,7 +5,7 @@
 
 The observation unit is a chain/address pair with associated runtime bytecode. The source corpus has four subsets: USENIX-artifact positives (\emph{malicious}); contracts not flagged by the source pipeline (\texttt{benign\_cleared}); general contracts (\texttt{benign\_general}); and a small verified account-abstraction control (\texttt{benign\_AA}). The primary negative set is weak: \texttt{benign\_cleared} means rule-silent, not verified benign, and may contain undetected or dual-use code. The latter two subsets are used only as secondary false-positive controls. Table~\ref{tab:dataset-composition} gives the task-aligned composition.
 
-\input{paper_build/tables/dataset_composition}
+\input{tables/dataset_composition}
 
 Before rerunning models, we froze an outcome-blind input policy. Among 76 rows containing 23-byte EIP-7702 designators rather than delegate programs, 32 target runtimes were recovered. Three were retained; 29 were excluded because the same recovered runtime occurred in another frozen family, and 44 unresolved designators were excluded, for 73 designator-source exclusions. We also quarantined all 103 rows belonging to 23 exact-bytecode hashes with conflicting class labels. The policy performs no model-based relabeling and retains no favorable side of a conflict; the resulting corpus has zero cross-class exact-bytecode hashes. Same-class duplicates remain because chain/address is the observation unit: 233 exact groups cover 787 observations.
 
