@@ -1,6 +1,6 @@
-# Claim-to-Evidence Map — Paper through Evaluation
+# Claim-to-Evidence Map — Paper through Conclusion
 
-This map covers the paper through `sections/evaluation.tex`. Task-aligned machine-readable artifacts take precedence over older narrative reports and the old manuscript. Earlier entries are preserved; Prompt 4 adds the Evaluation mappings below.
+This map covers the paper through `sections/conclusion.tex`. Task-aligned machine-readable artifacts take precedence over older narrative reports and the old manuscript. Earlier entries are preserved; the Discussion and Conclusion synthesize the frozen Evaluation evidence through the mappings below and introduce no new empirical result.
 
 ## Empirical and implementation claims
 
@@ -31,6 +31,20 @@ This map covers the paper through `sections/evaluation.tex`. Task-aligned machin
 | E18 | F200 family-pooled differences are recall `+.253 [.144,.379]`, FPR `-.049 [-.086,-.014]`, and AUPRC `+.248 [.177,.322]`; clean/M3 recall intervals include zero while their FPR intervals exclude zero. | `family_clustered_bootstrap.json`, `results.task_aligned_v1` | 10,000 paired replicates resampling 819 frozen families / 2,280 observations | Pooled point/difference estimates remain distinct from fold means. | RQ4 prose |
 | E19 | Preloaded-bytecode feature extraction and prediction averages `3.411 ms` (p95 `9.514 ms`) over 3,000 calls; 300-contract batches average `3.197 ms/contract`. | `paper_build/runtime/runtime_results.json`; `runtime_protocol.md` | Frozen local scorer-core timing on Apple M1 | Excludes loading, parser, RPC/network/cache, wallet, and rendering; not end-to-end latency. | RQ5 |
 | E20 | Independent quantitative validation is unavailable because only one truly novel confirmed positive survived the frozen funnel. | `reports/funnel.json`; `reports/independent_set_report.md` | Independent-set feasibility result | Report only as insufficient data, never as an accuracy estimate. | RQ1 qualification |
+
+## Discussion and conclusion synthesis
+
+| ID | Interpretive claim | Direct evidence | Required qualification | Locations |
+|---|---|---|---|---|
+| D1 | A decompiler-free pre-authorization bytecode scorer is feasible for the scoped primary task, with family-grouped AUPRC `0.881`. | E1, E4, and E6; `task_aligned_detection_results.json` | Held-out similarity families within this corpus; not universal detection or a complete wallet defense. | Discussion; Conclusion |
+| D2 | Task alignment is justified by input/label compatibility and changed operating-point results, not by favorable performance direction. | E2--E3; `task_alignment_protocol.md`; `original_vs_task_aligned.md`; `task_aligned_result_provenance.md` | Policy frozen before rerun outcomes; conflicts quarantined without relabeling; family/fold identities preserved. | Discussion |
+| D3 | Random splitting is optimistic on this corpus: AuthGuard gap `.094`, with blocklist `.321→.551`. | E7 and E14; `task_aligned_detection_results.json` | Families are similarity clusters, not attacker groups; grouping does not eliminate every dependence or invalidate all prior studies. | Discussion; Conclusion |
+| D4 | G-MUT retains AuthGuard M3 recall `.530`, whereas compound G-VOL F200 falls to `.130`; the checker passed `727/727` variants per tier. | E10--E11 and E15--E16; mutation curve, preservation, and volume JSON artifacts | Checker-defined structural preservation is not execution equivalence; post-STOP dynamic unreachability is not formally proved; G-ADV does not recover G-VOL. | Discussion |
+| D5 | At pure-M0 G-ADV F200, fold means change `.561/.484/.217→.758/.727/.174`, with paired family-clustered differences supporting aggregate improvement. | E8--E9 and E17--E18; adversarial-training and bootstrap JSON artifacts | Fold means are distinct from pooled bootstrap differences; no arbitrary robustness, complete recovery, or every-metric dominance. | Discussion; Conclusion |
+| D6 | Label circularity remains: source-derived positives and rule-silent weak negatives do not constitute independently verified malicious/benign truth. | E4; `evidence_audit.md`; `method_claims_audit.md` | Exact/family leakage audits and the sensitive-name mutation result do not eliminate circularity. | Discussion; Conclusion |
+| D7 | Independent validation has verdict `INSUFFICIENT DATA` because only one truly novel confirmed positive survived. | E20; `reports/funnel.json`; `reports/independent_set_report.md` | Anecdotal only; no `1/1` accuracy or quantitative external-generalization claim. | Discussion; Conclusion |
+| D8 | The full USENIX Gigahorse/Datalog pipeline was not run; local rule approximations are not a direct comparison with it. | E13; L3; `evaluation_claim_audit.md` | No superiority claim; external-call approximation is poorly discriminative despite high recall. | Discussion |
+| D9 | Local scorer-core timing is `3.411 ms` mean and `9.514 ms` p95 on Apple M1. | E19; `runtime_results.json`; `runtime_protocol.md` | Preloaded-bytecode feature extraction and prediction only; no wallet/RPC/UI or end-to-end latency claim. | Discussion; Conclusion |
 
 ## Literature-supported claims
 
