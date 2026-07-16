@@ -1,6 +1,6 @@
 # Final Anonymity Audit
 
-Audit date: 2026-07-15. Scope: every file under `paper_build/overleaf/`, including TeX, BibTeX, TikZ, Python, JSON figure data, PDFs, comments, filenames, and README text.
+Audit date: 2026-07-16. Scope: every file under `paper_build/overleaf/`, including the consolidated TeX driver, BibTeX, inline TikZ, Python, JSON figure data, PDFs, comments, filenames, and README text.
 
 ## Submission identity
 
@@ -28,7 +28,7 @@ The URLs in `references.bib` are legitimate official EIP, arXiv, DOI, and venue 
 
 | File class | Count | Checks | Result |
 |---|---:|---|---|
-| Main/section/table/TikZ TeX | 15 | Author block, comments, paths, affiliations, acknowledgments, URLs, custom metadata | Anonymous |
+| Consolidated `main.tex` | 1 | Author block, section/table/TikZ content, comments, paths, affiliations, acknowledgments, URLs, custom metadata | Anonymous |
 | BibTeX | 1 | Submission-author leakage, personal/repository URLs, non-source metadata | Only third-party publication metadata |
 | Python figure scripts | 3 | Docstrings, comments, path construction, PDF metadata fields | Package-relative paths; `Author`/`Creator` explicitly anonymous |
 | Figure-data JSON | 4 | Paths, usernames, author metadata, repository ownership | No identifying fields or paths |

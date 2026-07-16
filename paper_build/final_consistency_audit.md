@@ -1,10 +1,10 @@
 # Final Consistency and Static Integration Audit
 
-Audit date: 2026-07-15. Scope: canonical manuscript sources and the complete 27-file Overleaf package. No frozen dataset, family assignment, model output, task-alignment artifact, or experiment implementation was modified.
+Audit date: 2026-07-16. Scope: canonical manuscript sources and the complete 13-file Overleaf package. No frozen dataset, family assignment, model output, task-alignment artifact, or experiment implementation was modified.
 
 ## Integrated structure
 
-`overleaf/main.tex` uses `\documentclass[conference]{IEEEtran}` and integrates, in order: Abstract and Index Terms; Introduction; Background and Related Work; Problem Definition and Threat Model; AuthGuard-7702 Design; Dataset and Experimental Methodology; Evaluation; Discussion and Limitations; Conclusion; and References.
+`overleaf/main.tex` uses `\documentclass[conference]{IEEEtran}` and contains directly, in order: Abstract and Index Terms; Introduction; Background and Related Work; Problem Definition and Threat Model; AuthGuard-7702 Design; Dataset and Experimental Methodology; Evaluation; Discussion and Limitations; Conclusion; and References. All section prose, tables, captions, and TikZ architecture source are inline; the driver contains no `\input` command.
 
 The title exactly matches the requested working title. The author field is anonymous. Bibliography style and driver are `IEEEtran` and `references`, respectively.
 
@@ -12,8 +12,8 @@ The title exactly matches the requested working title. The author field is anony
 
 | Check | Result |
 |---|---|
-| Balanced unescaped braces | PASS across all 15 TeX files |
-| Input resolution | PASS: 14 `\input` targets found |
+| Balanced unescaped braces | PASS for the single consolidated `main.tex` |
+| Input resolution | PASS: no `\input` command remains |
 | Graphic resolution | PASS: all 3 referenced PDFs found |
 | Labels | PASS: 16 unique labels; no duplicates |
 | Internal references | PASS: 12 references; none unresolved |
@@ -23,9 +23,9 @@ The title exactly matches the requested working title. The author field is anony
 | Custom commands | PASS: none defined or required |
 | Local/absolute paths | PASS: none found |
 | Custom style dependencies | PASS: only standard `IEEEtran` and package files are referenced |
-| Obsolete sections | PASS: only the nine current section files are included |
+| Obsolete sections | PASS: all nine current sections are inline in `main.tex`; no external section file is referenced |
 | Formatting constraints | PASS: no negative vertical/horizontal spacing, margin change, geometry override, reduced base font, or page-enlargement command |
-| Plain-text parser | PASS: Pandoc traversed the package-relative main driver and inputs |
+| Plain-text parser | PASS: Pandoc parsed the consolidated main driver |
 | Figure scripts | PASS syntax check; all four JSON sources parse |
 
 These are static checks, not a LaTeX compilation claim. No TeX engine is installed and no local PDF of the complete paper was produced.
@@ -68,7 +68,7 @@ These are static checks, not a LaTeX compilation claim. No TeX engine is install
 
 ## Figure and table review
 
-- Figures: **4** total—one stacked one-column TikZ architecture and three vector result PDFs.
+- Figures: **4** total—one stacked one-column TikZ architecture embedded in `main.tex` and three vector result PDFs.
 - Tables: **4** total—dataset composition, G-DET, G-MUT, and G-ADV.
 - The architecture was converted from a very wide single row to a stacked layout with readable source font sizes and explicit integration/timing boundaries.
 - Result PDFs were inspected through 160-dpi rasterizations. Labels were not clipped; internal titles are compact; protocols are explicit.
@@ -89,8 +89,9 @@ These are static checks, not a LaTeX compilation claim. No TeX engine is install
 7. Compressed malformed-input/parser detail.
 8. Removed a duplicated scorer equation and tightened the Design transition.
 9. Removed prohibited priority-like use of “first” and tightened the Discussion's generalization boundary.
-10. Converted all package inputs and figure-script paths to package-relative paths; included the four task-aligned JSON sources required by the scripts.
-11. Rechecked every value, caption, reference, citation key, and PDF metadata item.
+10. Converted figure and figure-script paths to package-relative paths; included the four task-aligned JSON sources required by the scripts.
+11. Flattened all sections, tables, captions, and TikZ source into one self-contained `main.tex` and removed the now-redundant external TeX fragments.
+12. Rechecked every value, caption, reference, citation key, and PDF metadata item.
 
 ## Remaining integration risks
 
