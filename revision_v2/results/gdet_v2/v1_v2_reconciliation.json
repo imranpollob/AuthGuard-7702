@@ -1,0 +1,249 @@
+{
+  "note": "AUPRC/AUROC threshold-free -> unchanged (same fits, confirms harness). v2 inner family-grouped OOF thresholds are lower than v1 in-sample max-F1 thresholds, raising recall and lowering precision. v1 was conservative, not inflated.",
+  "tasks": {
+    "primary": {
+      "usenix_shipped_oracle": {
+        "v1": {
+          "AUPRC": 1.0,
+          "F1": 1.0,
+          "Precision": 1.0,
+          "Recall": 1.0
+        },
+        "v2": {
+          "AUPRC": 1.0,
+          "F1": 1.0,
+          "Precision": 1.0,
+          "Recall": 1.0,
+          "FPR": 0.0
+        }
+      },
+      "usenix_name_rule": {
+        "v1": {
+          "AUPRC": 0.3438,
+          "F1": 0.0786,
+          "Precision": 0.884,
+          "Recall": 0.0426
+        },
+        "v2": {
+          "AUPRC": 0.3438,
+          "F1": 0.0786,
+          "Precision": 0.884,
+          "Recall": 0.0426,
+          "FPR": 0.0022
+        }
+      },
+      "usenix_struct_rule": {
+        "v1": {
+          "AUPRC": 0.3282,
+          "F1": 0.489,
+          "Precision": 0.3282,
+          "Recall": 1.0
+        },
+        "v2": {
+          "AUPRC": 0.3282,
+          "F1": 0.489,
+          "Precision": 0.3282,
+          "Recall": 1.0,
+          "FPR": 0.9649
+        }
+      },
+      "blocklist": {
+        "v1": {
+          "AUPRC": 0.3205,
+          "F1": 0.0,
+          "Precision": 0.0,
+          "Recall": 0.0
+        },
+        "v2": {
+          "AUPRC": 0.3205,
+          "F1": 0.0,
+          "Precision": 0.0,
+          "Recall": 0.0,
+          "FPR": 0.0
+        }
+      },
+      "opcode_rf": {
+        "v1": {
+          "AUPRC": 0.7436,
+          "F1": 0.4263,
+          "Precision": 0.8423,
+          "Recall": 0.2973
+        },
+        "v2": {
+          "AUPRC": 0.7436,
+          "F1": 0.6897,
+          "Precision": 0.6763,
+          "Recall": 0.7289,
+          "FPR": 0.162
+        }
+      },
+      "opcode_xgb": {
+        "v1": {
+          "AUPRC": 0.7839,
+          "F1": 0.6258,
+          "Precision": 0.7976,
+          "Recall": 0.5437
+        },
+        "v2": {
+          "AUPRC": 0.7839,
+          "F1": 0.7219,
+          "Precision": 0.6937,
+          "Recall": 0.7808,
+          "FPR": 0.157
+        }
+      },
+      "selector_model": {
+        "v1": {
+          "AUPRC": 0.5153,
+          "F1": 0.5119,
+          "Precision": 0.4487,
+          "Recall": 0.6179
+        },
+        "v2": {
+          "AUPRC": 0.5153,
+          "F1": 0.4509,
+          "Precision": 0.3427,
+          "Recall": 0.7867,
+          "FPR": 0.7276
+        }
+      },
+      "authguard": {
+        "v1": {
+          "AUPRC": 0.8814,
+          "F1": 0.6729,
+          "Precision": 0.8692,
+          "Recall": 0.5757
+        },
+        "v2": {
+          "AUPRC": 0.8814,
+          "F1": 0.7817,
+          "Precision": 0.7942,
+          "Recall": 0.8085,
+          "FPR": 0.1013
+        }
+      }
+    },
+    "secondary": {
+      "usenix_shipped_oracle": {
+        "v1": {
+          "AUPRC": 1.0,
+          "F1": 1.0,
+          "Precision": 1.0,
+          "Recall": 1.0
+        },
+        "v2": {
+          "AUPRC": 1.0,
+          "F1": 1.0,
+          "Precision": 1.0,
+          "Recall": 1.0,
+          "FPR": 0.0
+        }
+      },
+      "usenix_name_rule": {
+        "v1": {
+          "AUPRC": 0.2746,
+          "F1": 0.0964,
+          "Precision": 0.8485,
+          "Recall": 0.0527
+        },
+        "v2": {
+          "AUPRC": 0.2746,
+          "F1": 0.0964,
+          "Precision": 0.8485,
+          "Recall": 0.0527,
+          "FPR": 0.0013
+        }
+      },
+      "usenix_struct_rule": {
+        "v1": {
+          "AUPRC": 0.249,
+          "F1": 0.3954,
+          "Precision": 0.249,
+          "Recall": 1.0
+        },
+        "v2": {
+          "AUPRC": 0.249,
+          "F1": 0.3954,
+          "Precision": 0.249,
+          "Recall": 1.0,
+          "FPR": 0.9351
+        }
+      },
+      "blocklist": {
+        "v1": {
+          "AUPRC": 0.2364,
+          "F1": 0.0,
+          "Precision": 0.0,
+          "Recall": 0.0
+        },
+        "v2": {
+          "AUPRC": 0.2364,
+          "F1": 0.0,
+          "Precision": 0.0,
+          "Recall": 0.0,
+          "FPR": 0.0
+        }
+      },
+      "opcode_rf": {
+        "v1": {
+          "AUPRC": 0.7759,
+          "F1": 0.3594,
+          "Precision": 0.8181,
+          "Recall": 0.2596
+        },
+        "v2": {
+          "AUPRC": 0.7759,
+          "F1": 0.7045,
+          "Precision": 0.6998,
+          "Recall": 0.7265,
+          "FPR": 0.1082
+        }
+      },
+      "opcode_xgb": {
+        "v1": {
+          "AUPRC": 0.7974,
+          "F1": 0.6549,
+          "Precision": 0.8209,
+          "Recall": 0.5587
+        },
+        "v2": {
+          "AUPRC": 0.7974,
+          "F1": 0.7191,
+          "Precision": 0.7385,
+          "Recall": 0.7357,
+          "FPR": 0.0804
+        }
+      },
+      "selector_model": {
+        "v1": {
+          "AUPRC": 0.4451,
+          "F1": 0.4197,
+          "Precision": 0.4308,
+          "Recall": 0.4334
+        },
+        "v2": {
+          "AUPRC": 0.4451,
+          "F1": 0.3966,
+          "Precision": 0.3519,
+          "Recall": 0.6624,
+          "FPR": 0.4326
+        }
+      },
+      "authguard": {
+        "v1": {
+          "AUPRC": 0.8712,
+          "F1": 0.6991,
+          "Precision": 0.8976,
+          "Recall": 0.5958
+        },
+        "v2": {
+          "AUPRC": 0.8712,
+          "F1": 0.7832,
+          "Precision": 0.7812,
+          "Recall": 0.8082,
+          "FPR": 0.0702
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "verdict": "FAIL",
+  "checks": {
+    "c1_flooding_improvement>=0.10": true,
+    "c2_clean_degradation<=0.02": true,
+    "c3_benign_FPR_increase<=0.01": true,
+    "c4_consistency>=4of5": true,
+    "c5_beats_first_stop": false
+  },
+  "metrics": {
+    "clean_AUPRC": {
+      "full": 0.881366130013053,
+      "dual": 0.9457220879846912,
+      "first_stop": 0.9690585006931924
+    },
+    "F200_recall": {
+      "full": 0.35127023168668653,
+      "dual": 0.7466444819455972,
+      "first_stop": 0.9716517086093198
+    },
+    "M3F200_recall": {
+      "full": 0.37780119345038166,
+      "dual": 0.7679148017941618,
+      "first_stop": 0.9716517086093198
+    },
+    "benign_FPR": {
+      "full": 0.07754077791718947,
+      "dual": 0.024090338770388957
+    },
+    "winning_condition": "F200",
+    "improvement_f200": 0.39537425025891065,
+    "improvement_compound": 0.39011360834378017
+  }
+}

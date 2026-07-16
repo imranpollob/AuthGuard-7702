@@ -1,0 +1,28 @@
+{
+  "command": "revision_v2/experiments/gateA/run_gateA.py",
+  "config": {
+    "protocol": "threshold_protocol_v2 + gateA_success_criteria",
+    "reps": [
+      "full",
+      "dual",
+      "first_stop"
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T14:33:23Z",
+  "wall_seconds": 522.8,
+  "versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/imranpollob/Coding/unzipped/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gateA/gateA_results.json": "dc2673e65597dcff305f321130c72d3ffd036ccf98b4f724cf86cf21d8ba111f"
+  }
+}

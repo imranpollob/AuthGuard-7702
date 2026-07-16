@@ -1,0 +1,23 @@
+{
+  "command": "revision_v2/experiments/family_sensitivity/run_family_sensitivity.py",
+  "config": {
+    "protocol": "threshold_protocol_v2; frozen 0.75/0.85/0.90 + recomputed"
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T14:33:23Z",
+  "wall_seconds": 802.0,
+  "versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/imranpollob/Coding/unzipped/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/family_sensitivity/family_sensitivity.json": "a09034f095d34dcc0f77aad8f5606f51ff1e306ac9f7a90854bfa4e6987ba22f"
+  }
+}
