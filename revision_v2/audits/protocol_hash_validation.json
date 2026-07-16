@@ -1,0 +1,16 @@
+{
+  "status": "FAIL_ONE_STALE_LEDGER_ENTRY",
+  "checked_at_phase": "resume-finalization",
+  "protocols_checked": 5,
+  "matching": 4,
+  "mismatch": {
+    "path": "revision_v2/protocols/donor_isolation_protocol.md",
+    "ledger_sha256": "7bc2cb3a4683b4900cde5f288911af08855e72f99fff1547b7d03eedce49102a",
+    "actual_sha256": "73a7e798dfcf1700c95dbd8efaeceafab10ccd07c7b8203a56a567764c1ff3d2",
+    "cause": "Committed v1.1 fold-aligned amendment after the Phase-0 ledger was written; protocols.sha256 was not refreshed.",
+    "amendment_commit": "3a46bf348d20c18acad3dddc1b1c215b67f73801",
+    "timing_recorded_in_commit": "before any donor-isolated result was generated"
+  },
+  "action": "Neither the protocol nor its frozen hash ledger was edited during finalization. Donor-isolated experiments follow the committed v1.1 text; the stale ledger entry is disclosed as a reproducibility deviation.",
+  "hard_guard_status": "The separate 144-file frozen-evidence guard passes."
+}

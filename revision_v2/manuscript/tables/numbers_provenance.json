@@ -1,0 +1,8 @@
+{
+  "gdet_v2.tex": "gdet_v2_results.json + gdet_bootstrap.json",
+  "gmut_v2.tex": "gmut_v2_results.json (iso arm)",
+  "gvol_v2.tex": "gvol_v2_results.json (iso multi-donor arm)",
+  "gadv_v2.tex": "gadv_v2_results.json (donor-isolated val-threshold arm)",
+  "family_sensitivity_v2.tex": "family_sensitivity.json (primary frozen-family track)",
+  "secondary_controls_v2.tex": "secondary_controls.json"
+}

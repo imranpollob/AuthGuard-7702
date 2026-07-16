@@ -1,0 +1,17 @@
+revision_v2/audits/frozen_ledger.json
+revision_v2/audits/environment.json
+revision_v2/audits/pip_freeze.txt
+revision_v2/audits/requirements.txt
+revision_v2/audits/harness_validation.json
+revision_v2/audits/harness_validation_macos_arm.json
+revision_v2/audits/harness_validation_linux_x86.json
+revision_v2/audits/cross_platform_validation.md
+revision_v2/protocols/
+revision_v2/experiments/common/frozen.py
+revision_v2/experiments/common/harness.py
+revision_v2/experiments/common/validate_harness.py
+revision_v2/reports/phase_0_report.md
+revision_v2/reports/phase_0_changed_files.txt
+revision_v2/reports/phase_0_commands.sh
+revision_v2/reports/phase_0_results_manifest.csv
+revision_v2/reports/phase_0_failures.md
