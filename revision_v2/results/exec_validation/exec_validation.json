@@ -1,0 +1,348 @@
+{
+  "harness": "anvil debug_traceCall opcode-level; anvil_setCode installs runtime bytecode",
+  "anvil_version": "anvil 0.2.0 (515a4cc 2024-08-13T00:20:15.428855000Z)",
+  "scope": "Bounded: fixed calldata suite (empty + dispatch selectors, zero args). No real attack replay (artifact ships no attack tx / victim state). Divergences at M2 address immediates and M3 renamed selectors are expected by construction.",
+  "n_contracts": 10,
+  "contracts": [
+    {
+      "sid": "ethereum:0x3fb35d27c96adbe45e8814a2a4110cd002422345",
+      "address": "0x3fb35d27c96adbe45e8814a2a4110cd002422345",
+      "code_bytes": 14786,
+      "n_call": 18,
+      "n_selectors": 19,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0x12f73f3da98c4c1d31918c88e11bc2e229c876d2",
+      "address": "0x12f73f3da98c4c1d31918c88e11bc2e229c876d2",
+      "code_bytes": 6595,
+      "n_call": 18,
+      "n_selectors": 18,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0xa283d9f6be0e452ea7615466f23830be0311ab1e",
+      "address": "0xa283d9f6be0e452ea7615466f23830be0311ab1e",
+      "code_bytes": 6398,
+      "n_call": 18,
+      "n_selectors": 18,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0x4ddcdd0b68a849d7edbf129bccfb35c525ffa306",
+      "address": "0x4ddcdd0b68a849d7edbf129bccfb35c525ffa306",
+      "code_bytes": 4069,
+      "n_call": 17,
+      "n_selectors": 17,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0xeef06c47306a6fb4f94b1ad779112214d11ce1a5",
+      "address": "0xeef06c47306a6fb4f94b1ad779112214d11ce1a5",
+      "code_bytes": 7282,
+      "n_call": 16,
+      "n_selectors": 19,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "base:0x3495fed224aa078d7e754e9f626c613a5cb04528",
+      "address": "0x3495fed224aa078d7e754e9f626c613a5cb04528",
+      "code_bytes": 8444,
+      "n_call": 16,
+      "n_selectors": 17,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0x19009f4fb887cf6be63a519d02f3b7faf6ef7164",
+      "address": "0x19009f4fb887cf6be63a519d02f3b7faf6ef7164",
+      "code_bytes": 5606,
+      "n_call": 16,
+      "n_selectors": 16,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 4,
+          "expected_divergence": 6,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0x0776e2d86f654028e2c3c51b4835277dbbf62c21",
+      "address": "0x0776e2d86f654028e2c3c51b4835277dbbf62c21",
+      "code_bytes": 4871,
+      "n_call": 16,
+      "n_selectors": 16,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 4,
+          "expected_divergence": 6,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "optimism:0x68d333198c60c8160848437b2870f3a5be693107",
+      "address": "0x68d333198c60c8160848437b2870f3a5be693107",
+      "code_bytes": 15629,
+      "n_call": 15,
+      "n_selectors": 22,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    },
+    {
+      "sid": "ethereum:0x66c24762397b3a74f567ad07192c74779c0d8261",
+      "address": "0x66c24762397b3a74f567ad07192c74779c0d8261",
+      "code_bytes": 5145,
+      "n_call": 15,
+      "n_selectors": 18,
+      "n_calldata": 10,
+      "summary": {
+        "M1": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M2": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "M3": {
+          "preserved": 3,
+          "expected_divergence": 7,
+          "unexpected": 0,
+          "calls": 10
+        },
+        "F200": {
+          "preserved": 10,
+          "expected_divergence": 0,
+          "unexpected": 0,
+          "calls": 10
+        }
+      }
+    }
+  ]
+}

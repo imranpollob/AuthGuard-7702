@@ -1,0 +1,16 @@
+{
+  "seed": 7702,
+  "per_stratum_target": 25,
+  "n_reviewers": 3,
+  "total_items": 170,
+  "strata_counts": {
+    "random_positive": 25,
+    "random_weak_negative": 25,
+    "high_scoring_false_positive": 25,
+    "high_confidence_correct": 25,
+    "exact_bytecode_conflict": 24,
+    "low_scoring_false_negative": 23,
+    "highest_scoring_benign_general": 23
+  },
+  "score_source": "G-DET v2 authguard seed 7702 pooled test scores"
+}

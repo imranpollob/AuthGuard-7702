@@ -35,7 +35,7 @@ DH = os.path.join(ROOT, "paper_build", "data_hygiene")
 RV2 = os.path.join(ROOT, "revision_v2")
 sys.path.insert(0, PIPE)
 
-from ag_common import normalize_bytecode, disasm, SEED  # noqa: E402
+from ag_common import normalize_bytecode, disasm, minhash_signature, SEED  # noqa: E402
 from ag_features import featurize, build_sensitive_selector_set  # noqa: E402
 
 SENS = build_sensitive_selector_set()

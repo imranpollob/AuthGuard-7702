@@ -1,0 +1,497 @@
+{
+  "note": "Thresholds selected by inner family-grouped OOF on the primary population and frozen BEFORE scoring controls. benign_AA (n=5) reported as case observations only.",
+  "thresholds": {
+    "opcode_rf": 0.37644444444444447,
+    "opcode_xgb": 0.08195142447948456,
+    "selector_model": 0.181841641664505,
+    "authguard": 0.03810333460569382
+  },
+  "benign_general": {
+    "opcode_rf": {
+      "threshold": 0.37644444444444447,
+      "n": 797,
+      "flagged": 27,
+      "FPR": 0.033877038895859475,
+      "FPR_wilson95": [
+        0.033877038895859475,
+        0.023385051508889067,
+        0.048840966719934216
+      ],
+      "alerts_per_1000": 33.87703889585947,
+      "family_macro_FPR": 0.038901601830663615,
+      "score_median": 0.19,
+      "score_p90": 0.29233333333333333,
+      "score_p95": 0.34,
+      "score_p99": 0.47346666666666654,
+      "score_max": 0.6361666666666668
+    },
+    "opcode_xgb": {
+      "threshold": 0.08195142447948456,
+      "n": 797,
+      "flagged": 176,
+      "FPR": 0.22082810539523212,
+      "FPR_wilson95": [
+        0.22082810539523212,
+        0.1934066841951388,
+        0.25092787584769616
+      ],
+      "alerts_per_1000": 220.82810539523211,
+      "family_macro_FPR": 0.1883099362667849,
+      "score_median": 0.006011488847434521,
+      "score_p90": 0.2535851001739502,
+      "score_p95": 0.46742063760757446,
+      "score_p99": 0.918878436088562,
+      "score_max": 0.9950172305107117
+    },
+    "selector_model": {
+      "threshold": 0.181841641664505,
+      "n": 797,
+      "flagged": 431,
+      "FPR": 0.5407779171894604,
+      "FPR_wilson95": [
+        0.5407779171894604,
+        0.5060670918533077,
+        0.5750975229718962
+      ],
+      "alerts_per_1000": 540.7779171894605,
+      "family_macro_FPR": 0.5359408362268775,
+      "score_median": 0.19738423824310303,
+      "score_p90": 0.39426466822624207,
+      "score_p95": 0.45765089988708496,
+      "score_p99": 0.6560628414154053,
+      "score_max": 0.9992223978042603
+    },
+    "authguard": {
+      "threshold": 0.03810333460569382,
+      "n": 797,
+      "flagged": 95,
+      "FPR": 0.1191969887076537,
+      "FPR_wilson95": [
+        0.1191969887076537,
+        0.09850781104371573,
+        0.14353955512707262
+      ],
+      "alerts_per_1000": 119.1969887076537,
+      "family_macro_FPR": 0.12913105745730788,
+      "score_median": 0.00351620651781559,
+      "score_p90": 0.04587002098560333,
+      "score_p95": 0.09655899554491043,
+      "score_p99": 0.6545146703720093,
+      "score_max": 0.9847776889801025
+    }
+  },
+  "benign_general_top10": {
+    "opcode_rf": [
+      {
+        "sid": "ethereum(implied):0x9c8d7700aac260e6e1e67ef1e395803a537608b2",
+        "family_id": "F00554",
+        "score": 0.6361666666666668,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x6f048352bbb6386ef9ffc076c13670adde5430f8",
+        "family_id": "F00465",
+        "score": 0.606,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xb0683aec45f68e42e843bcf6f709daef87fbed98",
+        "family_id": "F00617",
+        "score": 0.5466666666666666,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x0bffd8a52ef873458f532a7fcd71a4c941569edc",
+        "family_id": "F00235",
+        "score": 0.4892490842490842,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x4993eba051bba963e7fe9ade6b2cbc320229f3a8",
+        "family_id": "F00397",
+        "score": 0.48333333333333334,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xca2f8bf04a9c804da9d1d0519b70d0c2f57ef714",
+        "family_id": "F00235",
+        "score": 0.48,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xacff70a162f250edca972895493e219fe46c8bb1",
+        "family_id": "F00587",
+        "score": 0.47800000000000004,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x1e0b90a376f021eb938ff04fabd2c627c4959fa3",
+        "family_id": "F00235",
+        "score": 0.4766666666666667,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xbb19c28d18929df9d73fe04082ecca787b3c36ef",
+        "family_id": "F00235",
+        "score": 0.47333333333333333,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xa56a8a623cacd8a293ce81ed13de3e3a84b7f45f",
+        "family_id": "F00445",
+        "score": 0.47333333333333333,
+        "flagged": true
+      }
+    ],
+    "opcode_xgb": [
+      {
+        "sid": "ethereum(implied):0x626a44bc751792b4c209cb1a216d2548752a8802",
+        "family_id": "F00647",
+        "score": 0.9950172305107117,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xacff70a162f250edca972895493e219fe46c8bb1",
+        "family_id": "F00587",
+        "score": 0.9897069931030273,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xa709acb309932bd97aef58bd7955a88b7275d8ad",
+        "family_id": "F00407",
+        "score": 0.9783791303634644,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x658348bb640cf1531970d54f66a7a2298386af2e",
+        "family_id": "F00407",
+        "score": 0.9638192057609558,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x9c8d7700aac260e6e1e67ef1e395803a537608b2",
+        "family_id": "F00554",
+        "score": 0.9637255072593689,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x4d9564bd91db5408a1e2d49474b28c4d4434c3c5",
+        "family_id": "F00367",
+        "score": 0.9600328803062439,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x6f048352bbb6386ef9ffc076c13670adde5430f8",
+        "family_id": "F00465",
+        "score": 0.9554519057273865,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x56f28016afe6103b70b080c2f5f95220e8a22396",
+        "family_id": "F00367",
+        "score": 0.9524400234222412,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x65c4d5e574a6ebc5c42aee6a22742c7b3d5372e0",
+        "family_id": "F00237",
+        "score": 0.9174808263778687,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x442931503de3d718575755402dd9b50aa69f8241",
+        "family_id": "F00472",
+        "score": 0.9158759117126465,
+        "flagged": true
+      }
+    ],
+    "selector_model": [
+      {
+        "sid": "ethereum(implied):0x5fb55564241d3ad1f9cf8891545f63ffda23f368",
+        "family_id": "F00643",
+        "score": 0.9992223978042603,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xd09f9e3e3520a427347dbb996ceb0be080b6c298",
+        "family_id": "F00340",
+        "score": 0.9991747736930847,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x526768b53bb26aa44a05bbba060ebd4daae51e3c",
+        "family_id": "F00643",
+        "score": 0.9985287189483643,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xb0683aec45f68e42e843bcf6f709daef87fbed98",
+        "family_id": "F00617",
+        "score": 0.978392481803894,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xe0936bae275fed05a01a5bf3490e59e0756aecb1",
+        "family_id": "F00433",
+        "score": 0.9615143537521362,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x44fbcc2210bdc537f36bc9b98acd3b63cc8f712c",
+        "family_id": "F00489",
+        "score": 0.8313593864440918,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xfe064d4234b44e7ceab99b1031c58786520542a7",
+        "family_id": "F00519",
+        "score": 0.7005921602249146,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x6c3c1a64c40e76ce4fdfcd378d089974dd714d62",
+        "family_id": "F00360",
+        "score": 0.6609843969345093,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x9d65e2b85916d91b59f37bfedd4aa592737c6e0c",
+        "family_id": "F00462",
+        "score": 0.6558579206466675,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xe36d7f0298b71e3b85a4ed461579c8bbdff3499e",
+        "family_id": "F00560",
+        "score": 0.6463119387626648,
+        "flagged": true
+      }
+    ],
+    "authguard": [
+      {
+        "sid": "ethereum(implied):0x2d86e900d05bb45c35ff8e8d9661e7bf4c336b46",
+        "family_id": "F00323",
+        "score": 0.9847776889801025,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x07ee75e58e9e46b8f4383b99c28b62af02d7bcb8",
+        "family_id": "F00563",
+        "score": 0.9844644665718079,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x85cd69aa7bc2ebdbf3dfb85bd5c80cfa20db26dd",
+        "family_id": "F00612",
+        "score": 0.9491954445838928,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x22fa88c50aa8578cbf8f78c38f751ebfd9b3a8fc",
+        "family_id": "F00612",
+        "score": 0.9433740973472595,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xbdd579fe57de391e40a560c3dd9df3e3ac4c90b2",
+        "family_id": "F00501",
+        "score": 0.7398101091384888,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xe36d7f0298b71e3b85a4ed461579c8bbdff3499e",
+        "family_id": "F00560",
+        "score": 0.6836866140365601,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0xa709acb309932bd97aef58bd7955a88b7275d8ad",
+        "family_id": "F00407",
+        "score": 0.6712613701820374,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x44fbcc2210bdc537f36bc9b98acd3b63cc8f712c",
+        "family_id": "F00489",
+        "score": 0.667474091053009,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x52ef5e5a35cc15e365c0da3aa2c25db9a1a9d1ea",
+        "family_id": "F00593",
+        "score": 0.6539750099182129,
+        "flagged": true
+      },
+      {
+        "sid": "ethereum(implied):0x4993eba051bba963e7fe9ade6b2cbc320229f3a8",
+        "family_id": "F00397",
+        "score": 0.6523855328559875,
+        "flagged": true
+      }
+    ]
+  },
+  "benign_AA_cases": [
+    {
+      "model": "opcode_rf",
+      "sid": "ethereum:0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+      "family_id": "F00217",
+      "score": 0.056666666666666664,
+      "threshold": 0.37644444444444447,
+      "flagged": false
+    },
+    {
+      "model": "opcode_rf",
+      "sid": "ethereum:0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+      "family_id": "F00218",
+      "score": 0.06666666666666667,
+      "threshold": 0.37644444444444447,
+      "flagged": false
+    },
+    {
+      "model": "opcode_rf",
+      "sid": "ethereum:0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+      "family_id": "F00219",
+      "score": 0.04,
+      "threshold": 0.37644444444444447,
+      "flagged": false
+    },
+    {
+      "model": "opcode_rf",
+      "sid": "ethereum:0x000000005c84F8Fd50b21CAC312528A64437030e",
+      "family_id": "F00220",
+      "score": 0.05,
+      "threshold": 0.37644444444444447,
+      "flagged": false
+    },
+    {
+      "model": "opcode_rf",
+      "sid": "ethereum:0x69007702764179f14F51cdce752f4f775d74E139",
+      "family_id": "F00221",
+      "score": 0.02,
+      "threshold": 0.37644444444444447,
+      "flagged": false
+    },
+    {
+      "model": "opcode_xgb",
+      "sid": "ethereum:0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+      "family_id": "F00217",
+      "score": 0.010279031470417976,
+      "threshold": 0.08195142447948456,
+      "flagged": false
+    },
+    {
+      "model": "opcode_xgb",
+      "sid": "ethereum:0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+      "family_id": "F00218",
+      "score": 0.004585637245327234,
+      "threshold": 0.08195142447948456,
+      "flagged": false
+    },
+    {
+      "model": "opcode_xgb",
+      "sid": "ethereum:0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+      "family_id": "F00219",
+      "score": 0.00026302531477995217,
+      "threshold": 0.08195142447948456,
+      "flagged": false
+    },
+    {
+      "model": "opcode_xgb",
+      "sid": "ethereum:0x000000005c84F8Fd50b21CAC312528A64437030e",
+      "family_id": "F00220",
+      "score": 0.0002763467491604388,
+      "threshold": 0.08195142447948456,
+      "flagged": false
+    },
+    {
+      "model": "opcode_xgb",
+      "sid": "ethereum:0x69007702764179f14F51cdce752f4f775d74E139",
+      "family_id": "F00221",
+      "score": 4.41384399891831e-05,
+      "threshold": 0.08195142447948456,
+      "flagged": false
+    },
+    {
+      "model": "selector_model",
+      "sid": "ethereum:0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+      "family_id": "F00217",
+      "score": 0.01569376140832901,
+      "threshold": 0.181841641664505,
+      "flagged": false
+    },
+    {
+      "model": "selector_model",
+      "sid": "ethereum:0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+      "family_id": "F00218",
+      "score": 0.3563818037509918,
+      "threshold": 0.181841641664505,
+      "flagged": true
+    },
+    {
+      "model": "selector_model",
+      "sid": "ethereum:0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+      "family_id": "F00219",
+      "score": 0.01607164926826954,
+      "threshold": 0.181841641664505,
+      "flagged": false
+    },
+    {
+      "model": "selector_model",
+      "sid": "ethereum:0x000000005c84F8Fd50b21CAC312528A64437030e",
+      "family_id": "F00220",
+      "score": 0.00898911152034998,
+      "threshold": 0.181841641664505,
+      "flagged": false
+    },
+    {
+      "model": "selector_model",
+      "sid": "ethereum:0x69007702764179f14F51cdce752f4f775d74E139",
+      "family_id": "F00221",
+      "score": 0.03772175684571266,
+      "threshold": 0.181841641664505,
+      "flagged": false
+    },
+    {
+      "model": "authguard",
+      "sid": "ethereum:0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+      "family_id": "F00217",
+      "score": 0.0014598623383790255,
+      "threshold": 0.03810333460569382,
+      "flagged": false
+    },
+    {
+      "model": "authguard",
+      "sid": "ethereum:0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+      "family_id": "F00218",
+      "score": 0.0033894130028784275,
+      "threshold": 0.03810333460569382,
+      "flagged": false
+    },
+    {
+      "model": "authguard",
+      "sid": "ethereum:0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+      "family_id": "F00219",
+      "score": 0.0014898598892614245,
+      "threshold": 0.03810333460569382,
+      "flagged": false
+    },
+    {
+      "model": "authguard",
+      "sid": "ethereum:0x000000005c84F8Fd50b21CAC312528A64437030e",
+      "family_id": "F00220",
+      "score": 0.0005317807663232088,
+      "threshold": 0.03810333460569382,
+      "flagged": false
+    },
+    {
+      "model": "authguard",
+      "sid": "ethereum:0x69007702764179f14F51cdce752f4f775d74E139",
+      "family_id": "F00221",
+      "score": 9.986668010242283e-05,
+      "threshold": 0.03810333460569382,
+      "flagged": false
+    }
+  ],
+  "benign_general_n": 797,
+  "benign_AA_n": 5
+}

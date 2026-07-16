@@ -17,12 +17,19 @@ compound M3+F200 condition).
 
 For each outer fold `f`, each row of the evaluated population has a partition role:
 train / validation / test (G-ADV) or train / test (G-MUT/G-VOL flooding of held-out rows).
-Donor pools are built per fold from **donor families**, assigned by deterministic hash order:
+
+**Amendment v1.1 (recorded 2026-07-16, BEFORE any donor-isolated result was generated):**
+donor-family role assignment is **fold-aligned**, not hashed-60/20/20, because families are
+global (cross-class): a donor family that also contains primary-population rows would, under
+hashed assignment, be able to serve a role inconsistent with its own recipient-side fold.
+Fold-aligned rule per outer fold `f`:
 
 1. Group eligible donors by frozen `family_id`.
-2. Sort families by blake2b(family_id, salt=7702); split 60% train-pool / 20% val-pool /
-   20% test-pool. A donor family belongs to exactly one role per fold (roles rotate with the
-   fold index so all donors are exercised across folds).
+2. If the donor family contains rows of the evaluated population, its role is determined by
+   that family's stored outer fold: test-pool if fold == `f`; val-pool if fold ==
+   `(f+1) mod 5` (G-ADV); train-pool otherwise. Pure donor-only families (no overlap with
+   the evaluated population) use their stored `outer_fold_secondary` the same way — this is
+   deterministic and rotates donors across folds.
 3. Assertions per generated variant:
    - donor family's pool role == recipient partition role;
    - donor exact-bytecode hash appears in no other role's pool for that fold;
