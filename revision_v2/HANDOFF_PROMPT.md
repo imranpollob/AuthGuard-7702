@@ -11,6 +11,106 @@ research repository and its IEEE ICTAI manuscript. A previous session completed 
 work; the machine was shut down mid-run. **Do not re-plan and do not re-litigate approved
 decisions — resume execution from the recorded state.**
 
+---
+
+# BIG PICTURE — what this project is and where it must land
+
+## The end goal
+
+Produce an **AI tool that is novel enough and performant enough to be accepted at IEEE ICTAI**
+(International Conference on Tools with Artificial Intelligence), backed by evidence that
+survives a hostile reviewer. Two things must both be true at submission:
+
+1. **Novelty** — there is a defensible AI/technical contribution, not just "we ran XGBoost on a
+   new dataset."
+2. **Performance + validity** — the numbers are real, the protocol is defensible, and every
+   claim is bounded by the evidence that supports it.
+
+ICTAI is a *tools* venue: a well-engineered, rigorously evaluated tool with a clear technical
+insight can be accepted, but a standard classifier on a single-source dataset will not be.
+
+## The research problem
+
+EIP-7702 lets an externally owned account (EOA) delegate execution to contract code. Authorizing
+a **malicious delegate** can drain the account. The defensive decision happens **before
+authorization**, when the delegate may have no transaction history, no reputation, and no
+verified source — but its **runtime bytecode is available**. So: *can bytecode-only screening
+give a useful pre-authorization risk signal?*
+
+AuthGuard-7702 = decompiler-free bytecode risk scoring (773-dim features → XGBoost), positioned
+as a **fast complementary screening stage** ahead of heavyweight declarative analyzers
+(Gigahorse/Datalog), never as a replacement for them.
+
+## The evidence base (all frozen)
+
+- Task-aligned corpus: **727 artifact-derived positives** (USENIX EIP-7702 artifact) vs
+  **1,553 rule-silent weak negatives**; plus 797 `benign_general` and 5 `benign_AA` controls.
+- Frozen bytecode-similarity **families** (MinHash @0.85) and 5 stored outer folds.
+- Protocol groups: **G-DET** (detection), **G-MUT** (mutation tiers M0–M3), **G-VOL** (dead-code
+  flooding sweep), **G-ADV** (source-balanced augmentation).
+- Headline: family-grouped **AUPRC 0.881** vs **0.975** under a random split (i.e. random
+  evaluation is materially optimistic — a core methodological finding of the paper).
+
+## The honest problem this revision exists to solve
+
+A hostile-reviewer audit (`reports/ictai_reviewer_assessment.md`, pre-existing) scored
+**AI novelty 2/5** and flagged near-fatal concerns. Ten major reviewer issues were mapped in
+`revision_v2/planning/reviewer_issue_map.md`:
+
+1. source-derived labels + insufficient independent validation (only **1** truly novel confirmed
+   positive → INSUFFICIENT DATA)
+2. conflicting identical-bytecode labels (23 exact-hash groups)
+3. G-DET threshold-selection ambiguity → **confirmed valid**: v1 selected thresholds on
+   **in-sample fitting predictions**
+4. limited semantic validity of transformations (checker was syntactic only)
+5. insufficient baselines and feature ablations
+6. family-threshold and family-weighting sensitivity
+7. possible flooding **donor leakage** → **confirmed valid**: one fixed donor fed both training
+   and test variants
+8. unsupported deployment/robustness claims ("production-ready", "seamless", "proves")
+9. missing secondary-control results
+10. incomplete reproducibility
+
+**The strategic tension you are resolving:** the evaluation framework is strong, but the *AI
+novelty* is thin. Phase 4 was designed as the decision-gated attempt to create real novelty
+(dual-view representation → Gate A; selective escalation → Gate B). **Gate A has now FAILED**
+(see the critical finding below), which makes the novelty question the single most important
+open item in the project. Do not manufacture novelty to fill the gap — establish what the
+evidence actually supports.
+
+## The approved contribution structure (evidence-decided, in priority order)
+
+1. **Task-aligned, dependence-aware EIP-7702 evaluation** — task alignment, frozen families,
+   corrected threshold-transfer protocol, donor isolation. *(Supported today.)*
+2. **Lightweight bytecode classification vs the strongest evaluated bytecode baselines.**
+   *(Supported today: AG − opcode_xgb Δ0.091, CI [0.042, 0.147].)*
+3. **Either** Gate A dual-view robustness **or** Gate B selective escalation — *whichever the
+   evidence supports.* Gate A has failed. If Gate B also fails, **do not fabricate a novelty
+   claim**: center the paper on (1) + (2) + the corrected robustness analysis + the
+   representation finding under investigation, and report the failed experiments honestly in
+   the internal reports.
+
+## The 6-phase program (as approved; use for orientation)
+
+| Phase | Scope | Status now |
+|---|---|---|
+| **0** | Workspace, frozen-artifact guard, protocols, shared harness | ✅ complete |
+| **1** | **Claim & protocol integrity**: (A) claim corrections, (B) G-DET/G-MUT/G-VOL threshold correction + FPR, (C) flooding donor audit + isolation + regeneration, (D) family-clustered uncertainty | A/B/D ✅; **C partially — G-ADV v2 must be rerun** |
+| **2** | **Minimum construct-validity package**: (A) conflicting-bytecode analysis, (B) manual label-audit support (no fabricated labels), (C) small execution-validation framework, (D) secondary controls | ✅ complete |
+| **3** | **Strong baselines, ablations, sensitivity**: (A) stronger baselines, (B) feature ablations, (C) family sensitivity, (D) weighting sensitivity | C/D ✅; **A/B must be rerun** |
+| **4** | **Decision-gated technical novelty** (time-boxed): Gate A terminal-aware dual-view; Gate B selective escalation | **Gate A ✅ FAILED**; **Gate B not started** |
+| **5** | **Reference-analyzer decision fork** (Gigahorse/Datalog reproduction vs blocker report) | ✅ **Option B (blocked)** |
+| **6** | **Reproducibility, operational analysis, manuscript integration**: (A) anonymous artifact, (B) operational analysis, (C) final manuscript framing | B ✅; **A/C pending** |
+
+## Boundaries the manuscript must always retain
+
+Artifact-derived labels; rule-silent weak negatives; limited independent validation;
+context-dependent identical bytecode; checker-constrained transformations; unevaluated wallet
+integration; no production-readiness evidence; **no speed/superiority claim vs the full
+Gigahorse/Datalog pipeline** (it was never executed).
+
+---
+
 ## Ground rules (unchanged, still binding)
 
 1. **Frozen evidence is immutable.** Never modify: `capability_dataset.csv`,
@@ -100,6 +200,29 @@ finding or a corpus/length shortcut.** Required work:
    representation design and contribution framing must change (a trivial terminal truncation
    would then be the strongest bytecode representation tested) — that is a legitimate and
    publishable result. Gate A's dual-view stays out of the paper either way (it failed).
+
+### Why this decides the ICTAI novelty question
+
+This is not a side quest — it determines what the paper *is*. Three branches, all acceptable:
+
+- **(a) Shortcut confirmed** (first-STOP collapses without length/metadata features): the paper
+  gains a genuine **dataset-artifact / shortcut-learning finding** — "a trivial truncation
+  appears to beat a 773-feature model, but only by exploiting a length regularity of an
+  artifact-derived positive corpus." That is a real methodological contribution for a
+  tools/evaluation paper and directly answers reviewer issue 5. Contribution structure = (1) +
+  (2) + shortcut finding.
+- **(b) Genuine finding** (first-STOP survives ablation + bootstrap): terminal-region truncation
+  is the strongest bytecode representation tested *and* is inherently flooding-robust. Then the
+  **representation insight becomes the technical contribution** (an EIP-7702-relevant,
+  empirically grounded one), replacing the failed dual-view. AuthGuard's full-view design must
+  be reframed accordingly — do not hide that a simpler method won.
+- **(c) Mixed** (partial survival): report the decomposition (how much is length, how much is
+  structure) and let Gate B decide whether escalation adds a second contribution.
+
+In every branch: **do not weaken Gate A's frozen criteria to resurrect the dual-view**, and do
+not claim novelty the ablations do not support. A rigorous negative result plus a corrected,
+donor-isolated, threshold-valid evaluation framework is a defensible ICTAI submission; an
+overclaimed novelty is not.
 
 ## What is INCOMPLETE (resume here)
 
