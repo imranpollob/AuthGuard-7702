@@ -1,0 +1,49 @@
+{
+  "command": "revision_v2/experiments/gadv_v2/run_gadv_v2.py",
+  "config": {
+    "protocols": [
+      "threshold_protocol_v2 (G-ADV primary=val fold)",
+      "donor_isolation_protocol v1.1"
+    ],
+    "seeds": [
+      7702,
+      7703,
+      7704
+    ],
+    "seen": [
+      "M0",
+      "M1",
+      "M2",
+      "F25",
+      "F50",
+      "F100"
+    ],
+    "held": [
+      "M3",
+      "F200",
+      "M3F200"
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T15:52:30Z",
+  "wall_seconds": 2476.6,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "inputs": {
+    "/home/pollmix/Coding/AuthGuard-7702/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/gadv_v2_results.json": "d8e5070cdda8c770471c7320cfad9a53ffe49551467e621f12b400766356f1c1",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/gadv_v2_paired_results.csv.gz": "52d21c1c9892b8f51160d9308a64f8c8e170f88ee5306e41ab0d8118f7b68f67",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/gadv_v2_thresholds.csv": "777c48b2c332b89e29dbf8b3aead81d80ccca25f94e9fc920d2c527743dc4438",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/gadv_v2_training_composition.csv": "bd1fdaefeca7d5e7ab50cac1494c610210c593decf27a58accc02134e14d7ad7",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/donor_ledger_gadv.csv.gz": "bf05e2479cb8c84acb065b50dfd8590f4ca1311fe9165830c5e04ad5ac2ee05d",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/gadv_v2/gadv_v2_leakage_assertions.txt": "254bfc5a1fb4ef216749f1b8a36311b5867149707ed363ba72aa37ca56f68dbf"
+  }
+}

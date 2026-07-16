@@ -29,11 +29,26 @@ shared corrected-protocol harness, and back-compat validation.
   (`revision_v2/audits/harness_validation.json`).
 - Frozen guard: 144/144 files verified unchanged after all Phase 0 work.
 
+## Resumed-host validation note (2026-07-16)
+
+The exact PASS above is the original macOS ARM64 record and remains preserved as
+`harness_validation_macos_arm.json`. On the resumed Linux x86_64 host, matched-library XGBoost
+histogram fits are deterministic but differ from the ARM fold scores (maximum absolute
+differences 0.022 AuthGuard and 0.055 opcode XGBoost), so current-host validation fails the
+1e-6 cross-platform tolerance. Remaining experiments use within-host comparisons only; see
+`cross_platform_validation.md`. This does not retroactively convert the original-host PASS into
+a cross-platform PASS.
+
 ## Numerical results
 None (infrastructure phase).
 
 ## Deviations / failures
-None.
+
+- The resumed Linux host does not satisfy the 1e-6 macOS ARM replay tolerance; all new model
+  comparisons are therefore within-host.
+- A finalization audit found that `protocols.sha256` was not refreshed when the committed
+  donor-isolation v1.1 amendment was made before donor-isolated results. Four of five entries
+  verify. The immutable file and ledger remain unchanged; see `protocol_hash_validation.md`.
 
 ## Frozen-hash verification
 PASS before and after phase (144 files).

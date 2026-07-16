@@ -1,0 +1,7 @@
+ALL G-ADV-V2 LEAKAGE + DONOR-ISOLATION ASSERTIONS PASSED
+fold 0: source/family overlap=0; train(+val)/test hash overlap=0; donor pools disjoint=True
+fold 1: source/family overlap=0; train(+val)/test hash overlap=0; donor pools disjoint=True
+fold 2: source/family overlap=0; train(+val)/test hash overlap=0; donor pools disjoint=True
+fold 3: source/family overlap=0; train(+val)/test hash overlap=0; donor pools disjoint=True
+fold 4: source/family overlap=0; train(+val)/test hash overlap=0; donor pools disjoint=True
+ledger rows: 103250

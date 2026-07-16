@@ -1,0 +1,14 @@
+revision_v2/experiments/baselines/run_baselines_ablations.py
+revision_v2/experiments/uncertainty/bootstrap_baselines.py
+revision_v2/experiments/family_sensitivity/run_family_sensitivity.py
+revision_v2/experiments/weighting/run_weighting.py
+revision_v2/results/baselines/
+revision_v2/results/ablations/
+revision_v2/results/first_stop/
+revision_v2/results/family_sensitivity/
+revision_v2/results/weighting/
+revision_v2/reports/phase_3_report.md
+revision_v2/reports/phase_3_changed_files.txt
+revision_v2/reports/phase_3_commands.sh
+revision_v2/reports/phase_3_results_manifest.csv
+revision_v2/reports/phase_3_failures.md

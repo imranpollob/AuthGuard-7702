@@ -9,6 +9,7 @@ presented as calibrated probabilities unless the calibration analysis supports i
 import json
 import os
 import sys
+import time
 
 import numpy as np
 import pandas as pd
@@ -19,7 +20,7 @@ from sklearn.metrics import brier_score_loss, precision_recall_curve, roc_curve
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "common"))
-from harness import RV2, SEED  # noqa: E402
+from harness import RV2, SEED, verify_frozen_or_die, write_manifest  # noqa: E402
 
 GDET = os.path.join(RV2, "results", "gdet_v2", "gdet_v2_per_row_scores.csv")
 OUT = os.path.join(RV2, "results", "operational")
@@ -41,6 +42,8 @@ def ece(y, p, bins=10):
 
 
 def main():
+    started = time.time()
+    verify_frozen_or_die()
     os.makedirs(OUT, exist_ok=True)
     df = pd.read_csv(GDET)
     d = pooled(df, "authguard")
@@ -102,6 +105,10 @@ def main():
                                     fraction_positive=frac_pos.tolist()))
     with open(os.path.join(OUT, "operational.json"), "w") as f:
         json.dump(payload, f, indent=2)
+    write_manifest(OUT, dict(protocol="family-disjoint operational and calibration analysis",
+                             seed=SEED, prevalence_scenarios=[0.001, 0.01, 0.05]),
+                   [os.path.join(OUT, "operational.json")], started, inputs=[GDET])
+    verify_frozen_or_die()
     print("prevalence", round(prevalence, 3), "| calib raw ECE", round(calib["raw"]["ece"], 3),
           "platt", round(calib["platt"]["ece"], 3), "iso", round(calib["isotonic"]["ece"], 3))
 

@@ -94,8 +94,8 @@ six==1.17.0
 slither-analyzer==0.11.3
 sniffio==1.3.1
 solc-select==1.1.0
-# Editable install with no version control (solidity-logic-hypergraph==0.1.0)
--e /Users/imranpollob/Coding/HyperSolGraph
+# Local editable package omitted from the anonymous snapshot
+# (solidity-logic-hypergraph==0.1.0; not required by revision-v2 experiments)
 starlette==0.48.0
 sumolib==1.24.0
 sympy==1.14.0

@@ -43,7 +43,7 @@ N_OUTER = 5
 N_INNER = 4
 
 XGB_HP = dict(n_estimators=300, max_depth=6, learning_rate=0.1, subsample=0.9,
-              colsample_bytree=0.8, eval_metric="logloss", n_jobs=4, tree_method="hist")
+              colsample_bytree=0.8, eval_metric="logloss", n_jobs=12, tree_method="hist")
 
 
 def blake_seed(*parts) -> int:
@@ -200,7 +200,7 @@ def make_xgb(cols):
 
 def make_rf(cols):
     def fit(X, y, seed):
-        clf = RandomForestClassifier(n_estimators=300, random_state=seed, n_jobs=4)
+        clf = RandomForestClassifier(n_estimators=300, random_state=seed, n_jobs=12)
         clf.fit(X[:, cols], y)
         return clf
     def score(m, X):
@@ -316,6 +316,15 @@ def write_manifest(outdir, config, outputs, started, inputs=None):
     import platform
     import sklearn
     import xgboost
+    def manifest_key(path):
+        absolute = os.path.abspath(path)
+        try:
+            if os.path.commonpath([ROOT, absolute]) == ROOT:
+                return os.path.relpath(absolute, ROOT)
+        except ValueError:
+            pass
+        return os.path.basename(absolute)
+
     man = dict(
         command=" ".join(sys.argv),
         config=config,
@@ -325,8 +334,9 @@ def write_manifest(outdir, config, outputs, started, inputs=None):
         versions=dict(python=sys.version.split()[0], numpy=np.__version__,
                       pandas=pd.__version__, sklearn=sklearn.__version__,
                       xgboost=xgboost.__version__, platform=platform.platform()),
-        inputs={p: sha256_file(p) for p in (inputs or []) if os.path.exists(p)},
-        outputs={p: sha256_file(p) for p in outputs if os.path.exists(p)},
+        path_policy="repository-relative; external inputs reduced to basename",
+        inputs={manifest_key(p): sha256_file(p) for p in (inputs or []) if os.path.exists(p)},
+        outputs={manifest_key(p): sha256_file(p) for p in outputs if os.path.exists(p)},
     )
     with open(os.path.join(outdir, "manifest.json"), "w") as f:
         json.dump(man, f, indent=2)
