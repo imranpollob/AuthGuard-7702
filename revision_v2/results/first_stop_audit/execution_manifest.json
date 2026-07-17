@@ -1,0 +1,27 @@
+{
+  "command": "revision_v2/experiments/first_stop_audit/run_execution_audit.py",
+  "config": {
+    "protocol": "first_stop_audit_protocol",
+    "seed": 7702,
+    "component": "bounded_execution_audit"
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T20:40:10Z",
+  "wall_seconds": 2.3,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "path_policy": "repository-relative; external inputs reduced to basename",
+  "inputs": {
+    "revision_v2/results/exec_validation/exec_validation.json": "8c0a8ea49eb17db01cc4df15bdb7931c1b6f984f5885dcf628c966bad08b240e"
+  },
+  "outputs": {
+    "revision_v2/results/first_stop_audit/execution_audit.json": "eaddb5a8e9a88883dcfb010e71eaa5f91550e1bc918aa8839fbcad72b0dc8363",
+    "revision_v2/results/first_stop_audit/execution_audit_per_call.csv": "02f1c119341631f6483dc14deb86ddc4d10e43e3a6b92b3c8b93b25e33b631f5"
+  }
+}
