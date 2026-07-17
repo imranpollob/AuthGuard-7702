@@ -1,0 +1,44 @@
+{
+  "seed": 7702,
+  "scope": "Ten previously selected delegates; empty/zero-selector plus up to eight PUSH4 selectors with zero arguments. Bounded trace evidence, not formal equivalence.",
+  "contracts": 10,
+  "calls": 100,
+  "contracts_with_static_post_first_stop_reachability": 10,
+  "contracts_with_observed_post_first_stop_execution": 10,
+  "calls_executing_post_first_stop": 92,
+  "calls_executing_cfg_removed_pc": 0,
+  "representations": {
+    "first_stop": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 22,
+      "execution_validation_rate": 0.22,
+      "all_calls_equivalent_contracts": 0,
+      "contracts": 10
+    },
+    "metadata_stripped": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_validation_rate": 1.0,
+      "all_calls_equivalent_contracts": 10,
+      "contracts": 10
+    },
+    "reachable_compact": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_validation_rate": 1.0,
+      "all_calls_equivalent_contracts": 10,
+      "contracts": 10
+    },
+    "reachable_masked_preserve_metadata": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_validation_rate": 1.0,
+      "all_calls_equivalent_contracts": 10,
+      "contracts": 10
+    }
+  }
+}
