@@ -1,0 +1,16 @@
+fold,model,threshold,splitter,train_rows
+0,authguard_seed7702,0.12586522102355957,StratifiedGroupKFold,1809
+0,authguard_seed7703,0.1710432767868042,StratifiedGroupKFold,1809
+0,hist_ngram_seed7702,0.17011454701423645,StratifiedGroupKFold,1809
+1,authguard_seed7702,0.06505899131298065,StratifiedGroupKFold,1821
+1,authguard_seed7703,0.2126091569662094,StratifiedGroupKFold,1821
+1,hist_ngram_seed7702,0.30825039744377136,StratifiedGroupKFold,1821
+2,authguard_seed7702,0.12755466997623444,StratifiedGroupKFold,1821
+2,authguard_seed7703,0.13548673689365387,StratifiedGroupKFold,1821
+2,hist_ngram_seed7702,0.20579999685287476,StratifiedGroupKFold,1821
+3,authguard_seed7702,0.14137113094329834,StratifiedGroupKFold,1819
+3,authguard_seed7703,0.1754613071680069,StratifiedGroupKFold,1819
+3,hist_ngram_seed7702,0.07235687226057053,StratifiedGroupKFold,1819
+4,authguard_seed7702,0.07051502913236618,StratifiedGroupKFold,1850
+4,authguard_seed7703,0.182331383228302,StratifiedGroupKFold,1850
+4,hist_ngram_seed7702,0.09103327989578247,StratifiedGroupKFold,1850
