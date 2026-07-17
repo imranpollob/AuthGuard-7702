@@ -1,0 +1,42 @@
+{
+  "scope": "local sequence preprocessing, model prediction, policy, evidence, and JSON-ready result",
+  "excludes": [
+    "RPC",
+    "network",
+    "wallet UI",
+    "process startup",
+    "model loading"
+  ],
+  "device": "cpu",
+  "environment": {
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.12",
+    "torch": "2.9.0+cu128"
+  },
+  "model": "revision_v2/results/authguard_fusion/model_sequence_only_s7702_f0.pt",
+  "model_bytes": 742561,
+  "model_load_ms": 10.046864,
+  "sample_size": 300,
+  "passes": 10,
+  "timed_calls": 3000,
+  "wall_milliseconds": {
+    "mean": 4.333623787333333,
+    "std": 3.6889331610078253,
+    "p50": 3.171696,
+    "p95": 14.073375249999998,
+    "p99": 16.905736149999985,
+    "min": 0.936347,
+    "max": 21.065792
+  },
+  "internal_milliseconds": {
+    "mean": 4.290857034,
+    "std": 3.6723159666477763,
+    "p50": 3.1338394999999997,
+    "p95": 13.978442649999993,
+    "p99": 16.81099787999998,
+    "min": 0.907112,
+    "max": 20.926628
+  },
+  "bytecode_preloaded": true
+}

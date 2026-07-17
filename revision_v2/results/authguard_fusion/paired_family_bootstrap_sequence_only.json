@@ -1,0 +1,142 @@
+{
+  "candidate": "sequence_only",
+  "baseline": "hist_ngram_xgb",
+  "seed": 7702,
+  "conditions": {
+    "F200": {
+      "rows": 2280,
+      "families": 819,
+      "metrics": {
+        "AUPRC": {
+          "candidate": 0.8827700352270248,
+          "baseline": 0.5513468983620404,
+          "delta": 0.33142313686498437,
+          "CI95": [
+            0.2561341812758097,
+            0.40892588024060683
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        },
+        "FPR_05": {
+          "candidate": 0.021249195106245976,
+          "baseline": 0.0437862202189311,
+          "delta": -0.022537025112685127,
+          "CI95": [
+            -0.037151751526541946,
+            -0.009025245306146554
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        },
+        "Recall_05": {
+          "candidate": 0.7537826685006878,
+          "baseline": 0.1733149931224209,
+          "delta": 0.5804676753782668,
+          "CI95": [
+            0.46784169390714475,
+            0.6794326241134752
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        }
+      }
+    },
+    "M3F200": {
+      "rows": 2280,
+      "families": 819,
+      "metrics": {
+        "AUPRC": {
+          "candidate": 0.8692981262212073,
+          "baseline": 0.5439177464784886,
+          "delta": 0.3253803797427187,
+          "CI95": [
+            0.256144328272156,
+            0.40156380437175526
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        },
+        "FPR_05": {
+          "candidate": 0.03541532517707663,
+          "baseline": 0.0360592401802962,
+          "delta": -0.0006439150032195723,
+          "CI95": [
+            -0.016620587172602383,
+            0.01425686127468343
+          ],
+          "excludes_zero": false,
+          "replicates": 10000
+        },
+        "Recall_05": {
+          "candidate": 0.7551581843191196,
+          "baseline": 0.20907840440165062,
+          "delta": 0.546079779917469,
+          "CI95": [
+            0.43654503581987264,
+            0.6434785824543349
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        }
+      }
+    },
+    "benign_general": {
+      "rows": 797,
+      "families": 437,
+      "metrics": {
+        "FPR_05": {
+          "candidate": 0.08531994981179424,
+          "baseline": 0.037641154328732745,
+          "delta": 0.04767879548306149,
+          "CI95": [
+            -0.020243812954439333,
+            0.15013111503452395
+          ],
+          "excludes_zero": false,
+          "replicates": 10000
+        }
+      }
+    },
+    "cleanM0": {
+      "rows": 2280,
+      "families": 819,
+      "metrics": {
+        "AUPRC": {
+          "candidate": 0.8909540444971216,
+          "baseline": 0.8338988380657222,
+          "delta": 0.057055206431399386,
+          "CI95": [
+            0.0022618721359134015,
+            0.11790415526588008
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        },
+        "FPR_05": {
+          "candidate": 0.03412749517063748,
+          "baseline": 0.05859626529298133,
+          "delta": -0.02446877012234385,
+          "CI95": [
+            -0.046583225976321904,
+            -0.004672819262686029
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        },
+        "Recall_05": {
+          "candidate": 0.8390646492434664,
+          "baseline": 0.6272352132049519,
+          "delta": 0.21182943603851445,
+          "CI95": [
+            0.09523640422077921,
+            0.33904158624801883
+          ],
+          "excludes_zero": true,
+          "replicates": 10000
+        }
+      }
+    }
+  },
+  "claim_policy": "Performance superiority requires a practically relevant positive delta whose paired family-clustered 95% interval excludes zero."
+}

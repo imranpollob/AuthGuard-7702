@@ -1,0 +1,16 @@
+{
+  "models": [
+    "sequence_only"
+  ],
+  "seeds": [
+    7703,
+    7704
+  ],
+  "device": "cuda",
+  "epochs": 30,
+  "patience": 5,
+  "batch_size": 16,
+  "chunk_size": 256,
+  "max_chunks": 64,
+  "frozen_verified": true
+}

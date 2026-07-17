@@ -1,0 +1,37 @@
+{
+  "manifest_columns": {
+    "sid": "object",
+    "chain": "object",
+    "address": "object",
+    "bytecode_sha256": "object",
+    "code_bytes": "int64",
+    "opcode_count": "int64",
+    "label": "int64",
+    "class": "object",
+    "family_id": "object",
+    "outer_fold_primary": "float64",
+    "outer_fold_secondary": "float64",
+    "label_provenance": "object",
+    "external_call_surface": "int64",
+    "state_write_surface": "int64",
+    "delegate_proxy_surface": "int64",
+    "token_movement_selector_surface": "int64",
+    "approval_selector_surface": "int64",
+    "code_lifecycle_surface": "int64",
+    "exact_duplicate_count": "int64",
+    "bytecode_group_id": "object"
+  },
+  "auxiliary_factor_order": [
+    "external_call_surface",
+    "state_write_surface",
+    "delegate_proxy_surface",
+    "token_movement_selector_surface",
+    "approval_selector_surface",
+    "code_lifecycle_surface"
+  ],
+  "token_cache": {
+    "tokens": "concatenated uint16 opcode token IDs",
+    "offsets": "int64 row boundaries, length rows+1",
+    "auxiliary": "float32 observable-factor targets"
+  }
+}
