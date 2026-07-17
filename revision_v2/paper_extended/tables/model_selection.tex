@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \centering
+  \caption{Validation-led model selection. Values are mean validation AUPRC over five folds for
+  seed 7702; test AUPRC was not used for selection.}
+  \label{tab:model-selection}
+  \scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular}{@{}lr@{}}
+    \toprule
+    Candidate & Validation AUPRC \\
+    \midrule
+    \textbf{Hierarchical sequence only} & \textbf{.9482} \\
+    Fusion + source-balanced augmentation & .9063 \\
+    Fusion + transformation consistency & .8890 \\
+    Fusion + multi-task objective & .8644 \\
+    Fusion without auxiliary objective & .8568 \\
+    Neural hashed n-gram branch only & .8350 \\
+    Dense structural branch only & .7051 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
