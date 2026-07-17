@@ -1,0 +1,165 @@
+{
+  "primary_track": {
+    "0.75": {
+      "structure": {
+        "n_families": 651,
+        "singletons": 365,
+        "singleton_pct": 56.1,
+        "malicious_bearing": 157,
+        "cross_class": 31,
+        "largest": 75,
+        "size_p50": 1.0,
+        "size_p95": 13.5,
+        "size_mean": 3.5023041474654377
+      },
+      "authguard": {
+        "family_AUPRC_mean": 0.8140612584840765,
+        "family_AUPRC_std": 0.12518268866183846,
+        "random_AUPRC_mean": 0.9752765467390121,
+        "random_minus_family": 0.16121528825493558,
+        "FPR_mean": 0.10476916287166124,
+        "F1_mean": 0.7324903926483478,
+        "folds_family_AUPRC": [
+          0.86328282959991,
+          0.8250626898569308,
+          0.573200081668333,
+          0.9315883558514074,
+          0.8771723354438014
+        ]
+      },
+      "opcode_xgb": {
+        "family_AUPRC_mean": 0.7662540877435104,
+        "family_AUPRC_std": 0.1278067731848587,
+        "random_AUPRC_mean": 0.9647400921185465,
+        "random_minus_family": 0.19848600437503605,
+        "FPR_mean": 0.17008525609694952,
+        "F1_mean": 0.6834743653531483,
+        "folds_family_AUPRC": [
+          0.743205416497377,
+          0.7611844627757228,
+          0.5470855468882646,
+          0.9252929496405481,
+          0.8545020629156392
+        ]
+      }
+    },
+    "0.85": {
+      "structure": {
+        "n_families": 819,
+        "singletons": 494,
+        "singleton_pct": 60.3,
+        "malicious_bearing": 209,
+        "cross_class": 25,
+        "largest": 58,
+        "size_p50": 1.0,
+        "size_p95": 9.0,
+        "size_mean": 2.7838827838827838
+      },
+      "authguard": {
+        "family_AUPRC_mean": 0.8775346464284753,
+        "family_AUPRC_std": 0.058301293736612754,
+        "random_AUPRC_mean": 0.9752765467390121,
+        "random_minus_family": 0.09774190031053676,
+        "FPR_mean": 0.06621118705537432,
+        "F1_mean": 0.7999892154596168,
+        "folds_family_AUPRC": [
+          0.8426069788249384,
+          0.8367650969400676,
+          0.815693703483533,
+          0.9259268870254417,
+          0.966680565868396
+        ]
+      },
+      "opcode_xgb": {
+        "family_AUPRC_mean": 0.7664906133468575,
+        "family_AUPRC_std": 0.08240542064286449,
+        "random_AUPRC_mean": 0.9647400921185465,
+        "random_minus_family": 0.19824947877168897,
+        "FPR_mean": 0.1574318450067816,
+        "F1_mean": 0.711155969953172,
+        "folds_family_AUPRC": [
+          0.6929764707039536,
+          0.8051483583303528,
+          0.6886136148625072,
+          0.7373141055373735,
+          0.9084005173001004
+        ]
+      }
+    },
+    "0.90": {
+      "structure": {
+        "n_families": 960,
+        "singletons": 631,
+        "singleton_pct": 65.7,
+        "malicious_bearing": 256,
+        "cross_class": 16,
+        "largest": 48,
+        "size_p50": 1.0,
+        "size_p95": 7.0,
+        "size_mean": 2.375
+      },
+      "authguard": {
+        "family_AUPRC_mean": 0.9131818090955652,
+        "family_AUPRC_std": 0.056042610164448406,
+        "random_AUPRC_mean": 0.9752765467390121,
+        "random_minus_family": 0.06209473764344686,
+        "FPR_mean": 0.067848928777219,
+        "F1_mean": 0.8246867551600234,
+        "folds_family_AUPRC": [
+          0.9621853091219456,
+          0.8558988046786533,
+          0.8349720653159663,
+          0.9654880586907301,
+          0.9473648076705307
+        ]
+      },
+      "opcode_xgb": {
+        "family_AUPRC_mean": 0.8455631424868081,
+        "family_AUPRC_std": 0.06189436620672758,
+        "random_AUPRC_mean": 0.9647400921185465,
+        "random_minus_family": 0.11917694963173842,
+        "FPR_mean": 0.10832111760048257,
+        "F1_mean": 0.7672697206819579,
+        "folds_family_AUPRC": [
+          0.8817001748566012,
+          0.7486865487044156,
+          0.797132713550322,
+          0.9090659138949929,
+          0.8912303614277086
+        ]
+      }
+    }
+  },
+  "sensitivity_track": {
+    "recomputed_0.85": {
+      "structure": {
+        "n_families": 817,
+        "singletons": 492,
+        "singleton_pct": 60.2,
+        "malicious_bearing": 209,
+        "cross_class": 25,
+        "largest": 58,
+        "size_p50": 1.0,
+        "size_p95": 9.0,
+        "size_mean": 2.7906976744186047
+      },
+      "authguard": {
+        "family_AUPRC_mean": 0.8744291376288883,
+        "family_AUPRC_std": 0.0595130560703483,
+        "random_AUPRC_mean": 0.9752765467390121,
+        "random_minus_family": 0.1008474091101238,
+        "FPR_mean": 0.07025846821237867,
+        "F1_mean": 0.7783401364645834,
+        "folds_family_AUPRC": [
+          0.7996138689165317,
+          0.8855584435820929,
+          0.8173227449112671,
+          0.961576919717549,
+          0.9080737110170006
+        ]
+      },
+      "adjusted_rand_vs_frozen": 0.9977215837101973,
+      "note": "Sensitivity analysis only; frozen families remain the primary outcome."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+\begin{table*}[t]
+  \centering
+  \caption{Primary-seed paired family-clustered comparison against the strongest baseline. Values
+  pool held-out rows across five folds; CIs use 10,000 paired family-bootstrap replicates.}
+  \label{tab:bootstrap}
+  \scriptsize
+  \setlength{\tabcolsep}{4.2pt}
+  \begin{tabular}{@{}llrrrrl@{}}
+    \toprule
+    Condition & Metric & Sequence & Baseline & $\Delta$ & \multicolumn{1}{c}{95\% CI for $\Delta$} \\
+    \midrule
+    Clean M0 & AUPRC & .8910 & .8339 & +.0571 & $[+.0023,+.1179]$ \\
+             & Recall@5 & .8391 & .6272 & +.2118 & $[+.0952,+.3390]$ \\
+             & achieved FPR@5 & .0341 & .0586 & -.0245 & $[-.0466,-.0047]$ \\
+    \midrule
+    F200 & AUPRC & .8828 & .5513 & +.3314 & $[+.2561,+.4089]$ \\
+         & Recall@5 & .7538 & .1733 & +.5805 & $[+.4678,+.6794]$ \\
+         & achieved FPR@5 & .0212 & .0438 & -.0225 & $[-.0372,-.0090]$ \\
+    \midrule
+    M3+F200 & AUPRC & .8693 & .5439 & +.3254 & $[+.2561,+.4016]$ \\
+            & Recall@5 & .7552 & .2091 & +.5461 & $[+.4365,+.6435]$ \\
+            & achieved FPR@5 & .0354 & .0361 & -.0006 & $[-.0166,+.0143]$ \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+

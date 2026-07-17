@@ -1,0 +1,16 @@
+\begin{tabular}{lcccccc}
+\toprule
+Method & AUPRC (fam) & AUROC & F1 & Prec & Rec & FPR \\
+\midrule
+AuthGuard & 0.881$\pm$0.028 & 0.943 & 0.782 & 0.794 & 0.808 & 0.101 \\
+opcode-hist XGBoost & 0.784$\pm$0.081 & 0.883 & 0.722 & 0.694 & 0.781 & 0.157 \\
+opcode-hist RF & 0.744$\pm$0.085 & 0.878 & 0.690 & 0.676 & 0.729 & 0.162 \\
+selector LR & 0.515$\pm$0.066 & 0.666 & 0.451 & 0.343 & 0.787 & 0.728 \\
+sensitive-name approx & 0.344$\pm$0.094 & 0.520 & 0.079 & 0.884 & 0.043 & 0.002 \\
+external-call over-approx & 0.328$\pm$0.078 & 0.518 & 0.489 & 0.328 & 1.000 & 0.965 \\
+exact-hash blocklist & 0.321$\pm$0.077 & 0.500 & 0.000 & 0.000 & 0.000 & 0.000 \\
+\midrule
+AuthGuard (random split) & 0.975 & 0.990 & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+% AuthGuard AUPRC bootstrap CI [0.8042828944766794, 0.9216561335626456]; AG-vs-opcode_xgb delta 0.091 CI [0.04199797607784843, 0.14700019776214776]

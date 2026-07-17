@@ -1,0 +1,1769 @@
+{
+  "n_groups": 23,
+  "n_rows": 103,
+  "category_counts": {
+    "context_dependent_behavior": 11,
+    "likely_label_inconsistency": 9,
+    "external_dependency_difference": 2,
+    "unresolved": 1
+  },
+  "rule_cascade": [
+    "delegation-pointer/proxy -> external_dependency_difference",
+    "USENIX facts fire for malicious rows only -> likely_label_inconsistency",
+    "storage-gated owner() logic -> initialization_or_state_difference",
+    "multi-chain, no mechanism evidence -> context_dependent_behavior",
+    "else unresolved"
+  ],
+  "note": "Quarantine is preserved; no row is restored to the primary task.",
+  "groups": [
+    {
+      "normalized_bytecode_sha256": "0ca5fb77e4789a27eb7cfe78004ee686bc4d9dda5cd9f7be0764f820a9075804",
+      "rows": 4,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 3,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00008"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x163193c89de836e82bb121bd0dbcaba7e8ba67dc",
+        "0x163193c89de836e82bb121bd0dbcaba7e8ba67dc",
+        "0x163193c89de836e82bb121bd0dbcaba7e8ba67dc"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x163193c89de836e82bb121bd0dbcaba7e8ba67dc"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3597,
+        "n_ops": 2164,
+        "has_delegatecall": false,
+        "n_call_family": 6,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 9,
+        "n_push20": 13,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x163193c89de836e82bb121bd0dbcaba7e8ba67dc": {
+          "status": "ok",
+          "code_sha": "0ca5fb77e4789a27eb7cfe78004ee686bc4d9dda5cd9f7be0764f820a9075804",
+          "code_bytes": 3597
+        },
+        "base:0x163193c89de836e82bb121bd0dbcaba7e8ba67dc": {
+          "status": "ok",
+          "code_sha": "0ca5fb77e4789a27eb7cfe78004ee686bc4d9dda5cd9f7be0764f820a9075804",
+          "code_bytes": 3597
+        },
+        "bnb:0x163193c89de836e82bb121bd0dbcaba7e8ba67dc": {
+          "status": "ok",
+          "code_sha": "0ca5fb77e4789a27eb7cfe78004ee686bc4d9dda5cd9f7be0764f820a9075804",
+          "code_bytes": 3597
+        },
+        "ethereum:0x163193c89de836e82bb121bd0dbcaba7e8ba67dc": {
+          "status": "ok",
+          "code_sha": "0ca5fb77e4789a27eb7cfe78004ee686bc4d9dda5cd9f7be0764f820a9075804",
+          "code_bytes": 3597
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "188059c984f36334acb7836207df0d925d5809afc0522996f1732f1b449b454d",
+      "rows": 3,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "ethereum"
+      ],
+      "n_distinct_addresses": 3,
+      "family_ids": [
+        "F00095"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0xf0360a17c4211e87d592f4e15775860885e82047",
+        "0x7b623047ae4c022ff9683b4f81b99756734d4c6e"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 2865,
+        "n_ops": 1852,
+        "has_delegatecall": false,
+        "n_call_family": 7,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 8,
+        "n_push20": 3,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "base:0xf0360a17c4211e87d592f4e15775860885e82047": {
+          "status": "ok",
+          "code_sha": "188059c984f36334acb7836207df0d925d5809afc0522996f1732f1b449b454d",
+          "code_bytes": 2865
+        },
+        "bnb:0x7b623047ae4c022ff9683b4f81b99756734d4c6e": {
+          "status": "ok",
+          "code_sha": "188059c984f36334acb7836207df0d925d5809afc0522996f1732f1b449b454d",
+          "code_bytes": 2865
+        },
+        "ethereum:0x87caaf8d711f7cfdec1c2d30070c65f25ee6907e": {
+          "status": "ok",
+          "code_sha": "188059c984f36334acb7836207df0d925d5809afc0522996f1732f1b449b454d",
+          "code_bytes": 2865
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 2 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "1a3a594f51a400f912ddf8c8676fbaa484dc5f443f967175cffc92eb879a1134",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "benign_general"
+      ],
+      "class_counts": {
+        "benign_general": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "ethereum(implied)"
+      ],
+      "n_distinct_addresses": 2,
+      "family_ids": [
+        "F00443"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "contextual_negative_subset_overlap"
+      ],
+      "usenix_fact_addresses_malicious": [],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 61,
+        "n_ops": 25,
+        "has_delegatecall": true,
+        "n_call_family": 1,
+        "has_sstore": false,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 0,
+        "n_push20": 0,
+        "is_delegation_pointer": false,
+        "proxy_like": true
+      },
+      "onchain_getcode": {
+        "ethereum(implied):0xe07bbe773fad6f16a963c472284b7fb1c10ef7de": {
+          "status": "no_rpc_for_chain"
+        },
+        "base:0xc55fb074fb13116c979161cc797eeca144e3cf7b": {
+          "status": "ok",
+          "code_sha": "1a3a594f51a400f912ddf8c8676fbaa484dc5f443f967175cffc92eb879a1134",
+          "code_bytes": 61
+        }
+      },
+      "category": "external_dependency_difference",
+      "confidence": "medium",
+      "rationale": "bytecode is a delegation pointer or minimal DELEGATECALL proxy; observed behavior depends on an external implementation, so identical bytecode can act differently per deployment",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "2c3f495c319db65c62bd60eb4e5f01ef8c423739549e56735e7c904770058642",
+      "rows": 4,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 2
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00008"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9",
+        "0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9",
+        "0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3597,
+        "n_ops": 2164,
+        "has_delegatecall": false,
+        "n_call_family": 6,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 9,
+        "n_push20": 13,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "base:0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9": {
+          "status": "ok",
+          "code_sha": "2c3f495c319db65c62bd60eb4e5f01ef8c423739549e56735e7c904770058642",
+          "code_bytes": 3597
+        },
+        "bnb:0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9": {
+          "status": "ok",
+          "code_sha": "2c3f495c319db65c62bd60eb4e5f01ef8c423739549e56735e7c904770058642",
+          "code_bytes": 3597
+        },
+        "optimism:0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9": {
+          "status": "ok",
+          "code_sha": "2c3f495c319db65c62bd60eb4e5f01ef8c423739549e56735e7c904770058642",
+          "code_bytes": 3597
+        },
+        "ethereum:0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9": {
+          "status": "ok",
+          "code_sha": "2c3f495c319db65c62bd60eb4e5f01ef8c423739549e56735e7c904770058642",
+          "code_bytes": 3597
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "34c003e6b0c5e271566fa969a7b3d9c0c7ea72f6851ee4edc6e419ad11d7eeaa",
+      "rows": 3,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "bnb",
+        "polygon"
+      ],
+      "n_distinct_addresses": 3,
+      "family_ids": [
+        "F00022"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x86202a37472ee00ab43e434b197c6806592cd505",
+        "0xd5bad6fa911fb8a7e7da9609d66b5bcb086bece8"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 3136,
+        "n_ops": 2027,
+        "has_delegatecall": false,
+        "n_call_family": 4,
+        "has_sstore": true,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 6,
+        "n_push20": 10,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "arbitrum:0x86202a37472ee00ab43e434b197c6806592cd505": {
+          "status": "ok",
+          "code_sha": "34c003e6b0c5e271566fa969a7b3d9c0c7ea72f6851ee4edc6e419ad11d7eeaa",
+          "code_bytes": 3136
+        },
+        "polygon:0xd5bad6fa911fb8a7e7da9609d66b5bcb086bece8": {
+          "status": "ok",
+          "code_sha": "34c003e6b0c5e271566fa969a7b3d9c0c7ea72f6851ee4edc6e419ad11d7eeaa",
+          "code_bytes": 3136
+        },
+        "bnb:0xb6d610ba7958808ac9104664ea431fea52648ab3": {
+          "status": "ok",
+          "code_sha": "34c003e6b0c5e271566fa969a7b3d9c0c7ea72f6851ee4edc6e419ad11d7eeaa",
+          "code_bytes": 3136
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 2 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "39dfe1d4eea40830da3c4cf35e9f36af105f03f5128c2271aa55ea5ea2d48965",
+      "rows": 3,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "optimism"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00008"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e",
+        "0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3597,
+        "n_ops": 2159,
+        "has_delegatecall": false,
+        "n_call_family": 6,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 8,
+        "n_push20": 13,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e": {
+          "status": "ok",
+          "code_sha": "39dfe1d4eea40830da3c4cf35e9f36af105f03f5128c2271aa55ea5ea2d48965",
+          "code_bytes": 3597
+        },
+        "base:0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e": {
+          "status": "ok",
+          "code_sha": "39dfe1d4eea40830da3c4cf35e9f36af105f03f5128c2271aa55ea5ea2d48965",
+          "code_bytes": 3597
+        },
+        "bnb:0x38f34ffe6266c3f3e6a2c1e2a2ff091884a5482e": {
+          "status": "ok",
+          "code_sha": "39dfe1d4eea40830da3c4cf35e9f36af105f03f5128c2271aa55ea5ea2d48965",
+          "code_bytes": 3597
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+      "rows": 7,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 6,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "gnosis",
+        "optimism",
+        "polygon"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00013"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1",
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1",
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1",
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1",
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1",
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3606,
+        "n_ops": 1928,
+        "has_delegatecall": false,
+        "n_call_family": 7,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 7,
+        "n_push20": 6,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "gnosis:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "arbitrum:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "base:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "ethereum:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "bnb:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "polygon:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        },
+        "optimism:0x00000c272170dc4b34d1e2a581f9f7fe48f42bc1": {
+          "status": "ok",
+          "code_sha": "3ae4cfe93da4631b65b71a235ed97da78d7a702eee64a01bd93d0c74418ad1dd",
+          "code_bytes": 3606
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "490e0649d18fa669fe325467c8e7cc822e56bd625bd3c0c0cbdbf1e1f1da35a5",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "benign_general"
+      ],
+      "class_counts": {
+        "benign_general": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "ethereum(implied)"
+      ],
+      "n_distinct_addresses": 2,
+      "family_ids": [
+        "F00566"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "contextual_negative_subset_overlap"
+      ],
+      "usenix_fact_addresses_malicious": [],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 831,
+        "n_ops": 513,
+        "has_delegatecall": true,
+        "n_call_family": 4,
+        "has_sstore": false,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 2,
+        "n_push20": 0,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "ethereum(implied):0x6dda84b230518162f0dc4cb88c12816985685f1c": {
+          "status": "no_rpc_for_chain"
+        },
+        "base:0xb166e8b140d35d9d8226e40c09f757bac5a4d87d": {
+          "status": "ok",
+          "code_sha": "490e0649d18fa669fe325467c8e7cc822e56bd625bd3c0c0cbdbf1e1f1da35a5",
+          "code_bytes": 831
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+      "rows": 6,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 5,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00013"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05",
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05",
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05",
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05",
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x00000b1fd44d7ac41423956f5d2fb7405e026d05"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 4132,
+        "n_ops": 2164,
+        "has_delegatecall": false,
+        "n_call_family": 8,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 8,
+        "n_push20": 9,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        },
+        "base:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        },
+        "ethereum:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        },
+        "bnb:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        },
+        "polygon:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        },
+        "arbitrum:0x00000b1fd44d7ac41423956f5d2fb7405e026d05": {
+          "status": "ok",
+          "code_sha": "4cb6506a9306f9358be22b5139ea5070ca36dd6b33c9b9af2da4d5ca65b80187",
+          "code_bytes": 4132
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "796026a55135dde4b5d0723acf7290a69f33c4b17783053d403e28585bc4e6c2",
+      "rows": 3,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "benign_cleared": 2,
+        "malicious": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base"
+      ],
+      "n_distinct_addresses": 3,
+      "family_ids": [
+        "F00006"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x24be67cbe39483da97efacce750b16dd34585a2f"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 2267,
+        "n_ops": 1382,
+        "has_delegatecall": false,
+        "n_call_family": 1,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 4,
+        "n_push20": 11,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "base:0x24be67cbe39483da97efacce750b16dd34585a2f": {
+          "status": "ok",
+          "code_sha": "796026a55135dde4b5d0723acf7290a69f33c4b17783053d403e28585bc4e6c2",
+          "code_bytes": 2267
+        },
+        "arbitrum:0xb56c1b9d03ba4b3958092bfdd27b25cba02c5031": {
+          "status": "ok",
+          "code_sha": "796026a55135dde4b5d0723acf7290a69f33c4b17783053d403e28585bc4e6c2",
+          "code_bytes": 2267
+        },
+        "arbitrum:0x7a1ed3177dc70fdb2635bc57238a26b4319f8218": {
+          "status": "ok",
+          "code_sha": "796026a55135dde4b5d0723acf7290a69f33c4b17783053d403e28585bc4e6c2",
+          "code_bytes": 2267
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 1 malicious-labeled address(es) but for none of the 2 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "7d9471f840191795f4bbb1488c91726f1fa83823ef429dfed6867b9c51fa48cd",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "benign_general"
+      ],
+      "class_counts": {
+        "benign_general": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "ethereum",
+        "ethereum(implied)"
+      ],
+      "n_distinct_addresses": 2,
+      "family_ids": [
+        "F00271"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "contextual_negative_subset_overlap"
+      ],
+      "usenix_fact_addresses_malicious": [],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 177,
+        "n_ops": 90,
+        "has_delegatecall": true,
+        "n_call_family": 1,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 0,
+        "n_push20": 0,
+        "is_delegation_pointer": false,
+        "proxy_like": true
+      },
+      "onchain_getcode": {
+        "ethereum(implied):0x1a8157cc2590798473c161e96c707f6b8bb96151": {
+          "status": "no_rpc_for_chain"
+        },
+        "ethereum:0xcf446713ddf0e83f7527a260047f8ae89efae3e5": {
+          "status": "ok",
+          "code_sha": "7d9471f840191795f4bbb1488c91726f1fa83823ef429dfed6867b9c51fa48cd",
+          "code_bytes": 177
+        }
+      },
+      "category": "external_dependency_difference",
+      "confidence": "medium",
+      "rationale": "bytecode is a delegation pointer or minimal DELEGATECALL proxy; observed behavior depends on an external implementation, so identical bytecode can act differently per deployment",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "8bca79e4501d7ebb6984dece7d1984657710c3c605f90f642d0dc5fb40074a57",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "optimism"
+      ],
+      "n_distinct_addresses": 2,
+      "family_ids": [
+        "F00020"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x709d5b91c2549b23ae535edeca913d39e5e19dd5"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0xef8d4573baa3b18c3997564898a00419e29de5c8"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 1837,
+        "n_ops": 1025,
+        "has_delegatecall": false,
+        "n_call_family": 5,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 4,
+        "n_push20": 11,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x709d5b91c2549b23ae535edeca913d39e5e19dd5": {
+          "status": "ok",
+          "code_sha": "8bca79e4501d7ebb6984dece7d1984657710c3c605f90f642d0dc5fb40074a57",
+          "code_bytes": 1837
+        },
+        "arbitrum:0xef8d4573baa3b18c3997564898a00419e29de5c8": {
+          "status": "ok",
+          "code_sha": "8bca79e4501d7ebb6984dece7d1984657710c3c605f90f642d0dc5fb40074a57",
+          "code_bytes": 1837
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+      "rows": 9,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 8,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "bnb",
+        "ethereum",
+        "polygon"
+      ],
+      "n_distinct_addresses": 8,
+      "family_ids": [
+        "F00047"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x47c74dfd54b2bf7362e5976d748aad24c4f1f36d",
+        "0x95ad3b610da3f60e2e169dc778e29b0c0cfd673e",
+        "0xc5b950876867047fdeed1981d249b21d01cbdc68",
+        "0xb6da1852c218d74257593126fdfbd20f0bceb2a8",
+        "0x6a690c2b94fa1f07668fcdc47cfe0cecb197c1b7",
+        "0x015e97a68f426152ec1d46c8350a59c83acadf73",
+        "0x19ea8add9df97069e1d6530d06435eed0053c698",
+        "0x47c74dfd54b2bf7362e5976d748aad24c4f1f36d"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 1045,
+        "n_ops": 531,
+        "has_delegatecall": false,
+        "n_call_family": 1,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 3,
+        "n_push20": 11,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "arbitrum:0x47c74dfd54b2bf7362e5976d748aad24c4f1f36d": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "arbitrum:0x95ad3b610da3f60e2e169dc778e29b0c0cfd673e": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "arbitrum:0xc5b950876867047fdeed1981d249b21d01cbdc68": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "ethereum:0xb6da1852c218d74257593126fdfbd20f0bceb2a8": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "ethereum:0x6a690c2b94fa1f07668fcdc47cfe0cecb197c1b7": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "polygon:0x015e97a68f426152ec1d46c8350a59c83acadf73": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "polygon:0x19ea8add9df97069e1d6530d06435eed0053c698": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "polygon:0x47c74dfd54b2bf7362e5976d748aad24c4f1f36d": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        },
+        "bnb:0x3e6cb32e4e92406e34dddb53f8ab008e96a986b5": {
+          "status": "ok",
+          "code_sha": "a2850b7e380f2a39a194fbf8c4ed8ef4c283219a2d898a88d52635fed7552f47",
+          "code_bytes": 1045
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 8 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+      "rows": 8,
+      "classes": [
+        "benign_AA",
+        "benign_cleared"
+      ],
+      "class_counts": {
+        "benign_cleared": 7,
+        "benign_AA": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "gnosis",
+        "optimism",
+        "polygon"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00216"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "contextual_negative_subset_overlap"
+      ],
+      "usenix_fact_addresses_malicious": [],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 11162,
+        "n_ops": 6249,
+        "has_delegatecall": false,
+        "n_call_family": 9,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 19,
+        "n_push20": 0,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "ethereum:0x5A7FC11397E9a8AD41BF10bf13F22B0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "optimism:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "gnosis:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "arbitrum:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "base:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "ethereum:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "bnb:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        },
+        "polygon:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d": {
+          "status": "ok",
+          "code_sha": "b1f4af90ec06c826514ec9eee2ffca0a735d8f1245557767b44b54800523a433",
+          "code_bytes": 11162
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "b7a02afc65b777ec2f8a7f98ab3ae88f12e81116fa2c009a7ed34ef430e15322",
+      "rows": 4,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 2
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "optimism"
+      ],
+      "n_distinct_addresses": 4,
+      "family_ids": [
+        "F00056"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x48d17cfdc804aacbd54e0110b9421735ad055799",
+        "0xcc7c302c5482481e9b608e0e78be18c3d0ab62a7"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 1347,
+        "n_ops": 810,
+        "has_delegatecall": false,
+        "n_call_family": 3,
+        "has_sstore": false,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 5,
+        "n_push20": 11,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "arbitrum:0x48d17cfdc804aacbd54e0110b9421735ad055799": {
+          "status": "ok",
+          "code_sha": "b7a02afc65b777ec2f8a7f98ab3ae88f12e81116fa2c009a7ed34ef430e15322",
+          "code_bytes": 1347
+        },
+        "base:0xcc7c302c5482481e9b608e0e78be18c3d0ab62a7": {
+          "status": "ok",
+          "code_sha": "b7a02afc65b777ec2f8a7f98ab3ae88f12e81116fa2c009a7ed34ef430e15322",
+          "code_bytes": 1347
+        },
+        "optimism:0xd17d427861bc013df1cfcf3b883a9834485844b9": {
+          "status": "ok",
+          "code_sha": "b7a02afc65b777ec2f8a7f98ab3ae88f12e81116fa2c009a7ed34ef430e15322",
+          "code_bytes": 1347
+        },
+        "bnb:0x779d6069274344006d375f113ec2c363acac7778": {
+          "status": "ok",
+          "code_sha": "b7a02afc65b777ec2f8a7f98ab3ae88f12e81116fa2c009a7ed34ef430e15322",
+          "code_bytes": 1347
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 2 malicious-labeled address(es) but for none of the 2 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "b8a2f27124efa70262602e829b991214707532855d93278f9cfe1ce25713077a",
+      "rows": 3,
+      "classes": [
+        "benign_AA",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_AA": 1
+      },
+      "chains": [
+        "base",
+        "optimism"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00009"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x7702cb554e6bfb442cb743a7df23154544a7176c",
+        "0x7702cb554e6bfb442cb743a7df23154544a7176c"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x7702cb554e6bfb442cb743a7df23154544a7176c"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3318,
+        "n_ops": 1348,
+        "has_delegatecall": true,
+        "n_call_family": 7,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 3,
+        "n_push20": 12,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x7702cb554e6bfb442cb743a7df23154544a7176c": {
+          "status": "ok",
+          "code_sha": "b8a2f27124efa70262602e829b991214707532855d93278f9cfe1ce25713077a",
+          "code_bytes": 3318
+        },
+        "base:0x7702cb554e6bfb442cb743a7df23154544a7176c": {
+          "status": "ok",
+          "code_sha": "b8a2f27124efa70262602e829b991214707532855d93278f9cfe1ce25713077a",
+          "code_bytes": 3318
+        },
+        "base:0x7702cb554e6bFb442cb743A7dF23154544a7176C": {
+          "status": "ok",
+          "code_sha": "b8a2f27124efa70262602e829b991214707532855d93278f9cfe1ce25713077a",
+          "code_bytes": 3318
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "bc5db2983acf061b9a26833536d0e4a2f1737f8e7dd4eee17ccea85405c72d05",
+      "rows": 2,
+      "classes": [
+        "benign_AA",
+        "benign_cleared"
+      ],
+      "class_counts": {
+        "benign_AA": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "ethereum"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00215"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "contextual_negative_subset_overlap"
+      ],
+      "usenix_fact_addresses_malicious": [],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 11185,
+        "n_ops": 7006,
+        "has_delegatecall": false,
+        "n_call_family": 10,
+        "has_sstore": false,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 56,
+        "n_push20": 0,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "ethereum:0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B": {
+          "status": "ok",
+          "code_sha": "bc5db2983acf061b9a26833536d0e4a2f1737f8e7dd4eee17ccea85405c72d05",
+          "code_bytes": 11185
+        },
+        "ethereum:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b": {
+          "status": "ok",
+          "code_sha": "bc5db2983acf061b9a26833536d0e4a2f1737f8e7dd4eee17ccea85405c72d05",
+          "code_bytes": 11185
+        }
+      },
+      "category": "unresolved",
+      "confidence": "low",
+      "rationale": "no repository evidence distinguishes the labels",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+      "rows": 6,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 5,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "n_distinct_addresses": 6,
+      "family_ids": [
+        "F00031"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0xaf85108636450fa70913d00f5d3e6ab6c0963173",
+        "0x9ca41e08cfdc9332d7c6319dfb8319cafb15d631",
+        "0x46b197052238b4512b23dec042315da374fa7e5c",
+        "0xff883867b9d850d5a3aadfa77102505550ea3caf",
+        "0xcd7220c1b55f4f9fe3a71f22375c8b7f1cbbe110"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 3452,
+        "n_ops": 1980,
+        "has_delegatecall": true,
+        "n_call_family": 7,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 6,
+        "n_push20": 17,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0xaf85108636450fa70913d00f5d3e6ab6c0963173": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        },
+        "base:0x9ca41e08cfdc9332d7c6319dfb8319cafb15d631": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        },
+        "ethereum:0x46b197052238b4512b23dec042315da374fa7e5c": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        },
+        "bnb:0xff883867b9d850d5a3aadfa77102505550ea3caf": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        },
+        "polygon:0xcd7220c1b55f4f9fe3a71f22375c8b7f1cbbe110": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        },
+        "arbitrum:0xb2816f82ec8b8d137b010c1606c8b00440928489": {
+          "status": "ok",
+          "code_sha": "bd4feeea4f33d73891a5e4ad285b9e3d8c719394eb982bcbdd670ebdc81f268d",
+          "code_bytes": 3452
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 5 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+      "rows": 13,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 12,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "optimism"
+      ],
+      "n_distinct_addresses": 13,
+      "family_ids": [
+        "F00006"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0xb8403bd4d3dd7e0a609b802e5b93934ad307d819",
+        "0x41b8fdb74b298f280ddc2e47726b5ed1699aa3a5",
+        "0x39839d99bc4a197b20883b1a81029eb18c3c69a0",
+        "0x458798aaef492a9231be0521f91c12dacc8eeeda",
+        "0xc359b5245feec07a65de5e4b595d9532854e6e66",
+        "0xc140266a4add6b6aa23bd8e665947ce867f0899f",
+        "0x388673180e094231f236a65c185bb756c6ebd5cc",
+        "0x3aa44aa577035dd8de9e4250cf373e2a02a11ac8",
+        "0x6ff2e3697e9900803adfc54990bb4a306f352c42",
+        "0x9afcf76a3cba1779950916fc25e03e91a7ffdbcf",
+        "0xa1235ff6ef7ab4172c047c754fc0be67931a98ee",
+        "0xfb9bec6c9c6128d91055da84294a94ba4f271bc2"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 2267,
+        "n_ops": 1388,
+        "has_delegatecall": false,
+        "n_call_family": 1,
+        "has_sstore": true,
+        "has_sload": true,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 4,
+        "n_push20": 11,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0xb8403bd4d3dd7e0a609b802e5b93934ad307d819": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0x41b8fdb74b298f280ddc2e47726b5ed1699aa3a5": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0x39839d99bc4a197b20883b1a81029eb18c3c69a0": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0x458798aaef492a9231be0521f91c12dacc8eeeda": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0xc359b5245feec07a65de5e4b595d9532854e6e66": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0xc140266a4add6b6aa23bd8e665947ce867f0899f": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0x388673180e094231f236a65c185bb756c6ebd5cc": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "base:0x3aa44aa577035dd8de9e4250cf373e2a02a11ac8": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "bnb:0x6ff2e3697e9900803adfc54990bb4a306f352c42": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "bnb:0x9afcf76a3cba1779950916fc25e03e91a7ffdbcf": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "bnb:0xa1235ff6ef7ab4172c047c754fc0be67931a98ee": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "bnb:0xfb9bec6c9c6128d91055da84294a94ba4f271bc2": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        },
+        "bnb:0xb18ee8b9ee6b53fdcf53d92b936529d7811e773e": {
+          "status": "ok",
+          "code_sha": "d0e44b61e7e3bd708f92cc9f6b5b0197ad7053a815f4218289717701ae0508a4",
+          "code_bytes": 2267
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 12 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "d208e7bfab2fd7a0be88833c44503eba541dffb39a307e730bf1464bb1e74d89",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "bnb"
+      ],
+      "n_distinct_addresses": 2,
+      "family_ids": [
+        "F00207"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0xd668de26719625c03e330d63117f254a5299c5fb"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 577,
+        "n_ops": 354,
+        "has_delegatecall": false,
+        "n_call_family": 1,
+        "has_sstore": false,
+        "has_sload": true,
+        "has_owner_selector": true,
+        "has_sensitive_selector": false,
+        "n_selectors": 1,
+        "n_push20": 4,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "bnb:0xd668de26719625c03e330d63117f254a5299c5fb": {
+          "status": "ok",
+          "code_sha": "d208e7bfab2fd7a0be88833c44503eba541dffb39a307e730bf1464bb1e74d89",
+          "code_bytes": 577
+        },
+        "bnb:0x63be252040e241564d20a05342d8c38eb6e079a7": {
+          "status": "ok",
+          "code_sha": "d208e7bfab2fd7a0be88833c44503eba541dffb39a307e730bf1464bb1e74d89",
+          "code_bytes": 577
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "high",
+      "rationale": "USENIX rule-firing facts exist for 1 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "d42632bf8c30fa06c304d9355c7e9447f6b4a6faab3b753e0aacfae4bb5bba68",
+      "rows": 2,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 1,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "optimism"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00018"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x7f7f0dcbe8add58145b2785afea40950891b44c8"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0x7f7f0dcbe8add58145b2785afea40950891b44c8"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 5993,
+        "n_ops": 3479,
+        "has_delegatecall": false,
+        "n_call_family": 10,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 12,
+        "n_push20": 26,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x7f7f0dcbe8add58145b2785afea40950891b44c8": {
+          "status": "ok",
+          "code_sha": "d42632bf8c30fa06c304d9355c7e9447f6b4a6faab3b753e0aacfae4bb5bba68",
+          "code_bytes": 5993
+        },
+        "base:0x7f7f0dcbe8add58145b2785afea40950891b44c8": {
+          "status": "ok",
+          "code_sha": "d42632bf8c30fa06c304d9355c7e9447f6b4a6faab3b753e0aacfae4bb5bba68",
+          "code_bytes": 5993
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+      "rows": 10,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 9,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "gnosis",
+        "optimism"
+      ],
+      "n_distinct_addresses": 10,
+      "family_ids": [
+        "F00012"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0x4cb865cc389eaf43691f895edeb80633fc1ed93f",
+        "0xb79b81b61d9af68fec9af8dad6bbb947190527e5",
+        "0x89ce3b12173fafb371816128059d7dde83aaeac2",
+        "0xf3f81352ae13a2bdb39ba037df0f4fb79c613553",
+        "0x70706888aaac09093d126978751ea6c456ae99da",
+        "0x32d10602d23ed95396aa8e6fbaa4ecdffdc05d65",
+        "0x0895abd2c387677f8e39953f24dc014176b5472d",
+        "0x12be440fd58e6ceedb63cac525cbdc0ce0d80d9b",
+        "0x8b7ff0bacef70b0cfd2b4e54fb548256fa2bf65f"
+      ],
+      "usenix_fact_addresses_negative": [],
+      "structural_signals": {
+        "exec_or_total_bytes": 4511,
+        "n_ops": 2842,
+        "has_delegatecall": false,
+        "n_call_family": 11,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 13,
+        "n_push20": 5,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "optimism:0x4cb865cc389eaf43691f895edeb80633fc1ed93f": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "gnosis:0xb79b81b61d9af68fec9af8dad6bbb947190527e5": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "arbitrum:0x89ce3b12173fafb371816128059d7dde83aaeac2": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "base:0xf3f81352ae13a2bdb39ba037df0f4fb79c613553": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "ethereum:0x70706888aaac09093d126978751ea6c456ae99da": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "ethereum:0x32d10602d23ed95396aa8e6fbaa4ecdffdc05d65": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "bnb:0x0895abd2c387677f8e39953f24dc014176b5472d": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "bnb:0x12be440fd58e6ceedb63cac525cbdc0ce0d80d9b": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "bnb:0x8b7ff0bacef70b0cfd2b4e54fb548256fa2bf65f": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        },
+        "optimism:0xe2d4337186701c721a326923dfacdb1dcde231d1": {
+          "status": "ok",
+          "code_sha": "e9061bd6341e56d13227c4cf7a9604942dc8c629beceb063b5b1a1abb770f8ee",
+          "code_bytes": 4511
+        }
+      },
+      "category": "likely_label_inconsistency",
+      "confidence": "medium",
+      "rationale": "USENIX rule-firing facts exist for 9 malicious-labeled address(es) but for none of the 1 rule-silent rows despite byte-identical code; the rule is bytecode-level, so the divergent verdict indicates pipeline coverage/label inconsistency (cross-chain contexts noted)",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    },
+    {
+      "normalized_bytecode_sha256": "f8f1734f573ff96e2e3063b5d1a318b48a4420338376c26e1013f024102bff11",
+      "rows": 3,
+      "classes": [
+        "benign_cleared",
+        "malicious"
+      ],
+      "class_counts": {
+        "malicious": 2,
+        "benign_cleared": 1
+      },
+      "chains": [
+        "base",
+        "bnb",
+        "ethereum"
+      ],
+      "n_distinct_addresses": 1,
+      "family_ids": [
+        "F00008"
+      ],
+      "conflict_stage": [
+        "original"
+      ],
+      "frozen_assessment": [
+        "unresolved_binary_label_conflict"
+      ],
+      "usenix_fact_addresses_malicious": [
+        "0xf5362aebfb5a25a56e909f806e7c309448f15a8e",
+        "0xf5362aebfb5a25a56e909f806e7c309448f15a8e"
+      ],
+      "usenix_fact_addresses_negative": [
+        "0xf5362aebfb5a25a56e909f806e7c309448f15a8e"
+      ],
+      "structural_signals": {
+        "exec_or_total_bytes": 3594,
+        "n_ops": 2153,
+        "has_delegatecall": false,
+        "n_call_family": 6,
+        "has_sstore": false,
+        "has_sload": false,
+        "has_owner_selector": false,
+        "has_sensitive_selector": false,
+        "n_selectors": 8,
+        "n_push20": 14,
+        "is_delegation_pointer": false,
+        "proxy_like": false
+      },
+      "onchain_getcode": {
+        "base:0xf5362aebfb5a25a56e909f806e7c309448f15a8e": {
+          "status": "ok",
+          "code_sha": "f8f1734f573ff96e2e3063b5d1a318b48a4420338376c26e1013f024102bff11",
+          "code_bytes": 3594
+        },
+        "ethereum:0xf5362aebfb5a25a56e909f806e7c309448f15a8e": {
+          "status": "ok",
+          "code_sha": "f8f1734f573ff96e2e3063b5d1a318b48a4420338376c26e1013f024102bff11",
+          "code_bytes": 3594
+        },
+        "bnb:0xf5362aebfb5a25a56e909f806e7c309448f15a8e": {
+          "status": "ok",
+          "code_sha": "f8f1734f573ff96e2e3063b5d1a318b48a4420338376c26e1013f024102bff11",
+          "code_bytes": 3594
+        }
+      },
+      "category": "context_dependent_behavior",
+      "confidence": "low",
+      "rationale": "identical bytecode deployed across multiple chains with divergent labels; no repository evidence isolates the mechanism",
+      "decision": "remain_quarantined (bytecode-only primary task cannot separate labels)"
+    }
+  ]
+}

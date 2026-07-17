@@ -1,0 +1,9 @@
+{
+  "shipped_fact_addresses": 718,
+  "task_aligned_malicious": 727,
+  "malicious_with_shipped_facts": 727,
+  "malicious_coverage": 100.0,
+  "benign_cleared": 1553,
+  "benign_cleared_with_shipped_facts": 4,
+  "note": "benign_cleared are rule-SILENT by construction; expected ~0 fact rows."
+}

@@ -1,0 +1,405 @@
+{
+  "protocol": "revision_v2/protocols/adaptive_attack_protocol.md",
+  "target_model": "authguard_seed7702",
+  "transfer_models": [
+    "authguard_seed7703",
+    "hist_ngram_seed7702"
+  ],
+  "query_budget": 64,
+  "beam_width": 4,
+  "max_depth": 4,
+  "max_byte_overhead": 2.0,
+  "fixed_comparators": [
+    "M1",
+    "M2",
+    "M3",
+    "F25",
+    "F50",
+    "F100",
+    "F200"
+  ],
+  "actions": [
+    "metadata",
+    "address",
+    "selector",
+    "neutral25",
+    "flood25",
+    "flood50",
+    "flood100",
+    "flood200"
+  ],
+  "sources": 727,
+  "summary": {
+    "F100": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 224,
+      "ASR": 0.40653357531760437,
+      "unconditional_evasion_rate": 0.5034387895460798,
+      "score_reduction_mean": 0.35409528571329923,
+      "score_reduction_median": 0.3044279217720032,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.9717520106840492,
+      "byte_overhead_p95": 0.9930327048813399,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.4542124542124542,
+      "alternate_seed_score_reduction_mean": 0.3511911506485242,
+      "hist_ngram_transfer_ASR": 0.4550359712230216,
+      "hist_ngram_score_reduction_mean": 0.35262829462938444
+    },
+    "F200": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 327,
+      "ASR": 0.5934664246823956,
+      "unconditional_evasion_rate": 0.6588720770288858,
+      "score_reduction_mean": 0.4615280194741623,
+      "score_reduction_median": 0.4851599335670471,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 1.9429524984347881,
+      "byte_overhead_p95": 1.9859314233180902,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.6648351648351648,
+      "alternate_seed_score_reduction_mean": 0.4665110240704582,
+      "hist_ngram_transfer_ASR": 0.6654676258992805,
+      "hist_ngram_score_reduction_mean": 0.46338359191494116
+    },
+    "F25": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 69,
+      "ASR": 0.12522686025408347,
+      "unconditional_evasion_rate": 0.2764786795048143,
+      "score_reduction_mean": 0.12717218615978676,
+      "score_reduction_median": 0.03481436055153608,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.24318444610068074,
+      "byte_overhead_p95": 0.2482834386157649,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.14285714285714285,
+      "alternate_seed_score_reduction_mean": 0.12242708078954187,
+      "hist_ngram_transfer_ASR": 0.17446043165467626,
+      "hist_ngram_score_reduction_mean": 0.1264449431539476
+    },
+    "F50": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 121,
+      "ASR": 0.21960072595281308,
+      "unconditional_evasion_rate": 0.3631361760660248,
+      "score_reduction_mean": 0.23403482421051422,
+      "score_reduction_median": 0.11535310745239258,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.4860398311218762,
+      "byte_overhead_p95": 0.49651635244066994,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.2875457875457875,
+      "alternate_seed_score_reduction_mean": 0.2292491023562768,
+      "hist_ngram_transfer_ASR": 0.289568345323741,
+      "hist_ngram_score_reduction_mean": 0.23389205573166466
+    },
+    "M1": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 6,
+      "ASR": 0.010889292196007259,
+      "unconditional_evasion_rate": 0.21595598349381018,
+      "score_reduction_mean": -0.013253980249386989,
+      "score_reduction_median": -0.003065168857574463,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.00028475684086086916,
+      "byte_overhead_p95": 0.0,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.04395604395604396,
+      "alternate_seed_score_reduction_mean": -0.004908767506533701,
+      "hist_ngram_transfer_ASR": 0.023381294964028777,
+      "hist_ngram_score_reduction_mean": -0.005508963019336334
+    },
+    "M2": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 47,
+      "ASR": 0.0852994555353902,
+      "unconditional_evasion_rate": 0.24621733149931224,
+      "score_reduction_mean": 0.10292780427843863,
+      "score_reduction_median": 0.01990635320544243,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.1948344508999065,
+      "byte_overhead_p95": 0.19863193896343068,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.1227106227106227,
+      "alternate_seed_score_reduction_mean": 0.10652932673647066,
+      "hist_ngram_transfer_ASR": 0.12050359712230216,
+      "hist_ngram_score_reduction_mean": 0.10673963893055205
+    },
+    "M3": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 47,
+      "ASR": 0.0852994555353902,
+      "unconditional_evasion_rate": 0.2613480055020633,
+      "score_reduction_mean": 0.09692875452888018,
+      "score_reduction_median": 0.02255648374557495,
+      "queries_mean": 1.0,
+      "successful_queries_to_first_mean": 1.0,
+      "byte_overhead_mean": 0.1948344508999065,
+      "byte_overhead_p95": 0.19863193896343068,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.11538461538461539,
+      "alternate_seed_score_reduction_mean": 0.1008006049485197,
+      "hist_ngram_transfer_ASR": 0.1420863309352518,
+      "hist_ngram_score_reduction_mean": 0.1026057714357475
+    },
+    "beam_search": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 499,
+      "ASR": 0.9056261343012704,
+      "unconditional_evasion_rate": 0.9284731774415406,
+      "score_reduction_mean": 0.5776435664266842,
+      "score_reduction_median": 0.7628394067287445,
+      "queries_mean": 30.167812929848694,
+      "successful_queries_to_first_mean": 7.3146292585170345,
+      "byte_overhead_mean": 1.3130796719021653,
+      "byte_overhead_p95": 1.9807056229327453,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.8937728937728938,
+      "alternate_seed_score_reduction_mean": 0.5743354084761937,
+      "hist_ngram_transfer_ASR": 0.8920863309352518,
+      "hist_ngram_score_reduction_mean": 0.5669325627660444
+    },
+    "fixed_oracle_best": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 408,
+      "ASR": 0.7404718693284936,
+      "unconditional_evasion_rate": 0.8005502063273727,
+      "score_reduction_mean": 0.5362919011968589,
+      "score_reduction_median": 0.6657003872096539,
+      "queries_mean": 7.0,
+      "successful_queries_to_first_mean": 7.0,
+      "byte_overhead_mean": 1.312247378936081,
+      "byte_overhead_p95": 1.9829173376884444,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.7564102564102564,
+      "alternate_seed_score_reduction_mean": 0.5231279158693571,
+      "hist_ngram_transfer_ASR": 0.7553956834532374,
+      "hist_ngram_score_reduction_mean": 0.5209046757644384
+    },
+    "random_flood_best": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 405,
+      "ASR": 0.73502722323049,
+      "unconditional_evasion_rate": 0.7936726272352133,
+      "score_reduction_mean": 0.5322870298791494,
+      "score_reduction_median": 0.6503724232316017,
+      "queries_mean": 4.0,
+      "successful_queries_to_first_mean": 4.0,
+      "byte_overhead_mean": 1.3913757257790433,
+      "byte_overhead_p95": 1.9832177163205253,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.7527472527472527,
+      "alternate_seed_score_reduction_mean": 0.5215715618774553,
+      "hist_ngram_transfer_ASR": 0.7589928057553957,
+      "hist_ngram_score_reduction_mean": 0.5193681433094948
+    },
+    "random_search": {
+      "sources": 727,
+      "clean_detected_sources": 551,
+      "attack_successes": 535,
+      "ASR": 0.9709618874773139,
+      "unconditional_evasion_rate": 0.9779917469050894,
+      "score_reduction_mean": 0.5924589022626701,
+      "score_reduction_median": 0.7926253324840218,
+      "queries_mean": 50.17331499312242,
+      "successful_queries_to_first_mean": 5.4485981308411215,
+      "byte_overhead_mean": 1.4116054934952385,
+      "byte_overhead_p95": 1.9811030726476138,
+      "structural_validity_rate": 1.0,
+      "alternate_seed_transfer_ASR": 0.9597069597069597,
+      "alternate_seed_score_reduction_mean": 0.5943282348032823,
+      "hist_ngram_transfer_ASR": 0.9532374100719424,
+      "hist_ngram_score_reduction_mean": 0.5846674505962894
+    }
+  },
+  "family_clustered_paired_comparisons": {
+    "beam_minus_random": {
+      "ASR_delta": {
+        "point": -0.06533575317604355,
+        "CI95": [
+          -0.09227944372012169,
+          -0.04264053938259635
+        ],
+        "excludes_zero": true,
+        "boot_mean": -0.06592592660507017,
+        "boot_std": 0.01278149733497873,
+        "replicates": 10000
+      },
+      "score_reduction_delta": {
+        "point": -0.014815335835985845,
+        "CI95": [
+          -0.020501100850272787,
+          -0.010207684698929399
+        ],
+        "excludes_zero": true,
+        "boot_mean": -0.014961182513669536,
+        "boot_std": 0.0026141587071078273,
+        "replicates": 10000
+      }
+    },
+    "beam_minus_fixed_oracle": {
+      "ASR_delta": {
+        "point": 0.16515426497277677,
+        "CI95": [
+          0.11075441412520064,
+          0.2169815585656283
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.16450649851339055,
+        "boot_std": 0.02743564564209153,
+        "replicates": 10000
+      },
+      "score_reduction_delta": {
+        "point": 0.04135166522982539,
+        "CI95": [
+          0.029682902566527218,
+          0.05491624663055059
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.04149952263150865,
+        "boot_std": 0.006508149549387862,
+        "replicates": 10000
+      }
+    },
+    "random_minus_fixed_oracle": {
+      "ASR_delta": {
+        "point": 0.23049001814882034,
+        "CI95": [
+          0.1706877935840068,
+          0.2915322991898111
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.2312257469272105,
+        "boot_std": 0.030630645614237412,
+        "replicates": 10000
+      },
+      "score_reduction_delta": {
+        "point": 0.05616700106581123,
+        "CI95": [
+          0.04175453382671302,
+          0.07327334702738433
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.05668044199898728,
+        "boot_std": 0.008029937204232472,
+        "replicates": 10000
+      }
+    }
+  },
+  "bounded_execution_validation": {
+    "seed": 7702,
+    "scope": "Ten previously selected delegates; empty/zero-selector plus up to eight PUSH4 selectors with zero arguments. Raw bounded fingerprint preservation, not formal semantic equivalence. Address/selector actions are intentionally reported without assuming preservation.",
+    "contracts": 10,
+    "methods": [
+      "M1",
+      "M2",
+      "M3",
+      "F200",
+      "random_flood_best",
+      "fixed_oracle_best",
+      "random_search",
+      "beam_search"
+    ],
+    "source_calls": 100,
+    "summary": {
+      "F200": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 100,
+        "execution_preservation_rate": 1.0,
+        "all_calls_preserved_contracts": 10,
+        "contracts": 10,
+        "preservation_oriented_calls": 100,
+        "preservation_oriented_rate": 1.0
+      },
+      "M1": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 100,
+        "execution_preservation_rate": 1.0,
+        "all_calls_preserved_contracts": 10,
+        "contracts": 10,
+        "preservation_oriented_calls": 100,
+        "preservation_oriented_rate": 1.0
+      },
+      "M2": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 23,
+        "execution_preservation_rate": 0.23,
+        "all_calls_preserved_contracts": 2,
+        "contracts": 10,
+        "preservation_oriented_calls": 0,
+        "preservation_oriented_rate": null
+      },
+      "M3": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 23,
+        "execution_preservation_rate": 0.23,
+        "all_calls_preserved_contracts": 2,
+        "contracts": 10,
+        "preservation_oriented_calls": 0,
+        "preservation_oriented_rate": null
+      },
+      "beam_search": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 71,
+        "execution_preservation_rate": 0.71,
+        "all_calls_preserved_contracts": 7,
+        "contracts": 10,
+        "preservation_oriented_calls": 70,
+        "preservation_oriented_rate": 1.0
+      },
+      "fixed_oracle_best": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 100,
+        "execution_preservation_rate": 1.0,
+        "all_calls_preserved_contracts": 10,
+        "contracts": 10,
+        "preservation_oriented_calls": 100,
+        "preservation_oriented_rate": 1.0
+      },
+      "random_flood_best": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 100,
+        "execution_preservation_rate": 1.0,
+        "all_calls_preserved_contracts": 10,
+        "contracts": 10,
+        "preservation_oriented_calls": 100,
+        "preservation_oriented_rate": 1.0
+      },
+      "random_search": {
+        "calls": 100,
+        "comparable_calls": 100,
+        "equivalent_calls": 81,
+        "execution_preservation_rate": 0.81,
+        "all_calls_preserved_contracts": 8,
+        "contracts": 10,
+        "preservation_oriented_calls": 30,
+        "preservation_oriented_rate": 1.0
+      }
+    }
+  },
+  "donor_ledger_rows": 69034
+}

@@ -1,0 +1,36 @@
+{
+  "method": "family-clustered percentile bootstrap; sample frozen test families with replacement, retain all rows of each sampled family; seed=7702",
+  "replicates": 10000,
+  "task": "primary",
+  "strongest_baseline": "opcode_xgb",
+  "authguard_AUPRC": {
+    "point": 0.8671767559919858,
+    "CI95": [
+      0.8042828944766794,
+      0.9216561335626456
+    ],
+    "boot_mean": 0.8689303362572515,
+    "boot_std": 0.030009678673040423
+  },
+  "authguard_minus_strongest_baseline": {
+    "baseline": "opcode_xgb",
+    "authguard": 0.8671767559919858,
+    "baseline_point": 0.7759495877300101,
+    "delta_point": 0.09122716826197574,
+    "delta_CI95": [
+      0.04199797607784843,
+      0.14700019776214776
+    ],
+    "excludes_zero": true
+  },
+  "random_minus_family_AUPRC": {
+    "random": 0.9743346379876755,
+    "family": 0.8671767559919858,
+    "delta_point": 0.10715788199568965,
+    "delta_CI95": [
+      0.051344233398259435,
+      0.1713226815751591
+    ],
+    "excludes_zero": true
+  }
+}

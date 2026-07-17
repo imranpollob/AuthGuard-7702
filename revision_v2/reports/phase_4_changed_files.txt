@@ -1,0 +1,10 @@
+revision_v2/experiments/gateA/run_gateA.py
+revision_v2/experiments/gateA/gateA_verdict.py
+revision_v2/experiments/gateB/run_gateB.py
+revision_v2/results/gateA/
+revision_v2/results/gateB/
+revision_v2/reports/phase_4_report.md
+revision_v2/reports/phase_4_changed_files.txt
+revision_v2/reports/phase_4_commands.sh
+revision_v2/reports/phase_4_results_manifest.csv
+revision_v2/reports/phase_4_failures.md

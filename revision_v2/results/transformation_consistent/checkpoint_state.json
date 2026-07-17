@@ -1,0 +1,25 @@
+{
+  "completed_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "leakage": [
+    "fold 0: train/val/test source+family disjoint; donor pools disjoint",
+    "fold 1: train/val/test source+family disjoint; donor pools disjoint",
+    "fold 2: train/val/test source+family disjoint; donor pools disjoint",
+    "fold 3: train/val/test source+family disjoint; donor pools disjoint",
+    "fold 4: train/val/test source+family disjoint; donor pools disjoint"
+  ],
+  "counts": {
+    "metrics": 240,
+    "rows": 109440,
+    "thresholds": 180,
+    "benign": 180,
+    "hard": 20520,
+    "composition": 60,
+    "donors": 78514
+  }
+}

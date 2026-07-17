@@ -1,0 +1,101 @@
+arm,fold,model,seed,threshold,splitter
+val_threshold,0,opcode-histogram RF,7702,0.2866666666666667,
+val_threshold,0,opcode-histogram XGBoost,7702,0.08155010640621185,
+val_threshold,0,opcode-histogram XGBoost-aug,7702,0.13319294154644012,
+val_threshold,0,AuthGuard-M0,7702,0.35226431488990784,
+val_threshold,0,AuthGuard-aug,7702,0.1093277633190155,
+val_threshold,0,opcode-histogram RF,7703,0.28,
+val_threshold,0,opcode-histogram XGBoost,7703,0.14219580590724945,
+val_threshold,0,opcode-histogram XGBoost-aug,7703,0.19901405274868011,
+val_threshold,0,AuthGuard-M0,7703,0.21463339030742645,
+val_threshold,0,AuthGuard-aug,7703,0.09433536976575851,
+val_threshold,0,opcode-histogram RF,7704,0.2833333333333333,
+val_threshold,0,opcode-histogram XGBoost,7704,0.07146085798740387,
+val_threshold,0,opcode-histogram XGBoost-aug,7704,0.18607938289642334,
+val_threshold,0,AuthGuard-M0,7704,0.038513097912073135,
+val_threshold,0,AuthGuard-aug,7704,0.12603498995304108,
+oof_threshold,0,opcode-histogram RF,7702,0.35,StratifiedGroupKFold
+oof_threshold,0,opcode-histogram XGBoost,7702,0.3767125904560089,StratifiedGroupKFold
+oof_threshold,0,opcode-histogram XGBoost-aug,7702,0.41204559803009033,StratifiedGroupKFold
+oof_threshold,0,AuthGuard-M0,7702,0.12586522102355957,StratifiedGroupKFold
+oof_threshold,0,AuthGuard-aug,7702,0.2228119969367981,StratifiedGroupKFold
+val_threshold,1,opcode-histogram RF,7702,0.3077777777777778,
+val_threshold,1,opcode-histogram XGBoost,7702,0.03981500864028931,
+val_threshold,1,opcode-histogram XGBoost-aug,7702,0.2684940993785858,
+val_threshold,1,AuthGuard-M0,7702,0.1689700484275818,
+val_threshold,1,AuthGuard-aug,7702,0.3704327940940857,
+val_threshold,1,opcode-histogram RF,7703,0.3059501424501424,
+val_threshold,1,opcode-histogram XGBoost,7703,0.281653493642807,
+val_threshold,1,opcode-histogram XGBoost-aug,7703,0.14713193476200104,
+val_threshold,1,AuthGuard-M0,7703,0.23273150622844696,
+val_threshold,1,AuthGuard-aug,7703,0.5019084811210632,
+val_threshold,1,opcode-histogram RF,7704,0.3150079365079365,
+val_threshold,1,opcode-histogram XGBoost,7704,0.0407535657286644,
+val_threshold,1,opcode-histogram XGBoost-aug,7704,0.18372943997383118,
+val_threshold,1,AuthGuard-M0,7704,0.13185322284698486,
+val_threshold,1,AuthGuard-aug,7704,0.448725163936615,
+oof_threshold,1,opcode-histogram RF,7702,0.3566666666666667,StratifiedGroupKFold
+oof_threshold,1,opcode-histogram XGBoost,7702,0.2798100709915161,StratifiedGroupKFold
+oof_threshold,1,opcode-histogram XGBoost-aug,7702,0.23817461729049683,StratifiedGroupKFold
+oof_threshold,1,AuthGuard-M0,7702,0.06505899131298065,StratifiedGroupKFold
+oof_threshold,1,AuthGuard-aug,7702,0.3842717707157135,StratifiedGroupKFold
+val_threshold,2,opcode-histogram RF,7702,0.41333333333333333,
+val_threshold,2,opcode-histogram XGBoost,7702,0.7464257478713989,
+val_threshold,2,opcode-histogram XGBoost-aug,7702,0.6163732409477234,
+val_threshold,2,AuthGuard-M0,7702,0.40766677260398865,
+val_threshold,2,AuthGuard-aug,7702,0.2614106833934784,
+val_threshold,2,opcode-histogram RF,7703,0.39555555555555555,
+val_threshold,2,opcode-histogram XGBoost,7703,0.5585181713104248,
+val_threshold,2,opcode-histogram XGBoost-aug,7703,0.6619895100593567,
+val_threshold,2,AuthGuard-M0,7703,0.4108462929725647,
+val_threshold,2,AuthGuard-aug,7703,0.3150572180747986,
+val_threshold,2,opcode-histogram RF,7704,0.4052307692307692,
+val_threshold,2,opcode-histogram XGBoost,7704,0.5361427664756775,
+val_threshold,2,opcode-histogram XGBoost-aug,7704,0.5826612114906311,
+val_threshold,2,AuthGuard-M0,7704,0.1924930363893509,
+val_threshold,2,AuthGuard-aug,7704,0.4754977822303772,
+oof_threshold,2,opcode-histogram RF,7702,0.29,StratifiedGroupKFold
+oof_threshold,2,opcode-histogram XGBoost,7702,0.04044872149825096,StratifiedGroupKFold
+oof_threshold,2,opcode-histogram XGBoost-aug,7702,0.14113786816596985,StratifiedGroupKFold
+oof_threshold,2,AuthGuard-M0,7702,0.12755466997623444,StratifiedGroupKFold
+oof_threshold,2,AuthGuard-aug,7702,0.337906152009964,StratifiedGroupKFold
+val_threshold,3,opcode-histogram RF,7702,0.20333333333333334,
+val_threshold,3,opcode-histogram XGBoost,7702,0.008527055382728577,
+val_threshold,3,opcode-histogram XGBoost-aug,7702,0.04429209232330322,
+val_threshold,3,AuthGuard-M0,7702,0.019383586943149567,
+val_threshold,3,AuthGuard-aug,7702,0.039904918521642685,
+val_threshold,3,opcode-histogram RF,7703,0.20666666666666667,
+val_threshold,3,opcode-histogram XGBoost,7703,0.010527893900871277,
+val_threshold,3,opcode-histogram XGBoost-aug,7703,0.02344801090657711,
+val_threshold,3,AuthGuard-M0,7703,0.02726074866950512,
+val_threshold,3,AuthGuard-aug,7703,0.12357310205698013,
+val_threshold,3,opcode-histogram RF,7704,0.19333333333333333,
+val_threshold,3,opcode-histogram XGBoost,7704,0.015919556841254234,
+val_threshold,3,opcode-histogram XGBoost-aug,7704,0.02911164052784443,
+val_threshold,3,AuthGuard-M0,7704,0.023904895409941673,
+val_threshold,3,AuthGuard-aug,7704,0.08040459454059601,
+oof_threshold,3,opcode-histogram RF,7702,0.32722222222222225,StratifiedGroupKFold
+oof_threshold,3,opcode-histogram XGBoost,7702,0.07473854720592499,StratifiedGroupKFold
+oof_threshold,3,opcode-histogram XGBoost-aug,7702,0.3234909474849701,StratifiedGroupKFold
+oof_threshold,3,AuthGuard-M0,7702,0.13984374701976776,StratifiedGroupKFold
+oof_threshold,3,AuthGuard-aug,7702,0.24501073360443115,StratifiedGroupKFold
+val_threshold,4,opcode-histogram RF,7702,0.2733333333333333,
+val_threshold,4,opcode-histogram XGBoost,7702,0.07512877881526947,
+val_threshold,4,opcode-histogram XGBoost-aug,7702,0.11657756567001343,
+val_threshold,4,AuthGuard-M0,7702,0.056343138217926025,
+val_threshold,4,AuthGuard-aug,7702,0.00485870148986578,
+val_threshold,4,opcode-histogram RF,7703,0.26666666666666666,
+val_threshold,4,opcode-histogram XGBoost,7703,0.08093608915805817,
+val_threshold,4,opcode-histogram XGBoost-aug,7703,0.004616714548319578,
+val_threshold,4,AuthGuard-M0,7703,0.005062543787062168,
+val_threshold,4,AuthGuard-aug,7703,0.006008415017277002,
+val_threshold,4,opcode-histogram RF,7704,0.25333333333333335,
+val_threshold,4,opcode-histogram XGBoost,7704,0.12320589274168015,
+val_threshold,4,opcode-histogram XGBoost-aug,7704,0.0032283158507198095,
+val_threshold,4,AuthGuard-M0,7704,0.006199264898896217,
+val_threshold,4,AuthGuard-aug,7704,0.003423569491133094,
+oof_threshold,4,opcode-histogram RF,7702,0.25333333333333335,StratifiedGroupKFold
+oof_threshold,4,opcode-histogram XGBoost,7702,0.08176664263010025,StratifiedGroupKFold
+oof_threshold,4,opcode-histogram XGBoost-aug,7702,0.17468325793743134,StratifiedGroupKFold
+oof_threshold,4,AuthGuard-M0,7702,0.07051502913236618,StratifiedGroupKFold
+oof_threshold,4,AuthGuard-aug,7702,0.12480492144823074,StratifiedGroupKFold

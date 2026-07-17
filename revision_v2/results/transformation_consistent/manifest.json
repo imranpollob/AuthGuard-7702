@@ -1,0 +1,54 @@
+{
+  "command": "revision_v2/experiments/transformation_consistent/run_training_comparison.py --resume",
+  "config": {
+    "protocol": "transformation_consistent_training_protocol",
+    "seeds": [
+      7702,
+      7703,
+      7704
+    ],
+    "models": [
+      "clean",
+      "ordinary_aug",
+      "source_balanced_aug",
+      "tc_hard"
+    ],
+    "conditions": [
+      "cleanM0",
+      "F200",
+      "M3F200",
+      "adaptive_transfer"
+    ],
+    "FPR_targets": [
+      0.01,
+      0.05,
+      0.1
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-17T02:35:49Z",
+  "wall_seconds": 1530.3,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "path_policy": "repository-relative; external inputs reduced to basename",
+  "inputs": {
+    "paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f",
+    "revision_v2/results/adaptive_attacks/attack_per_row.csv.gz": "3f0a969972002029ca88daf7e6f897985579d5b00846e15e1ff66594cac97ee1"
+  },
+  "outputs": {
+    "revision_v2/results/transformation_consistent/training_results.json": "bf1ddbc0fc04d7497ba779b85e870696286635eed40afa4444ac3138b262d3d5",
+    "revision_v2/results/transformation_consistent/metrics_by_fold.csv": "07e0c812d62c75740581eb1f866bbfd77f09028d70000797f5fa60045eb7a170",
+    "revision_v2/results/transformation_consistent/per_row_scores.csv.gz": "65a09cebda59f39bd2370df02efd73839dfae50fc006d9e3340bc0e5afce050e",
+    "revision_v2/results/transformation_consistent/thresholds.csv": "cdcbcbb7028a4f227cbf4729248a758e66450a9c8d197d67be4109c7f0e6e628",
+    "revision_v2/results/transformation_consistent/benign_general.csv": "910a0289ed235ee89d82fd07f90ada9c1ca28ee613e18fa8335af572cb43e984",
+    "revision_v2/results/transformation_consistent/hard_selection.csv.gz": "0868fd28fc49b497713f451e4f7d8cebe5d8d45e19e1fff93aad829b782b252b",
+    "revision_v2/results/transformation_consistent/training_composition.csv": "0e12dada7ffd7cb18ebe03825c6a87fa002cda8966f4e3df86345e32f7bdf22f",
+    "revision_v2/results/transformation_consistent/donor_ledger.csv.gz": "ffc0f1a95376be7b04fa39e9e0b6f78afdde85bc88e5a1ba6bb26073fa2a0211"
+  }
+}

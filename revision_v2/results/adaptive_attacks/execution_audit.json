@@ -1,0 +1,98 @@
+{
+  "seed": 7702,
+  "scope": "Ten previously selected delegates; empty/zero-selector plus up to eight PUSH4 selectors with zero arguments. Raw bounded fingerprint preservation, not formal semantic equivalence. Address/selector actions are intentionally reported without assuming preservation.",
+  "contracts": 10,
+  "methods": [
+    "M1",
+    "M2",
+    "M3",
+    "F200",
+    "random_flood_best",
+    "fixed_oracle_best",
+    "random_search",
+    "beam_search"
+  ],
+  "source_calls": 100,
+  "summary": {
+    "F200": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_preservation_rate": 1.0,
+      "all_calls_preserved_contracts": 10,
+      "contracts": 10,
+      "preservation_oriented_calls": 100,
+      "preservation_oriented_rate": 1.0
+    },
+    "M1": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_preservation_rate": 1.0,
+      "all_calls_preserved_contracts": 10,
+      "contracts": 10,
+      "preservation_oriented_calls": 100,
+      "preservation_oriented_rate": 1.0
+    },
+    "M2": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 23,
+      "execution_preservation_rate": 0.23,
+      "all_calls_preserved_contracts": 2,
+      "contracts": 10,
+      "preservation_oriented_calls": 0,
+      "preservation_oriented_rate": null
+    },
+    "M3": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 23,
+      "execution_preservation_rate": 0.23,
+      "all_calls_preserved_contracts": 2,
+      "contracts": 10,
+      "preservation_oriented_calls": 0,
+      "preservation_oriented_rate": null
+    },
+    "beam_search": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 71,
+      "execution_preservation_rate": 0.71,
+      "all_calls_preserved_contracts": 7,
+      "contracts": 10,
+      "preservation_oriented_calls": 70,
+      "preservation_oriented_rate": 1.0
+    },
+    "fixed_oracle_best": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_preservation_rate": 1.0,
+      "all_calls_preserved_contracts": 10,
+      "contracts": 10,
+      "preservation_oriented_calls": 100,
+      "preservation_oriented_rate": 1.0
+    },
+    "random_flood_best": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 100,
+      "execution_preservation_rate": 1.0,
+      "all_calls_preserved_contracts": 10,
+      "contracts": 10,
+      "preservation_oriented_calls": 100,
+      "preservation_oriented_rate": 1.0
+    },
+    "random_search": {
+      "calls": 100,
+      "comparable_calls": 100,
+      "equivalent_calls": 81,
+      "execution_preservation_rate": 0.81,
+      "all_calls_preserved_contracts": 8,
+      "contracts": 10,
+      "preservation_oriented_calls": 30,
+      "preservation_oriented_rate": 1.0
+    }
+  }
+}

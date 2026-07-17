@@ -1,0 +1,28 @@
+\begin{table*}[t]
+  \centering
+  \caption{Family-disjoint performance. Each entry is the mean over five folds and three training
+  seeds; parenthesized values are population SDs across the three seed-level fold means. Policies
+  are fitted using validation negatives.}
+  \label{tab:three-seed}
+  \scriptsize
+  \setlength{\tabcolsep}{4.2pt}
+  \begin{tabular}{@{}llcccccc@{}}
+    \toprule
+    Condition & Model & AUPRC & Recall@1 & Recall@5 & Recall@10 & FPR@5 & Brier \\
+    \midrule
+    Clean M0 & AuthGuard-Seq & \textbf{.9309} (.0090) & \textbf{.6008} & \textbf{.8282} & \textbf{.9297} & \textbf{.0463} & \textbf{.0622} \\
+             & Hist.+4-gram XGB & .8276 (.0111) & .3396 & .5822 & .7078 & .0631 & .1392 \\
+    \midrule
+    F200 & AuthGuard-Seq & \textbf{.9104} (.0070) & \textbf{.2928} & \textbf{.7235} & \textbf{.8439} & \textbf{.0315} & \textbf{.0930} \\
+         & Hist.+4-gram XGB & .5765 (.0062) & .0427 & .1714 & .2922 & .0446 & .2581 \\
+    \midrule
+    M3+F200 & AuthGuard-Seq & \textbf{.9102} (.0137) & \textbf{.2951} & \textbf{.7189} & \textbf{.8544} & \textbf{.0407} & \textbf{.0941} \\
+            & Hist.+4-gram XGB & .5633 (.0141) & .0331 & .1788 & .2947 & .0421 & .2587 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{1pt}
+
+  \parbox{.96\textwidth}{\scriptsize Recall@$q$ and FPR@$q$ use the threshold selected at nominal
+  $q\%$ validation-negative FPR. They are not thresholds selected on the test set.}
+\end{table*}
+

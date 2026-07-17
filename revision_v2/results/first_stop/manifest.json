@@ -1,0 +1,43 @@
+{
+  "command": "revision_v2/experiments/baselines/run_baselines_ablations.py",
+  "config": {
+    "protocols": [
+      "threshold_protocol_v2",
+      "uncertainty_protocol_v2",
+      "Phase 3C frozen-family sensitivity"
+    ],
+    "seeds": [
+      7702,
+      7703,
+      7704,
+      7705,
+      7706
+    ],
+    "representations": [
+      "authguard_full_773",
+      "first_stop_full_773",
+      "first_stop_no_length",
+      "first_stop_no_length_metadata"
+    ],
+    "bootstrap_replicates": 10000
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T16:39:36Z",
+  "wall_seconds": 10913.2,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "inputs": {
+    "/home/pollmix/Coding/AuthGuard-7702/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/first_stop/first_stop_results.json": "8f401569ece5fa3a6ffba90e053e8d8bbfe3ded738cab5806ba3e13663db92dd",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/first_stop/first_stop_per_row.csv.gz": "bbff1715a3b9e74298f8207294c083be59f3fec959cbdbc30d94eb47d21e1e1a",
+    "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/first_stop/first_stop_degenerate_cases.csv": "220c7df391935caedde8afd26fdc235905deac4eca80576323e04c7eba8b3ed5"
+  }
+}

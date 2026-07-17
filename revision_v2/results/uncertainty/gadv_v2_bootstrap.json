@@ -1,0 +1,181 @@
+{
+  "method": "paired family-clustered percentile bootstrap; frozen test families sampled with replacement; primary val-threshold arm; seed 7702",
+  "results": {
+    "M0": {
+      "Recall": {
+        "aug": 0.8473177441540578,
+        "M0": 0.7070151306740028,
+        "delta_point": 0.14030261348005502,
+        "delta_CI95": [
+          0.05401072124756337,
+          0.24231722330955244
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.13958566843613243,
+        "boot_std": 0.04828241307556762,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "FPR": {
+        "aug": 0.18158403090792016,
+        "M0": 0.1313586606567933,
+        "delta_point": 0.05022537025112686,
+        "delta_CI95": [
+          0.014573037248515483,
+          0.0860755119946593
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.050122116835374764,
+        "boot_std": 0.01813162447456727,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "AUPRC": {
+        "aug": 0.8549602126441744,
+        "M0": 0.8177891007084063,
+        "delta_point": 0.037171111935768164,
+        "delta_CI95": [
+          0.004316571090501828,
+          0.07523572308551779
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.03700629789939433,
+        "boot_std": 0.01792263780693358,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      }
+    },
+    "M3": {
+      "Recall": {
+        "aug": 0.796423658872077,
+        "M0": 0.6671251719394773,
+        "delta_point": 0.1292984869325997,
+        "delta_CI95": [
+          0.07852134879284932,
+          0.1845656171621742
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.12913516693951765,
+        "boot_std": 0.02703406946298673,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "FPR": {
+        "aug": 0.2169993560849968,
+        "M0": 0.14359304571796522,
+        "delta_point": 0.07340631036703157,
+        "delta_CI95": [
+          0.04255083191759028,
+          0.10698610637431465
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.07351528344477637,
+        "boot_std": 0.016737581762427973,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "AUPRC": {
+        "aug": 0.8231197512732312,
+        "M0": 0.7744814784862669,
+        "delta_point": 0.04863827278696431,
+        "delta_CI95": [
+          0.020891828382720228,
+          0.07697736062629505
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.048509052399213055,
+        "boot_std": 0.014324169253700622,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      }
+    },
+    "F200": {
+      "Recall": {
+        "aug": 0.656121045392022,
+        "M0": 0.3204951856946355,
+        "delta_point": 0.3356258596973865,
+        "delta_CI95": [
+          0.26281284919961767,
+          0.4078759871510906
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.33713488972380673,
+        "boot_std": 0.036850149209145,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "FPR": {
+        "aug": 0.262073406310367,
+        "M0": 0.13264649066323245,
+        "delta_point": 0.12942691564713457,
+        "delta_CI95": [
+          0.09783264907793783,
+          0.1641276865030089
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.12970428650078103,
+        "boot_std": 0.016954965986996563,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "AUPRC": {
+        "aug": 0.6674333629747455,
+        "M0": 0.5374741596228598,
+        "delta_point": 0.1299592033518857,
+        "delta_CI95": [
+          0.08521144595700064,
+          0.1781673410870697
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.12995907050309569,
+        "boot_std": 0.023555902092126543,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      }
+    },
+    "M3F200": {
+      "Recall": {
+        "aug": 0.6231086657496562,
+        "M0": 0.312242090784044,
+        "delta_point": 0.31086657496561215,
+        "delta_CI95": [
+          0.23932655072472003,
+          0.384466772032814
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.3125474153949397,
+        "boot_std": 0.03731736641355028,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "FPR": {
+        "aug": 0.2646490663232453,
+        "M0": 0.14359304571796522,
+        "delta_point": 0.12105602060528009,
+        "delta_CI95": [
+          0.09120050133083474,
+          0.15437165168266193
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.12117135335804347,
+        "boot_std": 0.016376118607469917,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      },
+      "AUPRC": {
+        "aug": 0.6538442822731645,
+        "M0": 0.5430159998811346,
+        "delta_point": 0.11082828239202991,
+        "delta_CI95": [
+          0.06956394025677724,
+          0.1538731495053887
+        ],
+        "excludes_zero": true,
+        "boot_mean": 0.11055974941089061,
+        "boot_std": 0.02158065529966256,
+        "replicates": 10000,
+        "finite_replicates": 10000
+      }
+    }
+  }
+}
