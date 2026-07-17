@@ -1,0 +1,7 @@
+ALL ADAPTIVE-ATTACK FAMILY/DONOR ISOLATION ASSERTIONS PASSED
+fold 0: test sources=152; train/test families disjoint=True; donor train/val/test pools family+executable-hash disjoint=True
+fold 1: test sources=146; train/test families disjoint=True; donor train/val/test pools family+executable-hash disjoint=True
+fold 2: test sources=145; train/test families disjoint=True; donor train/val/test pools family+executable-hash disjoint=True
+fold 3: test sources=93; train/test families disjoint=True; donor train/val/test pools family+executable-hash disjoint=True
+fold 4: test sources=191; train/test families disjoint=True; donor train/val/test pools family+executable-hash disjoint=True
+ledger rows: 69034

@@ -1,0 +1,46 @@
+{
+  "command": "revision_v2/experiments/adaptive_attacks/run_adaptive_attacks.py --resume",
+  "config": {
+    "protocol": "adaptive_attack_protocol",
+    "seed": 7702,
+    "query_budget": 64,
+    "beam_width": 4,
+    "max_depth": 4,
+    "actions": [
+      "metadata",
+      "address",
+      "selector",
+      "neutral25",
+      "flood25",
+      "flood50",
+      "flood100",
+      "flood200"
+    ],
+    "bounded_execution_validation": "ten prior delegates, fixed 100-call suite"
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-17T00:53:38Z",
+  "wall_seconds": 5229.0,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "path_policy": "repository-relative; external inputs reduced to basename",
+  "inputs": {
+    "paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "revision_v2/results/adaptive_attacks/adaptive_attack_results.json": "88844a1d0beb364391bfa7fe5b917a57c288e6c8bba28a8b419277245f73d399",
+    "revision_v2/results/adaptive_attacks/attack_per_row.csv.gz": "3f0a969972002029ca88daf7e6f897985579d5b00846e15e1ff66594cac97ee1",
+    "revision_v2/results/adaptive_attacks/attack_query_trace.csv.gz": "8bcc4e11f7a029688acbb5a5e3e13bd34ffa2abfceeef8a96b0b947b3ed4d891",
+    "revision_v2/results/adaptive_attacks/thresholds.csv": "9d99a6126dc3c53c6752c24ba4fdeecd34d1291385c2f954f1814f1d17638279",
+    "revision_v2/results/adaptive_attacks/donor_ledger.csv.gz": "4d8414fc083d73603e82701eb3cacb759cb54698f77eaa8da2ef0fe463cd2756",
+    "revision_v2/results/adaptive_attacks/leakage_assertions.txt": "ba3afa789f21d4383fbd149989476bdd055f331706fd1c4eba61eb243d5abd46",
+    "revision_v2/results/adaptive_attacks/execution_audit.json": "a1f40b3687ee285aed7773cb8f54cb4091c322511f7b3f18fa7dedffcc874482",
+    "revision_v2/results/adaptive_attacks/execution_audit_per_call.csv": "a76f59f1e76d9c861c63a1209ad82134e37727ad07ce55b7a3de76433e0838a8"
+  }
+}
