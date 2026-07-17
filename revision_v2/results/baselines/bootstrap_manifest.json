@@ -1,0 +1,14 @@
+{
+  "command": "revision_v2/experiments/uncertainty/bootstrap_baselines.py",
+  "seed": 7702,
+  "replicates": 10000,
+  "wall_seconds": 28.9,
+  "inputs": {
+    "revision_v2/results/baselines/baselines_ablations_per_row.csv.gz": "bcdd2b54d176e45861dc1ab6a3e7c5372a51489f5e663fc1394951a994d2c795",
+    "revision_v2/results/baselines/baselines_results.json": "de9c21603be87f5ae9430c91696811e88e3ad6ce1720b57f759299472eab8624",
+    "revision_v2/results/ablations/ablations_results.json": "28d90adcb19975c879103d7627216346b3a9cda8473b55011b366ca7bd89836e"
+  },
+  "outputs": {
+    "revision_v2/results/baselines/paired_family_bootstrap.json": "3946bfdfc9ad338143e44ab59588ad8a46b0317ea3efecbe3cb99ac251c01e8a"
+  }
+}

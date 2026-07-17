@@ -118,3 +118,4 @@ coverage/
 .mimocode/
 
 .DS_Store
+revision_v2/.venv/

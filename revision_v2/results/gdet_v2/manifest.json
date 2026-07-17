@@ -1,0 +1,40 @@
+{
+  "command": "revision_v2/experiments/gdet_v2/run_gdet_v2.py",
+  "config": {
+    "protocol": "threshold_protocol_v2",
+    "seeds": [
+      7702,
+      7703,
+      7704,
+      7705,
+      7706
+    ],
+    "tasks": [
+      "primary",
+      "secondary"
+    ],
+    "splits": [
+      "leave_family_out",
+      "random_split"
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T13:09:04Z",
+  "wall_seconds": 4943.5,
+  "versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/imranpollob/Coding/unzipped/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gdet_v2/gdet_v2_results.json": "80f5bd73480bb96e82ff95a0da8b86ddc3e68ff832c55fa73b907d81ad67e9aa",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gdet_v2/gdet_v2_per_row_scores.csv": "f56415b91907a329a937138cbc893592a02e8930cf47cb27168496c3f567ca40",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gdet_v2/gdet_v2_thresholds.csv": "5abe2cc5c60cc0034266dbc1a8f3ffe3748f59340bb7b40d1c96c2385d64fc08"
+  }
+}

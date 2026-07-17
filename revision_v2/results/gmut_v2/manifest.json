@@ -1,0 +1,41 @@
+{
+  "command": "revision_v2/experiments/gmut_v2/run_gmut_v2.py",
+  "config": {
+    "protocol": [
+      "threshold_protocol_v2",
+      "donor_isolation_protocol_v1.1"
+    ],
+    "arms": [
+      "iso",
+      "v1donor"
+    ],
+    "model_seeds": [
+      7702,
+      7703,
+      7704,
+      7705,
+      7706
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T13:29:50Z",
+  "wall_seconds": 2307.2,
+  "versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/imranpollob/Coding/unzipped/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gmut_v2/gmut_v2_results.json": "f87ecc408de5e09fb34a1f631c341f7c972b0ee677a3f3f865169bf8a5a78344",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gmut_v2/gmutvol_v2_per_row_scores.csv.gz": "1ed279017eb7c2c957d910a91a3ba8c89be9e870e18e557a5bf24cccfeb48776",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gmut_v2/gmutvol_v2_thresholds.csv": "ce34fd5fac2944b29add6f57e74f2d041d03bdf9d6335a0ed4cbc23ee12093c0",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gmut_v2/donor_ledger_gmutvol.csv": "b7dcbaf867b2c3d1f80467707e172b144f22e11b11a8c792e2d7b2d4d339901f",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/gvol_v2/gvol_v2_results.json": "adc585d3dbaff9408b9dd0308295ddf33719dd4b59fe00c8aea2ba9754df3306"
+  }
+}

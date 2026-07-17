@@ -1,0 +1,27 @@
+{
+  "selection": "highest seed-7702 five-fold mean AUPRC among Phase-3 same-host bytecode baselines",
+  "candidate_fold_mean_AUPRC": {
+    "hash_xgb": 0.8540116882736642,
+    "tfidf_lr": 0.7279799377279728,
+    "tfidf_svm": 0.7828358376740787,
+    "abl_hist_only": 0.7674954296552763,
+    "abl_ngram_only": 0.8540116882736642,
+    "abl_hist_struct": 0.7816511740971614,
+    "abl_hist_ngram": 0.8802747178426747
+  },
+  "strongest_baseline": "abl_hist_ngram",
+  "authguard_full_pooled_AUPRC": 0.868664988741197,
+  "strongest_pooled_AUPRC": 0.868018576566166,
+  "authguard_minus_strongest": {
+    "delta_point": 0.0006464121750310303,
+    "delta_CI95": [
+      -0.011491783862353463,
+      0.012867801646241258
+    ],
+    "excludes_zero": false,
+    "boot_mean": 0.00045550254410662666,
+    "boot_std": 0.006299290341258721,
+    "replicates": 10000
+  },
+  "platform_policy": "Both models refit on the same Linux x86_64 host; no ARM/Linux mixing."
+}

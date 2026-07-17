@@ -1,0 +1,24 @@
+{
+  "command": "revision_v2/experiments/secondary_controls/run_controls.py",
+  "config": {
+    "protocol": "threshold_protocol_v2 frozen thresholds"
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T14:32:34Z",
+  "wall_seconds": 20.0,
+  "versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/imranpollob/Coding/unzipped/paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/secondary_controls/secondary_controls.json": "3a7d371cb15b13f795d503b3b1a6d2daaf33e8fe485bc21f37ffee3fc699db5b",
+    "/Users/imranpollob/Coding/unzipped/revision_v2/results/secondary_controls/benign_AA_cases.csv": "0246a5f1a3ceb40ed31f966b49b04d843b373d232776249dafa2925d06afd184"
+  }
+}

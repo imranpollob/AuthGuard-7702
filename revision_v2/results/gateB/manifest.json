@@ -1,0 +1,33 @@
+{
+  "command": "revision_v2/experiments/gateB/run_gateB.py",
+  "config": {
+    "protocol": "gateB_success_criteria",
+    "seeds": [
+      7702,
+      7703,
+      7704,
+      7705,
+      7706
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T19:47:38Z",
+  "wall_seconds": 501.4,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "path_policy": "repository-relative; external inputs reduced to basename",
+  "inputs": {
+    "paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f"
+  },
+  "outputs": {
+    "revision_v2/results/gateB/gateB_results.json": "1da0e39c2c46efe4126efa7bc31ff9b85e415467aaa04e606a1eca36e00102d3",
+    "revision_v2/results/gateB/gateB_per_row.csv.gz": "869777ed9ee3914140761b982a931e64681989d49a316890524b4c220aeb766e",
+    "revision_v2/results/gateB/gateB_verdict.json": "0a96ce5378ece63b5ac9f2e7224b9626344bf4e2c5a4d519a681c8182b9ab6d7"
+  }
+}

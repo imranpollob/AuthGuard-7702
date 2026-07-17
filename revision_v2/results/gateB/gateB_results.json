@@ -1,0 +1,174 @@
+{
+  "target_escalation": 0.15,
+  "signals": [
+    "conflict_history",
+    "trailing_ratio",
+    "margin",
+    "cross_seed_disagreement",
+    "knn_outlier"
+  ],
+  "knn_preprocessing": "StandardScaler fit on outer-training dense features",
+  "train_escalation_rates": [
+    {
+      "fold": 0,
+      "candidate": 0.15035931453841903,
+      "generic_only": 0.15035931453841903
+    },
+    {
+      "fold": 1,
+      "candidate": 0.15046677649643053,
+      "generic_only": 0.15046677649643053
+    },
+    {
+      "fold": 2,
+      "candidate": 0.15046677649643053,
+      "generic_only": 0.15046677649643053
+    },
+    {
+      "fold": 3,
+      "candidate": 0.15008246289169874,
+      "generic_only": 0.15008246289169874
+    },
+    {
+      "fold": 4,
+      "candidate": 0.15027027027027026,
+      "generic_only": 0.15027027027027026
+    }
+  ],
+  "summary": {
+    "cleanM0": {
+      "escalation_rate": 0.7364035087719298,
+      "auto_coverage": 0.26359649122807016,
+      "err_density_escalated": 0.18582489577129244,
+      "err_density_non": 0.0066555740432612314,
+      "concentration_ratio": 27.92019058963669,
+      "nonescalated_recall": 0.9629629629629629,
+      "nonescalated_FPR": 0.003656307129798903,
+      "low_conf_concentration_ratio": 0.7731745086360929,
+      "fn_captured_fraction": 0.9868421052631579,
+      "full_recall": 0.7909215955983494,
+      "full_FPR": 0.1056020605280103,
+      "eip_signal_decision_changes": 138
+    },
+    "F200": {
+      "escalation_rate": 0.9271929824561403,
+      "auto_coverage": 0.07280701754385965,
+      "err_density_escalated": 0.2630085146641438,
+      "err_density_non": 0.12048192771084337,
+      "concentration_ratio": 2.182970671712394,
+      "nonescalated_recall": 0.0,
+      "nonescalated_FPR": 0.0,
+      "low_conf_concentration_ratio": 1.0522232734153265,
+      "fn_captured_fraction": 0.9562363238512035,
+      "full_recall": 0.3713892709766162,
+      "full_FPR": 0.07662588538312942,
+      "eip_signal_decision_changes": 94
+    },
+    "M3F200": {
+      "escalation_rate": 0.9289473684210526,
+      "auto_coverage": 0.07105263157894737,
+      "err_density_escalated": 0.267233238904627,
+      "err_density_non": 0.17901234567901234,
+      "concentration_ratio": 1.4928201621568822,
+      "nonescalated_recall": 0.0,
+      "nonescalated_FPR": 0.0,
+      "low_conf_concentration_ratio": 1.061260623229462,
+      "fn_captured_fraction": 0.9351230425055929,
+      "full_recall": 0.38514442916093533,
+      "full_FPR": 0.0952994204764971,
+      "eip_signal_decision_changes": 101
+    }
+  },
+  "family_clustered_uncertainty": {
+    "cleanM0": {
+      "replicates": 10000,
+      "candidate_ratio": {
+        "CI95": [
+          11.220382792180086,
+          118.64809639634609
+        ],
+        "boot_mean": 36.361616781168415,
+        "boot_std": 26.422802905025883,
+        "finite_replicates": 9818
+      },
+      "low_conf_ratio": {
+        "CI95": [
+          0.36301770760305785,
+          1.5933064530130479
+        ],
+        "boot_mean": 0.8253850310294479,
+        "boot_std": 0.31805529857170867,
+        "finite_replicates": 10000
+      },
+      "candidate_minus_low_conf": {
+        "CI95": [
+          10.461281219669514,
+          117.88564744986206
+        ],
+        "boot_mean": 35.53687427955266,
+        "boot_std": 26.401077333064585,
+        "finite_replicates": 9818
+      }
+    },
+    "F200": {
+      "replicates": 10000,
+      "candidate_ratio": {
+        "CI95": [
+          1.2620934063276918,
+          6.255740815060251
+        ],
+        "boot_mean": 2.6935140132679853,
+        "boot_std": 1.489814286062299,
+        "finite_replicates": 10000
+      },
+      "low_conf_ratio": {
+        "CI95": [
+          0.6580150437426385,
+          1.7371533162421167
+        ],
+        "boot_mean": 1.0892715092152496,
+        "boot_std": 0.27715278724010883,
+        "finite_replicates": 10000
+      },
+      "candidate_minus_low_conf": {
+        "CI95": [
+          -0.17545390777600972,
+          5.40312560379574
+        ],
+        "boot_mean": 1.6042425040527355,
+        "boot_std": 1.5828668982800016,
+        "finite_replicates": 10000
+      }
+    },
+    "M3F200": {
+      "replicates": 10000,
+      "candidate_ratio": {
+        "CI95": [
+          0.8518598994267019,
+          5.264910720155642
+        ],
+        "boot_mean": 2.0224283760428867,
+        "boot_std": 1.3099668883050977,
+        "finite_replicates": 9999
+      },
+      "low_conf_ratio": {
+        "CI95": [
+          0.6790147281542397,
+          1.6913430821838882
+        ],
+        "boot_mean": 1.0910973582754901,
+        "boot_std": 0.2609891181005622,
+        "finite_replicates": 10000
+      },
+      "candidate_minus_low_conf": {
+        "CI95": [
+          -0.5796119694716916,
+          4.292772834284239
+        ],
+        "boot_mean": 0.9312910368725656,
+        "boot_std": 1.393528935977796,
+        "finite_replicates": 9999
+      }
+    }
+  }
+}

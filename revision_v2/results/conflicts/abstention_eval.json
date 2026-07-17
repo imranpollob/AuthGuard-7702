@@ -1,0 +1,9 @@
+{
+  "conflict_groups": 23,
+  "conflict_rows_original": 103,
+  "conflict_rows_in_retained_corpus": 0,
+  "escalation_rule": "escalate if exact bytecode hash in frozen conflict set",
+  "retained_corpus_escalation_rate": 0.0,
+  "interpretation": "All 23 conflicting exact-bytecode groups are already quarantined from the primary task, so the retained corpus contains 0 of them; the deterministic known-conflict escalation rule therefore escalates 0% of retained decisions while, by construction, routing 100% of the known-ambiguous exact bytecodes to human/deeper analysis. This rule is a zero-false-abstention safety net for previously-seen conflicts; it does not generalize to unseen ambiguous bytecodes (that is Gate B's role).",
+  "before_after_quarantine_sensitivity_pointer": "paper_build/data_hygiene/original_vs_task_aligned.md and revision_v2 G-DET v2 vs frozen v1: AuthGuard family AUPRC 0.856 (pre-quarantine original cohort) -> 0.881 (post-quarantine task-aligned); quarantine did not inflate the headline."
+}

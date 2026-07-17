@@ -1,0 +1,33 @@
+{
+  "name": "AuthGuardBench-7702",
+  "version": "0.1.0",
+  "source": "paper_build/data_hygiene/task_aligned_dataset_v1.csv",
+  "rows": 3082,
+  "primary_rows": 2280,
+  "class_counts": {
+    "benign_cleared": 1553,
+    "benign_general": 797,
+    "malicious": 727,
+    "benign_AA": 5
+  },
+  "primary_family_count": 819,
+  "unique_bytecode_count": 2528,
+  "rows_in_exact_duplicate_groups": 787,
+  "exact_duplicate_group_count": 233,
+  "factor_prevalence": {
+    "external_call_surface": 0.9513303049967553,
+    "state_write_surface": 0.4587929915639195,
+    "delegate_proxy_surface": 0.20279039584685268,
+    "token_movement_selector_surface": 0.41758598312783907,
+    "approval_selector_surface": 0.17585983127839067,
+    "code_lifecycle_surface": 0.17326411421155094
+  },
+  "split_policy": "frozen family-disjoint outer folds",
+  "primary_metric": "Recall at validation-matched 5% FPR",
+  "threshold_free_metric": "AUPRC",
+  "scope": {
+    "auxiliary_factors": "bytecode-observable surfaces, not reachability or intent",
+    "transformations": "bounded protocol transformations only",
+    "runtime": "report scorer, loading, RPC, and CLI stages separately"
+  }
+}

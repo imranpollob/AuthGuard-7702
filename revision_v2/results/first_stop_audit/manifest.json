@@ -1,0 +1,51 @@
+{
+  "command": "revision_v2/experiments/first_stop_audit/run_first_stop_audit.py",
+  "config": {
+    "protocol": "first_stop_audit_protocol",
+    "seed": 7702,
+    "bootstrap_replicates": 10000,
+    "conditions": [
+      "M1",
+      "M2",
+      "M3",
+      "F200",
+      "M3F200"
+    ],
+    "representations": [
+      "full",
+      "metadata_stripped",
+      "first_stop",
+      "suffix_only",
+      "length_stop_only",
+      "reachable_code"
+    ]
+  },
+  "seed": 7702,
+  "started_utc": "2026-07-16T20:44:55Z",
+  "wall_seconds": 3855.6,
+  "versions": {
+    "python": "3.13.8",
+    "numpy": "2.3.4",
+    "pandas": "3.0.3",
+    "sklearn": "1.9.0",
+    "xgboost": "3.3.0",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39"
+  },
+  "path_policy": "repository-relative; external inputs reduced to basename",
+  "inputs": {
+    "paper_build/data_hygiene/task_aligned_dataset_v1.csv": "147f86754bd2a01da1a21d78cce21a4710855a5eff3f6788ab6c3e58b4a8ac5f",
+    "revision_v2/results/first_stop_audit/execution_audit.json": "eaddb5a8e9a88883dcfb010e71eaa5f91550e1bc918aa8839fbcad72b0dc8363"
+  },
+  "outputs": {
+    "revision_v2/results/first_stop_audit/first_stop_audit_results.json": "f4c82dc5679c635b08731b2b3a5ba97219189070c3f1d8ae0bb5770cb5962a4e",
+    "revision_v2/results/first_stop_audit/static_reachability_per_row.csv.gz": "f8fa138ce07ec6d9c9aca453611291ba0e97c9662e440c4f7b96a8fe56fb97ca",
+    "revision_v2/results/first_stop_audit/primary_per_row.csv.gz": "58850f2e59b893368630e9255725c645a00950f6aee7cf3f536315cb64535abb",
+    "revision_v2/results/first_stop_audit/benign_general_per_row.csv.gz": "a14e7b7244e449f16d9a2c068786d1e56dba56e38913c762417a1714f05ddd17",
+    "revision_v2/results/first_stop_audit/robustness_per_row.csv.gz": "cfee782b5bb1f6dc83262b9625118f2c87894b5046b99502e1797cf595990b6c",
+    "revision_v2/results/first_stop_audit/cross_chain_per_row.csv.gz": "1faa254dd0e82f1423bc9afa45f8c41ce0fd44118426f565ca8ee1f79bcce163",
+    "revision_v2/results/first_stop_audit/thresholds.csv": "aa88b69a564fcb72184642f9a52bae45d245406007a3c186289d39c2507632cd",
+    "revision_v2/results/first_stop_audit/donor_ledger.csv.gz": "789013e40471f813804315798009eb643b8fa0f899ee00bfcae59a190b98c95b",
+    "revision_v2/results/first_stop_audit/execution_audit.json": "eaddb5a8e9a88883dcfb010e71eaa5f91550e1bc918aa8839fbcad72b0dc8363",
+    "revision_v2/results/first_stop_audit/execution_audit_per_call.csv": "02f1c119341631f6483dc14deb86ddc4d10e43e3a6b92b3c8b93b25e33b631f5"
+  }
+}

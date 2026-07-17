@@ -1,0 +1,25 @@
+\begin{table}[t]
+  \centering
+  \caption{Operational controls for AuthGuard-Seq. Benign-control FPRs are three-seed means;
+  runtime is over 3,000 local CPU calls.}
+  \label{tab:operational}
+  \scriptsize
+  \setlength{\tabcolsep}{3.0pt}
+  \begin{tabular}{@{}lr@{}}
+    \toprule
+    Measurement & Value \\
+    \midrule
+    benign-general FPR@1 & .0051 \\
+    benign-general FPR@5 & .0616 \\
+    benign-general FPR@10 & .1000 \\
+    \midrule
+    Model artifact & 742,561 bytes \\
+    Model load & 10.047 ms \\
+    Mean local screening & 4.334 ms \\
+    Median local screening & 3.172 ms \\
+    p95 local screening & 14.073 ms \\
+    p99 local screening & 16.906 ms \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+

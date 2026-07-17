@@ -1,0 +1,32 @@
+{
+  "verdict": "FAIL",
+  "criteria": {
+    "1_error_concentration": {
+      "passed": false,
+      "point": 27.92019058963669,
+      "CI95": [
+        11.220382792180086,
+        118.64809639634609
+      ]
+    },
+    "2_automatic_coverage_quality": {
+      "passed": true
+    },
+    "3_robust_value": {
+      "passed": false,
+      "passing_conditions": []
+    },
+    "4_beats_low_confidence": {
+      "passed": true,
+      "delta_ratio_CI95": [
+        10.461281219669514,
+        117.88564744986206
+      ]
+    },
+    "5_eip_specific_contribution": {
+      "passed": true,
+      "escalation_decision_changes": 333
+    }
+  },
+  "note": "All five frozen criteria must pass; no criterion was relaxed after results."
+}
