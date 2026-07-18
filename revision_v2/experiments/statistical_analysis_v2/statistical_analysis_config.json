@@ -1,0 +1,303 @@
+{
+  "analysis": "Revision v2 paired family-clustered bootstrap",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 77022026,
+  "per_fold_bootstrap_seeds": {
+    "0": 18291772251576739017,
+    "1": 2490382246400022332,
+    "2": 7677930659190048599,
+    "3": 7440118788625785527,
+    "4": 11590640639066929680
+  },
+  "ci_method": "percentile",
+  "ci_percentiles": [
+    2.5,
+    97.5
+  ],
+  "statistical_unit": "frozen bytecode family",
+  "resampling": "families sampled with replacement separately within each outer test fold",
+  "pairing": "same family multiplicities for both models, all seeds, and paired conditions",
+  "estimator": "metric per fold and seed; mean over 5 folds; mean over seeds 7702/7703/7704",
+  "seeds": [
+    7702,
+    7703,
+    7704
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "authguard_seq",
+    "flat_cnn",
+    "hist_ngram_xgb"
+  ],
+  "primary_confirmatory_family": [
+    "Seq vs Flat CNN clean AUPRC",
+    "Seq vs XGBoost clean AUPRC",
+    "Seq vs Flat CNN clean Recall@5%",
+    "Seq vs XGBoost clean Recall@5%"
+  ],
+  "p_value_policy": "not reported; percentile confidence intervals are primary and bootstrap sign frequencies are not treated as null p-values; Holm correction not applicable",
+  "comparisons": [
+    {
+      "condition": "clean",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "primary_confirmatory"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "primary_confirmatory"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@1%",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@10%",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "clean",
+      "metric": "Brier",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "clean",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "primary_confirmatory"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "primary_confirmatory"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@1%",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "clean",
+      "metric": "Recall@10%",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "clean",
+      "metric": "Brier",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "baseline_v2",
+      "source_b": "baseline_v2",
+      "condition_a": "clean",
+      "condition_b": "clean",
+      "comparison_type": "secondary_clean"
+    },
+    {
+      "condition": "F200",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "F200",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "F200",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "F200",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "M3+F200",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M3+F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "M3+F200",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "flat_cnn",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M3+F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "M3+F200",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M3+F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "M3+F200",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "hist_ngram_xgb",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M3+F200",
+      "comparison_type": "supporting_robustness"
+    },
+    {
+      "condition": "F200_minus_M0",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "authguard_seq",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "M0",
+      "comparison_type": "supporting_clean_to_transformed"
+    },
+    {
+      "condition": "F200_minus_M0",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "authguard_seq",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "F200",
+      "condition_b": "M0",
+      "comparison_type": "supporting_clean_to_transformed"
+    },
+    {
+      "condition": "M3+F200_minus_M0",
+      "metric": "AUPRC",
+      "model_a": "authguard_seq",
+      "model_b": "authguard_seq",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M0",
+      "comparison_type": "supporting_clean_to_transformed"
+    },
+    {
+      "condition": "M3+F200_minus_M0",
+      "metric": "Recall@5%",
+      "model_a": "authguard_seq",
+      "model_b": "authguard_seq",
+      "source_a": "robustness_operational_v2",
+      "source_b": "robustness_operational_v2",
+      "condition_a": "M3+F200",
+      "condition_b": "M0",
+      "comparison_type": "supporting_clean_to_transformed"
+    }
+  ],
+  "descriptive_consistency_checks": 60,
+  "wall_seconds": 37.11619734764099,
+  "inputs": {
+    "revision_v2/data/authguardbench_7702_v2.csv.gz": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+    "revision_v2/experiments/baseline_v2/baseline_predictions.csv.gz": "c04fa4c70f9cdbe42af010994482020ab151b17b101bbad284fa1fd6fff43c20",
+    "revision_v2/experiments/baseline_v2/baseline_summary.csv": "0b204bdd707bae93f629d1c31d44e7a074bd4b403d1fc2add5ff66dd7c44dd1f",
+    "revision_v2/experiments/robustness_operational_v2/robustness_predictions.csv.gz": "c9a5638b99e113887ee3116bb79cc2346a9e0d9808e3cb5ff144531adb374975",
+    "revision_v2/experiments/robustness_operational_v2/robustness_summary.csv": "c502e5ad381bec594733e2c64318ef1b2b2d285607f6e17058983761e6438a93"
+  },
+  "software": {
+    "python": "3.12.12 (main, Oct 25 2025, 03:47:29) [GCC 13.3.0]",
+    "numpy": "2.3.4",
+    "pandas": "2.3.3"
+  }
+}
