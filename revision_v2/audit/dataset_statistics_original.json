@@ -1,0 +1,70 @@
+{
+  "capability_dataset_csv": {
+    "total_rows": 3258,
+    "class_counts": {
+      "benign_cleared": 1657,
+      "benign_general": 800,
+      "malicious": 793,
+      "benign_AA": 8
+    },
+    "unique_chain_address_pairs": 3253,
+    "unique_addresses": 2956,
+    "unique_runtime_bytecodes": 2616,
+    "exact_duplicate_groups_gt1": 261,
+    "rows_in_exact_duplicate_groups": 903,
+    "cross_label_exact_bytecode_conflict_hashes": 23,
+    "cross_binary_label_conflict_hashes": 18,
+    "bytecodes_at_multiple_addresses": 195,
+    "bytecodes_on_multiple_chains": 198,
+    "family_count": null,
+    "designator_rows": 76,
+    "excel_truncated_rows": 89
+  },
+  "task_aligned_dataset_v1": {
+    "total_rows": 3082,
+    "class_counts": {
+      "benign_cleared": 1553,
+      "benign_general": 797,
+      "malicious": 727,
+      "benign_AA": 5
+    },
+    "unique_chain_address_pairs": 3080,
+    "unique_addresses": 2820,
+    "unique_runtime_bytecodes": 2528,
+    "exact_duplicate_groups_gt1": 233,
+    "rows_in_exact_duplicate_groups": 787,
+    "cross_label_exact_bytecode_conflict_hashes": 0,
+    "cross_binary_label_conflict_hashes": 0,
+    "bytecodes_at_multiple_addresses": 174,
+    "bytecodes_on_multiple_chains": 175,
+    "family_count": 1258,
+    "designator_rows": 0,
+    "excel_truncated_rows": 89,
+    "family_size_distribution": {
+      "singletons": 856,
+      "size_2_5": 301,
+      "size_6_20": 82,
+      "size_gt_20": 19,
+      "max": 58
+    },
+    "cross_class_families": 28,
+    "outer_fold_primary_assigned_rows": 2322,
+    "outer_fold_secondary_assigned_rows": 3077
+  },
+  "label_rule_identity": {
+    "retained_positives": 727,
+    "positives_with_source_rule_hit": 727,
+    "retained_rule_silent_negatives": 1553,
+    "negatives_with_source_rule_hit": 0
+  },
+  "negative_contradiction_flags": {
+    "rows_flagged": 13,
+    "by_class": {
+      "benign_cleared": 7,
+      "benign_general": 6
+    },
+    "flag_usenix_matched": 4,
+    "flag_external_blacklist": 1,
+    "flag_phishinghook_phishing_bytecode": 8
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "AuthGuardBench-7702-v2",
+  "total_rows": 3082,
+  "populations": {
+    "PRIMARY_EVALUATION": 2190,
+    "EXTERNAL_BENIGN_CONTROL": 797,
+    "EXCLUDED_UNCERTAIN_INPUT": 90,
+    "QUALITATIVE_CONTROL": 5
+  },
+  "class_counts": {
+    "benign_cleared": 1553,
+    "benign_general": 797,
+    "malicious": 727,
+    "benign_AA": 5
+  },
+  "primary": {
+    "rows": 2190,
+    "positives": 727,
+    "negatives": 1463,
+    "positive_fraction": 0.3319634703196347,
+    "families": 790,
+    "unique_bytecodes": 1665,
+    "rows_in_exact_duplicate_groups": 748,
+    "fold_sizes": {
+      "0": {
+        "rows": 446,
+        "positives": 152
+      },
+      "1": {
+        "rows": 446,
+        "positives": 146
+      },
+      "2": {
+        "rows": 427,
+        "positives": 145
+      },
+      "3": {
+        "rows": 447,
+        "positives": 93
+      },
+      "4": {
+        "rows": 424,
+        "positives": 191
+      }
+    }
+  },
+  "label_strength_counts": {
+    "C_source_unflagged_weak": 1463,
+    "B_external_benign_label": 797,
+    "C_source_rule_only": 727,
+    "D_source_verdict_on_corrupted_input": 90,
+    "A_curated_legitimate": 5
+  },
+  "repaired_rows": 90,
+  "flagged_negative_contradictions": 13,
+  "positives_with_independent_behavioral_evidence": 1
+}

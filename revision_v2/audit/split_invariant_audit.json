@@ -1,0 +1,87 @@
+{
+  "original_benchmark": {
+    "benchmark": "task_aligned_dataset_v1 (original)",
+    "primary_task": {
+      "population": "malicious vs benign_cleared",
+      "rows": 2280,
+      "families": 819,
+      "NO_FAMILY_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_EXACT_BYTECODE_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_CONFLICTING_EXACT_BYTECODE_LABEL": {
+        "pass": true,
+        "violations": 0
+      }
+    },
+    "secondary_task": {
+      "population": "+ benign_general",
+      "rows": 3077,
+      "families": 1253,
+      "NO_FAMILY_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_EXACT_BYTECODE_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_CONFLICTING_EXACT_BYTECODE_LABEL": {
+        "pass": true,
+        "violations": 0
+      }
+    },
+    "NO_TRANSFORMATION_DONOR_LEAKAGE": {
+      "pass": true,
+      "ledger_rows": 78514,
+      "violations": [],
+      "n_violations": 0
+    },
+    "ALL_PASS": true
+  },
+  "revision_v2_benchmark": {
+    "primary_task": {
+      "population": "v2 primary",
+      "rows": 2190,
+      "families": 790,
+      "NO_FAMILY_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_EXACT_BYTECODE_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_CONFLICTING_EXACT_BYTECODE_LABEL": {
+        "pass": true,
+        "violations": 0
+      }
+    },
+    "secondary_task": {
+      "population": "v2 primary + external control",
+      "rows": 2987,
+      "families": 1224,
+      "NO_FAMILY_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_EXACT_BYTECODE_CROSS_FOLD": {
+        "pass": true,
+        "violations": 0
+      },
+      "NO_CONFLICTING_EXACT_BYTECODE_LABEL": {
+        "pass": true,
+        "violations": 0
+      }
+    },
+    "NO_TRANSFORMATION_DONOR_LEAKAGE": {
+      "pass": true,
+      "detail": "donor ledger audited in original section; v2 keeps the same donor isolation protocol"
+    },
+    "ALL_PASS": true
+  }
+}
