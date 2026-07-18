@@ -1,0 +1,4 @@
+measurement,scope,unit,n_contracts,repeats,total_calls,mean,median,p95,p99,serialized_model_bytes,parameter_count
+full_local_screening_pipeline,bytecode-local end-to-end pipeline,ms,300,5,1500,5.182863233,4.120889000,14.547488550,21.428751610,742625,181877
+model_load,fold-specific runtime artifact load,ms,,10,10,7.958465400,7.689820000,9.716321650,10.573979530,742625,181877
+model_forward_reference_baseline,model forward only,ms,200,1,195,1.008593153,0.950003974,1.584824914,,737548,181877
