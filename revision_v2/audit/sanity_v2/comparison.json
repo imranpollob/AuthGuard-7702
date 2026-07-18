@@ -1,0 +1,38 @@
+{
+  "hist_ngram_xgb": {
+    "original_benchmark": {
+      "AUPRC": 0.8411,
+      "Brier": 0.1369,
+      "Recall_01": 0.3474,
+      "FPR_01": 0.0244,
+      "Recall_05": 0.6119,
+      "FPR_05": 0.0639
+    },
+    "revision_v2_benchmark": {
+      "AUPRC": 0.8283,
+      "Brier": 0.1406,
+      "Recall_01": 0.3323,
+      "FPR_01": 0.0096,
+      "Recall_05": 0.5957,
+      "FPR_05": 0.0758
+    }
+  },
+  "sequence_only": {
+    "original_benchmark": {
+      "AUPRC": 0.9182,
+      "Brier": 0.0682,
+      "Recall_01": 0.6724,
+      "FPR_01": 0.0178,
+      "Recall_05": 0.8292,
+      "FPR_05": 0.036
+    },
+    "revision_v2_benchmark": {
+      "AUPRC": 0.9202,
+      "Brier": 0.0669,
+      "Recall_01": 0.5585,
+      "FPR_01": 0.0125,
+      "Recall_05": 0.8601,
+      "FPR_05": 0.0419
+    }
+  }
+}

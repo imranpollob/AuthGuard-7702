@@ -1,0 +1,9 @@
+step,name,rows,malicious,benign_cleared,benign_general,benign_AA,rows_changed,detail
+1,S0_original_corpus,3258,793,1657,800,8,0,"capability_dataset.csv: 793 rule-flagged + 1,657 rule-silent observed delegates + 800 PhishingHook benign + 8 curated AA"
+2,S1_frozen_task_alignment,3082,727,1553,797,5,0,"task_aligned_dataset_v1 (frozen): 73 designator-row exclusions (3 recovered runtimes retained), 103 conflicting-exact-bytecode rows quarantined"
+3,S2_repair_excel_truncation,3082,727,1553,797,5,89,"replaced 89 Excel-truncated (32,767-char) benign_cleared bytecodes with prefix-verified eth_getCode runtime"
+4,S3_repair_fetch_error_row,3082,727,1553,797,5,1,1 benign_cleared row whose source 'bytecode' was an HTTP timeout error string; true runtime refetched
+5,S4_exclude_uncertain_input_from_primary,3082,727,1553,797,5,90,"90 repaired rows keep full runtime bytecode but leave PRIMARY_EVALUATION: the source pipeline's rule verdict was produced on truncated or failed input, so their 'unflagged' status is not established for the true runtime"
+6,S5_post_repair_conflict_check,3082,727,1553,797,5,0,no cross-label exact-bytecode conflict anywhere; no cross-family exact bytecode inside PRIMARY_EVALUATION; 7 repaired rows are byte-identical to curated benign_AA implementations (independent confirmation the repair recovered true runtime)
+7,S6_annotate_contradiction_flags,3082,727,1553,797,5,0,"13 negatives flagged (kept, not removed): usenix 'matched', external blacklist, or PhishingHook-phishing bytecode; 1 positive with independent behavioral corroboration"
+8,S7_final_benchmark,3082,727,1553,797,5,0,written to revision_v2/data/authguardbench_7702_v2.csv.gz; PRIMARY_EVALUATION = 2190 rows

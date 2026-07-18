@@ -1,0 +1,165 @@
+{
+  "chain_distribution": {
+    "malicious": {
+      "ethereum": 232,
+      "bnb": 163,
+      "base": 140,
+      "optimism": 99,
+      "arbitrum": 52,
+      "polygon": 29,
+      "gnosis": 12
+    },
+    "benign_cleared": {
+      "ethereum": 424,
+      "bnb": 409,
+      "base": 369,
+      "optimism": 130,
+      "arbitrum": 109,
+      "polygon": 76,
+      "gnosis": 36
+    },
+    "benign_general": {
+      "ethereum(implied)": 797
+    }
+  },
+  "chain_vs_label_chi2": {
+    "chi2": 26.69424360468391,
+    "p": 0.00016520492260891983,
+    "dof": 6
+  },
+  "code_bytes": {
+    "malicious": {
+      "n": 727,
+      "mean": 3011.949105914718,
+      "p05": 811.0,
+      "p25": 1515.0,
+      "median": 2701.0,
+      "p75": 3597.0,
+      "p95": 6957.499999999989,
+      "min": 229.0,
+      "max": 15629.0
+    },
+    "benign_cleared": {
+      "n": 1553,
+      "mean": 4438.149388280747,
+      "p05": 312.20000000000005,
+      "p25": 1707.0,
+      "median": 2727.0,
+      "p75": 5197.0,
+      "p95": 16382.0,
+      "min": 2.0,
+      "max": 16382.0
+    },
+    "benign_general": {
+      "n": 797,
+      "mean": 6619.819322459222,
+      "p05": 45.0,
+      "p25": 1746.0,
+      "median": 4967.0,
+      "p75": 9378.0,
+      "p95": 22142.0,
+      "min": 8.0,
+      "max": 24565.0
+    },
+    "ks_mal_vs_cleared": {
+      "stat": 0.15498068697847978,
+      "p": 7.499532670755939e-11
+    }
+  },
+  "opcode_count": {
+    "malicious": {
+      "n": 727,
+      "mean": 1731.3081155433288,
+      "p05": 451.50000000000006,
+      "p25": 870.0,
+      "median": 1593.0,
+      "p75": 2164.0,
+      "p95": 3779.0,
+      "min": 123.0,
+      "max": 8779.0
+    },
+    "benign_cleared": {
+      "n": 1553,
+      "mean": 2516.1268512556344,
+      "p05": 182.8,
+      "p25": 984.0,
+      "median": 1680.0,
+      "p75": 2943.0,
+      "p95": 8361.0,
+      "min": 2.0,
+      "max": 11210.0
+    },
+    "benign_general": {
+      "n": 797,
+      "mean": 3823.094102885822,
+      "p05": 24.0,
+      "p25": 1202.0,
+      "median": 2639.0,
+      "p75": 5269.0,
+      "p95": 12458.599999999991,
+      "min": 8.0,
+      "max": 16081.0
+    }
+  },
+  "family_size_per_row": {
+    "malicious": {
+      "n": 727,
+      "mean": 16.730398899587346,
+      "p05": 1.0,
+      "p25": 3.0,
+      "median": 9.0,
+      "p75": 24.0,
+      "p95": 58.0,
+      "min": 1.0,
+      "max": 58.0
+    },
+    "benign_cleared": {
+      "n": 1553,
+      "mean": 9.786864133934321,
+      "p05": 1.0,
+      "p25": 2.0,
+      "median": 4.0,
+      "p75": 12.0,
+      "p95": 32.0,
+      "min": 1.0,
+      "max": 49.0
+    }
+  },
+  "exact_duplicate_group_size_per_row": {
+    "malicious": {
+      "n": 727,
+      "mean": 2.4580467675378266,
+      "p05": 1.0,
+      "p25": 1.0,
+      "median": 1.0,
+      "p75": 2.0,
+      "p95": 7.0,
+      "min": 1.0,
+      "max": 19.0
+    },
+    "benign_cleared": {
+      "n": 1553,
+      "mean": 2.5273663876368317,
+      "p05": 1.0,
+      "p25": 1.0,
+      "median": 1.0,
+      "p75": 2.0,
+      "p95": 7.0,
+      "min": 1.0,
+      "max": 25.0
+    }
+  },
+  "cbor_metadata_presence": {
+    "malicious": 0.9793672627235214,
+    "benign_cleared": 0.8705730843528654,
+    "benign_general": 0.7992471769134254
+  },
+  "is_observed_eip7702_delegate": {
+    "malicious": true,
+    "benign_cleared": true,
+    "benign_general": false,
+    "benign_AA": "curated implementations"
+  },
+  "verified_source_status": "unknown for all subsets (never collected)",
+  "acquisition_pipeline_identity": "primary positives and primary negatives come from the SAME acquisition pipeline (USENIX eoa_detect eth_getCode dump over the 2,685 observed delegate pool) and the SAME source analysis pass; benign_general and benign_AA are separately acquired control populations"
+}
