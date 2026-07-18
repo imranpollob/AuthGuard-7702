@@ -1,0 +1,4 @@
+measurement,unit,n_contracts,repeats,total_calls,mean,median,p95,p99,serialized_model_bytes,parameter_count,cpu,python_version,pytorch_version,cpu_threads,runtime_artifact
+full_local_screening_pipeline,ms,300.0,5,1500,5.182863232666667,4.120889,14.547488549999995,21.428751609999996,742625,181877,AMD Ryzen 5 3600 6-Core Processor,3.12.12,2.9.0+cu128,1,revision_v2/experiments/robustness_operational_v2/models/model_authguard_seq_s7702_f0.pt
+model_load,ms,,10,10,7.9584654,7.68982,9.716321649999998,10.57397953,742625,181877,AMD Ryzen 5 3600 6-Core Processor,3.12.12,2.9.0+cu128,1,revision_v2/experiments/robustness_operational_v2/models/model_authguard_seq_s7702_f0.pt
+model_forward_reference_baseline,ms,200.0,1,195,1.008593153136854,0.9500039741396904,1.5848249138798556,,742625,181877,AMD Ryzen 5 3600 6-Core Processor,3.12.12,2.9.0+cu128,1,revision_v2/experiments/robustness_operational_v2/models/model_authguard_seq_s7702_f0.pt

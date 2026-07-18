@@ -1,0 +1,91 @@
+{
+  "status": "PASS_WITH_EXPECTED_GPU_VARIANCE",
+  "rows": 45,
+  "interpretation": "XGBoost reproduces bit-for-bit. GPU-trained neural models use the frozen baseline code path, which explicitly disables deterministic algorithms; their fold-level reruns can therefore differ despite fixed seeds. Aggregate ranking and conclusions are checked below rather than falsely claiming bitwise identity.",
+  "per_model": {
+    "authguard_seq": {
+      "max_absolute_differences": {
+        "AUPRC": 0.04012963122844726,
+        "AUROC": 0.017890708915144993,
+        "Recall_01": 0.3225806451612903,
+        "FPR_01": 0.0106382978723404,
+        "Recall_05": 0.13978494623655924,
+        "FPR_05": 0.0338983050847458,
+        "Recall_10": 0.06896551724137923,
+        "FPR_10": 0.1553672316384181,
+        "Brier": 0.0870401485312836
+      },
+      "aggregate_differences": {
+        "AUPRC": 0.007944962861412552,
+        "AUROC": 0.004040104310007009,
+        "Recall_01": -0.059448449709902706,
+        "FPR_01": -0.0013239080230872495,
+        "Recall_05": 0.018002007981132495,
+        "FPR_05": -0.002996248139073898,
+        "Recall_10": 0.0038996208701931323,
+        "FPR_10": -0.010837489342139711,
+        "Brier": -0.005213214266144434
+      }
+    },
+    "flat_cnn": {
+      "max_absolute_differences": {
+        "AUPRC": 0.026053400415118944,
+        "AUROC": 0.020296276405298963,
+        "Recall_01": 0.13793103448275856,
+        "FPR_01": 0.007092198581560299,
+        "Recall_05": 0.07586206896551728,
+        "FPR_05": 0.020000000000000004,
+        "Recall_10": 0.096551724137931,
+        "FPR_10": 0.04421768707483001,
+        "Brier": 0.05223601498735861
+      },
+      "aggregate_differences": {
+        "AUPRC": 0.004646523185206086,
+        "AUROC": 0.0020002055972899724,
+        "Recall_01": 0.004348755903985424,
+        "FPR_01": -0.0006899213586143704,
+        "Recall_05": 0.0032112643044696076,
+        "FPR_05": 0.00011123307265864524,
+        "Recall_10": 0.00021111470220191997,
+        "FPR_10": -0.005280580097987486,
+        "Brier": 0.0007846756945635996
+      }
+    },
+    "hist_ngram_xgb": {
+      "max_absolute_differences": {
+        "AUPRC": 0.0,
+        "AUROC": 0.0,
+        "Recall_01": 0.0,
+        "FPR_01": 0.0,
+        "Recall_05": 0.0,
+        "FPR_05": 0.0,
+        "Recall_10": 0.0,
+        "FPR_10": 0.0,
+        "Brier": 0.0
+      },
+      "aggregate_differences": {
+        "AUPRC": 0.0,
+        "AUROC": 0.0,
+        "Recall_01": 0.0,
+        "FPR_01": 0.0,
+        "Recall_05": 0.0,
+        "FPR_05": 0.0,
+        "Recall_10": 0.0,
+        "FPR_10": 0.0,
+        "Brier": 0.0
+      }
+    }
+  },
+  "xgboost_exact_reproduction": true,
+  "current_AUPRC_rank": [
+    "authguard_seq",
+    "flat_cnn",
+    "hist_ngram_xgb"
+  ],
+  "baseline_AUPRC_rank": [
+    "authguard_seq",
+    "flat_cnn",
+    "hist_ngram_xgb"
+  ],
+  "ranking_preserved": true
+}

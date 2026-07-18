@@ -1,0 +1,2 @@
+seed,fold,n,FPR_01,FPR_05,FPR_10,mean_calibrated_score,median_calibrated_score,threshold_01,threshold_05,threshold_10,artifact_path
+7702,0,20,0.25,0.25,0.25,0.4935551475745016,0.49314376753272643,0.49408466543471324,0.49408466543471324,0.49408466543471324,revision_v2/experiments/robustness_operational_v2/smoke/models/model_authguard_seq_s7702_f0.pt
