@@ -1,0 +1,10 @@
+{
+  "training_runs_completed": 45,
+  "initial_detached_pid": 272818,
+  "initial_detached_exit": 1,
+  "initial_guard_trigger": "neural clean reruns were not bit-for-bit identical to the prior nondeterministic-GPU baseline",
+  "diagnosis": "XGBoost reproduced exactly; aggregate neural ranking and conclusions were preserved; frozen baseline training explicitly disables deterministic algorithms",
+  "resolution": "replaced the invalid bitwise neural gate with exact XGBoost and preserved-ranking checks, documented GPU variance, then finalized from the completed checkpoints",
+  "final_output_verification": "PASS",
+  "frozen_artifact_verification": "PASS - 144 frozen files unchanged"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "expected_recipient_conditions": 4380,
+  "observed_recipient_conditions": 4380,
+  "ledger_segment_rows": 8450,
+  "missing_recipient_conditions": 0,
+  "wrong_partition_rows": 0,
+  "same_recipient_donor_family_rows": 0,
+  "donor_selection_label_independent_by_protocol": true,
+  "label_columns_are_audit_only": [
+    "recipient_label"
+  ],
+  "pool_disjointness_checked_for_all_folds": true
+}
