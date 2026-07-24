@@ -1,0 +1,36 @@
+% Generated from long_context_ablation_v3; do not edit numerical values by hand.
+\begin{table*}[t]
+\centering
+\caption{Parameter-controlled long-context evaluation. Values are mean $\pm$ standard deviation across three seed-level five-fold means.}
+\label{tab:long-context-v3}
+\begin{tabular}{lrrccc}
+\toprule
+Model & Budget & Parameters & Clean AUPRC & F200 AUPRC & F200 R@5\% \\
+\midrule
+Flat control (2K) & 2,048 & 29,985 & 0.879 $\pm$ 0.005 & 0.532 $\pm$ 0.017 & 0.148 $\pm$ 0.013 \\
+Flat control (16K) & 16,384 & 29,985 & 0.936 $\pm$ 0.003 & 0.810 $\pm$ 0.014 & 0.506 $\pm$ 0.038 \\
+Chunk attention (2K) & 2,048 & 30,050 & 0.902 $\pm$ 0.003 & 0.897 $\pm$ 0.009 & 0.817 $\pm$ 0.022 \\
+Chunk mean (16K) & 16,384 & 29,985 & 0.879 $\pm$ 0.005 & 0.728 $\pm$ 0.020 & 0.274 $\pm$ 0.031 \\
+Chunk attention (16K) & 16,384 & 30,050 & 0.918 $\pm$ 0.007 & 0.908 $\pm$ 0.001 & 0.815 $\pm$ 0.039 \\
+Legacy AuthGuard reference (16K) & 16,384 & 181,877 & 0.914 $\pm$ 0.013 & 0.894 $\pm$ 0.006 & 0.786 $\pm$ 0.021 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\caption{Predeclared paired mechanism contrasts with fold-stratified, family-clustered bootstrap intervals.}
+\label{tab:long-context-contrasts-v3}
+\begin{tabular}{llrrl}
+\toprule
+Mechanism & Condition & $\Delta$AUPRC & 95\% CI & Decision \\
+\midrule
+Coverage & M0 & +0.0152 & [-0.0028, +0.0300] & INCONCLUSIVE \\
+Attention & M0 & +0.0386 & [+0.0072, +0.0643] & SUPPORTED \\
+Hierarchy & M0 & -0.0181 & [-0.0400, +0.0182] & INCONCLUSIVE \\
+Coverage & F200 & +0.0112 & [-0.0051, +0.0252] & INCONCLUSIVE \\
+Attention & F200 & +0.1800 & [+0.1348, +0.2316] & SUPPORTED \\
+Hierarchy & F200 & +0.0980 & [+0.0590, +0.1544] & SUPPORTED \\
+\bottomrule
+\end{tabular}
+\end{table}

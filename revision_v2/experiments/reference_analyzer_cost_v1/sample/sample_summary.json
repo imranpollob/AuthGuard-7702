@@ -1,0 +1,188 @@
+{
+  "sample_rows": 60,
+  "families": 60,
+  "per_cell": 2,
+  "selection_salt": "AUTHGUARD_REFERENCE_ANALYZER_COST_V1",
+  "cells": [
+    {
+      "label": 0,
+      "length_stratum": "2049_4096",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "2049_4096",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "2049_4096",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "2049_4096",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "2049_4096",
+      "fold_id": 4,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "gt_4096",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "gt_4096",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "gt_4096",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "gt_4096",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "gt_4096",
+      "fold_id": 4,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "le_2048",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "le_2048",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "le_2048",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "le_2048",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 0,
+      "length_stratum": "le_2048",
+      "fold_id": 4,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "2049_4096",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "2049_4096",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "2049_4096",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "2049_4096",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "2049_4096",
+      "fold_id": 4,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "gt_4096",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "gt_4096",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "gt_4096",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "gt_4096",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "gt_4096",
+      "fold_id": 4,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "le_2048",
+      "fold_id": 0,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "le_2048",
+      "fold_id": 1,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "le_2048",
+      "fold_id": 2,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "le_2048",
+      "fold_id": 3,
+      "rows": 2
+    },
+    {
+      "label": 1,
+      "length_stratum": "le_2048",
+      "fold_id": 4,
+      "rows": 2
+    }
+  ]
+}
