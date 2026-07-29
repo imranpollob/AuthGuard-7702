@@ -1,0 +1,12 @@
+{
+  "n_sample": 200,
+  "sample_seed": 7702,
+  "token_sequence_equality_rate": 1.0,
+  "opcode_count_equality_rate": 1.0,
+  "dense_feature_max_abs_diff": 0.0,
+  "ngram_feature_max_abs_diff": 0.0,
+  "intentional_differences": [
+    "v3 UNK_xx opcode names, module layout, and code structure are independently written (see revision_v3/src/features/); v3 reuses the same public EVM opcode->mnemonic mapping and the same PUSH1..PUSH32-collapse rule required for the model's own token vocabulary, and the same blake2b-seeded hashing scheme required for 4-gram feature identity. No source file was copied."
+  ],
+  "mismatches": []
+}

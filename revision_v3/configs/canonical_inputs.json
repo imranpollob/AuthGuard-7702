@@ -1,0 +1,25 @@
+{
+  "_comment": "Read-only paths into the frozen Revision v2 tree. Nothing under revision_v3 writes to these paths.",
+  "repo_root_relative": true,
+  "benchmark_csv_gz": "revision_v2/data/authguardbench_7702_v2.csv.gz",
+  "frozen_guard_script": "revision_v2/experiments/common/frozen.py",
+  "expected_population": {
+    "primary_rows": 2190,
+    "primary_positive": 727,
+    "primary_negative": 1463,
+    "primary_families": 790,
+    "n_folds": 5
+  },
+  "required_columns": [
+    "sample_id", "chain", "address", "runtime_bytecode", "bytecode_sha256",
+    "label", "label_semantics", "label_source", "label_evidence_type", "label_strength",
+    "dataset_subset", "population", "is_eip7702_delegate", "family_id", "family_size",
+    "exact_duplicate_group", "exact_duplicate_count", "fold_id", "outer_fold_secondary",
+    "code_bytes", "opcode_count", "has_cbor_metadata", "bytecode_repaired",
+    "data_quality_flag", "flag_usenix_matched", "flag_external_blacklist",
+    "flag_phishinghook_phishing_bytecode", "flag_independent_behavioral_evidence",
+    "flag_repaired_matches_curated_aa"
+  ],
+  "seeds": [7702, 7703, 7704],
+  "n_outer_folds": 5
+}
