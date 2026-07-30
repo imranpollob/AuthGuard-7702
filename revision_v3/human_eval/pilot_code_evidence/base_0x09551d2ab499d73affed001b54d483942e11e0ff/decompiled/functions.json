@@ -1,0 +1,122 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1aca6376",
+      "resolved_signature": "transferERC721(address,address,uint256)",
+      "bytecode_offset": 145,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x66d003ac",
+      "resolved_signature": "recipient()",
+      "bytecode_offset": 185,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6effec50",
+      "resolved_signature": "forwardCall(address,uint256,bytes)",
+      "bytecode_offset": 227,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 287,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xdbecc616",
+      "resolved_signature": "transferERC1155(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 329,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xe00af4a7",
+      "resolved_signature": "sweepERC20(address)",
+      "bytecode_offset": 369,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf7448a31",
+      "resolved_signature": "transferERC20(address,uint256)",
+      "bytecode_offset": 409,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfaa0f4d8",
+      "resolved_signature": null,
+      "bytecode_offset": 449,
+      "arguments": "address,bytes,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 630
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 764
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1051
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1225
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1392
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1662
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2003
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2139
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2349
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2484
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2654
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2987
+    }
+  ]
+}

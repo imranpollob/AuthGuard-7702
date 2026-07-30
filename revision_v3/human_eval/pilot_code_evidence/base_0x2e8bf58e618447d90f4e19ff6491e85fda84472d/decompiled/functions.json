@@ -1,0 +1,53 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xcb3a0d5c",
+      "resolved_signature": null,
+      "bytecode_offset": 45,
+      "arguments": "(address,bytes,uint256)[],address,address,uint256,address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 268
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 663
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 759
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 824
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1041
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 1145
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2329
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2912
+    }
+  ]
+}

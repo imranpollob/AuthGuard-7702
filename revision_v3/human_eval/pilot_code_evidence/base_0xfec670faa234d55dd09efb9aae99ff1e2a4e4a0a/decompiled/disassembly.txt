@@ -1,0 +1,93 @@
+    0  PUSH1 80
+    2  PUSH1 40
+    4  MSTORE
+    5  CALLDATASIZE
+    6  PUSH1 6c
+    8  JUMPI
+    9  PUSH0
+   10  PUSH0
+   11  SWAP1
+   12  SLOAD
+   13  SWAP1
+   14  PUSH2 0100
+   17  EXP
+   18  SWAP1
+   19  DIV
+   20  PUSH20 ffffffffffffffffffffffffffffffffffffffff
+   41  AND
+   42  PUSH20 ffffffffffffffffffffffffffffffffffffffff
+   63  AND
+   64  PUSH2 08fc
+   67  CALLVALUE
+   68  SWAP1
+   69  DUP2
+   70  ISZERO
+   71  MUL
+   72  SWAP1
+   73  PUSH1 40
+   75  MLOAD
+   76  PUSH0
+   77  PUSH1 40
+   79  MLOAD
+   80  DUP1
+   81  DUP4
+   82  SUB
+   83  DUP2
+   84  DUP6
+   85  DUP9
+   86  DUP9
+   87  CALL
+   88  SWAP4
+   89  POP
+   90  POP
+   91  POP
+   92  POP
+   93  ISZERO
+   94  DUP1
+   95  ISZERO
+   96  PUSH1 6a
+   98  JUMPI
+   99  RETURNDATASIZE
+  100  PUSH0
+  101  PUSH0
+  102  RETURNDATACOPY
+  103  RETURNDATASIZE
+  104  PUSH0
+  105  REVERT
+  106  JUMPDEST
+  107  STOP
+  108  JUMPDEST
+  109  PUSH0
+  110  PUSH0
+  111  REVERT
+  112  INVALID
+  113  LOG2
+  114  PUSH5 6970667358
+  120  ?
+  121  SLT
+  122  KECCAK256
+  123  OR
+  124  ?
+  125  ?
+  126  ?
+  127  ?
+  128  PUSH13 a3e4bb6d67d7439a3f0e5c0d5e
+  142  MSIZE
+  143  ?
+  144  GASLIMIT
+  145  ?
+  146  NOT
+  147  DUP2
+  148  ?
+  149  ?
+  150  ?
+  151  ?
+  152  GAS
+  153  REVERT
+  154  DUP4
+  155  PUSH5 736f6c6343
+  161  STOP
+  162  ADDMOD
+  163  CLZ
+  164  STOP
+  165  CALLER

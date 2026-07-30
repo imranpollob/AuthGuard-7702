@@ -1,0 +1,39 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x6effec50",
+      "resolved_signature": "forwardCall(address,uint256,bytes)",
+      "bytecode_offset": 78,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x789f93f6",
+      "resolved_signature": "transferERC721(address,address,address,uint256)",
+      "bytecode_offset": 126,
+      "arguments": "address,address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x9db5dbe4",
+      "resolved_signature": "transferERC20(address,address,uint256)",
+      "bytecode_offset": 154,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xeae787dc",
+      "resolved_signature": "transferERC1155(address,address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 182,
+      "arguments": "address,address,address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 331
+    }
+  ]
+}

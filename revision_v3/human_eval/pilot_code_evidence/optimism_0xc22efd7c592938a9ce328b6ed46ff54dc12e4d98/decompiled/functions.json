@@ -1,0 +1,26 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x4576d251",
+      "resolved_signature": null,
+      "bytecode_offset": 320,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x7fb74289",
+      "resolved_signature": null,
+      "bytecode_offset": 389,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xb9635e63",
+      "resolved_signature": null,
+      "bytecode_offset": 399,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

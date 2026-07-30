@@ -1,0 +1,16 @@
+    0  ?
+    1  ADD
+    2  STOP
+    3  ?
+    4  CALLER
+    5  ?
+    6  DUP16
+    7  BALANCE
+    8  MSTORE
+    9  LOG4
+   10  RETURNDATACOPY
+   11  LT
+   12  ?
+   13  ?
+   14  ?
+   15  DELEGATECALL

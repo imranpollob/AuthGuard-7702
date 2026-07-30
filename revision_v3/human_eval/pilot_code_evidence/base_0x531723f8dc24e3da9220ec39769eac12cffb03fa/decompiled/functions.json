@@ -1,0 +1,43 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x040113fc",
+      "resolved_signature": null,
+      "bytecode_offset": 96,
+      "arguments": "uint256[],uint256[]",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 246
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 323
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 396
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 515
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 615
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 775
+    }
+  ]
+}

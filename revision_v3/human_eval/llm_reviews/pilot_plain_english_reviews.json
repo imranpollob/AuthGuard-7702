@@ -1,0 +1,205 @@
+{
+  "_comment": "Plain-English companion to pilot_llm_reviews.json for the simplified Pilot_Simple_Review.xlsx workbook. Same 20 Pilot items, same underlying evidence and conclusions as the technical review -- these fields simply restate that analysis without EVM/opcode jargon for contributors with no smart-contract background. Advisory only. Keyed by item_id (matches pilot_manifest.csv and pilot_llm_reviews.json).",
+  "reviews": {
+    "optimism:0xc22efd7c592938a9ce328b6ed46ff54dc12e4d98": {
+      "plain_english_contract_summary": "A small contract with three functions. One of them sends value (ETH) out to another address whenever it is called.",
+      "sensitive_actions": "Can send value (ETH) out to another address.",
+      "access_control_summary": "The contract keeps no saved data at all, so if there is any rule about who is allowed to trigger the value-sending action, that rule would have to be built directly into the code rather than read from a stored setting. We could not confirm whether such a rule exists.",
+      "initialization_summary": "No initialization/setup function was identified.",
+      "proxy_or_upgrade_summary": "Does not appear to be a proxy or upgradeable contract.",
+      "concrete_security_concern": "We cannot confirm whether the value-sending action is restricted to one authorized caller or open to anyone.",
+      "missing_information": "The exact condition under which the outgoing call happens, and whether the caller is checked first, could not be determined from the evidence used for this review.",
+      "ai_points_to_check": "Confirm whether the function that sends value checks who is calling it before proceeding."
+    },
+    "polygon:0x32ab10ebca6121659e41d7caa364147d87ebd74e": {
+      "plain_english_contract_summary": "This looks like a lightweight 'router' that forwards most calls through to a separate contract (its real implementation), while one function checks a stored value before allowing an update.",
+      "sensitive_actions": "Can forward any call -- including calls that could move funds or change settings -- through to another contract.",
+      "access_control_summary": "There is a check, before the update-like action, that compares a stored value against something supplied by the caller. This resembles a permission check, but we could not confirm exactly what it verifies.",
+      "initialization_summary": "No dedicated initialization function was identified.",
+      "proxy_or_upgrade_summary": "This is best understood as a proxy: it forwards calls to another (implementation) contract. We could not identify which contract it forwards to using only the evidence available for this review.",
+      "concrete_security_concern": "The real behavior of this contract depends entirely on the separate implementation contract it forwards to, which is unknown from this evidence. Safety cannot be assessed without knowing what that implementation does.",
+      "missing_information": "The address of the implementation contract this proxy forwards to.",
+      "ai_points_to_check": "Identify the implementation contract this proxy forwards calls to, and review that contract separately before relying on this one."
+    },
+    "base:0x54b20dbe278a201289d808448b798106dc6febdd": {
+      "plain_english_contract_summary": "A small, two-function contract that keeps no saved data. It makes two outgoing calls somewhere in its logic.",
+      "sensitive_actions": "Can make outgoing calls to other addresses; the destination and purpose of these calls were not visible in this review.",
+      "access_control_summary": "No ownership or admin-style permission function was identified.",
+      "initialization_summary": "No initialization function was identified.",
+      "proxy_or_upgrade_summary": "Does not appear to be a proxy.",
+      "concrete_security_concern": "We could not determine what the two outgoing calls do or whether either is restricted, since they were not visible in the portion of the contract reviewed.",
+      "missing_information": "The destination and purpose of both outgoing calls.",
+      "ai_points_to_check": "Identify what the two outgoing calls do and whether any caller restriction applies to them."
+    },
+    "ethereum:0xd24558a256c4aa2d0b6c3a7e12b2f70f810e7b04": {
+      "plain_english_contract_summary": "A large, full-featured contract that keeps real saved data and includes a complete, standard ownership system (an owner, plus functions to transfer or give up ownership) -- a common, well-understood pattern. It can also interact with external tokens, e.g. moving tokens that were pre-approved by the owner, a typical smart-account design.",
+      "sensitive_actions": "Can move externally-approved tokens using a standard approve-then-transfer pattern common to smart-account/relayer designs.",
+      "access_control_summary": "Exposes a complete, standard ownership system (an owner, plus the ability to transfer or renounce ownership) -- a strong, recognizable sign of deliberate, conventional access control, not an ad-hoc one.",
+      "initialization_summary": "No initialization-specific function was separately identified.",
+      "proxy_or_upgrade_summary": "Not a proxy; no forwarding to another contract was detected.",
+      "concrete_security_concern": "None identified from the available evidence. One caveat: the presence of the ownership pattern proves a permission system exists, but does not by itself prove every sensitive function is actually gated by it.",
+      "missing_information": "No verified source code was available to directly confirm the token-moving function is protected by the same ownership check as the rest of the contract.",
+      "ai_points_to_check": "Confirm the token-moving function is restricted to the owner, and check whether verified source code exists for this contract."
+    },
+    "base:0x7aef1df01285823845ee9b905f5bd20471c27e6c": {
+      "plain_english_contract_summary": "The largest and most complex contract in this batch, with substantial internal logic and 12 separate outgoing calls to other addresses.",
+      "sensitive_actions": "Makes 12 distinct outgoing calls somewhere in its logic; their purposes were not identified in this review.",
+      "access_control_summary": "No ownership/admin function and no saved data of any kind were identified -- unusual for a contract this large and this active, and a reason for extra scrutiny rather than a specific finding of danger.",
+      "initialization_summary": "No initialization function was identified.",
+      "proxy_or_upgrade_summary": "Does not appear to be a proxy.",
+      "concrete_security_concern": "This is the highest-priority item in the Pilot for closer review: a large, call-heavy contract with no identifiable permission system and no saved settings is exactly the profile that deserves the most scrutiny, even though nothing concretely dangerous was confirmed.",
+      "missing_information": "What each of the 12 outgoing calls does, and whether any of them is restricted to a specific caller.",
+      "ai_points_to_check": "Review this item most carefully of the 20; try to determine what the 12 outgoing calls are for and whether any are restricted."
+    },
+    "base:0x531723f8dc24e3da9220ec39769eac12cffb03fa": {
+      "plain_english_contract_summary": "A small contract whose main job appears to be immediately forwarding value (ETH) to another address right after it receives a call.",
+      "sensitive_actions": "Forwards value (ETH) to another address.",
+      "access_control_summary": "No saved data and no ownership function were identified, so we could not confirm whether the forwarding destination is fixed or could be influenced by the caller.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy pattern.",
+      "concrete_security_concern": "We could not confirm whether the address receiving the forwarded value is a fixed, safe destination or something that could be influenced by whoever calls the contract.",
+      "missing_information": "Whether the forwarding destination address is a fixed value or comes from the caller.",
+      "ai_points_to_check": "Confirm whether the forwarding destination is a fixed address or can be influenced by the caller."
+    },
+    "base:0xbe4cb4f3b926953dc550614b71909f149799f1f9": {
+      "plain_english_contract_summary": "A contract that keeps real saved data and includes a 'transfer' function typical of contracts that move assets (e.g. token-style transfers).",
+      "sensitive_actions": "Can transfer assets via a transfer-style function.",
+      "access_control_summary": "No named ownership/admin function was identified, but that alone does not prove there is no permission check -- a check could exist without being exposed as a separate, named function.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "It is unclear whether the transfer capability is restricted to an authorized caller or open to anyone.",
+      "missing_information": "Whether the transfer function includes a built-in caller check, and what the saved data represents.",
+      "ai_points_to_check": "Confirm whether the transfer function checks who is calling it before moving assets."
+    },
+    "bnb:0x7543d5c7417fde1b7e2b1d12f7ec77a8fa0d7e7c": {
+      "plain_english_contract_summary": "A moderate-size contract with several functions and three outgoing calls; structurally similar to a few other 'forwarder-style' contracts in this batch.",
+      "sensitive_actions": "Makes outgoing calls to other addresses (three call sites).",
+      "access_control_summary": "No saved data and no ownership/admin function were identified.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "We could not confirm the destinations of, or restrictions on, the three outgoing calls.",
+      "missing_information": "The destinations of, and any caller restrictions on, the three outgoing calls.",
+      "ai_points_to_check": "Identify what each of the three outgoing calls does and whether any is restricted."
+    },
+    "ethereum:0x2d33b68f3152a43e10b327dbf47bfed0b4a78d10": {
+      "plain_english_contract_summary": "This contract reads a saved address and appears to compare it against something before allowing an action to proceed -- consistent with a custom, 'built-in' ownership check rather than a standard, separately-named one.",
+      "sensitive_actions": "Makes outgoing calls; specific destinations were not identified.",
+      "access_control_summary": "Shows a recognizable pattern of reading a saved address and comparing it before proceeding, a positive sign that some form of access control likely exists, though we could not confirm exactly what it checks against (for example, whether it checks that the caller is the authorized address).",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "None confirmed; this access-control pattern looks more deliberate than several other items in this batch, but the exact comparison could not be confirmed.",
+      "missing_information": "What value the saved address is being compared against, and specifically whether it is the caller's identity.",
+      "ai_points_to_check": "Confirm that the comparison is checking the caller's identity against the saved address (an owner-style check)."
+    },
+    "gnosis:0x95eb89311ffb27112e657b8a6eaaf7391192c83a": {
+      "plain_english_contract_summary": "Exposes an 'owner' read function (a partial ownership signal) and makes five outgoing calls, but does not expose any function to change or remove that owner.",
+      "sensitive_actions": "Makes five outgoing calls.",
+      "access_control_summary": "Has an owner-read function (suggesting an ownership concept exists, likely a fixed owner set once and never changed, since no saved data was recorded), but we could not confirm whether the five outgoing calls are actually protected by this owner check.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "Whether each of the five outgoing calls is actually protected by the owner check could not be confirmed.",
+      "missing_information": "Whether the five outgoing calls are gated by the owner check.",
+      "ai_points_to_check": "Confirm whether each outgoing call is preceded by an owner/caller check."
+    },
+    "base:0x399e3a4f3251ba247b223cf41079cfe19d40463f": {
+      "plain_english_contract_summary": "This contract includes the ability to permanently destroy itself (found in two separate code paths), and appears to have a 'sweep leftover balance' type function that checks the contract's own balance before sending it out.",
+      "sensitive_actions": "Contains a self-destruct capability -- an irreversible action that permanently deletes the contract's code -- in two places, and can send out its own balance.",
+      "access_control_summary": "No ownership/admin function was identified to confirm that either the self-destruct capability or the balance-sweeping function is restricted to an authorized caller.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "HIGH PRIORITY: this is the only item in this batch with a self-destruct capability. If that capability is not restricted to an authorized caller, anyone could permanently delete the contract's code. This should be checked before any other item in this batch.",
+      "missing_information": "Whether either self-destruct path, or the balance-sweeping call, is restricted to an authorized caller.",
+      "ai_points_to_check": "HIGH PRIORITY: confirm whether the self-destruct capability can be triggered by anyone, or only by an authorized party."
+    },
+    "base:0x09551d2ab499d73affed001b54d483942e11e0ff": {
+      "plain_english_contract_summary": "Exposes an owner-read function alongside asset-transfer functions, meaning it both has an ownership concept and the ability to move assets.",
+      "sensitive_actions": "Can move assets via transfer-style and safe-transfer-style functions.",
+      "access_control_summary": "Has an owner-read function, but no saved data was recorded, so the relationship between the ownership concept and the asset-moving functions could not be confirmed.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "PRIORITY: this combines the two things the review checklist flags as needing the most scrutiny -- the ability to move assets, and an unconfirmed relationship to the ownership check. If the transfer functions are not actually gated by the owner check, anyone could move assets out of the account.",
+      "missing_information": "Whether the transfer functions are protected by the same check that backs the owner-read function.",
+      "ai_points_to_check": "PRIORITY: confirm whether the asset-transfer functions require the caller to be the owner."
+    },
+    "optimism:0x068315334224a8433971b72504434e741a034e35": {
+      "plain_english_contract_summary": "Nearly identical in structure to the Polygon proxy item in this batch -- very likely the same or a closely related design deployed on a different network. It checks a saved value before allowing an update, and forwards other calls to a separate implementation contract.",
+      "sensitive_actions": "Forwards calls -- which could include asset movement or configuration changes -- to another contract.",
+      "access_control_summary": "Same guard-then-forward pattern as the similar Polygon item in this batch; the same caveats apply.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "This is a proxy that forwards calls to another (unresolved) implementation contract, using the same design as the similar item on Polygon.",
+      "concrete_security_concern": "Same as the similar Polygon item: the real behavior depends on an implementation contract that is unknown from this evidence.",
+      "missing_information": "The identity and behavior of the implementation contract this proxy forwards to; whether this and the Polygon item are actually the same underlying design deployed on two networks.",
+      "ai_points_to_check": "Identify the implementation contract; compare with the similar Polygon item to see if they share the same design."
+    },
+    "bnb:0xade121366bd52330411b00f557e5a311f41a7e28": {
+      "plain_english_contract_summary": "A small contract with a single outgoing call, protected by a specific and well-recognized guard: it checks that the caller is the account itself. In an EIP-7702 setup, this means the sensitive action can only be triggered by the account's own address acting on its own behalf -- a design used by several legitimate account-abstraction / EIP-7702 implementations to keep privileged actions self-only.",
+      "sensitive_actions": "Makes one outgoing call, which is protected by the self-only guard described below.",
+      "access_control_summary": "Contains a recognized 'self-call-only' guard: it compares the contract's own address to the caller's address and only proceeds if they match. This is a specific, positive access-control signal, not merely an absence of red flags.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "None identified. One caveat: only one guarded function was directly visible in this review, so whether every sensitive action in the contract goes through this same guard was not fully confirmed.",
+      "missing_information": "Whether the contract's single outgoing call is definitely downstream of the self-only guard, rather than a separate, unguarded path.",
+      "ai_points_to_check": "Confirm that the contract's one outgoing call can only be reached through the self-only guard."
+    },
+    "bnb:0x8656e0466987509e76e49a7e97dde4c5be341c4c": {
+      "plain_english_contract_summary": "A small contract with an unusual structure: it checks the amount of ETH sent against four different fixed values before falling back to normal function dispatch, then makes an outgoing call. This pattern is not typical of standard compiler output and its purpose is not obvious.",
+      "sensitive_actions": "Makes several outgoing calls -- unusually many relative to the contract's small size.",
+      "access_control_summary": "No ownership/admin function was identified, and the unusual code structure makes it harder to be confident about what access control, if any, is present.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "The unusual, non-standard code structure and the high number of outgoing calls relative to the contract's small size are both reasons for caution, even though nothing concretely dangerous was confirmed.",
+      "missing_information": "What produced this unusual code structure, and what each outgoing call does.",
+      "ai_points_to_check": "This contract's structure is atypical and warrants a closer, more careful read than most other items in this batch."
+    },
+    "base:0x2e8bf58e618447d90f4e19ff6491e85fda84472d": {
+      "plain_english_contract_summary": "This contract refuses to accept incoming ETH, and includes the ability to deploy brand-new contracts on the account's behalf.",
+      "sensitive_actions": "Can deploy new contracts using the account's identity -- a capability distinct from a simple asset transfer or call.",
+      "access_control_summary": "No ownership/admin function was identified to confirm that the contract-deployment capability is restricted to an authorized caller.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "A delegate that can deploy new contracts using the account's identity, without a confirmed restriction on who can trigger that, is a distinct capability worth flagging explicitly. Deploying contracts is not itself proof of danger, but it deserves scrutiny.",
+      "missing_information": "Whether the contract-deployment capability is restricted to the account owner, and what kind of contracts it deploys.",
+      "ai_points_to_check": "Confirm whether the contract-deployment function checks who is calling it."
+    },
+    "optimism:0x6cd575da80915f273f60ec168732b05ae42bea82": {
+      "plain_english_contract_summary": "A large, mature contract using a complete, well-known, widely-used library pattern for permissions (an initialization step plus role-based access control). It keeps substantial saved data and logs many events, all consistent with a professionally structured, upgradeable contract.",
+      "sensitive_actions": "Uses role-based permissions to control sensitive actions -- a standard, well-audited pattern for managing who can do what.",
+      "access_control_summary": "Exposes a complete, standard role-based access-control system -- a well-known, widely audited library pattern, not an ad-hoc one.",
+      "initialization_summary": "Has an initialization function, consistent with an upgradeable-contract design. This kind of initializer is only safe if it can be called exactly once, by an authorized party -- this specific protection was not directly confirmed in this review.",
+      "proxy_or_upgrade_summary": "Shows signs of being an upgradeable contract (forwards to another contract via a low-level mechanism near the end of its code); the specific upgrade target was not resolved.",
+      "concrete_security_concern": "PRIORITY: confirm that the initialization function cannot be called more than once, or by an unauthorized party -- this is a well-known real-world vulnerability class even in contracts that otherwise use trusted, standard libraries.",
+      "missing_information": "Whether the initialization function has a proper one-time-use guard; the specific contract this one upgrades/forwards to.",
+      "ai_points_to_check": "PRIORITY: confirm the initializer can only be called once, by an authorized party, and cannot be re-triggered or front-run."
+    },
+    "arbitrum:0xc9a6f7ff9db9408eba9bef142ea8aa53d7bbe303": {
+      "plain_english_contract_summary": "A very small, simple contract: it makes exactly one outgoing call, keeps no saved data, and does not expose any asset-transfer or ownership functions.",
+      "sensitive_actions": "Makes one outgoing call.",
+      "access_control_summary": "No ownership/admin function was identified; the single call's destination and restrictions were not visible in this review.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "Given how little this contract does (a single call, no saved data, no asset movement), the overall risk appears low, even though the one call was not individually confirmed to be restricted.",
+      "missing_information": "The destination of, and any caller restriction on, the single outgoing call.",
+      "ai_points_to_check": "Lower priority than most other items in this batch given the very limited capability; still worth confirming the single call site's restrictions if time allows."
+    },
+    "ethereum:0x1c8ef3d487cf7278cb2ccfc1e339b055cd5291ea": {
+      "plain_english_contract_summary": "Exposes asset-transfer functions but keeps absolutely no saved data of any kind -- unusual for a contract whose job is to move assets, since most legitimate designs store at least an owner or an allowance record.",
+      "sensitive_actions": "Can move assets via transfer-style and safe-transfer-style functions.",
+      "access_control_summary": "No ownership/admin function was identified, and -- notably -- the contract keeps no saved data at all, which is architecturally unusual for something that moves assets. If any restriction exists it would have to be a fixed, hardcoded value rather than something configurable.",
+      "initialization_summary": "None identified.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy.",
+      "concrete_security_concern": "PRIORITY: the combination of asset-moving functions with a complete absence of any saved access-control data raises the priority of verification for this item -- it should be checked whether the transfer functions have any restriction at all.",
+      "missing_information": "Whether the transfer functions have any caller restriction, fixed or otherwise.",
+      "ai_points_to_check": "PRIORITY: confirm whether the asset-transfer functions have any restriction on who can call them."
+    },
+    "base:0xfec670faa234d55dd09efb9aae99ff1e2a4e4a0a": {
+      "plain_english_contract_summary": "The smallest contract in this batch. It reads one saved address and immediately forwards any received value (ETH) to that address. Importantly, this contract has no way to ever write to its own saved data -- meaning the forwarding destination was fixed once, at deployment, and can never be changed afterward by anyone.",
+      "sensitive_actions": "Forwards value (ETH) to a saved address.",
+      "access_control_summary": "No ownership/admin function was identified, but the forwarding destination cannot be changed after deployment (there is no code path that writes to saved data), which meaningfully limits takeover risk even though the destination's identity itself is unknown.",
+      "initialization_summary": "None identified separately; the forwarding address was presumably set once at deployment.",
+      "proxy_or_upgrade_summary": "Not identified as a proxy in the traditional sense; it forwards value only, not full calls.",
+      "concrete_security_concern": "None identified. The immutability of the forwarding destination (no ability to write saved data anywhere in the contract) is a positive signal, though the destination address's own identity and trustworthiness were not independently confirmed.",
+      "missing_information": "The specific address that receives the forwarded value.",
+      "ai_points_to_check": "Identify the address that receives forwarded value, to confirm it is a legitimate, trusted destination."
+    }
+  }
+}
