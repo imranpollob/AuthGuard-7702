@@ -1,0 +1,38 @@
+{
+  "A_chunk_attention_vs_chunk_max": {
+    "model_a": "authguard_reference_v3",
+    "model_b": "chunk_max_16384",
+    "metric": "flood_auprc_mean_across_3_transform_seeds",
+    "delta": 0.01762588789906283,
+    "ci_low": -0.030945709853911502,
+    "ci_high": 0.06664104452045294,
+    "excludes_zero": false
+  },
+  "B_sequence_dense_vs_reference": {
+    "model_a": "authguard_sequence_dense",
+    "model_b": "authguard_reference_v3",
+    "metric": "flood_auprc_mean_across_3_transform_seeds",
+    "delta": 0.051768385361915005,
+    "ci_low": 0.030073348058429948,
+    "ci_high": 0.07746920898180266,
+    "excludes_zero": true
+  },
+  "C_reference_vs_parameter_matched_flat": {
+    "model_a": "authguard_reference_v3",
+    "model_b": "flat_cnn_matched_16384",
+    "metric": "flood_auprc_mean_across_3_transform_seeds",
+    "delta": -0.0149313414414007,
+    "ci_low": -0.04699118259197546,
+    "ci_high": 0.015767981645434057,
+    "excludes_zero": false
+  },
+  "C2_reference_vs_original_large_flat": {
+    "model_a": "authguard_reference_v3",
+    "model_b": "flat_cnn_16384",
+    "metric": "flood_auprc_mean_across_3_transform_seeds",
+    "delta": 0.012264352132945263,
+    "ci_low": -0.019583269862403153,
+    "ci_high": 0.044140248029054016,
+    "excludes_zero": false
+  }
+}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reviewer login</h1>
+<p>Internal tool -- enter your reviewer ID (no password; this is not a public-facing service).</p>
+<form method="post" action="/login">
+  <input type="text" name="reviewer_id" placeholder="e.g. R1" required>
+  <button type="submit">Continue</button>
+</form>
+{% endblock %}

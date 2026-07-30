@@ -1,0 +1,36 @@
+{
+  "final_model_name": "authguard_sequence_dense",
+  "frozen_config_path": "revision_v3/configs/final_model.json",
+  "frozen_config_sha256": "89027cb552ee822a55c67e2d8d347cfe94cc778478f2f334bb12dba07623f956",
+  "checkpoint_directory": "revision_v3/results/checkpoints",
+  "checkpoint_count": 15,
+  "checkpoint_sha256": {
+    "authguard_sequence_dense_seed7702_fold0.pt": "34b7499108ce2769e5368ac782d21382c54e24fbeb7b17749e94811b0f657e24",
+    "authguard_sequence_dense_seed7702_fold1.pt": "6d31bc8c8cc43bdae697bd96563828a9f0ee5932fc0172cbbb5111be8ca6e1e1",
+    "authguard_sequence_dense_seed7702_fold2.pt": "1c66c867f756cd9f375fcdbd984c8dbcbe4d32a1d8fc3e135cf8342ab3dfa47c",
+    "authguard_sequence_dense_seed7702_fold3.pt": "c9a1145b7d477f8613cd81e3927d0fe4904f8e9c9e3c042d6a13301da495df97",
+    "authguard_sequence_dense_seed7702_fold4.pt": "9c53c875e07047eae16cad695182801880918b4715ba394e3ce53d002d1d638f",
+    "authguard_sequence_dense_seed7703_fold0.pt": "146000aac15852365e16413a5df48ee3149586cb6742364763f0c44c7e64c871",
+    "authguard_sequence_dense_seed7703_fold1.pt": "40c454c5fa003e21bde59d695b7253b9df4132d4d244edbede38205598ea82b5",
+    "authguard_sequence_dense_seed7703_fold2.pt": "0d73db1cdcffbde83de17ed8d19d4cc1c94d7f82029b6edef5475095c4746642",
+    "authguard_sequence_dense_seed7703_fold3.pt": "88958b664c2bf8f51f72de51901fe403829b16403aa2edfa519ec63fa3365cb4",
+    "authguard_sequence_dense_seed7703_fold4.pt": "f2d3f2a5e7c1f380f8dba7baf97caa4e09e84c8912c59eeecf7d4d2b13dc36a6",
+    "authguard_sequence_dense_seed7704_fold0.pt": "1e75ec12e8e2d14dca63c4029bfedf9bc4bcf61a0d605e16e57cc96f2a375ce6",
+    "authguard_sequence_dense_seed7704_fold1.pt": "42fdb8ba0553ad9859b1b691bc7900d7b4f0af1209ffb77b84cc221a38ad158b",
+    "authguard_sequence_dense_seed7704_fold2.pt": "a6735723360849597621be36d85a98f5223bf71a33eac90a45e8094ba713fd8a",
+    "authguard_sequence_dense_seed7704_fold3.pt": "95fbbd545f80f8f4780a51a9d8f0ca7a99b9da0e6f8b03b14eb4ba39bcab6e1f",
+    "authguard_sequence_dense_seed7704_fold4.pt": "d0cd6f3eb96663f09decee742a53e45f8e88554a046368773d6eca796cb13d9d"
+  },
+  "source_files": {
+    "clean_fold_seed_results": "revision_v3/results/authguard_sequence_dense_fold_seed.csv",
+    "clean_predictions": "revision_v3/results/authguard_sequence_dense_predictions.csv.gz",
+    "model_candidate_summary": "revision_v3/results/model_candidate_summary.csv",
+    "corrected_bootstrap_vs_reference": "revision_v3/results/phase2_corrected_bootstrap/model_candidate_bootstrap_corrected.csv",
+    "final_robustness_predictions": "revision_v3/results/final_robustness/final_robustness_predictions.csv.gz",
+    "final_robustness_summary": "revision_v3/results/final_robustness/final_robustness_summary.csv",
+    "final_robustness_ABC_bootstrap": "revision_v3/results/final_robustness/final_robustness_ABC_bootstrap.json",
+    "determinism_verification": "revision_v3/tests/test_determinism.py"
+  },
+  "decision_document": "revision_v3/reports/FINAL_MODEL_SELECTION.md",
+  "manifest_generated_utc": "2026-07-30"
+}

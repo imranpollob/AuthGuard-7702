@@ -20,6 +20,14 @@ import os
 import sys
 import time
 
+# CUBLAS_WORKSPACE_CONFIG must be set in the process environment BEFORE the CUDA context is
+# created (i.e. before `import torch` touches CUDA) -- setting it here, before the torch
+# import below, is the latest point at which os.environ.setdefault can still reliably affect
+# cuBLAS's determinism. Phase 2 Part 11 found that torch.use_deterministic_algorithms(True) in
+# STRICT mode raises on the Linear/matmul ops this project's models use unless this variable
+# is set; with it set, strict mode runs cleanly (verified: revision_v3/tests/test_determinism.py).
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
 import numpy as np
 import pandas as pd
 import torch
@@ -39,6 +47,29 @@ from training.calibration import apply_temperature, fit_temperature  # noqa: E40
 # (see REFERENCE_VALIDATION_REPORT.md for the before/after comparison).
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
+
+# Phase 2 Part 11 strengthening: cudnn.deterministic alone (Phase 1's fix) does not cover
+# non-cudnn non-determinism (e.g. some scatter/index-add backward paths, atomic-add-based
+# reductions). torch.use_deterministic_algorithms raises RuntimeError, rather than silently
+# running non-deterministically, for any operation it can't make deterministic -- so if this
+# line ever starts raising for a NEW model/op added later, that is a real signal to
+# investigate, not something to catch-and-ignore. warn_only=False is intentional: Phase 2
+# verified (with CUBLAS_WORKSPACE_CONFIG set above) that every operation actually used by
+# every model in this codebase (embedding, conv1d, linear, softmax, BCE, AdamW) has a
+# deterministic implementation available.
+try:
+    torch.use_deterministic_algorithms(True)
+    DETERMINISTIC_ALGORITHMS_STRICT = True
+except Exception:  # pragma: no cover - defensive, see DETERMINISM_NOTES below
+    torch.use_deterministic_algorithms(True, warn_only=True)
+    DETERMINISTIC_ALGORITHMS_STRICT = False
+
+# Operations found NOT to have a deterministic GPU implementation in this codebase, as of
+# Phase 2 Part 11: NONE. (If a future model introduces one, torch.use_deterministic_algorithms
+# strict mode above will raise RuntimeError at the first forward/backward call using it,
+# rather than silently degrading -- update this list and DETERMINISTIC_ALGORITHMS_STRICT's
+# fallback behavior if that happens.)
+NON_DETERMINISTIC_OPERATIONS_FOUND: list[str] = []
 
 SEEDS = (7702, 7703, 7704)
 N_FOLDS = 5

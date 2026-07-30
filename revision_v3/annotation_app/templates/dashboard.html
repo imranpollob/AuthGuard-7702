@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard -- {{ reviewer_id }}</h1>
+
+<h2>Overall progress</h2>
+<table border="1" cellpadding="4">
+  <tr><th>Sample set</th><th>Items</th><th>Assignments</th><th>Completed</th></tr>
+  {% for row in overall %}
+  <tr><td>{{ row.sample_set }}</td><td>{{ row.n_items }}</td><td>{{ row.n_assignments }}</td><td>{{ row.n_completed_assignments }}</td></tr>
+  {% endfor %}
+</table>
+
+<h2>My assignments</h2>
+<table border="1" cellpadding="4">
+  <tr><th>Item</th><th>Set</th><th>Adjudication?</th><th>Status</th></tr>
+  {% for a in my_assignments %}
+  <tr>
+    <td><a href="/review/{{ a.item_id }}">{{ a.item_id }}</a></td>
+    <td>{{ a.sample_set }}</td>
+    <td>{{ 'yes' if a.is_adjudication else 'no' }}</td>
+    <td>{{ a.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p><a href="/review/next">Go to next pending item</a></p>
+{% endblock %}

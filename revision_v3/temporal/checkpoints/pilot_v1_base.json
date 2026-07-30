@@ -1,0 +1,12 @@
+{
+  "chain": "base",
+  "run_id": "pilot_v1",
+  "last_scanned_block": 41557626,
+  "n_blocks_scanned": 300,
+  "n_type4_txs": 113,
+  "n_authorization_entries": 113,
+  "n_rpc_errors": 2,
+  "last_run_wall_seconds": 77.21084523200989,
+  "last_run_blocks_per_second": 1.3987672285606014,
+  "last_run_n_blocks": 108
+}
