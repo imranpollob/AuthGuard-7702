@@ -1,0 +1,135 @@
+gW` 6`
+a9%V[`@Q` 
+CANCEL_BATCH_SWAP_ORDER
+a8hV[Q
+Ethereum Signed Message:
+[`@QbF
+a7WV[PPa
+<W`@Q` 
+ua:/V[
+a:EV[`
+2a:/V[`@Qc
+a;iV[a
+V[`@Q=
+RB`$R`D
+"WPPP`@
+V[cNH{q`
+gW`@` 
+R T`@Q
+R`$5`$
+R`D5`D
+PW[P`@Q
+]V[`@Q
+gW`D5`$5`
+a80V[`
+W[P`@Q``
+W[PPQ`@Qc
+a8hV[a
+cV[`@Q=
+[cNH{q`
+V[PcNH{q`
+R`$R`D
+[PPcNH{q`
+a7WV[`
+la:/V[
+ua:EV[`@
+gW`@``
+a8LV[`
+W[P`@Qc
+qNA!P#*
+~V[`@Q=
+gW6`#`
+a8hV[` 
+a8hV[0`
+a8hV[`
+WP`@Qc
+Qa73V[
+P` =` 
+V[a:[V[` a
+V[`@QbF
+gWPa 3
+Ha k6a7
+a8hV[_
+V[`@Q=_
+a'$Wa#J
+a:/V[a"
+a:EV[`d5
+a#ya:EV[
+W[Pa$8
+a:[V[`@Qc
+W[Pa$fa$[
+a&dW`$` `
+a&1W[Pa$
+W`da%;
+` R`@_ `
+a:EV[`@
+R`$R`D_
+vWQ`$a$
+Pa&?V[`@QbF
+a8hV[a$NV[
+RB`$R`D_
+vW` 6`
+``@Qa(,
+` R`@_ 
+` R`@_ T
+a)PV[a)KV[4a
+` R` `
+` R` `@_ T`@Q
+V[PP`@Qc
+` R`@_ T`
+` Ra,5`@_ Ta
+Pa,7V[P
+vW``6`
+Q`@Qcp
+a3VW[P
+a3 W[P
+WQ`@Qcp
+a2^W[a01
+W`da0T
+a<!V[Q
+a2GWPa0ka'
+_R` R`@_ 
+` R`@_ a1*
+` RB`@_ U`@Q
+a73V[Q`@Qc
+a2(W[P
+a0sV[`@QbF
+executor tip transfer failed
+Qa0'V[=
+Pa2kV[
+vWQ`$a/
+a8hV[a/vV[
+a/`a/AV[=
+Pa3/V[
+Pa3fV[
+_R` R`
+` R`@_ _
+R` R`@_ `@Qa3
+V[a4aV[a4
+a.tV[`@QbF
+All parts already executed
+5`$5`d5
+5`D5_R`
+` R`@_ a6u
+vWV[`d5
+W`@RV[`
+W`@RV[a
+W`@RV[
+W`@RV[_
+WV[`@QbF
+a9,WV[`@QbF
+Order already cancelled
+V[`$5`
+Ra73V[
+a<(WV[`@QbF
+insufficient tokenOut sold for c`D
+Rkurrent price`
+V[PP`D5
+V[Pa;f`D5a'
+vWP`$5`
+WPPV[`
+a> WPc
+a>*WPV[c5
+V[PPP_
+dipfsX"
+cdsolcC

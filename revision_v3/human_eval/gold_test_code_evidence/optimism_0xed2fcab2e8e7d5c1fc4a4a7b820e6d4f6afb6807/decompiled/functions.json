@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x64e4251e",
+      "resolved_signature": null,
+      "bytecode_offset": 223,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

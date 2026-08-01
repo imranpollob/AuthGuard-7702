@@ -1,0 +1,88 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 2078,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x150b7a02",
+      "resolved_signature": "onERC721Received(address,address,uint256,bytes)",
+      "bytecode_offset": 1968,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1626ba7e",
+      "resolved_signature": "isValidSignature(bytes32,bytes)",
+      "bytecode_offset": 1836,
+      "arguments": "uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x4abb262a",
+      "resolved_signature": null,
+      "bytecode_offset": 1659,
+      "arguments": "uint248",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x5d00bb12",
+      "resolved_signature": "isNonceUsed(uint256)",
+      "bytecode_offset": 1508,
+      "arguments": "uint8",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x84b0196e",
+      "resolved_signature": "eip712Domain()",
+      "bytecode_offset": 1182,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb187bd26",
+      "resolved_signature": "isPaused()",
+      "bytecode_offset": 1007,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb70e36f0",
+      "resolved_signature": "invalidateNonce(uint256)",
+      "bytecode_offset": 869,
+      "arguments": "uint8",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xbc197c81",
+      "resolved_signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "bytecode_offset": 693,
+      "arguments": "address,address,uint256[],uint256[],bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd03c7914",
+      "resolved_signature": "supportsExecutionMode(bytes32)",
+      "bytecode_offset": 644,
+      "arguments": "bytes10",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xe9ae5c53",
+      "resolved_signature": "execute(bytes32,bytes)",
+      "bytecode_offset": 300,
+      "arguments": "uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "resolved_signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 185,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "view"
+    }
+  ]
+}

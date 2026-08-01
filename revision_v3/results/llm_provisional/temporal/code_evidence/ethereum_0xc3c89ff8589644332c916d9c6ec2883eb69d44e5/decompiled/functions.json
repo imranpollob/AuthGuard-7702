@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x06ec16f8",
+      "resolved_signature": "collect(address)",
+      "bytecode_offset": 56,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xdba6335f",
+      "resolved_signature": "i_owner()",
+      "bytecode_offset": 84,
+      "arguments": "",
+      "state_mutability": "pure"
+    }
+  ]
+}

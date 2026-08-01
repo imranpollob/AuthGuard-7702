@@ -1,0 +1,117 @@
+{
+  "sourcify": {
+    "http_status": 200,
+    "raw": {
+      "matchId": "8725425",
+      "creationMatch": "match",
+      "runtimeMatch": "match",
+      "verifiedAt": "2025-08-06T09:14:18Z",
+      "match": "match",
+      "chainId": "1",
+      "address": "0x7785a22Facd31dB653bA4928f1D5B81D093f0b2f"
+    },
+    "verified": true
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "file_path": "BasicSmartAccount.sol",
+      "creation_status": "success",
+      "source_code": "// SPDX-License-Identifier: LGPL-3.0-only\r\npragma solidity ^0.8.30;\r\n\r\n/**\r\n * @title BasicSmartAccount - This contract support batch execution of transactions.\r\n * The only storage is a nonce to prevent replay attacks.\r\n * The contract is intended to be used with EIP-7702 where EOA delegates to this contract.\r\n */\r\ncontract BasicSmartAccount {\r\n    struct Storage {\r\n        uint256 nonce;\r\n    }\r\n\r\n    // Reserve a unique storage slot for the nonce.\r\n    // * keccak256(\"BasicSmartAccount\") & (~0xff)\r\n    bytes32 private constant _STORAGE =\r\n        0xbdfee0231e0903cde9ca6fd75d08a500062dc3d87718f712bc6958ed69761700;\r\n\r\n    // Domain typehash for EIP712 message.\r\n    // * keccak256(\"EIP712Domain(uint256 chainId,address verifyingContract)\");\r\n    bytes32 private constant _DOMAIN_TYPEHASH =\r\n        0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;\r\n\r\n    // The struct typehash for the EIP712 message.\r\n    // * keccak256(\"HandleOps(bytes32 data,uint256 nonce)\")\r\n    bytes32 private constant _HANDLEOPS_TYPEHASH =\r\n        0x4f8bb4631e6552ac29b9d6bacf60ff8b5481e2af7c2104fe0261045fa6988111;\r\n\r\n    address private immutable ENTRY_POINT;\r\n\r\n    error InvalidSignature();\r\n\r\n    /**\r\n     * @dev Sends multiple transactions with signature validation and reverts all if one fails.\r\n     * @param userOps Encoded User Ops.\r\n     * @param r The r part of the signature.\r\n     * @param vs The v and s part of the signature.\r\n     */\r\n    function handleOps(\r\n        bytes memory userOps,\r\n        uint256 r,\r\n        uint256 vs\r\n    ) public payable {\r\n        Storage storage $ = _storage();\r\n        uint256 nonce = $.nonce;\r\n\r\n        // Calculate the hash of transactions data and nonce for signature verification\r\n        bytes32 domainSeparator = keccak256(\r\n            abi.encode(_DOMAIN_TYPEHASH, block.chainid, address(this))\r\n        );\r\n\r\n        bytes32 structHash = keccak256(\r\n            abi.encode(_HANDLEOPS_TYPEHASH, keccak256(userOps), nonce)\r\n        );\r\n        bytes32 digest = keccak256(\r\n            abi.encodePacked(\"\\x19\\x01\", domainSeparator, structHash)\r\n        );\r\n\r\n        // Verify the signature of EIP712 message\r\n        require(_isValidSignature(digest, r, vs), InvalidSignature());\r\n\r\n        // Update nonce for the sender to prevent replay attacks\r\n        unchecked {\r\n            $.nonce = nonce + 1;\r\n        }\r\n\r\n        /* solhint-disable no-inline-assembly */\r\n        assembly (\"memory-safe\") {\r\n            let length := mload(userOps)\r\n            let i := 0x20\r\n            for {\r\n\r\n            } lt(i, length) {\r\n\r\n            } {\r\n                let to := shr(0x60, mload(add(userOps, i)))\r\n                let value := mload(add(userOps, add(i, 0x14)))\r\n                let dataLength := mload(add(userOps, add(i, 0x34)))\r\n                let data := add(userOps, add(i, 0x54))\r\n                let success := call(gas(), to, value, data, dataLength, 0, 0)\r\n\r\n                if eq(success, 0) {\r\n                    returndatacopy(0, 0, returndatasize())\r\n                    revert(0, returndatasize())\r\n                }\r\n                i := add(i, add(0x54, dataLength))\r\n            }\r\n        }\r\n        /* solhint-enable no-inline-assembly */\r\n    }\r\n\r\n    /**\r\n     * @dev Validates the signature by extracting `v` and `s` from `vs` and using `ecrecover`.\r\n     * @param hash The hash of the signed data.\r\n     * @param r The r part of the signature.\r\n     * @param vs The v and s part of the signature combined.\r\n     * @return bool True if the signature is valid, false otherwise.\r\n     */\r\n    function _isValidSignature(\r\n        bytes32 hash,\r\n        uint256 r,\r\n        uint256 vs\r\n    ) internal view returns (bool) {\r\n        unchecked {\r\n            uint256 v = (vs >> 255) + 27;\r\n            uint256 s = vs &\r\n                0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;\r\n\r\n            return\r\n                address(this) ==\r\n                ecrecover(hash, uint8(v), bytes32(r), bytes32(s));\r\n        }\r\n    }\r\n\r\n    function _storage() private pure returns (Storage storage $) {\r\n        assembly (\"memory-safe\") {\r\n            $.slot := _STORAGE\r\n        }\r\n    }\r\n\r\n    function getNonce() external view returns (uint256) {\r\n        return _storage().nonce;\r\n    }\r\n\r\n    // Allow the contract to receive ETH\r\n    fallback() external payable {}\r\n\r\n    receive() external payable {}\r\n}",
+      "deployed_bytecode": "0x60806040526004361061002c575f3560e01c806374fa41211461002f578063d087d2881461004b5761002d565b5b005b61004960048036038101906100449190610476565b610075565b005b348015610056575f5ffd5b5061005f610203565b60405161006c91906104f1565b60405180910390f35b5f61007e610214565b90505f815f015490505f7f47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a794692185f1b46306040516020016100bf93929190610561565b6040516020818303038152906040528051906020012090505f7f4f8bb4631e6552ac29b9d6bacf60ff8b5481e2af7c2104fe0261045fa69881115f1b87805190602001208460405160200161011693929190610596565b6040516020818303038152906040528051906020012090505f828260405160200161014292919061063f565b60405160208183030381529060405280519060200120905061016581888861023b565b61019b576040517f8baa579f00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b60018401855f0181905550875160205b818110156101f757808a015160601c601482018b0151603483018c0151605484018d015f5f838386885af15f81036101e5573d5f5f3e3d5ffd5b826054018601955050505050506101ab565b50505050505050505050565b5f61020c610214565b5f0154905090565b5f7fbdfee0231e0903cde9ca6fd75d08a500062dc3d87718f712bc6958ed69761700905090565b5f5f601b60ff84901c0190505f7f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8416905060018683875f1b845f1b6040515f81526020016040526040516102939493929190610690565b6020604051602081039080840390855afa1580156102b3573d5f5f3e3d5ffd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff163073ffffffffffffffffffffffffffffffffffffffff1614925050509392505050565b5f604051905090565b5f5ffd5b5f5ffd5b5f5ffd5b5f5ffd5b5f601f19601f8301169050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b6103558261030f565b810181811067ffffffffffffffff821117156103745761037361031f565b5b80604052505050565b5f6103866102f6565b9050610392828261034c565b919050565b5f67ffffffffffffffff8211156103b1576103b061031f565b5b6103ba8261030f565b9050602081019050919050565b828183375f83830152505050565b5f6103e76103e284610397565b61037d565b9050828152602081018484840111156104035761040261030b565b5b61040e8482856103c7565b509392505050565b5f82601f83011261042a57610429610307565b5b813561043a8482602086016103d5565b91505092915050565b5f819050919050565b61045581610443565b811461045f575f5ffd5b50565b5f813590506104708161044c565b92915050565b5f5f5f6060848603121561048d5761048c6102ff565b5b5f84013567ffffffffffffffff8111156104aa576104a9610303565b5b6104b686828701610416565b93505060206104c786828701610462565b92505060406104d886828701610462565b9150509250925092565b6104eb81610443565b82525050565b5f6020820190506105045f8301846104e2565b92915050565b5f819050919050565b61051c8161050a565b82525050565b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f61054b82610522565b9050919050565b61055b81610541565b82525050565b5f6060820190506105745f830186610513565b61058160208301856104e2565b61058e6040830184610552565b949350505050565b5f6060820190506105a95f830186610513565b6105b66020830185610513565b6105c360408301846104e2565b949350505050565b5f81905092915050565b7f19010000000000000000000000000000000000000000000000000000000000005f82015250565b5f6106096002836105cb565b9150610614826105d5565b600282019050919050565b5f819050919050565b6106396106348261050a565b61061f565b82525050565b5f610649826105fd565b91506106558285610628565b6020820191506106658284610628565b6020820191508190509392505050565b5f60ff82169050919050565b61068a81610675565b82525050565b5f6080820190506106a35f830187610513565b6106b06020830186610681565b6106bd6040830185610513565b6106ca6060830184610513565b9594505050505056fea2646970667358221220b70f92f0f444247e14c584dce8172670a9b337ddbf6ac1956db6b265a544ae9164736f6c634300081e0033",
+      "optimization_enabled": false,
+      "verified_twin_address_hash": null,
+      "is_verified": true,
+      "compiler_settings": {
+        "evmVersion": "prague",
+        "libraries": {},
+        "metadata": {
+          "bytecodeHash": "ipfs"
+        },
+        "optimizer": {
+          "enabled": false,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "optimization_runs": null,
+      "sourcify_repo_url": "https://repo.sourcify.dev/contracts/partial_match/1/0x7785a22Facd31dB653bA4928f1D5B81D093f0b2f/",
+      "decoded_constructor_args": null,
+      "compiler_version": "0.8.30+commit.73712a01",
+      "is_verified_via_verifier_alliance": false,
+      "verified_at": "2025-08-06T09:14:19.493860Z",
+      "implementations": [],
+      "proxy_type": null,
+      "external_libraries": [],
+      "creation_bytecode": "0x60a0604052348015600e575f5ffd5b506080516107096100245f395f50506107095ff3fe60806040526004361061002c575f3560e01c806374fa41211461002f578063d087d2881461004b5761002d565b5b005b61004960048036038101906100449190610476565b610075565b005b348015610056575f5ffd5b5061005f610203565b60405161006c91906104f1565b60405180910390f35b5f61007e610214565b90505f815f015490505f7f47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a794692185f1b46306040516020016100bf93929190610561565b6040516020818303038152906040528051906020012090505f7f4f8bb4631e6552ac29b9d6bacf60ff8b5481e2af7c2104fe0261045fa69881115f1b87805190602001208460405160200161011693929190610596565b6040516020818303038152906040528051906020012090505f828260405160200161014292919061063f565b60405160208183030381529060405280519060200120905061016581888861023b565b61019b576040517f8baa579f00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b60018401855f0181905550875160205b818110156101f757808a015160601c601482018b0151603483018c0151605484018d015f5f838386885af15f81036101e5573d5f5f3e3d5ffd5b826054018601955050505050506101ab565b50505050505050505050565b5f61020c610214565b5f0154905090565b5f7fbdfee0231e0903cde9ca6fd75d08a500062dc3d87718f712bc6958ed69761700905090565b5f5f601b60ff84901c0190505f7f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8416905060018683875f1b845f1b6040515f81526020016040526040516102939493929190610690565b6020604051602081039080840390855afa1580156102b3573d5f5f3e3d5ffd5b5050506020604051035173ffffffffffffffffffffffffffffffffffffffff163073ffffffffffffffffffffffffffffffffffffffff1614925050509392505050565b5f604051905090565b5f5ffd5b5f5ffd5b5f5ffd5b5f5ffd5b5f601f19601f8301169050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b6103558261030f565b810181811067ffffffffffffffff821117156103745761037361031f565b5b80604052505050565b5f6103866102f6565b9050610392828261034c565b919050565b5f67ffffffffffffffff8211156103b1576103b061031f565b5b6103ba8261030f565b9050602081019050919050565b828183375f83830152505050565b5f6103e76103e284610397565b61037d565b9050828152602081018484840111156104035761040261030b565b5b61040e8482856103c7565b509392505050565b5f82601f83011261042a57610429610307565b5b813561043a8482602086016103d5565b91505092915050565b5f819050919050565b61045581610443565b811461045f575f5ffd5b50565b5f813590506104708161044c565b92915050565b5f5f5f6060848603121561048d5761048c6102ff565b5b5f84013567ffffffffffffffff8111156104aa576104a9610303565b5b6104b686828701610416565b93505060206104c786828701610462565b92505060406104d886828701610462565b9150509250925092565b6104eb81610443565b82525050565b5f6020820190506105045f8301846104e2565b92915050565b5f819050919050565b61051c8161050a565b82525050565b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f61054b82610522565b9050919050565b61055b81610541565b82525050565b5f6060820190506105745f830186610513565b61058160208301856104e2565b61058e6040830184610552565b949350505050565b5f6060820190506105a95f830186610513565b6105b66020830185610513565b6105c360408301846104e2565b949350505050565b5f81905092915050565b7f19010000000000000000000000000000000000000000000000000000000000005f82015250565b5f6106096002836105cb565b9150610614826105d5565b600282019050919050565b5f819050919050565b6106396106348261050a565b61061f565b82525050565b5f610649826105fd565b91506106558285610628565b6020820191506106658284610628565b6020820191508190509392505050565b5f60ff82169050919050565b61068a81610675565b82525050565b5f6080820190506106a35f830187610513565b6106b06020830186610681565b6106bd6040830185610513565b6106ca6060830184610513565b9594505050505056fea2646970667358221220b70f92f0f444247e14c584dce8172670a9b337ddbf6ac1956db6b265a544ae9164736f6c634300081e0033",
+      "name": "BasicSmartAccount",
+      "is_blueprint": false,
+      "license_type": "none",
+      "is_fully_verified": false,
+      "is_verified_via_eth_bytecode_db": true,
+      "language": "solidity",
+      "evm_version": "prague",
+      "can_be_visualized_via_sol2uml": true,
+      "is_verified_via_sourcify": true,
+      "additional_sources": [],
+      "certified": false,
+      "conflicting_implementations": null,
+      "abi": [
+        {
+          "inputs": [],
+          "name": "InvalidSignature",
+          "type": "error"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "fallback"
+        },
+        {
+          "inputs": [],
+          "name": "getNonce",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "userOps",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint256",
+              "name": "r",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "vs",
+              "type": "uint256"
+            }
+          ],
+          "name": "handleOps",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "receive"
+        }
+      ],
+      "is_changed_bytecode": false,
+      "is_partially_verified": true,
+      "constructor_args": null
+    },
+    "verified": true
+  },
+  "verified": true
+}

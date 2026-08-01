@@ -1,0 +1,153 @@
+{
+  "environment": {
+    "hardware_cpu": "x86_64",
+    "os": "Linux 7.0.0-28-generic",
+    "python_version": "3.12.12",
+    "torch_version": "2.9.0+cu128",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 2080 SUPER",
+    "thread_count": 6,
+    "batch_size_for_throughput": 20,
+    "input_length_distribution_bytes": {
+      "min": 167,
+      "max": 15227,
+      "mean": 3633.5
+    }
+  },
+  "models": {
+    "authguard_sequence_dense": {
+      "cpu": {
+        "device": "cpu",
+        "total_params": 97646,
+        "trainable_params": 97646,
+        "checkpoint_size_bytes": 397988,
+        "state_dict_size_bytes": 397860,
+        "preprocessing_latency_ms": {
+          "median_ms": 1.9007574883289635,
+          "p95_ms": 2.0815978437894955,
+          "p99_ms": 2.2079110349295665,
+          "mean_ms": 1.926875130739063
+        },
+        "forward_latency_ms": {
+          "median_ms": 2.831016987329349,
+          "p95_ms": 3.1387273076688866,
+          "p99_ms": 3.437875528470612,
+          "mean_ms": 2.8748859782353975
+        },
+        "end_to_end_latency_ms": {
+          "median_ms": 2.718157513299957,
+          "p95_ms": 2.877270631142892,
+          "p99_ms": 3.2013233681209385,
+          "mean_ms": 2.739907708019018
+        },
+        "peak_memory_bytes": null,
+        "batch_throughput_items_per_sec": 125.68288301010368,
+        "batch_size_used_for_throughput": 20
+      },
+      "cuda": {
+        "device": "cuda",
+        "total_params": 97646,
+        "trainable_params": 97646,
+        "checkpoint_size_bytes": 398180,
+        "state_dict_size_bytes": 398116,
+        "preprocessing_latency_ms": {
+          "median_ms": 1.8920959846582264,
+          "p95_ms": 2.2646767494734377,
+          "p99_ms": 2.4134541442617774,
+          "mean_ms": 1.96504176245071
+        },
+        "forward_latency_ms": {
+          "median_ms": 3.4991329885087907,
+          "p95_ms": 3.7937401299132034,
+          "p99_ms": 4.041702066315335,
+          "mean_ms": 3.514799882832449
+        },
+        "end_to_end_latency_ms": {
+          "median_ms": 3.432611469179392,
+          "p95_ms": 3.897524147760123,
+          "p99_ms": 4.089367518317886,
+          "mean_ms": 3.487267000018619
+        },
+        "peak_memory_bytes": 35893248,
+        "batch_throughput_items_per_sec": 116.73890093373302,
+        "batch_size_used_for_throughput": 20
+      },
+      "onnx": {
+        "export_succeeded": true,
+        "onnx_size_bytes": 404727,
+        "onnxruntime_available": true,
+        "numerical_parity_max_abs_diff": 4.172325134277344e-07,
+        "onnx_cpu_latency_ms": {
+          "median_ms": 4.991929017705843,
+          "p95_ms": 7.165755980531685,
+          "p99_ms": 8.309563985676508,
+          "mean_ms": 5.477161659509875
+        }
+      }
+    },
+    "authguard_reference_v3": {
+      "cpu": {
+        "device": "cpu",
+        "total_params": 38562,
+        "trainable_params": 38562,
+        "checkpoint_size_bytes": 159100,
+        "state_dict_size_bytes": 159036,
+        "preprocessing_latency_ms": {
+          "median_ms": 1.7703540215734392,
+          "p95_ms": 1.8754036776954308,
+          "p99_ms": 1.940955501049759,
+          "mean_ms": 1.7873773619066924
+        },
+        "forward_latency_ms": {
+          "median_ms": 1.0653770295903087,
+          "p95_ms": 1.2283137592021374,
+          "p99_ms": 1.362111317575909,
+          "mean_ms": 1.0921925655566156
+        },
+        "end_to_end_latency_ms": {
+          "median_ms": 1.0672560019884259,
+          "p95_ms": 1.1500389693537727,
+          "p99_ms": 1.190340731991455,
+          "mean_ms": 1.0775295598432422
+        },
+        "peak_memory_bytes": null,
+        "batch_throughput_items_per_sec": 432.0107524523102,
+        "batch_size_used_for_throughput": 20
+      },
+      "cuda": {
+        "device": "cuda",
+        "total_params": 38562,
+        "trainable_params": 38562,
+        "checkpoint_size_bytes": 159228,
+        "state_dict_size_bytes": 159164,
+        "preprocessing_latency_ms": {
+          "median_ms": 1.7500554968137294,
+          "p95_ms": 1.7706880171317607,
+          "p99_ms": 1.7805757629685106,
+          "mean_ms": 1.7531167290871963
+        },
+        "forward_latency_ms": {
+          "median_ms": 1.1792989971581846,
+          "p95_ms": 1.5284833207260813,
+          "p99_ms": 1.8140323308762163,
+          "mean_ms": 1.238507685775403
+        },
+        "end_to_end_latency_ms": {
+          "median_ms": 1.2025235337205231,
+          "p95_ms": 1.6141148604219777,
+          "p99_ms": 1.7680226679658517,
+          "mean_ms": 1.2726132379611954
+        },
+        "peak_memory_bytes": 35416576,
+        "batch_throughput_items_per_sec": 411.1990724829272,
+        "batch_size_used_for_throughput": 20
+      },
+      "onnx": {
+        "export_succeeded": true,
+        "onnx_size_bytes": 162994,
+        "onnxruntime_available": true,
+        "onnx_inference_error": "'tuple' object has no attribute 'numpy'"
+      }
+    }
+  }
+}

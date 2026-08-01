@@ -1,0 +1,10 @@
+{
+  "dispatched_functions": [],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xa619486e",
+      "resolved_signature": "masterCopy()",
+      "bytecode_offset": 30
+    }
+  ]
+}

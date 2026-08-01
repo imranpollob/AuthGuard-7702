@@ -1,0 +1,74 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x040113fc",
+      "resolved_signature": null,
+      "bytecode_offset": 76,
+      "arguments": "uint256[],uint256[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x150b7a02",
+      "resolved_signature": "onERC721Received(address,address,uint256,bytes)",
+      "bytecode_offset": 124,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xbc197c81",
+      "resolved_signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "bytecode_offset": 185,
+      "arguments": "address,address,uint256[],uint256[],bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "resolved_signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 246,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 396
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 473
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 546
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 665
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 767
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 927
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1169
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 3088
+    }
+  ]
+}

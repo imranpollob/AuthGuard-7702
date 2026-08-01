@@ -1,0 +1,128 @@
+{
+  "per_function": [
+    {
+      "selector": "0x09c5eabe",
+      "resolved_signature": "execute(bytes)",
+      "bytecode_offset": 183,
+      "arguments": "bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x0cb6aaf1",
+      "resolved_signature": "keys(uint256)",
+      "bytecode_offset": 178,
+      "arguments": "uint256",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x10d1bfe5",
+      "resolved_signature": null,
+      "bytecode_offset": 173,
+      "arguments": "bytes,uint256,uint256,(bytes,bytes,uint16,uint16,bool),uint32",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x48f8c24f",
+      "resolved_signature": null,
+      "bytecode_offset": 168,
+      "arguments": "uint256,uint256,uint256,uint256,uint256,uint8",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x490d9a01",
+      "resolved_signature": null,
+      "bytecode_offset": 163,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x5fce1927",
+      "resolved_signature": null,
+      "bytecode_offset": 158,
+      "arguments": "uint32",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x641cdfe2",
+      "resolved_signature": null,
+      "bytecode_offset": 153,
+      "arguments": "uint32,uint256,uint256,uint8",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x8d80ff0a",
+      "resolved_signature": "multiSend(bytes)",
+      "bytecode_offset": 148,
+      "arguments": "bytes",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x972ce4bc",
+      "resolved_signature": null,
+      "bytecode_offset": 143,
+      "arguments": "bytes,uint256,uint256,uint32,bool",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xaffed0e0",
+      "resolved_signature": "nonce()",
+      "bytecode_offset": 139,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

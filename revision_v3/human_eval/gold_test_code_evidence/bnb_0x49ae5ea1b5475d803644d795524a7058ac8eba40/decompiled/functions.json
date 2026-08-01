@@ -1,0 +1,35 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x7892766c",
+      "resolved_signature": "withdrawAnyToken(address)",
+      "bytecode_offset": 734,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xa9f5cd83",
+      "resolved_signature": null,
+      "bytecode_offset": 753,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x66000000",
+      "resolved_signature": null,
+      "bytecode_offset": 462
+    },
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 819
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 989
+    }
+  ]
+}

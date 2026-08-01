@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xf5537ede",
+      "resolved_signature": "transferToken(address,address,uint256)",
+      "bytecode_offset": 36,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

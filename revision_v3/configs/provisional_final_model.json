@@ -1,0 +1,35 @@
+{
+  "_comment": "PROVISIONAL FINAL MODEL config -- LLM_PROVISIONAL label source. Does NOT replace revision_v3/configs/final_model.json (phase2_frozen_model), which remains the frozen Phase 2 reference and is preserved unchanged.",
+  "LABEL_SOURCE": "LLM_PROVISIONAL",
+  "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+  "model_name": "provisional_final_model",
+  "base_model_name": "authguard_sequence_dense",
+  "architecture": {
+    "class": "HybridModel",
+    "module": "revision_v3.src.models.hybrid",
+    "config": {
+      "vocab_size": 227,
+      "chunk_size": 256,
+      "max_chunks": 64,
+      "embedding_dim": 32,
+      "channel_dim": 64,
+      "view_dim": 64,
+      "fusion_dim": 128,
+      "dense_dim": 261,
+      "ngram_dim": 512,
+      "dropout": 0.15,
+      "use_multiscale": false,
+      "use_dense": true,
+      "use_ngram": false
+    }
+  },
+  "selection_method": "confidence_weighted",
+  "training_data": "revision_v3/results/llm_provisional/gold_dev_labels.json (binary subset only)",
+  "checkpoints": {
+    "7702": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/llm_provisional/provisional_final_model_checkpoints/provisional_final_model_seed7702.pt",
+    "7703": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/llm_provisional/provisional_final_model_checkpoints/provisional_final_model_seed7703.pt",
+    "7704": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/llm_provisional/provisional_final_model_checkpoints/provisional_final_model_seed7704.pt"
+  },
+  "phase2_frozen_model": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/configs/final_model.json",
+  "llm_provisional_selected_model": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/llm_provisional/provisional_final_model_manifest.json"
+}

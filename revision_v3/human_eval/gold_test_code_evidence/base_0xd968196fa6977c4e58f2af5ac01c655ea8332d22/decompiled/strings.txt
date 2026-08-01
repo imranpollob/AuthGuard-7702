@@ -1,0 +1,31 @@
+vV[`@Qa
+XV[`@Q
+V[`@Qa
+nV[`@Q
+&V[`@Qa
+0V[`@Qa
+OV[`@Qa
+"V[`@Q
+XV[`@Qa
+LV[`@Qa
+[PPPPP
+|V[`@Q
+PPPV[`
+PV[```
+qV[`@Q
+'V[`@Q
+KV[`@Q
+V[PPPPV[PPPV[PPPV[`
+RPPPPV[`
+RPPV[`
+ERC20: transfer amount exceeds a`
+llowance
+ERC20: decreased allowance below`
+ERC20: approve from the zero add`
+ERC20: approve to the zero addre`
+ERC20: transfer from the zero ad`
+ERC20: transfer to the zero addr`
+ERC20: transfer amount exceeds b`
+alance
+dipfsX"
+dsolcC

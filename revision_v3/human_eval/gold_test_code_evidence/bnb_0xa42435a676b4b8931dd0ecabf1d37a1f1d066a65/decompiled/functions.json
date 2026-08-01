@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x5c36b186",
+      "resolved_signature": "ping()",
+      "bytecode_offset": 44,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8129fc1c",
+      "resolved_signature": "initialize()",
+      "bytecode_offset": 66,
+      "arguments": "",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

@@ -1,0 +1,156 @@
+{
+  "LABEL_SOURCE": "LLM_PROVISIONAL",
+  "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+  "authguard_threshold_used": 0.44079717602580787,
+  "escalation_band_selected_on_gold_dev_only": {
+    "low": 0.0442239707466991,
+    "high": 0.5810097223694125
+  },
+  "gold_dev_policy_development_results": {
+    "A_authguard_alone": {
+      "n_total": 47,
+      "n_escalated": 0,
+      "pct_escalated": 0.0,
+      "pct_resolved_locally": 100.0,
+      "unsafe_coverage_recall": 0.35714285714285715,
+      "false_negative_rate": 0.6428571428571428,
+      "false_positive_rate": 0.4,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 2,
+        "tn": 3,
+        "fn": 27
+      },
+      "avg_screening_cost_ms_measured_stages_only": 2.9
+    },
+    "B_static_rule_alone": {
+      "n_total": 47,
+      "n_escalated": 0,
+      "pct_escalated": 0.0,
+      "pct_resolved_locally": 100.0,
+      "unsafe_coverage_recall": 0.35714285714285715,
+      "false_negative_rate": 0.6428571428571428,
+      "false_positive_rate": 0.4,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 2,
+        "tn": 3,
+        "fn": 27
+      },
+      "avg_screening_cost_ms_measured_stages_only": 0.01
+    },
+    "C_authguard_first_rule_escalation": {
+      "n_total": 47,
+      "n_escalated": 15,
+      "pct_escalated": 31.9,
+      "pct_resolved_locally": 68.1,
+      "unsafe_coverage_recall": 0.35714285714285715,
+      "false_negative_rate": 0.6428571428571428,
+      "false_positive_rate": 0.4,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 2,
+        "tn": 3,
+        "fn": 27
+      },
+      "avg_screening_cost_ms_measured_stages_only": 2.903191489361702
+    },
+    "D_rule_first_authguard_escalation": {
+      "n_total": 47,
+      "n_escalated": 17,
+      "pct_escalated": 36.2,
+      "pct_resolved_locally": 63.8,
+      "unsafe_coverage_recall": 0.35714285714285715,
+      "false_negative_rate": 0.6428571428571428,
+      "false_positive_rate": 0.4,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 2,
+        "tn": 3,
+        "fn": 27
+      },
+      "avg_screening_cost_ms_measured_stages_only": 1.058936170212766
+    },
+    "E_uncertainty_triggered_escalation": {
+      "n_total": 60,
+      "n_escalated_to_deeper_review": 13,
+      "pct_escalated": 21.7,
+      "pct_resolved_locally_by_authguard_plus_rule": 78.3,
+      "note": "Escalated items are exactly the LLM-provisional UNCERTAIN set; their resolution cost/outcome under deeper (human or more expensive semantic) review is NOT measured here -- no such system was run. Only the routing rate is real."
+    }
+  },
+  "gold_test_frozen_policy_evaluation": {
+    "A_authguard_alone": {
+      "n_total": 138,
+      "n_escalated": 0,
+      "pct_escalated": 0.0,
+      "pct_resolved_locally": 100.0,
+      "unsafe_coverage_recall": 0.33587786259541985,
+      "false_negative_rate": 0.6641221374045801,
+      "false_positive_rate": 0.4285714285714286,
+      "confusion_matrix": {
+        "tp": 44,
+        "fp": 3,
+        "tn": 4,
+        "fn": 87
+      },
+      "avg_screening_cost_ms_measured_stages_only": 2.9
+    },
+    "B_static_rule_alone": {
+      "n_total": 138,
+      "n_escalated": 0,
+      "pct_escalated": 0.0,
+      "pct_resolved_locally": 100.0,
+      "unsafe_coverage_recall": 0.3435114503816794,
+      "false_negative_rate": 0.6564885496183206,
+      "false_positive_rate": 0.1428571428571429,
+      "confusion_matrix": {
+        "tp": 45,
+        "fp": 1,
+        "tn": 6,
+        "fn": 86
+      },
+      "avg_screening_cost_ms_measured_stages_only": 0.01
+    },
+    "C_authguard_first_rule_escalation": {
+      "n_total": 138,
+      "n_escalated": 51,
+      "pct_escalated": 37.0,
+      "pct_resolved_locally": 63.0,
+      "unsafe_coverage_recall": 0.3435114503816794,
+      "false_negative_rate": 0.6564885496183206,
+      "false_positive_rate": 0.1428571428571429,
+      "confusion_matrix": {
+        "tp": 45,
+        "fp": 1,
+        "tn": 6,
+        "fn": 86
+      },
+      "avg_screening_cost_ms_measured_stages_only": 2.903695652173913
+    },
+    "D_rule_first_authguard_escalation": {
+      "n_total": 138,
+      "n_escalated": 46,
+      "pct_escalated": 33.3,
+      "pct_resolved_locally": 66.7,
+      "unsafe_coverage_recall": 0.33587786259541985,
+      "false_negative_rate": 0.6641221374045801,
+      "false_positive_rate": 0.1428571428571429,
+      "confusion_matrix": {
+        "tp": 44,
+        "fp": 1,
+        "tn": 6,
+        "fn": 87
+      },
+      "avg_screening_cost_ms_measured_stages_only": 0.9766666666666666
+    },
+    "E_uncertainty_triggered_escalation": {
+      "n_total": 150,
+      "n_escalated_to_deeper_review": 12,
+      "pct_escalated": 8.0,
+      "pct_resolved_locally_by_authguard_plus_rule": 92.0,
+      "note": "Escalated items are exactly the LLM-provisional UNCERTAIN set; their resolution cost/outcome under deeper (human or more expensive semantic) review is NOT measured here -- no such system was run. Only the routing rate is real."
+    }
+  },
+  "note": "Policy (escalation band) was frozen after Gold-Dev; Gold-Test results below were not used to revise it."
+}

@@ -1,0 +1,44 @@
+{
+  "per_function": [
+    {
+      "selector": "0x7ed1f1dd",
+      "resolved_signature": "DPPFlashLoanCall(address,uint256,uint256,bytes)",
+      "bytecode_offset": 66,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xb3021ef8",
+      "resolved_signature": null,
+      "bytecode_offset": 106,
+      "arguments": "bytes4,address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xeb2021c3",
+      "resolved_signature": "DVMFlashLoanCall(address,uint256,uint256,bytes)",
+      "bytecode_offset": 146,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 296,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

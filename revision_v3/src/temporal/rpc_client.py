@@ -18,9 +18,13 @@ import urllib.request
 CHAIN_RPC_ENDPOINTS = {
     "ethereum": ["https://eth.drpc.org", "https://ethereum-rpc.publicnode.com"],
     # base-rpc.publicnode.com's free tier was observed (2026-07-30 pilot) to return
-    # "pruned history unavailable" for blocks ~7.7M behind its head -- base.drpc.org served
-    # the same historical block fine, so it is tried first for this chain.
-    "base": ["https://base.drpc.org", "https://base-rpc.publicnode.com"],
+    # "pruned history unavailable" for blocks ~7.7M behind its head. Revisited 2026-07-31
+    # for the Part 11 temporal_v2 5-month-window collection (blocks ~8M+ behind head):
+    # base-rpc.publicnode.com again returned "pruned history unavailable" and base.drpc.org
+    # 429-rate-limited; the OFFICIAL Base public RPC (mainnet.base.org, run by the Base team
+    # directly rather than a third-party aggregator) served the same historical block fine
+    # and is now tried first for this chain.
+    "base": ["https://mainnet.base.org", "https://base.drpc.org", "https://base-rpc.publicnode.com"],
     "bnb": ["https://bsc-rpc.publicnode.com", "https://bsc.drpc.org"],
     "optimism": ["https://optimism-rpc.publicnode.com", "https://optimism.drpc.org"],
     "arbitrum": ["https://arbitrum-one-rpc.publicnode.com", "https://arbitrum.drpc.org"],

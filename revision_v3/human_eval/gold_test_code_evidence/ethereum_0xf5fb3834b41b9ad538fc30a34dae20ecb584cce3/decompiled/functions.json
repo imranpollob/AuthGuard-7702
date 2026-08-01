@@ -1,0 +1,68 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0023de29",
+      "resolved_signature": "tokensReceived(address,address,address,uint256,bytes,bytes)",
+      "bytecode_offset": 158,
+      "arguments": "address,address,address,uint256,bytes,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x150b7a02",
+      "resolved_signature": "onERC721Received(address,address,uint256,bytes)",
+      "bytecode_offset": 190,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x1f57256f",
+      "resolved_signature": "transferEth(uint256)",
+      "bytecode_offset": 252,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb61d27f6",
+      "resolved_signature": "execute(address,uint256,bytes)",
+      "bytecode_offset": 284,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xbc197c81",
+      "resolved_signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "bytecode_offset": 303,
+      "arguments": "address,address,uint256[],uint256[],bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xe00af4a7",
+      "resolved_signature": "sweepERC20(address)",
+      "bytecode_offset": 335,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "resolved_signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 367,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf7448a31",
+      "resolved_signature": "transferERC20(address,uint256)",
+      "bytecode_offset": 399,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf77c4791",
+      "resolved_signature": "controller()",
+      "bytecode_offset": 431,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

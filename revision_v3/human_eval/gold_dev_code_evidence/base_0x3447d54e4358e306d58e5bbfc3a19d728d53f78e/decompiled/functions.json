@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xbb29998e",
+      "resolved_signature": "test(address)",
+      "bytecode_offset": 54,
+      "arguments": "address",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

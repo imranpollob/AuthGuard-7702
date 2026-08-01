@@ -1,0 +1,9 @@
+[
+  {
+    "slot": "f63006830011fe3ab565a55b23ad69c71bacfdf6525fac1274cfae5d71121e00",
+    "offset": 0,
+    "type": "mapping(uint256 => uint256)",
+    "n_reads": 1,
+    "n_writes": 1
+  }
+]

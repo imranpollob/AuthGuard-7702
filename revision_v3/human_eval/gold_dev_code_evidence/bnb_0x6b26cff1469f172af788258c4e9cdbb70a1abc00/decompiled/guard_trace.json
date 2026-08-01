@@ -1,0 +1,68 @@
+{
+  "per_function": [
+    {
+      "selector": "0x3644e515",
+      "resolved_signature": "DOMAIN_SEPARATOR()",
+      "bytecode_offset": 105,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x54d5815f",
+      "resolved_signature": null,
+      "bytecode_offset": 100,
+      "arguments": "address,uint256,uint256,uint256",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x96fc3511",
+      "resolved_signature": null,
+      "bytecode_offset": 95,
+      "arguments": "uint256",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xf58b8f78",
+      "resolved_signature": null,
+      "bytecode_offset": 90,
+      "arguments": "(uint256,uint256,bytes)[],(uint256,uint256,uint256)",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xfa461e33",
+      "resolved_signature": "uniswapV3SwapCallback(int256,int256,bytes)",
+      "bytecode_offset": 86,
+      "arguments": "uint256,uint256,bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

@@ -1,0 +1,68 @@
+{
+  "per_function": [
+    {
+      "selector": "0x6be4f47f",
+      "resolved_signature": null,
+      "bytecode_offset": 1167,
+      "arguments": "address[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x7a141f91",
+      "resolved_signature": null,
+      "bytecode_offset": 1198,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x92dabebb",
+      "resolved_signature": null,
+      "bytecode_offset": 1240,
+      "arguments": "address,uint256",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xb4a77b0e",
+      "resolved_signature": "isUserBlocked(address)",
+      "bytecode_offset": 1259,
+      "arguments": "address",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xfb0404aa",
+      "resolved_signature": null,
+      "bytecode_offset": 1306,
+      "arguments": "address",
+      "state_mutability": "payable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 1326,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

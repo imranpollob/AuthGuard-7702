@@ -1,0 +1,16 @@
+[
+  {
+    "slot": "1581abf533ae210f1ff5d25f322511179a9a65d8d8e43c998eab264f924af900",
+    "offset": 0,
+    "type": "mapping(uint256 => uint64)",
+    "n_reads": 3,
+    "n_writes": 2
+  },
+  {
+    "slot": "1581abf533ae210f1ff5d25f322511179a9a65d8d8e43c998eab264f924af901",
+    "offset": 0,
+    "type": "mapping(address => bool)",
+    "n_reads": 4,
+    "n_writes": 2
+  }
+]

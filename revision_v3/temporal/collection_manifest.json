@@ -1,0 +1,82 @@
+{
+  "LABEL_SOURCE": "N/A (raw collection, no labeling)",
+  "window_target": {
+    "start": "2026-02-01T00:00:00Z",
+    "end": "2026-06-30T00:00:00Z"
+  },
+  "chains": {
+    "ethereum": {
+      "chain": "ethereum",
+      "run_id": "v2_window",
+      "last_scanned_block": 24382592,
+      "n_blocks_scanned": 24300,
+      "n_type4_txs": 29150,
+      "n_authorization_entries": 45113,
+      "n_rpc_errors": 0
+    },
+    "base": {
+      "chain": "base",
+      "run_id": "v2_window",
+      "last_scanned_block": null,
+      "n_blocks_scanned": 0,
+      "n_type4_txs": 0,
+      "n_authorization_entries": 0,
+      "n_rpc_errors": 0,
+      "next_page_params": null,
+      "n_pages_fetched": 0,
+      "n_hashes_discovered": 0,
+      "n_blocks_fetched": 0,
+      "pagination_complete": false,
+      "processed_blocks": []
+    }
+  },
+  "pilot_chains": {
+    "polygon": {
+      "chain": "polygon",
+      "run_id": "pilot_v2",
+      "last_scanned_block": 82393196,
+      "n_blocks_scanned": 1200,
+      "n_type4_txs": 344,
+      "n_authorization_entries": 346,
+      "n_rpc_errors": 0
+    },
+    "bnb": {
+      "chain": "bnb",
+      "run_id": "pilot_v2",
+      "last_scanned_block": 78576134,
+      "n_blocks_scanned": 1501,
+      "n_type4_txs": 1459,
+      "n_authorization_entries": 1462,
+      "n_rpc_errors": 0,
+      "last_run_wall_seconds": 437.8643081188202,
+      "last_run_blocks_per_second": 3.4280026304237707,
+      "last_run_n_blocks": 1501
+    },
+    "arbitrum": {
+      "chain": "arbitrum",
+      "run_id": "pilot_v2",
+      "last_scanned_block": 427316679,
+      "n_blocks_scanned": 1501,
+      "n_type4_txs": 45,
+      "n_authorization_entries": 47,
+      "n_rpc_errors": 0,
+      "last_run_wall_seconds": 366.1770601272583,
+      "last_run_blocks_per_second": 4.0991098663536,
+      "last_run_n_blocks": 1501
+    },
+    "optimism": {
+      "chain": "optimism",
+      "run_id": "pilot_v2",
+      "last_scanned_block": 147154112,
+      "n_blocks_scanned": 1501,
+      "n_type4_txs": 6,
+      "n_authorization_entries": 6,
+      "n_rpc_errors": 0,
+      "last_run_wall_seconds": 306.8588936328888,
+      "last_run_blocks_per_second": 3.4250270134173326,
+      "last_run_n_blocks": 1051
+    }
+  },
+  "snapshot_taken_utc": "2026-07-31T02:32:13.424264Z",
+  "status": "IN_PROGRESS -- Ethereum and Base full-window collections are checkpointed background jobs still running at the time this manifest was written; safe to resume with the same run_id."
+}

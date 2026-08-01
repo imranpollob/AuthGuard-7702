@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xb0306671",
+      "resolved_signature": "transferNFT(address,address,address,uint256)",
+      "bytecode_offset": 56,
+      "arguments": "address,address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xeae787dc",
+      "resolved_signature": "transferERC1155(address,address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 84,
+      "arguments": "address,address,address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

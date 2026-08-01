@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x03c1d1df",
+      "resolved_signature": "collectERC20(address,uint256)",
+      "bytecode_offset": 59,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8943ec02",
+      "resolved_signature": "tokenReceived(address,uint256,bytes)",
+      "bytecode_offset": 100,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa3d409fe",
+      "resolved_signature": "collectETH(uint256)",
+      "bytecode_offset": 161,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

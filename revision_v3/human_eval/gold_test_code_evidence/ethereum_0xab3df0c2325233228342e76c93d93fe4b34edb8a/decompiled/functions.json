@@ -1,0 +1,10 @@
+{
+  "dispatched_functions": [],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 170
+    }
+  ]
+}

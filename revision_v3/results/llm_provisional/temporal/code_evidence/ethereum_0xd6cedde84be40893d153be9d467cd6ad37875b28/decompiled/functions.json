@@ -1,0 +1,228 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x112d3a7d",
+      "resolved_signature": "isModuleInstalled(uint256,address,bytes)",
+      "bytecode_offset": 540,
+      "arguments": "uint256,address,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x150b7a02",
+      "resolved_signature": "onERC721Received(address,address,uint256,bytes)",
+      "bytecode_offset": 535,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1626ba7e",
+      "resolved_signature": "isValidSignature(bytes32,bytes)",
+      "bytecode_offset": 530,
+      "arguments": "uint256,uint256[]",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x19822f7c",
+      "resolved_signature": "validateUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32,uint256)",
+      "bytecode_offset": 525,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x1f1b92e3",
+      "resolved_signature": "invalidateNonce(uint32)",
+      "bytecode_offset": 520,
+      "arguments": "uint32",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3659cfe6",
+      "resolved_signature": "upgradeTo(address)",
+      "bytecode_offset": 515,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3c3b752b",
+      "resolved_signature": "initialize(bytes21,address,bytes,bytes,bytes[])",
+      "bytecode_offset": 510,
+      "arguments": "bytes21,address,bytes,bytes,uint256[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x52141cd9",
+      "resolved_signature": "changeRootValidator(bytes21,address,bytes,bytes)",
+      "bytecode_offset": 505,
+      "arguments": "bytes21,address,bytes,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x57b3a5f4",
+      "resolved_signature": "selectorConfig(bytes4)",
+      "bytecode_offset": 500,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6e6fa0c6",
+      "resolved_signature": "isAllowedSelector(bytes21,bytes4)",
+      "bytecode_offset": 495,
+      "arguments": "bytes21,bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x721e67f4",
+      "resolved_signature": "executorConfig(address)",
+      "bytecode_offset": 490,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x84b0196e",
+      "resolved_signature": "eip712Domain()",
+      "bytecode_offset": 485,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8dd7712f",
+      "resolved_signature": "executeUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32)",
+      "bytecode_offset": 480,
+      "arguments": "uint256,uint256",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x90ef8862",
+      "resolved_signature": "validNonceFrom()",
+      "bytecode_offset": 475,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x9198bdf5",
+      "resolved_signature": "installValidations(bytes21[],(uint32,address)[],bytes[],bytes[])",
+      "bytecode_offset": 470,
+      "arguments": "bytes21[],(uint32,address)[],bytes[],bytes[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x9517e29f",
+      "resolved_signature": "installModule(uint256,address,bytes)",
+      "bytecode_offset": 465,
+      "arguments": "uint256,address,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x9cfd7cff",
+      "resolved_signature": "accountId()",
+      "bytecode_offset": 460,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa65d69d4",
+      "resolved_signature": "entrypoint()",
+      "bytecode_offset": 455,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa71763a8",
+      "resolved_signature": "uninstallModule(uint256,address,bytes)",
+      "bytecode_offset": 450,
+      "arguments": "uint256,address,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xadb610a3",
+      "resolved_signature": "currentNonce()",
+      "bytecode_offset": 445,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb8afe17d",
+      "resolved_signature": "validationConfig(bytes21)",
+      "bytecode_offset": 440,
+      "arguments": "bytes21",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb9b82941",
+      "resolved_signature": null,
+      "bytecode_offset": 435,
+      "arguments": "bytes21,bytes4,bool",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xbc197c81",
+      "resolved_signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "bytecode_offset": 430,
+      "arguments": "address,address,uint256[],uint256[],bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc3e58978",
+      "resolved_signature": "permissionConfig(bytes4)",
+      "bytecode_offset": 425,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd03c7914",
+      "resolved_signature": "supportsExecutionMode(bytes32)",
+      "bytecode_offset": 420,
+      "arguments": "bytes1",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd691c964",
+      "resolved_signature": "executeFromExecutor(bytes32,bytes)",
+      "bytecode_offset": 415,
+      "arguments": "uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xe6f3d50a",
+      "resolved_signature": "uninstallValidation(bytes21,bytes,bytes)",
+      "bytecode_offset": 410,
+      "arguments": "bytes21,bytes,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xe9ae5c53",
+      "resolved_signature": "execute(bytes32,bytes)",
+      "bytecode_offset": 405,
+      "arguments": "bytes1,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xf1f7f0f9",
+      "resolved_signature": "rootValidator()",
+      "bytecode_offset": 400,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "resolved_signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 395,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf2dc691d",
+      "resolved_signature": "supportsModule(uint256)",
+      "bytecode_offset": 390,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xfc9c5dec",
+      "resolved_signature": null,
+      "bytecode_offset": 386,
+      "arguments": "(address,uint256,bytes,bytes,uint256,uint256,uint256,bytes),address",
+      "state_mutability": "view"
+    }
+  ]
+}

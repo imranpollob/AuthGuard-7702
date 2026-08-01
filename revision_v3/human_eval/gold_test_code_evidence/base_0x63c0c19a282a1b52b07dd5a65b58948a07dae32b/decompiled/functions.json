@@ -1,0 +1,208 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 466,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x06394d67",
+      "resolved_signature": null,
+      "bytecode_offset": 519,
+      "arguments": "(address,uint256,bytes,bytes,uint256,uint256,uint256,bytes)",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x150b7a02",
+      "resolved_signature": "onERC721Received(address,address,uint256,bytes)",
+      "bytecode_offset": 565,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1626ba7e",
+      "resolved_signature": "isValidSignature(bytes32,bytes)",
+      "bytecode_offset": 622,
+      "arguments": "uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x19822f7c",
+      "resolved_signature": "validateUserOp((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes),bytes32,uint256)",
+      "bytecode_offset": 654,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x2b3afd99",
+      "resolved_signature": null,
+      "bytecode_offset": 686,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3e1b0812",
+      "resolved_signature": "getNonce(uint192)",
+      "bytecode_offset": 738,
+      "arguments": "uint192",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3ed01015",
+      "resolved_signature": null,
+      "bytecode_offset": 770,
+      "arguments": "(address,address,uint256,(address,bytes,bytes)[],uint256,bytes)",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x445140b8",
+      "resolved_signature": null,
+      "bytecode_offset": 804,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x49934047",
+      "resolved_signature": null,
+      "bytecode_offset": 836,
+      "arguments": "(address,address,uint256,(address,bytes,bytes)[],uint256,bytes)",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4a58db19",
+      "resolved_signature": "addDeposit()",
+      "bytecode_offset": 868,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x5c1c6dcd",
+      "resolved_signature": "execute((address,uint256,bytes))",
+      "bytecode_offset": 876,
+      "arguments": "(address,uint256,bytes)",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x7f07bfdc",
+      "resolved_signature": "withdrawDeposit(address,uint256)",
+      "bytecode_offset": 895,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x83ebb771",
+      "resolved_signature": "getDomainHash()",
+      "bytecode_offset": 927,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x84b0196e",
+      "resolved_signature": "eip712Domain()",
+      "bytecode_offset": 948,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa3f4df7e",
+      "resolved_signature": "NAME()",
+      "bytecode_offset": 988,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xacb8cc49",
+      "resolved_signature": "DOMAIN_VERSION()",
+      "bytecode_offset": 1074,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb0d691fe",
+      "resolved_signature": "entryPoint()",
+      "bytecode_offset": 1119,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xbc197c81",
+      "resolved_signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "bytecode_offset": 1195,
+      "arguments": "address,address,uint256[],uint256[],bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc399ec88",
+      "resolved_signature": "getDeposit()",
+      "bytecode_offset": 1227,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xcef6d209",
+      "resolved_signature": "redeemDelegations(bytes[],bytes32[],bytes[])",
+      "bytecode_offset": 1248,
+      "arguments": "bytes[],uint256[],bytes[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xd03c7914",
+      "resolved_signature": "supportsExecutionMode(bytes32)",
+      "bytecode_offset": 1280,
+      "arguments": "bytes1",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd087d288",
+      "resolved_signature": "getNonce()",
+      "bytecode_offset": 1312,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd691c964",
+      "resolved_signature": "executeFromExecutor(bytes32,bytes)",
+      "bytecode_offset": 1333,
+      "arguments": "uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xe9ae5c53",
+      "resolved_signature": "execute(bytes32,bytes)",
+      "bytecode_offset": 1365,
+      "arguments": "bytes1,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xea4d3c9b",
+      "resolved_signature": "delegationManager()",
+      "bytecode_offset": 1384,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xed8101b5",
+      "resolved_signature": null,
+      "bytecode_offset": 1436,
+      "arguments": "(address,uint256,bytes,bytes,uint256,uint256,uint256,bytes)",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "resolved_signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "bytecode_offset": 1468,
+      "arguments": "address,address,uint256,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xffa1ad74",
+      "resolved_signature": "VERSION()",
+      "bytecode_offset": 1500,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

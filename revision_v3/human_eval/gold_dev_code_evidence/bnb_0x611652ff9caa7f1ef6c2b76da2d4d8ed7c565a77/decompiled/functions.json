@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xda8120d8",
+      "resolved_signature": null,
+      "bytecode_offset": 333,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf7260d3e",
+      "resolved_signature": "receiver()",
+      "bytecode_offset": 355,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 272
+    }
+  ]
+}

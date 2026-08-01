@@ -1,0 +1,277 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 5144,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1a6c11dc",
+      "resolved_signature": null,
+      "bytecode_offset": 5041,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x299ed167",
+      "resolved_signature": null,
+      "bytecode_offset": 5016,
+      "arguments": "(uint256,address,uint256,uint256,uint256,uint256,uint256,uint256,(uint256,uint256)[],uint256,bytes,bytes),uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x2ab11a7a",
+      "resolved_signature": null,
+      "bytecode_offset": 4771,
+      "arguments": "(uint256,address,uint256,uint256,uint256,uint256,uint256,(uint256,uint256)[],(uint256,uint256)[],bytes,bytes,bytes),address,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x5817ebe4",
+      "resolved_signature": null,
+      "bytecode_offset": 4382,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x67ba0b80",
+      "resolved_signature": null,
+      "bytecode_offset": 1943,
+      "arguments": "uint256,uint256,uint256[],bytes,uint256,address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x762d0698",
+      "resolved_signature": null,
+      "bytecode_offset": 1877,
+      "arguments": "(uint256,address,uint256,uint256,uint256,uint256,uint256,uint256,(uint256,uint256)[],bytes,bytes,bytes)",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x7b6eb5f4",
+      "resolved_signature": null,
+      "bytecode_offset": 1842,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x853c3f38",
+      "resolved_signature": null,
+      "bytecode_offset": 1783,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8d32bb2d",
+      "resolved_signature": null,
+      "bytecode_offset": 1188,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x904cae5c",
+      "resolved_signature": "ARBITER()",
+      "bytecode_offset": 1107,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x98e4439a",
+      "resolved_signature": null,
+      "bytecode_offset": 1026,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb1bb5bc1",
+      "resolved_signature": null,
+      "bytecode_offset": 967,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb58dedbf",
+      "resolved_signature": null,
+      "bytecode_offset": 801,
+      "arguments": "uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xc6308ff7",
+      "resolved_signature": null,
+      "bytecode_offset": 640,
+      "arguments": "address,address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc6445e16",
+      "resolved_signature": null,
+      "bytecode_offset": 365,
+      "arguments": "(uint256,address,uint256,uint256,uint256,uint256,uint256,uint256,(uint256,uint256)[],bytes,bytes),uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc85d92c2",
+      "resolved_signature": null,
+      "bytecode_offset": 306,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd5e961d6",
+      "resolved_signature": null,
+      "bytecode_offset": 228,
+      "arguments": "bytes",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xb58dedbf",
+      "resolved_signature": null,
+      "bytecode_offset": 931
+    },
+    {
+      "selector": "0x30f28b7a",
+      "resolved_signature": "permitTransferFrom(((address,uint256),uint256,uint256),(address,uint256),address,bytes)",
+      "bytecode_offset": 1513
+    },
+    {
+      "selector": "0x8d32bb2d",
+      "resolved_signature": null,
+      "bytecode_offset": 1703
+    },
+    {
+      "selector": "0x853c3f38",
+      "resolved_signature": null,
+      "bytecode_offset": 1806
+    },
+    {
+      "selector": "0xcbb6857a",
+      "resolved_signature": null,
+      "bytecode_offset": 2958
+    },
+    {
+      "selector": "0x42cc1b84",
+      "resolved_signature": "execute(address,(address,uint256,bytes)[])",
+      "bytecode_offset": 3440
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 3686
+    },
+    {
+      "selector": "0x360e42e1",
+      "resolved_signature": "ClaimFailed()",
+      "bytecode_offset": 3731
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 3997
+    },
+    {
+      "selector": "0x9e41bdd7",
+      "resolved_signature": "OnlyRouter()",
+      "bytecode_offset": 4343
+    },
+    {
+      "selector": "0x853c3f38",
+      "resolved_signature": null,
+      "bytecode_offset": 4410
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 4523
+    },
+    {
+      "selector": "0x853c3f38",
+      "resolved_signature": null,
+      "bytecode_offset": 4556
+    },
+    {
+      "selector": "0x5817ebe4",
+      "resolved_signature": null,
+      "bytecode_offset": 4601
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 4674
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 4715
+    },
+    {
+      "selector": "0x1a6c11dc",
+      "resolved_signature": null,
+      "bytecode_offset": 5108
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 5166
+    },
+    {
+      "selector": "0x1a6c11dc",
+      "resolved_signature": null,
+      "bytecode_offset": 5209
+    },
+    {
+      "selector": "0x8d32bb2d",
+      "resolved_signature": null,
+      "bytecode_offset": 5268
+    },
+    {
+      "selector": "0xb58dedbf",
+      "resolved_signature": null,
+      "bytecode_offset": 5310
+    },
+    {
+      "selector": "0xf193e64c",
+      "resolved_signature": null,
+      "bytecode_offset": 6743
+    },
+    {
+      "selector": "0x67ba0b80",
+      "resolved_signature": null,
+      "bytecode_offset": 7254
+    },
+    {
+      "selector": "0x78e819df",
+      "resolved_signature": null,
+      "bytecode_offset": 8292
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 8585
+    },
+    {
+      "selector": "0x60394762",
+      "resolved_signature": null,
+      "bytecode_offset": 9002
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 9703
+    },
+    {
+      "selector": "0x895ceaba",
+      "resolved_signature": null,
+      "bytecode_offset": 10052
+    },
+    {
+      "selector": "0x23b872dd",
+      "resolved_signature": "transferFrom(address,address,uint256)",
+      "bytecode_offset": 10214
+    }
+  ]
+}

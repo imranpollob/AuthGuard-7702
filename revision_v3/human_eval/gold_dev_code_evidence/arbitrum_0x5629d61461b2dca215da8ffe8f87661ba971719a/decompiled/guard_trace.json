@@ -1,0 +1,68 @@
+{
+  "per_function": [
+    {
+      "selector": "0x0b51f8d5",
+      "resolved_signature": null,
+      "bytecode_offset": 86,
+      "arguments": "uint256[]",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x2f622e6b",
+      "resolved_signature": "withdrawNative(address)",
+      "bytecode_offset": 114,
+      "arguments": "address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x3aeac4e1",
+      "resolved_signature": "withdrawToken(address,address)",
+      "bytecode_offset": 154,
+      "arguments": "address,address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 194,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xdf025ec6",
+      "resolved_signature": null,
+      "bytecode_offset": 236,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": "0x76e3d82b0c49f1c921d8c1093cd91c20ba23740d",
+      "guard_offset": 320,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

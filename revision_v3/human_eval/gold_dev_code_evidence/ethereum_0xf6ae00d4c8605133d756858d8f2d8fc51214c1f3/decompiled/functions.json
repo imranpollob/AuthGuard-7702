@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xba45b0b8",
+      "resolved_signature": "transfer(address,address)",
+      "bytecode_offset": 44,
+      "arguments": "address,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

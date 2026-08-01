@@ -1,0 +1,19 @@
+{
+  "sourcify": {
+    "http_status": 404,
+    "raw": {
+      "match": null,
+      "creationMatch": null,
+      "runtimeMatch": null,
+      "chainId": "56",
+      "address": "0x8b54FFa4b6D5e01f5c3AA6D19175f532B47dFB1b"
+    },
+    "verified": false
+  },
+  "blockscout": {
+    "http_status": 404,
+    "raw": null,
+    "verified": false
+  },
+  "verified": false
+}

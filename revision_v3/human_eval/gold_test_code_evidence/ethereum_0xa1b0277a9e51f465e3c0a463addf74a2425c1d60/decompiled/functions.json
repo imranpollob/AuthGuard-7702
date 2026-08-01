@@ -1,0 +1,145 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x00000000",
+      "resolved_signature": "get_block_hash_257335279069929(uint256)",
+      "bytecode_offset": 205,
+      "arguments": "uint256[],bytes[],uint256[],uint64",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 253,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x2e9d9f47",
+      "resolved_signature": null,
+      "bytecode_offset": 313,
+      "arguments": "address,uint256,bool",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x7c2987ea",
+      "resolved_signature": null,
+      "bytecode_offset": 353,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xab2f4358",
+      "resolved_signature": null,
+      "bytecode_offset": 393,
+      "arguments": "address,address,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf4a8cdfc",
+      "resolved_signature": null,
+      "bytecode_offset": 433,
+      "arguments": "address,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xfa461e33",
+      "resolved_signature": "uniswapV3SwapCallback(int256,int256,bytes)",
+      "bytecode_offset": 473,
+      "arguments": "uint256,uint256,bytes",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 582
+    },
+    {
+      "selector": "0x559895a3",
+      "resolved_signature": null,
+      "bytecode_offset": 650
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 1012
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 1177
+    },
+    {
+      "selector": "0x2d66518f",
+      "resolved_signature": null,
+      "bytecode_offset": 1336
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 1441
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 1609
+    },
+    {
+      "selector": "0x567f6ba0",
+      "resolved_signature": null,
+      "bytecode_offset": 1833
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 1939
+    },
+    {
+      "selector": "0xd55de5af",
+      "resolved_signature": null,
+      "bytecode_offset": 2073
+    },
+    {
+      "selector": "0xd55de5af",
+      "resolved_signature": null,
+      "bytecode_offset": 2146
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2751
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2850
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3147
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 4368
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 5585
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 6328
+    },
+    {
+      "selector": "0xff000000",
+      "resolved_signature": null,
+      "bytecode_offset": 6844
+    }
+  ]
+}

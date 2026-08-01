@@ -1,0 +1,92 @@
+{
+  "per_function": [
+    {
+      "selector": "0x0921e7ef",
+      "resolved_signature": "transferAllToken(address,address)",
+      "bytecode_offset": 138,
+      "arguments": "address,address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x0f28c97d",
+      "resolved_signature": "getCurrentBlockTimestamp()",
+      "bytecode_offset": 169,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x174dea71",
+      "resolved_signature": "aggregate3Value((address,bool,uint256,bytes)[])",
+      "bytecode_offset": 202,
+      "arguments": "uint256[]",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x35447e72",
+      "resolved_signature": null,
+      "bytecode_offset": 234,
+      "arguments": "address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x42cbb15c",
+      "resolved_signature": "getBlockNumber()",
+      "bytecode_offset": 265,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x4d2301cc",
+      "resolved_signature": "getEthBalance(address)",
+      "bytecode_offset": 283,
+      "arguments": "address",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xa8b0574e",
+      "resolved_signature": "getCurrentBlockCoinbase()",
+      "bytecode_offset": 322,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "GUARDED",
+      "guard_opcode": "ORIGIN",
+      "guard_constant": "0x72785d42874e965086829ea789a703fe1a5238df",
+      "guard_offset": 545,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

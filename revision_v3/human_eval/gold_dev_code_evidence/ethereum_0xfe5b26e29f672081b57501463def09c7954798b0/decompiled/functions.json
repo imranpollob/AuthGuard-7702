@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xb46300ec",
+      "resolved_signature": "send()",
+      "bytecode_offset": 31,
+      "arguments": "",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

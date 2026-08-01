@@ -1,0 +1,53 @@
+    0  PUSH1 80
+    2  PUSH1 40
+    4  MSTORE
+    5  PUSH0
+    6  PUSH0
+    7  PUSH0
+    8  PUSH0
+    9  CALLVALUE
+   10  PUSH20 e0fcc47c3b4fb4d77174b3f9da7b6e88c95dd751
+   31  GAS
+   32  CALL
+   33  DUP1
+   34  PUSH1 28
+   36  JUMPI
+   37  PUSH0
+   38  PUSH0
+   39  REVERT
+   40  JUMPDEST
+   41  STOP
+   42  INVALID
+   43  LOG2
+   44  PUSH5 6970667358
+   50  ?
+   51  SLT
+   52  KECCAK256
+   53  ?
+   54  MOD
+   55  ?
+   56  ?
+   57  SWAP6
+   58  LT
+   59  ?
+   60  DUP4
+   61  SWAP3
+   62  RETURNDATASIZE
+   63  DUP12
+   64  ?
+   65  MCOPY
+   66  DUP7
+   67  ?
+   68  ?
+   69  SGT
+   70  SWAP5
+   71  ?
+   72  ?
+   73  SWAP13
+   74  PUSH0
+   75  SWAP6
+   76  RETURNDATACOPY
+   77  CODECOPY
+   78  ?
+   79  SWAP7
+   80  TSTORE

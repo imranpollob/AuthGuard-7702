@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 54,
+      "arguments": "uint256",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

@@ -1,0 +1,26 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1c011d78",
+      "resolved_signature": null,
+      "bytecode_offset": 322,
+      "arguments": "(address,address,address,uint256,uint256,bytes),uint256[],uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x6717e41c",
+      "resolved_signature": "usedNonces(uint256)",
+      "bytecode_offset": 273,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x963fbb22",
+      "resolved_signature": null,
+      "bytecode_offset": 61,
+      "arguments": "address,address,uint256,uint256[]",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

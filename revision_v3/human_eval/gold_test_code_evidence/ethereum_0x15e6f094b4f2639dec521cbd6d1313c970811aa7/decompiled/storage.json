@@ -1,0 +1,72 @@
+[
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000000",
+    "offset": 0,
+    "type": "uint32",
+    "n_reads": 7,
+    "n_writes": 2
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000001",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 1,
+    "n_writes": 4
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e563",
+    "offset": 0,
+    "type": "bool",
+    "n_reads": 3,
+    "n_writes": 2
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e564",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 3,
+    "n_writes": 0
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e565",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 3,
+    "n_writes": 0
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e566",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 3,
+    "n_writes": 0
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e567",
+    "offset": 0,
+    "type": "bytes31",
+    "n_reads": 2,
+    "n_writes": 2
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e568",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 0,
+    "n_writes": 2
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e569",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 0,
+    "n_writes": 2
+  },
+  {
+    "slot": "290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56a",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 0,
+    "n_writes": 2
+  }
+]

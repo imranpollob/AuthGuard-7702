@@ -1,0 +1,54 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x00000000",
+      "resolved_signature": "get_block_hash_257335279069929(uint256)",
+      "bytecode_offset": 475,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x38ed1739",
+      "resolved_signature": "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+      "bytecode_offset": 1039,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xdd62ed3e",
+      "resolved_signature": "allowance(address,address)",
+      "bytecode_offset": 1069,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xebe4107c",
+      "resolved_signature": "multicall(address,(address,bytes)[])",
+      "bytecode_offset": 34,
+      "arguments": "address,(address,bytes)[]",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 159
+    },
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 245
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 619
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 771
+    }
+  ]
+}

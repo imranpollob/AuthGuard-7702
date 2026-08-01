@@ -1,0 +1,15 @@
+[V[PPPP
+PPP`@Q
+[PPPPP
+PPPV[`
+Ownable: caller is not the owner`D
+V[PV[3
+W`@QbF
+eW`@QbF
+V[PPPP
+SafeMath: addition overflow
+BEP20: mint to the zero address
+SafeMath: subtraction overflow
+BEP20: transfer from the zero addressBEP20: approve from the zero addressOwnable: new owner is the zero addressBEP20: transfer amount exceeds allowanceBEP20: transfer amount exceeds balanceBEP20: transfer to the zero addressBEP20: decreased allowance below zeroBEP20: burn from the zero addressBEP20: burn amount exceeds balanceBEP20: approve to the zero address
+ebzzr1X 
+dsolcC

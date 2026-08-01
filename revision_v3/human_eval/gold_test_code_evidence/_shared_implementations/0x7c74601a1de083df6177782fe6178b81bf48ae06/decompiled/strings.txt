@@ -1,0 +1,30 @@
+V[`@Qa
+UPPV[_G
+V[_`d`
+V[[PP[V[s
+UPPV[_`
+UPPV[`
+V[PPPPPV[`
+7V[_`@Q
+[PPPV[_
+V[`@Q` 
+RPPPP`@Qa
+=V[_`@Q
+zV[`@Q
+[PPPPV[_
+PPV[_` 
+RPPV[_` 
+NOT_OWNER
+RPV[_a
+PV[_` 
+PPV[_a
+no permission
+NO_TOKEN
+PPV[PV[_a
+failed
+RPPPPV[_a
+Unable to getTokenBalanceOf
+RPPV[_`@
+Unable to tokenTransfer
+dipfsX"
+#FdsolcC

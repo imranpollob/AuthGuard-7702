@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0xbcd4cdad",
+      "resolved_signature": null,
+      "bytecode_offset": 42,
+      "arguments": "",
+      "state_mutability": "payable",
+      "guard_status": "AMBIGUOUS",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "window capped before a clear terminator was reached"
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": false,
+  "any_ambiguous": true,
+  "overall_status": "AMBIGUOUS"
+}

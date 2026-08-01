@@ -1,0 +1,68 @@
+{
+  "per_function": [
+    {
+      "selector": "0x3f7e82d6",
+      "resolved_signature": null,
+      "bytecode_offset": 97,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x45f67ac7",
+      "resolved_signature": "multicall(address[],uint256[],bytes[])",
+      "bytecode_offset": 137,
+      "arguments": "uint256[],uint256[],uint256[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x780469bb",
+      "resolved_signature": "sweep(address[])",
+      "bytecode_offset": 197,
+      "arguments": "address[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xb61d27f6",
+      "resolved_signature": "execute(address,uint256,bytes)",
+      "bytecode_offset": 237,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xf7260d3e",
+      "resolved_signature": "receiver()",
+      "bytecode_offset": 297,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

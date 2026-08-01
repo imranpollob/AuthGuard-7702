@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x2ced0188",
+      "resolved_signature": null,
+      "bytecode_offset": 57,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x53d4e0d5",
+      "resolved_signature": null,
+      "bytecode_offset": 86,
+      "arguments": "bytes,bytes",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

@@ -1,0 +1,100 @@
+{
+  "sourcify": {
+    "http_status": 200,
+    "raw": {
+      "matchId": "34056061",
+      "creationMatch": "match",
+      "runtimeMatch": "match",
+      "verifiedAt": "2026-06-22T14:23:27Z",
+      "match": "match",
+      "chainId": "137",
+      "address": "0x4D85Ab31f120E4465AE055C0Fb97e135691df186"
+    },
+    "verified": true
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "file_path": "Delegation.sol",
+      "creation_status": "success",
+      "source_code": "pragma solidity ^0.8.20;\r\n \r\ncontract Delegation {\r\n  event Log(string message);\r\n \r\n  function initialize() external payable {\r\n    emit Log('Hello, world!');\r\n  }\r\n \r\n \r\n  function ping() external {\r\n    emit Log('Pong!');\r\n  }\r\n}",
+      "deployed_bytecode": "0x608060405260043610610028575f3560e01c80635c36b1861461002c5780638129fc1c14610042575b5f80fd5b348015610037575f80fd5b5061004061004c565b005b61004a610083565b005b7fcf34ef537ac33ee1ac626ca1587a0a7e8e51561e5514f8cb36afa1c5102b3bab60405161007990610114565b60405180910390a1565b7fcf34ef537ac33ee1ac626ca1587a0a7e8e51561e5514f8cb36afa1c5102b3bab6040516100b09061017c565b60405180910390a1565b5f82825260208201905092915050565b7f506f6e67210000000000000000000000000000000000000000000000000000005f82015250565b5f6100fe6005836100ba565b9150610109826100ca565b602082019050919050565b5f6020820190508181035f83015261012b816100f2565b9050919050565b7f48656c6c6f2c20776f726c6421000000000000000000000000000000000000005f82015250565b5f610166600d836100ba565b915061017182610132565b602082019050919050565b5f6020820190508181035f8301526101938161015a565b905091905056fea26469706673582212209a844b7941e244690234105421c34020f9a24d461c415fa2bdb4090973b837e064736f6c63430008180033",
+      "optimization_enabled": false,
+      "verified_twin_address_hash": null,
+      "is_verified": true,
+      "compiler_settings": {
+        "libraries": {},
+        "optimizer": {
+          "enabled": false,
+          "runs": 200
+        },
+        "outputSelection": {
+          "*": {
+            "": [
+              "*"
+            ],
+            "*": [
+              "*"
+            ]
+          }
+        }
+      },
+      "optimization_runs": null,
+      "sourcify_repo_url": null,
+      "decoded_constructor_args": null,
+      "compiler_version": "v0.8.24+commit.e11b9ed9",
+      "is_verified_via_verifier_alliance": false,
+      "verified_at": "2026-06-22T14:34:21.725923Z",
+      "implementations": [],
+      "proxy_type": null,
+      "external_libraries": [],
+      "creation_bytecode": "0x608060405234801561000f575f80fd5b506101d08061001d5f395ff3fe608060405260043610610028575f3560e01c80635c36b1861461002c5780638129fc1c14610042575b5f80fd5b348015610037575f80fd5b5061004061004c565b005b61004a610083565b005b7fcf34ef537ac33ee1ac626ca1587a0a7e8e51561e5514f8cb36afa1c5102b3bab60405161007990610114565b60405180910390a1565b7fcf34ef537ac33ee1ac626ca1587a0a7e8e51561e5514f8cb36afa1c5102b3bab6040516100b09061017c565b60405180910390a1565b5f82825260208201905092915050565b7f506f6e67210000000000000000000000000000000000000000000000000000005f82015250565b5f6100fe6005836100ba565b9150610109826100ca565b602082019050919050565b5f6020820190508181035f83015261012b816100f2565b9050919050565b7f48656c6c6f2c20776f726c6421000000000000000000000000000000000000005f82015250565b5f610166600d836100ba565b915061017182610132565b602082019050919050565b5f6020820190508181035f8301526101938161015a565b905091905056fea26469706673582212209a844b7941e244690234105421c34020f9a24d461c415fa2bdb4090973b837e064736f6c63430008180033",
+      "name": "Delegation",
+      "is_blueprint": false,
+      "license_type": "none",
+      "is_fully_verified": false,
+      "is_verified_via_eth_bytecode_db": false,
+      "language": "solidity",
+      "evm_version": "default",
+      "can_be_visualized_via_sol2uml": true,
+      "is_verified_via_sourcify": false,
+      "additional_sources": [],
+      "certified": false,
+      "conflicting_implementations": null,
+      "abi": [
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "message",
+              "type": "string"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "initialize",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "ping",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "is_changed_bytecode": false,
+      "is_partially_verified": true,
+      "constructor_args": null
+    },
+    "verified": true
+  },
+  "verified": true
+}

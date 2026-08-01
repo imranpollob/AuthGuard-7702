@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x3f707e6b",
+      "resolved_signature": "execute((address,uint256,bytes)[])",
+      "bytecode_offset": 42,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": "SELF_ADDRESS",
+      "guard_offset": 94,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

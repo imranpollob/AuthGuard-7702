@@ -1,0 +1,8 @@
+{
+  "per_function": [],
+  "any_sensitive_open": false,
+  "all_traced_guarded": false,
+  "any_ambiguous": true,
+  "overall_status": "AMBIGUOUS",
+  "note": "No dispatched functions recovered by evmole; cannot reliably locate function bodies to trace guards despite CALLER/ORIGIN opcodes existing somewhere in the program."
+}

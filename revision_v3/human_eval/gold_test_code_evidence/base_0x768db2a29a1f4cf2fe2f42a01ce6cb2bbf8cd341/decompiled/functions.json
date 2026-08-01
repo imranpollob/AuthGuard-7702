@@ -1,0 +1,23 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x117803e3",
+      "resolved_signature": "OWNER()",
+      "bytecode_offset": 418,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 171
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 361
+    }
+  ]
+}

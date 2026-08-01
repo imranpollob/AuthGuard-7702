@@ -1,0 +1,38 @@
+NV[`@Qa
+rV[`@Qa
+V[_`@Q
+HV[`@Q
+uV[`@Q
+V[`@Qa
+PV[_`@Q
+IV[`@Q` 
+V[`@Q` 
+PPPPPPa
+`@Q_`@Q
+[P[PPPPPV[V[
+zV[[`@Q
+0123456789abcdef
+PPV[```
+No revert selector
+Non-standard revert format
+Short revert data
+Truncated revert message
+RPPV[_` 
+PPV[PV[_a
+Flush: ETH transfer failed
+RPV[_a
+PV[_` 
+Executor: not authorized
+PPV[_a
+PPV[_` 
+'V[[` 
+RPPPV[_a
+PPPV[_a
+PPPV[_` 
+Executor: call failed at 
+RPPPPV[_a
+PPPV[_`
+Executor: all calls failed
+PV[_`@
+dipfsX"
+dsolcC

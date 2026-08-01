@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1d92e4b6",
+      "resolved_signature": null,
+      "bytecode_offset": 50,
+      "arguments": "(address,uint256,bytes)[],bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3f707e6b",
+      "resolved_signature": "execute((address,uint256,bytes)[])",
+      "bytecode_offset": 69,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

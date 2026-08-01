@@ -1,0 +1,80 @@
+{
+  "per_function": [
+    {
+      "selector": "0x13edab81",
+      "resolved_signature": "withdrawERC721(address,uint256[])",
+      "bytecode_offset": 301,
+      "arguments": "address,uint256[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x1cff79cd",
+      "resolved_signature": "execute(address,bytes)",
+      "bytecode_offset": 341,
+      "arguments": "address,bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x39ead720",
+      "resolved_signature": "withdrawERC1155(address,uint256,uint256)",
+      "bytecode_offset": 381,
+      "arguments": "address,uint256,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x6ef42181",
+      "resolved_signature": null,
+      "bytecode_offset": 421,
+      "arguments": "uint256[],uint256[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xa6f9dae1",
+      "resolved_signature": "changeOwner(address)",
+      "bytecode_offset": 461,
+      "arguments": "address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xdafd8013",
+      "resolved_signature": null,
+      "bytecode_offset": 501,
+      "arguments": "address[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

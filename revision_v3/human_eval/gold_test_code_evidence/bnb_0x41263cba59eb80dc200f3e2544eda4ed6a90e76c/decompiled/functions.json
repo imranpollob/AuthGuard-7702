@@ -1,0 +1,61 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0f28c97d",
+      "resolved_signature": "getCurrentBlockTimestamp()",
+      "bytecode_offset": 141,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x252dba42",
+      "resolved_signature": "aggregate((address,bytes)[])",
+      "bytecode_offset": 171,
+      "arguments": "(address,bytes)[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x27e86d6e",
+      "resolved_signature": "getLastBlockHash()",
+      "bytecode_offset": 220,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x4d2301cc",
+      "resolved_signature": "getEthBalance(address)",
+      "bytecode_offset": 250,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x72425d9d",
+      "resolved_signature": "getCurrentBlockDifficulty()",
+      "bytecode_offset": 298,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x86d516e8",
+      "resolved_signature": "getCurrentBlockGasLimit()",
+      "bytecode_offset": 328,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa8b0574e",
+      "resolved_signature": "getCurrentBlockCoinbase()",
+      "bytecode_offset": 358,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xee82ac5e",
+      "resolved_signature": "getBlockHash(uint256)",
+      "bytecode_offset": 388,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

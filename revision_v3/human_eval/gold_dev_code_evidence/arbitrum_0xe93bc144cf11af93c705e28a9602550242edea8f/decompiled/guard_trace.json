@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0xa3cbe5af",
+      "resolved_signature": null,
+      "bytecode_offset": 232,
+      "arguments": "uint256[],uint256[],uint256[],bool",
+      "state_mutability": "payable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": "0xda6b5f1fd0b81ed81ddb9ad84f07912b3ee21de3",
+      "guard_offset": 304,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

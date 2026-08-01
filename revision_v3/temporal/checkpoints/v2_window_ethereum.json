@@ -1,0 +1,9 @@
+{
+  "chain": "ethereum",
+  "run_id": "v2_window",
+  "last_scanned_block": 24641536,
+  "n_blocks_scanned": 283244,
+  "n_type4_txs": 517930,
+  "n_authorization_entries": 1233059,
+  "n_rpc_errors": 0
+}

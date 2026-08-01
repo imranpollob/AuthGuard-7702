@@ -1,0 +1,44 @@
+{
+  "per_function": [
+    {
+      "selector": "0x1c011d78",
+      "resolved_signature": null,
+      "bytecode_offset": 322,
+      "arguments": "(address,address,address,uint256,uint256,bytes),uint256[],uint256,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "AMBIGUOUS",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "window capped before a clear terminator was reached"
+    },
+    {
+      "selector": "0x6717e41c",
+      "resolved_signature": "usedNonces(uint256)",
+      "bytecode_offset": 273,
+      "arguments": "uint256",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x963fbb22",
+      "resolved_signature": null,
+      "bytecode_offset": 61,
+      "arguments": "address,address,uint256,uint256[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": true,
+  "overall_status": "OPEN_FOUND"
+}

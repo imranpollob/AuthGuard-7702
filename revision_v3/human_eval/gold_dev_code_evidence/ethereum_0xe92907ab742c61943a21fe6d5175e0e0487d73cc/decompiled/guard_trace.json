@@ -1,0 +1,8 @@
+{
+  "per_function": [],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND",
+  "note": "No dispatched functions recovered by evmole (atypical/fallback-only bytecode); whole-program scan found zero CALLER/ORIGIN opcodes."
+}

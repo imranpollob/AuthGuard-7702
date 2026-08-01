@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x64e4251e",
+      "resolved_signature": null,
+      "bytecode_offset": 223,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 322,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

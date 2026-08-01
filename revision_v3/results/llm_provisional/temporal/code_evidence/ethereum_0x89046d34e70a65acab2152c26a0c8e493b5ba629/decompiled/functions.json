@@ -1,0 +1,46 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x092a5cce",
+      "resolved_signature": "destroyContract()",
+      "bytecode_offset": 107,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x0c89a0df",
+      "resolved_signature": "transferTokens(address)",
+      "bytecode_offset": 129,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x29cd3d04",
+      "resolved_signature": null,
+      "bytecode_offset": 157,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x2c7bddf4",
+      "resolved_signature": null,
+      "bytecode_offset": 167,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xab7e4c70",
+      "resolved_signature": null,
+      "bytecode_offset": 189,
+      "arguments": "address[],bytes[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xbca8c7b5",
+      "resolved_signature": "executeCall(address,bytes)",
+      "bytecode_offset": 217,
+      "arguments": "address,bytes",
+      "state_mutability": "payable"
+    }
+  ]
+}

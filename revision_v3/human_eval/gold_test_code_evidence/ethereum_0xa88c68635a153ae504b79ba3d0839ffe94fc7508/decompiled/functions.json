@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 255,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb269681d",
+      "resolved_signature": "destination()",
+      "bytecode_offset": 295,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 194
+    }
+  ]
+}

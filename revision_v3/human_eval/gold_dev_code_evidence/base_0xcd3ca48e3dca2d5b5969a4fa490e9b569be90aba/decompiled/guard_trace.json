@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x05ab421d",
+      "resolved_signature": "sendTokens(address,uint256)",
+      "bytecode_offset": 44,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 140,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

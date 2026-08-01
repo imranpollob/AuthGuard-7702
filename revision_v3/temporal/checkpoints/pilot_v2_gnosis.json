@@ -1,0 +1,12 @@
+{
+  "chain": "gnosis",
+  "run_id": "pilot_v2",
+  "last_scanned_block": 44449013,
+  "n_blocks_scanned": 1501,
+  "n_type4_txs": 19,
+  "n_authorization_entries": 19,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 767.9544277191162,
+  "last_run_blocks_per_second": 1.954543063783206,
+  "last_run_n_blocks": 1501
+}

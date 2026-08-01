@@ -1,0 +1,32 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x2549a010",
+      "resolved_signature": null,
+      "bytecode_offset": 77,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x41c64a2f",
+      "resolved_signature": "UNISWAP_V3_ROUTER()",
+      "bytecode_offset": 119,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6f338a22",
+      "resolved_signature": "getTargetAddress()",
+      "bytecode_offset": 161,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd4ba5b64",
+      "resolved_signature": null,
+      "bytecode_offset": 203,
+      "arguments": "(uint256,uint256,uint256,uint256,uint256,uint256,uint256)[]",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

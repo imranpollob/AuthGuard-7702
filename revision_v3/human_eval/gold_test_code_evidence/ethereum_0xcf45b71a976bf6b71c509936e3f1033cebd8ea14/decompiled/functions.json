@@ -1,0 +1,131 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0ce66fc4",
+      "resolved_signature": null,
+      "bytecode_offset": 251,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1fbe1979",
+      "resolved_signature": "rescue()",
+      "bytecode_offset": 293,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x45407d71",
+      "resolved_signature": null,
+      "bytecode_offset": 315,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x5330ff81",
+      "resolved_signature": null,
+      "bytecode_offset": 337,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6ac053ad",
+      "resolved_signature": "rescue(uint256)",
+      "bytecode_offset": 379,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x74a8f103",
+      "resolved_signature": "revoke(address)",
+      "bytecode_offset": 419,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x793d70f6",
+      "resolved_signature": null,
+      "bytecode_offset": 459,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 501,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb67b62b9",
+      "resolved_signature": null,
+      "bytecode_offset": 543,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xcd7e8be1",
+      "resolved_signature": null,
+      "bytecode_offset": 585,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 194
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1473
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1748
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1981
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2504
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3047
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3428
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3505
+    },
+    {
+      "selector": "0x37000000",
+      "resolved_signature": null,
+      "bytecode_offset": 3604
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4771
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4881
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "chain": "bnb",
+  "run_id": "pilot_v2",
+  "last_scanned_block": 78576134,
+  "n_blocks_scanned": 1501,
+  "n_type4_txs": 1459,
+  "n_authorization_entries": 1462,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 437.8643081188202,
+  "last_run_blocks_per_second": 3.4280026304237707,
+  "last_run_n_blocks": 1501
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000000",
+    "offset": 0,
+    "type": "mapping(uint256 => mapping(address => bool))",
+    "n_reads": 6,
+    "n_writes": 3
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000001",
+    "offset": 0,
+    "type": "bool",
+    "n_reads": 7,
+    "n_writes": 2
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000002",
+    "offset": 0,
+    "type": "uint256",
+    "n_reads": 2,
+    "n_writes": 2
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000003",
+    "offset": 0,
+    "type": "mapping(address => uint256)",
+    "n_reads": 1,
+    "n_writes": 1
+  },
+  {
+    "slot": "ad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+    "offset": 0,
+    "type": "mapping(address => uint8)",
+    "n_reads": 4,
+    "n_writes": 0
+  },
+  {
+    "slot": "dae2aa361dfd1ca020a396615627d436107c35eff9fe7738a3512819782d7069",
+    "offset": 0,
+    "type": "mapping(address => uint8)",
+    "n_reads": 3,
+    "n_writes": 1
+  }
+]

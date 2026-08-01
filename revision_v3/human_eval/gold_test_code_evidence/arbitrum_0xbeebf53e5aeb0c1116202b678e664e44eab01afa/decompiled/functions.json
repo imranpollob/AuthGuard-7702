@@ -1,0 +1,57 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x03c1d1df",
+      "resolved_signature": "collectERC20(address,uint256)",
+      "bytecode_offset": 59,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8943ec02",
+      "resolved_signature": "tokenReceived(address,uint256,bytes)",
+      "bytecode_offset": 100,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa3d409fe",
+      "resolved_signature": "collectETH(uint256)",
+      "bytecode_offset": 161,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 289
+    },
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 489
+    },
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 586
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 706
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 790
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 1292
+    }
+  ]
+}

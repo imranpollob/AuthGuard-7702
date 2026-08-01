@@ -1,0 +1,171 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x228cb733",
+      "resolved_signature": "reward()",
+      "bytecode_offset": 235,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x23751c62",
+      "resolved_signature": null,
+      "bytecode_offset": 277,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x661e1e92",
+      "resolved_signature": null,
+      "bytecode_offset": 337,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x94d6639f",
+      "resolved_signature": null,
+      "bytecode_offset": 359,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x96713416",
+      "resolved_signature": null,
+      "bytecode_offset": 381,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x9d31acad",
+      "resolved_signature": null,
+      "bytecode_offset": 403,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa4cd4d54",
+      "resolved_signature": null,
+      "bytecode_offset": 425,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb176dcae",
+      "resolved_signature": null,
+      "bytecode_offset": 485,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb69ef8a8",
+      "resolved_signature": "balance()",
+      "bytecode_offset": 507,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xba24b5f3",
+      "resolved_signature": null,
+      "bytecode_offset": 549,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc05ad474",
+      "resolved_signature": null,
+      "bytecode_offset": 571,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xce418d79",
+      "resolved_signature": null,
+      "bytecode_offset": 631,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd83dc88c",
+      "resolved_signature": null,
+      "bytecode_offset": 691,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xe1c7392a",
+      "resolved_signature": "init()",
+      "bytecode_offset": 713,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf8551285",
+      "resolved_signature": null,
+      "bytecode_offset": 735,
+      "arguments": "address,address,bytes",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1631
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1703
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1775
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1847
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 5420
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 5923
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 6448
+    },
+    {
+      "selector": "0x32000000",
+      "resolved_signature": null,
+      "bytecode_offset": 6783
+    },
+    {
+      "selector": "0x33000000",
+      "resolved_signature": null,
+      "bytecode_offset": 6887
+    },
+    {
+      "selector": "0x34000000",
+      "resolved_signature": null,
+      "bytecode_offset": 6991
+    },
+    {
+      "selector": "0x35000000",
+      "resolved_signature": null,
+      "bytecode_offset": 7095
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 7279
+    }
+  ]
+}

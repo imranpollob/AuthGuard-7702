@@ -1,0 +1,32 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x17f2408f",
+      "resolved_signature": null,
+      "bytecode_offset": 121,
+      "arguments": "address[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xe086e5ec",
+      "resolved_signature": "withdrawETH()",
+      "bytecode_offset": 161,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf4f3b200",
+      "resolved_signature": "withdrawERC20(address)",
+      "bytecode_offset": 183,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 1425
+    }
+  ]
+}

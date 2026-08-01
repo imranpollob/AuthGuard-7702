@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xb002fba9",
+      "resolved_signature": "callTarget(address,bytes)",
+      "bytecode_offset": 33,
+      "arguments": "address,bytes",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 180
+    }
+  ]
+}

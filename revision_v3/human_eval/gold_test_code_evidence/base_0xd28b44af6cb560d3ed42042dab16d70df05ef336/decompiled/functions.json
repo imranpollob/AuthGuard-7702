@@ -1,0 +1,131 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 3233,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x07bd0265",
+      "resolved_signature": "EXECUTOR_ROLE()",
+      "bytecode_offset": 3194,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x248a9ca3",
+      "resolved_signature": "getRoleAdmin(bytes32)",
+      "bytecode_offset": 3144,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x2f2ff15d",
+      "resolved_signature": "grantRole(bytes32,address)",
+      "bytecode_offset": 3083,
+      "arguments": "uint256,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x36568abe",
+      "resolved_signature": "renounceRole(bytes32,address)",
+      "bytecode_offset": 3015,
+      "arguments": "uint256,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x3f4ba83a",
+      "resolved_signature": "unpause()",
+      "bytecode_offset": 2913,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x45ef041f",
+      "resolved_signature": null,
+      "bytecode_offset": 1605,
+      "arguments": "uint256[],address[],bytes[],address,uint256,uint8,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4782f779",
+      "resolved_signature": "withdrawETH(address,uint256)",
+      "bytecode_offset": 1327,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x5c975abb",
+      "resolved_signature": "paused()",
+      "bytecode_offset": 1293,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x7df325e1",
+      "resolved_signature": "rescueERC721(address,address,uint256)",
+      "bytecode_offset": 1088,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x7ecebe00",
+      "resolved_signature": "nonces(address)",
+      "bytecode_offset": 1031,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x80a4d414",
+      "resolved_signature": "grantExecutorRole(address)",
+      "bytecode_offset": 953,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8456cb59",
+      "resolved_signature": "pause()",
+      "bytecode_offset": 863,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x91d14854",
+      "resolved_signature": "hasRole(bytes32,address)",
+      "bytecode_offset": 790,
+      "arguments": "uint256,address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa217fddf",
+      "resolved_signature": "DEFAULT_ADMIN_ROLE()",
+      "bytecode_offset": 762,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb2118a8d",
+      "resolved_signature": "rescueERC20(address,address,uint256)",
+      "bytecode_offset": 464,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xcb3fe3e6",
+      "resolved_signature": "batchTransactions(uint256[],address[],bytes[])",
+      "bytecode_offset": 307,
+      "arguments": "uint256[],address[],uint256[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xd547741f",
+      "resolved_signature": "revokeRole(bytes32,address)",
+      "bytecode_offset": 235,
+      "arguments": "uint256,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

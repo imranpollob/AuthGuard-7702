@@ -1,0 +1,23 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x6fbd0908",
+      "resolved_signature": null,
+      "bytecode_offset": 36,
+      "arguments": "bytes,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 691
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 1512
+    }
+  ]
+}

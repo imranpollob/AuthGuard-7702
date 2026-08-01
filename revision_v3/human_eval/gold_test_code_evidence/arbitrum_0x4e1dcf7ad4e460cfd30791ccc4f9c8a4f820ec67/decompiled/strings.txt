@@ -1,0 +1,21 @@
+JV[`@Q
+V[PPPP
+PPP`@Q
+6V[`@Q
+PPP`@Q` 
+PPPV[`
+V[```@Q
+YV[PPPP
+PPPPPP`
+[PPPP[P
+PPPPV[`
+V[`@Q` 
+PPPP`@Q` 
+Singleton contract not deployed
+RPPPPPP
+Create2 call failed
+[P`@Qa
+dipfsX"
+eULS_,w
+dsolcC
+3Invalid singleton address provided

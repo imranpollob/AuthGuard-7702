@@ -1,0 +1,383 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x06fdde03",
+      "resolved_signature": "name()",
+      "bytecode_offset": 1067,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x0933c1ed",
+      "resolved_signature": "delegateToImplementation(bytes)",
+      "bytecode_offset": 1110,
+      "arguments": "bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x095ea7b3",
+      "resolved_signature": "approve(address,uint256)",
+      "bytecode_offset": 1142,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x0e752702",
+      "resolved_signature": "repayBorrow(uint256)",
+      "bytecode_offset": 1190,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x173b9904",
+      "resolved_signature": "reserveFactorMantissa()",
+      "bytecode_offset": 1236,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x17bfdfbc",
+      "resolved_signature": "borrowBalanceCurrent(address)",
+      "bytecode_offset": 1258,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x18160ddd",
+      "resolved_signature": "totalSupply()",
+      "bytecode_offset": 1290,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x182df0f5",
+      "resolved_signature": "exchangeRateStored()",
+      "bytecode_offset": 1312,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1be19560",
+      "resolved_signature": "sweepToken(address)",
+      "bytecode_offset": 1333,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x23b872dd",
+      "resolved_signature": "transferFrom(address,address,uint256)",
+      "bytecode_offset": 1365,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x2608f818",
+      "resolved_signature": "repayBorrowBehalf(address,uint256)",
+      "bytecode_offset": 1397,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x26782247",
+      "resolved_signature": "pendingAdmin()",
+      "bytecode_offset": 1429,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x313ce567",
+      "resolved_signature": "decimals()",
+      "bytecode_offset": 1485,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3af9e669",
+      "resolved_signature": "balanceOfUnderlying(address)",
+      "bytecode_offset": 1529,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x3b1d21a2",
+      "resolved_signature": "getCash()",
+      "bytecode_offset": 1561,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3e941010",
+      "resolved_signature": "_addReserves(uint256)",
+      "bytecode_offset": 1582,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4487152f",
+      "resolved_signature": "delegateToViewImplementation(bytes)",
+      "bytecode_offset": 1614,
+      "arguments": "bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x4576b5db",
+      "resolved_signature": "_setComptroller(address)",
+      "bytecode_offset": 1646,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x47bd3718",
+      "resolved_signature": "totalBorrows()",
+      "bytecode_offset": 1678,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x555bcc40",
+      "resolved_signature": "_setImplementation(address,bool,bytes)",
+      "bytecode_offset": 1700,
+      "arguments": "address,bool,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x5c60da1b",
+      "resolved_signature": "implementation()",
+      "bytecode_offset": 1732,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x5fe3b567",
+      "resolved_signature": "comptroller()",
+      "bytecode_offset": 1764,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x601a0bf1",
+      "resolved_signature": "_reduceReserves(uint256)",
+      "bytecode_offset": 1796,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x6752e702",
+      "resolved_signature": "protocolSeizeShareMantissa()",
+      "bytecode_offset": 1828,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x699cd5e2",
+      "resolved_signature": null,
+      "bytecode_offset": 1850,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6f307dc3",
+      "resolved_signature": "underlying()",
+      "bytecode_offset": 1871,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 1903,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x73acee98",
+      "resolved_signature": "totalBorrowsCurrent()",
+      "bytecode_offset": 1935,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x83030846",
+      "resolved_signature": "_setProtocolSeizeShare(uint256)",
+      "bytecode_offset": 1956,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x852a12e3",
+      "resolved_signature": "redeemUnderlying(uint256)",
+      "bytecode_offset": 1988,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8f840ddd",
+      "resolved_signature": "totalReserves()",
+      "bytecode_offset": 2020,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x95d89b41",
+      "resolved_signature": "symbol()",
+      "bytecode_offset": 2042,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x95dd9193",
+      "resolved_signature": "borrowBalanceStored(address)",
+      "bytecode_offset": 2063,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa0712d68",
+      "resolved_signature": "mint(uint256)",
+      "bytecode_offset": 2095,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa6afed95",
+      "resolved_signature": "accrueInterest()",
+      "bytecode_offset": 2127,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 2148,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xaa5af0fd",
+      "resolved_signature": "borrowIndex()",
+      "bytecode_offset": 2180,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb2a02ff1",
+      "resolved_signature": "seize(address,address,uint256)",
+      "bytecode_offset": 2202,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb71d1a0c",
+      "resolved_signature": "_setPendingAdmin(address)",
+      "bytecode_offset": 2234,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xbd6d894d",
+      "resolved_signature": "exchangeRateCurrent()",
+      "bytecode_offset": 2266,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xc37f68e2",
+      "resolved_signature": "getAccountSnapshot(address)",
+      "bytecode_offset": 2287,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xc5ebeaec",
+      "resolved_signature": "borrow(uint256)",
+      "bytecode_offset": 2351,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xcd91801c",
+      "resolved_signature": "borrowRatePerTimestamp()",
+      "bytecode_offset": 2383,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xcfa99201",
+      "resolved_signature": "accrualBlockTimestamp()",
+      "bytecode_offset": 2404,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd0248fb4",
+      "resolved_signature": "mintWithPermit(uint256,uint256,uint8,bytes32,bytes32)",
+      "bytecode_offset": 2426,
+      "arguments": "uint256,uint256,uint8,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xd3bd2c72",
+      "resolved_signature": "supplyRatePerTimestamp()",
+      "bytecode_offset": 2458,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xdb006a75",
+      "resolved_signature": "redeem(uint256)",
+      "bytecode_offset": 2479,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xdd62ed3e",
+      "resolved_signature": "allowance(address,address)",
+      "bytecode_offset": 2511,
+      "arguments": "address,address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xe9c714f2",
+      "resolved_signature": "_acceptAdmin()",
+      "bytecode_offset": 2543,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf2b3abbd",
+      "resolved_signature": "_setInterestRateModel(address)",
+      "bytecode_offset": 2564,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf3fdb15a",
+      "resolved_signature": "interestRateModel()",
+      "bytecode_offset": 2596,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf5e3c462",
+      "resolved_signature": "liquidateBorrow(address,uint256,address)",
+      "bytecode_offset": 2628,
+      "arguments": "address,uint256,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf851a440",
+      "resolved_signature": "admin()",
+      "bytecode_offset": 2660,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xfca7820b",
+      "resolved_signature": "_setReserveFactor(uint256)",
+      "bytecode_offset": 2697,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

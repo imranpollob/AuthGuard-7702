@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x5e35359e",
+      "resolved_signature": "withdrawTokens(address,address,uint256)",
+      "bytecode_offset": 45,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 204
+    }
+  ]
+}

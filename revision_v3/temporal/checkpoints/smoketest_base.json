@@ -1,0 +1,24 @@
+{
+  "chain": "base",
+  "run_id": "smoketest",
+  "last_scanned_block": null,
+  "n_blocks_scanned": 0,
+  "n_type4_txs": 1,
+  "n_authorization_entries": 1,
+  "n_rpc_errors": 0,
+  "next_page_params": {
+    "block_number": 41600526,
+    "transaction_index": 273,
+    "internal_transaction_index": null,
+    "token_transfer_batch_index": 1,
+    "token_transfer_index": 904,
+    "items_count": 50
+  },
+  "n_pages_fetched": 4,
+  "n_hashes_discovered": 200,
+  "n_blocks_fetched": 1,
+  "pagination_complete": false,
+  "processed_blocks": [
+    41600526
+  ]
+}

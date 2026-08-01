@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x34fcd5be",
+      "resolved_signature": "executeBatch((address,uint256,bytes)[])",
+      "bytecode_offset": 35,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

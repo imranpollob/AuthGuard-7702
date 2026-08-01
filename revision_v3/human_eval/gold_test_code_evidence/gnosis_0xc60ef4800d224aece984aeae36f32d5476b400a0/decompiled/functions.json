@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x775c300c",
+      "resolved_signature": "deploy()",
+      "bytecode_offset": 220,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfb969b0a",
+      "resolved_signature": "bootstrap()",
+      "bytecode_offset": 47,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}
