@@ -58,8 +58,9 @@ V3 = os.path.join(REPO_ROOT, "revision_v3")
 HUMAN_EVAL_DIR = os.path.join(V3, "human_eval")
 EXCEL_REVIEW_DIR = os.path.join(V3, "experiments", "excel_review")
 PROVISIONAL_DIR = os.path.join(V3, "experiments", "llm_provisional")
+OPUS5_DIR = os.path.join(V3, "experiments", "opus5_labeling")
 
-LABEL_SOURCES = ("source_rule", "llm_provisional", "human_final")
+LABEL_SOURCES = ("source_rule", "llm_provisional", "llm_provisional_opus5", "human_final")
 
 
 def run(cmd: list[str], step_name: str, manifest: dict) -> bool:
@@ -112,7 +113,7 @@ def validate_label_schema(sample_set: str, label_source: str) -> dict:
             rows = list(csv.DictReader(f))
         return {"sample_set": sample_set, "n_items": len(rows),
                 "n_uncertain": 0, "schema": "source_label column (0/1), no UNCERTAIN class"}
-    path = os.path.join(V3, "results", "llm_provisional", f"{sample_set}_labels.json")
+    path = os.path.join(V3, "results", label_source, f"{sample_set}_labels.json")
     if not os.path.exists(path):
         return {"sample_set": sample_set, "exists": False}
     with open(path) as f:
@@ -126,7 +127,8 @@ def validate_label_schema(sample_set: str, label_source: str) -> dict:
             "n_uncertain": n_uncertain,
             "uncertainty_coverage_pct": round(100 * n_uncertain / len(data["records"]), 1),
             "schema_violations": missing_any,
-            "label_source_watermark_present": data.get("LABEL_SOURCE") == "LLM_PROVISIONAL"}
+            "label_source_watermark_present":
+                data.get("LABEL_SOURCE") == label_source.upper()}
 
 
 def main() -> int:
@@ -184,27 +186,54 @@ def main() -> int:
             json.dump(manifest, f, indent=2, default=str)
         return 0
 
-    # llm_provisional: real, already-exercised path -- call the actual scripts built and run
-    # during this pipeline pass, in order.
+    # Every downstream script resolves its input labels and output directory from this
+    # variable, so a run under one label source can never read or write another's files.
+    os.environ["AUTHGUARD_LABEL_SOURCE"] = args.label_source
+
     ok = True
-    ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "generate_provisional_labels.py"),
-               "--sample-set", "gold_dev"], "4-labeling-gold-dev", manifest)
-    ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "generate_provisional_labels.py"),
-               "--sample-set", "gold_test"], "4-labeling-gold-test", manifest)
-    ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "remap_pilot_labels.py")], "4-labeling-pilot", manifest)
+    if args.label_source == "llm_provisional_opus5":
+        # Labels for this source come from the Opus 5 labeling pass (evidence dossiers + the
+        # documented decision framework + recorded manual overrides), not from the superseded
+        # linear-window labeler.
+        ok &= run(["python3", os.path.join(OPUS5_DIR, "build_dossiers.py")],
+                  "3-evidence-dossiers", manifest)
+        ok &= run(["python3", "-c",
+                   "import sys; sys.path.insert(0, %r); import run_opus5_labeling as m; "
+                   "m.main(); m.emit_pipeline_compatible_labels()" % OPUS5_DIR],
+                  "4-labeling-opus5-all-sets", manifest)
+        ok &= run(["python3", os.path.join(OPUS5_DIR, "analyze_labels.py")],
+                  "4b-label-comparison-and-quality", manifest)
+    else:
+        ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "generate_provisional_labels.py"),
+                   "--sample-set", "gold_dev"], "4-labeling-gold-dev", manifest)
+        ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "generate_provisional_labels.py"),
+                   "--sample-set", "gold_test"], "4-labeling-gold-test", manifest)
+        ok &= run(["python3", os.path.join(EXCEL_REVIEW_DIR, "remap_pilot_labels.py")],
+                  "4-labeling-pilot", manifest)
     ok &= run(["python3", os.path.join(PROVISIONAL_DIR, "run_gold_dev_baseline.py")], "5-gold-dev-baseline", manifest)
     if not args.skip_slow_steps:
         ok &= run(["python3", os.path.join(PROVISIONAL_DIR, "run_retraining_experiments.py")], "6-retraining", manifest)
         ok &= run(["python3", os.path.join(PROVISIONAL_DIR, "select_provisional_final_model.py")], "7-model-selection", manifest)
     ok &= run(["python3", os.path.join(PROVISIONAL_DIR, "run_gold_test_evaluation.py")], "8-gold-test-eval", manifest)
     ok &= run(["python3", os.path.join(PROVISIONAL_DIR, "run_cascade_evaluation.py")], "9-10-static-rule-and-cascade", manifest)
-    if not args.skip_slow_steps:
-        ok &= run(["python3", os.path.join(V3, "experiments", "temporal_v2", "run_temporal_provisional.py")],
-                   "11-temporal-eval", manifest)
-    ok &= run(["python3", os.path.join(V3, "experiments", "external_controls", "verify_legitimate_controls.py")],
-               "12-legitimate-controls", manifest)
+    if args.label_source == "llm_provisional_opus5":
+        # Legitimate-control evaluation is per provenance category here (a gap the previous
+        # pass recorded as a follow-up), and the temporal set is handled inside the same
+        # script, which reports honestly when it cannot re-label for want of cached bytecode.
+        ok &= run(["python3", os.path.join(OPUS5_DIR, "run_controls_and_temporal.py")],
+                   "11-12-controls-and-temporal", manifest)
+        ok &= run(["python3", os.path.join(OPUS5_DIR, "update_review_workbooks.py")],
+                   "12b-update-review-workbooks", manifest)
+    else:
+        if not args.skip_slow_steps:
+            ok &= run(["python3", os.path.join(V3, "experiments", "temporal_v2", "run_temporal_provisional.py")],
+                       "11-temporal-eval", manifest)
+        ok &= run(["python3", os.path.join(V3, "experiments", "external_controls", "verify_legitimate_controls.py")],
+                   "12-legitimate-controls", manifest)
     ok &= run(["python3", os.path.join(V3, "experiments", "reporting", "regenerate_tables.py")],
                "13-regenerate-tables", manifest)
+    ok &= run(["python3", os.path.join(V3, "experiments", "reporting", "regenerate_figures.py")],
+               "13b-regenerate-figures", manifest)
 
     manifest["status"] = "COMPLETED" if ok else "COMPLETED_WITH_STEP_FAILURES"
     manifest["finished_at_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())

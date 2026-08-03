@@ -32,6 +32,15 @@ import torch
 from torch import nn
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+# Label-source selection. Defaults to "llm_provisional" so every previously-produced result is
+# reproduced byte-for-byte when the variable is unset; setting AUTHGUARD_LABEL_SOURCE redirects
+# BOTH the labels read and the results written, so one label source can never overwrite another.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE"
+                    if LABEL_SRC == "llm_provisional_opus5" else
+                    "PROVISIONAL — LLM REFERENCE LABELS")
+
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,9 +51,41 @@ from run_retraining_experiments import (  # noqa: E402
     score_all,
 )
 
-WINNING_METHOD = "confidence_weighted"
+def _select_winning_method(results_path: str) -> str:
+    """Pick the retraining method on multi-criteria grounds from THIS label source's results.
+
+    Previously this was a hardcoded constant carried from an earlier pass, which meant a rerun
+    under a different label source would silently reuse the earlier winner instead of selecting
+    on the new Gold-Dev evidence. Selection is now derived from the results file: rank by a
+    stability-adjusted score (mean validation AUPRC minus its standard deviation across
+    family-grouped CV runs), which prefers a method that is both strong and consistent over one
+    that is marginally stronger on the point estimate but more variable. Ties fall back to
+    lower variance, then to the method that adds no architectural complexity.
+    """
+    with open(results_path) as f:
+        res = json.load(f)
+    NO_ADDED_COMPLEXITY = {"plain_finetune", "confidence_weighted", "soft_label_confidence",
+                           "label_smoothing_noise_aware", "source_plus_provisional_weighting",
+                           "generalized_cross_entropy", "threshold_recalibration_only"}
+    ranked = []
+    for name, m in res["methods"].items():
+        if name in ("baseline_frozen", "threshold_recalibration_only"):
+            continue  # not retraining methods; kept as reference points
+        mean = m.get("val_auprc_mean")
+        std = m.get("val_auprc_std")
+        if mean is None:
+            continue
+        ranked.append((mean - (std or 0.0), -(std or 0.0),
+                       name in NO_ADDED_COMPLEXITY, name))
+    ranked.sort(reverse=True)
+    return ranked[0][3]
+
+
+WINNING_METHOD = _select_winning_method(
+    os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "retraining",
+                 "retraining_results.json"))
 CONFIG_DIR = os.path.join(REPO_ROOT, "revision_v3", "configs")
-RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional")
+RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC)
 CKPT_DIR = os.path.join(RESULTS_DIR, "provisional_final_model_checkpoints")
 os.makedirs(CKPT_DIR, exist_ok=True)
 
@@ -74,8 +115,22 @@ def train_final(tensors: dict, seed: int, device) -> dict:
             logits = model(batch["chunks"].long(), batch["chunk_mask"].bool(), dense=batch["dense"])
             targets = torch.as_tensor(tensors["labels"][idx], dtype=torch.float32, device=device)
             weights = torch.as_tensor(tensors["confidence_weight"][idx], dtype=torch.float32, device=device)
-            per_sample = nn.functional.binary_cross_entropy_with_logits(logits, targets, reduction="none")
-            loss = (per_sample * weights).mean()
+            # Train with the loss the SELECTED method actually specifies. Previously this
+            # always applied confidence-weighted BCE regardless of which method won, so a
+            # different winner would have been reported but not trained.
+            if WINNING_METHOD == "soft_label_confidence":
+                soft = torch.as_tensor(tensors["soft_labels"][idx], dtype=torch.float32,
+                                       device=device)
+                loss = nn.functional.binary_cross_entropy_with_logits(logits, soft)
+            elif WINNING_METHOD == "label_smoothing_noise_aware":
+                smoothed = targets * 0.9 + 0.05
+                loss = nn.functional.binary_cross_entropy_with_logits(logits, smoothed)
+            elif WINNING_METHOD == "plain_finetune":
+                loss = nn.functional.binary_cross_entropy_with_logits(logits, targets)
+            else:
+                per_sample = nn.functional.binary_cross_entropy_with_logits(
+                    logits, targets, reduction="none")
+                loss = (per_sample * weights).mean()
             loss.backward()
             nn.utils.clip_grad_norm_(model.parameters(), GRAD_CLIP)
             optimizer.step()
@@ -120,7 +175,7 @@ def main() -> int:
         retraining_results = json.load(f)
 
     manifest_out = {
-        "LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+        "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
         "provisional_final_model": {
             "base_architecture": "HybridModel (authguard_sequence_dense architecture, unchanged)",
             "base_checkpoint": BASE_CKPT,
@@ -150,7 +205,7 @@ def main() -> int:
         "_comment": "PROVISIONAL FINAL MODEL config -- LLM_PROVISIONAL label source. Does "
                     "NOT replace revision_v3/configs/final_model.json (phase2_frozen_model), "
                     "which remains the frozen Phase 2 reference and is preserved unchanged.",
-        "LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+        "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
         "model_name": "provisional_final_model",
         "base_model_name": "authguard_sequence_dense",
         "architecture": {"class": "HybridModel", "module": "revision_v3.src.models.hybrid",
@@ -160,12 +215,16 @@ def main() -> int:
                                      "dropout": 0.15, "use_multiscale": False, "use_dense": True,
                                      "use_ngram": False}},
         "selection_method": WINNING_METHOD,
-        "training_data": "revision_v3/results/llm_provisional/gold_dev_labels.json (binary subset only)",
+        "training_data": f"revision_v3/results/{LABEL_SRC}/gold_dev_labels.json (binary subset only)",
         "checkpoints": {str(s): p for s, p in per_seed_ckpts.items()},
         "phase2_frozen_model": os.path.join(REPO_ROOT, "revision_v3", "configs", "final_model.json"),
         "llm_provisional_selected_model": manifest_path,
     }
-    config_path = os.path.join(CONFIG_DIR, "provisional_final_model.json")
+    # Label-source-scoped filename: a rerun under a different label source must never
+    # overwrite another source's frozen provisional config.
+    config_name = ("provisional_final_model.json" if LABEL_SRC == "llm_provisional"
+                   else f"provisional_final_model_{LABEL_SRC}.json")
+    config_path = os.path.join(CONFIG_DIR, config_name)
     with open(config_path, "w") as f:
         json.dump(config_out, f, indent=2, default=str)
 

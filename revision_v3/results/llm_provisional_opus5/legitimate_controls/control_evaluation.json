@@ -1,0 +1,340 @@
+{
+ "LABEL_SOURCE": "LLM_PROVISIONAL_OPUS5",
+ "STATIC_ANALYZER_EVIDENCE": "VISIBLE",
+ "STATUS": "PROVISIONAL_PENDING_HUMAN_REVIEW",
+ "WATERMARK": "PROVISIONAL \u2014 OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE",
+ "threshold_used": 0.44079717602580787,
+ "threshold_provenance": "frozen 5%-FPR threshold carried from the Phase 1/2 checkpoints; never re-fit on the control set",
+ "n_controls_scored": 30,
+ "n_controls_without_cached_bytecode": 0,
+ "addresses_without_cached_bytecode": [],
+ "per_category": {
+  "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)": {
+   "n": 22,
+   "flagged": 0,
+   "projects": [
+    "Alchemy_SemiModularAccount7702",
+    "Ambire_EIP7702Account",
+    "Biconomy_Nexus_v1.3.1",
+    "Coinbase_EIP7702Proxy",
+    "MetaMask_EIP7702StatelessDeleGator",
+    "Uniswap_Calibur_v1.1.0",
+    "ZeroDev_Kernel_v3.3_7702"
+   ],
+   "false_positive_rate_on_this_category": 0.0
+  },
+  "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)": {
+   "n": 8,
+   "flagged": 0,
+   "projects": [
+    "Biconomy_Nexus_v1.3.1",
+    "OKX_SmartWalletEntry",
+    "ZeroDev_Kernel_v3.3_7702"
+   ],
+   "false_positive_rate_on_this_category": 0.0
+  }
+ },
+ "per_item": [
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "ethereum",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "base",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "bnb",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "polygon",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "arbitrum",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "optimism",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "MetaMask_EIP7702StatelessDeleGator",
+   "chain": "gnosis",
+   "address": "0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05654774601571263,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Ambire_EIP7702Account",
+   "chain": "ethereum",
+   "address": "0x5A7FC11397E9a8AD41BF10bf13F22B0a63f96f6d",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05191930961639931,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "ethereum",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "optimism",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "bnb",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "polygon",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "base",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "ZeroDev_Kernel_v3.3_7702",
+   "chain": "arbitrum",
+   "address": "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.18108377254878483,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "ethereum",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "base",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "polygon",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "arbitrum",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "optimism",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "bnb",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Biconomy_Nexus_v1.3.1",
+   "chain": "gnosis",
+   "address": "0x0000000020fe2F30453074aD916eDeB653eC7E9D",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.06650415708621343,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "ethereum",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "base",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "optimism",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "arbitrum",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "bnb",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "OKX_SmartWalletEntry",
+   "chain": "polygon",
+   "address": "0xe40ccB2D94975c51bff0C004eFDfd9B3a5796fA4",
+   "category": "CANDIDATE_LEGITIMATE_CONTROL (provenance MEDIUM)",
+   "authguard_probability": 0.13032572684654345,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "False"
+  },
+  {
+   "project": "Uniswap_Calibur_v1.1.0",
+   "chain": "ethereum",
+   "address": "0x000000005c84F8Fd50b21CAC312528A64437030e",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.0526630874335145,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Alchemy_SemiModularAccount7702",
+   "chain": "ethereum",
+   "address": "0x69007702764179f14F51cdce752f4f775d74E139",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.0703379941250508,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  },
+  {
+   "project": "Coinbase_EIP7702Proxy",
+   "chain": "base",
+   "address": "0x7702cb554e6bFb442cb743A7dF23154544a7176C",
+   "category": "VERIFIED_LEGITIMATE_CONTROL (provenance HIGH)",
+   "authguard_probability": 0.05542417790275067,
+   "flagged_at_frozen_threshold": false,
+   "runtime_source_match": "MATCH",
+   "verified_source": "True"
+  }
+ ],
+ "interpretation": "These are documented, real-world EIP-7702 delegate deployments. Any item flagged here is a false positive with respect to its documentation status \u2014 but note the categories differ in evidence strength, which is exactly why they are reported separately rather than pooled."
+}

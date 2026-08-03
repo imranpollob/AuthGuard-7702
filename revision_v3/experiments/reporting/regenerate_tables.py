@@ -17,11 +17,23 @@ import sys
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 V3 = os.path.join(REPO_ROOT, "revision_v3")
+
+# Label-source selection: redirects both the results read and the asset directory written, so a
+# rerun under a different label source cannot overwrite another source's tables/figures.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+
 RESULTS = os.path.join(V3, "results")
-OUT_DIR = os.path.join(V3, "manuscript_assets", "provisional")
+OUT_DIR = os.path.join(V3, "manuscript_assets",
+                       "provisional" if LABEL_SRC == "llm_provisional"
+                       else f"provisional_{LABEL_SRC}")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-BANNER = "**PROVISIONAL — LLM REFERENCE LABELS. LABEL_SOURCE=LLM_PROVISIONAL. STATUS=PROVISIONAL_NOT_FOR_FINAL_CLAIMS.**\n\n"
+BANNER = ("**PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE. "
+          "LABEL_SOURCE=LLM_PROVISIONAL_OPUS5. STATIC_ANALYZER_EVIDENCE=VISIBLE. "
+          "STATUS=PROVISIONAL_PENDING_HUMAN_REVIEW.**\n\n"
+          if LABEL_SRC == "llm_provisional_opus5" else
+          "**PROVISIONAL — LLM REFERENCE LABELS. LABEL_SOURCE=LLM_PROVISIONAL. "
+          "STATUS=PROVISIONAL_NOT_FOR_FINAL_CLAIMS.**\n\n")
 
 
 def load_json(path):
@@ -40,7 +52,7 @@ def write_table(name: str, lines: list[str]) -> None:
 
 
 def table_gold_dev_baseline():
-    d = load_json(os.path.join(RESULTS, "llm_provisional", "gold_dev_baseline", "gold_dev_baseline_report.json"))
+    d = load_json(os.path.join(RESULTS, LABEL_SRC, "gold_dev_baseline", "gold_dev_baseline_report.json"))
     if not d:
         write_table("table_07_provisional_gold_dev_results.md", ["NOT_YET_AVAILABLE -- run Part 6."])
         return
@@ -61,7 +73,7 @@ def table_gold_dev_baseline():
 
 
 def table_gold_test():
-    d = load_json(os.path.join(RESULTS, "llm_provisional", "gold_test", "gold_test_report.json"))
+    d = load_json(os.path.join(RESULTS, LABEL_SRC, "gold_test", "gold_test_report.json"))
     if not d:
         write_table("table_08_provisional_gold_test_results.md", ["NOT_YET_AVAILABLE -- run Part 9."])
         return
@@ -82,7 +94,7 @@ def table_gold_test():
 
 
 def table_static_rule_and_cascade():
-    d = load_json(os.path.join(RESULTS, "llm_provisional", "cascade", "cascade_report.json"))
+    d = load_json(os.path.join(RESULTS, LABEL_SRC, "cascade", "cascade_report.json"))
     if not d:
         write_table("table_09_static_rule_comparison.md", ["NOT_YET_AVAILABLE -- run Part 10."])
         write_table("table_10_cascade_evaluation.md", ["NOT_YET_AVAILABLE -- run Part 10."])
@@ -146,7 +158,7 @@ def table_legitimate_controls():
 
 
 def table_temporal():
-    d = load_json(os.path.join(RESULTS, "llm_provisional", "temporal", "temporal_report.json"))
+    d = load_json(os.path.join(RESULTS, LABEL_SRC, "temporal", "temporal_report.json"))
     if not d or d.get("n_total_temporal_items", 0) == 0:
         write_table("table_11_temporal_evaluation.md", ["NOT_YET_AVAILABLE (or 0 items) -- run Part 11-12."])
         return

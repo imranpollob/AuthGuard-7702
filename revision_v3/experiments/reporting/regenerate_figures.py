@@ -23,8 +23,15 @@ from sklearn.metrics import precision_recall_curve, roc_curve
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 V3 = os.path.join(REPO_ROOT, "revision_v3")
+
+# Label-source selection: redirects both the results read and the asset directory written, so a
+# rerun under a different label source cannot overwrite another source's tables/figures.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+
 RESULTS = os.path.join(V3, "results")
-OUT_DIR = os.path.join(V3, "manuscript_assets", "provisional")
+OUT_DIR = os.path.join(V3, "manuscript_assets",
+                       "provisional" if LABEL_SRC == "llm_provisional"
+                       else f"provisional_{LABEL_SRC}")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 BANNER = "PROVISIONAL — LLM REFERENCE LABELS (LABEL_SOURCE=LLM_PROVISIONAL)"
@@ -36,7 +43,7 @@ def load(path):
 
 
 def figure_pr_curve():
-    path = os.path.join(RESULTS, "llm_provisional", "gold_test", "gold_test_report.json")
+    path = os.path.join(RESULTS, LABEL_SRC, "gold_test", "gold_test_report.json")
     if not os.path.exists(path):
         return
     d = load(path)
@@ -49,7 +56,7 @@ def figure_pr_curve():
         # reconstruct y_true isn't stored per-item in this report; skip if unavailable
     # Fall back to a bar summary of AUPRC with CI since per-item scores for PR curve weren't
     # separately cached for gold_test (only gold_dev_baseline stored item_scores).
-    path2 = os.path.join(RESULTS, "llm_provisional", "gold_dev_baseline", "gold_dev_baseline_report.json")
+    path2 = os.path.join(RESULTS, LABEL_SRC, "gold_dev_baseline", "gold_dev_baseline_report.json")
     if os.path.exists(path2):
         d2 = load(path2)
         names, auprcs = [], []
@@ -68,7 +75,7 @@ def figure_pr_curve():
 
 
 def figure_gold_test_ranking():
-    path = os.path.join(RESULTS, "llm_provisional", "gold_test", "gold_test_report.json")
+    path = os.path.join(RESULTS, LABEL_SRC, "gold_test", "gold_test_report.json")
     if not os.path.exists(path):
         return
     d = load(path)
@@ -90,7 +97,7 @@ def figure_gold_test_ranking():
 
 
 def figure_cascade_tradeoff():
-    path = os.path.join(RESULTS, "llm_provisional", "cascade", "cascade_report.json")
+    path = os.path.join(RESULTS, LABEL_SRC, "cascade", "cascade_report.json")
     if not os.path.exists(path):
         return
     d = load(path)
@@ -121,9 +128,9 @@ def figure_cascade_tradeoff():
 def figure_uncertainty_coverage():
     rows = []
     for ss, path in [
-        ("pilot", os.path.join(RESULTS, "llm_provisional", "pilot_labels.json")),
-        ("gold_dev", os.path.join(RESULTS, "llm_provisional", "gold_dev_labels.json")),
-        ("gold_test", os.path.join(RESULTS, "llm_provisional", "gold_test_labels.json")),
+        ("pilot", os.path.join(RESULTS, LABEL_SRC, "pilot_labels.json")),
+        ("gold_dev", os.path.join(RESULTS, LABEL_SRC, "gold_dev_labels.json")),
+        ("gold_test", os.path.join(RESULTS, LABEL_SRC, "gold_test_labels.json")),
     ]:
         if not os.path.exists(path):
             continue

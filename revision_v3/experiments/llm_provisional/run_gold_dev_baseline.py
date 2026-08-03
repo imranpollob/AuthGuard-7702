@@ -24,6 +24,15 @@ import numpy as np
 import torch
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+# Label-source selection. Defaults to "llm_provisional" so every previously-produced result is
+# reproduced byte-for-byte when the variable is unset; setting AUTHGUARD_LABEL_SOURCE redirects
+# BOTH the labels read and the results written, so one label source can never overwrite another.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE"
+                    if LABEL_SRC == "llm_provisional_opus5" else
+                    "PROVISIONAL — LLM REFERENCE LABELS")
+
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 
 from evaluation import model_runtime  # noqa: E402
@@ -31,7 +40,7 @@ from evaluation.metrics_extra import binary_rule_report, expected_calibration_er
 from evaluation.metrics import auprc, auroc, brier, metrics_at_threshold  # noqa: E402
 
 HUMAN_EVAL_DIR = os.path.join(REPO_ROOT, "revision_v3", "human_eval")
-RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "gold_dev_baseline")
+RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "gold_dev_baseline")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 CONTINUOUS_MODELS = ["authguard_sequence_dense", "authguard_reference_v3",
@@ -41,7 +50,7 @@ CONTINUOUS_MODELS = ["authguard_sequence_dense", "authguard_reference_v3",
 def load_gold_dev():
     with open(os.path.join(HUMAN_EVAL_DIR, "gold_dev_manifest.csv"), newline="") as f:
         manifest = {r["item_id"]: r for r in csv.DictReader(f)}
-    with open(os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "gold_dev_labels.json")) as f:
+    with open(os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "gold_dev_labels.json")) as f:
         labels = {r["item_id"]: r for r in json.load(f)["records"]}
     return manifest, labels
 
@@ -105,7 +114,7 @@ def main() -> int:
     bytecodes = [manifest[iid]["runtime_bytecode"] for iid in binary_ids]
 
     report = {
-        "LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+        "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
         "n_total_gold_dev_items": len(all_ids),
         "n_uncertain_excluded": n_uncertain,
         "uncertain_coverage_pct": round(100 * n_uncertain / len(all_ids), 1),

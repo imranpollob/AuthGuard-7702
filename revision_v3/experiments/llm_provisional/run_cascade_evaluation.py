@@ -30,13 +30,22 @@ import numpy as np
 import torch
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+# Label-source selection. Defaults to "llm_provisional" so every previously-produced result is
+# reproduced byte-for-byte when the variable is unset; setting AUTHGUARD_LABEL_SOURCE redirects
+# BOTH the labels read and the results written, so one label source can never overwrite another.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE"
+                    if LABEL_SRC == "llm_provisional_opus5" else
+                    "PROVISIONAL — LLM REFERENCE LABELS")
+
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 
 from evaluation import model_runtime  # noqa: E402
 from evaluation.metrics_extra import confusion_matrix, specificity_from_cm  # noqa: E402
 
 HUMAN_EVAL_DIR = os.path.join(REPO_ROOT, "revision_v3", "human_eval")
-RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "cascade")
+RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "cascade")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 MEASURED_AUTHGUARD_LATENCY_MS = 2.9  # from Part 14's real CPU end-to-end median
 
@@ -46,7 +55,7 @@ MODEL_NAME = "authguard_sequence_dense"
 def load_set(sample_set: str):
     with open(os.path.join(HUMAN_EVAL_DIR, f"{sample_set}_manifest.csv"), newline="") as f:
         manifest = {r["item_id"]: r for r in csv.DictReader(f)}
-    with open(os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", f"{sample_set}_labels.json")) as f:
+    with open(os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, f"{sample_set}_labels.json")) as f:
         labels = {r["item_id"]: r for r in json.load(f)["records"]}
     return manifest, labels
 
@@ -142,7 +151,7 @@ def main() -> int:
     gt_policies = run_policies(gt_manifest, gt_labels, threshold, (lo, hi), device, "gold_test")
 
     report = {
-        "LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+        "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
         "authguard_threshold_used": threshold,
         "escalation_band_selected_on_gold_dev_only": {"low": lo, "high": hi},
         "gold_dev_policy_development_results": gd_policies,

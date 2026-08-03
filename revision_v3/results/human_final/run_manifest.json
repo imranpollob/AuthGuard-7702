@@ -1,32 +1,20 @@
 {
   "label_source": "human_final",
-  "started_at_utc": "2026-07-31T02:37:35Z",
+  "started_at_utc": "2026-08-01T14:48:28Z",
   "steps": [],
   "previous_outputs_preserved": true,
   "schema_validation": {
     "pilot": {
       "sample_set": "pilot",
-      "n_items": 20,
-      "n_uncertain": 5,
-      "uncertainty_coverage_pct": 25.0,
-      "schema_violations": [],
-      "label_source_watermark_present": true
+      "exists": false
     },
     "gold_dev": {
       "sample_set": "gold_dev",
-      "n_items": 60,
-      "n_uncertain": 13,
-      "uncertainty_coverage_pct": 21.7,
-      "schema_violations": [],
-      "label_source_watermark_present": true
+      "exists": false
     },
     "gold_test": {
       "sample_set": "gold_test",
-      "n_items": 150,
-      "n_uncertain": 12,
-      "uncertainty_coverage_pct": 8.0,
-      "schema_violations": [],
-      "label_source_watermark_present": true
+      "exists": false
     }
   },
   "human_final_status": {

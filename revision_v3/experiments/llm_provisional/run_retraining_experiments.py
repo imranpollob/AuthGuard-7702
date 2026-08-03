@@ -30,6 +30,15 @@ import torch
 from torch import nn
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+# Label-source selection. Defaults to "llm_provisional" so every previously-produced result is
+# reproduced byte-for-byte when the variable is unset; setting AUTHGUARD_LABEL_SOURCE redirects
+# BOTH the labels read and the results written, so one label source can never overwrite another.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE"
+                    if LABEL_SRC == "llm_provisional_opus5" else
+                    "PROVISIONAL — LLM REFERENCE LABELS")
+
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 
 from evaluation import model_runtime  # noqa: E402
@@ -39,7 +48,7 @@ from models.hybrid import HybridConfig, HybridModel  # noqa: E402
 from training.harness import SEEDS  # noqa: E402
 
 HUMAN_EVAL_DIR = os.path.join(REPO_ROOT, "revision_v3", "human_eval")
-RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "retraining")
+RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "retraining")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 BASE_CKPT = os.path.join(REPO_ROOT, "revision_v3", "results", "checkpoints",
                           "authguard_sequence_dense_seed7702_fold0.pt")
@@ -60,7 +69,7 @@ SOFT_TARGET = {
 def load_gold_dev_binary():
     with open(os.path.join(HUMAN_EVAL_DIR, "gold_dev_manifest.csv"), newline="") as f:
         manifest = {r["item_id"]: r for r in csv.DictReader(f)}
-    with open(os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "gold_dev_labels.json")) as f:
+    with open(os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "gold_dev_labels.json")) as f:
         labels = {r["item_id"]: r for r in json.load(f)["records"]}
     binary_ids = [iid for iid, r in labels.items() if r["llm_provisional_label"] in ("SAFE", "UNSAFE")]
     uncertain_ids = [iid for iid, r in labels.items() if r["llm_provisional_label"] == "UNCERTAIN"]
@@ -292,7 +301,7 @@ def main() -> int:
                 run.update({"seed": seed, "fold": fold_i, "n_train": len(train_idx), "n_val": len(val_idx)})
                 results[method].append(run)
 
-    summary = {"LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+    summary = {"LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
                "n_binary_gold_dev_items": len(binary_ids), "n_uncertain_gold_dev_items": len(uncertain_ids),
                "n_unique_families": int(n_families), "n_inner_folds": N_INNER_FOLDS, "seeds": list(SEEDS),
                "caveat": "Extremely small sample (47 items). Report as methodological "

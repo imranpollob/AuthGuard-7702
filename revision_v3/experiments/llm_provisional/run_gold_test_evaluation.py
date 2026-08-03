@@ -22,6 +22,15 @@ import numpy as np
 import torch
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
+# Label-source selection. Defaults to "llm_provisional" so every previously-produced result is
+# reproduced byte-for-byte when the variable is unset; setting AUTHGUARD_LABEL_SOURCE redirects
+# BOTH the labels read and the results written, so one label source can never overwrite another.
+LABEL_SRC = os.environ.get("AUTHGUARD_LABEL_SOURCE", "llm_provisional")
+LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE"
+                    if LABEL_SRC == "llm_provisional_opus5" else
+                    "PROVISIONAL — LLM REFERENCE LABELS")
+
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "experiments", "llm_provisional"))
 
@@ -32,7 +41,7 @@ from features.encode import encode_bytecode  # noqa: E402
 from models.hybrid import HybridConfig, HybridModel  # noqa: E402
 
 HUMAN_EVAL_DIR = os.path.join(REPO_ROOT, "revision_v3", "human_eval")
-RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "gold_test")
+RESULTS_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "gold_test")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 CONTINUOUS_MODELS = ["authguard_sequence_dense", "authguard_reference_v3",
@@ -44,13 +53,13 @@ BOOT_SEED = 77032026
 def load_gold_test():
     with open(os.path.join(HUMAN_EVAL_DIR, "gold_test_manifest.csv"), newline="") as f:
         manifest = {r["item_id"]: r for r in csv.DictReader(f)}
-    with open(os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "gold_test_labels.json")) as f:
+    with open(os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "gold_test_labels.json")) as f:
         labels = {r["item_id"]: r for r in json.load(f)["records"]}
     return manifest, labels
 
 
 def score_provisional_model(bytecodes: list[str], device) -> np.ndarray:
-    ckpt_dir = os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional", "provisional_final_model_checkpoints")
+    ckpt_dir = os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC, "provisional_final_model_checkpoints")
     seed_scores = []
     for seed in (7702, 7703, 7704):
         ckpt_path = os.path.join(ckpt_dir, f"provisional_final_model_seed{seed}.pt")
@@ -134,7 +143,7 @@ def main() -> int:
     family_ids = np.array([manifest[iid]["family_id"] for iid in binary_ids])
 
     report = {
-        "LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+        "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
         "n_total_gold_test_items": len(all_ids), "n_uncertain_excluded": n_uncertain,
         "uncertainty_exclusion_rate_pct": round(100 * n_uncertain / len(all_ids), 1),
         "n_evaluated_binary": len(binary_ids), "models": {},
@@ -143,7 +152,7 @@ def main() -> int:
     print("[gold_test] scoring provisional_final_model...")
     prov_scores, prov_seed_scores = score_provisional_model(bytecodes, device)
     prov_thr = float(np.mean([torch.load(
-        os.path.join(REPO_ROOT, "revision_v3", "results", "llm_provisional",
+        os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC,
                      "provisional_final_model_checkpoints", f"provisional_final_model_seed{s}.pt"),
         map_location=device, weights_only=False)["threshold_5pct"] for s in (7702, 7703, 7704)]))
     report["models"]["provisional_final_model"] = evaluate_scores(y_true, prov_scores, family_ids, prov_thr)
