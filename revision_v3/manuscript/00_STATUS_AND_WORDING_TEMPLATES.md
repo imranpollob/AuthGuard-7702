@@ -26,6 +26,7 @@ manuscript while only LLM-provisional labels exist.
 |---|---|---|
 | `01_title_and_abstract.md` | Title options, abstract with provisional placeholders | Draft |
 | `02_introduction_motivation.md` | Introduction, motivation, problem formulation, threat model | Draft |
+| `02_related_work_and_novelty.md` | Direct EIP-7702, bytecode-graph, and selective-prediction novelty boundary | Draft |
 | `03_dataset_and_labels.md` | Dataset provenance, label-source explanation | Draft |
 | `04_architecture_and_training.md` | Sequence+dense architecture, training protocol | Draft |
 | `05_evaluation_methodology.md` | Family-disjoint eval, corrected bootstrap, parameter-matched analysis, final robustness | Draft |

@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS reviewers (
 
 CREATE TABLE IF NOT EXISTS items (
     item_id TEXT PRIMARY KEY,          -- anon_id from the evidence packet
-    sample_set TEXT NOT NULL,          -- 'pilot' | 'gold_dev' | 'gold_test'
+    sample_set TEXT NOT NULL,          -- 'pilot' | 'gold_dev' | 'gold_test' | 'postcutoff'
     evidence_json TEXT NOT NULL,       -- full evidence packet, JSON-serialized
     family_id TEXT,                     -- retained for isolation checks, never shown to reviewers
     created_at TEXT NOT NULL
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS annotations (
     item_id TEXT NOT NULL REFERENCES items(item_id),
     reviewer_id TEXT NOT NULL REFERENCES reviewers(reviewer_id),
     is_adjudication INTEGER NOT NULL DEFAULT 0,
-    label TEXT,                    -- SAFE | UNSAFE | INDETERMINATE | NOT_BYTECODE_SCREENABLE
+    label TEXT,                    -- NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND | UNSAFE | INDETERMINATE | NOT_BYTECODE_SCREENABLE
     unsafe_category TEXT,          -- required iff label == UNSAFE
     indeterminate_reason TEXT,     -- required iff label in (INDETERMINATE, NOT_BYTECODE_SCREENABLE)
     confidence TEXT,               -- 'high' | 'medium' | 'low'

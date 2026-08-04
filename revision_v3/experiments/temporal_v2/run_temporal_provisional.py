@@ -138,6 +138,10 @@ def main() -> int:
         rec = label_item(item_id, chain, address, item_evidence)
         rec.update({
             "chain": chain, "address": address,
+            "matched_historical_family": (
+                None if pd.isna(row.get("matched_historical_family"))
+                else str(row.get("matched_historical_family"))
+            ),
             "is_previously_unseen_family": bool(row["is_previously_unseen_family"]),
             "is_exact_historical_duplicate": bool(row["is_exact_historical_duplicate"]),
             "authorization_count": int(row["authorization_count"]),
@@ -154,6 +158,8 @@ def main() -> int:
     y_true = np.array([1 if r["llm_provisional_label"] == "UNSAFE" else 0
                         for r in records if r["item_id"] in binary_ids])
     bc_list = [bytecodes[iid] for iid in binary_ids]
+    record_by_id = {r["item_id"]: r for r in records}
+    family_ids = [record_by_id[iid].get("matched_historical_family") for iid in binary_ids]
 
     eval_report = {"LABEL_SOURCE": "LLM_PROVISIONAL", "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
                     "n_total_temporal_items": len(records),
@@ -164,12 +170,23 @@ def main() -> int:
 
     if len(binary_ids) >= 5 and len(np.unique(y_true)) > 1:
         for model_name in ["authguard_sequence_dense"]:
-            scores_by_seed = model_runtime.score_dataset_with_ensemble(model_name, bc_list, device=device)
+            scored = model_runtime.score_dataset_provenance_aware(
+                model_name, bc_list, family_ids, device=device
+            )
+            scores_by_seed = scored["scores_by_seed"]
             point_scores = np.mean(list(scores_by_seed.values()), axis=0)
             eval_report["models"][model_name] = {
                 "auprc": auprc(y_true, point_scores), "auroc": auroc(y_true, point_scores),
                 "calibration_error": expected_calibration_error(y_true, point_scores),
                 "n_evaluated": len(binary_ids),
+                "n_canonical_family_items_scored_oof": scored["n_canonical_family_items"],
+                "n_canonical_non_primary_items_ensembled": (
+                    scored["n_canonical_non_primary_items"]
+                ),
+                "n_verified_external_items_ensembled": scored["n_verified_external_items"],
+                "score_provenance_by_item": dict(zip(
+                    binary_ids, scored["score_source_by_item"]
+                )),
             }
     else:
         eval_report["note"] = "Sample too small or single-class for a meaningful AUPRC/AUROC estimate; reporting counts only."

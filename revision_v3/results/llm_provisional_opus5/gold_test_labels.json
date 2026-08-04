@@ -54,7 +54,7 @@
   {
    "item_id": "base:0x7ad2c685cbc9468576598cb8a3b0956e128c74a8",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "1",
    "human_final_label": "",
@@ -63,14 +63,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x7ad2c685cbc9468576598cb8a3b0956e128c74a8",
-   "concrete_finding": "withdrawAllEther(): CALL at pc=860 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 3}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx3 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "withdrawAllEther(): CALL at pc=860 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x7ad2c685cbc9468576598cb8a3b0956e128c74a8; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x7ad2c685cbc9468576598cb8a3b0956e128c74a8/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "base:0xaf08c8f3523b1eb6aa49010820b267facf70998c",
    "llm_provisional_label": "UNSAFE",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -78,7 +78,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xaf08c8f3523b1eb6aa49010820b267facf70998c",
-   "concrete_finding": "0x5aaadaa5: CALL at pc=3709 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0x29cd3d04: CALL at pc=1868 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; destroyContract(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; emergencyWithdrawToken(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; unpause(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; emergencyWithdrawETH(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; pause(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; addOperator(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; removeOperator(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setTargetAddress(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; transferTokens(address): SSTORE to slot 0x0 at pc=2222 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; transferTokens(address): SSTORE to slot 0x0 at pc=2264 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x29cd3d04: SSTORE to slot 0x0 at pc=2860 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2c7bddf4: SSTORE to slot 0x0 at pc=2900 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2c7bddf4: SSTORE to slot 0x0 at pc=3004 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5aaadaa5: SSTORE to slot 0x0 at pc=3388 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x74503517: SSTORE to slot 0x0 at pc=4218 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x74503517: SSTORE to slot 0x0 at pc=4319 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x8da137f5: SSTORE to slot 0x0 at pc=2264 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x8da137f5: SSTORE to slot 0x0 at pc=4798 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xab7e4c70: SSTORE to slot 0x0 at pc=5158 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xab7e4c70: SSTORE to slot 0x0 at pc=5204 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=5455 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=5500 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xddd0fd06: SSTORE to slot 0x0 at pc=5605 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xddd0fd06: SSTORE to slot 0x0 at pc=5649 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xf4c306d0: SSTORE to slot 0x0 at pc=5204 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xf4c306d0: SSTORE to slot 0x0 at pc=5753 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "destroyContract(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; emergencyWithdrawToken(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; unpause(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; emergencyWithdrawETH(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; pause(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; addOperator(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; removeOperator(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setTargetAddress(address): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0xaf08c8f3523b1eb6aa49010820b267facf70998c; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0xaf08c8f3523b1eb6aa49010820b267facf70998c/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -108,7 +108,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xeb4ef8f8c42b5dd98a3d2b630a3519e90199208b",
-   "concrete_finding": "withdraw(address,uint256): CALL at pc=478 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "withdraw(address,uint256): CALL at pc=478 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0xeb4ef8f8c42b5dd98a3d2b630a3519e90199208b; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0xeb4ef8f8c42b5dd98a3d2b630a3519e90199208b/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -138,7 +138,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0x470a618326df6e320680642dd31794b0d2d12d0a",
-   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'DELEGATECALL': 2, 'SSTORE': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 DELEGATECALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0x470a618326df6e320680642dd31794b0d2d12d0a; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0x470a618326df6e320680642dd31794b0d2d12d0a/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -158,9 +158,9 @@
   },
   {
    "item_id": "ethereum:0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
-   "llm_provisional_label": "SAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "NO_CONCRETE_DANGEROUS_PATH_FOUND",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -278,9 +278,9 @@
   },
   {
    "item_id": "base:0x5fe78697ca70156a458ec9e9cd561aa136fad4c8",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -288,7 +288,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x5fe78697ca70156a458ec9e9cd561aa136fad4c8",
-   "concrete_finding": "transferTokens(address): CALL at pc=2306 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0xab7e4c70: CALL at pc=1514 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; executeCall(address,bytes): CALL at pc=2479 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0x2c7bddf4: CALL at pc=1058 to 0xd0e49dec126d0ac848389843917c5204aa2be5c2 with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; transferTokens(address): SSTORE to slot 0x0 at pc=610 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; transferTokens(address): SSTORE to slot 0x0 at pc=643 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x29cd3d04: SSTORE to slot 0x0 at pc=748 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x29cd3d04: SSTORE to slot 0x0 at pc=780 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2c7bddf4: SSTORE to slot 0x0 at pc=884 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2c7bddf4: SSTORE to slot 0x0 at pc=1198 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xab7e4c70: SSTORE to slot 0x0 at pc=1302 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xab7e4c70: SSTORE to slot 0x0 at pc=1749 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=1857 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=1900 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x5fe78697ca70156a458ec9e9cd561aa136fad4c8; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x5fe78697ca70156a458ec9e9cd561aa136fad4c8/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -318,7 +318,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0x9307637c1708c1cec79a5e96f4beea7d363f6ca0",
-   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'DELEGATECALL': 2, 'SSTORE': 1, 'STATICCALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 DELEGATECALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0x9307637c1708c1cec79a5e96f4beea7d363f6ca0; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0x9307637c1708c1cec79a5e96f4beea7d363f6ca0/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -363,7 +363,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0x93d473ce2ceb00af7489694511ca778deb83ef88",
-   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'DELEGATECALL': 2, 'SSTORE': 1, 'STATICCALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 DELEGATECALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "setup(address[],uint256,address,bytes,address,address,uint256,address): DELEGATECALL at pc=435 to 0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; setup(address[],uint256,address,bytes,address,address,uint256,address): initializer-shaped entry point at pc=154 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; setup(address[],uint256,address,bytes,address,address,uint256,address): SSTORE to slot 0x0 at pc=421 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0x93d473ce2ceb00af7489694511ca778deb83ef88; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0x93d473ce2ceb00af7489694511ca778deb83ef88/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -378,7 +378,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x7f0fc823ff1089dfb2d0e3923c67daa98c70bcc3",
-   "concrete_finding": "withdrawToken(address,uint256): CALL at pc=801 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; withdrawAllEther(): CALL at pc=538 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 3}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx3 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "withdrawToken(address,uint256): CALL at pc=801 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; withdrawAllEther(): CALL at pc=538 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x7f0fc823ff1089dfb2d0e3923c67daa98c70bcc3; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x7f0fc823ff1089dfb2d0e3923c67daa98c70bcc3/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -393,14 +393,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x577667e200d0ff51df790446de9b3f078c322726",
-   "concrete_finding": "withdraw(address,uint256): CALL at pc=478 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "withdraw(address,uint256): CALL at pc=478 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0x577667e200d0ff51df790446de9b3f078c322726; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0x577667e200d0ff51df790446de9b3f078c322726/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "base:0x5197837eac237092876f1bcaf5943d9ad4b70d41",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -408,7 +408,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x5197837eac237092876f1bcaf5943d9ad4b70d41",
-   "concrete_finding": "transferTokens(address): CALL at pc=1976 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; executeCall(address,bytes): CALL at pc=2443 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; transferTokens(address): SSTORE to slot 0x0 at pc=589 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; transferTokens(address): SSTORE to slot 0x0 at pc=630 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x29cd3d04: SSTORE to slot 0x0 at pc=735 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x29cd3d04: SSTORE to slot 0x0 at pc=767 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x535089e7: SSTORE to slot 0x0 at pc=871 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=1527 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; executeCall(address,bytes): SSTORE to slot 0x0 at pc=1570 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x5197837eac237092876f1bcaf5943d9ad4b70d41; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x5197837eac237092876f1bcaf5943d9ad4b70d41/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -489,7 +489,7 @@
   {
    "item_id": "arbitrum:0xc57a8d27297d19322ff8f3b9991039bed5ec70f1",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
    "source_rule_label": "1",
    "human_final_label": "",
@@ -498,7 +498,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "arbitrum",
    "address": "0xc57a8d27297d19322ff8f3b9991039bed5ec70f1",
-   "concrete_finding": "0x1bd13a99: CALL at pc=359 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 3}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx3 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "0x1bd13a99: CALL at pc=359 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#arbitrum:0xc57a8d27297d19322ff8f3b9991039bed5ec70f1; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/arbitrum_0xc57a8d27297d19322ff8f3b9991039bed5ec70f1/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -518,9 +518,9 @@
   },
   {
    "item_id": "bnb:0x5127b7b8bb69efa1f95185df900588b2572dd0d7",
-   "llm_provisional_label": "SAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "NO_CONCRETE_DANGEROUS_PATH_FOUND",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -548,9 +548,9 @@
   },
   {
    "item_id": "base:0xd34426bef7e56fef2a617ea70fff427d658b740b",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -558,7 +558,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xd34426bef7e56fef2a617ea70fff427d658b740b",
-   "concrete_finding": "withdrawNative(address): CALL at pc=773 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0xd34426bef7e56fef2a617ea70fff427d658b740b; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0xd34426bef7e56fef2a617ea70fff427d658b740b/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -729,7 +729,7 @@
   {
    "item_id": "bnb:0xc4d6d0b69b0a20b43cea9adfa2c3fa8b91e71387",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "1",
    "human_final_label": "",
@@ -738,7 +738,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xc4d6d0b69b0a20b43cea9adfa2c3fa8b91e71387",
-   "concrete_finding": "0x896b3555: CALL at pc=182 to 0x0b48bbd77b222b45db1f5669bc26708681e4cbca with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; execute((bytes,address,uint256)[]): CALL at pc=182 to 0x0b48bbd77b222b45db1f5669bc26708681e4cbca with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 3, 'CREATE': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx3, CREATEx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "0x896b3555: CALL at pc=182 to 0x0b48bbd77b222b45db1f5669bc26708681e4cbca with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; execute((bytes,address,uint256)[]): CALL at pc=182 to 0x0b48bbd77b222b45db1f5669bc26708681e4cbca with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0xc4d6d0b69b0a20b43cea9adfa2c3fa8b91e71387; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0xc4d6d0b69b0a20b43cea9adfa2c3fa8b91e71387/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -758,9 +758,9 @@
   },
   {
    "item_id": "ethereum:0x15e6f094b4f2639dec521cbd6d1313c970811aa7",
-   "llm_provisional_label": "UNSAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "OWNER_OR_PRIVILEGE_TAKEOVER",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -768,7 +768,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x15e6f094b4f2639dec521cbd6d1313c970811aa7",
-   "concrete_finding": "0x48f8c24f: SSTORE to slot 0x1 at pc=1324 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x490d9a01: SSTORE to slot 0x0 at pc=2842 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x641cdfe2: SSTORE to slot 0x1 at pc=1324 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x972ce4bc: SSTORE to slot 0x1 at pc=1324 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0x15e6f094b4f2639dec521cbd6d1313c970811aa7; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0x15e6f094b4f2639dec521cbd6d1313c970811aa7/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -819,7 +819,7 @@
   {
    "item_id": "base:0xf9e44d3b5fc21cdc15d34b12dda0d931a0466d9b",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
    "source_rule_label": "0",
    "human_final_label": "",
@@ -828,7 +828,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xf9e44d3b5fc21cdc15d34b12dda0d931a0466d9b",
-   "concrete_finding": "sendNative(address,uint256): CALL at pc=250 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'ADDRESS': 1, 'CALL': 1, 'DELEGATECALL': 1, 'CREATE': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1, DELEGATECALLx1, CREATEx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "sendNative(address,uint256): CALL at pc=250 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0xf9e44d3b5fc21cdc15d34b12dda0d931a0466d9b; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0xf9e44d3b5fc21cdc15d34b12dda0d931a0466d9b/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -850,7 +850,7 @@
    "item_id": "optimism:0xb5081014349690b8366c5064fafc7e86734ad2a6",
    "llm_provisional_label": "UNSAFE",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "DANGEROUS_DELEGATECALL_OR_UPGRADE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -858,13 +858,13 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0xb5081014349690b8366c5064fafc7e86734ad2a6",
-   "concrete_finding": "routeClaim(bytes[],bytes[]): DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0x45197d6b: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; routeClaim(bytes,bytes): DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xb51d6fdf: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xdf2c9057: DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; initialize(address,address): initializer-shaped entry point at pc=4410 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets",
+   "concrete_finding": "0x45197d6b: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xb51d6fdf: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0xb5081014349690b8366c5064fafc7e86734ad2a6; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0xb5081014349690b8366c5064fafc7e86734ad2a6/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "arbitrum:0x4e1dcf7ad4e460cfd30791ccc4f9c8a4f820ec67",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
    "source_rule_label": "0",
    "human_final_label": "",
@@ -873,7 +873,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "arbitrum",
    "address": "0x4e1dcf7ad4e460cfd30791ccc4f9c8a4f820ec67",
-   "concrete_finding": "createProxyWithCallback(address,bytes,uint256,address): CALL at pc=1734 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2, 'CREATE2': 1, 'SSTORE': 1, 'DELEGATECALL': 1, 'STATICCALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2, DELEGATECALLx1, CREATE2x1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "createProxyWithCallback(address,bytes,uint256,address): CALL at pc=1734 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#arbitrum:0x4e1dcf7ad4e460cfd30791ccc4f9c8a4f820ec67; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/arbitrum_0x4e1dcf7ad4e460cfd30791ccc4f9c8a4f820ec67/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -893,9 +893,9 @@
   },
   {
    "item_id": "base:0xe2fa4df0634c5836edf602b0c48ed7be4c5c1710",
-   "llm_provisional_label": "UNSAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "OWNER_OR_PRIVILEGE_TAKEOVER",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -903,7 +903,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xe2fa4df0634c5836edf602b0c48ed7be4c5c1710",
-   "concrete_finding": "multicall((address,bytes,uint256)[]): SSTORE to slot 0x0 at pc=198 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0xe2fa4df0634c5836edf602b0c48ed7be4c5c1710; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0xe2fa4df0634c5836edf602b0c48ed7be4c5c1710/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -963,7 +963,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xc413a8e6138c18e3894d08336386216728ee7c5a",
-   "concrete_finding": "callTarget(address,bytes): CALL at pc=115 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "callTarget(address,bytes): CALL at pc=115 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0xc413a8e6138c18e3894d08336386216728ee7c5a; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0xc413a8e6138c18e3894d08336386216728ee7c5a/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -978,7 +978,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x517b8b3854c78c8c1e399fdbc8e8b211c1003ac9",
-   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x2e24f896: SSTORE to slot 0x2 at pc=7408 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=7442 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=7554 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3932 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7408 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7442 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7554 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x5b5dc217: SSTORE to slot 0x3 at pc=3932 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x517b8b3854c78c8c1e399fdbc8e8b211c1003ac9; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x517b8b3854c78c8c1e399fdbc8e8b211c1003ac9/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -993,7 +993,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x17131f2e7923803cab26d33b8b9f266abb37ac10",
-   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcab2e64e: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x2e24f896: SSTORE to slot 0x3 at pc=3452 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x3 at pc=3489 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x3 at pc=3532 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x3 at pc=3579 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x3 at pc=3619 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3452 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3489 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3532 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3579 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3619 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcab2e64e: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x17131f2e7923803cab26d33b8b9f266abb37ac10; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x17131f2e7923803cab26d33b8b9f266abb37ac10/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1043,9 +1043,9 @@
   },
   {
    "item_id": "base:0xd28b44af6cb560d3ed42042dab16d70df05ef336",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1053,14 +1053,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xd28b44af6cb560d3ed42042dab16d70df05ef336",
-   "concrete_finding": "withdrawETH(address,uint256): CALL at pc=1416 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; rescueERC721(address,address,uint256): CALL at pc=1198 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; rescueERC20(address,address,uint256): CALL at pc=561 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; unpause(): SSTORE to slot 0x1 at pc=2956 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x45ef041f: SSTORE to slot 0x2 at pc=5837 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; pause(): SSTORE to slot 0x1 at pc=908 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; batchTransactions(uint256[],address[],bytes[]): SSTORE to slot 0x2 at pc=4133 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; batchTransactions(uint256[],address[],bytes[]): SSTORE to slot 0x2 at pc=5837 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0xd28b44af6cb560d3ed42042dab16d70df05ef336; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0xd28b44af6cb560d3ed42042dab16d70df05ef336/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "base:0x38256ba4e0744b269cdedfcd8d42fa928942e530",
    "llm_provisional_label": "UNSAFE",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "DANGEROUS_DELEGATECALL_OR_UPGRADE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1068,7 +1068,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x38256ba4e0744b269cdedfcd8d42fa928942e530",
-   "concrete_finding": "routeClaim(bytes[],bytes[]): DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0x45197d6b: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; routeClaim(bytes,bytes): DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xb51d6fdf: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xdf2c9057: DELEGATECALL at pc=9845 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; initialize(address,address): initializer-shaped entry point at pc=4410 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets",
+   "concrete_finding": "0x45197d6b: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; 0xb51d6fdf: DELEGATECALL at pc=9512 to ['calldata'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x38256ba4e0744b269cdedfcd8d42fa928942e530; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x38256ba4e0744b269cdedfcd8d42fa928942e530/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1178,9 +1178,9 @@
   },
   {
    "item_id": "optimism:0x6b90faf6d634ede2e56c024a9b852a9607a5c7bf",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1188,7 +1188,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0x6b90faf6d634ede2e56c024a9b852a9607a5c7bf",
-   "concrete_finding": "0x0f4d4caf: CALL at pc=12186 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0x6b90faf6d634ede2e56c024a9b852a9607a5c7bf; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0x6b90faf6d634ede2e56c024a9b852a9607a5c7bf/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1238,9 +1238,9 @@
   },
   {
    "item_id": "ethereum:0x30bc49bf1e7c7688ea60e6985e70133a9591b0f9",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1248,7 +1248,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x30bc49bf1e7c7688ea60e6985e70133a9591b0f9",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2, 'CREATE2': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2, CREATE2x1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0x30bc49bf1e7c7688ea60e6985e70133a9591b0f9; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0x30bc49bf1e7c7688ea60e6985e70133a9591b0f9/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1283,9 +1283,9 @@
   },
   {
    "item_id": "bnb:0xe74a63325801ea977597e50b589bafb809a36ef4",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1293,7 +1293,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xe74a63325801ea977597e50b589bafb809a36ef4",
-   "concrete_finding": "initialize(): initializer-shaped entry point at pc=188 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0xe74a63325801ea977597e50b589bafb809a36ef4; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0xe74a63325801ea977597e50b589bafb809a36ef4/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1313,9 +1313,9 @@
   },
   {
    "item_id": "bnb:0x41263cba59eb80dc200f3e2544eda4ed6a90e76c",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1323,7 +1323,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x41263cba59eb80dc200f3e2544eda4ed6a90e76c",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x41263cba59eb80dc200f3e2544eda4ed6a90e76c; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x41263cba59eb80dc200f3e2544eda4ed6a90e76c/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1358,9 +1358,9 @@
   },
   {
    "item_id": "base:0x8fa7e26bd5ea9e8f144ca27b9252d441c61413cc",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "SAFE",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "NO_CONCRETE_DANGEROUS_PATH_FOUND",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1368,7 +1368,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x8fa7e26bd5ea9e8f144ca27b9252d441c61413cc",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x8fa7e26bd5ea9e8f144ca27b9252d441c61413cc; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x8fa7e26bd5ea9e8f144ca27b9252d441c61413cc/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1420,7 +1420,7 @@
    "item_id": "optimism:0xffc39760990e55229fb040a37e58377c578e9732",
    "llm_provisional_label": "UNSAFE",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1428,7 +1428,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0xffc39760990e55229fb040a37e58377c578e9732",
-   "concrete_finding": "initialize(bytes): CALL at pc=13838 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; executeFromExecutor(bytes32,bytes): CALL at pc=13838 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; recover(address,bytes): msg.sender must equal the hardcoded address 0x1059e069a8fbec96b38a80eb745f14d6336bd752. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x3eb1765a: msg.sender must equal the hardcoded address 0x1059e069a8fbec96b38a80eb745f14d6336bd752. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; initialize(bytes): initializer-shaped entry point at pc=396 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets",
+   "concrete_finding": "recover(address,bytes): msg.sender must equal the hardcoded address 0x1059e069a8fbec96b38a80eb745f14d6336bd752. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x3eb1765a: msg.sender must equal the hardcoded address 0x1059e069a8fbec96b38a80eb745f14d6336bd752. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0xffc39760990e55229fb040a37e58377c578e9732; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0xffc39760990e55229fb040a37e58377c578e9732/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1523,9 +1523,9 @@
   },
   {
    "item_id": "base:0x5bc3ee6df05c244b59abbf4a81c02d625f0fd23f",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "SAFE",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "NO_CONCRETE_DANGEROUS_PATH_FOUND",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1533,14 +1533,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x5bc3ee6df05c244b59abbf4a81c02d625f0fd23f",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x5bc3ee6df05c244b59abbf4a81c02d625f0fd23f; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x5bc3ee6df05c244b59abbf4a81c02d625f0fd23f/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "ethereum:0xa3a50b5ec1f03668742605c9746ccfaa077621b5",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1548,7 +1548,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xa3a50b5ec1f03668742605c9746ccfaa077621b5",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0xa3a50b5ec1f03668742605c9746ccfaa077621b5; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0xa3a50b5ec1f03668742605c9746ccfaa077621b5/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1578,7 +1578,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x64c674c0dc13d7622ebe91cdcb2d651a49ba891c",
-   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcab2e64e: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x2e24f896: SSTORE to slot 0x3 at pc=4316 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3797 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcab2e64e: msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x0bb9ad9357565a592668e6c41463b05a17c68a09. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x64c674c0dc13d7622ebe91cdcb2d651a49ba891c; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x64c674c0dc13d7622ebe91cdcb2d651a49ba891c/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1623,7 +1623,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x5c3faabdc633f71d2ad62a7883e9530e3fe5719e",
-   "concrete_finding": "0xe6fb99ea: CALL at pc=357 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0xe6fb99ea: CALL at pc=572 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0x46bd1e9b: SSTORE to slot 0x0 at pc=183 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5d3d957f: SSTORE to slot 0x0 at pc=183 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0xe6fb99ea: CALL at pc=357 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0xe6fb99ea: CALL at pc=572 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#base:0x5c3faabdc633f71d2ad62a7883e9530e3fe5719e; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/base_0x5c3faabdc633f71d2ad62a7883e9530e3fe5719e/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1644,7 +1644,7 @@
   {
    "item_id": "ethereum:0xab3df0c2325233228342e76c93d93fe4b34edb8a",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "0",
    "human_final_label": "",
@@ -1653,7 +1653,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xab3df0c2325233228342e76c93d93fe4b34edb8a",
-   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=106 to 0x4050bdbef63a00415e67b2f691bd8ff52e4215bb with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1, 'CALLCODE': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1, CALLCODEx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=106 to 0x4050bdbef63a00415e67b2f691bd8ff52e4215bb with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0xab3df0c2325233228342e76c93d93fe4b34edb8a; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0xab3df0c2325233228342e76c93d93fe4b34edb8a/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1748,9 +1748,9 @@
   },
   {
    "item_id": "ethereum:0x2741482032bcafc9726593e9549b1f9518c5d443",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1758,14 +1758,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x2741482032bcafc9726593e9549b1f9518c5d443",
-   "concrete_finding": "initialize(): initializer-shaped entry point at pc=271 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; initialize(): SSTORE to slot 0x0 at pc=909 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; initialize(): SSTORE to slot 0x0 at pc=935 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0x2741482032bcafc9726593e9549b1f9518c5d443; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0x2741482032bcafc9726593e9549b1f9518c5d443/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "optimism:0xa1fdd934a977898b72ddbfbec5525e266b7e9991",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1773,7 +1773,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "optimism",
    "address": "0xa1fdd934a977898b72ddbfbec5525e266b7e9991",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#optimism:0xa1fdd934a977898b72ddbfbec5525e266b7e9991; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/optimism_0xa1fdd934a977898b72ddbfbec5525e266b7e9991/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1808,9 +1808,9 @@
   },
   {
    "item_id": "bnb:0x0845773e131e1a414fe0dff70db3e2dd2c6a7076",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "OWNER_OR_PRIVILEGE_TAKEOVER",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1818,7 +1818,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x0845773e131e1a414fe0dff70db3e2dd2c6a7076",
-   "concrete_finding": "0x94d6639f: SSTORE to slot 0x4 at pc=2065 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x96713416: SSTORE to slot 0x5 at pc=2236 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0xd83dc88c: SSTORE to slot 0x5 at pc=4886 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x0845773e131e1a414fe0dff70db3e2dd2c6a7076; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x0845773e131e1a414fe0dff70db3e2dd2c6a7076/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1868,9 +1868,9 @@
   },
   {
    "item_id": "bnb:0x77cf893facb6ecb7ad2c3dd40b02c46e67697e59",
-   "llm_provisional_label": "UNSAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1878,7 +1878,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x77cf893facb6ecb7ad2c3dd40b02c46e67697e59",
-   "concrete_finding": "initialize(address): initializer-shaped entry point at pc=148 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; initialize(address): SSTORE to slot 0x0 at pc=628 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x77cf893facb6ecb7ad2c3dd40b02c46e67697e59; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x77cf893facb6ecb7ad2c3dd40b02c46e67697e59/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1893,7 +1893,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x576d31f1d73a8acec04886d0f7ff9462bdbf9d4e",
-   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x2e24f896: SSTORE to slot 0x2 at pc=7396 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=7430 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=7542 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=3932 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7396 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7430 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=7542 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; setPoolAddress(address): msg.sender must equal the hardcoded address 0x3d0ef8f0911e975b9726d7728e7b61d4561f1725. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x5b5dc217: SSTORE to slot 0x3 at pc=3932 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x576d31f1d73a8acec04886d0f7ff9462bdbf9d4e; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x576d31f1d73a8acec04886d0f7ff9462bdbf9d4e/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1913,9 +1913,9 @@
   },
   {
    "item_id": "bnb:0x4b03defa3a763c46e80378481a451f5d32758997",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -1923,7 +1923,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x4b03defa3a763c46e80378481a451f5d32758997",
-   "concrete_finding": "0x0ef296c1: CALL at pc=763 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x4b03defa3a763c46e80378481a451f5d32758997; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x4b03defa3a763c46e80378481a451f5d32758997/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1983,7 +1983,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xbf14231a0aae74cd0a922e399c71af71782ddbca",
-   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=32 to 0x4d59cd593f6982fdb2eb08bb4e761514b320c14c with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=32 to 0x4d59cd593f6982fdb2eb08bb4e761514b320c14c with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0xbf14231a0aae74cd0a922e399c71af71782ddbca; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0xbf14231a0aae74cd0a922e399c71af71782ddbca/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -1998,14 +1998,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xa700960e25c1ed084abe34ea4245a0557cd15cc9",
-   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcbfa11a2: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x2e24f896: SSTORE to slot 0x2 at pc=8164 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=8198 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x2e24f896: SSTORE to slot 0x2 at pc=8310 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x3 at pc=4654 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=8164 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=8198 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls; 0x5b5dc217: SSTORE to slot 0x2 at pc=8310 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "0x0a5491b4: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x241e4344: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdraw(): msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; withdrawToken(address): msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0xcbfa11a2: msg.sender must equal the hardcoded address 0x58a98a98557adc8aa54d1efd792cc35129bc8ae1. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party; 0x5b5dc217: SSTORE to slot 0x3 at pc=4654 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0xa700960e25c1ed084abe34ea4245a0557cd15cc9; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0xa700960e25c1ed084abe34ea4245a0557cd15cc9/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "ethereum:0x293b8040f8b641f393d39cdf7904543c295c5015",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -2013,7 +2013,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x293b8040f8b641f393d39cdf7904543c295c5015",
-   "concrete_finding": "initialize(): initializer-shaped entry point at pc=260 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; initialize(): SSTORE to slot 0x0 at pc=666 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#ethereum:0x293b8040f8b641f393d39cdf7904543c295c5015; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/ethereum_0x293b8040f8b641f393d39cdf7904543c295c5015/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -2093,9 +2093,9 @@
   },
   {
    "item_id": "bnb:0x8e8e658e22b12ada97b402ff0b044d6a325013c7",
-   "llm_provisional_label": "UNSAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -2103,13 +2103,13 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x8e8e658e22b12ada97b402ff0b044d6a325013c7",
-   "concrete_finding": "initialize(address): initializer-shaped entry point at pc=1011 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#bnb:0x8e8e658e22b12ada97b402ff0b044d6a325013c7; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/bnb_0x8e8e658e22b12ada97b402ff0b044d6a325013c7/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "polygon:0x2f3524c330ef7eb87e44f544458ed2c50dccf2bb",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "low",
    "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
    "source_rule_label": "0",
    "human_final_label": "",
@@ -2118,7 +2118,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "polygon",
    "address": "0x2f3524c330ef7eb87e44f544458ed2c50dccf2bb",
-   "concrete_finding": "0xac9249b3: CALL at pc=688 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 6, 'ADDRESS': 1, 'STATICCALL': 2, 'CALLCODE': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx6, CALLCODEx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "0xac9249b3: CALL at pc=688 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#polygon:0x2f3524c330ef7eb87e44f544458ed2c50dccf2bb; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/polygon_0x2f3524c330ef7eb87e44f544458ed2c50dccf2bb/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -2208,7 +2208,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "arbitrum",
    "address": "0xf25dee892bbe78c22565ee85f932524c28cdc27a",
-   "concrete_finding": "0x5ee9acc7: CALL at pc=562 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; multicall(address[],bytes[]): CALL at pc=915 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "0x5ee9acc7: CALL at pc=562 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; multicall(address[],bytes[]): CALL at pc=915 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_test_dossiers.json#arbitrum:0xf25dee892bbe78c22565ee85f932524c28cdc27a; decompiled disassembly and live verification: human_eval/gold_test_code_evidence/arbitrum_0xf25dee892bbe78c22565ee85f932524c28cdc27a/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {

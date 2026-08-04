@@ -49,7 +49,9 @@ processed, the EOA's account now "points at" that delegate's code.
 
 This is the single most important fact for this review. When code runs "in the account's
 context," it means:
-- `msg.sender` checks inside the delegate can see calls as if they came from the EOA itself.
+- `address(this)`, storage, and balance refer to the authorizing EOA. `msg.sender` still
+  identifies the immediate caller of that EOA; it is **not** automatically rewritten to the
+  EOA. A self-call guard such as `msg.sender == address(this)` therefore has distinct meaning.
 - The delegate's `SLOAD`/`SSTORE` (storage read/write) operations read and write the **EOA's**
   storage, not some separate storage the delegate contract owns elsewhere.
 - Any `CALL` the delegate code makes that moves ETH or tokens moves the **EOA's** ETH or
@@ -86,8 +88,8 @@ where that gate is missing, bypassable, or was never implemented for a sensitive
   does, or the dangerous-looking function's behavior depends on some external contract's state
   that isn't available to inspect.
 
-**Do not guess.** If you can't tell, the correct answer is UNCERTAIN, not a guess at SAFE or
-UNSAFE.
+**Do not guess.** If you can't tell, the correct answer is INDETERMINATE, not a guess at the
+negative category or UNSAFE.
 
 ---
 
@@ -160,7 +162,7 @@ is labeled to match a section below.
 - Can the implementation be changed after the fact (upgradeability)?
 - Who controls upgrades?
 - **If the actual behavior cannot be resolved (e.g., the real implementation isn't available
-  to inspect), choose UNCERTAIN rather than guessing.**
+  to inspect), choose INDETERMINATE rather than guessing.**
 
 ### G. Inspect EIP-7702 suitability
 - Was the contract actually designed for use as an EIP-7702 delegate, or does it look like an
@@ -176,9 +178,10 @@ is labeled to match a section below.
 
 - Choose **UNSAFE** only when there is a **concrete** dangerous behavior or security condition
   you can point to in the evidence.
-- Choose **SAFE** when the available evidence reasonably supports appropriate authorization
-  behavior and no concrete dangerous path was found.
-- Choose **UNCERTAIN** when the evidence is incomplete, ambiguous, dynamically dependent, or
+- Choose **NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND** when the available evidence reasonably supports
+  appropriate authorization behavior and no concrete dangerous path was found. This is a
+  bounded evidence statement, not a certificate that the delegate is safe under all states.
+- Choose **INDETERMINATE** when the evidence is incomplete, ambiguous, dynamically dependent, or
   not fully inspectable from what's provided.
 
 ### Important warnings — read these twice
@@ -188,7 +191,7 @@ is labeled to match a section below.
 - **A fallback or receive function alone does not make a contract unsafe.** These are normal
   and common.
 - **An unverified contract is not automatically unsafe.** Lack of verification is a gap in
-  evidence, not proof of danger — it may push you toward UNCERTAIN if it prevents you from
+  evidence, not proof of danger — it may push you toward INDETERMINATE if it prevents you from
   confirming access control, but it isn't itself a finding.
 - **A documented project is not automatically safe.** Documentation existing doesn't prove the
   deployed bytecode matches it, or that the implementation has no bugs.
@@ -196,8 +199,11 @@ is labeled to match a section below.
 - **A model or LLM prediction is not ground truth.** The LLM's preliminary review (provided in
   your sheet) is a starting point to check, not an answer to copy. You are expected to
   independently verify or challenge it.
-- **When evidence is insufficient, choose UNCERTAIN.** There is no penalty for UNCERTAIN — it
-  is often the *correct* answer, not a cop-out.
+- **When evidence is insufficient, choose INDETERMINATE.** There is no penalty for
+  INDETERMINATE — it is often the *correct* answer, not a cop-out.
+- **Choose NOT_BYTECODE_SCREENABLE only when runtime bytecode is absent or the review object
+  cannot be reduced to inspectable delegate runtime.** Do not use it merely because a proxy or
+  external dependency is difficult; those cases are normally INDETERMINATE with a reason.
 
 ---
 
@@ -206,15 +212,15 @@ is labeled to match a section below.
 These are **synthetic, illustrative examples only** — they do not correspond to any real item
 in the Pilot, Gold-Dev, or Gold-Test sets. They exist purely to calibrate your judgment.
 
-### Example 1 — SAFE: documented smart account with owner-only execution
+### Example 1 — NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND: documented owner-only smart account
 
 **Evidence**: Bytecode matches a well-known smart-account framework's published source. Every
 function that performs a `CALL` or asset transfer checks `msg.sender == owner` (or a validated
 signature from the owner) before proceeding. The owner is set once, at initialization, by the
 deploying account, and cannot be reassigned except through an owner-gated function.
 
-**Correct label**: SAFE. **Reason**: `DOCUMENTED_LEGITIMATE_IMPLEMENTATION` /
-`ACCESS_CONTROL_APPEARS_APPROPRIATE`.
+**Correct label**: NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND. **Rationale**: documented implementation;
+access control appears appropriate in the evidence inspected.
 
 **Common incorrect interpretation**: Marking it UNSAFE just because it *contains* `CALL` and
 `DELEGATECALL` opcodes. Their presence is expected — the question is who can trigger them.
@@ -225,7 +231,7 @@ deploying account, and cannot be reassigned except through an owner-gated functi
 `target.call{value: value}(data)` with **no caller check at all** — any address can call
 `execute` and make the account perform any call, with any value, to any target.
 
-**Correct label**: UNSAFE. **Reason**: `ARBITRARY_EXTERNAL_CALL` (or
+**Correct label**: UNSAFE. **Reason**: `UNAUTHORIZED_VALUE_MOVEMENT` (or
 `UNAUTHORIZED_ASSET_MOVEMENT` if the call can move ETH, which it can here).
 
 **Common incorrect interpretation**: Assuming an `execute`-style function is inherently fine
@@ -241,7 +247,7 @@ using the delegate — including by an attacker who front-runs the legitimate ow
 interaction.
 
 **Correct label**: UNSAFE. **Reason**: `UNSAFE_INITIALIZATION` (and/or
-`OWNER_OR_PRIVILEGE_TAKEOVER`).
+`PRIVILEGE_OR_OWNERSHIP_RISK`).
 
 **Common incorrect interpretation**: Assuming any `initialize()` function is fine because
 "that's the normal proxy pattern." The normal pattern also requires a guard (e.g., an
@@ -261,42 +267,41 @@ flagging it. The *approval* itself is the dangerous capability — once granted 
 address, funds can be drained at any later time, by the attacker, independent of this
 contract.
 
-### Example 5 — UNCERTAIN: unresolved proxy implementation
+### Example 5 — INDETERMINATE: unresolved proxy implementation
 
 **Evidence**: The contract is a minimal proxy that `DELEGATECALL`s to an implementation address
 read from storage. The implementation address is not a fixed, known constant — it depends on a
 storage slot whose current value could not be resolved from the bytecode alone (would require
 live on-chain state that wasn't available in this evidence packet).
 
-**Correct label**: UNCERTAIN. **Reason**: `UNRESOLVED_PROXY`.
+**Correct label**: INDETERMINATE. **Reason**: `UNRESOLVED_PROXY`.
 
-**Common incorrect interpretation**: Defaulting to SAFE because "proxies are a standard,
+**Common incorrect interpretation**: Defaulting to the negative category because "proxies are a standard,
 legitimate pattern," or defaulting to UNSAFE because "we can't see what it does." Neither
 guess is supported — the honest answer is that the real implementation's behavior is unknown.
 
-### Example 6 — UNCERTAIN: behavior depending on unavailable external state
+### Example 6 — INDETERMINATE: behavior depending on unavailable external state
 
 **Evidence**: A function's effect depends on the return value of a call to another external
 contract (e.g., a price oracle or a registry) whose current state and logic were not part of
 the evidence packet — the safety of the function genuinely depends on what that external
 contract currently does, which cannot be determined from this delegate's bytecode alone.
 
-**Correct label**: UNCERTAIN. **Reason**: `EXTERNAL_OR_DYNAMIC_DEPENDENCY` (or
-`STATE_DEPENDENT_BEHAVIOR`).
+**Correct label**: INDETERMINATE. **Reason**: `EXTERNAL_DEPENDENCY` (or
+`DYNAMIC_OR_STATE_DEPENDENT`).
 
-**Common incorrect interpretation**: Assuming the external dependency is trustworthy (→ SAFE)
+**Common incorrect interpretation**: Assuming the external dependency is trustworthy (→ negative)
 or assuming any external dependency is inherently a red flag (→ UNSAFE). Both are guesses
 without inspecting the dependency.
 
 ---
 
-## 5. A note on the LLM's preliminary review
+## 5. Blinding and independence
 
-Every item you review comes with a preliminary analysis generated by an AI assistant. It was
-explicitly **not** given the AuthGuard model's score or prediction, the source-analyzer's
-label, or any information about whether this item is currently a model success or failure —
-its analysis is based only on the same bytecode-derived evidence you have. Treat it as a
-first draft made by a knowledgeable but fallible colleague: read it, check its claims against
-the evidence yourself, and record whether you agree, partly agree, or disagree — and why. Your
-independent judgment is what matters; the LLM review exists to save you time, not to replace
-your analysis.
+The annotation application does not display the AuthGuard score or decision, the inherited
+source-rule label, DCRG features or decision, provisional LLM labels, or whether an item is a
+model success or failure. Do not seek those values while reviewing. You may consult factual
+project documentation, explorer records, verified source, and dependency implementations;
+record what you consulted in the evidence field. For post-cutoff items, the recovered
+authorizing EOA and first observed authorization transaction are neutral execution context,
+not a security verdict.

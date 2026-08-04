@@ -30,7 +30,9 @@ def threshold_at_nominal_fpr(val_scores: np.ndarray, val_labels: np.ndarray, nom
     return float(sorted_neg[k - 1])
 
 
-def metrics_at_threshold(y_true: np.ndarray, scores: np.ndarray, threshold: float) -> dict:
+def metrics_at_threshold(y_true: np.ndarray, scores: np.ndarray,
+                         threshold: float | np.ndarray) -> dict:
+    """Metrics at either one global threshold or one provenance-matched threshold per item."""
     preds = (scores >= threshold).astype(int)
     tp = int(((preds == 1) & (y_true == 1)).sum())
     fp = int(((preds == 1) & (y_true == 0)).sum())

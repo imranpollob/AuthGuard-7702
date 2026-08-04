@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
@@ -21,9 +22,11 @@ from fastapi.templating import Jinja2Templates
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from agreement import compute_agreement_stats  # noqa: E402
+from annotation_validation import validate_annotation_submission  # noqa: E402
 from assignment_rules import apply_post_submit_rules  # noqa: E402
 from constants import CONFIDENCE_LEVELS, INDETERMINATE_REASONS, PRIMARY_LABELS, UNSAFE_CATEGORIES  # noqa: E402
 from db import db_session, get_connection, init_db, log_action, now_iso  # noqa: E402
+from review_gate import postcutoff_review_unlock_status  # noqa: E402
 
 # Reviewer pools for dynamic second-review / adjudicator assignment (Gold-Dev / Gold-Test).
 # Configurable via env vars; defaults assume a 3-person review team (R1, R2 primary; R3 also
@@ -32,14 +35,17 @@ SECOND_REVIEWER_POOL = os.environ.get("SECOND_REVIEWER_POOL", "R1,R2,R3").split(
 ADJUDICATOR_POOL = os.environ.get("ADJUDICATOR_POOL", "R3").split(",")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-app = FastAPI(title="AuthGuard-7702 Revision v3 Annotation")
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    init_db()
+    yield
+
+
+app = FastAPI(title="AuthGuard-7702 Revision v3 Annotation", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=os.path.join(HERE, "static")), name="static")
 templates = Jinja2Templates(directory=os.path.join(HERE, "templates"))
-
-
-@app.on_event("startup")
-def _startup():
-    init_db()
 
 
 def _reviewer_id(request: Request) -> str | None:
@@ -91,9 +97,12 @@ def dashboard(request: Request):
         "FROM items i LEFT JOIN assignments a ON a.item_id = i.item_id GROUP BY i.sample_set"
     ).fetchall()
     conn.close()
+    postcutoff_unlocked, postcutoff_gate_reason = postcutoff_review_unlock_status()
     return templates.TemplateResponse("dashboard.html", {
         "request": request, "reviewer_id": reviewer_id,
         "my_assignments": my_assignments, "overall": overall,
+        "postcutoff_unlocked": postcutoff_unlocked,
+        "postcutoff_gate_reason": postcutoff_gate_reason,
     })
 
 
@@ -103,10 +112,14 @@ def review_next(request: Request):
     if not reviewer_id:
         return RedirectResponse("/login")
     conn = get_connection()
-    row = conn.execute(
-        "SELECT item_id FROM assignments WHERE reviewer_id = ? AND status != 'completed' "
-        "ORDER BY assigned_at LIMIT 1", (reviewer_id,),
-    ).fetchone()
+    postcutoff_unlocked, _ = postcutoff_review_unlock_status()
+    query = (
+        "SELECT a.item_id FROM assignments a JOIN items i ON i.item_id=a.item_id "
+        "WHERE a.reviewer_id = ? AND a.status != 'completed' "
+    )
+    if not postcutoff_unlocked:
+        query += "AND i.sample_set != 'postcutoff' "
+    row = conn.execute(query + "ORDER BY a.assigned_at LIMIT 1", (reviewer_id,)).fetchone()
     conn.close()
     if row is None:
         return templates.TemplateResponse("no_more_items.html", {"request": request, "reviewer_id": reviewer_id})
@@ -126,11 +139,18 @@ def review_item(request: Request, item_id: str):
         conn.close()
         return HTMLResponse("Item not assigned to this reviewer.", status_code=403)
 
+    item = conn.execute("SELECT * FROM items WHERE item_id = ?", (item_id,)).fetchone()
+    postcutoff_unlocked, gate_reason = postcutoff_review_unlock_status()
+    if item["sample_set"] == "postcutoff" and not postcutoff_unlocked:
+        conn.close()
+        return HTMLResponse(
+            "Post-cutoff review is locked: " + gate_reason, status_code=423
+        )
+
     if assignment["status"] == "pending":
         conn.execute("UPDATE assignments SET status = 'in_progress' WHERE assignment_id = ?", (assignment["assignment_id"],))
         conn.commit()
 
-    item = conn.execute("SELECT * FROM items WHERE item_id = ?", (item_id,)).fetchone()
     evidence = json.loads(item["evidence_json"])
     disassembly_preview = evidence.get("opcode_disassembly", [])[:120]
 
@@ -177,8 +197,39 @@ def review_submit(
         ).fetchone()
         if assignment is None:
             return HTMLResponse("Item not assigned to this reviewer.", status_code=403)
+        item = conn.execute(
+            "SELECT sample_set FROM items WHERE item_id = ?", (item_id,)
+        ).fetchone()
+        postcutoff_unlocked, gate_reason = postcutoff_review_unlock_status()
+        if item["sample_set"] == "postcutoff" and not postcutoff_unlocked:
+            return HTMLResponse(
+                "Post-cutoff review is locked: " + gate_reason, status_code=423
+            )
+        existing_final = conn.execute(
+            "SELECT annotation_id FROM annotations WHERE item_id = ? AND reviewer_id = ? "
+            "AND is_adjudication = ? AND is_draft = 0",
+            (item_id, reviewer_id, int(bool(assignment["is_adjudication"]))),
+        ).fetchone()
+        if existing_final is not None:
+            return HTMLResponse(
+                "This judgment is finalized and immutable. Record any correction through a "
+                "documented amendment rather than overwriting it.",
+                status_code=409,
+            )
+        try:
+            validated = validate_annotation_submission(
+                label=label,
+                unsafe_category=unsafe_category,
+                indeterminate_reason=indeterminate_reason,
+                confidence=confidence,
+                rationale=rationale,
+                evidence_consulted=evidence_consulted,
+                action=action,
+            )
+        except ValueError as error:
+            return HTMLResponse(f"Invalid annotation: {error}", status_code=422)
         is_adjudication = int(bool(assignment["is_adjudication"]))
-        is_draft = 1 if action == "save_draft" else 0
+        is_draft = int(bool(validated["is_draft"]))
 
         conn.execute(
             "INSERT INTO annotations (item_id, reviewer_id, is_adjudication, label, unsafe_category, "
@@ -189,14 +240,16 @@ def review_submit(
             "indeterminate_reason=excluded.indeterminate_reason, confidence=excluded.confidence, "
             "rationale=excluded.rationale, evidence_consulted=excluded.evidence_consulted, "
             "is_draft=excluded.is_draft, updated_at=excluded.updated_at",
-            (item_id, reviewer_id, is_adjudication, label, unsafe_category or None,
-             indeterminate_reason or None, confidence, rationale, evidence_consulted,
+            (item_id, reviewer_id, is_adjudication, validated["label"],
+             validated["unsafe_category"], validated["indeterminate_reason"],
+             validated["confidence"], validated["rationale"],
+             validated["evidence_consulted"],
              is_draft, now_iso(), now_iso()),
         )
         if not is_draft:
             conn.execute("UPDATE assignments SET status = 'completed' WHERE assignment_id = ?", (assignment["assignment_id"],))
         log_action(conn, reviewer_id, "save_draft" if is_draft else "submit_annotation", item_id,
-                   {"label": label})
+                   {"label": validated["label"]})
 
         if not is_draft and not is_adjudication:
             item = conn.execute("SELECT sample_set FROM items WHERE item_id = ?", (item_id,)).fetchone()

@@ -1,32 +1,33 @@
 # Title Options
 
-1. AuthGuard-7702: Compact Neural Triage for EIP-7702 Delegate Safety
-2. Screening EIP-7702 Delegates at Scale: A Lightweight Sequence Model with Semantic Escalation
-3. AuthGuard: Fast, Calibrated Risk Scoring for Account-Abstraction Delegate Contracts
+1. AuthGuard-7702: Coverage-Aware Pre-Authorization Screening of EIP-7702 Delegates
+2. Screening EIP-7702 Delegates: Contextual Risk Graphs, Bytecode Models, and Explicit Deferral
+3. From Bytecode Scores to Selective Decisions for EIP-7702 Authorization Risk
 
 ## Abstract (provisional metric placeholders)
 
-EIP-7702 lets externally-owned accounts temporarily execute code from an arbitrary delegate
-contract, creating a new class of authorization-time risk: a wallet owner may sign an
-authorization without any tooling that evaluates whether the delegate is safe to run with
-their identity and assets. We present AuthGuard, a compact neural classifier
-(`authguard_sequence_dense`, 97,646 active parameters) that scores EIP-7702 delegate bytecode
-for authorization-risk in **[PROVISIONAL: 2.83ms median CPU latency]**, alongside a
-semantic-analysis evidence pipeline (verified-source retrieval, decompilation, automated
-guard-tracing) used both to construct evaluation labels and to demonstrate that AuthGuard's
-role is triage-and-escalation, not replacement, for deeper analysis.
+EIP-7702 lets an externally-owned account execute delegate-contract code in the account's own
+storage, balance, and identity context. A wallet must therefore decide whether to authorize a
+delegate before transaction history, reputation, or verified source may be available. We
+present AuthGuard-7702, a coverage-aware pre-authorization screener that combines a compact
+opcode-sequence model with a typed Delegation-Context Risk Graph (DCRG). DCRG separates
+self-call, signature, stored-authority, fixed-address, caller-supplied, and `tx.origin` guards;
+records unguarded capabilities; and makes incomplete analysis explicit. A fixed monotone fusion
+feeds a selective policy that returns `WARN`, `LOW_OBSERVED_RISK`, or `DEFER`, rather than
+equating a negative classifier output with proof of safety.
 
-We evaluate AuthGuard against **[PROVISIONAL, LLM-generated reference labels — independent
-human review in progress]** on two held-out samples: Gold-Dev (60 items, AUPRC
-**[0.925 PROVISIONAL]**) and Gold-Test (150 items, AUPRC **[0.963, 95% CI 0.928-0.991,
-PROVISIONAL]**), compare against a source-derived static rule (Gold-Test precision
-**[0.978 PROVISIONAL]**, recall **[0.344 PROVISIONAL]**), and show that a simple
-score-threshold cascade reduces the fraction of items requiring the more expensive static
-rule check to **[63% PROVISIONAL]** while matching the rule's false-positive rate. We
-release the full evidence-collection pipeline, the LLM-provisional labeling protocol, and
-[PROVISIONAL — extend once human review completes] independent human-adjudicated labels for
-230 delegate contracts.
+On the frozen 2,190-item, 790-family engineering benchmark, the DCRG extractor completed for
+all 1,665 unique runtimes but achieved complete bounded coverage for only 30.6% of samples,
+motivating explicit deferral. **[PROVISIONAL inherited-label result: across 5 family-held-out
+folds and 3 seeds, pooled out-of-fold DCRG+sequence fusion obtains AUPRC 0.958 versus 0.902 for
+the sequence model and recall 0.933 versus 0.844 at validation-derived nominal 5%-FPR
+thresholds. A paired family bootstrap supports improvement over the sequence model, but not
+over DCRG alone.]** Because
+these inherited labels partly encode static-analysis behavior, this comparison is treated as
+an engineering diagnostic rather than independent semantic validation. The submission claim
+must be replaced or confirmed with adjudicated human labels and post-cutoff project-family
+controls before finalization.
 
-**All quantitative claims in this abstract are placeholders pending independent human
-review; see `revision_v3/reports/LLM_VS_HUMAN_AGREEMENT_REPORT.md` (currently
-`PENDING_HUMAN_LABELS`) before any submission.**
+**The bracketed performance sentence is a placeholder pending independent human review,
+paired uncertainty, and post-cutoff evaluation. It must not appear as an accepted result in a
+submission until those gates pass.**

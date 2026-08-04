@@ -1,12 +1,12 @@
 """Sample-set-specific assignment rules, applied automatically after a primary annotation is
 submitted (called from app.py's POST /review/{item_id} handler).
 
-- pilot: both primary reviewers assigned up front (in seed_from_packets.py); no dynamic rule.
+- pilot: both primary reviewers assigned up front; disagreements receive an adjudicator.
 - gold_dev: one primary reviewer assigned up front; after that review is submitted, assign a
   second reviewer if the item was pre-selected into the 20% random second-review sample, OR
   if the submitted label is INDETERMINATE / NOT_BYTECODE_SCREENABLE / confidence == 'low'.
-- gold_test: two primary reviewers assigned up front; after BOTH submit, if their labels
-  disagree, assign a third reviewer as adjudicator.
+- gold_test/postcutoff: two primary reviewers assigned up front; after BOTH submit, if their
+  labels disagree, assign a third reviewer as adjudicator.
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ def apply_post_submit_rules(conn, item_id: str, sample_set: str, second_reviewer
                              adjudicator_pool: list[str]) -> None:
     if sample_set == "gold_dev":
         _maybe_assign_gold_dev_second_review(conn, item_id, second_reviewer_pool)
-    elif sample_set == "gold_test":
+    elif sample_set in {"pilot", "gold_test", "postcutoff"}:
         _maybe_assign_gold_test_adjudicator(conn, item_id, adjudicator_pool)
 
 

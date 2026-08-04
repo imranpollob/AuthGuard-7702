@@ -15,9 +15,9 @@ Re-analysing the same 230 bytecodes with a CFG guard-dominance test changes that
 
 | set | old OPEN_FOUND | old GUARDED_ALL | old AMBIGUOUS | new UNGUARDED_PATH | new GUARD_DOMINATED | new no-sensitive-op |
 |---|---|---|---|---|---|---|
-| pilot | 0 | 0 | 0 | 10 | 8 | 2 |
-| gold_dev | 50 | 5 | 5 | 25 | 20 | 15 |
-| gold_test | 140 | 7 | 3 | 84 | 50 | 16 |
+| pilot | 0 | 0 | 0 | 9 | 8 | 3 |
+| gold_dev | 50 | 5 | 5 | 21 | 22 | 17 |
+| gold_test | 140 | 7 | 3 | 66 | 58 | 26 |
 
 ## 2. Support class for every Opus 5 UNSAFE item
 
@@ -25,9 +25,9 @@ Per the labeling instruction, items supported only by `SOURCE_RULE_ONLY_SUPPORT`
 
 | set | CONCRETE_EXPLOITABLE_PATH | CONCRETE_UNAUTHORIZED_CAPABILITY | STRONG_STATIC_AND_DYNAMIC | SOURCE_RULE_ONLY_SUPPORT | INCOMPLETE_GUARD_EVIDENCE |
 |---|---|---|---|---|---|
-| pilot | 5 | 8 | 0 | 0 | 0 |
-| gold_dev | 27 | 12 | 0 | 0 | 0 |
-| gold_test | 59 | 49 | 0 | 0 | 0 |
+| pilot | 3 | 8 | 0 | 0 | 0 |
+| gold_dev | 19 | 12 | 0 | 0 | 0 |
+| gold_test | 45 | 43 | 0 | 0 | 0 |
 
 UNSAFE items resting on weak support: **0**.
 
@@ -36,12 +36,12 @@ UNSAFE items resting on weak support: **0**.
 
 | candidate explanation | verdict | evidence |
 |---|---|---|
-| treating a missing recognized guard as unsafe | NO — an UNSAFE now requires a sensitive operation that survives cutting traversal at every authorization-tainted branch, i.e. a demonstrated unauthenticated path, not an absent pattern | 82/160 UNSAFE items rest on that dominance test |
-| decompiler limitations | PARTLY — items whose traversal hit a cap, underflowed, or left a sensitive opcode unreached are pushed to UNCERTAIN, and provenance from a padded stack can no longer support a concrete-exploit claim | 22 items landed UNCERTAIN for this reason |
+| treating a missing recognized guard as unsafe | NO — an UNSAFE now requires a sensitive operation that survives cutting traversal at every authorization-tainted branch, i.e. a demonstrated unauthenticated path, not an absent pattern | 69/130 UNSAFE items rest on that dominance test |
+| decompiler limitations | PARTLY — items whose traversal hit a cap, underflowed, or left a sensitive opcode unreached are pushed to UNCERTAIN, and provenance from a padded stack can no longer support a concrete-exploit claim | 30 items landed UNCERTAIN for this reason |
 | incorrect caller/owner extraction | FIXED THIS PASS — the previous analyser never recovered the value a caller check compares against (0 of 268 checks). It now does, which is what separates an owner check from a fixed-third-party check | 68 UNSAFE items turn on a recovered hardcoded literal |
 | signature authorization being missed | ADDRESSED — ecrecover-derived branches are recognised as authorization | 28 items credit a signature check |
 | self-call authorization being missed | ADDRESSED — msg.sender == address(this) is recognised and treated as the canonical EIP-7702 owner check | 25 items credit a self-call check |
-| proxy implementation errors | PARTLY — a DELEGATECALL whose target is read from storage is reported as such, and under EIP-7702 that slot is the EOA's own and empty | 15 UNSAFE items involve a delegatecall |
+| proxy implementation errors | PARTLY — a DELEGATECALL whose target is read from storage is reported as such, and under EIP-7702 that slot is the EOA's own and empty | 10 UNSAFE items involve a delegatecall |
 | source-rule anchoring | CHECKED — see §4; agreement with the source rule is far from total in both directions, so the labels are not tracking the rule | see §4 table |
 | repeated bytecode families | CHECKED — see §5; the UNSAFE rate is computed per unique family as well as per item | see §5 table |
 | systematic labeling bias | PARTLY MITIGATED — the decision cascade is a single documented procedure applied identically to all 230 items, with every departure recorded in overrides.py; that makes bias auditable, not absent | 5 manual overrides recorded |
@@ -50,11 +50,11 @@ UNSAFE items resting on weak support: **0**.
 
 | Opus 5 label | source rule = positive | source rule = unflagged |
 |---|---|---|
-| SAFE | 4 | 28 |
-| UNSAFE | 71 | 89 |
-| UNCERTAIN | 6 | 32 |
+| SAFE | 2 | 29 |
+| UNSAFE | 65 | 65 |
+| UNCERTAIN | 14 | 55 |
 
-71/81 source-positive items are Opus 5 UNSAFE; 89/149 source-unflagged items are *also* Opus 5 UNSAFE. The second number is the important one: a large share of the UNSAFE labels are on items the source rule never flagged, so these labels are not a restatement of the rule. **This agreement is nevertheless descriptive, not an independent evaluation** — see §7.
+65/81 source-positive items are Opus 5 UNSAFE; 65/149 source-unflagged items are *also* Opus 5 UNSAFE. The second number is the important one: a large share of the UNSAFE labels are on items the source rule never flagged, so these labels are not a restatement of the rule. **This agreement is nevertheless descriptive, not an independent evaluation** — see §7.
 
 Assessment of the analyzer's own verdict per item:
 
@@ -68,9 +68,9 @@ Assessment of the analyzer's own verdict per item:
 
 | set | items | unique families | UNSAFE per item | UNSAFE per family |
 |---|---|---|---|---|
-| pilot | 20 | 19 | 13/20 (65%) | 12/19 (63%) |
-| gold_dev | 60 | 59 | 39/60 (65%) | 39/59 (66%) |
-| gold_test | 150 | 126 | 108/150 (72%) | 88/126 (70%) |
+| pilot | 20 | 19 | 11/20 (55%) | 10/19 (53%) |
+| gold_dev | 60 | 59 | 31/60 (52%) | 31/59 (53%) |
+| gold_test | 150 | 126 | 88/150 (59%) | 70/126 (56%) |
 
 The per-family rate tracks the per-item rate closely, so the imbalance is not produced by a handful of duplicated bytecodes.
 

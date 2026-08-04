@@ -14,10 +14,12 @@ same practical capability over their assets and identity as their own private ke
 
 ## Motivation
 
-No wallet UI at authorization time currently evaluates delegate-contract safety
-automatically. The natural mitigations — full source verification, manual audit, formal
-decompilation — are each too slow, too dependent on external services, or too specialized to
-run inline with a wallet's authorization flow (see
+Prior EIP-7702 studies detect malicious activity using transaction history, large-scale
+cross-chain filtering, decompilation, and targeted rules. We study a different decision point:
+local screening of a proposed delegate before authorization, when the delegate bytecode may be
+the only available evidence. The natural deeper mitigations — full source verification, manual
+audit, and service-backed decompilation — are too dependent on external services or specialized
+expertise to serve as the only inline wallet response (see
 `revision_v3/reports/ML_VS_STATIC_ANALYSIS_POSITIONING.md` for measured evidence: this
 project's own semantic-evidence pipeline took seconds-to-tens-of-seconds per item and needed
 4 independent external services). A fast, calibrated triage signal that can run locally,
@@ -31,23 +33,34 @@ account $A$, predict whether authorizing $D$ exposes $A$ to a concrete, exploita
 authorization-specific risk (arbitrary asset movement, arbitrary external call, unrestricted
 initialization/upgrade, or an authorization-mechanism-specific flaw such as tx.origin-based
 gating — see `revision_v3/human_eval/LLM_PROVISIONAL_LABELING_PROTOCOL.md`'s taxonomy) versus
-appearing safe to authorize under the evidence available. This is framed as a three-class
-problem at labeling time (SAFE / UNSAFE / UNCERTAIN) collapsed to binary SAFE-vs-UNSAFE for
-model evaluation, with UNCERTAIN items explicitly excluded rather than forced into a binary
-label.
+showing low observed risk under the bounded evidence available. This is framed as a three-class
+problem at labeling time (NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND / UNSAFE / INDETERMINATE) collapsed
+to bounded-negative-vs-UNSAFE for model evaluation, with `INDETERMINATE` and
+`NOT_BYTECODE_SCREENABLE` items explicitly excluded rather than forced into a binary label.
 
 ## Threat model
 
 - **In scope**: a delegate contract whose bytecode is inspectable pre-authorization (the
   common case — the delegate address is known before the EOA signs).
 - **Out of scope**: attacks that depend on delegate behavior that only manifests under
-  specific, unobservable runtime state (flagged explicitly as `STATE_DEPENDENT_BEHAVIOR` /
-  `EXTERNAL_OR_DYNAMIC_DEPENDENCY` in the labeling taxonomy rather than silently assumed
+  specific, unobservable runtime state (flagged explicitly as `DYNAMIC_OR_STATE_DEPENDENT` /
+  `EXTERNAL_DEPENDENCY` in the labeling taxonomy rather than silently assumed
   safe); social-engineering attacks that trick a user into authorizing a delegate address
   they did not intend to (a UI/UX problem, not a bytecode-safety problem); and compromise of
   the EOA's private key itself (EIP-7702 does not change this threat).
 - **Adversary model**: the delegate contract's author is potentially adversarial and may
   deliberately construct bytecode that defeats naive selector-name or capability-presence
   heuristics (a design principle carried through this project's evidence pipeline: hard
-  rules explicitly forbid concluding UNSAFE/SAFE from selector or capability presence alone
+  rules explicitly forbid concluding UNSAFE or the bounded-negative category from selector or
+  capability presence alone
   — see the labeling protocol's "hard rules" section).
+
+## Target contributions and validation condition
+
+Subject to adjudicated human labels and post-cutoff family evaluation, this work targets three
+contributions: (1) DCRG, an authority-relative EIP-7702 representation connecting typed guards,
+reachable capabilities, and coverage gaps; (2) a coverage-gated pre-authorization contract that
+returns `WARN`, `LOW_OBSERVED_RISK`, or `DEFER`; and (3) a provenance-audited benchmark protocol
+with family-held-out scoring, legitimate controls, real authority/delegate pairs, and paired
+uncertainty. The current inherited-label evaluation validates the implementation but does not
+yet satisfy those scientific conditions.

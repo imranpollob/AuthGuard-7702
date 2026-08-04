@@ -24,8 +24,15 @@ def _row_writer(chain: str, run_id: str):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     path = os.path.join(OUTPUT_DIR, f"{run_id}_{chain}_authorizations.csv")
     is_new = not os.path.exists(path)
+    if not is_new:
+        with open(path, "rb") as probe:
+            if probe.readline().startswith(b"version https://git-lfs.github.com/spec/v1"):
+                raise RuntimeError(
+                    f"refusing to append authorization rows to an unhydrated Git-LFS pointer: {path}; "
+                    "run `git lfs checkout -- <path>` first"
+                )
     f = open(path, "a", newline="")
-    writer = csv.DictWriter(f, fieldnames=ROW_FIELDS)
+    writer = csv.DictWriter(f, fieldnames=ROW_FIELDS, lineterminator="\n")
     if is_new:
         writer.writeheader()
     return f, writer

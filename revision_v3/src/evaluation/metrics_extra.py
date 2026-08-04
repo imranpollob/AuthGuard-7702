@@ -10,7 +10,9 @@ import numpy as np
 from evaluation.metrics import auprc, auroc, brier, full_metrics, metrics_at_threshold
 
 
-def confusion_matrix(y_true: np.ndarray, scores: np.ndarray, threshold: float) -> dict:
+def confusion_matrix(y_true: np.ndarray, scores: np.ndarray,
+                     threshold: float | np.ndarray) -> dict:
+    """Confusion matrix for a scalar or per-item validation-derived threshold."""
     preds = (scores >= threshold).astype(int)
     tp = int(((preds == 1) & (y_true == 1)).sum())
     fp = int(((preds == 1) & (y_true == 0)).sum())

@@ -249,6 +249,20 @@ def test_previous_provisional_results_are_not_overwritten():
     assert os.path.abspath(OPUS5) != os.path.abspath(PREV)
 
 
+@pytest.mark.parametrize("ss", SETS)
+def test_pipeline_projection_exactly_matches_opus5_reviews(ss):
+    reviews = {
+        row["item_id"]: row["opus5_provisional_label"]
+        for row in load(ss)["records"]
+    }
+    projection = json.load(open(os.path.join(OPUS5, f"{ss}_labels.json")))
+    projected = {
+        row["item_id"]: row["llm_provisional_label"]
+        for row in projection["records"]
+    }
+    assert projected == reviews
+
+
 def test_opus5_results_live_only_in_their_own_directory():
     for sub in ("gold_dev_baseline", "gold_test", "cascade", "retraining"):
         assert os.path.isdir(os.path.join(OPUS5, sub)), sub

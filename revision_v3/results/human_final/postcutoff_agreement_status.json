@@ -1,0 +1,30 @@
+{
+  "adjudication_rate_among_disagreements": null,
+  "claim_boundary": "Agreement is computed on pre-adjudication primary labels. Adjudicator labels are used only for resolution counts and final-label summaries.",
+  "cohens_kappa": null,
+  "cohens_kappa_interpretation": "NO_EXACTLY_DUAL_REVIEWED_ITEMS",
+  "final_indeterminate_reason_counts": {},
+  "final_label_counts_on_resolved_dual_items": {},
+  "fleiss_kappa_two_rater_items": null,
+  "item_ids_sha256": "7223fd16f24b4409e2bf410dfbf072c5e4efab5a3d3ad7703d37f181a7fab050",
+  "n_adjudicated_disagreements": 0,
+  "n_exactly_dual_reviewed": 0,
+  "n_manifest_items": 150,
+  "n_multiple_adjudications": 0,
+  "n_over_reviewed": 0,
+  "n_pending_adjudications": 0,
+  "n_primary_disagreements": 0,
+  "n_primary_unanimous": 0,
+  "n_unexpected_adjudications_on_unanimous_items": 0,
+  "over_reviewed_item_ids": [],
+  "pending_adjudication_item_ids": [],
+  "primary_confusion_matrix": null,
+  "primary_label_marginals_by_reviewer": {},
+  "primary_review_count_distribution": {
+    "0": 150
+  },
+  "raw_agreement_rate": null,
+  "reviewer_pair_counts": {},
+  "sample_set": "postcutoff",
+  "status": "NOT_READY_DUAL_REVIEW_OR_ADJUDICATION_INCOMPLETE"
+}

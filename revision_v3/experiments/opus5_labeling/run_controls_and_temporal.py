@@ -28,7 +28,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import evmole  # noqa: E402
 
-from evaluation.model_runtime import score_dataset_with_ensemble  # noqa: E402
+from analysis.delegation_context import build_delegation_context_graph  # noqa: E402
+from evaluation.model_runtime import score_dataset_provenance_aware  # noqa: E402
 from evm_cfg import analyze_fallback, analyze_function, static_opcode_census  # noqa: E402
 from opus5_label import decide  # noqa: E402
 
@@ -61,6 +62,7 @@ def cfg_for(bytecode_hex: str) -> dict:
                        "reaches_ecrecover": r["reaches_ecrecover"],
                        "guards": r["guards"][:6],
                        "unguarded_sensitive": r["unguarded_sensitive"][:8],
+                       "unguarded_even_by_storage": r["unguarded_even_by_storage"][:8],
                        "n_reachable_sensitive": len(r["reachable_sensitive"])})
     fb = analyze_fallback(code, {int(f.selector, 16) for f in funcs})
     if not funcs:
@@ -74,6 +76,7 @@ def cfg_for(bytecode_hex: str) -> dict:
                        "reaches_ecrecover": r["reaches_ecrecover"],
                        "guards": r["guards"][:6],
                        "unguarded_sensitive": r["unguarded_sensitive"][:8],
+                       "unguarded_even_by_storage": r["unguarded_even_by_storage"][:8],
                        "n_reachable_sensitive": len(r["reachable_sensitive"])})
     census = static_opcode_census(code)
     for p in ("receive_path", "fallback_path"):
@@ -88,6 +91,7 @@ def cfg_for(bytecode_hex: str) -> dict:
 
 
 def make_dossier(item_id, chain, address, bytecode_hex, extra_identity=None) -> dict:
+    cfg = cfg_for(bytecode_hex)
     return {
         "item_id": item_id,
         "identity": {"chain": chain, "address": address, "family_id": None,
@@ -95,7 +99,9 @@ def make_dossier(item_id, chain, address, bytecode_hex, extra_identity=None) -> 
                      "documented_project": extra_identity},
         "source_and_code_evidence": {"verified_source": None, "strings": "",
                                      "live_storage_reads": None},
-        "cfg_guard_analysis_opus5": cfg_for(bytecode_hex),
+        "cfg_guard_analysis_opus5": cfg,
+        # ``address`` is the delegate contract, not the authorizing EOA.
+        "delegation_context_risk_graph": build_delegation_context_graph(cfg).to_dict(),
         "source_static_analyzer_evidence": {
             "source_rule_label": "unflagged", "n_rule_tuples": 0,
             "rule_firing_tuples_for_this_address": [],
@@ -129,28 +135,19 @@ def evaluate_legitimate_controls() -> dict:
         return {"error": "no cached bytecode for any control", "n_rows": len(rows)}
 
     bytecodes = [h if h.startswith("0x") else "0x" + h for _, h in items]
-    # score_dataset_with_ensemble already applies each checkpoint's temperature and returns
-    # calibrated PROBABILITIES (calibration.apply_temperature ends in a sigmoid), so no further
-    # sigmoid may be applied here -- doing so would compress every score toward 0.5-0.73 and
-    # make the frozen threshold meaningless.
-    per_seed = score_dataset_with_ensemble("authguard_sequence_dense", bytecodes)
+    family_ids = [r.get("bytecode_family") or None for r, _ in items]
+    scored = score_dataset_provenance_aware(
+        "authguard_sequence_dense", bytecodes, family_ids
+    )
+    per_seed = scored["scores_by_seed"]
     probs = np.mean(np.stack([per_seed[s] for s in sorted(per_seed)]), axis=0)
-
-    # Frozen operating threshold from the Phase 1/2 checkpoints (never re-fit here).
-    gd = json.load(open(os.path.join(OUT, "gold_dev_baseline", "gold_dev_baseline_report.json")))
-    thr = (gd.get("models", {}).get("authguard_sequence_dense", {})
-           .get("operating_threshold"))
-    if thr is None:
-        raise SystemExit("could not locate the frozen operating threshold for "
-                         "authguard_sequence_dense in the Gold-Dev baseline report; refusing "
-                         "to substitute an arbitrary 0.5")
 
     by_cat = {}
     per_item = []
-    for (r, _), p in zip(items, probs):
+    for i, ((r, _), p) in enumerate(zip(items, probs)):
         cat = (f'{r.get("category") or "UNCATEGORIZED"} '
                f'(provenance {r.get("provenance_confidence") or "?"})')
-        flagged = bool(p >= thr)
+        flagged = bool(scored["decision_fraction"][i] >= 0.5)
         by_cat.setdefault(cat, {"n": 0, "flagged": 0, "projects": set()})
         by_cat[cat]["n"] += 1
         by_cat[cat]["flagged"] += int(flagged)
@@ -158,6 +155,8 @@ def evaluate_legitimate_controls() -> dict:
         per_item.append({"project": r.get("project"), "chain": r.get("chain"),
                          "address": r.get("address"), "category": cat,
                          "authguard_probability": float(p),
+                         "checkpoint_positive_fraction": float(scored["decision_fraction"][i]),
+                         "score_provenance": scored["score_source_by_item"][i],
                          "flagged_at_frozen_threshold": flagged,
                          "runtime_source_match": r.get("runtime_source_match"),
                          "verified_source": r.get("verified_source")})
@@ -165,9 +164,13 @@ def evaluate_legitimate_controls() -> dict:
         c["projects"] = sorted(x for x in c["projects"] if x)
         c["false_positive_rate_on_this_category"] = c["flagged"] / c["n"] if c["n"] else None
     return {**BANNER,
-            "threshold_used": float(thr),
-            "threshold_provenance": "frozen 5%-FPR threshold carried from the Phase 1/2 "
-                                    "checkpoints; never re-fit on the control set",
+            "operating_decision": "flagged when >=50% of eligible checkpoints are positive",
+            "checkpoint_decision_rule": scored["decision_rule"],
+            "n_canonical_family_items": scored["n_canonical_family_items"],
+            "n_canonical_non_primary_items": scored["n_canonical_non_primary_items"],
+            "n_verified_external_items": scored["n_verified_external_items"],
+            "threshold_provenance": "each checkpoint's own validation-derived 5%-FPR "
+                                    "threshold; never re-fit on the control set",
             "n_controls_scored": len(items),
             "n_controls_without_cached_bytecode": len(missing),
             "addresses_without_cached_bytecode": missing,

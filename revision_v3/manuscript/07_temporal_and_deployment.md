@@ -2,36 +2,39 @@
 
 ## Temporal collection methodology
 
-Target window 2026-02-01 through 2026-06-30, real-world EIP-7702 authorization traffic across
-7 chains. Ethereum: sequential `eth_getBlockByNumber` scan (proven, checkpointed, resumable),
-measured ~6.9 blocks/sec on free public RPC infrastructure — a real throughput ceiling this
-project documents rather than works around. Base: an indexed-transaction-API approach was
-investigated and built specifically to avoid a naive sequential scan (per methodological
-concern about wasting RPC budget on 99%+ non-EIP-7702 blocks), using Blockscout's
-`advanced-filters` endpoint to cheaply discover which blocks contain type-4 transactions
-before fetching only those blocks in full — a genuine efficiency contribution, though its
-sustained reliability under this project's own testing proved poor (see
-`TEMPORAL_COLLECTION_FINAL_STATUS.md`). 5 additional chains (BNB, Optimism, Arbitrum,
-Polygon, Gnosis) received real, bounded pilot scans. **[PROVISIONAL/PARTIAL — see the status
-report for exact, real block counts and authorization-entry counts at time of writing; the
-Ethereum and Base collections remain running as checkpointed background jobs and should be
-re-queried before finalizing any temporal claim.]**
+The target window is 2026-02-01 through 2026-06-30, but the current collection is incomplete
+and must not be described as a seven-chain census. Ethereum was scanned sequentially with
+checkpointed `eth_getBlockByNumber` calls. Its durable checkpoint covers 283,244 of 1,068,475
+target blocks (26.5%), through 2026-03-12, and records 517,930 type-4 transactions and
+1,233,059 authorization-list entries with zero block-scan RPC errors. Base's indexed discovery
+path remains at zero committed pages because Blockscout's sustained queries time out. BNB,
+Optimism, Arbitrum, Polygon, and Gnosis each have a completed bounded 1,501-block pilot. Exact
+counts and artifact hashes are in `TEMPORAL_COLLECTION_FINAL_STATUS.md`.
 
-Delegate enrichment (`temporal.enrich.enrich_authorizations`) deduplicates delegate
-addresses, retrieves runtime bytecode, and classifies each against the frozen historical
-population by exact hash and opcode-4-gram family similarity (Jaccard ≥ 0.85, matching the
-canonical project threshold) — correctly distinguishing zero-address revocations (no runtime
-code) from real delegates.
+The frozen Ethereum checkpoint contains 134,199 zero-address revocation entries and 740 unique
+nonzero delegate addresses. The post-cutoff builder excludes revocations, recovers the actual
+authorizing EOA from each usable authorization-tuple signature, retrieves runtime bytecode at
+the first observed block, and audits exact hash and opcode-4-gram similarity against every
+unique canonical runtime. Historical code is observed at end-of-block state, not transaction
+index; same-block code changes therefore remain a stated limitation. It recovered 734 usable
+signer/delegate pairs, of which 708 had historical runtime code. Six invalid signatures and 26
+no-code observations were excluded. The recovered signer differed from the transaction sender
+for 574 pairs, demonstrating why transaction sender cannot substitute for EIP-7702 authority.
+Authority-aware DCRG extraction found 27 pairs with a fixed-caller guard matching that signer,
+295 with a different fixed caller, and 28 with an EntryPoint guard; these are unlabeled feature
+counts, not evidence that a match or mismatch is safe or unsafe.
 
 ## Provisional temporal evaluation
 
-39 real, enriched delegates (Ethereum + BNB), prioritized toward previously-unseen families
-(69% of the sample) and high-authorization-count delegates. **97% provisional-UNSAFE** — a
-striking, single-class-dominated finding reported honestly (no AUPRC could be computed) with
-two candidate, unconfirmed explanations discussed in `LLM_PROVISIONAL_TEMPORAL_REPORT.md`
-(automated/bot-dominated real-world traffic; or a usage-count sampling bias). This is
-explicitly flagged as not representative of steady-state EIP-7702 usage safety without
-further, broader collection.
+The new post-cutoff snapshot is deliberately **unlabeled and unscored**. A deterministic
+score-blind sampler selects at most one address per exact-runtime family after excluding exact
+and thresholded canonical-runtime matches. This yields 564 eligible exact-runtime families and
+a locked sample of 150. The sampler refuses any input containing labels or model outputs. The
+older 39-item LLM-provisional temporal exercise is retained only as a pipeline
+diagnostic; its usage-prioritized sampling and nearly single-class generated labels are not
+evidence for prevalence, accuracy, or generalization. Submission results require dual human
+review, project-family provenance, complete related-family training holds, retraining, and a
+paired evaluation fixed before any post-cutoff scores are examined.
 
 ## Deployment evaluation
 

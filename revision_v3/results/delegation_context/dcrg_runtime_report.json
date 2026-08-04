@@ -1,0 +1,27 @@
+{
+  "canonical_input_sha256": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+  "coverage_counts": {
+    "COMPLETE": 517,
+    "PARTIAL": 1148
+  },
+  "device": "CPU",
+  "environment": {
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.12"
+  },
+  "interpretation": "This is semantic extraction latency, separate from neural forward-pass latency. PARTIAL coverage remains a defer signal even when extraction terminates quickly.",
+  "latency_ms": {
+    "max": 2642.710994,
+    "mean": 158.33293962282283,
+    "median": 49.874324,
+    "p95": 812.7465285999999,
+    "p99": 1772.9466133599979
+  },
+  "n_analysis_errors": 0,
+  "n_unique_runtimes": 1665,
+  "peak_process_rss_kib": 166160,
+  "raw_artifact": "revision_v3/results/delegation_context/dcrg_runtime_per_unique.csv.gz",
+  "scope": "runtime bytecode -> bounded CFG/symbolic analysis -> dcrg-1.1 graph",
+  "status": "COMPLETE"
+}

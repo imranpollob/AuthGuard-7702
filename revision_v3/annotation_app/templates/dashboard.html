@@ -2,6 +2,11 @@
 {% block content %}
 <h1>Dashboard -- {{ reviewer_id }}</h1>
 
+{% if not postcutoff_unlocked %}
+<p><strong>Post-cutoff review locked:</strong> {{ postcutoff_gate_reason }}. Complete the
+project-family audit and freeze provenance-verified model scores before reviewing those items.</p>
+{% endif %}
+
 <h2>Overall progress</h2>
 <table border="1" cellpadding="4">
   <tr><th>Sample set</th><th>Items</th><th>Assignments</th><th>Completed</th></tr>
@@ -15,7 +20,13 @@
   <tr><th>Item</th><th>Set</th><th>Adjudication?</th><th>Status</th></tr>
   {% for a in my_assignments %}
   <tr>
-    <td><a href="/review/{{ a.item_id }}">{{ a.item_id }}</a></td>
+    <td>
+      {% if a.sample_set == 'postcutoff' and not postcutoff_unlocked %}
+        {{ a.item_id }} (locked)
+      {% else %}
+        <a href="/review/{{ a.item_id }}">{{ a.item_id }}</a>
+      {% endif %}
+    </td>
     <td>{{ a.sample_set }}</td>
     <td>{{ 'yes' if a.is_adjudication else 'no' }}</td>
     <td>{{ a.status }}</td>

@@ -24,6 +24,7 @@ from models.forward_fns import chunk_forward, flat_forward, hybrid_forward  # no
 from models.hybrid import HybridConfig, HybridModel  # noqa: E402
 from training.calibration import apply_temperature  # noqa: E402
 from training.harness import SEEDS  # noqa: E402
+from data.loader import canonical_family_ids, family_to_fold_map  # noqa: E402
 
 PHASE1_CKPT_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "checkpoints")
 PHASE2_MATCHED_CKPT_DIR = os.path.join(REPO_ROOT, "revision_v3", "results", "parameter_matched", "checkpoints")
@@ -80,15 +81,82 @@ def score_one(spec: dict, model, device, hex_bc: str) -> float:
     return float(logit_t.cpu().numpy()[0])
 
 
-def score_dataset_with_ensemble(model_name: str, bytecodes: list[str], device=None) -> dict[int, np.ndarray]:
-    """Scores every bytecode string in `bytecodes` with all 5 fold-checkpoints for each of the
-    3 training seeds, temperature-calibrates each, and averages across folds within a seed
-    (since none of Gold-Dev/Gold-Test/Pilot/temporal items were in any training fold, using
-    all 5 fold-checkpoints per seed is a valid ensemble, not a leakage risk).
+def _load_checkpoint_model(model_name: str, seed: int, test_fold: int, device):
+    """Load one checkpoint and verify that its embedded split provenance matches its name."""
+    spec = MODEL_REGISTRY[model_name]
+    ckpt_path = os.path.join(
+        spec["checkpoint_dir"], f"{model_name}_seed{seed}_fold{test_fold}.pt"
+    )
+    if not os.path.exists(ckpt_path):
+        raise FileNotFoundError(ckpt_path)
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
+    if int(ckpt.get("seed", seed)) != seed or int(ckpt.get("test_fold", test_fold)) != test_fold:
+        raise ValueError(
+            f"checkpoint provenance mismatch for {ckpt_path}: "
+            f"embedded seed={ckpt.get('seed')} test_fold={ckpt.get('test_fold')}"
+        )
+    model = build_model(spec)
+    model.load_state_dict(ckpt["model_state_dict"])
+    model.to(device).eval()
+    return spec, model, ckpt
+
+
+def score_dataset_out_of_fold(model_name: str, bytecodes: list[str], fold_ids,
+                              device=None) -> tuple[dict[int, np.ndarray],
+                                                   dict[int, np.ndarray]]:
+    """Score benchmark members using only their family's held-out-test checkpoint.
+
+    Returns ``(scores_by_seed, thresholds_by_seed)``.  Each threshold array is item-aligned:
+    the value for an item comes from the same fold checkpoint that produced its score.  This
+    prevents both training leakage and the subtler error of applying an average threshold from
+    checkpoints with different validation populations.
+    """
+    if model_name not in MODEL_REGISTRY:
+        raise ValueError(f"unknown model_name {model_name!r}; known: {list(MODEL_REGISTRY)}")
+    folds = np.asarray(list(fold_ids), dtype=np.int64)
+    if len(bytecodes) != len(folds):
+        raise ValueError(f"bytecodes/fold_ids length mismatch: {len(bytecodes)} != {len(folds)}")
+    if np.any((folds < 0) | (folds >= 5)):
+        raise ValueError(f"fold_ids must be in [0, 4], got {sorted(set(folds.tolist()))}")
+    device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    scores_by_seed: dict[int, np.ndarray] = {}
+    thresholds_by_seed: dict[int, np.ndarray] = {}
+    for seed in SEEDS:
+        scores = np.empty(len(bytecodes), dtype=np.float64)
+        thresholds = np.empty(len(bytecodes), dtype=np.float64)
+        for test_fold in sorted(set(folds.tolist())):
+            item_indices = np.flatnonzero(folds == test_fold)
+            spec, model, ckpt = _load_checkpoint_model(model_name, seed, test_fold, device)
+            temperature = ckpt["temperature"]
+            for index in item_indices:
+                raw_logit = score_one(spec, model, device, bytecodes[int(index)])
+                scores[index] = float(
+                    apply_temperature(torch.as_tensor(raw_logit), temperature)
+                )
+                thresholds[index] = float(ckpt["threshold_5pct"])
+        scores_by_seed[seed] = scores
+        thresholds_by_seed[seed] = thresholds
+    return scores_by_seed, thresholds_by_seed
+
+
+def score_dataset_with_ensemble(model_name: str, bytecodes: list[str], device=None,
+                                *, external_only: bool = False) -> dict[int, np.ndarray]:
+    """Score genuinely external bytecodes with all five fold checkpoints per seed.
+
+    This API is intentionally opt-in.  Gold-Dev, Gold-Test, Pilot, and any control/temporal
+    bytecode belonging to a canonical benchmark family must use
+    :func:`score_dataset_out_of_fold`.  An all-fold ensemble would otherwise contain three
+    checkpoints that trained on each benchmark family.
 
     Returns {seed: np.ndarray of shape (len(bytecodes),)} -- the per-seed calibrated-score
     array format expected by evaluation.bootstrap_v2.seed_aware_paired_bootstrap_ci.
     """
+    if not external_only:
+        raise ValueError(
+            "all-fold ensembling is valid only for verified external families; pass "
+            "external_only=True after checking provenance, or use score_dataset_out_of_fold"
+        )
     if model_name not in MODEL_REGISTRY:
         raise ValueError(f"unknown model_name {model_name!r}; known: {list(MODEL_REGISTRY)}")
     spec = MODEL_REGISTRY[model_name]
@@ -98,14 +166,11 @@ def score_dataset_with_ensemble(model_name: str, bytecodes: list[str], device=No
     n_missing = 0
     for seed in SEEDS:
         for test_fold in range(5):
-            ckpt_path = os.path.join(spec["checkpoint_dir"], f"{model_name}_seed{seed}_fold{test_fold}.pt")
-            if not os.path.exists(ckpt_path):
+            try:
+                _, model, ckpt = _load_checkpoint_model(model_name, seed, test_fold, device)
+            except FileNotFoundError:
                 n_missing += 1
                 continue
-            ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
-            model = build_model(spec)
-            model.load_state_dict(ckpt["model_state_dict"])
-            model.to(device).eval()
             temperature = ckpt["temperature"]
             fold_scores = np.array([
                 float(apply_temperature(torch.as_tensor(score_one(spec, model, device, bc)), temperature))
@@ -119,6 +184,118 @@ def score_dataset_with_ensemble(model_name: str, bytecodes: list[str], device=No
     return {
         seed: np.mean(np.stack(fold_list, axis=0), axis=0)
         for seed, fold_list in scores_by_seed.items() if fold_list
+    }
+
+
+def score_dataset_provenance_aware(model_name: str, bytecodes: list[str], family_ids,
+                                   device=None) -> dict:
+    """Score a mixture of canonical-family and genuinely external bytecodes safely.
+
+    A family in the primary training population is scored by exactly the checkpoint holding
+    it out. A family appearing only in a frozen non-primary population was absent from all
+    training folds and may use the five-fold ensemble, as may an empty/``None`` family after
+    explicit upstream provenance matching. Unknown non-empty identifiers are rejected instead
+    of silently being treated as external.
+
+    ``decision_fraction`` is the fraction of eligible checkpoints whose calibrated score meets
+    *that checkpoint's own* validation-derived threshold.  It is the appropriate operating
+    statistic for mixed-provenance controls; the mean external score must not be compared with
+    an averaged threshold as though that threshold had itself been calibrated.
+    """
+    if model_name not in MODEL_REGISTRY:
+        raise ValueError(f"unknown model_name {model_name!r}; known: {list(MODEL_REGISTRY)}")
+    families = [None if value is None or str(value).strip() == "" else str(value).strip()
+                for value in family_ids]
+    if len(bytecodes) != len(families):
+        raise ValueError(
+            f"bytecodes/family_ids length mismatch: {len(bytecodes)} != {len(families)}"
+        )
+    canonical = family_to_fold_map()
+    all_canonical_families = canonical_family_ids()
+    unknown = sorted({family for family in families
+                      if family is not None and family not in all_canonical_families})
+    if unknown:
+        raise KeyError(
+            "non-empty family IDs are not in the canonical primary population: "
+            + ", ".join(unknown[:10])
+        )
+
+    device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    n_items = len(bytecodes)
+    scores_by_seed = {seed: np.empty(n_items, dtype=np.float64) for seed in SEEDS}
+    thresholds_by_seed = {seed: np.empty(n_items, dtype=np.float64) for seed in SEEDS}
+    decision_votes: list[list[bool]] = [[] for _ in bytecodes]
+    sources = ["" for _ in bytecodes]
+
+    known_indices = [i for i, family in enumerate(families) if family in canonical]
+    if known_indices:
+        known_bytecodes = [bytecodes[i] for i in known_indices]
+        known_folds = [canonical[families[i]] for i in known_indices]
+        known_scores, known_thresholds = score_dataset_out_of_fold(
+            model_name, known_bytecodes, known_folds, device=device
+        )
+        for seed in SEEDS:
+            for local_i, global_i in enumerate(known_indices):
+                score = float(known_scores[seed][local_i])
+                threshold = float(known_thresholds[seed][local_i])
+                scores_by_seed[seed][global_i] = score
+                thresholds_by_seed[seed][global_i] = threshold
+                decision_votes[global_i].append(score >= threshold)
+                sources[global_i] = (
+                    f"canonical_family_oof:test_fold={known_folds[local_i]}"
+                )
+
+    external_indices = [i for i, family in enumerate(families) if family not in canonical]
+    if external_indices:
+        spec = MODEL_REGISTRY[model_name]
+        external_bytecodes = [bytecodes[i] for i in external_indices]
+        for seed in SEEDS:
+            fold_scores = []
+            fold_thresholds = []
+            for test_fold in range(5):
+                _, model, ckpt = _load_checkpoint_model(model_name, seed, test_fold, device)
+                temperature = ckpt["temperature"]
+                scores = np.array([
+                    float(apply_temperature(
+                        torch.as_tensor(score_one(spec, model, device, bytecode)), temperature
+                    ))
+                    for bytecode in external_bytecodes
+                ], dtype=np.float64)
+                threshold = float(ckpt["threshold_5pct"])
+                fold_scores.append(scores)
+                fold_thresholds.append(threshold)
+                for local_i, global_i in enumerate(external_indices):
+                    decision_votes[global_i].append(float(scores[local_i]) >= threshold)
+            mean_scores = np.mean(np.stack(fold_scores, axis=0), axis=0)
+            mean_threshold = float(np.mean(fold_thresholds))
+            for local_i, global_i in enumerate(external_indices):
+                scores_by_seed[seed][global_i] = mean_scores[local_i]
+                # Descriptive only. Operating decisions use decision_fraction below.
+                thresholds_by_seed[seed][global_i] = mean_threshold
+                family = families[global_i]
+                sources[global_i] = (
+                    "canonical_non_primary:five_fold_ensemble"
+                    if family is not None else "verified_external:five_fold_ensemble"
+                )
+
+    return {
+        "scores_by_seed": scores_by_seed,
+        "thresholds_by_seed": thresholds_by_seed,
+        "decision_fraction": np.asarray(
+            [np.mean(votes) if votes else np.nan for votes in decision_votes], dtype=np.float64
+        ),
+        "score_source_by_item": sources,
+        "n_canonical_family_items": len(known_indices),
+        "n_canonical_non_primary_items": sum(
+            families[index] is not None for index in external_indices
+        ),
+        "n_verified_external_items": sum(
+            families[index] is None for index in external_indices
+        ),
+        "decision_rule": (
+            "fraction of eligible checkpoints with calibrated score >= that checkpoint's "
+            "own validation-derived 5%-FPR threshold"
+        ),
     }
 
 

@@ -2,14 +2,15 @@
 
 ## Artifact description
 
-Released: (1) the full evidence-collection pipeline (`evidence_pipeline.py` + per-sample-set
-enrichment drivers), reproducible against any EIP-7702 delegate address given chain + address;
-(2) the LLM-provisional labeling protocol and its 230-item output, with full evidence
-citations; (3) `authguard_sequence_dense` model weights, training harness, and the one-command
-reference-pipeline rerun script supporting 3 label sources; (4) the human-review Excel
-workbooks (structurally blinded to model scores and source labels) for independent
-verification; (5) the legitimate-control dataset (30 verified/candidate real-world EIP-7702
-deployments); (6) the deployment-benchmark harness including a working ONNX export path.
+The artifact contains: (1) the evidence-collection pipeline and per-sample-set enrichment
+drivers; (2) the explicitly provisional LLM labeling protocol and outputs; (3)
+`authguard_sequence_dense`, DCRG extraction, training, calibration, and evaluation code; (4) a
+server-rendered annotation application whose packets exclude model scores, inherited labels,
+and DCRG outputs; (5) frozen Gold-Test and post-cutoff manifests with dual-review/adjudication
+gates; (6) a legitimate-control dataset covering 30 deployments; and (7) a frozen Ethereum
+post-cutoff snapshot, recovered authority/delegate pairs, score-blind project-provenance
+worklists, and pre-label retraining locks. Human labels and post-cutoff scores are absent until
+their declared gates are completed; the artifact does not package placeholders as results.
 
 ## Limitations
 
@@ -19,14 +20,21 @@ deployments); (6) the deployment-benchmark harness including a working ONNX expo
 - **The retraining/model-selection exercise (Part 7-8) used only 47 Gold-Dev binary items**
   — small enough that its own headline finding (a competitive-AUPRC model with a degenerate
   operating threshold) is itself evidence of this limitation's practical bite.
-- **Temporal collection is partial** at the time of this pipeline pass (Ethereum ~2.3% of
-  target window scanned; Base collection stalled on indexed-API reliability) — background
-  jobs remain running and resumable, but no temporal claim in this manuscript should be
-  treated as based on complete coverage.
-- **The automated guard-tracer is a heuristic**, not a formal verifier — it correctly flagged
-  itself AMBIGUOUS on 5/60 Gold-Dev and 3/150 Gold-Test items rather than forcing a guess, but
-  its OPEN/GUARDED classification on the remainder has not been independently audited beyond
-  the Pilot batch's hand-verified 20 items.
+- **The authoritative post-cutoff snapshot is Ethereum-only.** Its hydrated checkpoint covers
+  283,244 blocks through block 24,641,536 and contains 517,930 type-4 transactions without
+  scan-RPC errors, but it does not establish cross-chain external validity. Of 734 recovered
+  valid signer/delegate pairs, 708 had code at first observation. The frozen 150-item review
+  sample remains unusable for accuracy claims until project-family provenance, pre-label
+  retraining, dual review, and adjudication are complete.
+- **The DCRG extractor is a bounded analyzer, not a formal verifier.** Only 670/2,190 primary
+  samples have `COMPLETE` traversal coverage; the remaining 1,520 are explicitly `PARTIAL`.
+  This is why the policy defers incomplete below-threshold cases rather than calling them safe.
+- **The inherited primary labels overlap the semantic evidence represented by DCRG.** The
+  strong primary-fold DCRG result is therefore an engineering diagnostic susceptible to label
+  circularity, not independent evidence that semantic risk was detected.
+- **Gold-Dev and Gold-Test are sampled from the canonical primary corpus.** They must use each
+  family's held-out-fold checkpoint and cannot be described as fully external data. The old
+  all-fold-ensemble reports were invalid and have been replaced with provenance-matched scores.
 - **The static rule comparison and cascade design used only 138-150 Gold-Test items** — no
   claim in this manuscript should be read as applying beyond this specific evaluation sample's
   distribution (heavily curated toward `known_disagreement`-flagged, ambiguous cases, not a
@@ -39,16 +47,16 @@ deployments; no private keys, user data, or non-public information were accessed
 legitimate-control dataset documents real, named projects' deployment addresses drawn from
 their own public documentation — no claim about any named project's security beyond what is
 explicitly cited (verified source presence, runtime-hash match) is made. Live network calls
-throughout this pipeline (Sourcify, Blockscout, 4byte.directory, public RPC endpoints) used
-only public, read-only, rate-limit-respecting requests.
+throughout this pipeline (Sourcify, Blockscout, 4byte.directory, and public RPC endpoints) use
+public, read-only, rate-limited requests. Public verification names, tags, and proxy
+relationships are retained only as audit leads; they are not automatically treated as project
+ownership or security evidence.
 
 ## Conclusion
 
-AuthGuard demonstrates that a compact (97,646-parameter), fast (sub-3ms CPU) neural model can
-provide a meaningful, calibratable-with-caveats triage signal for EIP-7702 delegate
-authorization risk, positioned explicitly as a complement to — not a replacement for — the
-semantic decompilation-and-guard-tracing pipeline this same project built and used to
-construct its own evaluation labels. The provisional results in this manuscript are a
-complete, honestly-caveated dry run of the full research pipeline, built specifically so
-that independent human review, once complete, can be substituted in with one command and no
-further pipeline engineering.
+AuthGuard-7702 currently demonstrates a reproducible coverage-aware screening design: a compact
+bytecode model, an EIP-7702-specific contextual risk representation, provenance-safe
+family-held-out scoring, and an explicit deferral policy. It does not yet demonstrate
+independent semantic validity. That stronger conclusion is gated on adjudicated human labels
+and genuinely post-cutoff project families; until those gates pass, the quantitative results
+are a complete engineering dry run rather than the final acceptance claim.

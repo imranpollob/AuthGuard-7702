@@ -48,8 +48,10 @@ def change_driver(r, d) -> str:
         return "manual review override"
     if "hardcoded address" in txt:
         return "EIP-7702 reinterpretation of a hardcoded-caller guard"
-    if "no CALLER and no ORIGIN opcode" in txt:
-        return "opcode-census soundness rule (no caller-based access control can exist)"
+    if "opcode presence alone" in txt:
+        return "opcode-census reachability shortcut removed (now unresolved evidence)"
+    if "gated only by a storage-derived condition" in txt:
+        return "storage-condition path separated from truly unguarded path"
     if "self-call restriction" in txt or "stored authority" in txt or "ecrecover" in txt:
         return "guard newly visible to CFG analysis (missed by the linear-window tracer)"
     if "never reached by analysis" in txt or "capability is a lower bound" in txt:
@@ -203,8 +205,6 @@ def main():
                       and "reachable with no authorization branch" in r["concrete_unsafe_paths"])
     n_hardcoded = sum(1 for r in allrec if r["opus5_provisional_label"] == "UNSAFE"
                       and "hardcoded address" in r["concrete_unsafe_paths"])
-    n_census = sum(1 for r in allrec if r["opus5_provisional_label"] == "UNSAFE"
-                   and "no CALLER and no ORIGIN opcode" in r["concrete_unsafe_paths"])
     checks.append(["treating a missing recognized guard as unsafe",
                    "NO — an UNSAFE now requires a sensitive operation that survives cutting "
                    "traversal at every authorization-tainted branch, i.e. a demonstrated "

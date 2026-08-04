@@ -2,198 +2,212 @@
   "LABEL_SOURCE": "LLM_PROVISIONAL_OPUS5",
   "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
   "n_total_gold_test_items": 150,
-  "n_uncertain_excluded": 22,
-  "uncertainty_exclusion_rate_pct": 14.7,
-  "n_evaluated_binary": 128,
+  "n_uncertain_excluded": 42,
+  "uncertainty_exclusion_rate_pct": 28.0,
+  "n_evaluated_binary": 108,
   "models": {
     "provisional_final_model": {
-      "n_evaluated": 128,
+      "n_evaluated": 108,
       "n_safe": 20,
-      "n_unsafe": 108,
-      "auprc": 0.9089016784022215,
+      "n_unsafe": 88,
+      "auprc": 0.8949161847287199,
       "auprc_ci_95": [
-        0.8334091980339646,
-        0.9696041167919621
+        0.8068533772239082,
+        0.9711557228160344
       ],
-      "auroc": 0.6763888888888889,
+      "auroc": 0.71875,
       "auroc_ci_95": [
-        0.5184089457796355,
-        0.8270119942773486
+        0.5578187274909965,
+        0.8660958725182863
       ],
+      "score_provenance": "INVALID_FOR_INDEPENDENT_CLAIMS: fine-tuned checkpoint provenance has not yet been rebuilt with all Gold-Test families excluded",
       "operating_threshold": 0.10178104043017507,
-      "precision": 0.8467741935483871,
-      "recall": 0.9722222222222222,
+      "operating_threshold_is_item_specific": false,
+      "precision": 0.8207547169811321,
+      "recall": 0.9886363636363636,
       "specificity": 0.05,
       "fpr": 0.95,
-      "f1": 0.9051724137931034,
-      "balanced_accuracy": 0.5111111111111111,
-      "brier": 0.1895296062505764,
-      "calibration_error": 0.16605244379652834,
+      "f1": 0.8969072164948454,
+      "balanced_accuracy": 0.5193181818181818,
+      "brier": 0.16706203979245796,
+      "calibration_error": 0.12332032087131647,
       "confusion_matrix": {
-        "tp": 105,
+        "tp": 87,
         "fp": 19,
         "tn": 1,
-        "fn": 3
-      }
+        "fn": 1
+      },
+      "independent_evaluation_valid": false
     },
     "authguard_sequence_dense": {
-      "n_evaluated": 128,
+      "n_evaluated": 108,
       "n_safe": 20,
-      "n_unsafe": 108,
-      "auprc": 0.9145563457792664,
+      "n_unsafe": 88,
+      "auprc": 0.8963084217613655,
       "auprc_ci_95": [
-        0.8498743132811194,
-        0.9646475538780022
+        0.820181970901336,
+        0.9571105385706696
       ],
-      "auroc": 0.6587962962962963,
+      "auroc": 0.6528409090909091,
       "auroc_ci_95": [
-        0.5157547032493492,
-        0.7807850707850708
+        0.5039009784815979,
+        0.7917039812813265
       ],
-      "operating_threshold": 0.44079717602580787,
-      "precision": 0.92,
-      "recall": 0.42592592592592593,
-      "specificity": 0.8,
-      "fpr": 0.2,
-      "f1": 0.5822784810126582,
-      "balanced_accuracy": 0.6129629629629629,
-      "brier": 0.44657133944309635,
-      "calibration_error": 0.4763903411637633,
+      "score_provenance": "family-matched out-of-fold checkpoint only; no contributing checkpoint trained on the evaluated family",
+      "operating_threshold": 0.42557960121466976,
+      "operating_threshold_is_item_specific": true,
+      "precision": 0.9512195121951219,
+      "recall": 0.4431818181818182,
+      "specificity": 0.9,
+      "fpr": 0.1,
+      "f1": 0.6046511627906976,
+      "balanced_accuracy": 0.6715909090909091,
+      "brier": 0.43621487742995546,
+      "calibration_error": 0.4501364923687365,
       "confusion_matrix": {
-        "tp": 46,
-        "fp": 4,
-        "tn": 16,
-        "fn": 62
-      }
+        "tp": 39,
+        "fp": 2,
+        "tn": 18,
+        "fn": 49
+      },
+      "independent_evaluation_valid": true
     },
     "authguard_reference_v3": {
-      "n_evaluated": 128,
+      "n_evaluated": 108,
       "n_safe": 20,
-      "n_unsafe": 108,
-      "auprc": 0.9106331456671392,
+      "n_unsafe": 88,
+      "auprc": 0.9204687670998565,
       "auprc_ci_95": [
-        0.8418434358900384,
-        0.9630969731709403
+        0.8517861308193684,
+        0.9727791796058898
       ],
-      "auroc": 0.6481481481481483,
+      "auroc": 0.7329545454545454,
       "auroc_ci_95": [
-        0.5183492315845257,
-        0.7654817782333361
+        0.5936398405516052,
+        0.85814010288089
       ],
-      "operating_threshold": 0.37574609983712437,
-      "precision": 0.9215686274509803,
-      "recall": 0.4351851851851852,
-      "specificity": 0.8,
-      "fpr": 0.2,
-      "f1": 0.5911949685534591,
-      "balanced_accuracy": 0.6175925925925926,
-      "brier": 0.45546052738986315,
-      "calibration_error": 0.4896596368853226,
+      "score_provenance": "family-matched out-of-fold checkpoint only; no contributing checkpoint trained on the evaluated family",
+      "operating_threshold": 0.36350487671033654,
+      "operating_threshold_is_item_specific": true,
+      "precision": 0.9523809523809523,
+      "recall": 0.45454545454545453,
+      "specificity": 0.9,
+      "fpr": 0.1,
+      "f1": 0.6153846153846153,
+      "balanced_accuracy": 0.6772727272727272,
+      "brier": 0.42087547037850226,
+      "calibration_error": 0.462110453259411,
       "confusion_matrix": {
-        "tp": 47,
-        "fp": 4,
-        "tn": 16,
-        "fn": 61
-      }
+        "tp": 40,
+        "fp": 2,
+        "tn": 18,
+        "fn": 48
+      },
+      "independent_evaluation_valid": true
     },
     "flat_cnn_matched_16384": {
-      "n_evaluated": 128,
+      "n_evaluated": 108,
       "n_safe": 20,
-      "n_unsafe": 108,
-      "auprc": 0.9161111020994211,
+      "n_unsafe": 88,
+      "auprc": 0.907846727593866,
       "auprc_ci_95": [
-        0.8490206048928989,
-        0.9674194979942493
+        0.8281475020386344,
+        0.9720897923255243
       ],
-      "auroc": 0.6712962962962963,
+      "auroc": 0.7278409090909091,
       "auroc_ci_95": [
-        0.5338245689638879,
-        0.7961734756471598
+        0.5888667264658672,
+        0.8537686814021084
       ],
-      "operating_threshold": 0.4201417033871015,
-      "precision": 0.9215686274509803,
-      "recall": 0.4351851851851852,
-      "specificity": 0.8,
-      "fpr": 0.2,
-      "f1": 0.5911949685534591,
-      "balanced_accuracy": 0.6175925925925926,
-      "brier": 0.458171079834204,
-      "calibration_error": 0.48668424454044323,
+      "score_provenance": "family-matched out-of-fold checkpoint only; no contributing checkpoint trained on the evaluated family",
+      "operating_threshold": 0.4076752558258581,
+      "operating_threshold_is_item_specific": true,
+      "precision": 0.9512195121951219,
+      "recall": 0.4431818181818182,
+      "specificity": 0.9,
+      "fpr": 0.1,
+      "f1": 0.6046511627906976,
+      "balanced_accuracy": 0.6715909090909091,
+      "brier": 0.42290671586581474,
+      "calibration_error": 0.45371649602116515,
       "confusion_matrix": {
-        "tp": 47,
-        "fp": 4,
-        "tn": 16,
-        "fn": 61
-      }
+        "tp": 39,
+        "fp": 2,
+        "tn": 18,
+        "fn": 49
+      },
+      "independent_evaluation_valid": true
     },
     "flat_cnn_16384": {
-      "n_evaluated": 128,
+      "n_evaluated": 108,
       "n_safe": 20,
-      "n_unsafe": 108,
-      "auprc": 0.9261693005792779,
+      "n_unsafe": 88,
+      "auprc": 0.9159134377382605,
       "auprc_ci_95": [
-        0.8644570671079522,
-        0.9719688458662343
+        0.8362990177190219,
+        0.9779592874687263
       ],
-      "auroc": 0.710185185185185,
+      "auroc": 0.7551136363636364,
       "auroc_ci_95": [
-        0.5718882602545969,
-        0.8295172087251826
+        0.6128150826446281,
+        0.8766078505270609
       ],
-      "operating_threshold": 0.4405095999439557,
-      "precision": 0.9215686274509803,
-      "recall": 0.4351851851851852,
-      "specificity": 0.8,
-      "fpr": 0.2,
-      "f1": 0.5911949685534591,
-      "balanced_accuracy": 0.6175925925925926,
-      "brier": 0.44609280522494743,
-      "calibration_error": 0.4806140817755497,
+      "score_provenance": "family-matched out-of-fold checkpoint only; no contributing checkpoint trained on the evaluated family",
+      "operating_threshold": 0.44256337111194927,
+      "operating_threshold_is_item_specific": true,
+      "precision": 0.9545454545454546,
+      "recall": 0.4772727272727273,
+      "specificity": 0.9,
+      "fpr": 0.1,
+      "f1": 0.6363636363636365,
+      "balanced_accuracy": 0.6886363636363637,
+      "brier": 0.3966667186741929,
+      "calibration_error": 0.43943776639661414,
       "confusion_matrix": {
-        "tp": 47,
-        "fp": 4,
-        "tn": 16,
-        "fn": 61
-      }
+        "tp": 42,
+        "fp": 2,
+        "tn": 18,
+        "fn": 46
+      },
+      "independent_evaluation_valid": true
     }
   },
   "source_static_rule": {
-    "n_evaluated": 128,
-    "n_positive": 108,
+    "n_evaluated": 108,
+    "n_positive": 88,
     "n_negative": 20,
-    "precision": 0.9387755102040817,
-    "recall": 0.42592592592592593,
-    "specificity": 0.85,
-    "fpr": 0.15000000000000002,
-    "f1": 0.5859872611464969,
-    "balanced_accuracy": 0.637962962962963,
+    "precision": 0.9772727272727273,
+    "recall": 0.48863636363636365,
+    "specificity": 0.95,
+    "fpr": 0.050000000000000044,
+    "f1": 0.6515151515151516,
+    "balanced_accuracy": 0.7193181818181817,
     "confusion_matrix": {
-      "tp": 46,
-      "fp": 3,
-      "tn": 17,
-      "fn": 62
+      "tp": 43,
+      "fp": 1,
+      "tn": 19,
+      "fn": 45
     }
   },
   "model_ranking_by_auprc": [
     [
+      "authguard_reference_v3",
+      0.9204687670998565
+    ],
+    [
       "flat_cnn_16384",
-      0.9261693005792779
+      0.9159134377382605
     ],
     [
       "flat_cnn_matched_16384",
-      0.9161111020994211
+      0.907846727593866
     ],
     [
       "authguard_sequence_dense",
-      0.9145563457792664
-    ],
-    [
-      "authguard_reference_v3",
-      0.9106331456671392
-    ],
-    [
-      "provisional_final_model",
-      0.9089016784022215
+      0.8963084217613655
     ]
+  ],
+  "models_excluded_from_independent_ranking": [
+    "provisional_final_model"
   ]
 }

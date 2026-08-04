@@ -15,7 +15,6 @@ or fabricated.
 from __future__ import annotations
 
 import hashlib
-from datetime import datetime, timezone
 
 from evidence.explorer_links import explorer_link
 from evidence.known_projects import known_project_evidence
@@ -57,6 +56,47 @@ def _token_transfer_and_approval_evidence(selector_set: set[str]) -> dict:
     }
 
 
+def _authorization_context(row: dict) -> dict:
+    """Return only neutral, collector-derived authorization provenance when supplied."""
+    authority = row.get("authority_address")
+    if not authority:
+        return {
+            "status": "NOT_AVAILABLE_OFFLINE",
+            "reason": "No frozen authorization tuple was supplied for this review item.",
+        }
+    changed = row.get("runtime_changed_since_first_authorization")
+    if isinstance(changed, str):
+        normalized = changed.strip().lower()
+        if normalized in {"true", "1"}:
+            changed = True
+        elif normalized in {"false", "0"}:
+            changed = False
+        elif normalized in {"", "none", "nan"}:
+            changed = None
+        else:
+            raise ValueError(f"invalid runtime-changed boolean: {changed!r}")
+    elif changed is not None:
+        changed = bool(changed)
+    return {
+        "status": "AVAILABLE_FROM_FROZEN_COLLECTOR",
+        "authorizing_eoa": str(authority).lower(),
+        "delegate_address": str(row.get("address") or "").lower(),
+        "first_observed_block": (
+            int(row["first_block"]) if row.get("first_block") not in (None, "") else None
+        ),
+        "first_observed_transaction": row.get("first_tx_hash"),
+        "observed_authorization_count": (
+            int(row["authorization_count"])
+            if row.get("authorization_count") not in (None, "") else None
+        ),
+        "runtime_changed_since_first_observation": changed,
+        "provenance_note": (
+            "The EOA is recovered from the EIP-7702 authorization-tuple signature. These "
+            "fields are observation context, not a security label or model output."
+        ),
+    }
+
+
 def _deterministic_summary(fields: dict) -> str:
     """Template-based (no LLM) plain-language summary of the extracted evidence, for the
     reviewer's quick orientation -- states facts only, no risk judgment."""
@@ -95,6 +135,12 @@ def _deterministic_summary(fields: dict) -> str:
     if fields["known_project"] is not None:
         lines.append(f"Address is documented as {fields['known_project']['project']} "
                      f"({fields['known_project']['documentation_url']}).")
+    if fields["authorization_history"]["status"] == "AVAILABLE_FROM_FROZEN_COLLECTOR":
+        lines.append(
+            "The frozen collector observed an authorization from EOA "
+            f"{fields['authorization_history']['authorizing_eoa']} to this delegate at block "
+            f"{fields['authorization_history']['first_observed_block']}."
+        )
     return " ".join(lines)
 
 
@@ -142,11 +188,7 @@ def build_evidence_packet(row: dict, sensitive_selectors: set[str] | None = None
             "n_sensitive_selectors": struct_fields["n_sensitive_selectors"],
         },
         "token_transfer_evidence": token_transfer_evidence,
-        "authorization_history": {
-            "status": "NOT_AVAILABLE_OFFLINE",
-            "reason": "Requires the temporal collector (revision_v3/temporal/) or an "
-                      "archive-node/indexer query, not performed for this packet.",
-        },
+        "authorization_history": _authorization_context(row),
         "transaction_history_statistics": {
             "status": "NOT_AVAILABLE_OFFLINE",
             "reason": "Requires a live RPC/indexer query, not performed for this packet.",
@@ -157,8 +199,7 @@ def build_evidence_packet(row: dict, sensitive_selectors: set[str] | None = None
             "status": "NOT_AVAILABLE_OFFLINE" if known_project_evidence(row.get("chain", ""), row.get("address", "")) is None
             else "SEE_KNOWN_PROJECT_DOCUMENTATION_URL",
         },
-        "packet_generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "packet_generator_version": "revision_v3.evidence.packet_builder.v1",
+        "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
     }
     packet["deterministic_summary"] = _deterministic_summary(packet)
     return packet

@@ -18,7 +18,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xcc13036b62790048f20d4bf95b28a028916853f5",
-   "concrete_finding": "flush(): CALL at pc=767 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; 0xda8120d8: SSTORE to slot 0x0 at pc=640 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "flush(): CALL at pc=767 to stored(sload) with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#bnb:0xcc13036b62790048f20d4bf95b28a028916853f5; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/bnb_0xcc13036b62790048f20d4bf95b28a028916853f5/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -128,9 +128,9 @@
   },
   {
    "item_id": "ethereum:0x28d0c57d3f0ae14d6307fea3972d704166e26785",
-   "llm_provisional_label": "UNSAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "UNSAFE_INITIALIZATION",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -138,7 +138,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x28d0c57d3f0ae14d6307fea3972d704166e26785",
-   "concrete_finding": "initialize(address): initializer-shaped entry point at pc=196 performs a storage write with no authorization branch on any path from the dispatcher. The delegate's constructor never runs in the authorizing EOA's context, so that storage starts empty and whichever party calls this first establishes whatever authority it sets; initialize(address): SSTORE to slot 0x0 at pc=487 with no authorization branch \u2014 in the EOA's own (initially empty) storage this lets the first caller install whatever authority that slot controls",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0x28d0c57d3f0ae14d6307fea3972d704166e26785; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0x28d0c57d3f0ae14d6307fea3972d704166e26785/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -159,8 +159,8 @@
   {
    "item_id": "base:0xfc4a4381774e5411b84bff224f8dd9c0d7db52dc",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "UNAUTHORIZED_ASSET_MOVEMENT",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -168,7 +168,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xfc4a4381774e5411b84bff224f8dd9c0d7db52dc",
-   "concrete_finding": "0x0725602e: CALL at pc=1736 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; 0x80c3da8d: CALL at pc=908 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; sweepTokens(address): CALL at pc=1488 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; sweepETH(): CALL at pc=381 to 0x90d8a3915124d1b7d3343670a06c4d3c0ceff4f1 with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; disable(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
+   "concrete_finding": "disable(): msg.sender must equal the hardcoded address 0x0835001cec7823dfc41270ff0c6551c3f9422222. That literal was fixed when the delegate was deployed, so it cannot be the authorizing EOA: this is not protection for the authorizer, it is exclusive privileged access for a fixed third party",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#base:0xfc4a4381774e5411b84bff224f8dd9c0d7db52dc; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/base_0xfc4a4381774e5411b84bff224f8dd9c0d7db52dc/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -263,9 +263,9 @@
   },
   {
    "item_id": "base:0xaa1d67342d4233bd1b600cdd865827265333e4b4",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "1",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -273,7 +273,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xaa1d67342d4233bd1b600cdd865827265333e4b4",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1, 'CREATE2': 1, 'SELFDESTRUCT': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1, CREATE2x1, SELFDESTRUCTx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#base:0xaa1d67342d4233bd1b600cdd865827265333e4b4; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/base_0xaa1d67342d4233bd1b600cdd865827265333e4b4/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -308,9 +308,9 @@
   },
   {
    "item_id": "ethereum:0x2db3224808f473c92fdffc327095400c4c9b0588",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -318,14 +318,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x2db3224808f473c92fdffc327095400c4c9b0588",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0x2db3224808f473c92fdffc327095400c4c9b0588; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0x2db3224808f473c92fdffc327095400c4c9b0588/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "base:0x61e92157bab2c17007903f6fd43e2e5f17a4df39",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "DANGEROUS_DELEGATECALL_OR_UPGRADE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -333,7 +333,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0x61e92157bab2c17007903f6fd43e2e5f17a4df39",
-   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: DELEGATECALL at pc=347 to ['memory'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; <no dispatcher recovered; analysed from pc=0>: DELEGATECALL at pc=430 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#base:0x61e92157bab2c17007903f6fd43e2e5f17a4df39; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/base_0x61e92157bab2c17007903f6fd43e2e5f17a4df39/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -354,7 +354,7 @@
   {
    "item_id": "base:0xae94c5410d1f6f7f68f869989c0a358c74ed3df0",
    "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
+   "llm_provisional_confidence": "medium",
    "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
    "source_rule_label": "0",
    "human_final_label": "",
@@ -363,7 +363,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "base",
    "address": "0xae94c5410d1f6f7f68f869989c0a358c74ed3df0",
-   "concrete_finding": "execute(address,uint256,bytes): CALL at pc=134 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "execute(address,uint256,bytes): CALL at pc=134 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#base:0xae94c5410d1f6f7f68f869989c0a358c74ed3df0; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/base_0xae94c5410d1f6f7f68f869989c0a358c74ed3df0/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -428,9 +428,9 @@
   },
   {
    "item_id": "polygon:0x5af42746a8af42d8a4708df238c53f1f71abf0e0",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "low",
-   "llm_provisional_reason_category": "ARBITRARY_EXTERNAL_CALL",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -438,7 +438,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "polygon",
    "address": "0x5af42746a8af42d8a4708df238c53f1f71abf0e0",
-   "concrete_finding": "execute(bytes32,bytes): CALL at pc=3761 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; execute(bytes32,bytes): CALL at pc=3921 with an attacker-chosen target (target from calldata) reachable with no authorization branch on any path from the dispatcher \u2014 an unauthorized caller can make the authorizing EOA execute an arbitrary call; execute(bytes32,bytes): CALL at pc=3207 to unresolved with value from calldata, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#polygon:0x5af42746a8af42d8a4708df238c53f1f71abf0e0; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/polygon_0x5af42746a8af42d8a4708df238c53f1f71abf0e0/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -498,7 +498,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xe92907ab742c61943a21fe6d5175e0e0487d73cc",
-   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=27 to 0x4d59cd593f6982fdb2eb08bb4e761514b320c14c with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: CALL at pc=27 to 0x4d59cd593f6982fdb2eb08bb4e761514b320c14c with value from selfbalance, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0xe92907ab742c61943a21fe6d5175e0e0487d73cc; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0xe92907ab742c61943a21fe6d5175e0e0487d73cc/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -528,7 +528,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xfe5b26e29f672081b57501463def09c7954798b0",
-   "concrete_finding": "send(): CALL at pc=109 to 0x734a5eec06146f4ed90a206124c593574d6182e4 with value from literal 100000, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 1, 'ADDRESS': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "send(): CALL at pc=109 to 0x734a5eec06146f4ed90a206124c593574d6182e4 with value from literal 100000, reachable with no authorization branch \u2014 moves funds the authorizing account already holds to a destination the account owner did not authorize at call time",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0xfe5b26e29f672081b57501463def09c7954798b0; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0xfe5b26e29f672081b57501463def09c7954798b0/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -773,9 +773,9 @@
   },
   {
    "item_id": "optimism:0x3acd6c0028784d800e3830d2f6dcec232e540444",
-   "llm_provisional_label": "SAFE",
+   "llm_provisional_label": "UNCERTAIN",
    "llm_provisional_confidence": "medium",
-   "llm_provisional_reason_category": "SIGNATURE_AUTHORIZATION_CONFIRMED",
+   "llm_provisional_reason_category": "INSUFFICIENT_EVIDENCE",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -798,7 +798,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0x82ef85e78d97f4ef3e4be1b7dcc744fa880425d7",
-   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: DELEGATECALL at pc=94 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage; the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'DELEGATECALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 DELEGATECALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "<no dispatcher recovered; analysed from pc=0>: DELEGATECALL at pc=94 to ['sload'] reachable with no authorization branch \u2014 third-party code would execute against the EOA's own storage",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0x82ef85e78d97f4ef3e4be1b7dcc744fa880425d7; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0x82ef85e78d97f4ef3e4be1b7dcc744fa880425d7/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
@@ -863,9 +863,9 @@
   },
   {
    "item_id": "bnb:0x66cee5007121800c8429ee77ab5d7dbfd82982a3",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -873,14 +873,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0x66cee5007121800c8429ee77ab5d7dbfd82982a3",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 4, 'ADDRESS': 2, 'STATICCALL': 2, 'DELEGATECALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx4, DELEGATECALLx1 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#bnb:0x66cee5007121800c8429ee77ab5d7dbfd82982a3; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/bnb_0x66cee5007121800c8429ee77ab5d7dbfd82982a3/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "ethereum:0xf6ae00d4c8605133d756858d8f2d8fc51214c1f3",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -888,14 +888,14 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "ethereum",
    "address": "0xf6ae00d4c8605133d756858d8f2d8fc51214c1f3",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 2, 'ADDRESS': 1, 'STATICCALL': 1}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx2 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#ethereum:0xf6ae00d4c8605133d756858d8f2d8fc51214c1f3; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/ethereum_0xf6ae00d4c8605133d756858d8f2d8fc51214c1f3/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   },
   {
    "item_id": "bnb:0xc130d35a2ef67843b085ba42171ac1126800b7da",
-   "llm_provisional_label": "UNSAFE",
-   "llm_provisional_confidence": "high",
-   "llm_provisional_reason_category": "AUTHORIZATION_SPECIFIC_MISUSE",
+   "llm_provisional_label": "UNCERTAIN",
+   "llm_provisional_confidence": "medium",
+   "llm_provisional_reason_category": "DECOMPILATION_AMBIGUITY",
    "source_rule_label": "0",
    "human_final_label": "",
    "human_final_confidence": "",
@@ -903,7 +903,7 @@
    "human_review_status": "NOT_REVIEWED",
    "chain": "bnb",
    "address": "0xc130d35a2ef67843b085ba42171ac1126800b7da",
-   "concrete_finding": "the runtime contains no CALLER and no ORIGIN opcode anywhere (opcode census: {'CALL': 3}) and no path reaches ecrecover, so no msg.sender-, tx.origin- or signature-based access control can exist in it. Every capability it has \u2014 CALLx3 \u2014 is therefore reachable by an arbitrary caller. This conclusion follows from the opcode census alone and does not depend on how completely the control flow was explored.",
+   "concrete_finding": "none identified",
    "evidence_references": "CFG guard-dominance analysis: results/llm_provisional_opus5/dossiers/gold_dev_dossiers.json#bnb:0xc130d35a2ef67843b085ba42171ac1126800b7da; decompiled disassembly and live verification: human_eval/gold_dev_code_evidence/bnb_0xc130d35a2ef67843b085ba42171ac1126800b7da/; source-analyzer facts: USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
   }
  ]

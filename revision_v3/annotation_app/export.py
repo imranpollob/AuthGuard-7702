@@ -10,13 +10,15 @@ import os
 import sys
 
 from db import get_connection
+from agreement import compute_agreement_stats
 
 
 def finalize_item(item_id: str, conn) -> dict | None:
     rows = conn.execute(
         "SELECT reviewer_id, label, unsafe_category, indeterminate_reason, confidence, rationale, "
         "evidence_consulted, is_adjudication, created_at FROM annotations "
-        "WHERE item_id = ? AND is_draft = 0", (item_id,),
+        "WHERE item_id = ? AND is_draft = 0 "
+        "ORDER BY is_adjudication, reviewer_id, created_at", (item_id,),
     ).fetchall()
     if not rows:
         return None
@@ -63,6 +65,7 @@ def export_release(sample_set: str | None = None) -> list[dict]:
     if sample_set:
         query += " WHERE sample_set = ?"
         params = (sample_set,)
+    query += " ORDER BY item_id"
     items = conn.execute(query, params).fetchall()
 
     rows = []
@@ -82,14 +85,23 @@ def main():
     suffix = f"_{sample_set}" if sample_set else "_all"
     json_path = os.path.join(out_dir, f"release{suffix}.json")
     csv_path = os.path.join(out_dir, f"release{suffix}.csv")
+    agreement_path = os.path.join(out_dir, f"agreement{suffix}.json")
     with open(json_path, "w") as f:
         json.dump(rows, f, indent=2)
     if rows:
         with open(csv_path, "w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=sorted({k for r in rows for k in r.keys()}))
+            writer = csv.DictWriter(
+                f,
+                fieldnames=sorted({k for r in rows for k in r.keys()}),
+                lineterminator="\n",
+            )
             writer.writeheader()
             writer.writerows(rows)
+    agreement = compute_agreement_stats(sample_set)
+    with open(agreement_path, "w") as f:
+        json.dump(agreement, f, indent=2, sort_keys=True)
     print(f"exported {len(rows)} finalized rows -> {json_path}")
+    print(f"agreement/adjudication report -> {agreement_path}")
 
 
 if __name__ == "__main__":

@@ -38,16 +38,24 @@
   <summary>Known project / documentation</summary>
   <pre>{{ evidence.known_project | tojson(indent=2) }}</pre>
 </details>
+{% if evidence.authorization_history.status == 'AVAILABLE_FROM_FROZEN_COLLECTOR' %}
+<details open>
+  <summary>Frozen EIP-7702 authorization context (neutral provenance)</summary>
+  <p>This context identifies the authorizing EOA and observation event. It is not a model
+     output or security label.</p>
+  <pre>{{ evidence.authorization_history | tojson(indent=2) }}</pre>
+</details>
+{% endif %}
 <details>
   <summary>Opcode disassembly (first 120 tokens)</summary>
   <pre>{{ disassembly_preview | join(' ') }}</pre>
 </details>
 <details>
-  <summary>Fields not available offline</summary>
+  <summary>Evidence availability</summary>
   <ul>
     <li>Decompiled/source representation: {{ evidence.decompiled_or_source_representation.status }}</li>
     <li>Verified source-code availability: {{ evidence.verified_source_code_availability.status }}</li>
-    <li>Authorization history: {{ evidence.authorization_history.status }}</li>
+    <li>Authorization context: {{ evidence.authorization_history.status }}</li>
     <li>Transaction history statistics: {{ evidence.transaction_history_statistics.status }}</li>
   </ul>
 </details>
@@ -89,11 +97,13 @@
   <p>
     <label>Rationale:</label><br>
     <textarea name="rationale" rows="4" cols="60">{{ existing.rationale if existing else '' }}</textarea>
+    <br><small>Required for final submission; at least 20 characters.</small>
   </p>
   <p>
     <label>Evidence consulted (comma-separated field names):</label><br>
     <input type="text" name="evidence_consulted" size="60"
       value="{{ existing.evidence_consulted if existing else '' }}">
+    <br><small>Required for final submission.</small>
   </p>
   <button type="submit" name="action" value="save_draft">Save draft</button>
   <button type="submit" name="action" value="submit">Submit final</button>

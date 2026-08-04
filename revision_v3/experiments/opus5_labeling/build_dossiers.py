@@ -30,7 +30,10 @@ import sys
 
 import evmole
 
+V3_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
+sys.path.insert(0, V3_SRC)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from analysis.delegation_context import build_delegation_context_graph  # noqa: E402
 from evm_cfg import (SENSITIVE, analyze_fallback, analyze_function,  # noqa: E402
                      static_opcode_census)
 
@@ -134,6 +137,7 @@ def cfg_analysis(bytecode_hex: str) -> dict:
             "reaches_ecrecover": r["reaches_ecrecover"],
             "guards": r["guards"][:6],
             "unguarded_sensitive": r["unguarded_sensitive"][:8],
+            "unguarded_even_by_storage": r["unguarded_even_by_storage"][:8],
             "n_reachable_sensitive": len(r["reachable_sensitive"]),
             **extra,
         })
@@ -202,6 +206,9 @@ def build(sample_set: str, selector_cache: dict, rule_facts: dict,
         old_functions = read_json(os.path.join(item_ev, "decompiled", "functions.json"))
 
         cfg = cfg_analysis(row["runtime_bytecode"])
+        # The manifest address is the delegate implementation, not necessarily the EOA whose
+        # authority is delegated.  Leave authority unknown rather than asserting a false match.
+        dcrg = build_delegation_context_graph(cfg)
 
         # Attach resolved signatures from the previously-collected 4byte cache.
         if "per_function" in cfg:
@@ -255,6 +262,7 @@ def build(sample_set: str, selector_cache: dict, rule_facts: dict,
                 "storage_resolved_implementation": (storage_live or {}),
             },
             "cfg_guard_analysis_opus5": cfg,
+            "delegation_context_risk_graph": dcrg.to_dict(),
             "previous_linear_window_guard_tracer": {
                 "overall_status": (old_trace or {}).get("overall_status"),
                 "note": (old_trace or {}).get("note"),

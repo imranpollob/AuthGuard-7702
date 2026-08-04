@@ -654,10 +654,12 @@ def analyze_function(code: bytes, entry_pc: int, selector: Optional[int] = None,
 
     if not reachable:
         status = "NO_SENSITIVE_OP"
-    elif unguarded_strong:
-        status = "UNGUARDED_PATH"
     elif unguarded_any:
-        # Every path passes an authorization-tainted branch, but only a storage-derived one.
+        # A sensitive path survives even after cutting both strong and storage-derived guards.
+        status = "UNGUARDED_PATH"
+    elif unguarded_strong:
+        # No path bypasses every recognized guard, but at least one relies only on a
+        # storage-derived condition rather than caller/signature provenance.
         status = "GUARDED_BY_STORAGE_CONDITION"
     else:
         status = "GUARD_DOMINATED"

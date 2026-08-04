@@ -1,6 +1,14 @@
 """Fixed label taxonomy for the Revision v3 human-annotation application."""
 
-PRIMARY_LABELS = ["SAFE", "UNSAFE", "INDETERMINATE", "NOT_BYTECODE_SCREENABLE"]
+NEGATIVE_LABEL = "NO_CONCRETE_UNSAFE_BEHAVIOR_FOUND"
+POSITIVE_LABEL = "UNSAFE"
+
+PRIMARY_LABELS = [
+    NEGATIVE_LABEL,
+    POSITIVE_LABEL,
+    "INDETERMINATE",
+    "NOT_BYTECODE_SCREENABLE",
+]
 
 UNSAFE_CATEGORIES = [
     "MALICIOUS_OR_DRAINER",
@@ -24,4 +32,4 @@ INDETERMINATE_REASONS = [
 
 CONFIDENCE_LEVELS = ["high", "medium", "low"]
 
-SAMPLE_SETS = ["pilot", "gold_dev", "gold_test"]
+SAMPLE_SETS = ["pilot", "gold_dev", "gold_test", "postcutoff"]

@@ -1,0 +1,26 @@
+{
+  "cache_sha256": "9f15669ec11139b8aa7ad9a294e8706e11e7c6e7eacdb09dd7d8f92bf8f93b86",
+  "claim_boundary": "Public verification metadata supplies research leads only. It does not prove project ownership, related-family completeness, benignity, or maliciousness.",
+  "collector_sha256": "1180d82a89a9cdba8f58ad8fe9d71a0f54560b42ad8c0514f67dda697b81fd2c",
+  "evidence_sha256": "8808ab8431d31ac65f1a2514bb2741a979947b233365407c56a347d97cc724be",
+  "n_cached_provider_requests": 450,
+  "n_expected_provider_requests": 450,
+  "n_items": 150,
+  "n_items_with_name_signals": 20,
+  "n_items_with_related_address_signals": 1,
+  "n_request_errors": 0,
+  "provider_lookup_status_counts": {
+    "blockscout_address": {
+      "FOUND": 150
+    },
+    "blockscout_contract": {
+      "FOUND": 150
+    },
+    "sourcify": {
+      "NOT_FOUND": 133,
+      "VERIFIED": 17
+    }
+  },
+  "status": "COMPLETE_PUBLIC_PROVENANCE_LEADS",
+  "worklist_sha256": "bdf912d0bde5b7ffbc5144344732f553aef9de2f3b94b84394fb0c8b8fa3a18e"
+}

@@ -238,7 +238,7 @@ def build_record(d, sample_set):
 
     sens_ops = []
     for f in cfg.get("per_function", []):
-        for u in f.get("unguarded_sensitive", []):
+        for u in f.get("unguarded_even_by_storage", f.get("unguarded_sensitive", [])):
             sens_ops.append(f"{f.get('resolved_signature') or f['selector']}: {u['op']} "
                             f"pc={u['pc']} ({u['impact']}) target="
                             f"{u.get('target_const') or ','.join(u.get('target_src') or []) or 'const/unknown'}")
@@ -340,7 +340,12 @@ def main():
             f.write(f"# LABEL_SOURCE={BANNER['LABEL_SOURCE']}\n")
             f.write(f"# STATIC_ANALYZER_EVIDENCE={BANNER['STATIC_ANALYZER_EVIDENCE']}\n")
             f.write(f"# STATUS={BANNER['STATUS']}\n")
-            w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
+            w = csv.DictWriter(
+                f,
+                fieldnames=FIELDS,
+                extrasaction="ignore",
+                lineterminator="\n",
+            )
             w.writeheader()
             for r in recs:
                 w.writerow(r)
@@ -350,10 +355,6 @@ def main():
         summary[ss] = dist
         print(f"{ss}: {len(recs)} items -> {dist}")
     return summary
-
-
-if __name__ == "__main__":
-    main()
 
 
 def emit_pipeline_compatible_labels():
@@ -386,3 +387,8 @@ def emit_pipeline_compatible_labels():
             json.dump({**BANNER, "PROVENANCE": f"projection of {ss}_reviews_opus5.json",
                        "sample_set": ss, "n_items": len(out), "records": out}, f, indent=1)
     print("wrote pipeline-compatible <set>_labels.json under", OUT)
+
+
+if __name__ == "__main__":
+    main()
+    emit_pipeline_compatible_labels()

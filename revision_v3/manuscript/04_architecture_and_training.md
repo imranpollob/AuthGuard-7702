@@ -13,6 +13,26 @@ parameters (forward+backward-verified, not merely `requires_grad` count — see 
 zero) robustness advantage under Flood-200% transformation, with clean-data performance
 statistically tied.
 
+## Delegation-Context Risk Graph (DCRG) extension
+
+Revision v3 adds a typed, EIP-7702-specific semantic view rather than treating generic opcode
+counts as authorization evidence. A bounded CFG and symbolic-stack analysis is converted into
+a Delegation-Context Risk Graph with typed entrypoint, guard, capability, and coverage-gap
+nodes. Guard evidence distinguishes self-call, signature, stored-authority, fixed-address,
+caller-supplied, and `tx.origin` checks. When a live authorization request supplies the
+authorizing EOA, a fixed-address comparison is interpreted relative to that EOA; historical
+benchmark rows do not contain this authority context, so those comparison features remain
+explicitly unknown. The graph exposes a fixed-order feature vector and one of
+`COMPLETE`, `PARTIAL`, or `UNKNOWN` coverage. No missing or unresolved path is interpreted as
+evidence of safety.
+
+The context score and `authguard_sequence_dense` score are combined with a pre-specified
+monotone noisy-OR. Thus, high risk in either view cannot be suppressed by a low score in the
+other, and no flexible meta-classifier is selected on the test set. The decision layer emits
+`WARN`, `LOW_OBSERVED_RISK`, or `DEFER`: a below-threshold result is eligible for
+`LOW_OBSERVED_RISK` only under `COMPLETE` semantic coverage; all other below-threshold results
+are deferred. This is a bounded triage policy, not a proof-of-safety procedure.
+
 ## Training protocol
 
 5 stored, family-disjoint outer folds (test = fold $f$, validation = fold $(f{+}1)\bmod 5$,

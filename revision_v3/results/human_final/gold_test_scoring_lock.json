@@ -1,0 +1,123 @@
+{
+  "artifacts": {
+    "ablation_predictions": {
+      "path": "revision_v3/results/human_final/gold_test_frozen_ablation_predictions.csv.gz",
+      "sha256": "e943a3d90cefd6ed2c65c369edb865ae3b8ba0104b8fe8f8b2df099d8b9deff3"
+    },
+    "fusion_predictions": {
+      "path": "revision_v3/results/human_final/gold_test_frozen_predictions.csv.gz",
+      "sha256": "fc5511615bd790184ea728b368d31941611f3a3f054407143776ed2287b4022e"
+    },
+    "gold_test_manifest": {
+      "path": "revision_v3/human_eval/gold_test_manifest.csv",
+      "sha256": "b85fe8803a33036607b6cb1d78651934779c0926caa8cf12fca7cfe8ec769dce"
+    }
+  },
+  "claim_boundary": "Scores use inherited source-rule training labels. The lock establishes only that score-only artifacts were fixed before any Gold-Test human annotation existed.",
+  "created_at_utc": "2026-08-04T08:33:53.479686+00:00",
+  "dcrg_feature_groups": {
+    "cfg_capability_only": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "fallback_external_call_reachable",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ],
+    "dcrg_full": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_sensitive",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "n_self_call_guards",
+      "n_signature_guards",
+      "n_storage_guards",
+      "n_hardcoded_guards",
+      "n_erc4337_entrypoint_guards",
+      "n_hardcoded_authority_matches",
+      "n_hardcoded_authority_mismatches",
+      "n_calldata_dependent_guards",
+      "n_tx_origin_guards",
+      "fallback_external_call_reachable",
+      "fallback_open_external_call",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ],
+    "dcrg_untyped_guards": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "fallback_external_call_reachable",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown",
+      "n_unguarded_sensitive",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "fallback_open_external_call"
+    ],
+    "dcrg_without_protocol_actors": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_sensitive",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "n_self_call_guards",
+      "n_signature_guards",
+      "n_storage_guards",
+      "n_hardcoded_guards",
+      "n_calldata_dependent_guards",
+      "n_tx_origin_guards",
+      "fallback_external_call_reachable",
+      "fallback_open_external_call",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ]
+  },
+  "human_annotations_present_at_freeze": false,
+  "method_frozen_before_human_labels": true,
+  "n_items": 150,
+  "seeds": [
+    7702,
+    7703,
+    7704
+  ],
+  "source_artifacts": {
+    "ablation_predictions_sha256": "6cb6cab9fb560d5a3767a109f2541f8d093d10a129cb8d0a8a43e24e69f4a44e",
+    "fusion_predictions_sha256": "0fefee84ba75ba181a8ebf8db88474334e6c5ff2fb116818d296be99523fe2f9"
+  },
+  "status": "FROZEN_GOLD_TEST_SCORING_BEFORE_HUMAN_LABELS"
+}

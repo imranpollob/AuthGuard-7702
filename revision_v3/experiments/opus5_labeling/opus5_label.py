@@ -43,14 +43,18 @@ Consequences encoded here:
 
 from __future__ import annotations
 
+import os
+import sys
 from typing import Dict, List, Optional, Tuple
+
+V3_SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
+sys.path.insert(0, V3_SRC)
+from analysis.protocol_actors import ERC4337_ENTRYPOINT_ADDRESSES
 
 # Recognized ERC-4337 EntryPoint deployments. A caller check against one of these is a
 # legitimate smart-account pattern, not a fixed-third-party backdoor.
 ENTRYPOINTS = {
-    "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",  # v0.6
-    "0x0000000071727de22e5e9d8baf0edac6f37da032",  # v0.7
-    "0x4337084d9e255ff0702461cf8895ce9e3b5ff108",  # v0.8
+    *ERC4337_ENTRYPOINT_ADDRESSES,
     "0x0000000000000000000000000000000000000001",  # ecrecover precompile (not an EntryPoint,
                                                    # but never a "third-party owner")
 }
@@ -183,7 +187,11 @@ def summarize_functions(cfg: dict) -> dict:
                 out["entrypoint_guarded"].append(sel)
 
         status = fn["guard_status"]
-        unguarded = fn.get("unguarded_sensitive", [])
+        # Only capabilities surviving cuts at BOTH strong and storage-derived guards are
+        # unauthenticated. ``unguarded_sensitive`` is the broader diagnostic set that survives
+        # strong-guard cuts and therefore includes storage-condition-gated paths.
+        unguarded = fn.get("unguarded_even_by_storage",
+                           fn.get("unguarded_sensitive", []))
         protects = [c for c in classes if c[0] in ("PROTECTS_OWNER", "CALLBACK_RESTRICTION")]
         for cls, g, why in classes:
             if cls == "CALLBACK_RESTRICTION":
@@ -191,7 +199,13 @@ def summarize_functions(cfg: dict) -> dict:
 
         # A function the analyzer called GUARD_DOMINATED, but whose only guard is a hardcoded
         # third-party address, is effectively "someone else owns your account".
-        if status == "GUARD_DOMINATED" and not protects and fn.get("n_reachable_sensitive", 0):
+        if status == "GUARDED_BY_STORAGE_CONDITION":
+            out["unresolved_guard_only"].append((
+                sel,
+                "a sensitive path is gated only by a storage-derived condition; without "
+                "source/state semantics the condition cannot be assumed to encode authority",
+            ))
+        elif status == "GUARD_DOMINATED" and not protects and fn.get("n_reachable_sensitive", 0):
             for cls, g, why in classes:
                 if cls == "THIRD_PARTY_ONLY":
                     out["third_party_guarded_asset"].append(
@@ -335,15 +349,13 @@ def decide(d: dict) -> dict:
     s = summarize_functions(cfg)
     census = cfg.get("static_opcode_census") or {}
     reaches_sig = any(f.get("reaches_ecrecover") for f in cfg.get("per_function", []))
-    # A claim that does not depend on traversal completeness: if the runtime contains no CALLER
-    # and no ORIGIN opcode at all, then no msg.sender/tx.origin-based access control can exist
-    # anywhere in it. Combined with the absence of any signature check, every capability the
-    # contract has is reachable by an arbitrary caller. This resolves coverage-gap items
-    # soundly rather than defaulting them to UNCERTAIN.
+    # Opcode absence rules out caller/origin checks, but opcode *presence* does not establish
+    # reachability. Treat this census as unresolved supporting evidence, never as a shortcut to
+    # an exploitable-path label.
     no_caller_opcode = (census.get("CALLER", 0) == 0 and census.get("ORIGIN", 0) == 0)
     has_capability = any(census.get(op, 0) for op in
                          ("CALL", "DELEGATECALL", "CALLCODE", "CREATE", "CREATE2", "SELFDESTRUCT"))
-    unauthenticated_by_construction = no_caller_opcode and has_capability and not reaches_sig
+    no_explicit_auth_opcode = no_caller_opcode and has_capability and not reaches_sig
     gap = cfg.get("sensitive_opcodes_never_reached_by_analysis") or {}
     fb = cfg.get("fallback_receive_paths") or {}
     unauth_fb = fb.get("unauthenticated_external_call_from_fallback_or_receive")
@@ -446,22 +458,16 @@ def decide(d: dict) -> dict:
             f"({s['unguarded_passthrough_call'][:3]}) — a caller can only donate their own ETH, "
             f"so this is not by itself a path to the account's assets")
 
-    if unauthenticated_by_construction:
-        unsafe_paths.append(
-            "the runtime contains no CALLER and no ORIGIN opcode anywhere "
-            f"(opcode census: {census}) and no path reaches ecrecover, so no msg.sender-, "
-            "tx.origin- or signature-based access control can exist in it. Every capability it "
-            "has — " + ", ".join(f"{op}x{census[op]}" for op in
-                                 ("CALL", "DELEGATECALL", "CALLCODE", "CREATE", "CREATE2",
-                                  "SELFDESTRUCT") if census.get(op))
-            + " — is therefore reachable by an arbitrary caller. This conclusion follows from the "
-              "opcode census alone and does not depend on how completely the control flow was "
-              "explored.")
+    if no_explicit_auth_opcode:
+        unresolved.append(
+            "the runtime contains capability opcodes but no CALLER/ORIGIN opcode and no analyzed "
+            "path reaches ecrecover. This rules out those explicit authorization mechanisms, "
+            "but opcode presence alone does not prove that a capability is reachable; a concrete "
+            "control-flow path is still required for an UNSAFE label")
 
     # ---- decision cascade -------------------------------------------------------------
     strong_unsafe = bool(s["unguarded_arbitrary_call"] or s["unguarded_delegatecall"]
-                         or s["unguarded_selfdestruct"] or s["unguarded_value_drain"]
-                         or unauthenticated_by_construction)
+                         or s["unguarded_selfdestruct"] or s["unguarded_value_drain"])
     moderate_unsafe = bool(s["unguarded_authority_write"] or s["initializer_unrestricted"]
                            or s["third_party_guarded_asset"])
 
@@ -479,16 +485,9 @@ def decide(d: dict) -> dict:
             reason = "ARBITRARY_EXTERNAL_CALL"
         else:
             reason = "UNAUTHORIZED_ASSET_MOVEMENT"
-        if (unauthenticated_by_construction and not s["unguarded_arbitrary_call"]
-                and not s["unguarded_value_drain"] and not s["unguarded_delegatecall"]
-                and not s["unguarded_selfdestruct"]):
-            reason = "AUTHORIZATION_SPECIFIC_MISUSE"
         label, support = "UNSAFE", "CONCRETE_EXPLOITABLE_PATH"
-        if unauthenticated_by_construction:
-            conf = "HIGH"
-        else:
-            conf = "LOW" if (gap or s["incomplete_functions"]) else "HIGH"
-            conf = "MEDIUM" if conf == "LOW" and not gap else conf
+        conf = "LOW" if (gap or s["incomplete_functions"]) else "HIGH"
+        conf = "MEDIUM" if conf == "LOW" and not gap else conf
     elif moderate_unsafe:
         if s["third_party_guarded_asset"]:
             # The capability is gated, but only for an address fixed at deployment time. Under

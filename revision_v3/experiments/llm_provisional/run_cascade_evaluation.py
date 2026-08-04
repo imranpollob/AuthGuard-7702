@@ -42,6 +42,7 @@ LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 
 from evaluation import model_runtime  # noqa: E402
+from data.loader import fold_ids_for_families  # noqa: E402
 from evaluation.metrics_extra import confusion_matrix, specificity_from_cm  # noqa: E402
 
 HUMAN_EVAL_DIR = os.path.join(REPO_ROOT, "revision_v3", "human_eval")
@@ -60,21 +61,15 @@ def load_set(sample_set: str):
     return manifest, labels
 
 
-def get_authguard_threshold(device) -> float:
-    spec = model_runtime.MODEL_REGISTRY[MODEL_NAME]
-    thresholds = []
-    for seed in (7702, 7703, 7704):
-        for fold in range(5):
-            p = os.path.join(spec["checkpoint_dir"], f"{MODEL_NAME}_seed{seed}_fold{fold}.pt")
-            if os.path.exists(p):
-                thresholds.append(torch.load(p, map_location=device, weights_only=False)["threshold_5pct"])
-    return float(np.mean(thresholds))
-
-
 def score_set(sample_set: str, manifest, binary_ids, device):
     bytecodes = [manifest[iid]["runtime_bytecode"] for iid in binary_ids]
-    scores_by_seed = model_runtime.score_dataset_with_ensemble(MODEL_NAME, bytecodes, device=device)
-    return np.mean(list(scores_by_seed.values()), axis=0)
+    family_ids = [manifest[iid]["family_id"] for iid in binary_ids]
+    fold_ids = fold_ids_for_families(family_ids)
+    scores_by_seed, thresholds_by_seed = model_runtime.score_dataset_out_of_fold(
+        MODEL_NAME, bytecodes, fold_ids, device=device
+    )
+    return (np.mean(list(scores_by_seed.values()), axis=0),
+            np.mean(list(thresholds_by_seed.values()), axis=0))
 
 
 def policy_metrics(y_true, final_preds, n_escalated, n_total, cost_per_item_ms) -> dict:
@@ -92,21 +87,22 @@ def policy_metrics(y_true, final_preds, n_escalated, n_total, cost_per_item_ms) 
     }
 
 
-def run_policies(manifest, labels, threshold, escalation_band, device, sample_set: str) -> dict:
+def run_policies(manifest, labels, escalation_band, device, sample_set: str) -> dict:
     binary_ids = [iid for iid, r in labels.items() if r["llm_provisional_label"] in ("SAFE", "UNSAFE")]
     uncertain_ids = [iid for iid, r in labels.items() if r["llm_provisional_label"] == "UNCERTAIN"]
     all_ids = list(labels.keys())
     y_true = np.array([1 if labels[iid]["llm_provisional_label"] == "UNSAFE" else 0 for iid in binary_ids])
-    scores = score_set(sample_set, manifest, binary_ids, device)
+    scores, thresholds = score_set(sample_set, manifest, binary_ids, device)
+    margins = scores - thresholds
     rule_preds = np.array([int(manifest[iid].get("source_label", 0)) for iid in binary_ids])
-    ag_preds = (scores >= threshold).astype(int)
+    ag_preds = (scores >= thresholds).astype(int)
 
     out = {}
     out["A_authguard_alone"] = policy_metrics(y_true, ag_preds, 0, len(binary_ids), MEASURED_AUTHGUARD_LATENCY_MS)
     out["B_static_rule_alone"] = policy_metrics(y_true, rule_preds, 0, len(binary_ids), 0.01)
 
     lo, hi = escalation_band
-    in_band = (scores >= lo) & (scores <= hi)
+    in_band = (margins >= lo) & (margins <= hi)
     c_preds = np.where(in_band, rule_preds, ag_preds)
     out["C_authguard_first_rule_escalation"] = policy_metrics(
         y_true, c_preds, int(in_band.sum()), len(binary_ids),
@@ -132,28 +128,29 @@ def run_policies(manifest, labels, threshold, escalation_band, device, sample_se
 
 def main() -> int:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    threshold = get_authguard_threshold(device)
-    print(f"[cascade] authguard_sequence_dense mean threshold_5pct = {threshold:.4f}")
+    print("[cascade] using each family's held-out checkpoint and its frozen threshold_5pct")
 
     print("[cascade] developing escalation band on Gold-Dev only...")
     gd_manifest, gd_labels = load_set("gold_dev")
     gd_binary_ids = [iid for iid, r in gd_labels.items() if r["llm_provisional_label"] in ("SAFE", "UNSAFE")]
-    gd_scores = score_set("gold_dev", gd_manifest, gd_binary_ids, device)
-    # Escalation band: the middle tercile of Gold-Dev score distribution -- a simple,
+    gd_scores, gd_thresholds = score_set("gold_dev", gd_manifest, gd_binary_ids, device)
+    gd_margins = gd_scores - gd_thresholds
+    # Escalation band: the middle tercile of Gold-Dev score-minus-threshold margins -- a simple,
     # pre-registered (chosen before touching Gold-Test), data-driven ambiguity zone.
-    lo, hi = float(np.percentile(gd_scores, 33)), float(np.percentile(gd_scores, 67))
-    print(f"[cascade] escalation band (from Gold-Dev tercile): [{lo:.4f}, {hi:.4f}]")
+    lo, hi = float(np.percentile(gd_margins, 33)), float(np.percentile(gd_margins, 67))
+    print(f"[cascade] escalation margin band (from Gold-Dev tercile): [{lo:.4f}, {hi:.4f}]")
 
-    gd_policies = run_policies(gd_manifest, gd_labels, threshold, (lo, hi), device, "gold_dev")
+    gd_policies = run_policies(gd_manifest, gd_labels, (lo, hi), device, "gold_dev")
 
     print("[cascade] evaluating frozen policy on Gold-Test (one shot, no further tuning)...")
     gt_manifest, gt_labels = load_set("gold_test")
-    gt_policies = run_policies(gt_manifest, gt_labels, threshold, (lo, hi), device, "gold_test")
+    gt_policies = run_policies(gt_manifest, gt_labels, (lo, hi), device, "gold_test")
 
     report = {
         "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
-        "authguard_threshold_used": threshold,
-        "escalation_band_selected_on_gold_dev_only": {"low": lo, "high": hi},
+        "authguard_threshold_used": "per-item, per-family out-of-fold threshold_5pct averaged across seeds",
+        "score_provenance": "family-matched held-out-test checkpoints only",
+        "escalation_band_selected_on_gold_dev_only": {"margin_low": lo, "margin_high": hi},
         "gold_dev_policy_development_results": gd_policies,
         "gold_test_frozen_policy_evaluation": gt_policies,
         "note": "Policy (escalation band) was frozen after Gold-Dev; Gold-Test results below "

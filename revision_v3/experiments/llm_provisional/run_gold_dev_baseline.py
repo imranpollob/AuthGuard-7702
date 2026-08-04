@@ -36,6 +36,7 @@ LABEL_SRC_BANNER = ("PROVISIONAL — OPUS 5 LABELS WITH STATIC-ANALYZER EVIDENCE
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 
 from evaluation import model_runtime  # noqa: E402
+from data.loader import fold_ids_for_families  # noqa: E402
 from evaluation.metrics_extra import binary_rule_report, expected_calibration_error, confusion_matrix, specificity_from_cm, balanced_accuracy_from_cm  # noqa: E402
 from evaluation.metrics import auprc, auroc, brier, metrics_at_threshold  # noqa: E402
 
@@ -55,28 +56,19 @@ def load_gold_dev():
     return manifest, labels
 
 
-def mean_threshold(model_name: str, seeds, device) -> float:
-    spec = model_runtime.MODEL_REGISTRY[model_name]
-    thresholds = []
-    for seed in seeds:
-        for fold in range(5):
-            ckpt_path = os.path.join(spec["checkpoint_dir"], f"{model_name}_seed{seed}_fold{fold}.pt")
-            if os.path.exists(ckpt_path):
-                ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
-                thresholds.append(ckpt["threshold_5pct"])
-    return float(np.mean(thresholds)) if thresholds else 0.5
-
-
-def evaluate_continuous_model(model_name: str, item_ids, bytecodes, y_true, device) -> dict:
-    scores_by_seed = model_runtime.score_dataset_with_ensemble(model_name, bytecodes, device=device)
+def evaluate_continuous_model(model_name: str, item_ids, bytecodes, family_ids,
+                              y_true, device) -> dict:
+    fold_ids = fold_ids_for_families(family_ids)
+    scores_by_seed, thresholds_by_seed = model_runtime.score_dataset_out_of_fold(
+        model_name, bytecodes, fold_ids, device=device
+    )
     if not scores_by_seed:
         return {"error": "no checkpoints found"}
     seed_scores = np.stack(list(scores_by_seed.values()), axis=0)  # (n_seeds, n_items)
     point_scores = seed_scores.mean(axis=0)
-
-    thr = mean_threshold(model_name, list(scores_by_seed.keys()), device)
-    cm = confusion_matrix(y_true, point_scores, thr)
-    at_thr = metrics_at_threshold(y_true, point_scores, thr)
+    point_thresholds = np.stack(list(thresholds_by_seed.values()), axis=0).mean(axis=0)
+    cm = confusion_matrix(y_true, point_scores, point_thresholds)
+    at_thr = metrics_at_threshold(y_true, point_scores, point_thresholds)
 
     return {
         "n_evaluated": int(len(y_true)),
@@ -84,8 +76,10 @@ def evaluate_continuous_model(model_name: str, item_ids, bytecodes, y_true, devi
         "n_unsafe": int((y_true == 1).sum()),
         "auprc": auprc(y_true, point_scores),
         "auroc": auroc(y_true, point_scores),
-        "operating_threshold_source": "mean of each checkpoint's frozen threshold_5pct (fit on original Phase 1/2 validation folds, NOT re-fit on Gold-Dev)",
-        "operating_threshold": thr,
+        "score_provenance": "family-matched out-of-fold checkpoint only; no contributing checkpoint trained on the evaluated family",
+        "operating_threshold_source": "per-item mean across seeds of the frozen threshold_5pct from that family's held-out-test checkpoint",
+        "operating_threshold": float(point_thresholds.mean()),
+        "operating_threshold_is_item_specific": True,
         "precision": at_thr["precision"],
         "recall": at_thr["recall"],
         "specificity": specificity_from_cm(cm),
@@ -112,6 +106,7 @@ def main() -> int:
     binary_ids = [iid for iid in all_ids if label_of[iid] in ("SAFE", "UNSAFE")]
     y_true = np.array([1 if label_of[iid] == "UNSAFE" else 0 for iid in binary_ids])
     bytecodes = [manifest[iid]["runtime_bytecode"] for iid in binary_ids]
+    family_ids = [manifest[iid]["family_id"] for iid in binary_ids]
 
     report = {
         "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
@@ -124,7 +119,9 @@ def main() -> int:
 
     for model_name in CONTINUOUS_MODELS:
         print(f"[gold_dev_baseline] scoring {model_name} on {len(binary_ids)} binary-labeled items...")
-        report["models"][model_name] = evaluate_continuous_model(model_name, binary_ids, bytecodes, y_true, device)
+        report["models"][model_name] = evaluate_continuous_model(
+            model_name, binary_ids, bytecodes, family_ids, y_true, device
+        )
 
     # Source static rule (already-computed heuristic label from Phase 1 dataset construction,
     # exposed here as source_rule_label -- never shown to the LLM labeling stage).

@@ -35,6 +35,7 @@ sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "src"))
 sys.path.insert(0, os.path.join(REPO_ROOT, "revision_v3", "experiments", "llm_provisional"))
 
 from evaluation import model_runtime  # noqa: E402
+from data.loader import fold_ids_for_families  # noqa: E402
 from evaluation.metrics import auprc, auroc, brier, metrics_at_threshold  # noqa: E402
 from evaluation.metrics_extra import balanced_accuracy_from_cm, confusion_matrix, expected_calibration_error, specificity_from_cm, binary_rule_report  # noqa: E402
 from features.encode import encode_bytecode  # noqa: E402
@@ -101,19 +102,8 @@ def bootstrap_ci_metric(y_true: np.ndarray, scores: np.ndarray, family_ids: np.n
             "ci_high": float(np.percentile(boot_vals, 97.5)), "n_valid_replicates": len(boot_vals)}
 
 
-def mean_threshold(model_name: str, device) -> float:
-    spec = model_runtime.MODEL_REGISTRY[model_name]
-    thresholds = []
-    for seed in (7702, 7703, 7704):
-        for fold in range(5):
-            ckpt_path = os.path.join(spec["checkpoint_dir"], f"{model_name}_seed{seed}_fold{fold}.pt")
-            if os.path.exists(ckpt_path):
-                ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
-                thresholds.append(ckpt["threshold_5pct"])
-    return float(np.mean(thresholds)) if thresholds else 0.5
-
-
-def evaluate_scores(y_true, scores, family_ids, threshold) -> dict:
+def evaluate_scores(y_true, scores, family_ids, threshold,
+                    score_provenance="not recorded") -> dict:
     cm = confusion_matrix(y_true, scores, threshold)
     at_thr = metrics_at_threshold(y_true, scores, threshold)
     auprc_ci = bootstrap_ci_metric(y_true, scores, family_ids, auprc)
@@ -122,7 +112,9 @@ def evaluate_scores(y_true, scores, family_ids, threshold) -> dict:
         "n_evaluated": int(len(y_true)), "n_safe": int((y_true == 0).sum()), "n_unsafe": int((y_true == 1).sum()),
         "auprc": auprc(y_true, scores), "auprc_ci_95": [auprc_ci["ci_low"], auprc_ci["ci_high"]],
         "auroc": auroc(y_true, scores), "auroc_ci_95": [auroc_ci["ci_low"], auroc_ci["ci_high"]] if auroc_ci else None,
-        "operating_threshold": threshold,
+        "score_provenance": score_provenance,
+        "operating_threshold": float(np.asarray(threshold).mean()),
+        "operating_threshold_is_item_specific": np.asarray(threshold).ndim > 0,
         "precision": at_thr["precision"], "recall": at_thr["recall"],
         "specificity": specificity_from_cm(cm), "fpr": at_thr["observed_fpr"], "f1": at_thr["f1"],
         "balanced_accuracy": balanced_accuracy_from_cm(cm), "brier": brier(y_true, scores),
@@ -141,6 +133,7 @@ def main() -> int:
     y_true = np.array([1 if label_of[iid] == "UNSAFE" else 0 for iid in binary_ids])
     bytecodes = [manifest[iid]["runtime_bytecode"] for iid in binary_ids]
     family_ids = np.array([manifest[iid]["family_id"] for iid in binary_ids])
+    fold_ids = fold_ids_for_families(family_ids)
 
     report = {
         "LABEL_SOURCE": LABEL_SRC.upper(), "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
@@ -155,23 +148,44 @@ def main() -> int:
         os.path.join(REPO_ROOT, "revision_v3", "results", LABEL_SRC,
                      "provisional_final_model_checkpoints", f"provisional_final_model_seed{s}.pt"),
         map_location=device, weights_only=False)["threshold_5pct"] for s in (7702, 7703, 7704)]))
-    report["models"]["provisional_final_model"] = evaluate_scores(y_true, prov_scores, family_ids, prov_thr)
+    report["models"]["provisional_final_model"] = evaluate_scores(
+        y_true, prov_scores, family_ids, prov_thr,
+        score_provenance=(
+            "INVALID_FOR_INDEPENDENT_CLAIMS: fine-tuned checkpoint provenance has not yet "
+            "been rebuilt with all Gold-Test families excluded"
+        ),
+    )
+    report["models"]["provisional_final_model"]["independent_evaluation_valid"] = False
 
     for model_name in CONTINUOUS_MODELS:
         print(f"[gold_test] scoring {model_name}...")
-        scores_by_seed = model_runtime.score_dataset_with_ensemble(model_name, bytecodes, device=device)
+        scores_by_seed, thresholds_by_seed = model_runtime.score_dataset_out_of_fold(
+            model_name, bytecodes, fold_ids, device=device
+        )
         point_scores = np.mean(list(scores_by_seed.values()), axis=0)
-        thr = mean_threshold(model_name, device)
-        report["models"][model_name] = evaluate_scores(y_true, point_scores, family_ids, thr)
+        point_thresholds = np.mean(list(thresholds_by_seed.values()), axis=0)
+        report["models"][model_name] = evaluate_scores(
+            y_true, point_scores, family_ids, point_thresholds,
+            score_provenance=(
+                "family-matched out-of-fold checkpoint only; no contributing checkpoint "
+                "trained on the evaluated family"
+            ),
+        )
+        report["models"][model_name]["independent_evaluation_valid"] = True
 
     rule_preds = np.array([int(manifest[iid].get("source_label", 0)) for iid in binary_ids])
     report["source_static_rule"] = binary_rule_report(y_true, rule_preds)
 
     ranking = sorted(
-        [(name, m["auprc"]) for name, m in report["models"].items()],
+        [(name, m["auprc"]) for name, m in report["models"].items()
+         if m.get("independent_evaluation_valid", False)],
         key=lambda x: -x[1]
     )
     report["model_ranking_by_auprc"] = ranking
+    report["models_excluded_from_independent_ranking"] = [
+        name for name, metrics in report["models"].items()
+        if not metrics.get("independent_evaluation_valid", False)
+    ]
 
     out_path = os.path.join(RESULTS_DIR, "gold_test_report.json")
     with open(out_path, "w") as f:
