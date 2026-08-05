@@ -1,0 +1,183 @@
+{
+  "claim_boundary": "These ablations test representation behavior against inherited labels only; they must be reevaluated against human-final and post-cutoff labels.",
+  "feature_groups": {
+    "cfg_capability_only": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "fallback_external_call_reachable",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ],
+    "dcrg_full": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_sensitive",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "n_self_call_guards",
+      "n_signature_guards",
+      "n_storage_guards",
+      "n_hardcoded_guards",
+      "n_erc4337_entrypoint_guards",
+      "n_hardcoded_authority_matches",
+      "n_hardcoded_authority_mismatches",
+      "n_calldata_dependent_guards",
+      "n_tx_origin_guards",
+      "fallback_external_call_reachable",
+      "fallback_open_external_call",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ],
+    "dcrg_untyped_guards": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "fallback_external_call_reachable",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown",
+      "n_unguarded_sensitive",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "fallback_open_external_call"
+    ],
+    "dcrg_without_protocol_actors": [
+      "n_functions",
+      "n_complete_functions",
+      "n_incomplete_functions",
+      "n_unguarded_sensitive",
+      "n_unguarded_call",
+      "n_unguarded_delegatecall",
+      "n_unguarded_create",
+      "n_unguarded_selfdestruct",
+      "n_unguarded_sstore",
+      "n_sensitive_without_any_recognized_guard",
+      "n_storage_condition_guarded_sensitive",
+      "n_guards",
+      "n_self_call_guards",
+      "n_signature_guards",
+      "n_storage_guards",
+      "n_hardcoded_guards",
+      "n_calldata_dependent_guards",
+      "n_tx_origin_guards",
+      "fallback_external_call_reachable",
+      "fallback_open_external_call",
+      "n_unreached_sensitive_sites",
+      "coverage_complete",
+      "coverage_partial",
+      "coverage_unknown"
+    ]
+  },
+  "feature_schema": "dcrg-1.1",
+  "fold_mean_metrics": {
+    "cfg_capability_only": {
+      "auprc": 0.9282711555556927,
+      "auroc": 0.9812754467164524,
+      "brier": 0.034072868691697004,
+      "observed_fpr_at_5pct": 0.0611318076744273,
+      "recall_at_5pct": 0.9808039355983064
+    },
+    "dcrg_full": {
+      "auprc": 0.9520204675011181,
+      "auroc": 0.9858674466637597,
+      "brier": 0.02918970952188313,
+      "observed_fpr_at_5pct": 0.053276313061742006,
+      "recall_at_5pct": 0.9848248384367101
+    },
+    "dcrg_untyped_guards": {
+      "auprc": 0.9489502527409887,
+      "auroc": 0.9856105375702081,
+      "brier": 0.029705758065207484,
+      "observed_fpr_at_5pct": 0.05454721574905807,
+      "recall_at_5pct": 0.9843356216666257
+    },
+    "dcrg_without_protocol_actors": {
+      "auprc": 0.951970011239681,
+      "auroc": 0.9861722383936307,
+      "brier": 0.02920806691267404,
+      "observed_fpr_at_5pct": 0.05594635696582847,
+      "recall_at_5pct": 0.9852551618965107
+    }
+  },
+  "paired_family_bootstrap": [
+    {
+      "auprc": {
+        "ci_high": 0.027720339057240685,
+        "ci_low": -0.0042288790930556765,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.008208867851916213,
+          "7703": 0.011152770257458311,
+          "7704": 0.01183522182970742
+        },
+        "point_delta": 0.010398953313027315
+      },
+      "baseline": "cfg_capability_only",
+      "candidate": "dcrg_full"
+    },
+    {
+      "auprc": {
+        "ci_high": 0.005730992386100878,
+        "ci_low": -0.001430917923540358,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": -0.00023316735373513087,
+          "7703": 0.00109314108070091,
+          "7704": 0.0033249028908043377
+        },
+        "point_delta": 0.001394958872590039
+      },
+      "baseline": "dcrg_untyped_guards",
+      "candidate": "dcrg_full"
+    },
+    {
+      "auprc": {
+        "ci_high": 0.0009395248389722728,
+        "ci_low": -0.0022305446524792105,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": -0.0018319009295196809,
+          "7703": -0.000608283911368579,
+          "7704": 0.0009176282915579481
+        },
+        "point_delta": -0.0005075188497767705
+      },
+      "baseline": "dcrg_without_protocol_actors",
+      "candidate": "dcrg_full"
+    }
+  ],
+  "status": "PROVISIONAL_INHERITED_LABEL_ABLATION"
+}

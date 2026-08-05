@@ -1,0 +1,61 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1688f0b9",
+      "resolved_signature": "createProxyWithNonce(address,bytes,uint256)",
+      "bytecode_offset": 92,
+      "arguments": "address,bytes,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x3408e470",
+      "resolved_signature": "getChainId()",
+      "bytecode_offset": 363,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x53e5d935",
+      "resolved_signature": "proxyCreationCode()",
+      "bytecode_offset": 393,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0xd18af54d",
+      "resolved_signature": "createProxyWithCallback(address,bytes,uint256,address)",
+      "bytecode_offset": 524,
+      "arguments": "address,bytes,uint256,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xec9e80bb",
+      "resolved_signature": "createChainSpecificProxyWithNonce(address,bytes,uint256)",
+      "bytecode_offset": 827,
+      "arguments": "address,bytes,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1979
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2330
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2640
+    },
+    {
+      "selector": "0xa619486e",
+      "resolved_signature": "masterCopy()",
+      "bytecode_offset": 2826
+    }
+  ]
+}

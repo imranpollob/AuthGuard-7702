@@ -1,0 +1,42 @@
+{
+  "artifact": "revision_v3/results/postcutoff_snapshot/ethereum_candidates.csv.gz",
+  "builder_sha256": "8b059b952c05b444a4afdcafa6625b73ab6321a96600eaa76141b5f0c841638e",
+  "canonical_similarity_audit": "opcode-4-gram Jaccard against every unique canonical runtime; threshold 0.85",
+  "chain": "ethereum",
+  "checkpoint": {
+    "chain": "ethereum",
+    "last_scanned_block": 24641536,
+    "n_authorization_entries": 1233059,
+    "n_blocks_scanned": 283244,
+    "n_rpc_errors": 0,
+    "n_type4_txs": 517930,
+    "run_id": "v2_window"
+  },
+  "checkpoint_sha256": "7d2aaba6cfe319e5721847b559bce93a643f9981d3713b6f0e88b1787ade42f2",
+  "claim_boundary": "This is an unlabeled post-cutoff candidate snapshot. Similarity screening is a leakage audit, not proof of family independence; project-family clustering, independent labels, complete holds, and retraining are required before scoring.",
+  "fetch_error_counts": {
+    "ValueError": 6
+  },
+  "historical_state_boundary": "eth_getCode(address, first_block) observes end-of-block state, not transaction-index pre-state. Same-block code changes require transaction-level tracing.",
+  "n_authorities_distinct_from_transaction_sender": 574,
+  "n_candidate_unseen_delegate_addresses": 597,
+  "n_candidate_unseen_exact_runtime_families": 564,
+  "n_exact_historical_duplicates": 0,
+  "n_exact_postcutoff_runtime_families": 673,
+  "n_fetch_errors": 6,
+  "n_invalid_authorization_tuples": 6,
+  "n_no_code_at_first_authorization": 26,
+  "n_rpc_fetch_errors": 0,
+  "n_runtime_changed_since_first_authorization": 3,
+  "n_unique_nonzero_delegates": 740,
+  "n_unique_recovered_authorities": 545,
+  "n_with_historical_runtime": 708,
+  "raw_counts": {
+    "n_raw_rows": 1233059,
+    "n_zero_address_rows": 134199
+  },
+  "raw_sha256": "13da364d1e6a1f39cd414b1d680e1e0a34788c235f421d77fcafefa23d6f9cc2",
+  "schema": "postcutoff-authority-snapshot-1.0",
+  "snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "status": "FROZEN_POSTCUTOFF_CANDIDATE_SNAPSHOT_UNLABELED"
+}

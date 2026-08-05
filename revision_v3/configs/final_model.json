@@ -1,0 +1,63 @@
+{
+  "_comment": "Frozen final model configuration, selected in revision_v3/reports/FINAL_MODEL_SELECTION.md (Phase 2, Part 4). Do not modify without re-running FINAL_MODEL_SELECTION.md's analysis.",
+  "model_name": "authguard_sequence_dense",
+  "architecture": {
+    "class": "HybridModel",
+    "module": "revision_v3.src.models.hybrid",
+    "config": {
+      "vocab_size": 227,
+      "chunk_size": 256,
+      "max_chunks": 64,
+      "embedding_dim": 32,
+      "channel_dim": 64,
+      "view_dim": 64,
+      "fusion_dim": 128,
+      "dense_dim": 261,
+      "ngram_dim": 512,
+      "dropout": 0.15,
+      "use_multiscale": false,
+      "use_dense": true,
+      "use_ngram": false
+    },
+    "active_parameters": 97645,
+    "total_instantiated_parameters": 97646,
+    "note_on_1_param_gap": "1-parameter total-vs-active gap is float32 gradient-underflow noise on a single dummy batch, not structural -- see PARAMETER_ACCOUNTING_REPORT.md Sec 3."
+  },
+  "preprocessing": {
+    "tokenizer": "revision_v3.src.features.encode (opcode-level, 225-token vocab + PAD + UNK = 227)",
+    "chunking": "256-token chunks, evenly-spaced selection if over max_chunks=64 (16,384-token budget)",
+    "dense_features": "261-d: 225-d opcode histogram + 36-d structural/selector scalars (revision_v3.src.features.structural)",
+    "feature_parity_with_v2": "verified 100% token-sequence / opcode-count equality, 0.0 max-abs feature diff on 200 sampled contracts (revision_v3/results/feature_parity_report.json)"
+  },
+  "training_protocol": {
+    "folds": "5 stored family-disjoint outer folds; test=fold f, val=fold (f+1)%5, train=remaining 3",
+    "seeds": [7702, 7703, 7704],
+    "actual_per_fold_seed": "seed + test_fold",
+    "batch_size": 16,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 5.0,
+    "max_epochs": 30,
+    "early_stopping_patience": 5,
+    "early_stopping_metric": "validation AUPRC",
+    "loss": "BCEWithLogitsLoss(pos_weight = n_neg/n_pos on the train fold)",
+    "calibration": "single-scalar temperature scaling, LBFGS, fit on validation logits only",
+    "thresholds": "order-statistic thresholds on validation-negative calibrated scores at nominal 1%/5%/10% FPR",
+    "determinism": {
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false,
+      "use_deterministic_algorithms": "strict (True, not warn_only)",
+      "cublas_workspace_config": ":4096:8",
+      "verified_by": "revision_v3/tests/test_determinism.py -- two independent runs of the same seed/fold produced bit-for-bit identical (max abs diff 0.0) test predictions"
+    }
+  },
+  "canonical_input": {
+    "benchmark": "revision_v2/data/authguardbench_7702_v2.csv.gz",
+    "population": "PRIMARY_EVALUATION: 2190 rows, 727 positive, 1463 negative, 790 families",
+    "sha256_verified_by": "revision_v3/data/input_manifest.json"
+  },
+  "selection_rationale_summary": "Selected over authguard_reference_v3 because of a statistically supported (bootstrap CI excludes zero) and practically meaningful (+0.052 AUPRC, ~6% relative) robustness advantage under the final paper-grade Flood-200% protocol, with clean-data performance statistically tied and calibration/stability metrics favorable. Full reasoning: revision_v3/reports/FINAL_MODEL_SELECTION.md.",
+  "frozen_at_utc": "2026-07-30",
+  "frozen_by": "Phase 2 Part 4"
+}

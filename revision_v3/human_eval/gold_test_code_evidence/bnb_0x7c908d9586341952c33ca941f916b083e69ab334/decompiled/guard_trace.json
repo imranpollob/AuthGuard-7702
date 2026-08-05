@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0xb8e010de",
+      "resolved_signature": "set()",
+      "bytecode_offset": 63,
+      "arguments": "",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "ORIGIN",
+      "guard_constant": "0xa5142abaabafe8535f0b54779cc0e441976d464e",
+      "guard_offset": 162,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

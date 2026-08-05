@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x0d9019e1",
+      "resolved_signature": "RECIPIENT()",
+      "bytecode_offset": 230,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

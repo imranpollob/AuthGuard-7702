@@ -1,0 +1,80 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x02ce8af3",
+      "resolved_signature": "readSlot(uint256)",
+      "bytecode_offset": 183,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 243,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa1af26e9",
+      "resolved_signature": null,
+      "bytecode_offset": 285,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb5786fde",
+      "resolved_signature": null,
+      "bytecode_offset": 307,
+      "arguments": "uint256[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xd7266ec4",
+      "resolved_signature": null,
+      "bytecode_offset": 347,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xdb2e21bc",
+      "resolved_signature": "emergencyWithdraw()",
+      "bytecode_offset": 389,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfbc0d035",
+      "resolved_signature": null,
+      "bytecode_offset": 411,
+      "arguments": "uint256,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 584
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 794
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1083
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1341
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2249
+    }
+  ]
+}

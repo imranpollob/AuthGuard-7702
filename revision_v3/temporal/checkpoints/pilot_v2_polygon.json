@@ -1,0 +1,12 @@
+{
+  "chain": "polygon",
+  "run_id": "pilot_v2",
+  "last_scanned_block": 82393497,
+  "n_blocks_scanned": 1501,
+  "n_type4_txs": 436,
+  "n_authorization_entries": 438,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 547.6101417541504,
+  "last_run_blocks_per_second": 2.7410010983212834,
+  "last_run_n_blocks": 1501
+}

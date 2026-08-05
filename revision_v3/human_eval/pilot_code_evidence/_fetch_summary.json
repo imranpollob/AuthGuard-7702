@@ -1,0 +1,261 @@
+{
+  "items": {
+    "optimism:0xc22efd7c592938a9ce328b6ed46ff54dc12e4d98": {
+      "chain": "optimism",
+      "address": "0xc22efd7c592938a9ce328b6ed46ff54dc12e4d98",
+      "verified_source": false,
+      "n_dispatched_functions": 3,
+      "n_fallback_selector_candidates": 0,
+      "n_resolved_selectors": 0,
+      "n_ascii_strings": 10,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "polygon:0x32ab10ebca6121659e41d7caa364147d87ebd74e": {
+      "chain": "polygon",
+      "address": "0x32ab10ebca6121659e41d7caa364147d87ebd74e",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 2,
+      "n_resolved_selectors": 2,
+      "n_ascii_strings": 3,
+      "n_address_constants": 0,
+      "implementation_resolved": {
+        "slot_used": "slot_0",
+        "implementation_address": "0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab"
+      }
+    },
+    "base:0x54b20dbe278a201289d808448b798106dc6febdd": {
+      "chain": "base",
+      "address": "0x54b20dbe278a201289d808448b798106dc6febdd",
+      "verified_source": false,
+      "n_dispatched_functions": 2,
+      "n_fallback_selector_candidates": 3,
+      "n_resolved_selectors": 4,
+      "n_ascii_strings": 13,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "ethereum:0xd24558a256c4aa2d0b6c3a7e12b2f70f810e7b04": {
+      "chain": "ethereum",
+      "address": "0xd24558a256c4aa2d0b6c3a7e12b2f70f810e7b04",
+      "verified_source": false,
+      "n_dispatched_functions": 12,
+      "n_fallback_selector_candidates": 15,
+      "n_resolved_selectors": 23,
+      "n_ascii_strings": 47,
+      "n_address_constants": 0,
+      "implementation_resolved": {
+        "slot_used": "slot_0",
+        "implementation_address": "0x6702f2df2228e1a53c03dae63fe51a275587abdc"
+      }
+    },
+    "base:0x7aef1df01285823845ee9b905f5bd20471c27e6c": {
+      "chain": "base",
+      "address": "0x7aef1df01285823845ee9b905f5bd20471c27e6c",
+      "verified_source": false,
+      "n_dispatched_functions": 19,
+      "n_fallback_selector_candidates": 39,
+      "n_resolved_selectors": 19,
+      "n_ascii_strings": 90,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "base:0x531723f8dc24e3da9220ec39769eac12cffb03fa": {
+      "chain": "base",
+      "address": "0x531723f8dc24e3da9220ec39769eac12cffb03fa",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 6,
+      "n_resolved_selectors": 6,
+      "n_ascii_strings": 11,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "base:0xbe4cb4f3b926953dc550614b71909f149799f1f9": {
+      "chain": "base",
+      "address": "0xbe4cb4f3b926953dc550614b71909f149799f1f9",
+      "verified_source": false,
+      "n_dispatched_functions": 4,
+      "n_fallback_selector_candidates": 9,
+      "n_resolved_selectors": 11,
+      "n_ascii_strings": 50,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "bnb:0x7543d5c7417fde1b7e2b1d12f7ec77a8fa0d7e7c": {
+      "chain": "bnb",
+      "address": "0x7543d5c7417fde1b7e2b1d12f7ec77a8fa0d7e7c",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 4,
+      "n_resolved_selectors": 5,
+      "n_ascii_strings": 23,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "ethereum:0x2d33b68f3152a43e10b327dbf47bfed0b4a78d10": {
+      "chain": "ethereum",
+      "address": "0x2d33b68f3152a43e10b327dbf47bfed0b4a78d10",
+      "verified_source": false,
+      "n_dispatched_functions": 2,
+      "n_fallback_selector_candidates": 6,
+      "n_resolved_selectors": 7,
+      "n_ascii_strings": 28,
+      "n_address_constants": 0,
+      "implementation_resolved": {
+        "slot_used": "slot_0",
+        "implementation_address": "0xfc968f28e287cc16d1fa26e145e5c0dbbb812de5"
+      }
+    },
+    "gnosis:0x95eb89311ffb27112e657b8a6eaaf7391192c83a": {
+      "chain": "gnosis",
+      "address": "0x95eb89311ffb27112e657b8a6eaaf7391192c83a",
+      "verified_source": false,
+      "n_dispatched_functions": 3,
+      "n_fallback_selector_candidates": 8,
+      "n_resolved_selectors": 7,
+      "n_ascii_strings": 27,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "base:0x399e3a4f3251ba247b223cf41079cfe19d40463f": {
+      "chain": "base",
+      "address": "0x399e3a4f3251ba247b223cf41079cfe19d40463f",
+      "verified_source": false,
+      "n_dispatched_functions": 2,
+      "n_fallback_selector_candidates": 6,
+      "n_resolved_selectors": 7,
+      "n_ascii_strings": 12,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "base:0x09551d2ab499d73affed001b54d483942e11e0ff": {
+      "chain": "base",
+      "address": "0x09551d2ab499d73affed001b54d483942e11e0ff",
+      "verified_source": false,
+      "n_dispatched_functions": 8,
+      "n_fallback_selector_candidates": 12,
+      "n_resolved_selectors": 19,
+      "n_ascii_strings": 39,
+      "n_address_constants": 2,
+      "implementation_resolved": null
+    },
+    "optimism:0x068315334224a8433971b72504434e741a034e35": {
+      "chain": "optimism",
+      "address": "0x068315334224a8433971b72504434e741a034e35",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 2,
+      "n_resolved_selectors": 2,
+      "n_ascii_strings": 3,
+      "n_address_constants": 0,
+      "implementation_resolved": {
+        "slot_used": "slot_0",
+        "implementation_address": "0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab"
+      }
+    },
+    "bnb:0xade121366bd52330411b00f557e5a311f41a7e28": {
+      "chain": "bnb",
+      "address": "0xade121366bd52330411b00f557e5a311f41a7e28",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 5,
+      "n_resolved_selectors": 5,
+      "n_ascii_strings": 18,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "bnb:0x8656e0466987509e76e49a7e97dde4c5be341c4c": {
+      "chain": "bnb",
+      "address": "0x8656e0466987509e76e49a7e97dde4c5be341c4c",
+      "verified_source": false,
+      "n_dispatched_functions": 0,
+      "n_fallback_selector_candidates": 3,
+      "n_resolved_selectors": 3,
+      "n_ascii_strings": 7,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "base:0x2e8bf58e618447d90f4e19ff6491e85fda84472d": {
+      "chain": "base",
+      "address": "0x2e8bf58e618447d90f4e19ff6491e85fda84472d",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 8,
+      "n_resolved_selectors": 8,
+      "n_ascii_strings": 26,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "optimism:0x6cd575da80915f273f60ec168732b05ae42bea82": {
+      "chain": "optimism",
+      "address": "0x6cd575da80915f273f60ec168732b05ae42bea82",
+      "verified_source": false,
+      "n_dispatched_functions": 28,
+      "n_fallback_selector_candidates": 35,
+      "n_resolved_selectors": 41,
+      "n_ascii_strings": 49,
+      "n_address_constants": 1,
+      "implementation_resolved": null
+    },
+    "arbitrum:0xc9a6f7ff9db9408eba9bef142ea8aa53d7bbe303": {
+      "chain": "arbitrum",
+      "address": "0xc9a6f7ff9db9408eba9bef142ea8aa53d7bbe303",
+      "verified_source": false,
+      "n_dispatched_functions": 1,
+      "n_fallback_selector_candidates": 5,
+      "n_resolved_selectors": 5,
+      "n_ascii_strings": 22,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "ethereum:0x1c8ef3d487cf7278cb2ccfc1e339b055cd5291ea": {
+      "chain": "ethereum",
+      "address": "0x1c8ef3d487cf7278cb2ccfc1e339b055cd5291ea",
+      "verified_source": false,
+      "n_dispatched_functions": 4,
+      "n_fallback_selector_candidates": 1,
+      "n_resolved_selectors": 5,
+      "n_ascii_strings": 27,
+      "n_address_constants": 0,
+      "implementation_resolved": null
+    },
+    "base:0xfec670faa234d55dd09efb9aae99ff1e2a4e4a0a": {
+      "chain": "base",
+      "address": "0xfec670faa234d55dd09efb9aae99ff1e2a4e4a0a",
+      "verified_source": false,
+      "n_dispatched_functions": 0,
+      "n_fallback_selector_candidates": 0,
+      "n_resolved_selectors": 0,
+      "n_ascii_strings": 5,
+      "n_address_constants": 0,
+      "implementation_resolved": {
+        "slot_used": "slot_0",
+        "implementation_address": "0x1c99baf6a7305c2ee200b70668a7077e8cdfb70e"
+      }
+    }
+  },
+  "shared_implementations": {
+    "0xcfaa26ad40bfc7e3b1642e1888620fc402b95dab": {
+      "chain": "polygon",
+      "verified": false,
+      "code_bytes": 22528
+    },
+    "0x6702f2df2228e1a53c03dae63fe51a275587abdc": {
+      "chain": "ethereum",
+      "verified": false,
+      "code_bytes": 0
+    },
+    "0xfc968f28e287cc16d1fa26e145e5c0dbbb812de5": {
+      "chain": "ethereum",
+      "verified": false,
+      "code_bytes": 23
+    },
+    "0x1c99baf6a7305c2ee200b70668a7077e8cdfb70e": {
+      "chain": "base",
+      "verified": false,
+      "code_bytes": 0
+    }
+  }
+}

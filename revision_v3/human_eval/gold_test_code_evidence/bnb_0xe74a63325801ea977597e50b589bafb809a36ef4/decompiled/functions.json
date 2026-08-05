@@ -1,0 +1,110 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x690d8320",
+      "resolved_signature": "withdrawETH(address)",
+      "bytecode_offset": 126,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x715018a6",
+      "resolved_signature": "renounceOwnership()",
+      "bytecode_offset": 166,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8129fc1c",
+      "resolved_signature": "initialize()",
+      "bytecode_offset": 188,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 210,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x9456fbcc",
+      "resolved_signature": "withdrawERC20(address,address)",
+      "bytecode_offset": 252,
+      "arguments": "address,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xdffeadd0",
+      "resolved_signature": "main()",
+      "bytecode_offset": 292,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xf2fde38b",
+      "resolved_signature": "transferOwnership(address)",
+      "bytecode_offset": 314,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xf92ee8a9",
+      "resolved_signature": "InvalidInitialization()",
+      "bytecode_offset": 607
+    },
+    {
+      "selector": "0x1e4fbdf7",
+      "resolved_signature": "OwnableInvalidOwner(address)",
+      "bytecode_offset": 2970
+    },
+    {
+      "selector": "0x118cdaa7",
+      "resolved_signature": "OwnableUnauthorizedAccount(address)",
+      "bytecode_offset": 3115
+    },
+    {
+      "selector": "0x319af333",
+      "resolved_signature": "log(string,address)",
+      "bytecode_offset": 3518
+    },
+    {
+      "selector": "0xb60e72cc",
+      "resolved_signature": "log(string,uint256)",
+      "bytecode_offset": 3674
+    },
+    {
+      "selector": "0xd7e6bcf8",
+      "resolved_signature": "NotInitializing()",
+      "bytecode_offset": 3815
+    },
+    {
+      "selector": "0x1e4fbdf7",
+      "resolved_signature": "OwnableInvalidOwner(address)",
+      "bytecode_offset": 3927
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4799
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4844
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 5308
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 5770
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "chain": "optimism",
+  "run_id": "pilot_v2",
+  "last_scanned_block": 147154112,
+  "n_blocks_scanned": 1501,
+  "n_type4_txs": 6,
+  "n_authorization_entries": 6,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 306.8588936328888,
+  "last_run_blocks_per_second": 3.4250270134173326,
+  "last_run_n_blocks": 1051
+}

@@ -1,0 +1,3108 @@
+{
+  "consensus_distribution": {
+    "DEFER": 16,
+    "WARN": 14
+  },
+  "consensus_warn_rate": 0.4666666666666667,
+  "limitations": [
+    "Only eight legitimate projects are available; confidence intervals are wide.",
+    "All held-out controls have PARTIAL bounded-analysis coverage.",
+    "This evaluation measures false-warning generalization only, not malicious recall."
+  ],
+  "model": "DCRG-only XGBoost; frozen sequence checkpoints excluded because complete project-family retraining is unavailable",
+  "n_deployments": 30,
+  "n_projects": 8,
+  "per_item": [
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "ethereum:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "base:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "bnb:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "polygon:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "arbitrum:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "optimism:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00215",
+      "item_id": "gnosis:0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "MetaMask_EIP7702StatelessDeleGator",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "ethereum:0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Ambire_EIP7702Account",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00217",
+      "item_id": "ethereum:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00708",
+      "item_id": "optimism:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00708",
+      "item_id": "bnb:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00708",
+      "item_id": "polygon:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00708",
+      "item_id": "base:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": "F00708",
+      "item_id": "arbitrum:0xd6cedde84be40893d153be9d467cd6ad37875b28",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "ZeroDev_Kernel_v3.3_7702",
+      "warn_fraction": 1.0
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": "F00218",
+      "item_id": "ethereum:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "base:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "polygon:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "arbitrum:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "optimism:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "bnb:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.13333333333333333,
+      "family_id": null,
+      "item_id": "gnosis:0x0000000020fe2f30453074ad916edeb653ec7e9d",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Biconomy_Nexus_v1.3.1",
+      "warn_fraction": 0.8666666666666667
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00219",
+      "item_id": "ethereum:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "base:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "optimism:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "arbitrum:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "bnb:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": null,
+      "item_id": "polygon:0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "OKX_SmartWalletEntry",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 1.0,
+      "family_id": "F00220",
+      "item_id": "ethereum:0x000000005c84f8fd50b21cac312528a64437030e",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Uniswap_Calibur_v1.1.0",
+      "warn_fraction": 0.0
+    },
+    {
+      "consensus_decision": "DEFER",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.6666666666666666,
+      "family_id": "F00221",
+      "item_id": "ethereum:0x69007702764179f14f51cdce752f4f775d74e139",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Alchemy_SemiModularAccount7702",
+      "warn_fraction": 0.3333333333333333
+    },
+    {
+      "consensus_decision": "WARN",
+      "coverage": "PARTIAL",
+      "defer_fraction": 0.0,
+      "family_id": null,
+      "item_id": "base:0x7702cb554e6bfb442cb743a7df23154544a7176c",
+      "low_observed_risk_fraction": 0.0,
+      "n_votes": 15,
+      "project": "Coinbase_EIP7702Proxy",
+      "warn_fraction": 1.0
+    }
+  ],
+  "per_project": {
+    "Alchemy_SemiModularAccount7702": {
+      "consensus_warn": 0,
+      "mean_warn_fraction": 0.3333333333333333,
+      "n": 1
+    },
+    "Ambire_EIP7702Account": {
+      "consensus_warn": 0,
+      "mean_warn_fraction": 0.0,
+      "n": 1
+    },
+    "Biconomy_Nexus_v1.3.1": {
+      "consensus_warn": 7,
+      "mean_warn_fraction": 0.8666666666666669,
+      "n": 7
+    },
+    "Coinbase_EIP7702Proxy": {
+      "consensus_warn": 1,
+      "mean_warn_fraction": 1.0,
+      "n": 1
+    },
+    "MetaMask_EIP7702StatelessDeleGator": {
+      "consensus_warn": 0,
+      "mean_warn_fraction": 0.0,
+      "n": 7
+    },
+    "OKX_SmartWalletEntry": {
+      "consensus_warn": 0,
+      "mean_warn_fraction": 0.0,
+      "n": 6
+    },
+    "Uniswap_Calibur_v1.1.0": {
+      "consensus_warn": 0,
+      "mean_warn_fraction": 0.0,
+      "n": 1
+    },
+    "ZeroDev_Kernel_v3.3_7702": {
+      "consensus_warn": 6,
+      "mean_warn_fraction": 1.0,
+      "n": 6
+    }
+  },
+  "protocol": "hold out all deployments and known canonical families for one project; augment primary training with one exact-runtime-deduplicated unit-weight benign row per runtime from other projects",
+  "split_audit": [
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00221"
+      ],
+      "heldout_project": "Alchemy_SemiModularAccount7702",
+      "heldout_runtime_hashes": [
+        "742f760f1278f7ede7ff447b50c91e0e33f576909c14bcb04c0eef8473c677e1"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Ambire_EIP7702Account",
+      "heldout_runtime_hashes": [
+        "fdadb553cb1e210742e748822cf295f7baab01373ddc3ab79c026b9c710f25a4"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00218"
+      ],
+      "heldout_project": "Biconomy_Nexus_v1.3.1",
+      "heldout_runtime_hashes": [
+        "29f28e86f6c9dde4cb41ec788e0e73d7e2669813699e115b58194cc102811f86"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [],
+      "heldout_project": "Coinbase_EIP7702Proxy",
+      "heldout_runtime_hashes": [
+        "97497b31483a21567c1c520851c6e8e65e6ce906dc9236843668a21c3cd691e3"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 440,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1310,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1313,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1314,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 440,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1310,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1313,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1314,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 440,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1310,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1313,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00215"
+      ],
+      "heldout_project": "MetaMask_EIP7702StatelessDeleGator",
+      "heldout_runtime_hashes": [
+        "54d1d462b7e78794f2813dc9f65ea9c593a37deb443f5bcc134c75e5ab5aa728"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1314,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "Uniswap_Calibur_v1.1.0",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00219"
+      ],
+      "heldout_project": "OKX_SmartWalletEntry",
+      "heldout_runtime_hashes": [
+        "7079cb12941541d77bbb11755b0420283c1f199664de263f83c859aa0d3c041b"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "ZeroDev_Kernel_v3.3_7702"
+      ],
+      "heldout_known_families": [
+        "F00220"
+      ],
+      "heldout_project": "Uniswap_Calibur_v1.1.0",
+      "heldout_runtime_hashes": [
+        "91d278eed4489e727fa971fa851c88cb28a62504d48c0e15b3c9af9df7fbbc74"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7702,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7702,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7702,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7702,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7703,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7703,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7703,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7703,
+      "test_fold": 4
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1298,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 0
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1317,
+      "n_primary_val_after_project_family_holdout": 427,
+      "seed": 7704,
+      "test_fold": 1
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1316,
+      "n_primary_val_after_project_family_holdout": 447,
+      "seed": 7704,
+      "test_fold": 2
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1319,
+      "n_primary_val_after_project_family_holdout": 424,
+      "seed": 7704,
+      "test_fold": 3
+    },
+    {
+      "development_projects": [
+        "Alchemy_SemiModularAccount7702",
+        "Ambire_EIP7702Account",
+        "Biconomy_Nexus_v1.3.1",
+        "Coinbase_EIP7702Proxy",
+        "MetaMask_EIP7702StatelessDeleGator",
+        "OKX_SmartWalletEntry",
+        "Uniswap_Calibur_v1.1.0"
+      ],
+      "heldout_known_families": [
+        "F00217",
+        "F00708"
+      ],
+      "heldout_project": "ZeroDev_Kernel_v3.3_7702",
+      "heldout_runtime_hashes": [
+        "d1d1ce003806a6e13613aac80a9cc3da77d1e8363c4bd7129fb09100a4adb487"
+      ],
+      "n_development_project_runtimes": 7,
+      "n_primary_train_after_project_family_holdout": 1320,
+      "n_primary_val_after_project_family_holdout": 446,
+      "seed": 7704,
+      "test_fold": 4
+    }
+  ],
+  "status": "LEAVE_ONE_PROJECT_OUT_LEGITIMATE_CONTROL_EVALUATION"
+}

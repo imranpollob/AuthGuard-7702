@@ -1,0 +1,14 @@
+{
+  "claim_boundary": "Exact-runtime deduplication and canonical similarity screening do not establish project-family independence. Cluster and adjudicate project provenance before any model retraining or scoring.",
+  "manifest": "revision_v3/results/postcutoff_snapshot/postcutoff_review_manifest.csv",
+  "manifest_sha256": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44",
+  "n_eligible_exact_runtime_families": 564,
+  "n_selected": 150,
+  "sample_seed": 77022026,
+  "sampler_sha256": "dad0bcfa9af1519006852bfda05fcb1d49d026cb0528410a85839896b7c88b3d",
+  "sampling_status": "COMPLETE",
+  "selected_bytecode_hashes_sha256": "81886a05474554927927e46e5004c2eb701f2728367550f363e6e4e1addab13e",
+  "selection": "simple random sample without replacement over exact-runtime families after excluding canonical exact/similarity matches; representative is the most frequently authorized address, then lexical address",
+  "snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "target_n": 150
+}

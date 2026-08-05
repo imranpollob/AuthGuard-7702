@@ -1,0 +1,45 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 149,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xdfb89c37",
+      "resolved_signature": null,
+      "bytecode_offset": 191,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x0d0bbb0b",
+      "resolved_signature": null,
+      "bytecode_offset": 53
+    },
+    {
+      "selector": "0x0d0bbb0b",
+      "resolved_signature": null,
+      "bytecode_offset": 103
+    },
+    {
+      "selector": "0x5fc483c5",
+      "resolved_signature": "OnlyOwner()",
+      "bytecode_offset": 336
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 1153
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 1263
+    }
+  ]
+}

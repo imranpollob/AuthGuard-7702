@@ -1,0 +1,44 @@
+{
+  "per_function": [
+    {
+      "selector": "0x03c1d1df",
+      "resolved_signature": "collectERC20(address,uint256)",
+      "bytecode_offset": 59,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x8943ec02",
+      "resolved_signature": "tokenReceived(address,uint256,bytes)",
+      "bytecode_offset": 100,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xa3d409fe",
+      "resolved_signature": "collectETH(uint256)",
+      "bytecode_offset": 161,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 258,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

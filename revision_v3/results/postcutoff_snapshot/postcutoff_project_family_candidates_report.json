@@ -1,0 +1,17 @@
+{
+  "builder_sha256": "32823abc3e10f7347f5c570d32a13d310ba4540b6ce7fd898dc235a0ecb46114",
+  "claim_boundary": "This artifact proposes conservative research clusters only. It does not complete the authoritative audit, prove ownership, establish legitimacy, or supply labels.",
+  "dependence_sha256": "858ce855ba0d3d8820bdea65b9ec64429c942bd12f9cde1ec592252f44860e7a",
+  "n_items": 150,
+  "n_items_with_verified_source_names": 20,
+  "n_proposed_families": 124,
+  "output_sha256": "f69593fb879b4f202da7ca38e8baa4e78691377ba7cb7d989885c5c0e3aefaf4",
+  "proposal_status_counts": {
+    "ANONYMOUS_SINGLETON_REQUIRES_RESEARCH": 93,
+    "STRONG_ONCHAIN_CLUSTER_PROPOSAL": 45,
+    "VERIFIED_SOURCE_SINGLETON_PROPOSAL": 12
+  },
+  "public_provenance_cache_sha256": "9f15669ec11139b8aa7ad9a294e8706e11e7c6e7eacdb09dd7d8f92bf8f93b86",
+  "status": "SCORE_BLIND_PROJECT_FAMILY_CANDIDATES_ONLY",
+  "worklist_sha256": "bdf912d0bde5b7ffbc5144344732f553aef9de2f3b94b84394fb0c8b8fa3a18e"
+}

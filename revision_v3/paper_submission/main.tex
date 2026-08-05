@@ -1,0 +1,690 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\pending}[1]{\textcolor{red}{\textbf{[#1]}}}
+\newif\ifresultsready
+\resultsreadyfalse
+
+% Populate only from the one-shot human-final result artifact, then set \resultsreadytrue.
+\newcommand{\FinalBinaryN}{\pending{N-BINARY}}
+\newcommand{\FinalUnsafeN}{\pending{N-UNSAFE}}
+\newcommand{\FinalNegativeN}{\pending{N-BOUNDED-NEGATIVE}}
+\newcommand{\FinalIndeterminateN}{\pending{N-INDETERMINATE}}
+\newcommand{\FinalAgreement}{\pending{RAW-AGREEMENT}}
+\newcommand{\FinalKappa}{\pending{KAPPA}}
+\newcommand{\PrimaryDelta}{\pending{FULL-MINUS-UNTYPED}}
+\newcommand{\PrimaryLower}{\pending{PRIMARY-CI-LOWER}}
+\newcommand{\PrimaryUpper}{\pending{PRIMARY-CI-UPPER}}
+\newcommand{\FullAUPRC}{\pending{TBD}}
+\newcommand{\HistAUPRC}{\pending{TBD}}
+\newcommand{\SequenceAUPRC}{\pending{TBD}}
+\newcommand{\CapabilityAUPRC}{\pending{TBD}}
+\newcommand{\UntypedAUPRC}{\pending{TBD}}
+\newcommand{\ActorRemovedAUPRC}{\pending{TBD}}
+\newcommand{\ProjectBalancedAUPRC}{\pending{TBD}}
+\newcommand{\FullAUROC}{\pending{TBD}}
+\newcommand{\HistAUROC}{\pending{TBD}}
+\newcommand{\SequenceAUROC}{\pending{TBD}}
+\newcommand{\CapabilityAUROC}{\pending{TBD}}
+\newcommand{\UntypedAUROC}{\pending{TBD}}
+\newcommand{\ActorRemovedAUROC}{\pending{TBD}}
+\newcommand{\ProjectBalancedAUROC}{\pending{TBD}}
+\newcommand{\FinalDeferRate}{\pending{TBD}}
+\newcommand{\FullWarnRecall}{\pending{TBD}}
+\newcommand{\FullWarnRecallLower}{\pending{TBD}}
+\newcommand{\FullWarnRecallUpper}{\pending{TBD}}
+\newcommand{\FullWarnFPR}{\pending{TBD}}
+\newcommand{\FullWarnFPRLower}{\pending{TBD}}
+\newcommand{\FullWarnFPRUpper}{\pending{TBD}}
+\newcommand{\FullWarnPrecision}{\pending{TBD}}
+\newcommand{\FullWarnPrecisionLower}{\pending{TBD}}
+\newcommand{\FullWarnPrecisionUpper}{\pending{TBD}}
+\newcommand{\FullDeferLower}{\pending{TBD}}
+\newcommand{\FullDeferUpper}{\pending{TBD}}
+\newcommand{\FullNoWarnUnsafeRate}{\pending{TBD}}
+\newcommand{\FullNoWarnUnsafeLower}{\pending{TBD}}
+\newcommand{\FullNoWarnUnsafeUpper}{\pending{TBD}}
+\newcommand{\PaperBranch}{\pending{METHOD-OR-MEASUREMENT}}
+\InputIfFileExists{generated/prelabel_results_macros.tex}{}{\PackageError{AuthGuard}{Missing generated pre-label macros}{Run generate_prelabel_submission_assets.py}}
+\InputIfFileExists{generated/final_results_macros.tex}{}{}
+
+\title{AuthGuard-7702: Coverage-Audited Delegation-Context Analysis for
+Pre-Authorization Screening}
+
+\author{\IEEEauthorblockN{Anonymous Authors}}
+
+\begin{document}
+\maketitle
+
+\ifresultsready\else
+\begin{center}
+\fbox{\parbox{0.94\columnwidth}{\centering\textbf{PRE-LABEL DRAFT---NOT FOR SUBMISSION.}
+Final human-result macros are intentionally unresolved.}}
+\end{center}
+\fi
+
+\begin{abstract}
+EIP-7702 lets an externally owned account execute delegate-contract code in the account's
+storage, balance, and identity context. This creates a security decision before authorization,
+when behavioral history, reputation, and verified source may be unavailable. We present
+AuthGuard-7702, a bytecode-only warning and triage study built around a Delegation-Context Risk
+Graph (DCRG). DCRG connects reachable sensitive capabilities to recognized guard evidence and
+retains unresolved control flow as an explicit coverage state. A bounded extractor combines
+conservative state widening with jump-fenced Solidity-metadata recognition. On
+\CanonicalRuntimes{} unique
+runtimes, these corrections increase complete bounded-analysis coverage from 31.1\% to 63.8\%
+without converting a previously complete runtime to partial coverage, while inherited-label
+AUPRC remains statistically unchanged. We preregister a single representation endpoint on a
+score-blind post-cutoff sample, retrain after conservative research-family holds, and separately
+evaluate three new legitimate projects. \ifresultsready On \FinalBinaryN{} adjudicated binary
+judgments, full DCRG reaches \FullAUPRC{} AUPRC and differs from its type-erased ablation by
+\PrimaryDelta{} (95\% paired dependence-cluster interval [\PrimaryLower{}, \PrimaryUpper{}]).
+\else Final untouched-label performance will be inserted only from the locked one-shot
+evaluation.\fi The interface emits \code{WARN}, \code{NO\_MODEL\_WARNING}, or \code{DEFER}; it
+does not infer intent or certify authorization safety.
+\end{abstract}
+
+\begin{IEEEkeywords}
+EIP-7702, Ethereum, smart-account security, bytecode analysis, selective prediction
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+EIP-7702 changes the Ethereum account model by allowing an externally owned account (EOA) to
+install a delegation indicator that resolves to contract code~\cite{eip7702}. The referenced code
+then executes in the EOA's context. This enables batching, sponsorship, and scoped authorization,
+but a deficient delegate can expose the authorizing account to replay, unexpected calls,
+initialization takeover, storage collision, or broad asset control~\cite{eip7702}.
+
+Existing EIP-7702 security studies establish that the threat is real. Huang et al. combine
+large-scale historical transaction filtering, Gigahorse decompilation, and cross-contract rules to
+identify EOA-targeted, contract-targeted, and composite attacks~\cite{huang2026darkside}. Qi et al.
+study persistent delegation phishing, activation pathways, and ecosystem concentration
+~\cite{qi2025phishing}. We ask a narrower operational question: what can be learned from a proposed
+delegate's runtime bytecode \emph{before} authorization, without requiring behavioral history?
+
+This decision boundary creates two methodological traps. First, the inherited malicious class was
+constructed using static-analysis behavior, so a bytecode model can appear strong by reconstructing
+the labeling rule. Second, exact-runtime separation does not prevent project or deployer dependence.
+Our protocol therefore separates development labels from an untouched post-cutoff human study,
+applies deliberately overinclusive research-family holds, freezes predictions before annotation,
+and reports incomplete analysis as deferral.
+
+This study targets three contributions:
+\begin{itemize}
+  \item a leakage-reduced, temporally separated evaluation resource for bytecode-only EIP-7702
+  screening, retaining indeterminate and non-screenable outcomes;
+  \item a coverage-audited, guard-aware Delegation-Context representation that relates reachable
+  sensitive capabilities to authorization evidence; and
+  \item a warning/no-model-warning/defer evaluation over post-cutoff signer/delegate pairs,
+  conservative family holds, strong learned and classical baselines, and separately frozen
+  legitimate-project controls.
+\end{itemize}
+
+These are bounded claims. DCRG is represented by aggregate features consumed by XGBoost; it is not
+a learned graph neural network. \code{NO\_MODEL\_WARNING} is not ``safe.'' Anonymous linkage
+clusters are retraining controls, not verified project attribution.
+
+\section{Background and Related Work}
+
+\subsection{EIP-7702 security}
+
+An authorization tuple identifies a chain, delegate address, nonce, and EOA signature. A valid
+tuple writes a delegation indicator to the EOA's code field; code-executing operations resolve the
+referenced delegate~\cite{eip7702}. The specification explicitly warns that delegates should bind
+replay, value, gas, target, and calldata, and that initialization and storage migration are
+security-critical.
+
+Huang et al. are the closest direct comparator~\cite{huang2026darkside}. Their transaction analyzer
+narrows historical activity, after which Gigahorse and rule matching identify attack semantics.
+AuthGuard-7702 does not replace that richer forensic setting; it studies score-blind screening at an
+earlier decision with bytecode as the required input. Qi et al. provide a complementary measurement
+and phishing analysis~\cite{qi2025phishing}. Accordingly, we make no claim to the first EIP-7702
+detector, dataset, attack taxonomy, or connection to ERC-4337.
+
+\subsection{Bytecode analysis and selective prediction}
+
+Opcode models, CFG/data-flow analysis, program graphs, and cross-contract analysis are established
+smart-contract-security techniques~\cite{gigahorse,eth2vec}. PhishingHook compares 16 histogram,
+vision, language, and vulnerability-model techniques for generic phishing-contract classification
+from EVM bytecode~\cite{phishinghook}. It therefore rules out first bytecode-phishing and first
+opcode-model-comparison claims. Because its labels and population differ from EIP-7702 delegate
+review, we do not compare published accuracy across datasets; our histogram+n-gram and learned
+sequence baselines are retrained under the same holds and labels as DCRG. Classification with a
+reject option is likewise established~\cite{selectivenet}. Our contribution is not a generic graph
+or rejection algorithm; it is the EIP-7702-specific representation, coverage contract, and
+provenance-aware evaluation at authorization time.
+
+Full static analyzers such as Gigahorse and Securify recover richer program and compliance
+semantics~\cite{gigahorse,securify}; AuthGuard does not claim to replace them. Its bounded extractor
+exists to expose a compact, locally reproducible evidence contract and an explicit escalation path.
+Security-ML evaluation is also vulnerable to spatial and temporal dependence: TESSERACT shows how
+such biases inflate malware-classification estimates~\cite{tesseract}. We apply the same principle
+to exact runtimes, signer/deployer clusters, research families, and time, while acknowledging that
+the resulting controls cannot prove independence.
+
+\section{Task and Threat Model}
+
+The input is the deployed runtime bytecode of a proposed delegate. When available in the real-context
+study, the authorizing EOA recovered from the authorization signature is neutral context. A positive
+judgment (\code{UNSAFE}) requires a concrete authorization-relevant unsafe capability or condition.
+The bounded negative label, \code{NO\_CONCRETE\_UNSAFE\_BEHAVIOR\_FOUND}, means only that the
+reviewed evidence did not establish such behavior. \code{INDETERMINATE} and
+\code{NOT\_BYTECODE\_SCREENABLE} are reported and excluded from binary metrics.
+
+The adversary may deploy delegate bytecode with sensitive operations, misleading selectors,
+unusual control flow, or appended bytes. We do not claim to resolve behavior dependent on unavailable
+state, unresolved proxies, external contracts, off-chain intent, or transaction-specific effects.
+Those cases should defer. Private-key compromise and UI deception independent of delegate semantics
+are outside scope.
+
+Formally, an item is $(B,A,C)$, where $B$ is runtime bytecode, $A$ is an optional recovered
+authority, and $C$ is extraction coverage. The learned models return a score $s\in[0,1]$; held-out
+canonical validation determines seed-specific warning threshold $t_k$. Neither $A$ nor post-cutoff
+labels are used to fit a threshold. The binary estimand is ranking performance among adjudicated
+\code{UNSAFE} and bounded-negative items. Indeterminate and non-screenable outcomes remain part of
+the population description but not the binary estimand.
+
+The defender acts before signing an authorization and may lack verified source, transaction
+history, reputation, and downstream state. The adversary can choose bytecode, misleading selectors,
+unusual dispatch, appended bytes, and open call/storage capabilities. We do not assume that opcode
+presence proves exploitability or that a known project proves legitimacy. The intended response is
+triage: a warning invites rejection or deeper inspection; deferral invites source audit, simulation,
+allowlisting, or transaction-aware analysis. The model does not replace those controls.
+
+We organize the study around three questions. \textbf{RQ1} asks whether the coverage repairs improve
+analyzer validity without trading away visible gaps. \textbf{RQ2} asks whether typed guard evidence
+improves post-cutoff ranking beyond an untyped guard representation and fair bytecode baselines.
+\textbf{RQ3} asks how the frozen warning/deferral contract behaves on post-cutoff human judgments
+and separately sourced legitimate projects.
+
+\section{Delegation-Context Risk Graph}
+
+\subsection{Evidence representation}
+
+DCRG is an authority-relative evidence representation, not a claim of complete program semantics.
+It records four conceptual entities: externally reachable entry regions, sensitive capabilities,
+guard evidence, and coverage gaps. A relation records that a capability is reachable from an entry
+region and which recognized guard evidence dominates or precedes the site. Table~\ref{tab:schema}
+summarizes the fixed schema.
+
+\begin{table}[t]
+\centering
+\caption{DCRG evidence schema. ``Unknown'' remains observable.}
+\label{tab:schema}
+\small
+\begin{tabularx}{\columnwidth}{p{0.19\columnwidth}XX}
+\toprule
+Entity & Recorded evidence & Boundary when unresolved \\
+\midrule
+Entry & dispatcher targets, fallback, externally reachable regions & unreached target \\
+Capability & calls, value movement, storage writes, approvals, creation, destruction & sensitive-site gap \\
+Guard & self-call, signature, stored/fixed authority, EntryPoint, caller supplied, \code{tx.origin} & untyped/no recognized guard \\
+Coverage & explored functions, unresolved jumps and state limits & \code{PARTIAL} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Capabilities include value-moving calls, externally parameterized targets or calldata,
+approvals/transfers, storage modification, contract creation, and self-destruction. A capability is
+not automatically unsafe: the purpose of the graph is to retain its authorization context. Guard
+types include self-call, recovered-signature evidence, stored authority, fixed-address comparison,
+ERC-4337 EntryPoint, caller-supplied comparison, and \code{tx.origin}. When the authorization tuple
+supplies signer $A$, a fixed-address comparison is additionally recorded as matching or differing
+from $A$; transaction sender is not substituted for signer.
+
+The classifier consumes a fixed 27-dimensional aggregate vector from this graph: function and
+coverage counts, guarded and unguarded sensitive-site counts, per-guard-type counts,
+authority-match/mismatch counts, fallback reachability, and unreached-site counts. Thus DCRG is a
+typed representation with graph-derived aggregates, not a learned message-passing architecture.
+
+\subsection{Bounded extraction and coverage}
+
+The extractor begins with linear disassembly, dispatcher recovery, bounded CFG construction, and a
+symbolic stack capped at 64 values. It explores at most 60,000 states and 96 states per program
+counter. After eight visits, loop-varying non-control constants are conservatively widened while
+valid jump destinations remain concrete. Unresolved control transfers and exploration limits are
+recorded as gaps rather than silently discarded.
+
+Raw bytecode creates a second failure mode: bytes in a compiler metadata suffix can resemble
+\code{JUMPDEST}, \code{CALL}, or \code{SELFDESTRUCT}. A suspected Solidity CBOR suffix is excluded
+from the opcode backstop only if it decodes to a recognized shape, begins on an instruction
+boundary, follows a terminal predecessor, and contains no disassembled jump destination. If any
+fence fails, the bytes remain in analysis. These checks are correctness repairs, not a claim that
+metadata removal itself is novel.
+
+The extractor emits \code{COMPLETE} only when all bounded obligations are discharged; otherwise it
+emits \code{PARTIAL}. No missing relation becomes evidence of absence. Figure~\ref{fig:workflow}
+shows how this coverage state remains visible through the operating decision.
+
+\begin{figure}[t]
+\centering
+\small
+\setlength{\fboxsep}{3pt}
+\fbox{runtime + optional signer}
+$\rightarrow$ \fbox{bounded CFG/DCRG}
+$\rightarrow$ \fbox{score + coverage}\\[3pt]
+$\rightarrow$ \fbox{seed consensus}
+$\rightarrow$ \fbox{WARN / NO WARNING / DEFER}
+\caption{The screening path. Partial analysis and seed disagreement can only warn or defer; they
+cannot produce \code{NO\_MODEL\_WARNING}.}
+\label{fig:workflow}
+\end{figure}
+
+\subsection{Scoring model and falsification variants}
+
+The primary classifier is XGBoost over the fixed aggregate vector. The capability-only variant
+removes guard context; the untyped variant retains guard presence but erases guard type; the
+actor-removed variant removes EntryPoint and authority-relative features. This decomposition makes
+the central claim falsifiable: the typed-guard contribution is supported only if full DCRG exceeds
+the untyped variant on the untouched endpoint. A relational GNN, local typed motifs, and fixed
+sequence/DCRG fusion were tested on development evidence but did not meet their preregistered or
+paired-improvement gates and are retained as negative results.
+
+\section{Evaluation Protocol}
+
+\subsection{Populations and labels}
+
+The canonical development corpus contains \CanonicalRows{} rows representing
+\CanonicalRuntimes{} unique runtimes. Its
+inherited target remains useful for training and implementation diagnostics but overlaps the static
+evidence represented by DCRG. A separate 150-item provisional proxy informed method selection and is
+therefore development data.
+
+The confirmatory population is a score-blind sample of 150 post-cutoff exact-runtime families. One
+predeclared development overlap is excluded from scoring. A disjoint 150-item reserve is
+cryptographically locked and cannot be inspected for model selection. Two independent primary
+reviewers label every item, and one separate adjudicator resolves each disagreement. Model scores,
+source labels, provisional labels, and other primary judgments are hidden.
+
+\begin{table*}[t]
+\centering
+\caption{Study populations and their allowed role. ``Frozen'' means content and identifiers are
+hashed before the corresponding labels or scores are opened.}
+\label{tab:populations}
+\small
+\begin{tabularx}{0.96\textwidth}{lrrXX}
+\toprule
+Population & Items & Unique runtimes & Label/evidence source & Allowed role \\
+\midrule
+Canonical development & \CanonicalRows & \CanonicalRuntimes & inherited static source rule & training and engineering diagnostics \\
+Gold-Test proxy & 150 & 150 families & provisional, method-visible review & method selection only \\
+Post-cutoff primary & 150 & 150 families & independent dual review; pending & confirmatory, 149 score-eligible \\
+Replication reserve & 150 & 150 families & unopened & replacement/replication under locked rule \\
+New legitimate projects & 3 & 5 controls & provenance-backed operating cases & descriptive warning/defer behavior \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Post-cutoff construction}
+
+The Ethereum collector scans a fixed checkpoint through block 24,641,536: \SnapshotBlocks{} blocks,
+\SnapshotTypeFourTxs{} type-4 transactions, and \SnapshotAuthorizations{} authorization entries,
+with no block-scan RPC error.
+Zero-address revocations are excluded. We recover the signer from each authorization tuple rather
+than using transaction sender; the two differ for \AuthoritySenderDifferences{} of
+\SnapshotUsablePairs{} usable signer/delegate pairs. Runtime
+code is read at first observed block. This is end-of-block state, so same-block changes remain a
+limitation.
+
+Among \SnapshotNonzeroDelegates{} distinct nonzero delegate addresses, \SnapshotUsablePairs{}
+pairs have historical runtime code and yield 673
+exact-runtime families. Exact hash and opcode-4-gram similarity against every canonical runtime
+leave \SnapshotUnseenFamilies{} eligible unseen families. A deterministic sampler reads no label or model column and
+selects at most one address per exact-runtime family. The primary and reserve use different frozen
+seeds and share neither item nor exact-runtime family.
+
+\subsection{Human judgment protocol}
+
+Two qualified primary reviewers independently inspect every primary item using the fixed taxonomy:
+\code{UNSAFE}, \code{NO\_CONCRETE\_UNSAFE\_BEHAVIOR\_FOUND}, \code{INDETERMINATE}, and
+\code{NOT\_BYTECODE\_SCREENABLE}. Evidence packets contain runtime, recovered signer context,
+decompilation and provenance aids, but recursively exclude all model scores, source-rule labels,
+provisional labels, and another primary judgment. Reviewers record the concrete capability,
+authority/caller condition, evidence boundary, and confidence. A distinct third reviewer
+adjudicates every primary disagreement. We report pre-adjudication marginals, raw agreement,
+Cohen's $\kappa$ when defined for the fixed pair, disagreement count, adjudication count, and final
+class counts. The evaluator refuses a partial release or a release not exactly bound to all 150
+manifest IDs.
+
+\subsection{Leakage reduction and models}
+
+Repeated recovered authorities, EOA deployers, verified families, and overinclusive bytecode
+similarity links define conservative research clusters. These links produce mandatory canonical
+family holds; they do not prove brand identity or complete independence. Three fixed seeds train a
+learned sequence+dense baseline, normalized opcode histogram plus hashed 4-gram XGBoost,
+capability-only DCRG, untyped guards, actor-removed DCRG, full DCRG, and a separately named
+project-balanced DCRG.
+
+The 150 primary items form \DependenceClusters{} dependence clusters;
+\DependenceMultiClusters{} are multi-item clusters, \DependenceMultiItems{} items participate
+in a multi-item cluster, and the maximum size is four. Must-links use repeated recovered-authority
+EOAs and deployer EOAs; shared contract factories alone are not treated as ownership. A separate
+score-blind audit labels one item as a confirmed development overlap, assigns 148 anonymous items
+to conservative non-attribution clusters, and predeclares the overlap as excluded. Similarity links
+generate \HeldCanonicalFamilies{} mandatory canonical-family holds. This intentionally
+overinclusive procedure supports
+``leakage-reduced,'' not ``leakage-free.''
+
+After holds, each seed fits on \FrozenTrainRows{} training and \FrozenValidationRows{} validation
+rows. The sequence baseline uses
+chunk attention over opcode tokens plus a dense structural branch. The classical baseline combines
+a normalized 225-bin opcode histogram with 512 hashed opcode 4-grams and XGBoost. DCRG variants use
+the same fixed seed set. The project-balanced variant additionally assigns total training weight
+eight to each of eight provenance-backed legitimate development projects; it is named separately
+and is not substituted for the primary representation comparison. Nominal 5\% FPR thresholds and
+temperature calibration use held-out canonical validation after all holds. Retraining freezes 21
+\FrozenCheckpoints{} checkpoints and \FrozenPredictionRows{} primary score rows before annotation.
+
+The single confirmatory endpoint is mean-seed AUPRC(full DCRG) minus AUPRC(untyped guards). Its 95\%
+interval uses 10,000 paired seed-aware dependence-cluster bootstrap replicates. Baseline comparisons,
+AUROC, calibration, operating metrics, coverage, and error analyses are secondary or descriptive.
+Prevalence is always reported beside AUPRC.
+
+For every bootstrap replicate, one dependence-cluster multiset is drawn and reused for all models
+and all three seeds. Candidate-minus-baseline deltas are computed per seed and averaged within the
+replicate before percentile bounds are taken. This avoids both item-level pseudoreplication and the
+invalid practice of averaging independently computed confidence-interval endpoints. The primary
+typed-guard hypothesis is supported only when the full-minus-untyped 95\% interval has lower bound
+above zero. Full-minus-sequence and full-minus-histogram comparisons receive their own intervals;
+no global baseline-superiority statement is inferred from the primary ablation.
+
+\subsection{Decision contract and external controls}
+
+A seed consensus at the validation-derived nominal 5\% FPR threshold emits \code{WARN} when at
+least two of three seeds warn. Exactly one warning vote emits \code{DEFER}. With zero warning votes,
+\code{PARTIAL} coverage or missing authority emits \code{DEFER}; only complete covered evidence can
+emit \code{NO\_MODEL\_WARNING}. A failed development experiment showed that low-score cases could
+not be certified as low risk, so no low-risk tier is retained.
+This consensus contract is a label-blind supplemental analysis frozen while the post-cutoff
+annotation count was zero; it does not change the preregistered AUPRC endpoint.
+
+The separate pre-scoring external-control protocol contains Tangem, Startale, and Rainbow. It
+distinguishes a new project from a new runtime and a new implementation lineage. Because all three
+are legitimate operating cases and the sample is small, we report only project-level decisions and
+never AUPRC, AUROC, significance, or a population false-positive rate.
+
+For final operating analysis, warning recall, observed warning FPR, precision, defer rate, and the
+observed unsafe fraction inside \code{NO\_MODEL\_WARNING} receive Wilson intervals. The latter is a
+failure audit, not an estimated safety guarantee. Calibration, coverage, and an error taxonomy by
+guard type, proxy pattern, bytecode size, and project novelty remain descriptive and cannot trigger
+model revision.
+
+\section{Results}
+
+\subsection{RQ1: Coverage repair}
+
+Complete bounded-analysis coverage increases from \BaseCompleteRuntimes{}/\CanonicalRuntimes{}
+(31.1\%) to \FinalCompleteRuntimes{}/\CanonicalRuntimes{} (63.8\%) unique
+runtimes, with no complete-to-partial regression. Mean inherited-label DCRG AUPRC changes from
+0.95409 to 0.95375 ($-0.00034$, paired 95\% CI $[-0.00617,0.00423]$). Thus the repair improves
+analysis validity without being selected for performance.
+
+\begin{table}[t]
+\centering
+\caption{Label-free bounded-analysis coverage.}
+\label{tab:coverage}
+\small
+\begin{tabular}{lrr}
+\toprule
+Extractor & Complete rows & Complete runtimes \\
+\midrule
+Original bounded CFG & \BaseCompleteRows{} (30.6\%) & \BaseCompleteRuntimes{} (31.1\%) \\
+Metadata + widening & \IntermediateCompleteRows{} (66.3\%) & \IntermediateCompleteRuntimes{} (65.1\%) \\
+Jump-fenced final & \FinalCompleteRows{} (64.7\%) & \FinalCompleteRuntimes{} (63.8\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exact-metadata intermediate appears slightly higher because syntactically valid trailers can
+still contain a reachable instruction boundary or jump target. The final fences intentionally
+restore 21 runtimes to \code{PARTIAL}. Across \CanonicalRuntimes{} runtimes the final extractor
+reports no analysis
+error; widening is an over-approximation and residual unresolved transfers remain visible.
+
+\subsection{Development diagnostics, not final evidence}
+
+The provisional 150-item proxy contains 108 binary and 42 uncertain judgments and was inspected
+during method development. On it, full DCRG reaches 0.93885 mean AUPRC; full-minus-untyped is
+$+0.00427$ (95\% paired family CI $[0.00076,0.01023]$), full-minus-sequence is $+0.04615$
+($[0.00449,0.09178]$), and full-minus-histogram is $+0.03154$
+($[-0.01116,0.08209]$). These diagnostics justify completing the expensive independent study, but
+cannot appear in the abstract or support a submission claim because the proxy influenced method
+selection.
+
+\subsection{Frozen post-cutoff execution}
+
+Post-cutoff retraining produced \FrozenCheckpoints{} locked checkpoints and
+\FrozenPredictionRows{} score-only prediction rows (\FrozenScoredItems{} items
+$\times$ three seeds). All source, feature, hold-plan, checkpoint, and prediction hashes passed
+before review was unlocked. Table~\ref{tab:decisions} reports the resulting label-free consensus
+counts. Similar counts across variants are not evidence of equivalent accuracy: the items within
+each outcome can differ.
+
+\begin{table}[t]
+\centering
+\caption{Pre-label decisions on 149 eligible primary items.}
+\label{tab:decisions}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Model & Warn & No warning & Defer \\
+\midrule
+Sequence+dense & \SequencePreWarn & \SequencePreNoWarning & \SequencePreDefer \\
+Histogram+4-gram & \HistogramPreWarn & \HistogramPreNoWarning & \HistogramPreDefer \\
+Capability-only & \CapabilityPreWarn & \CapabilityPreNoWarning & \CapabilityPreDefer \\
+Untyped guards & \UntypedPreWarn & \UntypedPreNoWarning & \UntypedPreDefer \\
+Actor-removed & \ActorRemovedPreWarn & \ActorRemovedPreNoWarning & \ActorRemovedPreDefer \\
+Full DCRG & \FullDCRGPreWarn & \FullDCRGPreNoWarning & \FullDCRGPreDefer \\
+Project-balanced & \ProjectBalancedPreWarn & \ProjectBalancedPreNoWarning & \ProjectBalancedPreDefer \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{External legitimate controls}
+
+The external principal model emits \ExternalWarn{} \code{WARN}, \ExternalNoWarning{}
+\code{NO\_MODEL\_WARNING}, and \ExternalDefer{} \code{DEFER}. Tangem and Rainbow are complete
+no-warning cases; Startale defers under partial
+signer-relative coverage. Rainbow is a new project but shares a known framework lineage, while the
+canonical-unseen subset has one no-warning and one defer. Table~\ref{tab:external} keeps these
+distinctions explicit. This $n=3$ project result is descriptive and does not estimate a false-alert
+rate.
+
+\begin{table}[t]
+\centering
+\caption{Principal decisions on new legitimate projects.}
+\label{tab:external}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Project & New? & Unseen? & Cov. & Decision \\
+\midrule
+Tangem & yes & yes & complete & no warning \\
+Startale & yes & yes & partial & defer \\
+Rainbow & yes & no & complete & no warning \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{RQ2--RQ3: Untouched human endpoint}
+
+\begin{table}[t]
+\centering
+\caption{Post-cutoff model results. Red entries remain locked until independent review.}
+\label{tab:final-models}
+\small
+\begin{tabular}{lcc}
+\toprule
+Model & AUPRC & AUROC \\
+\midrule
+Sequence+dense & \SequenceAUPRC & \SequenceAUROC \\
+Histogram+4-gram & \HistAUPRC & \HistAUROC \\
+Capability-only & \CapabilityAUPRC & \CapabilityAUROC \\
+Untyped guards & \UntypedAUPRC & \UntypedAUROC \\
+Actor-removed & \ActorRemovedAUPRC & \ActorRemovedAUROC \\
+Full DCRG & \FullAUPRC & \FullAUROC \\
+Project-balanced & \ProjectBalancedAUPRC & \ProjectBalancedAUROC \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The frozen release contains \FinalUnsafeN{} \code{UNSAFE}, \FinalNegativeN{} bounded-negative,
+and \FinalIndeterminateN{} indeterminate/non-screenable judgments; \FinalBinaryN{} enter binary
+metrics. Raw primary agreement is \FinalAgreement{} and Cohen's $\kappa$ is \FinalKappa{}.
+Full-minus-untyped AUPRC is \PrimaryDelta{} with 95\% paired interval
+[\PrimaryLower{}, \PrimaryUpper{}]. For full DCRG, warning recall is \FullWarnRecall{}, observed
+warning FPR is \FullWarnFPR{}, warning precision is \FullWarnPrecision{}, defer rate is
+\FinalDeferRate{}, and the observed unsafe fraction within \code{NO\_MODEL\_WARNING} is
+\FullNoWarnUnsafeRate{}.
+
+\begin{table}[t]
+\centering
+\caption{Full-DCRG frozen operating outcomes. Intervals are Wilson 95\%.}
+\label{tab:operating}
+\small
+\begin{tabular}{lcc}
+\toprule
+Metric & Estimate & 95\% interval \\
+\midrule
+Warning recall & \FullWarnRecall & [\FullWarnRecallLower, \FullWarnRecallUpper] \\
+Observed warning FPR & \FullWarnFPR & [\FullWarnFPRLower, \FullWarnFPRUpper] \\
+Warning precision & \FullWarnPrecision & [\FullWarnPrecisionLower, \FullWarnPrecisionUpper] \\
+Defer rate & \FinalDeferRate & [\FullDeferLower, \FullDeferUpper] \\
+Unsafe within no-warning & \FullNoWarnUnsafeRate & [\FullNoWarnUnsafeLower, \FullNoWarnUnsafeUpper] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\ifresultsready
+\subsection{Primary decision}
+The artifact-selected paper branch is \PaperBranch{}. The corresponding claim wording and all
+secondary comparisons remain governed by the evidence gates in the submission blueprint.
+\else
+No method-superiority conclusion is available before the independent release. The proxy-label
+diagnostic is intentionally excluded from this results table because it informed method selection.
+\fi
+
+\section{Discussion}
+
+\subsection{Interpreting the result branches}
+
+The final result must be interpreted at three levels. First, the primary interval determines whether
+typed guard categories add measurable ranking value beyond guard presence. Second, fair sequence and
+classical comparisons determine whether any baseline-superiority wording is supported. Third,
+coverage and operating decisions determine whether the representation is useful as bounded triage
+rather than merely a ranking model.
+
+If the primary interval is strictly positive, the method contribution is evidence that guard type
+adds ranking value under the frozen post-cutoff design. It still does not imply that every guard
+category helps: actor-removed and capability-only comparisons are separately reported. If the
+interval crosses zero, the method-superiority hypothesis is rejected for this study. The paper then
+centers the measurement contribution: how label construction, research-family dependence, coverage
+correction, and explicit deferral change the evaluation of bytecode-only screening. The branch is
+selected mechanically and a null result is not rewritten as equivalence.
+
+\subsection{Role in a defense stack}
+
+The screening point exists after a wallet learns the delegate address but before it signs the
+authorization. A \code{WARN} can block or demand stronger confirmation. A \code{DEFER} indicates
+that source audit, state-aware simulation, cross-contract analysis, reputation, or an allowlist is
+needed. \code{NO\_MODEL\_WARNING} says only that the fixed three-seed criterion was not met under
+complete bounded analysis. This division is particularly important because the EIP specification
+notes that changing a delegation is security-critical and that future balance behavior cannot
+always be inferred statically~\cite{eip7702}.
+
+\subsection{Negative paths as evidence}
+
+The negative paths matter. Sequence fusion did not reliably improve DCRG; the GNN met a preregistered
+futility stop; typed local motifs did not add a paired gain; protocol-actor features were neutral on
+development evidence; and the attempted low-risk tier failed. Flood-200 evaluates one synthetic
+transformation only. First-\code{STOP} canonicalization was not semantics-preserving and is not a
+defense.
+
+\begin{table}[t]
+\centering
+\caption{Method paths tested before the final freeze.}
+\label{tab:negative}
+\small
+\begin{tabularx}{\columnwidth}{lXX}
+\toprule
+Path & Evidence gate & Disposition \\
+\midrule
+Relational GNN & futility upper bound & stopped \\
+Typed motifs & paired gain over aggregate DCRG & null \\
+Sequence fusion & paired gain over DCRG & supporting only \\
+Low-risk tier & bounded risk under shift & failed; removed \\
+First-\code{STOP} normalization & semantic preservation & failed; removed \\
+Flood-200 & one valid transformation & bounded robustness result \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These failures narrow the claim. In particular, aggregate DCRG should not be described as a GNN;
+deferral should not be described as a new selective-learning algorithm; and Flood-200 should not be
+generalized to adversarial robustness.
+
+\section{Limitations and Ethics}
+
+The post-cutoff study is Ethereum-only and covers a bounded temporal snapshot. Human judgments are
+evidence-bounded rather than ground truth. The analyzer is neither sound nor complete for the EVM.
+Training labels still originate from a static source rule, although confirmatory labels and
+predictions are separated. Conservative similarity holds may overexclude while still failing to
+prove all project dependence absent. The external legitimate set is only three projects, one case is
+partial, and one shares a known framework lineage. Latency measurements do not establish wallet
+integration or deployment safety.
+
+The historical runtime query observes end-of-block state rather than transaction-index pre-state.
+Conservative family links can both over-hold unrelated code and miss semantic or organizational
+relations not visible in public provenance. Shared-authority/deployer clusters address statistical
+dependence but do not yield project attribution. The fixed 150-item sample may contain too few
+bounded-negative or positive judgments for stable operating estimates; the protocol therefore
+requires both classes and reports intervals rather than silently proceeding.
+
+Training on inherited source-rule labels can teach the model to reconstruct that rule. Independent
+post-cutoff labels prevent direct test-label circularity but cannot erase inductive bias from
+training. Likewise, a legitimate control is a documented operating case, not proof that all its
+behavior is safe. The three-project control set is intentionally reported project by project.
+
+We analyze public bytecode, authorization records, project documentation, and audit links. A model
+warning is not an accusation, and a no-warning result is not an endorsement of any named project.
+Reviewer identities may remain pseudonymous in the artifact, but qualifications, independence,
+calibration, conflicts, and the private identity mapping must be retained for research integrity.
+
+\section{Reproducibility and Artifact}
+
+The artifact contains the canonical benchmark, exact-runtime and family identifiers, frozen
+post-cutoff and reserve manifests, public-provenance worklists, DCRG graphs/features, seven model
+variants, 21 checkpoints, score-only predictions, dependence clusters, legitimate-control
+evidence, and the annotation application. SHA-256 locks bind the canonical dataset, sampling code,
+review manifest, dependence clusters, family-hold plan, training code, feature definitions,
+checkpoints, and predictions. The final evaluator verifies these identities before reading labels.
+
+The implementation uses Python 3.12.12, evmole 0.9.0, cbor2 5.7.1, XGBoost, and PyTorch. Fixed seeds
+are 7702, 7703, and 7704. The full revision-v3 suite contains 318 passing tests, including source
+locks, family isolation, prediction cardinality, dual-review/adjudication gates, label-free evidence
+packets, bootstrap behavior, decision consensus, and manuscript-claim auditing. The supplied build
+container produces a letter-paper IEEE PDF. Final LaTeX macros are generated only from the two
+verified evaluation reports and record both input hashes, avoiding manual result transcription.
+
+\section{Conclusion}
+
+AuthGuard-7702 establishes an auditable experimental framework for bytecode-only EIP-7702
+pre-authorization screening. \ifresultsready \pending{INSERT THE SUPPORTED METHOD OR MEASUREMENT
+CONCLUSION ONLY.} \else Whether typed guard evidence provides an independent predictive advantage
+remains intentionally unresolved until the preregistered human evaluation.\fi\ In all outcomes, the
+system prioritizes warning or deeper review; it does not prove malicious intent, exploitability, or
+safety.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

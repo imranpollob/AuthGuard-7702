@@ -1,0 +1,26 @@
+{
+  "sourcify": {
+    "http_status": 404,
+    "raw": {
+      "match": null,
+      "creationMatch": null,
+      "runtimeMatch": null,
+      "chainId": "1",
+      "address": "0x5e2b7F5606e33aF9A3b3916dacdcb77e1A65cd0a"
+    },
+    "verified": false
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "conflicting_implementations": null,
+      "creation_bytecode": "0x6080604052348015600e575f80fd5b5060a680601a5f395ff3fe608060405236603d573373145de1595d3c10168c7f1d22d026da85e50b718c14603b576040516383ad7a7160e01b815260040160405180910390fd5b005b3373145de1595d3c10168c7f1d22d026da85e50b718c14603b576040516383ad7a7160e01b815260040160405180910390fdfea26469706673582212206ec3a09cfab9702b7fec35bdedcbcfb651516bae77d683ca211559c5a313f43464736f6c634300081a0033",
+      "creation_status": "success",
+      "deployed_bytecode": "0x608060405236603d573373145de1595d3c10168c7f1d22d026da85e50b718c14603b576040516383ad7a7160e01b815260040160405180910390fd5b005b3373145de1595d3c10168c7f1d22d026da85e50b718c14603b576040516383ad7a7160e01b815260040160405180910390fdfea26469706673582212206ec3a09cfab9702b7fec35bdedcbcfb651516bae77d683ca211559c5a313f43464736f6c634300081a0033",
+      "implementations": [],
+      "proxy_type": null
+    },
+    "verified": false
+  },
+  "verified": false
+}

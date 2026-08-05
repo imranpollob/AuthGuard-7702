@@ -1,0 +1,32 @@
+{
+  "per_function": [
+    {
+      "selector": "0x1d92e4b6",
+      "resolved_signature": null,
+      "bytecode_offset": 50,
+      "arguments": "(address,uint256,bytes)[],bytes",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x3f707e6b",
+      "resolved_signature": "execute((address,uint256,bytes)[])",
+      "bytecode_offset": 69,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable",
+      "guard_status": "AMBIGUOUS",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "window capped before a clear terminator was reached"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": true,
+  "overall_status": "OPEN_FOUND"
+}

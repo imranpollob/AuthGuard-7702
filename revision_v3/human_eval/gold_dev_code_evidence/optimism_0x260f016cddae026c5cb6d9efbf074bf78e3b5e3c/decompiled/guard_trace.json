@@ -1,0 +1,32 @@
+{
+  "per_function": [
+    {
+      "selector": "0x63fb0b96",
+      "resolved_signature": "multicall(address[],bytes[])",
+      "bytecode_offset": 56,
+      "arguments": "uint256[],uint256[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xa2ce10b4",
+      "resolved_signature": null,
+      "bytecode_offset": 77,
+      "arguments": "",
+      "state_mutability": "pure",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

@@ -1,0 +1,47 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0d172a01",
+      "resolved_signature": "transferTokenTo(address,address,uint256)",
+      "bytecode_offset": 98,
+      "arguments": "address,address,uint256",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x1cff79cd",
+      "resolved_signature": "execute(address,bytes)",
+      "bytecode_offset": 119,
+      "arguments": "address,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3da80d66",
+      "resolved_signature": "contains(address[],address)",
+      "bytecode_offset": 138,
+      "arguments": "address[],address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x71e07d9b",
+      "resolved_signature": null,
+      "bytecode_offset": 189,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x914d910a",
+      "resolved_signature": null,
+      "bytecode_offset": 208,
+      "arguments": "address,address,uint256",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xa225bd4c",
+      "resolved_signature": null,
+      "bytecode_offset": 227,
+      "arguments": "address,address,bool",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

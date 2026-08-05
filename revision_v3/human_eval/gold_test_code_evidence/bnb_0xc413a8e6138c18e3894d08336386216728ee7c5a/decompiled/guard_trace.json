@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0xb002fba9",
+      "resolved_signature": "callTarget(address,bytes)",
+      "bytecode_offset": 33,
+      "arguments": "address,bytes",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

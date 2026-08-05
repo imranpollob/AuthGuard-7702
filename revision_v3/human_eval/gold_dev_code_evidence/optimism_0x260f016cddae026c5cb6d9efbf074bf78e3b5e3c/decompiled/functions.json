@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x63fb0b96",
+      "resolved_signature": "multicall(address[],bytes[])",
+      "bytecode_offset": 56,
+      "arguments": "uint256[],uint256[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa2ce10b4",
+      "resolved_signature": null,
+      "bytecode_offset": 77,
+      "arguments": "",
+      "state_mutability": "pure"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

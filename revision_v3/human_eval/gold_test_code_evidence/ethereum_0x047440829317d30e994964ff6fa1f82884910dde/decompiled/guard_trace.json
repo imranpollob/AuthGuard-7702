@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0x7892766c",
+      "resolved_signature": "withdrawAnyToken(address)",
+      "bytecode_offset": 492,
+      "arguments": "address",
+      "state_mutability": "payable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 761,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

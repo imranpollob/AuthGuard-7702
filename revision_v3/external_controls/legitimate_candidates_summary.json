@@ -1,0 +1,128 @@
+{
+  "n_documented_projects": 8,
+  "n_total_chain_deployments": 45,
+  "n_unique_project_bytecode_pairs": 30,
+  "n_distinct_runtime_bytecodes_overall": 30,
+  "n_present_in_v2_primary_benchmark": 21,
+  "per_project": {
+    "Alchemy_SemiModularAccount7702": {
+      "n_chain_deployments": 6,
+      "n_unique_bytecodes_across_chains": 1,
+      "byte_identical_across_all_deployed_chains": true,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://www.alchemy.com/docs/wallets/smart-contracts/deployed-addresses",
+      "in_v2_primary_benchmark_any_chain": true
+    },
+    "Ambire_EIP7702Account": {
+      "n_chain_deployments": 2,
+      "n_unique_bytecodes_across_chains": 1,
+      "byte_identical_across_all_deployed_chains": true,
+      "chains": [
+        "bnb",
+        "ethereum"
+      ],
+      "documentation_url": "https://github.com/AmbireTech/ambire-common/blob/v2/src/consts/deploy.ts",
+      "in_v2_primary_benchmark_any_chain": false
+    },
+    "Biconomy_Nexus_v1.3.1": {
+      "n_chain_deployments": 7,
+      "n_unique_bytecodes_across_chains": 7,
+      "byte_identical_across_all_deployed_chains": false,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "gnosis",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://docs.biconomy.io/contracts-and-audits",
+      "in_v2_primary_benchmark_any_chain": true
+    },
+    "Coinbase_EIP7702Proxy": {
+      "n_chain_deployments": 6,
+      "n_unique_bytecodes_across_chains": 1,
+      "byte_identical_across_all_deployed_chains": true,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://github.com/base/eip-7702-proxy",
+      "in_v2_primary_benchmark_any_chain": false
+    },
+    "MetaMask_EIP7702StatelessDeleGator": {
+      "n_chain_deployments": 7,
+      "n_unique_bytecodes_across_chains": 7,
+      "byte_identical_across_all_deployed_chains": false,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "gnosis",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://github.com/MetaMask/delegation-framework/blob/main/documents/Deployments.md",
+      "in_v2_primary_benchmark_any_chain": true
+    },
+    "OKX_SmartWalletEntry": {
+      "n_chain_deployments": 6,
+      "n_unique_bytecodes_across_chains": 6,
+      "byte_identical_across_all_deployed_chains": false,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://github.com/okxlabs/okx-smart-wallet-evm",
+      "in_v2_primary_benchmark_any_chain": true
+    },
+    "Uniswap_Calibur_v1.1.0": {
+      "n_chain_deployments": 5,
+      "n_unique_bytecodes_across_chains": 1,
+      "byte_identical_across_all_deployed_chains": true,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism"
+      ],
+      "documentation_url": "https://developers.uniswap.org/docs/protocols/smart-wallet/deployments",
+      "in_v2_primary_benchmark_any_chain": true
+    },
+    "ZeroDev_Kernel_v3.3_7702": {
+      "n_chain_deployments": 6,
+      "n_unique_bytecodes_across_chains": 6,
+      "byte_identical_across_all_deployed_chains": false,
+      "chains": [
+        "arbitrum",
+        "base",
+        "bnb",
+        "ethereum",
+        "optimism",
+        "polygon"
+      ],
+      "documentation_url": "https://github.com/zerodevapp/sdk/blob/main/packages/core/constants.ts",
+      "in_v2_primary_benchmark_any_chain": true
+    }
+  },
+  "target_range_from_brief": "20-50 distinct legitimate implementations/families if evidence supports that many",
+  "actual_evidence_supports": "8 documented projects (30 unique project-bytecode pairs across chains) -- see LEGITIMATE_CANDIDATE_REPORT.md for why this is below the target range and is NOT padded with unverified candidates."
+}

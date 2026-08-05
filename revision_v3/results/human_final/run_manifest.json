@@ -1,0 +1,41 @@
+{
+  "label_source": "human_final",
+  "started_at_utc": "2026-08-01T14:48:28Z",
+  "steps": [],
+  "previous_outputs_preserved": true,
+  "schema_validation": {
+    "pilot": {
+      "sample_set": "pilot",
+      "exists": false
+    },
+    "gold_dev": {
+      "sample_set": "gold_dev",
+      "exists": false
+    },
+    "gold_test": {
+      "sample_set": "gold_test",
+      "exists": false
+    }
+  },
+  "human_final_status": {
+    "available": false,
+    "detail": {
+      "Pilot_Code_Review.xlsx": {
+        "exists": true,
+        "final_label_column": true,
+        "n_final_labels_filled": 0
+      },
+      "Gold_Dev_Code_Review.xlsx": {
+        "exists": true,
+        "final_label_column": true,
+        "n_final_labels_filled": 0
+      },
+      "Gold_Test_Code_Review.xlsx": {
+        "exists": true,
+        "final_label_column": true,
+        "n_final_labels_filled": 0
+      }
+    }
+  },
+  "status": "BLOCKED_NO_HUMAN_LABELS"
+}

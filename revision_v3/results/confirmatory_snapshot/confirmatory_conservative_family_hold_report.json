@@ -1,0 +1,28 @@
+{
+  "audit_sha256": "d65fdc125fd099f728de6ae6268fffb11e18f2174ba140debba20c621499f93f",
+  "builder_sha256": "4b7b4aebb6fc5226852a42cd29dd96e864f3472a74cf69082c3e8f1e24b787b6",
+  "claim_boundary": "Anonymous clusters authorize conservative retraining holds only. They are not brand attribution, proof of project independence, or security labels.",
+  "input_hashes": {
+    "revision_v2/data/authguardbench_7702_v2.csv.gz": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+    "revision_v3/external_controls/verified_legitimate_controls.csv": "80d34cea49dbc8e158b9823dd14881ea14b437e7ff0cd994c150dbe4be852894",
+    "revision_v3/results/confirmatory_snapshot/confirmatory_dependence_clusters.csv": "d140030166a7149764d00b0e1389a94c70c7f6bdac847030e83354bf5d9a4a0d",
+    "revision_v3/results/confirmatory_snapshot/confirmatory_project_family_audit.csv": "dc39ff065ae3e1a23f6fae8cb29c7572b9513950d090853ab48d563187007555",
+    "revision_v3/results/confirmatory_snapshot/confirmatory_public_provenance_evidence.csv": "ae4ba59834212ab70d9cbffa2a77e6fc33631ec2ac49cfe61ea8223be32198a4",
+    "revision_v3/results/confirmatory_snapshot/confirmatory_review_manifest.csv": "b69564c3096d39fbd3c57fce88c16e81a6f9caa0fea92921d26386542ba1760b"
+  },
+  "link_evidence_sha256": "80b45a7615984c3f164e6e2f401f89c328beca51a90beeb3e7543d9454e62db8",
+  "n_distinct_canonical_families_held": 142,
+  "n_distinct_development_control_projects_held": 1,
+  "n_items": 150,
+  "n_linkage_clusters": 135,
+  "similarity_hold_rules": {
+    "development_control_threshold": 0.85,
+    "max_canonical_holds_per_item": 5,
+    "moderate_canonical_threshold": 0.5,
+    "weak_best_match_floor": 0.35
+  },
+  "status": "SCORE_BLIND_CONSERVATIVE_FAMILY_HOLD_AUDIT_MATERIALIZED",
+  "status_counts": {
+    "CONSERVATIVE_CLUSTER": 150
+  }
+}

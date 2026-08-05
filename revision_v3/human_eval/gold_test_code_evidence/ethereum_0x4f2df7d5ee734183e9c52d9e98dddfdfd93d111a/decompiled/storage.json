@@ -1,0 +1,30 @@
+[
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000000",
+    "offset": 0,
+    "type": "mapping(address => bool)",
+    "n_reads": 5,
+    "n_writes": 2
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000001",
+    "offset": 0,
+    "type": "address[]",
+    "n_reads": 4,
+    "n_writes": 1
+  },
+  {
+    "slot": "0000000000000000000000000000000000000000000000000000000000000002",
+    "offset": 0,
+    "type": "mapping(address => uint256)",
+    "n_reads": 2,
+    "n_writes": 1
+  },
+  {
+    "slot": "b10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf7",
+    "offset": 0,
+    "type": "address",
+    "n_reads": 1,
+    "n_writes": 1
+  }
+]

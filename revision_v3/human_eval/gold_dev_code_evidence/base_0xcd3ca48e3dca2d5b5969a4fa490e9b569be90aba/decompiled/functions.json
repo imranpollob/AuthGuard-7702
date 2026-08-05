@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x05ab421d",
+      "resolved_signature": "sendTokens(address,uint256)",
+      "bytecode_offset": 44,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 262
+    }
+  ]
+}

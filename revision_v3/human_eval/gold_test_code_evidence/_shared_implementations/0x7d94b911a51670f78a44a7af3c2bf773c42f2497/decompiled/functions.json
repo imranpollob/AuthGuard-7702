@@ -1,0 +1,201 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0dfe1681",
+      "resolved_signature": "token0()",
+      "bytecode_offset": 457,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0x128acb08",
+      "resolved_signature": "swap(address,bool,int256,uint160,bytes)",
+      "bytecode_offset": 493,
+      "arguments": "address,bool,uint256,address,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x1a686502",
+      "resolved_signature": "liquidity()",
+      "bytecode_offset": 666,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1ad8b03b",
+      "resolved_signature": "protocolFees()",
+      "bytecode_offset": 702,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x252c09d7",
+      "resolved_signature": "observations(uint256)",
+      "bytecode_offset": 757,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x32148f67",
+      "resolved_signature": "increaseObservationCardinalityNext(uint16)",
+      "bytecode_offset": 844,
+      "arguments": "uint16",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x3850c7bd",
+      "resolved_signature": "slot0()",
+      "bytecode_offset": 879,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3c8a7d8d",
+      "resolved_signature": "mint(address,int24,int24,uint128,bytes)",
+      "bytecode_offset": 971,
+      "arguments": "address,int24,int24,uint128,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x46141319",
+      "resolved_signature": "feeGrowthGlobal1X128()",
+      "bytecode_offset": 1131,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x490e6cbc",
+      "resolved_signature": "flash(address,uint256,uint256,bytes)",
+      "bytecode_offset": 1157,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4f1eb3d8",
+      "resolved_signature": "collect(address,int24,int24,uint128,uint128)",
+      "bytecode_offset": 1295,
+      "arguments": "address,int24,int24,uint128,uint128",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x514ea4bf",
+      "resolved_signature": "positions(bytes32)",
+      "bytecode_offset": 1376,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x5339c296",
+      "resolved_signature": "tickBitmap(int16)",
+      "bytecode_offset": 1465,
+      "arguments": "int16",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x540d4918",
+      "resolved_signature": "lmPool()",
+      "bytecode_offset": 1497,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x70cf754a",
+      "resolved_signature": "maxLiquidityPerTick()",
+      "bytecode_offset": 1505,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0x85b66729",
+      "resolved_signature": "collectProtocol(address,uint128,uint128)",
+      "bytecode_offset": 1513,
+      "arguments": "address,uint128,uint128",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x883bdbfd",
+      "resolved_signature": "observe(uint32[])",
+      "bytecode_offset": 1574,
+      "arguments": "uint256[]",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa34123a7",
+      "resolved_signature": "burn(int24,int24,uint128)",
+      "bytecode_offset": 1837,
+      "arguments": "int24,int24,uint128",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa38807f2",
+      "resolved_signature": "snapshotCumulativesInside(int24,int24)",
+      "bytecode_offset": 1895,
+      "arguments": "int24,int24",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb0d0d211",
+      "resolved_signature": "setFeeProtocol(uint32,uint32)",
+      "bytecode_offset": 1986,
+      "arguments": "uint32,uint32",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xc45a0155",
+      "resolved_signature": "factory()",
+      "bytecode_offset": 2029,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0xcc7e7fa2",
+      "resolved_signature": "setLmPool(address)",
+      "bytecode_offset": 2037,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xd0c93a7c",
+      "resolved_signature": "tickSpacing()",
+      "bytecode_offset": 2075,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0xd21220a7",
+      "resolved_signature": "token1()",
+      "bytecode_offset": 2106,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0xddca3f43",
+      "resolved_signature": "fee()",
+      "bytecode_offset": 2114,
+      "arguments": "",
+      "state_mutability": "pure"
+    },
+    {
+      "selector": "0xf3058399",
+      "resolved_signature": "feeGrowthGlobal0X128()",
+      "bytecode_offset": 2146,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf30dba93",
+      "resolved_signature": "ticks(int24)",
+      "bytecode_offset": 2154,
+      "arguments": "int24",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf637731d",
+      "resolved_signature": "initialize(uint160)",
+      "bytecode_offset": 2284,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

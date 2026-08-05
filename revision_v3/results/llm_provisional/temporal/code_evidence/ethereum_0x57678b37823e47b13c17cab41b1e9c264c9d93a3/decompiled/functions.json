@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0e86e763",
+      "resolved_signature": null,
+      "bytecode_offset": 68,
+      "arguments": "(address,(address,bytes)[])[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x5773341e",
+      "resolved_signature": null,
+      "bytecode_offset": 96,
+      "arguments": "(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 124,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

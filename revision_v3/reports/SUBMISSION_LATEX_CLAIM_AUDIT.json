@@ -1,0 +1,212 @@
+{
+  "evidence_gates": {
+    "postcutoff_agreement": {
+      "n_exactly_dual_reviewed": 0,
+      "n_manifest_items": 150,
+      "n_pending_adjudications": 0,
+      "path": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/human_final/postcutoff_agreement_status.json",
+      "status": "NOT_READY_DUAL_REVIEW_OR_ADJUDICATION_INCOMPLETE"
+    },
+    "postcutoff_retraining": {
+      "review_unlock": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/postcutoff_snapshot/postcutoff_review_unlock.json",
+      "status": "COMPLETE",
+      "training_manifest": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/postcutoff_retraining/postcutoff_training_manifest.json"
+    },
+    "project_family_audit": {
+      "claim_boundary": "Anonymous clusters authorize conservative retraining holds only. They are not brand attribution, proof of project independence, or security labels.",
+      "counts_match": true,
+      "hashes_match": true,
+      "holdout_plan": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/postcutoff_snapshot/postcutoff_family_holdout_plan.json",
+      "n_confirmed": 1,
+      "n_conservative_clusters": 148,
+      "n_excluded": 1,
+      "n_invalid_conservative": 0,
+      "n_invalid_exclusions": 0,
+      "n_invalid_supported": 0,
+      "n_invalid_terminal": 0,
+      "n_items": 150,
+      "path": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/postcutoff_snapshot/postcutoff_project_family_audit_conservative_v1.csv",
+      "report": "/home/pollmix/Coding/AuthGuard-7702/revision_v3/results/postcutoff_snapshot/postcutoff_conservative_family_hold_report.json",
+      "status": "COMPLETE_CONSERVATIVE_RETRAINING_HOLDS"
+    }
+  },
+  "findings": [
+    {
+      "code": "UNVERIFIED_PRIORITY_CLAIM",
+      "excerpt": "Ethereum's EIP-7702 allows externally owned accounts to delegate code execution to smart-contract logic, creating a security decision point before the user authorizes the delegate. At authorization time, behavioral history, reputation information, or verified source code may be unavailable, while th",
+      "line": 39,
+      "message": "Replace priority language with a scoped contrast to named closest work, unless a documented systematic search supports it.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "Ethereum's EIP-7702 allows externally owned accounts to delegate code execution to smart-contract logic, creating a security decision point before the user authorizes the delegate. At authorization time, behavioral history, reputation information, or verified source code may be unavailable, while th",
+      "line": 39,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "Ethereum's EIP-7702 allows externally owned accounts to delegate code execution to smart-contract logic, creating a security decision point before the user authorizes the delegate. At authorization time, behavioral history, reputation information, or verified source code may be unavailable, while th",
+      "line": 39,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "UNSUPPORTED_GLOBAL_BASELINE_CLAIM",
+      "excerpt": "Ethereum's EIP-7702 allows externally owned accounts to delegate code execution to smart-contract logic, creating a security decision point before the user authorizes the delegate. At authorization time, behavioral history, reputation information, or verified source code may be unavailable, while th",
+      "line": 39,
+      "message": "Name the comparator, endpoint, population, and uncertainty interval; do not convert a benchmark ordering into a global superiority claim.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "DEPLOYMENT_OR_SAFETY_OVERCLAIM",
+      "excerpt": "Ethereum's EIP-7702 allows externally owned accounts to delegate code execution to smart-contract logic, creating a security decision point before the user authorizes the delegate. At authorization time, behavioral history, reputation information, or verified source code may be unavailable, while th",
+      "line": 39,
+      "message": "Describe a bounded advisory triage result; latency and retrospective accuracy do not establish deployment safety.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "A second methodological challenge is dependence among smart-contract samples. Code duplication can inflate the measured performance of machine-learning models of code~\\cite{allamanis2019duplication}. Smart-contract datasets may likewise contain identical redeployments and closely related bytecode va",
+      "line": 62,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "UNVERIFIED_PRIORITY_CLAIM",
+      "excerpt": "\\item To the best of our knowledge, we introduce the first machine-learning framework specifically designed to screen EIP-7702 delegate runtime bytecode before authorization, without requiring transaction history, reputation information, or verified source code.",
+      "line": 66,
+      "message": "Replace priority language with a scoped contrast to named closest work, unless a documented systematic search supports it.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "\\item We develop AuthGuard-Seq, a compact 181,877-parameter hierarchical model that combines local opcode-order modeling with contract-wide chunk aggregation and outperforms six traditional and neural baselines under family-disjoint evaluation.",
+      "line": 67,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "UNSUPPORTED_GLOBAL_BASELINE_CLAIM",
+      "excerpt": "\\item We develop AuthGuard-Seq, a compact 181,877-parameter hierarchical model that combines local opcode-order modeling with contract-wide chunk aggregation and outperforms six traditional and neural baselines under family-disjoint evaluation.",
+      "line": 67,
+      "message": "Name the comparator, endpoint, population, and uncertainty interval; do not convert a benchmark ordering into a global superiority claim.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "where $w$ is a learned vector and $K_b$ is the number of non-padding chunks. Larger values of $\\alpha_k$ indicate greater learned relevance of chunk $k$ to the contract-level representation. The aggregated vector passes through a 128-dimensional fully connected layer with GELU activation, dropout, l",
+      "line": 228,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "AuthGuard-Seq & Full opcode stream, 256-token chunks, $K\\leq64$, local CNN and chunk attention & 181,877 \\\\",
+      "line": 316,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "Neural n-gram & 512-d hashed opcode 4-gram view with neural classifier & 181,877 \\\\",
+      "line": 319,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "Dense structural & 261-d histogram and structural features with neural classifier & 181,877 \\\\",
+      "line": 321,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "Table~\\ref{tab:clean} reports the primary clean results as the mean $\\pm$ standard deviation across the three seed-level fold means. AuthGuard-Seq ranks first with $0.924\\pm0.014$ AUPRC, $0.963\\pm0.011$ AUROC, and $0.072\\pm0.012$ Brier score. At the nominal 5\\% validation-negative FPR threshold, it ",
+      "line": 349,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "Table~\\ref{tab:latency} reports the local CPU measurements. Across 1,500 complete screening calls, median latency is 4.121 ms, the 95th percentile is 14.547 ms, and the 99th percentile is 21.429 ms. Forward inference alone has 0.950 ms median latency, while model loading takes 7.690 ms median and ca",
+      "line": 387,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "Full local screening & 1,500 & 4.121 ms & 14.547 ms & 21.429 ms \\\\",
+      "line": 425,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_PARAMETER_COUNT",
+      "excerpt": "The timed checkpoint contains 181,877 parameters and occupies 742,625 bytes. It is the seed-7702, fold-0 cross-validation artifact used for timing rather than a final retrained deployment model. These measurements cover local screening only and exclude network access, node response time, wallet rend",
+      "line": 432,
+      "message": "The manuscript still describes the superseded v2 architecture.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "STALE_V2_METRIC",
+      "excerpt": "We presented AuthGuard-7702, a machine-learning framework for pre-authorization risk screening of EIP-7702 delegate bytecode, and AuthGuard-Seq, a compact hierarchical opcode-sequence model for long runtime programs. On an audited, family-disjoint benchmark of 2,190 observed delegates, AuthGuard-Seq",
+      "line": 453,
+      "message": "This value belongs to the superseded v2 evaluation; regenerate the table from the frozen v3 result artifacts.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "UNSUPPORTED_GLOBAL_BASELINE_CLAIM",
+      "excerpt": "We presented AuthGuard-7702, a machine-learning framework for pre-authorization risk screening of EIP-7702 delegate bytecode, and AuthGuard-Seq, a compact hierarchical opcode-sequence model for long runtime programs. On an audited, family-disjoint benchmark of 2,190 observed delegates, AuthGuard-Seq",
+      "line": 453,
+      "message": "Name the comparator, endpoint, population, and uncertainty interval; do not convert a benchmark ordering into a global superiority claim.",
+      "severity": "BLOCK",
+      "source": "/home/pollmix/Downloads/main (4).tex"
+    },
+    {
+      "code": "INCOMPLETE_HUMAN_AGREEMENT",
+      "message": "postcutoff requires two independent primary reviews per item and adjudication of every disagreement; observed status is NOT_READY_DUAL_REVIEW_OR_ADJUDICATION_INCOMPLETE.",
+      "severity": "BLOCK"
+    }
+  ],
+  "n_blockers": 20,
+  "status": "BLOCKED_UNSUPPORTED_OR_INCOMPLETE_CLAIMS",
+  "target_contributions": [
+    {
+      "claim": "A leakage-reduced evaluation resource for bytecode-only EIP-7702 pre-authorization screening, with temporal/research-family holds, explicit indeterminacy, and independently adjudicated labels.",
+      "id": "C1",
+      "readiness": "Conservative non-attribution family holds and pre-label scoring are complete; FINAL only after dual review, adjudication, and agreement reporting."
+    },
+    {
+      "claim": "A coverage-audited, guard-aware Delegation-Context representation linking reachable capabilities to typed guard evidence while preserving unresolved control flow.",
+      "id": "C2",
+      "readiness": "Extractor validity is supported; representation superiority requires the preregistered full-minus-untyped interval on untouched human labels."
+    },
+    {
+      "claim": "A deployment-realistic warning/NO_MODEL_WARNING/DEFER evaluation across real signer/delegate pairs and wholly new legitimate projects, without a safety-certification claim.",
+      "id": "C3",
+      "readiness": "The weight-8 repair, decision contract, and three-project external evaluation are frozen; post-cutoff human outcomes remain pending."
+    }
+  ],
+  "tex_path": "/home/pollmix/Downloads/main (4).tex"
+}

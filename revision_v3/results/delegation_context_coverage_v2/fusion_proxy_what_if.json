@@ -1,0 +1,309 @@
+{
+  "assumption": "SAFE/UNSAFE provisional labels act as human-label proxy; UNCERTAIN is excluded.",
+  "evaluation": {
+    "coverage_aware_selective_policy": {
+      "decision_semantics": "WARN / LOW_OBSERVED_RISK / DEFER; incomplete coverage cannot produce LOW",
+      "mean_across_seeds": {
+        "actionable_coverage": 0.8364197530864198,
+        "defer_rate": 0.16358024691358022,
+        "n": 108.0,
+        "n_defer": 17.666666666666668,
+        "n_low_observed_risk": 45.333333333333336,
+        "n_unsafe_within_low_observed_risk": 27.666666666666668,
+        "n_warn": 45.0,
+        "positive_miss_fraction_assigned_low_observed_risk": 0.3143939393939394,
+        "positive_rate_within_low_observed_risk": 0.6102192134107027,
+        "warn_fpr_on_negatives": 0.11666666666666665,
+        "warn_recall_on_positives": 0.48484848484848486
+      },
+      "per_seed": [
+        {
+          "actionable_coverage": 0.8425925925925926,
+          "defer_rate": 0.1574074074074074,
+          "n": 108,
+          "n_defer": 17,
+          "n_low_observed_risk": 47,
+          "n_unsafe_within_low_observed_risk": 29,
+          "n_warn": 44,
+          "positive_miss_fraction_assigned_low_observed_risk": 0.32954545454545453,
+          "positive_rate_within_low_observed_risk": 0.6170212765957447,
+          "seed": 7702,
+          "warn_fpr_on_negatives": 0.1,
+          "warn_recall_on_positives": 0.4772727272727273
+        },
+        {
+          "actionable_coverage": 0.8333333333333334,
+          "defer_rate": 0.16666666666666666,
+          "n": 108,
+          "n_defer": 18,
+          "n_low_observed_risk": 44,
+          "n_unsafe_within_low_observed_risk": 27,
+          "n_warn": 46,
+          "positive_miss_fraction_assigned_low_observed_risk": 0.3068181818181818,
+          "positive_rate_within_low_observed_risk": 0.6136363636363636,
+          "seed": 7703,
+          "warn_fpr_on_negatives": 0.15,
+          "warn_recall_on_positives": 0.48863636363636365
+        },
+        {
+          "actionable_coverage": 0.8333333333333334,
+          "defer_rate": 0.16666666666666666,
+          "n": 108,
+          "n_defer": 18,
+          "n_low_observed_risk": 45,
+          "n_unsafe_within_low_observed_risk": 27,
+          "n_warn": 45,
+          "positive_miss_fraction_assigned_low_observed_risk": 0.3068181818181818,
+          "positive_rate_within_low_observed_risk": 0.6,
+          "seed": 7704,
+          "warn_fpr_on_negatives": 0.1,
+          "warn_recall_on_positives": 0.48863636363636365
+        }
+      ]
+    },
+    "models": {
+      "dcrg": {
+        "mean_across_seeds": {
+          "auprc": 0.9373788259392984,
+          "auroc": 0.7318181818181818,
+          "brier": 0.42874588160628874,
+          "expected_calibration_error": 0.4561745352618354,
+          "f1": 0.6515151515151516,
+          "observed_fpr": 0.05000000000000001,
+          "precision": 0.9772727272727272,
+          "recall": 0.4886363636363636
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9367315800830444,
+            "auroc": 0.728409090909091,
+            "brier": 0.42846815321079873,
+            "expected_calibration_error": 0.45962696371921324,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9375810557561246,
+            "auroc": 0.7323863636363637,
+            "brier": 0.429402223100483,
+            "expected_calibration_error": 0.4554134179986422,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9378238419787263,
+            "auroc": 0.7346590909090909,
+            "brier": 0.4283672685075845,
+            "expected_calibration_error": 0.45348322406765074,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived, family-held-out, item-specific"
+      },
+      "dcrg_sequence_noisy_or": {
+        "mean_across_seeds": {
+          "auprc": 0.9242121214909088,
+          "auroc": 0.7132575757575758,
+          "brier": 0.37392992013709475,
+          "expected_calibration_error": 0.39670944127152724,
+          "f1": 0.6415904074977131,
+          "observed_fpr": 0.11666666666666665,
+          "precision": 0.9482945395988875,
+          "recall": 0.48484848484848486
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9274020618112548,
+            "auroc": 0.7005681818181818,
+            "brier": 0.3613126194318162,
+            "expected_calibration_error": 0.38679202401327606,
+            "f1": 0.6363636363636365,
+            "observed_fpr": 0.1,
+            "precision": 0.9545454545454546,
+            "recall": 0.4772727272727273,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9181403355620142,
+            "auroc": 0.69375,
+            "brier": 0.3881233401033225,
+            "expected_calibration_error": 0.40743302790280045,
+            "f1": 0.6417910447761195,
+            "observed_fpr": 0.15,
+            "precision": 0.9347826086956522,
+            "recall": 0.48863636363636365,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9270939670994576,
+            "auroc": 0.7454545454545455,
+            "brier": 0.37235380087614556,
+            "expected_calibration_error": 0.3959032718985051,
+            "f1": 0.6466165413533835,
+            "observed_fpr": 0.1,
+            "precision": 0.9555555555555556,
+            "recall": 0.48863636363636365,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived, family-held-out, item-specific"
+      },
+      "sequence": {
+        "mean_across_seeds": {
+          "auprc": 0.8927005031207175,
+          "auroc": 0.6535984848484849,
+          "brier": 0.4486928006777962,
+          "expected_calibration_error": 0.4822902965941826,
+          "f1": 0.5847349114064232,
+          "observed_fpr": 0.11666666666666665,
+          "precision": 0.9411959777492512,
+          "recall": 0.42424242424242425
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9075773621942117,
+            "auroc": 0.6443181818181819,
+            "brier": 0.4365361095191484,
+            "expected_calibration_error": 0.46882984996557725,
+            "f1": 0.6046511627906976,
+            "observed_fpr": 0.1,
+            "precision": 0.9512195121951219,
+            "recall": 0.4431818181818182,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.8836571378888264,
+            "auroc": 0.6267045454545455,
+            "brier": 0.45539679662759586,
+            "expected_calibration_error": 0.48626289169543374,
+            "f1": 0.5781250000000001,
+            "observed_fpr": 0.15,
+            "precision": 0.925,
+            "recall": 0.42045454545454547,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.8868670092791142,
+            "auroc": 0.6897727272727273,
+            "brier": 0.45414549588664455,
+            "expected_calibration_error": 0.4917781481215368,
+            "f1": 0.5714285714285715,
+            "observed_fpr": 0.1,
+            "precision": 0.9473684210526315,
+            "recall": 0.4090909090909091,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived, family-held-out, item-specific"
+      }
+    },
+    "n_bootstrap_replicates": 10000,
+    "paired_family_bootstrap": [
+      {
+        "auprc": {
+          "ci_high": 0.0539560651161169,
+          "ci_low": 0.00807119914357306,
+          "excludes_zero": true,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.01982469961704314,
+            "7703": 0.03448319767318786,
+            "7704": 0.040226957820343356
+          },
+          "point_delta": 0.03151161837019145
+        },
+        "baseline": "sequence",
+        "candidate": "dcrg_sequence_noisy_or",
+        "observed_fpr_at_5pct": {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.0,
+            "7704": 0.0
+          },
+          "point_delta": 0.0
+        },
+        "recall_at_5pct": {
+          "ci_high": 0.11666666666666668,
+          "ci_low": 0.012982850482850474,
+          "excludes_zero": true,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.034090909090909116,
+            "7703": 0.06818181818181818,
+            "7704": 0.07954545454545453
+          },
+          "point_delta": 0.06060606060606061
+        }
+      },
+      {
+        "auprc": {
+          "ci_high": 0.009519901849265553,
+          "ci_low": -0.04027961459037035,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": -0.009329518271789516,
+            "7703": -0.01944072019411036,
+            "7704": -0.010729874879268686
+          },
+          "point_delta": -0.013166704448389521
+        },
+        "baseline": "dcrg",
+        "candidate": "dcrg_sequence_noisy_or",
+        "observed_fpr_at_5pct": {
+          "ci_high": 0.196078431372549,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.05,
+            "7703": 0.09999999999999999,
+            "7704": 0.05
+          },
+          "point_delta": 0.06666666666666667
+        },
+        "recall_at_5pct": {
+          "ci_high": 0.04861306179775279,
+          "ci_low": -0.05494505494505497,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": -0.011363636363636354,
+            "7703": 0.0,
+            "7704": 0.0
+          },
+          "point_delta": -0.0037878787878787845
+        }
+      }
+    ]
+  },
+  "fatal_validity_warning": "These proxy labels have already informed development. A newly collected, untouched human-labeled test set is required for any final fusion claim.",
+  "prediction_sha256": "36795cbe54373d1c984312daa9b35e7a876fe2c206bd2df01c6e063d4dadfefc",
+  "status": "DEVELOPMENT_ONLY_CURRENT_LABEL_PROXY_NOT_FINAL_EVIDENCE"
+}

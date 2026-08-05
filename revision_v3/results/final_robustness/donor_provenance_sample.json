@@ -1,0 +1,617 @@
+[
+  {
+    "recipient_sample_id": "optimism:0x24592cb8b7ec813a5eaeb73e5503322d2b93a878",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x75bc012fa81df052bafc4ef9255af29b6c4e5301"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x24592cb8b7ec813a5eaeb73e5503322d2b93a878",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xf770ca79e3c2e95464e72b830461343527d7a1ee"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x24592cb8b7ec813a5eaeb73e5503322d2b93a878",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x6161466c8eb630b5b6c9415eb5d809d17515e284"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0xef0852258381dfbf20144ed38899d489935fa038",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x2a5f19e0262e3150c0bcb61da4a1a27462b3d0d8",
+      "ethereum(implied):0xb0683aec45f68e42e843bcf6f709daef87fbed98"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0xef0852258381dfbf20144ed38899d489935fa038",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xcad86c78a6a57d8c7594e9a8f2a17e8f41f53543"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0xef0852258381dfbf20144ed38899d489935fa038",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xe91a7174d8aa3f43166cf1efae765015cd24d4ba",
+      "ethereum(implied):0xca7628622f8460e0516c3f4fb84321a05d20666d",
+      "ethereum(implied):0x89100da108afb4ae1b382a68d4b7dc08dd0c9a23"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x22f0db4f3292807d919497802d951e30aa281f4f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xe2e6d6b6075e5c63bb079e53db1bb2809ba9f25c"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x22f0db4f3292807d919497802d951e30aa281f4f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xc9045350712a1dcc3a74eca18bc985424bbe7535"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x22f0db4f3292807d919497802d951e30aa281f4f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xb496561cb6a3c648d6de1faeadc54f8e0c05936a",
+      "ethereum(implied):0xf9efa3b387378b0533947db1271ed8a029e03207"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0xbd8aac1ab758af1bfe61c3ae2f94e792b5134fed",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xa85e0c6919d2cd6cd00fb69e0278aa8bf871565c"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0xbd8aac1ab758af1bfe61c3ae2f94e792b5134fed",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x4d7a137a08413a6559419fd7a583473e1684c941"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0xbd8aac1ab758af1bfe61c3ae2f94e792b5134fed",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xca48ace7387574a6120392722eb6f2018c60ef3b"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x480ac71ed6be1b8d7ae18d323e42a16384918e91",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x60cc32dab1680a76ef4d109459606b15bd867263"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x480ac71ed6be1b8d7ae18d323e42a16384918e91",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xf54371fc6c295d269ef4c0122174d5f3518b702f"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x480ac71ed6be1b8d7ae18d323e42a16384918e91",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xd1ed9d97a735a32fe264d45c5f77f0c4663c9ad4"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x06839a2e8541f56ac5e9e42656ff6c534ad2558c",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xee481f8632792f8503687e563d08094417a76b6f"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x06839a2e8541f56ac5e9e42656ff6c534ad2558c",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xfaa5373414c5fe1dea30746816cb4d950484b0bc"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x06839a2e8541f56ac5e9e42656ff6c534ad2558c",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xdc3d9cca151d241b322eb5388aa3c6948c3259c6"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x5bb4e04d6732c665ca924e6830b32731229fff6f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xea25a8ad32bee83aceff56fee24ef85b0d3cc139",
+      "ethereum(implied):0xd808efb3ec4d74f3fddeb2e6e77b04f0691bcb73"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x5bb4e04d6732c665ca924e6830b32731229fff6f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x50abeb9c840f90d2aa04be25978c0f3782d1385c"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x5bb4e04d6732c665ca924e6830b32731229fff6f",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xef08016f50ae08ff4d315789633870aee2d1ef7d"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x824aa93717c8d4d9cb1e213a9c02c726b947f774",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x45306bc13b202ddc5870143977d2c9657fb3e1ae"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x824aa93717c8d4d9cb1e213a9c02c726b947f774",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xcad72f57387f91661787d463c6be426a2ada6c8b"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x824aa93717c8d4d9cb1e213a9c02c726b947f774",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x65fafecb795fcf6124e2f1247568f6f9ad652167"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x0d69833bdd2ee5d545b950a85fcb1db9ed2b7572",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x92960d848f52aab633ebd2f50bdeda06c93c04c2"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x0d69833bdd2ee5d545b950a85fcb1db9ed2b7572",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xcea80ef8a156681113584af4ae0e8364c50f5816",
+      "ethereum(implied):0x7d57e514a187f5596f10385a9d42ed5780111d94",
+      "ethereum(implied):0x2ce904d5302ab19e45216293bb0101565e08b13a"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x0d69833bdd2ee5d545b950a85fcb1db9ed2b7572",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x06cc597baac904f3d8d290d543edd0d41d36d3e9"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x20dd86b35eedce9159808218a57f8f622849c635",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x65fafecb795fcf6124e2f1247568f6f9ad652167"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x20dd86b35eedce9159808218a57f8f622849c635",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xb44c14dfa75112ad4902c34e416f64f4695b86fa"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x20dd86b35eedce9159808218a57f8f622849c635",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xe18a520e69445b533e307d7e05e1344256f56730",
+      "ethereum(implied):0x6d1648368b1684c4f4acb308cd0774a3c5a5ff8e"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0xd24371bbe7c248597705b5b6ac753025dc2d2619",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x274d1171f06e976a4f545e6d4bf017bedc51f752",
+      "ethereum(implied):0xd8b7adc5b1212fdf5134cec88ef6d5a62389a595"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0xd24371bbe7c248597705b5b6ac753025dc2d2619",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x3e8bdcf35e05698a3e3fe259ea508524493f5800"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0xd24371bbe7c248597705b5b6ac753025dc2d2619",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x86b1267853d0f6498ff777cdc3dceeafc70bf892"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x281f3e79775f61cccfc7b7c3eacdc4f15a7f3252",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xe1e89536c2bfdb7401dcc399ebd3a65ee89e84bb",
+      "ethereum(implied):0xf9101a4f3b9795ff775214e7cb9b09ecdbece5d5"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x281f3e79775f61cccfc7b7c3eacdc4f15a7f3252",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x427d3b3b645ec5cbaa321cdcab1af1d9ce4c0805"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x281f3e79775f61cccfc7b7c3eacdc4f15a7f3252",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xdea550c603d844c7df7f6baa17c1f2a330e3d62c"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x043661a263719880069c2adb5bf625eb4b7b5db7",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x4993eba051bba963e7fe9ade6b2cbc320229f3a8",
+      "ethereum(implied):0xdcb0a7c4578168817ca517c22351aa04d15e61af"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x043661a263719880069c2adb5bf625eb4b7b5db7",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x6e2b14f16c83f358fbd57155bd586d7d6e384455"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x043661a263719880069c2adb5bf625eb4b7b5db7",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xf400611d50edc0848dc4f6eeca5f39963027b456"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0xaa6491c5071d91e4fc398d512ba5f78f62e2b100",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xbee5cdbd7ae69b31ceaeb16485e43f3bbc1b6983"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0xaa6491c5071d91e4fc398d512ba5f78f62e2b100",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x7ffdbb0649a4c5a9cca8ad41c455710f491b6af3"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0xaa6491c5071d91e4fc398d512ba5f78f62e2b100",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x98562e4820ef2052ca7d8e83f94b7cbf0ae6a3f3"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0xb6252af4c3561714c187aa1c0a7b1f0ec2e70053",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xeda39858b93f42ca8c9cb74172603209865fb08c",
+      "ethereum(implied):0x6b91464f895a1d2f34f69d1eb6ed45c0b6eecd4b"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0xb6252af4c3561714c187aa1c0a7b1f0ec2e70053",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xe4ccbdc2f3b5654c84d84e008da84b25be506781"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0xb6252af4c3561714c187aa1c0a7b1f0ec2e70053",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xa5da07d8532eb87426bb830ad878cd65a0c41c17"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x761dc36a52733214423d04f4dcd84083e15d3735",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xd1ed9d97a735a32fe264d45c5f77f0c4663c9ad4"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x761dc36a52733214423d04f4dcd84083e15d3735",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x270e3d6398da05e2482f4524b3612ab5ba5280cb",
+      "ethereum(implied):0xe6e1b447a407b7bcb613308621a6a0e480b382e8"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  },
+  {
+    "recipient_sample_id": "optimism:0x761dc36a52733214423d04f4dcd84083e15d3735",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x274d1171f06e976a4f545e6d4bf017bedc51f752",
+      "ethereum(implied):0x85c07299c8f132034f4f94cb01a5dbaf802d773e"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 3
+  },
+  {
+    "recipient_sample_id": "optimism:0x653c2018585b155586026d383044cb6683fc2ae4",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0xc73ecc0daa1cf523f268d9fcbafb2a7d10ffaccb",
+      "ethereum(implied):0x4c8176a5d4dd51483abd4bd422f3844a17d9bcc5"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 1
+  },
+  {
+    "recipient_sample_id": "optimism:0x653c2018585b155586026d383044cb6683fc2ae4",
+    "recipient_family_id": "F00004",
+    "executable_region_bytes": 836,
+    "metadata_region_bytes": 53,
+    "target_donor_bytes": 1672,
+    "donors_used": [
+      "ethereum(implied):0x58e25a12e729d0f41674c8a17ac4e07220ce51cb"
+    ],
+    "model_seed": 7702,
+    "transform_seed": 2
+  }
+]

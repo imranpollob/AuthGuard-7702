@@ -1,0 +1,256 @@
+{
+  "artifacts": {
+    "feature_importance": "revision_v3/results/delegation_context/dcrg_feature_importance.csv",
+    "fold_seed_metrics": "revision_v3/results/delegation_context/dcrg_fusion_fold_seed.csv",
+    "predictions": "revision_v3/results/delegation_context/dcrg_fusion_predictions.csv.gz"
+  },
+  "context_feature_schema": "dcrg-1.1",
+  "fold_mean_summary": {
+    "coverage_aware_selective_policy": {
+      "actionable_coverage": {
+        "mean": 0.5259208158177592,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.04249918672243854
+      },
+      "defer_rate": {
+        "mean": 0.4740791841822409,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.042499186722438555
+      },
+      "positive_rate_within_low_observed_risk": {
+        "mean": 0.0743927331988086,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.14112269744368394
+      }
+    },
+    "dcrg": {
+      "auprc": {
+        "mean": 0.9493728281103171,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.026494422205721815
+      },
+      "auroc": {
+        "mean": 0.9860372650439263,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.003868034451570468
+      },
+      "brier": {
+        "mean": 0.030934592655802687,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.006308272917505896
+      },
+      "observed_fpr_at_5pct": {
+        "mean": 0.05240160857001623,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.008793407368452213
+      },
+      "precision_at_5pct": {
+        "mean": 0.8957997575994364,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.047019264205620116
+      },
+      "recall_at_5pct": {
+        "mean": 0.9807547516834486,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.012987134115914277
+      }
+    },
+    "dcrg_sequence_noisy_or": {
+      "auprc": {
+        "mean": 0.9625377291925676,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.03157655730377447
+      },
+      "auroc": {
+        "mean": 0.9852071821542352,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.013285921781404865
+      },
+      "brier": {
+        "mean": 0.044583437318162195,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.015250879387778284
+      },
+      "observed_fpr_at_5pct": {
+        "mean": 0.04661005505803519,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.01691352964556445
+      },
+      "precision_at_5pct": {
+        "mean": 0.9035943121028175,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.04200259746561368
+      },
+      "recall_at_5pct": {
+        "mean": 0.9353944262915747,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.1358882554761338
+      }
+    },
+    "sequence": {
+      "auprc": {
+        "mean": 0.9199911279231038,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.08783811124247763
+      },
+      "auroc": {
+        "mean": 0.944909656675305,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.07835688135496588
+      },
+      "brier": {
+        "mean": 0.07526346351730315,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.054640236606184715
+      },
+      "observed_fpr_at_5pct": {
+        "mean": 0.05271806758917271,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.03073670890162102
+      },
+      "precision_at_5pct": {
+        "mean": 0.8972762681317235,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.05631827732030184
+      },
+      "recall_at_5pct": {
+        "mean": 0.8406130486889399,
+        "n_runs": 15,
+        "std_across_fold_seed_runs": 0.16331253231438844
+      }
+    }
+  },
+  "limitations": [
+    "The primary labels partly encode static-analysis evidence; this evaluation can validate engineering behavior but cannot establish independent semantic validity.",
+    "Independent human Gold-Test and legitimate post-cutoff family evaluation are required before paper-level superiority or safety claims.",
+    "LOW_OBSERVED_RISK is not a proof of safety and is emitted only under COMPLETE bounded-analysis coverage."
+  ],
+  "pooled_out_of_fold_summary": {
+    "dcrg": {
+      "mean_across_seeds": {
+        "auprc": 0.9540897287729303,
+        "auroc": 0.9851678401957126,
+        "f1": 0.9390784946084739,
+        "observed_fpr": 0.052631578947368425,
+        "precision": 0.9023878651237168,
+        "recall": 0.9789087574507107
+      },
+      "per_seed": [
+        {
+          "auprc": 0.952939011821961,
+          "auroc": 0.9848359488191532,
+          "f1": 0.9398545935228024,
+          "observed_fpr": 0.05126452494873548,
+          "precision": 0.9045801526717557,
+          "recall": 0.9779917469050894,
+          "seed": 7702
+        },
+        {
+          "auprc": 0.9541859263366292,
+          "auroc": 0.9850545458306263,
+          "f1": 0.9396325459317586,
+          "observed_fpr": 0.05536568694463431,
+          "precision": 0.8983688833124216,
+          "recall": 0.984869325997249,
+          "seed": 7703
+        },
+        {
+          "auprc": 0.9551442481602009,
+          "auroc": 0.9856130259373581,
+          "f1": 0.937748344370861,
+          "observed_fpr": 0.05126452494873548,
+          "precision": 0.9042145593869731,
+          "recall": 0.9738651994497937,
+          "seed": 7704
+        }
+      ]
+    },
+    "dcrg_sequence_noisy_or": {
+      "mean_across_seeds": {
+        "auprc": 0.9582244782374674,
+        "auroc": 0.9852803510589654,
+        "f1": 0.9204226309161155,
+        "observed_fpr": 0.046251993620414676,
+        "precision": 0.9092449123828147,
+        "recall": 0.9325997248968364
+      },
+      "per_seed": [
+        {
+          "auprc": 0.9532123590899032,
+          "auroc": 0.9840922488790439,
+          "f1": 0.9072164948453609,
+          "observed_fpr": 0.04647983595352016,
+          "precision": 0.9065934065934066,
+          "recall": 0.9078404401650619,
+          "seed": 7702
+        },
+        {
+          "auprc": 0.9604745560640691,
+          "auroc": 0.9856454629132542,
+          "f1": 0.9082125603864734,
+          "observed_fpr": 0.043745727956254275,
+          "precision": 0.9113573407202216,
+          "recall": 0.9050894085281981,
+          "seed": 7703
+        },
+        {
+          "auprc": 0.9609865195584298,
+          "auroc": 0.9861033413845982,
+          "f1": 0.9458388375165125,
+          "observed_fpr": 0.048530416951469584,
+          "precision": 0.9097839898348158,
+          "recall": 0.984869325997249,
+          "seed": 7704
+        }
+      ]
+    },
+    "sequence": {
+      "mean_across_seeds": {
+        "auprc": 0.9020224744648436,
+        "auroc": 0.9309235010748078,
+        "f1": 0.8686052531667837,
+        "observed_fpr": 0.049441786283891544,
+        "precision": 0.8947230039143647,
+        "recall": 0.8441082072443834
+      },
+      "per_seed": [
+        {
+          "auprc": 0.8977005474180355,
+          "auroc": 0.9186269099032438,
+          "f1": 0.8710601719197707,
+          "observed_fpr": 0.041695146958304855,
+          "precision": 0.9088191330343797,
+          "recall": 0.8363136176066025,
+          "seed": 7702
+        },
+        {
+          "auprc": 0.9130668468604785,
+          "auroc": 0.9431229380190503,
+          "f1": 0.8723702664796633,
+          "observed_fpr": 0.05263157894736842,
+          "precision": 0.8898426323319027,
+          "recall": 0.8555708390646493,
+          "seed": 7703
+        },
+        {
+          "auprc": 0.8953000291160171,
+          "auroc": 0.9310206553021293,
+          "f1": 0.8623853211009174,
+          "observed_fpr": 0.053998632946001365,
+          "precision": 0.8855072463768116,
+          "recall": 0.8404401650618982,
+          "seed": 7704
+        }
+      ]
+    }
+  },
+  "protocol": "family-grouped 5-fold outer test x 3 seeds; validation-only calibration and thresholds; fixed noisy-OR fusion",
+  "selective_outputs": [
+    "WARN",
+    "LOW_OBSERVED_RISK",
+    "DEFER"
+  ],
+  "sequence_checkpoint_provenance": "same outer-test checkpoint for validation and test; test families absent from checkpoint training",
+  "status": "PROVISIONAL_LEGACY_LABEL_EVALUATION",
+  "wall_seconds": 51.50458526611328
+}

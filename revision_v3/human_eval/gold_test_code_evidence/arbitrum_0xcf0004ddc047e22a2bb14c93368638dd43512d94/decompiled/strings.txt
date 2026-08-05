@@ -1,0 +1,20 @@
+W[PPP6
+Ethereum Signed Message:
+V[cNH{q`
+%V[PPPPPPPPPPPa
+[cNH{q`
+RqInsufficient value`p
+Only authorized sponsor can exec`D
+Rbute`
+)W`d5g
+RpInvalid signature`x
+"WV[`@QbF
+Mismatched arrays length
+W`@RV[cNH{q`
+W`@RV[
+WPPV[`
+WPV[`$
+)W`@Qc
+R`$5`$
+dipfsX"
+RdsolcC

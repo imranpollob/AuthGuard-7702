@@ -1,0 +1,26 @@
+HV[` `@Q
+[PPPP`@Q=`
+V[_`@Q
+oV[`@Q
+AV[`@Q
+[PP[PPPPPPV[_`@Q
+`@RPPPV[_a
+xV[[` 
+RPPPV[_a
+PPPV[_
+PPV[_``
+PPV[_a
+RPPV[_` 
+PPV[_` 
+\V[[_a
+Insufficient token balance
+RPV[_a
+PV[_` 
+PPV[_[
+RPPPPV[_a
+Call failed
+Token operation returned false
+No return data from call
+Insufficient tokens transferred
+dipfsX"
+dsolcC

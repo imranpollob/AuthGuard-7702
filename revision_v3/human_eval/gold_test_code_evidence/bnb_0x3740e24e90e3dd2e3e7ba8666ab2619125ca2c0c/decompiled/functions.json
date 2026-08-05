@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x7ed1f1dd",
+      "resolved_signature": "DPPFlashLoanCall(address,uint256,uint256,bytes)",
+      "bytecode_offset": 54,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xbc49482d",
+      "resolved_signature": null,
+      "bytecode_offset": 87,
+      "arguments": "address,address,uint256,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

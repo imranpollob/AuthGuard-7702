@@ -1,0 +1,94 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x53d6fd59",
+      "resolved_signature": "setWhitelist(address,bool)",
+      "bytecode_offset": 76,
+      "arguments": "address,bool",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x66cfa057",
+      "resolved_signature": "deploy(uint256,bytes32,bytes)",
+      "bytecode_offset": 109,
+      "arguments": "uint256,uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xac9650d8",
+      "resolved_signature": "multicall(bytes[])",
+      "bytecode_offset": 169,
+      "arguments": "bytes[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xb61d27f6",
+      "resolved_signature": "execute(address,uint256,bytes)",
+      "bytecode_offset": 188,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 243
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 464
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 667
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 898
+    },
+    {
+      "selector": "0x63616c6c",
+      "resolved_signature": null,
+      "bytecode_offset": 951
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1044
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1255
+    },
+    {
+      "selector": "0x63616c6c",
+      "resolved_signature": null,
+      "bytecode_offset": 1308
+    },
+    {
+      "selector": "0xcf479181",
+      "resolved_signature": "InsufficientBalance(uint256,uint256)",
+      "bytecode_offset": 1371
+    },
+    {
+      "selector": "0x4ca249dc",
+      "resolved_signature": "Create2EmptyBytecode()",
+      "bytecode_offset": 1438
+    },
+    {
+      "selector": "0xb06ebf3d",
+      "resolved_signature": "FailedDeployment()",
+      "bytecode_offset": 1548
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2022
+    }
+  ]
+}

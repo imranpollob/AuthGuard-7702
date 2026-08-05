@@ -1,0 +1,145 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x06fdde03",
+      "resolved_signature": "name()",
+      "bytecode_offset": 305,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x095ea7b3",
+      "resolved_signature": "approve(address,uint256)",
+      "bytecode_offset": 430,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x18160ddd",
+      "resolved_signature": "totalSupply()",
+      "bytecode_offset": 494,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x23b872dd",
+      "resolved_signature": "transferFrom(address,address,uint256)",
+      "bytecode_offset": 520,
+      "arguments": "address,address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x313ce567",
+      "resolved_signature": "decimals()",
+      "bytecode_offset": 574,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x32424aa3",
+      "resolved_signature": "_decimals()",
+      "bytecode_offset": 604,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x39509351",
+      "resolved_signature": "increaseAllowance(address,uint256)",
+      "bytecode_offset": 612,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x42966c68",
+      "resolved_signature": "burn(uint256)",
+      "bytecode_offset": 656,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 685,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x715018a6",
+      "resolved_signature": "renounceOwnership()",
+      "bytecode_offset": 723,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x893d20e8",
+      "resolved_signature": "getOwner()",
+      "bytecode_offset": 733,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 769,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x95d89b41",
+      "resolved_signature": "symbol()",
+      "bytecode_offset": 777,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa0712d68",
+      "resolved_signature": "mint(uint256)",
+      "bytecode_offset": 785,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa457c2d7",
+      "resolved_signature": "decreaseAllowance(address,uint256)",
+      "bytecode_offset": 814,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 858,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb09f1266",
+      "resolved_signature": "_symbol()",
+      "bytecode_offset": 902,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd28d8852",
+      "resolved_signature": "_name()",
+      "bytecode_offset": 910,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xdd62ed3e",
+      "resolved_signature": "allowance(address,address)",
+      "bytecode_offset": 918,
+      "arguments": "address,address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf2fde38b",
+      "resolved_signature": "transferOwnership(address)",
+      "bytecode_offset": 964,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

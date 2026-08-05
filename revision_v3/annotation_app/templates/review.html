@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Review item {{ item_id }}{% if is_adjudication %} (ADJUDICATION){% endif %}</h1>
+
+{% if is_adjudication and adjudication_context %}
+<div style="border:2px solid #900; padding:8px; margin-bottom:12px;">
+  <h3>Primary reviewers disagreed -- your job is to adjudicate</h3>
+  {% for r in adjudication_context %}
+  <p><b>{{ r.reviewer_id }}</b>: {{ r.label }}
+     {% if r.unsafe_category %}/ {{ r.unsafe_category }}{% endif %}
+     {% if r.indeterminate_reason %}/ {{ r.indeterminate_reason }}{% endif %}
+     (confidence: {{ r.confidence }})<br>
+     rationale: {{ r.rationale }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h2>Evidence</h2>
+<p><b>Chain:</b> {{ evidence.chain }} &nbsp; <b>Address:</b> {{ evidence.address }}
+   &nbsp; <a href="{{ evidence.explorer_link }}" target="_blank">explorer</a></p>
+<p><b>Bytecode length:</b> {{ evidence.runtime_bytecode_length_bytes }} bytes,
+   {{ evidence.opcode_count }} opcodes</p>
+<p><b>Deterministic summary:</b> {{ evidence.deterministic_summary }}</p>
+
+<details>
+  <summary>Proxy / delegation evidence</summary>
+  <pre>{{ evidence.proxy_evidence | tojson(indent=2) }}</pre>
+</details>
+<details>
+  <summary>Structural counts</summary>
+  <pre>{{ evidence.structural | tojson(indent=2) }}</pre>
+</details>
+<details>
+  <summary>Token transfer / approval evidence</summary>
+  <pre>{{ evidence.token_transfer_evidence | tojson(indent=2) }}</pre>
+</details>
+<details>
+  <summary>Known project / documentation</summary>
+  <pre>{{ evidence.known_project | tojson(indent=2) }}</pre>
+</details>
+{% if evidence.authorization_history.status == 'AVAILABLE_FROM_FROZEN_COLLECTOR' %}
+<details open>
+  <summary>Frozen EIP-7702 authorization context (neutral provenance)</summary>
+  <p>This context identifies the authorizing EOA and observation event. It is not a model
+     output or security label.</p>
+  <pre>{{ evidence.authorization_history | tojson(indent=2) }}</pre>
+</details>
+{% endif %}
+<details>
+  <summary>Opcode disassembly (first 120 tokens)</summary>
+  <pre>{{ disassembly_preview | join(' ') }}</pre>
+</details>
+<details>
+  <summary>Evidence availability</summary>
+  <ul>
+    <li>Decompiled/source representation: {{ evidence.decompiled_or_source_representation.status }}</li>
+    <li>Verified source-code availability: {{ evidence.verified_source_code_availability.status }}</li>
+    <li>Authorization context: {{ evidence.authorization_history.status }}</li>
+    <li>Transaction history statistics: {{ evidence.transaction_history_statistics.status }}</li>
+  </ul>
+</details>
+
+<h2>Your judgment</h2>
+<form method="post" action="/review/{{ item_id }}">
+  <p>
+    <label>Label:</label><br>
+    {% for l in PRIMARY_LABELS %}
+      <label><input type="radio" name="label" value="{{ l }}"
+        {% if existing and existing.label == l %}checked{% endif %} required> {{ l }}</label><br>
+    {% endfor %}
+  </p>
+  <p>
+    <label>Unsafe category (only if label = UNSAFE):</label><br>
+    <select name="unsafe_category">
+      <option value="">--</option>
+      {% for c in UNSAFE_CATEGORIES %}
+      <option value="{{ c }}" {% if existing and existing.unsafe_category == c %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label>Indeterminate / not-screenable reason (only if label = INDETERMINATE or NOT_BYTECODE_SCREENABLE):</label><br>
+    <select name="indeterminate_reason">
+      <option value="">--</option>
+      {% for r in INDETERMINATE_REASONS %}
+      <option value="{{ r }}" {% if existing and existing.indeterminate_reason == r %}selected{% endif %}>{{ r }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label>Confidence:</label><br>
+    {% for c in CONFIDENCE_LEVELS %}
+      <label><input type="radio" name="confidence" value="{{ c }}"
+        {% if existing and existing.confidence == c %}checked{% endif %} required> {{ c }}</label>
+    {% endfor %}
+  </p>
+  <p>
+    <label>Rationale:</label><br>
+    <textarea name="rationale" rows="4" cols="60">{{ existing.rationale if existing else '' }}</textarea>
+    <br><small>Required for final submission; at least 20 characters.</small>
+  </p>
+  <p>
+    <label>Evidence consulted (comma-separated field names):</label><br>
+    <input type="text" name="evidence_consulted" size="60"
+      value="{{ existing.evidence_consulted if existing else '' }}">
+    <br><small>Required for final submission.</small>
+  </p>
+  <button type="submit" name="action" value="save_draft">Save draft</button>
+  <button type="submit" name="action" value="submit">Submit final</button>
+</form>
+{% endblock %}

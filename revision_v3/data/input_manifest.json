@@ -1,0 +1,77 @@
+{
+  "column_schema": [
+    "sample_id",
+    "chain",
+    "address",
+    "runtime_bytecode",
+    "bytecode_sha256",
+    "label",
+    "label_semantics",
+    "label_source",
+    "label_evidence_type",
+    "label_strength",
+    "dataset_subset",
+    "population",
+    "is_eip7702_delegate",
+    "family_id",
+    "family_size",
+    "exact_duplicate_group",
+    "exact_duplicate_count",
+    "fold_id",
+    "outer_fold_secondary",
+    "code_bytes",
+    "opcode_count",
+    "has_cbor_metadata",
+    "bytecode_repaired",
+    "data_quality_flag",
+    "flag_usenix_matched",
+    "flag_external_blacklist",
+    "flag_phishinghook_phishing_bytecode",
+    "flag_independent_behavioral_evidence",
+    "flag_repaired_matches_curated_aa"
+  ],
+  "expected_population": {
+    "n_folds": 5,
+    "primary_families": 790,
+    "primary_negative": 1463,
+    "primary_positive": 727,
+    "primary_rows": 2190
+  },
+  "family_counts": {
+    "primary_families": 790
+  },
+  "fold_counts": {
+    "n_folds": 5,
+    "rows_per_fold": {
+      "0.0": 446,
+      "1.0": 446,
+      "2.0": 427,
+      "3.0": 447,
+      "4.0": 424
+    }
+  },
+  "label_counts": {
+    "primary_negative": 1463,
+    "primary_positive": 727
+  },
+  "row_counts": {
+    "excluded_uncertain_input_rows": 90,
+    "external_benign_control_rows": 797,
+    "primary_rows": 2190,
+    "qualitative_control_rows": 5,
+    "total_rows": 3082
+  },
+  "sha256": {
+    "benchmark_csv_gz": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e"
+  },
+  "source_paths": {
+    "benchmark_csv_gz": "revision_v2/data/authguardbench_7702_v2.csv.gz"
+  },
+  "validation_checks": {
+    "n_folds_match": true,
+    "primary_families_match": true,
+    "primary_negative_match": true,
+    "primary_positive_match": true,
+    "primary_rows_match": true
+  }
+}

@@ -106,8 +106,11 @@ logs/
 tmp/
 temp/
 *.tmp
+*.exit
 *.bak
 *.backup
+revision_v3/results/postcutoff_snapshot/ethereum_authority_runtime_cache.jsonl
+revision_v3/results/postcutoff_snapshot/postcutoff_public_provenance_cache.jsonl
 
 # Coverage reports
 coverage/

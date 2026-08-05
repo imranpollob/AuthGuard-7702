@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0c89a0df",
+      "resolved_signature": "transferTokens(address)",
+      "bytecode_offset": 74,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x29cd3d04",
+      "resolved_signature": null,
+      "bytecode_offset": 102,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x2c7bddf4",
+      "resolved_signature": null,
+      "bytecode_offset": 112,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+DV[`@Qa
+`@Q_`@Q
+W=__>=_
+[PPV[a
+eV[V[_a
+HWP_0s
+[PPPPPV[__a
+V[` `@Q
+[PPPP`@Q=`
+7V[` `@Q
+OW=__>=_
+V[PPPV[a
+tx.origin =>
+msg.sender =>
+address(this) =>
+Before USDT balance =>
+4V[___sE
+rW=__>=_
+$W=__>=_
+USDT amount =>
+FDC amount =>
+nW=__>=_
+V[_0_g
+V[[`@Q
+P[P`@Q
+V[_`@Q
+sW=__>=_
+[PPPPa
+After USDT balance =>
+!W=__>=_
+4V[PPPPV[a
+eV[PV[a
+`@Q`@Q
+PPPV[_
+V[PV[_
+-V[`@Q` 
+RPPPPa
+V[PPV[a
+[V[`@Q` 
+V[PPV[_3
+V[PV[_a
+V[_jconsole.log
+PPPV[a
+V[V[__
+PPV[_` 
+PPV[_a
+RPPV[_` 
+PPV[__`@
+PV[_` 
+RPPV[_`@
+PPV[_m
+PPV[_c
+PPV[___``
+RPPV[_
+RPPPV[_`
+PPV[_`
+PPPPPV[_
+PPV[_`@
+PPPV[_`@
+dipfsX"
+dsolcC

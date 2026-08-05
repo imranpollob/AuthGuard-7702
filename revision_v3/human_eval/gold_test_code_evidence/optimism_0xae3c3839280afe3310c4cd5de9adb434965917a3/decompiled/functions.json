@@ -1,0 +1,84 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x3cc85aee",
+      "resolved_signature": null,
+      "bytecode_offset": 195,
+      "arguments": "uint256[],uint256,bool",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x5dfc2e4a",
+      "resolved_signature": "noop()",
+      "bytecode_offset": 223,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x773d5602",
+      "resolved_signature": null,
+      "bytecode_offset": 245,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 287,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 486
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 829
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1599
+    },
+    {
+      "selector": "0x30000000",
+      "resolved_signature": null,
+      "bytecode_offset": 2053
+    },
+    {
+      "selector": "0x78000000",
+      "resolved_signature": null,
+      "bytecode_offset": 2151
+    },
+    {
+      "selector": "0xe22e27eb",
+      "resolved_signature": "StringsInsufficientHexLength(uint256,uint256)",
+      "bytecode_offset": 2448
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 3831
+    },
+    {
+      "selector": "0x3a200000",
+      "resolved_signature": null,
+      "bytecode_offset": 4459
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4651
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4987
+    }
+  ]
+}

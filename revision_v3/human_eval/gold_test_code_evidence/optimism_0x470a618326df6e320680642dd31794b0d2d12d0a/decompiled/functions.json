@@ -1,0 +1,23 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xb63e800d",
+      "resolved_signature": "setup(address[],uint256,address,bytes,address,address,uint256,address)",
+      "bytecode_offset": 154,
+      "arguments": "uint256[],uint256,address,bytes,address,address,uint256,address",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xa619486e",
+      "resolved_signature": "masterCopy()",
+      "bytecode_offset": 34
+    },
+    {
+      "selector": "0xad43fc9a",
+      "resolved_signature": null,
+      "bytecode_offset": 262
+    }
+  ]
+}

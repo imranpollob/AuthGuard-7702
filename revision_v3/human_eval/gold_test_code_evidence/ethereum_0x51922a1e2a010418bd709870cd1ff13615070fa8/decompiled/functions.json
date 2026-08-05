@@ -1,0 +1,30 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1b8b921d",
+      "resolved_signature": "call(address,bytes)",
+      "bytecode_offset": 55,
+      "arguments": "address,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x52137255",
+      "resolved_signature": null,
+      "bytecode_offset": 103,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x82b42900",
+      "resolved_signature": "Unauthorized()",
+      "bytecode_offset": 291
+    },
+    {
+      "selector": "0x93cfa3ee",
+      "resolved_signature": "LowLevelCallFailed()",
+      "bytecode_offset": 454
+    }
+  ]
+}

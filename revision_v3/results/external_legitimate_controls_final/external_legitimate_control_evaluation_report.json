@@ -1,0 +1,31 @@
+{
+  "canonical_unseen_decision_counts": {
+    "DEFER": 1,
+    "NO_MODEL_WARNING": 1,
+    "WARN": 0
+  },
+  "claim_boundary": "These are provenance-backed bounded-negative controls. The study may report warning and defer behavior, but must not call any runtime safe, certified, benign by proof, or representative of all legitimate EIP-7702 projects.",
+  "consensus_rule": "WARN for at least two of three seed warnings; DEFER for one-seed disagreement, non-COMPLETE coverage, or missing authority context; otherwise NO_MODEL_WARNING",
+  "evaluator_sha256": "679d40fbcdabf475cf9dabfb252484093067466b46e67e0cb195b7a06dfcda7b",
+  "feature_report_sha256": "fbefc2ab79140ef53846a733702743101b43cf4cced99cbf7a089ce1a27c2834",
+  "item_results_sha256": "e797c98e7e409b0d57bb94a657d47fa43a718ac4adb9cfdc117e763477f82a4e",
+  "n_controls": 5,
+  "n_new_project_controls": 3,
+  "observed_use_decision_counts": {
+    "DEFER": 0,
+    "NO_MODEL_WARNING": 2,
+    "WARN": 0
+  },
+  "postcutoff_human_annotations_accessed": false,
+  "principal_decision_counts": {
+    "DEFER": 1,
+    "NO_MODEL_WARNING": 2,
+    "WARN": 0
+  },
+  "principal_model": "dcrg_project_balanced",
+  "protocol_sha256": "116f48c3878f9dc5173ff58913a2ba03e5655d82311aef06825edaaae1c56959",
+  "registry_sha256": "2bd9f7a099ac9e3788c24d6993ed7d59d2ee5c3bea3bce605858873b05b6a2e0",
+  "seed_scores_sha256": "778ef67c160d78826774c84a087b64d32b50fcfbd7054ea9828e537b546c9abb",
+  "status": "FROZEN_EXTERNAL_LEGITIMATE_CONTROL_EVALUATION_COMPLETE",
+  "training_manifest_sha256": "79f34d13dcd4ffc5ab544ef361635ba1dd2cdb57f4fd3e151ec4f999d6c18ba6"
+}

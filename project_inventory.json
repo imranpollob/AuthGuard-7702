@@ -1,0 +1,195 @@
+{
+  "audit_date": "2026-07-29",
+  "repo_root": "/home/pollmix/Coding/AuthGuard-7702",
+  "frozen_guard_status": "OK: 144 frozen files verified unchanged (revision_v2/experiments/common/frozen.py verify)",
+  "evidence_generations": {
+    "original_cohort": {
+      "description": "Pre-revision pipeline. capability_dataset.csv (793/1657/800/8), results/*, advtrain_results.json, paired_results.csv.",
+      "status": "frozen, superseded, kept for reconciliation only",
+      "entry_point": "run_all.sh -> pipeline/01_freeze_families.py ... 07_summary.py"
+    },
+    "task_aligned_v1": {
+      "description": "paper_build/data_hygiene/task_aligned_dataset_v1.csv (727/1553/797/5), first ICTAI paper numbers.",
+      "status": "frozen, superseded by revision_v2 audit correction, kept for provenance",
+      "entry_point": "paper_build/data_hygiene/task_alignment.py; task_aligned_rerun.py"
+    },
+    "revision_v2_final": {
+      "description": "revision_v2/data/authguardbench_7702_v2.csv.gz (3082 rows: 2190 primary / 797 external / 5 qualitative / 90 excluded). Current canonical benchmark and paper evidence.",
+      "status": "current / canonical",
+      "entry_point": "revision_v2/audit/scripts/build_benchmark_v2.py (construction); revision_v2/experiments/baseline_v2/run_baseline_v2.py (clean results); revision_v2/experiments/robustness_operational_v2/run_robustness_operational_v2.py (robustness/latency)"
+    }
+  },
+  "datasets": [
+    {
+      "path": "capability_dataset.csv",
+      "rows": 3258,
+      "purpose": "Original frozen corpus (793 malicious / 1657 benign_cleared / 800 benign_general / 8 benign_AA). No construction script present in repo.",
+      "status": "frozen input",
+      "pipeline_stage": "dataset construction (source)"
+    },
+    {
+      "path": "family_assignment_frozen.csv",
+      "purpose": "Frozen MinHash family_id at threshold 0.85 (+0.75/0.90 columns) over all 3258 rows.",
+      "status": "frozen input",
+      "pipeline_stage": "family construction"
+    },
+    {
+      "path": "paper_build/data_hygiene/task_aligned_dataset_v1.csv",
+      "rows": 3082,
+      "purpose": "Designator-resolved, conflict-quarantined v1 dataset (727/1553/797/5) with stored outer_fold_primary/secondary.",
+      "status": "frozen, superseded by v2",
+      "pipeline_stage": "task alignment / label loading"
+    },
+    {
+      "path": "revision_v2/data/authguardbench_7702_v2.csv.gz",
+      "rows": 3082,
+      "columns": 29,
+      "purpose": "Canonical current benchmark: repairs 90 truncated/error bytecodes, adds label_semantics/label_source/label_evidence_type/label_strength/population fields.",
+      "status": "current canonical dataset",
+      "pipeline_stage": "final benchmark"
+    },
+    {
+      "path": "USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl",
+      "purpose": "Source label-defining Datalog rule output (793 flagged keys). Defines all y=1 in the current benchmark.",
+      "status": "read-only upstream artifact, used",
+      "pipeline_stage": "label loading (source of truth for positives)"
+    },
+    {
+      "path": "USENIX EIP-7702 artifact/eoa_detect/get_code/contracts_with_bytecode.xlsx",
+      "purpose": "2685 observed EIP-7702 delegate addresses + fetched bytecode (candidate pool for both classes).",
+      "status": "read-only upstream artifact, used",
+      "pipeline_stage": "bytecode retrieval (source)"
+    },
+    {
+      "path": "PhishingHook Zenodo artifact/artifact/dataset",
+      "purpose": "Source of benign_general (797) external control bytecodes, matched by exact hash.",
+      "status": "read-only upstream artifact, used",
+      "pipeline_stage": "external control construction"
+    },
+    {
+      "path": "benign_7702_bytecode.csv / fetch_benign_7702_delegates.py",
+      "purpose": "Curated legitimate EIP-7702 delegate implementations (benign_AA, n=5 after alignment).",
+      "status": "used",
+      "pipeline_stage": "qualitative control construction"
+    },
+    {
+      "path": "scamsonethereum-main/",
+      "purpose": "Independent blacklist (7915 addresses) cross-referenced, not a label source.",
+      "status": "used for cross-reference only",
+      "pipeline_stage": "label auditing / independent set"
+    }
+  ],
+  "entry_points": {
+    "dataset_construction": "capability_dataset.csv construction script is ABSENT from the repo (documented only in recon_report.md \u2014 reproducibility gap). Downstream: paper_build/data_hygiene/task_alignment.py -> revision_v2/audit/scripts/build_benchmark_v2.py",
+    "bytecode_retrieval": "USENIX EIP-7702 artifact/eoa_detect/get_code/ (upstream, not repo-owned); fetch_benign_7702_delegates.py; pipeline/ind_01_inventory_getcode.py (independent-set eth_getCode, read-only RPC)",
+    "preprocessing_disassembly": "pipeline/ag_common.py (deterministic linear-sweep disassembler, opcode 4-grams, seeded blake2b MinHash)",
+    "label_loading": "revision_v2/audit/scripts/explore_provenance.py (provenance joins from detect_result.jsonl); revision_v2/audit/LABEL_CLAIM_CONTRACT.md (binding semantics)",
+    "duplicate_detection": "pipeline/01_freeze_families.py + ag_common.py (exact-hash groups + union-find MinHash families)",
+    "minhash_family_construction": "pipeline/01_freeze_families.py (128-perm blake2b MinHash, union-find, threshold 0.85 frozen; 0.75/0.90 stored)",
+    "fold_generation": "paper_build/data_hygiene/task_alignment.py (GroupKFold(5) on frozen family_id, stored as outer_fold_primary/secondary, replayed by StoredFoldSplitter)",
+    "model_training": "revision_v2/experiments/baseline_v2/run_baseline_v2.py (canonical, 7 models, 3 seeds); revision_v2/authguard7702/model.py (AuthGuardFusion architecture module)",
+    "calibration": "revision_v2/experiments/baseline_v2/run_baseline_v2.py (temperature scaling on validation fold, per BASELINE_IMPLEMENTATION_NOTES.md)",
+    "threshold_selection": "inner family-grouped OOF max-F1 within outer-train (revision_v2/experiments/common/harness.py); frozen at nominal 1%/5%/10% FPR on validation",
+    "baseline_training": "revision_v2/experiments/baseline_v2/run_baseline_v2.py (Flat CNN, Histogram+n-gram XGBoost, n-gram-only, BiGRU, Dense-only, Transformer, AuthGuard-Seq)",
+    "robustness_evaluation": "revision_v2/experiments/robustness_operational_v2/run_robustness_operational_v2.py (F200, M3+F200, external/qualitative controls)",
+    "latency_evaluation": "revision_v2/experiments/robustness_operational_v2/run_robustness_operational_v2.py (operational_latency_results.csv, operational_metadata.json); superseded local variant paper_build/runtime/run_runtime_benchmark.py (older, Apple M1, task-aligned-v1 era)",
+    "table_result_generation": "revision_v2/experiments/manuscript/generate_tables.py + integrate_manuscript.py (writes revision_v2/manuscript/); revision_v2/paper_handoff/FINAL_TABLES.md is the frozen paper-handoff table snapshot",
+    "statistics_bootstrap": "revision_v2/experiments/statistical_analysis_v2/run_statistical_analysis_v2.py (family-clustered paired percentile bootstrap, 10000 reps, seed 77022026)"
+  },
+  "results_manifest_authority": {
+    "clean_headline": {
+      "file": "revision_v2/experiments/baseline_v2/baseline_summary.csv",
+      "authguard_seq_auprc": "0.924447943 (rounds to 0.924)",
+      "authguard_seq_recall_at_5pct": "0.832667663 (rounds to 0.833)"
+    },
+    "robustness_headline": {
+      "file": "revision_v2/experiments/robustness_operational_v2/robustness_summary.csv",
+      "authguard_seq_f200_auprc": "0.920 +/- 0.007"
+    },
+    "latency": {
+      "file": "revision_v2/experiments/robustness_operational_v2/operational_latency_results.csv",
+      "median_ms": 4.121,
+      "mean_ms": 5.183,
+      "n_calls": 1500,
+      "hardware": "AMD Ryzen 5 3600, 1 CPU thread, Python 3.12.12, PyTorch 2.9.0+cu128"
+    },
+    "paired_cis": {
+      "file": "revision_v2/experiments/statistical_analysis_v2/paired_bootstrap_results.csv"
+    },
+    "source_map": "revision_v2/paper_handoff/EXPERIMENT_SOURCE_MAP.md is the authoritative paper-number-to-file mapping; do not pool/rederive numbers outside it"
+  },
+  "label_structure": {
+    "positive_definition": "(chain,address) key present in USENIX detect_result.jsonl (Gigahorse/Souffl\u00e9 rule: external call reachable from receive()/fallback()); 727/793 survive frozen conflict quarantine",
+    "negative_definition": "observed EIP-7702 delegate from same 2685-address pool, non-empty bytecode, NOT in detect_result.jsonl (rule-silent weak negative)",
+    "manual_verification_exists": false,
+    "independent_behavioral_evidence_count": 1,
+    "confidence_uncertainty_fields": [
+      "label_strength (A_curated_legitimate/B_external_benign_label/C_source_rule_only/C_source_unflagged_weak/D_source_verdict_on_corrupted_input)",
+      "label_evidence_type",
+      "flag_usenix_matched",
+      "flag_external_blacklist",
+      "flag_phishinghook_phishing_bytecode",
+      "flag_independent_behavioral_evidence"
+    ],
+    "legitimate_external_labels": "benign_general (797, PhishingHook, independent population, not EIP-7702 delegates) and benign_AA (5, curated legitimate delegate implementations)",
+    "binding_doc": "revision_v2/audit/LABEL_CLAIM_CONTRACT.md"
+  },
+  "human_annotation_readiness": {
+    "existing_package": "revision_v2/artifact/label_audit/ - 170-item blinded evidence-packet package, ZERO labels collected (agreement_results.json: found=0)",
+    "generator": "revision_v2/experiments/label_audit/build_audit_package.py",
+    "agreement_script": "revision_v2/experiments/label_audit/agreement.py (Cohen's/Fleiss' kappa implemented, majority-vote adjudication only, no dedicated 3rd-reviewer tie-break workflow)",
+    "existing_label_schema": "malicious | benign | uncertain (NOT the requested SAFE/UNSAFE/INDETERMINATE/NOT-BYTECODE-SCREENABLE taxonomy)",
+    "web_app_api_db_found": false,
+    "recommended_stack": "FastAPI + SQLite + Jinja2/plain HTML, single Python process; no existing web framework in active use anywhere in repo (fastapi/uvicorn present only as unused transitive deps in pip_freeze.txt)"
+  },
+  "environment": {
+    "system_python": "3.12.12 (pyenv), torch 2.9.0+cu128, CUDA available, GPU: NVIDIA GeForce RTX 2080 SUPER",
+    "revision_v2_venv": "revision_v2/.venv, Python 3.13.8, pandas 3.0.3, xgboost, sklearn, openpyxl, NO torch",
+    "cpu": "12 logical cores",
+    "os": "Linux 7.0.0-28-generic (Ubuntu 24.04-based, Mint)",
+    "requirements_files": [
+      "revision_v2/audits/requirements.txt (pinned pipeline deps)",
+      "revision_v2/audits/pip_freeze.txt (full 118-line snapshot, includes unused transitive fastapi/uvicorn/customtkinter)"
+    ],
+    "note": "Two-environment split is intentional per prior session memory: revision_v2/.venv for pandas/xgboost work (no torch), system python3 for all AuthGuard-Seq/Fusion GPU training."
+  },
+  "missing_or_gap_capabilities": [
+    {
+      "capability": "capability_dataset.csv construction script",
+      "status": "absent from repo",
+      "note": "narrative only in recon_report.md"
+    },
+    {
+      "capability": "EIP-7702 authorization-list block/transaction scanning (delegate discovery by date)",
+      "status": "CONFIRMED ABSENT. All RPC scripts (pipeline/ind_01_inventory_getcode.py, fetch_benign_7702_delegates.py, revision_v2/authguard7702/scorer.py) take a pre-existing address list and call eth_getCode at block tag 'latest'; none scan eth_getBlockByNumber/eth_getLogs/authorizationList. No timestamp storage exists. A manual off-main probe (commit f86be6f, branch revision-3, reports/00_preflight.md) confirmed authorizationList IS live-readable via eth_getBlockByNumber, but this was never committed as reusable code. eth_getCode works today on all 7 chains; block/tx scanning works on none."
+    },
+    {
+      "capability": "Sequence-length / pooling ablation harness (2048 vs 8192 vs 16384 tokens; mean/max/attention pooling)",
+      "status": "Exists (ControlledSequenceCNN with configurable aggregation, plus AuthGuardMSP) but ONLY on branch revision-3 (commit a79a7ea, based on 699ab37), confirmed NOT merged into main (git merge-base --is-ancestor a79a7ea HEAD fails). Only stale __pycache__ remains under revision_v2/experiments/long_context_ablation_v3/ and multiscale_confirmation_v1/ on main. 8192-token config does not exist on either branch. Action: merge/cherry-pick before attempting this ablation."
+    },
+    {
+      "capability": "Equal-input-budget robustness comparison (AuthGuard-Seq vs Flat CNN under flooding)",
+      "status": "MISSING and HIGH PRIORITY. Confirmed code-level finding: under F200/M3+F200, AuthGuard-Seq is scored with NO max_chunks cap (unbounded), while Flat CNN stays capped at 2048 tokens via uniform-stride downsampling, same as its clean-data path. Median F200 appended-donor bytes ~5170 atop a median ~2585-byte executable region plausibly pushes many flooded contracts well past 2048 tokens. The reported F200 AUPRC gap (0.920 AuthGuard-Seq vs 0.535 Flat CNN) is therefore potentially confounded by input-budget mismatch, not purely architecture -- undisclosed in FINAL_RESULTS_MANIFEST.md/ROBUSTNESS_OPERATIONAL_FINAL_SUMMARY.md/ROBUSTNESS_EVALUATION_REPORT.md. Fix is cheap: call encode_bytecode(variant, chunk_size=256, max_chunks=8) in create_variants() for a budget-matched inference-only variant, no retraining needed."
+    },
+    {
+      "capability": "Legitimate registry overlap audit / expanded external controls",
+      "status": "Phase-0-only manual overlap audit (audit_registry_overlap.py) exists on branch revision-3 commit a79a7ea (not on main); hand-transcribes 6 ethereum.org 'known implementations' addresses, checks address-level overlap only, explicitly not a population-level FPR study (n=6). No code anywhere programmatically scans verified-source registries (Etherscan/Sourcify/audit-firm lists). 3 of 5 current QUALITATIVE_CONTROL delegates (Biconomy, ZeroDev, OKX) are NOT byte-identical across chains despite matching address/length -- family_assignment_frozen.csv stores only one representative chain row per project, so per-chain variation is currently uncaptured."
+    },
+    {
+      "capability": "Gigahorse/Souffl\u00e9 reference analyzer runnable locally",
+      "status": "toolchain absent; USENIX artifact ships client files + detect_result.jsonl only; feasibility gate documented in revision_v2/planning/master_execution_plan.md Phase 5"
+    },
+    {
+      "capability": "Execution/semantic-equivalence harness for transformations",
+      "status": "absent; no foundry/anvil/EVM test scripts anywhere in repo"
+    },
+    {
+      "capability": "Human annotation web application",
+      "status": "absent; only offline CSV/JSON blinded package with 0 collected labels"
+    },
+    {
+      "capability": "requirements.txt/lockfile at repo root",
+      "status": "absent at root; exists only under revision_v2/audits/"
+    }
+  ]
+}

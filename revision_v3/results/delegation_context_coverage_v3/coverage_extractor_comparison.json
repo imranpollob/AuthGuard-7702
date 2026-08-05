@@ -1,0 +1,138 @@
+{
+  "baseline_to_candidate": {
+    "coverage_transitions": {
+      "COMPLETE->COMPLETE": 517,
+      "PARTIAL->COMPLETE": 546,
+      "PARTIAL->PARTIAL": 602
+    },
+    "feature_changed_runtime_counts": {
+      "coverage_complete": 546,
+      "coverage_partial": 546,
+      "n_complete_functions": 623,
+      "n_guards": 4,
+      "n_incomplete_functions": 623,
+      "n_sensitive_without_any_recognized_guard": 19,
+      "n_signature_guards": 1,
+      "n_storage_condition_guarded_sensitive": 10,
+      "n_storage_guards": 3,
+      "n_unguarded_call": 29,
+      "n_unguarded_delegatecall": 2,
+      "n_unguarded_sensitive": 28,
+      "n_unguarded_sstore": 3,
+      "n_unreached_sensitive_sites": 401
+    },
+    "findings_added_runtime_counts": {
+      "STORAGE_CONDITION_GUARDED_CALL": 5,
+      "UNGUARDED_CALL": 8
+    },
+    "findings_removed_runtime_counts": {
+      "INCOMPLETE_FALLBACK_ANALYSIS": 32,
+      "INCOMPLETE_FUNCTION_ANALYSIS": 586,
+      "SENSITIVE_OPCODE_OUTSIDE_ANALYZED_PATHS": 273,
+      "STORAGE_CONDITION_GUARDED_CALL": 2,
+      "STORAGE_CONDITION_GUARDED_DELEGATECALL": 2
+    }
+  },
+  "baseline_to_metadata_only": {
+    "coverage_transitions": {
+      "COMPLETE->COMPLETE": 517,
+      "PARTIAL->COMPLETE": 145,
+      "PARTIAL->PARTIAL": 1003
+    },
+    "feature_changed_runtime_counts": {
+      "coverage_complete": 145,
+      "coverage_partial": 145,
+      "n_unreached_sensitive_sites": 381
+    },
+    "findings_added_runtime_counts": {},
+    "findings_removed_runtime_counts": {
+      "SENSITIVE_OPCODE_OUTSIDE_ANALYZED_PATHS": 216
+    }
+  },
+  "interpretation_boundary": "Coverage transitions and newly reached capabilities are extractor-validity results. They do not establish improved predictive performance or security labels.",
+  "status": "LABEL_FREE_EXTRACTOR_VALIDITY_COMPARISON",
+  "summaries": {
+    "baseline": {
+      "coverage_unique_runtimes": {
+        "COMPLETE": 517,
+        "PARTIAL": 1148
+      },
+      "finding_contract_counts": {
+        "INCOMPLETE_FALLBACK_ANALYSIS": 38,
+        "INCOMPLETE_FUNCTION_ANALYSIS": 645,
+        "OPEN_FALLBACK_OR_RECEIVE_EXTERNAL_CALL": 573,
+        "SENSITIVE_OPCODE_OUTSIDE_ANALYZED_PATHS": 855,
+        "STORAGE_CONDITION_GUARDED_CALL": 153,
+        "STORAGE_CONDITION_GUARDED_DELEGATECALL": 48,
+        "STORAGE_CONDITION_GUARDED_SSTORE": 195,
+        "UNGUARDED_CALL": 603,
+        "UNGUARDED_CREATE": 14,
+        "UNGUARDED_CREATE2": 2,
+        "UNGUARDED_DELEGATECALL": 99,
+        "UNGUARDED_SELFDESTRUCT": 2,
+        "UNGUARDED_SSTORE": 183
+      },
+      "function_gap_flag_counts": {
+        "hit_exploration_cap": 1590,
+        "stack_underflows": 5,
+        "unresolved_dynamic_jumps": 47
+      },
+      "n_functions_using_state_widening": 0
+    },
+    "candidate": {
+      "coverage_unique_runtimes": {
+        "COMPLETE": 1063,
+        "PARTIAL": 602
+      },
+      "finding_contract_counts": {
+        "INCOMPLETE_FALLBACK_ANALYSIS": 6,
+        "INCOMPLETE_FUNCTION_ANALYSIS": 59,
+        "OPEN_FALLBACK_OR_RECEIVE_EXTERNAL_CALL": 573,
+        "SENSITIVE_OPCODE_OUTSIDE_ANALYZED_PATHS": 582,
+        "STORAGE_CONDITION_GUARDED_CALL": 156,
+        "STORAGE_CONDITION_GUARDED_DELEGATECALL": 46,
+        "STORAGE_CONDITION_GUARDED_SSTORE": 195,
+        "UNGUARDED_CALL": 611,
+        "UNGUARDED_CREATE": 14,
+        "UNGUARDED_CREATE2": 2,
+        "UNGUARDED_DELEGATECALL": 99,
+        "UNGUARDED_SELFDESTRUCT": 2,
+        "UNGUARDED_SSTORE": 183
+      },
+      "function_gap_flag_counts": {
+        "hit_exploration_cap": 66,
+        "stack_underflows": 7,
+        "unresolved_dynamic_jumps": 49,
+        "used_state_widening": 74
+      },
+      "n_functions_using_state_widening": 1843
+    },
+    "metadata_only": {
+      "coverage_unique_runtimes": {
+        "COMPLETE": 662,
+        "PARTIAL": 1003
+      },
+      "finding_contract_counts": {
+        "INCOMPLETE_FALLBACK_ANALYSIS": 38,
+        "INCOMPLETE_FUNCTION_ANALYSIS": 645,
+        "OPEN_FALLBACK_OR_RECEIVE_EXTERNAL_CALL": 573,
+        "SENSITIVE_OPCODE_OUTSIDE_ANALYZED_PATHS": 639,
+        "STORAGE_CONDITION_GUARDED_CALL": 153,
+        "STORAGE_CONDITION_GUARDED_DELEGATECALL": 48,
+        "STORAGE_CONDITION_GUARDED_SSTORE": 195,
+        "UNGUARDED_CALL": 603,
+        "UNGUARDED_CREATE": 14,
+        "UNGUARDED_CREATE2": 2,
+        "UNGUARDED_DELEGATECALL": 99,
+        "UNGUARDED_SELFDESTRUCT": 2,
+        "UNGUARDED_SSTORE": 183
+      },
+      "function_gap_flag_counts": {
+        "hit_exploration_cap": 1590,
+        "stack_underflows": 5,
+        "unresolved_dynamic_jumps": 47
+      },
+      "n_functions_using_state_widening": 0
+    }
+  }
+}

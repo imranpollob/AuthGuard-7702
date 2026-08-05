@@ -1,0 +1,159 @@
+{
+  "sourcify": {
+    "http_status": 200,
+    "raw": {
+      "matchId": "36002742",
+      "creationMatch": "match",
+      "runtimeMatch": "match",
+      "verifiedAt": "2026-06-25T08:12:32Z",
+      "match": "match",
+      "chainId": "8453",
+      "address": "0xf9E44D3B5fc21cdc15D34B12DDa0D931a0466D9B"
+    },
+    "verified": true
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "file_path": "EIP7702AccountLogic.sol",
+      "creation_status": "success",
+      "source_code": "// SPDX-License-Identifier: MIT\r\n  pragma solidity ^0.8.20;\r\n\r\n  contract EIP7702AccountLogic {\r\n      event DebugInfo(address thisAddress, uint256 balance, address to, uint256 amount);\r\n      event TransferAttempt(address to, uint256 amount, bool success);\r\n\r\n      function sendNative(\r\n          address payable to,\r\n          uint256 amount\r\n      ) external {\r\n          // \u8bb0\u5f55\u8c03\u8bd5\u4fe1\u606f\r\n          emit DebugInfo(address(this), address(this).balance, to, amount);\r\n\r\n          // \u68c0\u67e5\u4f59\u989d\r\n          require(address(this).balance >= amount, \"Insufficient balance\");\r\n\r\n          // \u5c1d\u8bd5\u8f6c\u8d26\u5e76\u8bb0\u5f55\u7ed3\u679c\r\n          (bool success, ) = to.call{value: amount}(\"\");\r\n          emit TransferAttempt(to, amount, success);\r\n\r\n          require(success, \"Transfer failed\");\r\n      }\r\n  }",
+      "deployed_bytecode": "0x608060405234801561000f575f5ffd5b5060043610610029575f3560e01c8063668075661461002d575b5f5ffd5b61004760048036038101906100429190610242565b610049565b005b7fb9a8e342115d75a20c7f433596597361aa32f6b5d5b0f04135554ebe6e16b8d33047848460405161007e949392919061030a565b60405180910390a1804710156100c9576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016100c0906103a7565b60405180910390fd5b5f8273ffffffffffffffffffffffffffffffffffffffff16826040516100ee906103f2565b5f6040518083038185875af1925050503d805f8114610128576040519150601f19603f3d011682016040523d82523d5f602084013e61012d565b606091505b505090507f5fc7af438b52b36ccd8cb088f41875e905c105dc335e753b883a20e05b22dcc683838360405161016493929190610420565b60405180910390a1806101ac576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a39061049f565b60405180910390fd5b505050565b5f5ffd5b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f6101de826101b5565b9050919050565b6101ee816101d4565b81146101f8575f5ffd5b50565b5f81359050610209816101e5565b92915050565b5f819050919050565b6102218161020f565b811461022b575f5ffd5b50565b5f8135905061023c81610218565b92915050565b5f5f60408385031215610258576102576101b1565b5b5f610265858286016101fb565b92505060206102768582860161022e565b9150509250929050565b5f61028a826101b5565b9050919050565b61029a81610280565b82525050565b6102a98161020f565b82525050565b5f819050919050565b5f6102d26102cd6102c8846101b5565b6102af565b6101b5565b9050919050565b5f6102e3826102b8565b9050919050565b5f6102f4826102d9565b9050919050565b610304816102ea565b82525050565b5f60808201905061031d5f830187610291565b61032a60208301866102a0565b61033760408301856102fb565b61034460608301846102a0565b95945050505050565b5f82825260208201905092915050565b7f496e73756666696369656e742062616c616e63650000000000000000000000005f82015250565b5f61039160148361034d565b915061039c8261035d565b602082019050919050565b5f6020820190508181035f8301526103be81610385565b9050919050565b5f81905092915050565b50565b5f6103dd5f836103c5565b91506103e8826103cf565b5f82019050919050565b5f6103fc826103d2565b9150819050919050565b5f8115159050919050565b61041a81610406565b82525050565b5f6060820190506104335f8301866102fb565b61044060208301856102a0565b61044d6040830184610411565b949350505050565b7f5472616e73666572206661696c656400000000000000000000000000000000005f82015250565b5f610489600f8361034d565b915061049482610455565b602082019050919050565b5f6020820190508181035f8301526104b68161047d565b905091905056fea2646970667358221220f48714be06f0b3dd243beaae5e467d907b820e48d5f544834b3f9951a8ef3b3d64736f6c634300081e0033",
+      "optimization_enabled": false,
+      "verified_twin_address_hash": null,
+      "is_verified": true,
+      "compiler_settings": {
+        "optimizer": {
+          "enabled": false,
+          "runs": 200
+        },
+        "outputSelection": {
+          "*": {
+            "": [
+              "ast"
+            ],
+            "*": [
+              "abi",
+              "evm.bytecode",
+              "evm.deployedBytecode",
+              "evm.methodIdentifiers",
+              "metadata",
+              "devdoc",
+              "userdoc",
+              "storageLayout",
+              "evm.gasEstimates"
+            ]
+          },
+          "EIP7702AccountLogic.sol": {
+            "EIP7702AccountLogic": [
+              "*"
+            ]
+          }
+        }
+      },
+      "optimization_runs": null,
+      "sourcify_repo_url": null,
+      "decoded_constructor_args": null,
+      "compiler_version": "0.8.30+commit.73712a01",
+      "is_verified_via_verifier_alliance": true,
+      "verified_at": "2026-06-25T08:14:55.178809Z",
+      "implementations": [],
+      "proxy_type": null,
+      "external_libraries": [],
+      "creation_bytecode": "0x6080604052348015600e575f5ffd5b506104f38061001c5f395ff3fe608060405234801561000f575f5ffd5b5060043610610029575f3560e01c8063668075661461002d575b5f5ffd5b61004760048036038101906100429190610242565b610049565b005b7fb9a8e342115d75a20c7f433596597361aa32f6b5d5b0f04135554ebe6e16b8d33047848460405161007e949392919061030a565b60405180910390a1804710156100c9576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016100c0906103a7565b60405180910390fd5b5f8273ffffffffffffffffffffffffffffffffffffffff16826040516100ee906103f2565b5f6040518083038185875af1925050503d805f8114610128576040519150601f19603f3d011682016040523d82523d5f602084013e61012d565b606091505b505090507f5fc7af438b52b36ccd8cb088f41875e905c105dc335e753b883a20e05b22dcc683838360405161016493929190610420565b60405180910390a1806101ac576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a39061049f565b60405180910390fd5b505050565b5f5ffd5b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f6101de826101b5565b9050919050565b6101ee816101d4565b81146101f8575f5ffd5b50565b5f81359050610209816101e5565b92915050565b5f819050919050565b6102218161020f565b811461022b575f5ffd5b50565b5f8135905061023c81610218565b92915050565b5f5f60408385031215610258576102576101b1565b5b5f610265858286016101fb565b92505060206102768582860161022e565b9150509250929050565b5f61028a826101b5565b9050919050565b61029a81610280565b82525050565b6102a98161020f565b82525050565b5f819050919050565b5f6102d26102cd6102c8846101b5565b6102af565b6101b5565b9050919050565b5f6102e3826102b8565b9050919050565b5f6102f4826102d9565b9050919050565b610304816102ea565b82525050565b5f60808201905061031d5f830187610291565b61032a60208301866102a0565b61033760408301856102fb565b61034460608301846102a0565b95945050505050565b5f82825260208201905092915050565b7f496e73756666696369656e742062616c616e63650000000000000000000000005f82015250565b5f61039160148361034d565b915061039c8261035d565b602082019050919050565b5f6020820190508181035f8301526103be81610385565b9050919050565b5f81905092915050565b50565b5f6103dd5f836103c5565b91506103e8826103cf565b5f82019050919050565b5f6103fc826103d2565b9150819050919050565b5f8115159050919050565b61041a81610406565b82525050565b5f6060820190506104335f8301866102fb565b61044060208301856102a0565b61044d6040830184610411565b949350505050565b7f5472616e73666572206661696c656400000000000000000000000000000000005f82015250565b5f610489600f8361034d565b915061049482610455565b602082019050919050565b5f6020820190508181035f8301526104b68161047d565b905091905056fea2646970667358221220f48714be06f0b3dd243beaae5e467d907b820e48d5f544834b3f9951a8ef3b3d64736f6c634300081e0033",
+      "name": "EIP7702AccountLogic",
+      "is_blueprint": false,
+      "license_type": "none",
+      "is_fully_verified": false,
+      "is_verified_via_eth_bytecode_db": true,
+      "language": "solidity",
+      "evm_version": "default",
+      "can_be_visualized_via_sol2uml": true,
+      "is_verified_via_sourcify": false,
+      "additional_sources": [],
+      "certified": false,
+      "conflicting_implementations": null,
+      "abi": [
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "thisAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "balance",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "DebugInfo",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "success",
+              "type": "bool"
+            }
+          ],
+          "name": "TransferAttempt",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address payable",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "sendNative",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "is_changed_bytecode": false,
+      "is_partially_verified": true,
+      "constructor_args": null
+    },
+    "verified": true
+  },
+  "verified": true
+}

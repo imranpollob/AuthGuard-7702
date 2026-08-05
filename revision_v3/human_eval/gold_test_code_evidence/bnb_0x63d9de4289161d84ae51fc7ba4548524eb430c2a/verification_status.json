@@ -1,0 +1,21 @@
+{
+  "sourcify": {
+    "http_status": 200,
+    "raw": {
+      "matchId": "6193184",
+      "creationMatch": "exact_match",
+      "runtimeMatch": "exact_match",
+      "verifiedAt": "2025-03-07T05:01:41Z",
+      "match": "exact_match",
+      "chainId": "56",
+      "address": "0x63d9de4289161D84aE51fC7bA4548524eb430c2a"
+    },
+    "verified": true
+  },
+  "blockscout": {
+    "http_status": 404,
+    "raw": null,
+    "verified": false
+  },
+  "verified": true
+}

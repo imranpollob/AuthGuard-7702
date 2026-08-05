@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x74fa4121",
+      "resolved_signature": null,
+      "bytecode_offset": 47,
+      "arguments": "bytes,uint256,uint256",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xd087d288",
+      "resolved_signature": "getNonce()",
+      "bytecode_offset": 75,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ]
+}

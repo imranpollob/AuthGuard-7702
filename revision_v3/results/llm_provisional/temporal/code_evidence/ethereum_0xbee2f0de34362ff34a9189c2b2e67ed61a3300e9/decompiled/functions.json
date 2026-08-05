@@ -1,0 +1,32 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0c89a0df",
+      "resolved_signature": "transferTokens(address)",
+      "bytecode_offset": 85,
+      "arguments": "address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x29cd3d04",
+      "resolved_signature": null,
+      "bytecode_offset": 113,
+      "arguments": "",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x2c7bddf4",
+      "resolved_signature": null,
+      "bytecode_offset": 123,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x83197ef0",
+      "resolved_signature": "destroy()",
+      "bytecode_offset": 145,
+      "arguments": "",
+      "state_mutability": "payable"
+    }
+  ]
+}

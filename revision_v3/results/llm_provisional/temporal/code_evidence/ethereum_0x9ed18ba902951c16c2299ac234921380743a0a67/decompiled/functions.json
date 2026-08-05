@@ -1,0 +1,18 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x6df62e8a",
+      "resolved_signature": null,
+      "bytecode_offset": 56,
+      "arguments": "address,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x89dd3dd6",
+      "resolved_signature": null,
+      "bytecode_offset": 77,
+      "arguments": "address,address,uint256,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

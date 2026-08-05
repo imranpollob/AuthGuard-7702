@@ -1,0 +1,28 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xdd8d4c40",
+      "resolved_signature": "getCallers()",
+      "bytecode_offset": 345,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0xd86ad9cf",
+      "resolved_signature": "UnauthorizedCaller(address)",
+      "bytecode_offset": 58
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 282
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2469
+    }
+  ]
+}

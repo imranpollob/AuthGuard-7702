@@ -1,0 +1,55 @@
+{
+  "artifacts": {
+    "sample_features": "revision_v3/results/delegation_context/dcrg_primary_features_limit5.csv.gz",
+    "unique_runtime_graphs": "revision_v3/results/delegation_context/dcrg_unique_runtimes_limit5.jsonl"
+  },
+  "authority_context": "UNKNOWN_IN_HISTORICAL_DATASET",
+  "canonical_input_sha256": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+  "coverage_primary_samples": {
+    "COMPLETE": 1,
+    "PARTIAL": 13
+  },
+  "coverage_unique_runtimes": {
+    "COMPLETE": 1,
+    "PARTIAL": 4
+  },
+  "extractor_sha256": {
+    "delegation_context.py": "5e1af5704e52e4717a7051c44ce19fd46dbbca7ca320872c0345b64105eb134f",
+    "evm_cfg.py": "0ace462f63a692c4803dac6a95ff4a5a70a7629187d17768696c9bd539bbda88"
+  },
+  "feature_order": [
+    "n_functions",
+    "n_complete_functions",
+    "n_incomplete_functions",
+    "n_unguarded_sensitive",
+    "n_unguarded_call",
+    "n_unguarded_delegatecall",
+    "n_unguarded_create",
+    "n_unguarded_selfdestruct",
+    "n_unguarded_sstore",
+    "n_guards",
+    "n_self_call_guards",
+    "n_signature_guards",
+    "n_storage_guards",
+    "n_hardcoded_guards",
+    "n_hardcoded_authority_matches",
+    "n_hardcoded_authority_mismatches",
+    "n_calldata_dependent_guards",
+    "n_tx_origin_guards",
+    "fallback_external_call_reachable",
+    "fallback_open_external_call",
+    "n_unreached_sensitive_sites",
+    "coverage_complete",
+    "coverage_partial",
+    "coverage_unknown"
+  ],
+  "limitations": [
+    "Historical rows identify delegate implementations but not authorizing EOAs; authority-dependent comparisons remain unknown.",
+    "PARTIAL and UNKNOWN coverage are retained as model inputs and must trigger selective-policy analysis rather than being interpreted as safe."
+  ],
+  "n_analysis_errors_unique": 0,
+  "n_primary_samples": 14,
+  "n_unique_runtimes": 5,
+  "schema_version": "dcrg-1.0",
+  "status": "SMOKE_TEST_LIMITED"
+}

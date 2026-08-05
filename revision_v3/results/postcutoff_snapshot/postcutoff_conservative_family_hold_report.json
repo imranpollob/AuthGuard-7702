@@ -1,0 +1,30 @@
+{
+  "audit_sha256": "daa469941b64c3c47a2f95dcf57ea72d0140c4db6b2e9a07a7d6fbfdffa7d012",
+  "builder_sha256": "4b7b4aebb6fc5226852a42cd29dd96e864f3472a74cf69082c3e8f1e24b787b6",
+  "claim_boundary": "Anonymous clusters authorize conservative retraining holds only. They are not brand attribution, proof of project independence, or security labels.",
+  "input_hashes": {
+    "revision_v2/data/authguardbench_7702_v2.csv.gz": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+    "revision_v3/external_controls/verified_legitimate_controls.csv": "80d34cea49dbc8e158b9823dd14881ea14b437e7ff0cd994c150dbe4be852894",
+    "revision_v3/results/postcutoff_snapshot/postcutoff_dependence_clusters.csv": "858ce855ba0d3d8820bdea65b9ec64429c942bd12f9cde1ec592252f44860e7a",
+    "revision_v3/results/postcutoff_snapshot/postcutoff_project_family_audit.csv": "41e389fd2942e305016a00bac60479d867d7abc9a68da08c91e70121ce0f3e20",
+    "revision_v3/results/postcutoff_snapshot/postcutoff_public_provenance_evidence.csv": "8808ab8431d31ac65f1a2514bb2741a979947b233365407c56a347d97cc724be",
+    "revision_v3/results/postcutoff_snapshot/postcutoff_review_manifest.csv": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44"
+  },
+  "link_evidence_sha256": "8065bbf5e2b63de8c53d528dbed15065a4c3a0a849c71ed8d25ff1c75f73c117",
+  "n_distinct_canonical_families_held": 146,
+  "n_distinct_development_control_projects_held": 1,
+  "n_items": 150,
+  "n_linkage_clusters": 124,
+  "similarity_hold_rules": {
+    "development_control_threshold": 0.85,
+    "max_canonical_holds_per_item": 5,
+    "moderate_canonical_threshold": 0.5,
+    "weak_best_match_floor": 0.35
+  },
+  "status": "SCORE_BLIND_CONSERVATIVE_FAMILY_HOLD_AUDIT_MATERIALIZED",
+  "status_counts": {
+    "CONFIRMED": 1,
+    "CONSERVATIVE_CLUSTER": 148,
+    "EXCLUDED": 1
+  }
+}

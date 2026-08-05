@@ -1,0 +1,62 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x7ed1f1dd",
+      "resolved_signature": "DPPFlashLoanCall(address,uint256,uint256,bytes)",
+      "bytecode_offset": 66,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xb3021ef8",
+      "resolved_signature": null,
+      "bytecode_offset": 106,
+      "arguments": "bytes4,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xeb2021c3",
+      "resolved_signature": "DVMFlashLoanCall(address,uint256,uint256,bytes)",
+      "bytecode_offset": 146,
+      "arguments": "address,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 327
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 457
+    },
+    {
+      "selector": "0xd0a494e4",
+      "resolved_signature": "flashLoan(uint256,uint256,address,bytes)",
+      "bytecode_offset": 799
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1137
+    },
+    {
+      "selector": "0xffffffff",
+      "resolved_signature": "test266151307()",
+      "bytecode_offset": 3780
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4253
+    },
+    {
+      "selector": "0x77687900",
+      "resolved_signature": null,
+      "bytecode_offset": 4788
+    }
+  ]
+}

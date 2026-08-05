@@ -1,0 +1,126 @@
+{
+  "comparisons": [
+    {
+      "auprc": {
+        "ci_high": 0.11118881614993645,
+        "ci_low": 0.014168540510778092,
+        "excludes_zero": true,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.055511811671867695,
+          "7703": 0.04740770920359061,
+          "7704": 0.0656864904424127
+        },
+        "point_delta": 0.05620200377262367
+      },
+      "auroc": {
+        "ci_high": 0.1094087067444991,
+        "ci_low": 0.016952557201708185,
+        "excludes_zero": true,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.06546533897580009,
+          "7703": 0.04252252489420383,
+          "7704": 0.05508268608246891
+        },
+        "point_delta": 0.05435684998415761
+      },
+      "baseline": "sequence",
+      "candidate": "fusion",
+      "observed_fpr_at_5pct": {
+        "ci_high": 0.011472773924559487,
+        "ci_low": -0.015343589934996007,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.004784688995215308,
+          "7703": -0.008885850991114143,
+          "7704": -0.005468215994531782
+        },
+        "point_delta": -0.0031897926634768723
+      },
+      "recall_at_5pct": {
+        "ci_high": 0.13666271506091132,
+        "ci_low": 0.04754962030172757,
+        "excludes_zero": true,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.07152682255845944,
+          "7703": 0.04951856946354882,
+          "7704": 0.14442916093535074
+        },
+        "point_delta": 0.088491517652453
+      }
+    },
+    {
+      "auprc": {
+        "ci_high": 0.024958062335036016,
+        "ci_low": -0.010330628435450937,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": 0.00027334726794225883,
+          "7703": 0.006288629727439821,
+          "7704": 0.005842271398228904
+        },
+        "point_delta": 0.004134749464536995
+      },
+      "auroc": {
+        "ci_high": 0.006801494378093846,
+        "ci_low": -0.0057350452666036335,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": -0.0007436999401092548,
+          "7703": 0.0005909170826278176,
+          "7704": 0.0004903154472400972
+        },
+        "point_delta": 0.00011251086325288669
+      },
+      "baseline": "dcrg",
+      "candidate": "fusion",
+      "observed_fpr_at_5pct": {
+        "ci_high": 0.00673212613112796,
+        "ci_low": -0.02084802635076679,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": -0.004784688995215315,
+          "7703": -0.011619958988380037,
+          "7704": -0.0027341079972658944
+        },
+        "point_delta": -0.006379585326953749
+      },
+      "recall_at_5pct": {
+        "ci_high": 0.018795471566896645,
+        "ci_low": -0.1486781894626697,
+        "excludes_zero": false,
+        "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+        "n_replicates": 10000,
+        "n_seeds": 3,
+        "per_seed_point_deltas": {
+          "7702": -0.07015130674002745,
+          "7703": -0.07977991746905089,
+          "7704": 0.011004126547455306
+        },
+        "point_delta": -0.04630903255387434
+      }
+    }
+  ],
+  "interpretation_boundary": "Intervals quantify performance against inherited benchmark labels, which partly encode static-analysis evidence. They do not establish independent semantic validity; human-final and post-cutoff evaluations remain mandatory.",
+  "status": "PROVISIONAL_LEGACY_LABEL_EVALUATION"
+}

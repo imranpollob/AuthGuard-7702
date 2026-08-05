@@ -1,0 +1,11 @@
+{
+  "LABEL_SOURCE": "LLM_PROVISIONAL",
+  "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+  "n_total_temporal_items": 39,
+  "n_previously_unseen_family": 27,
+  "n_exact_historical_duplicate": 0,
+  "n_uncertain": 1,
+  "n_evaluated_binary": 38,
+  "models": {},
+  "note": "Sample too small or single-class for a meaningful AUPRC/AUROC estimate; reporting counts only."
+}

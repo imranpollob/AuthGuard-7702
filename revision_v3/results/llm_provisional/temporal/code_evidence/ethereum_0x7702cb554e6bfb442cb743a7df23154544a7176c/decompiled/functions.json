@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x1626ba7e",
+      "resolved_signature": "isValidSignature(bytes32,bytes)",
+      "bytecode_offset": 59,
+      "arguments": "uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3e1370fc",
+      "resolved_signature": null,
+      "bytecode_offset": 54,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xda9c8680",
+      "resolved_signature": null,
+      "bytecode_offset": 50,
+      "arguments": "address,bytes,address,uint256,bytes,bool",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

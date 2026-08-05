@@ -1,0 +1,104 @@
+{
+  "per_function": [
+    {
+      "selector": "0x06a41d09",
+      "resolved_signature": "executeTransaction(address,uint256,bytes,uint256)",
+      "bytecode_offset": 137,
+      "arguments": "address,uint256,bytes,uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x12065fe0",
+      "resolved_signature": "getBalance()",
+      "bytecode_offset": 198,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x2045e862",
+      "resolved_signature": null,
+      "bytecode_offset": 240,
+      "arguments": "(address,uint256,bytes,uint256)[]",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x2e1a7d4d",
+      "resolved_signature": "withdraw(uint256)",
+      "bytecode_offset": 300,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x97aba7f9",
+      "resolved_signature": "recoverSigner(bytes32,bytes)",
+      "bytecode_offset": 340,
+      "arguments": "uint256,bytes",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xadf5d5f0",
+      "resolved_signature": null,
+      "bytecode_offset": 400,
+      "arguments": "(address,uint256,bytes,uint256)[],bytes,address",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xb6b416e9",
+      "resolved_signature": null,
+      "bytecode_offset": 460,
+      "arguments": "uint256[],bytes",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xd655ecfe",
+      "resolved_signature": null,
+      "bytecode_offset": 500,
+      "arguments": "(address,uint256,bytes,uint256)[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": "SELF_ADDRESS",
+      "guard_offset": 567,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

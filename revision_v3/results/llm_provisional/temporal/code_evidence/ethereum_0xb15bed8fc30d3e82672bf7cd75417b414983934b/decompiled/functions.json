@@ -1,0 +1,95 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x01ffc9a7",
+      "resolved_signature": "supportsInterface(bytes4)",
+      "bytecode_offset": 267,
+      "arguments": "bytes4",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x04643427",
+      "resolved_signature": "MAIN_STORAGE_IMPL()",
+      "bytecode_offset": 319,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x076cd7b0",
+      "resolved_signature": "getMainStorage()",
+      "bytecode_offset": 394,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x270b4e66",
+      "resolved_signature": "validateSession((uint256,address,address,uint256,uint256,bytes,bytes,bytes))",
+      "bytecode_offset": 414,
+      "arguments": "(uint256,address,address,uint256,uint256,bytes,bytes,bytes)",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x32fba9bb",
+      "resolved_signature": null,
+      "bytecode_offset": 447,
+      "arguments": "(address,uint256,bytes)[],address,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x52828a93",
+      "resolved_signature": "getSessionTypedHash((uint256,address,address,uint256,uint256,bytes,bytes,bytes))",
+      "bytecode_offset": 478,
+      "arguments": "(uint256,address,address,uint256,uint256,bytes,bytes)",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8129fc1c",
+      "resolved_signature": "initialize()",
+      "bytecode_offset": 523,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x84b0196e",
+      "resolved_signature": "eip712Domain()",
+      "bytecode_offset": 543,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x87b61fdd",
+      "resolved_signature": "SESSION_TYPEHASH()",
+      "bytecode_offset": 582,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xb964fb25",
+      "resolved_signature": "getValidationTypedHash(uint256,(address,uint256,bytes)[])",
+      "bytecode_offset": 633,
+      "arguments": "uint256,(address,uint256,bytes)[]",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xcc025f7c",
+      "resolved_signature": "ADDRESS_THIS()",
+      "bytecode_offset": 664,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xe35dd03b",
+      "resolved_signature": "computeValidatorAddress(address,bytes)",
+      "bytecode_offset": 715,
+      "arguments": "address,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xfcfbd33a",
+      "resolved_signature": "executeWithValidator((address,uint256,bytes)[],address,bytes)",
+      "bytecode_offset": 746,
+      "arguments": "(address,uint256,bytes)[],address,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

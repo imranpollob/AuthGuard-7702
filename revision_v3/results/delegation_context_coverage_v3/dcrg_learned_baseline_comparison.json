@@ -1,0 +1,96 @@
+{
+  "current_label_proxy": {
+    "mean_seed_auprc": {
+      "dcrg_full": 0.9388465145439807,
+      "hist_ngram_xgb": 0.9073047121296582,
+      "sequence": 0.8927005031207175
+    },
+    "paired_family_bootstrap": [
+      {
+        "auprc": {
+          "ci_high": 0.0820894252592229,
+          "ci_low": -0.011162667247623265,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.029209567866896213,
+            "7703": 0.031854637776830286,
+            "7704": 0.03356120159924103
+          },
+          "point_delta": 0.03154180241432251
+        },
+        "baseline": "hist_ngram_xgb",
+        "candidate": "dcrg_full"
+      },
+      {
+        "auprc": {
+          "ci_high": 0.09178332673250353,
+          "ci_low": 0.0044885837433487705,
+          "excludes_zero": true,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.029714020408300956,
+            "7703": 0.05527074881791394,
+            "7704": 0.05345326504357506
+          },
+          "point_delta": 0.04614601142326332
+        },
+        "baseline": "sequence",
+        "candidate": "dcrg_full"
+      }
+    ],
+    "status": "DEVELOPMENT_ONLY_CURRENT_LABEL_PROXY_BASELINE_COMPARISON"
+  },
+  "fatal_validity_warning": "The proxy-label comparison is development-only and cannot become final evidence. The inherited labels are not independent semantic judgments.",
+  "inherited_labels": {
+    "mean_seed_auprc": {
+      "dcrg_full": 0.9537471796801406,
+      "hist_ngram_xgb": 0.8143553879225985,
+      "sequence": 0.9020224744648436
+    },
+    "paired_family_bootstrap": [
+      {
+        "auprc": {
+          "ci_high": 0.21046612076677398,
+          "ci_low": 0.07359048829618714,
+          "excludes_zero": true,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.1515911666930756,
+            "7703": 0.13446989842805457,
+            "7704": 0.13211431015149555
+          },
+          "point_delta": 0.1393917917575419
+        },
+        "baseline": "hist_ngram_xgb",
+        "candidate": "dcrg_full"
+      },
+      {
+        "auprc": {
+          "ci_high": 0.11858617858078527,
+          "ci_low": -0.003226933090972796,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.054332604616226354,
+            "7703": 0.04124384285623173,
+            "7704": 0.05959766817343237
+          },
+          "point_delta": 0.05172470521529682
+        },
+        "baseline": "sequence",
+        "candidate": "dcrg_full"
+      }
+    ],
+    "status": "INHERITED_LABEL_BASELINE_COMPARISON"
+  },
+  "status": "MIXED_EVIDENCE_BASELINE_COMPARISON"
+}

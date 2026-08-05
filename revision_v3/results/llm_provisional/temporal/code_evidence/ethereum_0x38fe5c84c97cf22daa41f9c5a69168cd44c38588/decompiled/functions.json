@@ -1,0 +1,53 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x032ce5e5",
+      "resolved_signature": null,
+      "bytecode_offset": 186,
+      "arguments": "bytes[],uint256,bool,uint256,uint256,uint256[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3f47965c",
+      "resolved_signature": null,
+      "bytecode_offset": 214,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x48386881",
+      "resolved_signature": null,
+      "bytecode_offset": 274,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x50cd4df2",
+      "resolved_signature": "o()",
+      "bytecode_offset": 334,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa80bd023",
+      "resolved_signature": null,
+      "bytecode_offset": 376,
+      "arguments": "bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xbead4df7",
+      "resolved_signature": null,
+      "bytecode_offset": 436,
+      "arguments": "address[],bytes[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xdc2ab866",
+      "resolved_signature": null,
+      "bytecode_offset": 476,
+      "arguments": "address[],bool",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

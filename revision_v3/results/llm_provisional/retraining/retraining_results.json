@@ -1,0 +1,584 @@
+{
+  "LABEL_SOURCE": "LLM_PROVISIONAL",
+  "STATUS": "PROVISIONAL_NOT_FOR_FINAL_CLAIMS",
+  "n_binary_gold_dev_items": 47,
+  "n_uncertain_gold_dev_items": 13,
+  "n_unique_families": 46,
+  "n_inner_folds": 3,
+  "seeds": [
+    7702,
+    7703,
+    7704
+  ],
+  "caveat": "Extremely small sample (47 items). Report as methodological exercise; std across runs is large relative to point estimates.",
+  "methods": {
+    "baseline_frozen": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9113922629020016,
+      "val_auprc_std": 0.046665258059175985,
+      "runs": [
+        {
+          "val_auprc": 0.8449166574166574,
+          "epochs_run": 0,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9698826173826173,
+          "epochs_run": 0,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.915236300668286,
+          "epochs_run": 0,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8573888232979143,
+          "epochs_run": 0,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.957845638255302,
+          "epochs_run": 0,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9230835403912325,
+          "epochs_run": 0,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "plain_finetune": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.952415660212433,
+      "val_auprc_std": 0.02695246890568947,
+      "runs": [
+        {
+          "val_auprc": 0.950106375106375,
+          "epochs_run": 6,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9866269841269841,
+          "epochs_run": 9,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9277363006682859,
+          "epochs_run": 7,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9215468874559785,
+          "epochs_run": 10,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9901360544217687,
+          "epochs_run": 13,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9383413594952055,
+          "epochs_run": 6,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "confidence_weighted": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9688146451010011,
+      "val_auprc_std": 0.01708632587794734,
+      "runs": [
+        {
+          "val_auprc": 0.9663461538461537,
+          "epochs_run": 8,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9913888888888889,
+          "epochs_run": 6,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9618384832079685,
+          "epochs_run": 5,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9382496291587201,
+          "epochs_run": 11,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9846415489272632,
+          "epochs_run": 9,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9704231665770124,
+          "epochs_run": 6,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "source_plus_provisional_weighting": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9624497115125098,
+      "val_auprc_std": 0.01964304648885867,
+      "runs": [
+        {
+          "val_auprc": 0.9613095238095237,
+          "epochs_run": 8,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9814987789987789,
+          "epochs_run": 6,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9381529673349526,
+          "epochs_run": 7,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9382496291587201,
+          "epochs_run": 13,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9901360544217687,
+          "epochs_run": 8,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9653513153513151,
+          "epochs_run": 5,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "label_smoothing_noise_aware": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9160301328609965,
+      "val_auprc_std": 0.05763740484615156,
+      "runs": [
+        {
+          "val_auprc": 0.8689576627076627,
+          "epochs_run": 4,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9632159507159506,
+          "epochs_run": 8,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9277363006682859,
+          "epochs_run": 7,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8130132493768858,
+          "epochs_run": 5,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9786891679748823,
+          "epochs_run": 15,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9445684657223117,
+          "epochs_run": 6,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "generalized_cross_entropy": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9513255484240993,
+      "val_auprc_std": 0.026513650882240065,
+      "runs": [
+        {
+          "val_auprc": 0.9271765271765271,
+          "epochs_run": 4,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9632159507159506,
+          "epochs_run": 7,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9963235294117647,
+          "epochs_run": 8,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9218115218115219,
+          "epochs_run": 8,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9325055022008804,
+          "epochs_run": 9,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9669202592279513,
+          "epochs_run": 5,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "positive_unlabeled_nnpu": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.947235014310269,
+      "val_auprc_std": 0.049634004812325404,
+      "runs": [
+        {
+          "val_auprc": 0.9652417027417027,
+          "epochs_run": 12,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9866269841269841,
+          "epochs_run": 4,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9882506127450981,
+          "epochs_run": 10,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8620031483667847,
+          "epochs_run": 6,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9846415489272632,
+          "epochs_run": 8,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8966460889537811,
+          "epochs_run": 4,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "soft_label_confidence": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9379807054365692,
+      "val_auprc_std": 0.03833653851994124,
+      "runs": [
+        {
+          "val_auprc": 0.8936177248677248,
+          "epochs_run": 5,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9814987789987789,
+          "epochs_run": 6,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9381529673349526,
+          "epochs_run": 5,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8908992522628887,
+          "epochs_run": 6,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9901360544217687,
+          "epochs_run": 12,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9335794547333007,
+          "epochs_run": 5,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "sequence_dense_weight_adjustment": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9002007398452481,
+      "val_auprc_std": 0.0591456280156941,
+      "runs": [
+        {
+          "val_auprc": 0.8326150701150701,
+          "epochs_run": 4,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9632159507159506,
+          "epochs_run": 4,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.915236300668286,
+          "epochs_run": 4,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8077684941321306,
+          "epochs_run": 4,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.9538610199324484,
+          "epochs_run": 7,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9285076035076032,
+          "epochs_run": 4,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    },
+    "threshold_recalibration_only": {
+      "n_runs": 6,
+      "val_auprc_mean": 0.9113922629020016,
+      "val_auprc_std": 0.046665258059175985,
+      "runs": [
+        {
+          "val_auprc": 0.8449166574166574,
+          "val_recall_at_recalibrated_thr": 0.4166666666666667,
+          "val_fpr_at_recalibrated_thr": 0.25,
+          "recalibrated_threshold": -6.221679210662842,
+          "epochs_run": 0,
+          "seed": 7702,
+          "fold": 0,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.9698826173826173,
+          "val_recall_at_recalibrated_thr": 0.26666666666666666,
+          "val_fpr_at_recalibrated_thr": 0.0,
+          "recalibrated_threshold": 4.793615341186523,
+          "epochs_run": 0,
+          "seed": 7702,
+          "fold": 2,
+          "n_train": 31,
+          "n_val": 16
+        },
+        {
+          "val_auprc": 0.915236300668286,
+          "val_recall_at_recalibrated_thr": 0.5625,
+          "val_fpr_at_recalibrated_thr": 1.0,
+          "recalibrated_threshold": -6.221679210662842,
+          "epochs_run": 0,
+          "seed": 7703,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.8573888232979143,
+          "val_recall_at_recalibrated_thr": 0.0,
+          "val_fpr_at_recalibrated_thr": 0.0,
+          "recalibrated_threshold": 4.793615341186523,
+          "epochs_run": 0,
+          "seed": 7703,
+          "fold": 2,
+          "n_train": 32,
+          "n_val": 15
+        },
+        {
+          "val_auprc": 0.957845638255302,
+          "val_recall_at_recalibrated_thr": 0.14285714285714285,
+          "val_fpr_at_recalibrated_thr": 0.0,
+          "recalibrated_threshold": 4.793615341186523,
+          "epochs_run": 0,
+          "seed": 7704,
+          "fold": 0,
+          "n_train": 30,
+          "n_val": 17
+        },
+        {
+          "val_auprc": 0.9230835403912325,
+          "val_recall_at_recalibrated_thr": 0.5384615384615384,
+          "val_fpr_at_recalibrated_thr": 0.5,
+          "recalibrated_threshold": -6.221679210662842,
+          "epochs_run": 0,
+          "seed": 7704,
+          "fold": 1,
+          "n_train": 32,
+          "n_val": 15
+        }
+      ]
+    }
+  }
+}

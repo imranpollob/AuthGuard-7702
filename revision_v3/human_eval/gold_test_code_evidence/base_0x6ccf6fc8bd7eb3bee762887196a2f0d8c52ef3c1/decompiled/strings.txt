@@ -1,0 +1,42 @@
+V[`@Qa
+JV[`@Q
+?V[`@Q
+V[[`@Q
+_V[[` 
+-V[`@Q
+V[` `@Q
+[PPPP`@Q=`
+[PPPPPPPV[
+[PPPPPPPPPV[
+jV[` `@Q
+V[PPV[a
+V[`@Q` 
+RPPPPa
+V[PPPV[`
+SafeERC20: low-level call failed
+[PPPV[``a
+PPPV[``
+ZV[`@Q
+PPPPV[``
+PPPPV[`
+*V[`@Q
+`@RPPPV[`
+RPPPV[`
+PPPV[`
+*V[PPP
+RPPV[`
+RPPPPV[`
+PPPV[a
+Caller is not owner
+bggregate: call failed
+transferNftERC721: incorrect own`
+transferNftERC1155: zero balance`
+PPPPPPPV[`
+transferTokenERC20: zero balance`
+SafeERC20: ERC20 operation did n`
+ot succeed
+Address: insufficient balance fo`
+r call
+Address: call to non-contract
+dipfsX"
+dsolcC

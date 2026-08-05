@@ -1,0 +1,10 @@
+{
+  "manifest_sha256": "276a40c562cdedadd1a7baba8fa41f6326d8769da49dc5cfb54cd2a448552de0",
+  "n_items": 150,
+  "n_positive": 50,
+  "n_unflagged": 100,
+  "unique_bytecode_sha256_list_sha256": "44534878fc7b824d42c0f37de9fdcaf2aa9fc5fd99d9ed2acaf07c7cfad8dde7",
+  "unique_family_id_list_sha256": "74bf89df1e7bda9a5ec290204e006641f9ee261901f11901001f421d4457a815",
+  "frozen_at_utc": "2026-07-30T00:25:18.876650+00:00",
+  "sampling_seed": 770220262
+}

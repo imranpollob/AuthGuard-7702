@@ -1,0 +1,23 @@
+[
+  {
+    "slot": "9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300",
+    "offset": 0,
+    "type": "address",
+    "n_reads": 6,
+    "n_writes": 3
+  },
+  {
+    "slot": "f0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+    "offset": 0,
+    "type": "uint64",
+    "n_reads": 1,
+    "n_writes": 1
+  },
+  {
+    "slot": "f0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+    "offset": 8,
+    "type": "bool",
+    "n_reads": 1,
+    "n_writes": 1
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "bytecode_offset": 2910,
+    "address": "0x496e73756666696369656e742062616c616e6365"
+  },
+  {
+    "bytecode_offset": 3026,
+    "address": "0x7462d43e300fb964b6a38175381d56a07c860faa"
+  },
+  {
+    "bytecode_offset": 3049,
+    "address": "0xf140165a173e5093e87a870b4be95449f0d54cec"
+  },
+  {
+    "bytecode_offset": 3075,
+    "address": "0xf241a5ce4709d827bfeea5e964edf56a116cc73d"
+  },
+  {
+    "bytecode_offset": 3103,
+    "address": "0xb88ccca98044e09429f069f17773a27db9617c54"
+  },
+  {
+    "bytecode_offset": 3129,
+    "address": "0x83ccd9b6c370edd8862f20fdb237dac33c184643"
+  },
+  {
+    "bytecode_offset": 3155,
+    "address": "0x92d53b7ff0c07d656bfec4286a559dc5fa924961"
+  },
+  {
+    "bytecode_offset": 3181,
+    "address": "0x1c0eaf2140214257c25b55bb57225b46fd5e6d71"
+  },
+  {
+    "bytecode_offset": 3207,
+    "address": "0x8abdfabbba15c41365b9688d1ef5506cbc84c14b"
+  },
+  {
+    "bytecode_offset": 3233,
+    "address": "0x374785babe03886cf9cf1a72ec961c3240390e20"
+  },
+  {
+    "bytecode_offset": 3260,
+    "address": "0x57762c1e3faa37236df0fecc45c607a8264eb366"
+  },
+  {
+    "bytecode_offset": 3287,
+    "address": "0xdd79abdb162cfaacfa09f32820f6dc45be63a0c2"
+  },
+  {
+    "bytecode_offset": 3314,
+    "address": "0xf6e30fc2f22becf344c98edf58857f17791082ad"
+  },
+  {
+    "bytecode_offset": 3341,
+    "address": "0x260649f353153a52ba7f64213c637ff17399edaa"
+  },
+  {
+    "bytecode_offset": 3368,
+    "address": "0x64886e3525cf6b1f937e7ab570fcd180de9ef04f"
+  },
+  {
+    "bytecode_offset": 3395,
+    "address": "0xa19f4425cf9dd895998ac2ff673208a4fee60cd9"
+  },
+  {
+    "bytecode_offset": 3422,
+    "address": "0x03ec3bbf20c66c09bab833c5f5862e82db3b2990"
+  },
+  {
+    "bytecode_offset": 3449,
+    "address": "0xc44ac0910e9ed01c5f2d3b1c5d4b289498a8b73d"
+  }
+]

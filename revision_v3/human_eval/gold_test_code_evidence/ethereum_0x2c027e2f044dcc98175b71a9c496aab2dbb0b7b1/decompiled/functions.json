@@ -1,0 +1,19 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xc48724cf",
+      "resolved_signature": null,
+      "bytecode_offset": 56,
+      "arguments": "address,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfc0c546a",
+      "resolved_signature": "token()",
+      "bytecode_offset": 84,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

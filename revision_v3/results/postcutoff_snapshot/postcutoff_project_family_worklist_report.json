@@ -1,0 +1,11 @@
+{
+  "builder_sha256": "a1a42c427c90b738098796d2663e88b089c2654ded7d8eb2c8d6ecdd687731df",
+  "claim_boundary": "Links, hashes, and exact-runtime peers are research leads only. This artifact does not establish project ownership, family independence, or a security label.",
+  "manifest_sha256": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44",
+  "n_exact_runtime_families": 150,
+  "n_items": 150,
+  "n_items_with_exact_runtime_peers": 5,
+  "snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "status": "SCORE_BLIND_PROVENANCE_WORKLIST_COMPLETE",
+  "worklist_sha256": "bdf912d0bde5b7ffbc5144344732f553aef9de2f3b94b84394fb0c8b8fa3a18e"
+}

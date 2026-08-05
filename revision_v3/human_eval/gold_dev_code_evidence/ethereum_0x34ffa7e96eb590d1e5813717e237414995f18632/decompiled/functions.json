@@ -1,0 +1,40 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x8cabfe01",
+      "resolved_signature": null,
+      "bytecode_offset": 44,
+      "arguments": "address,bytes,address",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xe02bf96d",
+      "resolved_signature": null,
+      "bytecode_offset": 72,
+      "arguments": "address,bytes,address",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 229
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 558
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 736
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1065
+    }
+  ]
+}

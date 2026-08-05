@@ -1,0 +1,26 @@
+{
+  "sourcify": {
+    "http_status": 404,
+    "raw": {
+      "match": null,
+      "creationMatch": null,
+      "runtimeMatch": null,
+      "chainId": "1",
+      "address": "0xA3A50b5Ec1F03668742605C9746CCfAa077621b5"
+    },
+    "verified": false
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "conflicting_implementations": null,
+      "creation_bytecode": "0x6080604052348015600e575f5ffd5b50606080601a5f395ff3fe60806040525f5f5f5f3473e0fcc47c3b4fb4d77174b3f9da7b6e88c95dd7515af1806028575f5ffd5b00fea26469706673582212202306c5eb9510ac83923d8b4b5e86dc271394e6ac9c5f953e3927965d72a3314464736f6c634300081e0033",
+      "creation_status": "success",
+      "deployed_bytecode": "0x60806040525f5f5f5f3473e0fcc47c3b4fb4d77174b3f9da7b6e88c95dd7515af1806028575f5ffd5b00fea26469706673582212202306c5eb9510ac83923d8b4b5e86dc271394e6ac9c5f953e3927965d72a3314464736f6c634300081e0033",
+      "implementations": [],
+      "proxy_type": null
+    },
+    "verified": false
+  },
+  "verified": false
+}

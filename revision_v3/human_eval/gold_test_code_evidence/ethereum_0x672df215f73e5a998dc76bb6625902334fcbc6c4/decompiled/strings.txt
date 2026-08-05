@@ -1,0 +1,65 @@
+V[`@Qa
+eV[`@Qa
+Ri+Qgs
+LV[`@Q
+0`@Q`$
+V[`@Q` 
+RPPPP`@Qa
+V[_`@Q
+Unstaked Ena from StackContact
+5 {.h]JC
+V[` `@Q
+W=__>=_
+[PPPP`@Q=`
+Ena balance: 
+XV[_`d`
+Owner bribe AMOUNT: 
+ENA remaining to send VICTIM: 
+IV[` `@Q
+aW=__>=_
+Owner bribe transferred
+[W=__>=_
+@V[`@Q
+^V[` `@Q
+dV[` `@Q
+OW=__>=_
+OV[`@Q
+XV[PPPPPPPPPPPPPPPPV[
+=W=__>=_
+V[PPV[
+XV[_`@Q
+P[PPPa
+Burned ETH
+RPPPPa
+V[PV[a
+V[PPV[a
+V[PV[_jconsole.log
+PPPV[a
+RPV[_a
+PV[_` 
+RPPV[_` 
+PPV[__
+PPV[_` 
+PPV[_a
+Not yet
+RPPPV[_a
+Unstake failed
+No Ena balance
+RPPV[a
+RPPV[_`@
+PPPV[_
+Rescue recipient bribe transfer _
+failed
+PV[_`@
+RPPV[_b
+RPPV[_a
+PPPPV[_a
+PPV[_`
+RPPV[_`
+Swap failed
+Withdraw failed
+No ETH balance
+PPPV[PV[_a
+PPV[_`@
+>> RescueFlashloaner ETH balance AFTER unwrap Total left to (rescueRecip+bribe) bribe: Rescue recipient bribe transferred>> RescueFlashloaner ENA balance BEFORE swap >> RescueFlashloaner ETH balance DIFF Bribe available amount into ETH: >> RescueFlashloaner ENA balance AFTER swap >> RescueFlashloaner ETH balance AFTER send 
+dsolcC

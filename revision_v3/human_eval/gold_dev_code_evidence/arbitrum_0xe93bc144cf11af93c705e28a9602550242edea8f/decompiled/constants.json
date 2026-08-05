@@ -1,0 +1,26 @@
+[
+  {
+    "bytecode_offset": 40,
+    "address": "0x31a00175e7be8d8ba5453cfbf6c9be721069b32e"
+  },
+  {
+    "bytecode_offset": 261,
+    "address": "0xda6b5f1fd0b81ed81ddb9ad84f07912b3ee21de3"
+  },
+  {
+    "bytecode_offset": 334,
+    "address": "0x1f77528c1a66ba2dcbdeaf6cf471323333e91c9b"
+  },
+  {
+    "bytecode_offset": 408,
+    "address": "0x33f07d2b00ca1f53bc86719f57ff3445e50c4921"
+  },
+  {
+    "bytecode_offset": 556,
+    "address": "0xae7c7831308f6ba3a165935bff88bd88497f2186"
+  },
+  {
+    "bytecode_offset": 630,
+    "address": "0x7abb376f281673254dd699b5ee4e510429eba667"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x174dea71",
+      "resolved_signature": "aggregate3Value((address,bool,uint256,bytes)[])",
+      "bytecode_offset": 117,
+      "arguments": "(address,uint256,uint256,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x252dba42",
+      "resolved_signature": "aggregate((address,bytes)[])",
+      "bytecode_offset": 158,
+      "arguments": "(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x82ad56cb",
+      "resolved_signature": "aggregate3((address,bool,bytes)[])",
+      "bytecode_offset": 191,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x89476069",
+      "resolved_signature": "withdrawToken(address)",
+      "bytecode_offset": 210,
+      "arguments": "address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xe086e5ec",
+      "resolved_signature": "withdrawETH()",
+      "bytecode_offset": 242,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 690
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 799
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1206
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1654
+    },
+    {
+      "selector": "0x70a08231",
+      "resolved_signature": "balanceOf(address)",
+      "bytecode_offset": 1754
+    },
+    {
+      "selector": "0xa9059cbb",
+      "resolved_signature": "transfer(address,uint256)",
+      "bytecode_offset": 1899
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2672
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2719
+    }
+  ]
+}

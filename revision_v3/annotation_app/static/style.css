@@ -1,0 +1,6 @@
+body { font-family: sans-serif; max-width: 900px; margin: 20px auto; padding: 0 12px; }
+header { margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #ccc; }
+table { border-collapse: collapse; margin: 8px 0; }
+th, td { padding: 4px 8px; }
+pre { background: #f4f4f4; padding: 8px; overflow-x: auto; }
+details { margin: 8px 0; }

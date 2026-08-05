@@ -1,0 +1,44 @@
+{
+  "per_function": [
+    {
+      "selector": "0x2d339b1e",
+      "resolved_signature": "Transfer(address)",
+      "bytecode_offset": 80,
+      "arguments": "address",
+      "state_mutability": "nonpayable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x688cbba1",
+      "resolved_signature": null,
+      "bytecode_offset": 120,
+      "arguments": "address,(address,uint256,bytes)[]",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xbc6e461a",
+      "resolved_signature": null,
+      "bytecode_offset": 168,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

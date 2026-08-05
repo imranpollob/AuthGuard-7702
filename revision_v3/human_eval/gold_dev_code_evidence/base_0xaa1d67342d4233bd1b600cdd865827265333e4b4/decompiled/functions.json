@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0d9019e1",
+      "resolved_signature": "RECIPIENT()",
+      "bytecode_offset": 230,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

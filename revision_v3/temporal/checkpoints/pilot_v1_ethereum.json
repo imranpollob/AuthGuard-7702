@@ -1,0 +1,12 @@
+{
+  "chain": "ethereum",
+  "run_id": "pilot_v1",
+  "last_scanned_block": 24358592,
+  "n_blocks_scanned": 300,
+  "n_type4_txs": 270,
+  "n_authorization_entries": 276,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 43.39024233818054,
+  "last_run_blocks_per_second": 6.91399687657471,
+  "last_run_n_blocks": 300
+}

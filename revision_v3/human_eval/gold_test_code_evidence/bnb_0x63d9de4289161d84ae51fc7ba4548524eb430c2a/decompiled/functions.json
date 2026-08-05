@@ -1,0 +1,148 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0f28c97d",
+      "resolved_signature": "getCurrentBlockTimestamp()",
+      "bytecode_offset": 248,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x174dea71",
+      "resolved_signature": "aggregate3Value((address,bool,uint256,bytes)[])",
+      "bytecode_offset": 282,
+      "arguments": "(address,uint256,uint256,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x252dba42",
+      "resolved_signature": "aggregate((address,bytes)[])",
+      "bytecode_offset": 314,
+      "arguments": "(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x27e86d6e",
+      "resolved_signature": "getLastBlockHash()",
+      "bytecode_offset": 347,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3408e470",
+      "resolved_signature": "getChainId()",
+      "bytecode_offset": 401,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x399542e9",
+      "resolved_signature": "tryBlockAndAggregate(bool,(address,bytes)[])",
+      "bytecode_offset": 420,
+      "arguments": "bool,(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x3e64a696",
+      "resolved_signature": "getBasefee()",
+      "bytecode_offset": 454,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x42cbb15c",
+      "resolved_signature": "getBlockNumber()",
+      "bytecode_offset": 473,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x4d2301cc",
+      "resolved_signature": "getEthBalance(address)",
+      "bytecode_offset": 492,
+      "arguments": "address",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x72425d9d",
+      "resolved_signature": "getCurrentBlockDifficulty()",
+      "bytecode_offset": 545,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x82ad56cb",
+      "resolved_signature": "aggregate3((address,bool,bytes)[])",
+      "bytecode_offset": 564,
+      "arguments": "(address,uint256,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x86d516e8",
+      "resolved_signature": "getCurrentBlockGasLimit()",
+      "bytecode_offset": 583,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa8b0574e",
+      "resolved_signature": "getCurrentBlockCoinbase()",
+      "bytecode_offset": 602,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xbce38bd7",
+      "resolved_signature": "tryAggregate(bool,(address,bytes)[])",
+      "bytecode_offset": 629,
+      "arguments": "bool,(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xc3077fa9",
+      "resolved_signature": "blockAndAggregate((address,bytes)[])",
+      "bytecode_offset": 648,
+      "arguments": "(address,bytes)[]",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0xee82ac5e",
+      "resolved_signature": "getBlockHash(uint256)",
+      "bytecode_offset": 667,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1046
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1155
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1982
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2413
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 3320
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 3367
+    }
+  ]
+}

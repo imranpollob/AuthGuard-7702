@@ -1,0 +1,15 @@
+{
+  "chain": "base",
+  "run_id": "v2_window",
+  "last_scanned_block": null,
+  "n_blocks_scanned": 0,
+  "n_type4_txs": 0,
+  "n_authorization_entries": 0,
+  "n_rpc_errors": 0,
+  "next_page_params": null,
+  "n_pages_fetched": 0,
+  "n_hashes_discovered": 0,
+  "n_blocks_fetched": 0,
+  "pagination_complete": false,
+  "processed_blocks": []
+}

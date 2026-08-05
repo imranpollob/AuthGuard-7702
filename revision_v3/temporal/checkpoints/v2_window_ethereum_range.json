@@ -1,0 +1,9 @@
+{
+  "chain": "ethereum",
+  "run_id": "v2_window",
+  "window_start_unix": 1769904000,
+  "window_end_unix": 1782777600,
+  "start_block": 24358293,
+  "end_block": 25426767,
+  "n_blocks_total": 1068475
+}

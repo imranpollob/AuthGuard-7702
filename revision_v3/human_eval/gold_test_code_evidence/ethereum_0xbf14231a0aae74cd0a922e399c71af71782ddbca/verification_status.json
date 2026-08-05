@@ -1,0 +1,26 @@
+{
+  "sourcify": {
+    "http_status": 404,
+    "raw": {
+      "match": null,
+      "creationMatch": null,
+      "runtimeMatch": null,
+      "chainId": "1",
+      "address": "0xBf14231A0AAe74cd0A922E399C71af71782DDbCa"
+    },
+    "verified": false
+  },
+  "blockscout": {
+    "http_status": 200,
+    "raw": {
+      "conflicting_implementations": null,
+      "creation_bytecode": "0x602d8060093d393df33461002b575f5f5f5f47734d59cd593f6982fdb2eb08bb4e761514b320c14c5af11561002757005b5f5ffd5b00",
+      "creation_status": "success",
+      "deployed_bytecode": "0x3461002b575f5f5f5f47734d59cd593f6982fdb2eb08bb4e761514b320c14c5af11561002757005b5f5ffd5b00",
+      "implementations": [],
+      "proxy_type": null
+    },
+    "verified": false
+  },
+  "verified": false
+}

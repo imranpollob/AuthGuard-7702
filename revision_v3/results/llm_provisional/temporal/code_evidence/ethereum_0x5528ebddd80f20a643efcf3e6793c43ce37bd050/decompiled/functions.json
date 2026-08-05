@@ -1,0 +1,25 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x38e95769",
+      "resolved_signature": null,
+      "bytecode_offset": 144,
+      "arguments": "uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x6744bb26",
+      "resolved_signature": null,
+      "bytecode_offset": 184,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xe90a182f",
+      "resolved_signature": "sweepToken(address,uint256)",
+      "bytecode_offset": 226,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ]
+}

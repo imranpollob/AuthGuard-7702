@@ -1,0 +1,24 @@
+{
+  "baseline": "original_bounded_cfg",
+  "candidate": "validated_metadata_plus_state_widening",
+  "claim_boundary": "The comparison uses inherited labels. Coverage correctness is independently label-free; predictive improvement requires independent-label confirmation.",
+  "mean_seed_auprc": {
+    "baseline": 0.9540897287729303,
+    "candidate": 0.9545011470430856
+  },
+  "paired_family_bootstrap_auprc": {
+    "ci_high": 0.004811344675532874,
+    "ci_low": -0.0052794421775935576,
+    "excludes_zero": false,
+    "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+    "n_replicates": 10000,
+    "n_seeds": 3,
+    "per_seed_point_deltas": {
+      "7702": -0.00027996602451718644,
+      "7703": 0.0004917248031497401,
+      "7704": 0.00102249603183302
+    },
+    "point_delta": 0.0004114182701551912
+  },
+  "status": "PROVISIONAL_INHERITED_LABEL_VERSION_COMPARISON"
+}

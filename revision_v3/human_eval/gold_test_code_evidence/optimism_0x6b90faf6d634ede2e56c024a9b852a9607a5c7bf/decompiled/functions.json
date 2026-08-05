@@ -1,0 +1,243 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x0ba65e8d",
+      "resolved_signature": null,
+      "bytecode_offset": 13991,
+      "arguments": "uint256,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x0bb28465",
+      "resolved_signature": null,
+      "bytecode_offset": 13672,
+      "arguments": "uint256,uint256,uint256,uint256,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x0f4d4caf",
+      "resolved_signature": null,
+      "bytecode_offset": 11544,
+      "arguments": "uint256,uint256,uint256",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x115ff7ee",
+      "resolved_signature": null,
+      "bytecode_offset": 10924,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1626ba7e",
+      "resolved_signature": "isValidSignature(bytes32,bytes)",
+      "bytecode_offset": 10889,
+      "arguments": "uint256,bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x1ad4e175",
+      "resolved_signature": null,
+      "bytecode_offset": 10847,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x20320171",
+      "resolved_signature": null,
+      "bytecode_offset": 10800,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x20a4753b",
+      "resolved_signature": null,
+      "bytecode_offset": 10750,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x253c0c9d",
+      "resolved_signature": null,
+      "bytecode_offset": 10248,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x4149bc28",
+      "resolved_signature": null,
+      "bytecode_offset": 10062,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x437d55db",
+      "resolved_signature": null,
+      "bytecode_offset": 8701,
+      "arguments": "address,address,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4939ed76",
+      "resolved_signature": "cancelLimitOrder(bytes32,bytes)",
+      "bytecode_offset": 8275,
+      "arguments": "uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x4fb655aa",
+      "resolved_signature": null,
+      "bytecode_offset": 8108,
+      "arguments": "bytes",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x53f20a4f",
+      "resolved_signature": null,
+      "bytecode_offset": 8066,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x589f075c",
+      "resolved_signature": null,
+      "bytecode_offset": 8024,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x61915e5d",
+      "resolved_signature": "executedOrders(uint256)",
+      "bytecode_offset": 7977,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x6bb0bfe2",
+      "resolved_signature": null,
+      "bytecode_offset": 6687,
+      "arguments": "(address,uint256,bytes)[],address,uint256,uint256,bytes",
+      "state_mutability": "payable"
+    },
+    {
+      "selector": "0x71e72d80",
+      "resolved_signature": null,
+      "bytecode_offset": 5729,
+      "arguments": "address,address,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256,uint256,uint256,bytes,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x78f197ad",
+      "resolved_signature": null,
+      "bytecode_offset": 5658,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x7f545269",
+      "resolved_signature": null,
+      "bytecode_offset": 5547,
+      "arguments": "uint256,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x7f94dd33",
+      "resolved_signature": null,
+      "bytecode_offset": 5478,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x8501bfb5",
+      "resolved_signature": null,
+      "bytecode_offset": 5409,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x92da94a8",
+      "resolved_signature": null,
+      "bytecode_offset": 4466,
+      "arguments": "uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,uint256,uint256,uint256,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x964566ec",
+      "resolved_signature": null,
+      "bytecode_offset": 4419,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x9cf54c00",
+      "resolved_signature": null,
+      "bytecode_offset": 4350,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xa98127a0",
+      "resolved_signature": null,
+      "bytecode_offset": 4303,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xaae94f99",
+      "resolved_signature": null,
+      "bytecode_offset": 2445,
+      "arguments": "uint256,uint256,uint256,address,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xaf87aaec",
+      "resolved_signature": null,
+      "bytecode_offset": 2233,
+      "arguments": "uint256,uint256,uint256,address",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xaffed0e0",
+      "resolved_signature": "nonce()",
+      "bytecode_offset": 2204,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xba72066b",
+      "resolved_signature": null,
+      "bytecode_offset": 2162,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd29ca57c",
+      "resolved_signature": null,
+      "bytecode_offset": 1984,
+      "arguments": "uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xd9828e82",
+      "resolved_signature": null,
+      "bytecode_offset": 998,
+      "arguments": "uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,bool,uint256,uint256,bytes,uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfd810579",
+      "resolved_signature": null,
+      "bytecode_offset": 618,
+      "arguments": "uint256,bytes",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xfdfb3220",
+      "resolved_signature": null,
+      "bytecode_offset": 411,
+      "arguments": "uint256",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

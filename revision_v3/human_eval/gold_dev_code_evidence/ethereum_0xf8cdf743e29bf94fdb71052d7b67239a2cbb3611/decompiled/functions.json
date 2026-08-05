@@ -1,0 +1,137 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x13236d04",
+      "resolved_signature": null,
+      "bytecode_offset": 309,
+      "arguments": "bool,bool,bool,bool,address,address,address,uint256[]",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x1d073a7a",
+      "resolved_signature": null,
+      "bytecode_offset": 349,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x32fe7b26",
+      "resolved_signature": "ROUTER()",
+      "bytecode_offset": 391,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x3fc8cef3",
+      "resolved_signature": "weth()",
+      "bytecode_offset": 433,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x44df8e70",
+      "resolved_signature": "burn()",
+      "bytecode_offset": 475,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0xad5c4648",
+      "resolved_signature": "WETH()",
+      "bytecode_offset": 497,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf73e5aab",
+      "resolved_signature": "UNISWAP_V3_FACTORY()",
+      "bytecode_offset": 539,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xf887ea40",
+      "resolved_signature": "router()",
+      "bytecode_offset": 581,
+      "arguments": "",
+      "state_mutability": "view"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 764
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 948
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1174
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1412
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1650
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1851
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2278
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2488
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 2706
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3171
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3233
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 3445
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 4870
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 5822
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 6097
+    }
+  ]
+}

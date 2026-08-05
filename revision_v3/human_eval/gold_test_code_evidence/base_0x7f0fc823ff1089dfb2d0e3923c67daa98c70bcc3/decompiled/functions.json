@@ -1,0 +1,42 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x31c91117",
+      "resolved_signature": "withdrawAllEther()",
+      "bytecode_offset": 275,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "resolved_signature": "owner()",
+      "bytecode_offset": 297,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0x9e281a98",
+      "resolved_signature": "withdrawToken(address,uint256)",
+      "bytecode_offset": 339,
+      "arguments": "address,uint256",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 602
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 863
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 924
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "claim_boundary": "Exact-runtime deduplication and canonical similarity screening do not establish project-family independence. Cluster and adjudicate project provenance before any model retraining or scoring.",
+  "first_postcutoff_family_ids_sha256": "e0a48bcd01fa483e1ecfcaaeb3bfd7c83c97eff1f94f8d83a21663fbbb2d3d04",
+  "first_postcutoff_item_ids_sha256": "7223fd16f24b4409e2bf410dfbf072c5e4efab5a3d3ad7703d37f181a7fab050",
+  "first_postcutoff_manifest": "revision_v3/results/postcutoff_snapshot/postcutoff_review_manifest.csv",
+  "first_postcutoff_manifest_sha256": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44",
+  "manifest": "revision_v3/results/confirmatory_snapshot/confirmatory_review_manifest.csv",
+  "manifest_sha256": "b69564c3096d39fbd3c57fce88c16e81a6f9caa0fea92921d26386542ba1760b",
+  "n_eligible_before_supplied_exclusion": 564,
+  "n_eligible_exact_runtime_families": 414,
+  "n_excluded_supplied_families": 150,
+  "n_selected": 150,
+  "independence_boundary": "No reserve item or exact runtime family appears in the first post-cutoff review sample. Both post-cutoff samples are disjoint from the separate 150-item Gold-Test proxy whose provisional labels informed method development.",
+  "sample_seed": 77022027,
+  "sampler_sha256": "7ef66a35f36009900013946800cb32cff3d3e0a6882521a44d132c5e80bb0d57",
+  "sampling_status": "FROZEN_UNTOUCHED_CONFIRMATORY_SAMPLE",
+  "selection": "simple random sample without replacement over exact-runtime families after excluding canonical exact/similarity matches and all supplied development families; representative is the most frequently authorized address, then lexical address",
+  "snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "source_snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "target_n": 150
+}

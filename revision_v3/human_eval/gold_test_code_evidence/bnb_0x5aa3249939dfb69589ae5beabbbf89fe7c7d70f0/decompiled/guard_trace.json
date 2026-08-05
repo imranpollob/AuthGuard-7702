@@ -1,0 +1,44 @@
+{
+  "per_function": [
+    {
+      "selector": "0x0f83369d",
+      "resolved_signature": null,
+      "bytecode_offset": 275,
+      "arguments": "address",
+      "state_mutability": "payable",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0x12065fe0",
+      "resolved_signature": "getBalance()",
+      "bytecode_offset": 303,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "OPEN",
+      "guard_opcode": null,
+      "guard_constant": null,
+      "guard_offset": null,
+      "note": "no CALLER/ORIGIN-based comparison found in the traced body window"
+    },
+    {
+      "selector": "0xd4b83992",
+      "resolved_signature": "target()",
+      "bytecode_offset": 345,
+      "arguments": "",
+      "state_mutability": "view",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": "0xda43dcc01abded0c734b72ab295b4acee654e92d",
+      "guard_offset": 431,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": true,
+  "all_traced_guarded": false,
+  "any_ambiguous": false,
+  "overall_status": "OPEN_FOUND"
+}

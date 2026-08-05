@@ -1,0 +1,33 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0x46bd1e9b",
+      "resolved_signature": null,
+      "bytecode_offset": 81,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x5d3d957f",
+      "resolved_signature": null,
+      "bytecode_offset": 108,
+      "arguments": "",
+      "state_mutability": "nonpayable"
+    },
+    {
+      "selector": "0x61bc221a",
+      "resolved_signature": "counter()",
+      "bytecode_offset": 116,
+      "arguments": "",
+      "state_mutability": "view"
+    },
+    {
+      "selector": "0xe6fb99ea",
+      "resolved_signature": null,
+      "bytecode_offset": 125,
+      "arguments": "address,uint256,address,bytes",
+      "state_mutability": "nonpayable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

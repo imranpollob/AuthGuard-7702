@@ -1,0 +1,42 @@
+V[`@Qa
+6V[`@Q
+@V[`@Q
+V[_`@Q
+`@Q`@Q
+PPV[sv
+9V[`@Q
+V[PPV[sv
+6V[` `@Q
+[PPPP`@Q=`
+V[PPPV[sv
+nV[`@Q
+V[PPV[
+[PPV[``
+V[[PPPPV[a
+V[`@Q` 
+RPPPPa
+V[PPPV[``
+PPPV[_
+W`@Q=_
+[PPPPV[_
+PPV[_` 
+uV[[_a
+PPV[_a
+RPPV[_` 
+BatchWallet: caller is not the o_
+RPV[_a
+PV[_` 
+RPPPV[_a
+PPPV[_a
+PPPV[a
+RPPV[_
+RPPV[_`@
+BatchWallet: no ETH balance
+BatchWallet: no token balance
+BatchWallet: insufficient ETH ba_
+BatchWallet: internal call faile_
+PV[_`@
+RPPPPV[_a
+PPV[PV[_a
+dipfsX"
+E%dsolcC

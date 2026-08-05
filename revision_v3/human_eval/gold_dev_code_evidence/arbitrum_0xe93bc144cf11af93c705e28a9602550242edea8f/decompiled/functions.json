@@ -1,0 +1,58 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xa3cbe5af",
+      "resolved_signature": null,
+      "bytecode_offset": 232,
+      "arguments": "uint256[],uint256[],uint256[],bool",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": [
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 171
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 705
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 794
+    },
+    {
+      "selector": "0x08c379a0",
+      "resolved_signature": "Error(string)",
+      "bytecode_offset": 1081
+    },
+    {
+      "selector": "0x21340000",
+      "resolved_signature": null,
+      "bytecode_offset": 1386
+    },
+    {
+      "selector": "0x21310000",
+      "resolved_signature": null,
+      "bytecode_offset": 2014
+    },
+    {
+      "selector": "0x21320000",
+      "resolved_signature": null,
+      "bytecode_offset": 2118
+    },
+    {
+      "selector": "0x4e487b71",
+      "resolved_signature": "Panic(uint256)",
+      "bytecode_offset": 2222
+    },
+    {
+      "selector": "0x21330000",
+      "resolved_signature": null,
+      "bytecode_offset": 2584
+    }
+  ]
+}

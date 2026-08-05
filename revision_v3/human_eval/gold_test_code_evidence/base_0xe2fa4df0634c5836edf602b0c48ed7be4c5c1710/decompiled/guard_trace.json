@@ -1,0 +1,20 @@
+{
+  "per_function": [
+    {
+      "selector": "0xe8abf379",
+      "resolved_signature": "multicall((address,bytes,uint256)[])",
+      "bytecode_offset": 40,
+      "arguments": "(address,bytes,uint256)[]",
+      "state_mutability": "nonpayable",
+      "guard_status": "GUARDED",
+      "guard_opcode": "CALLER",
+      "guard_constant": null,
+      "guard_offset": 199,
+      "note": ""
+    }
+  ],
+  "any_sensitive_open": false,
+  "all_traced_guarded": true,
+  "any_ambiguous": false,
+  "overall_status": "GUARDED_ALL"
+}

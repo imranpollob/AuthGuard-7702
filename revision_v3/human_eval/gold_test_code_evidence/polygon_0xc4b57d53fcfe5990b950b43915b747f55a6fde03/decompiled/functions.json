@@ -1,0 +1,12 @@
+{
+  "dispatched_functions": [
+    {
+      "selector": "0xa6d0ad61",
+      "resolved_signature": "execute((bytes,address,uint256)[])",
+      "bytecode_offset": 43,
+      "arguments": "(bytes,address,uint256)[]",
+      "state_mutability": "payable"
+    }
+  ],
+  "fallback_selector_candidates": []
+}

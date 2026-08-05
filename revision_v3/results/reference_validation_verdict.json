@@ -1,0 +1,16 @@
+{
+  "v3_auprc_mean": 0.9291981980024987,
+  "v3_auprc_std": 0.014928988221911329,
+  "v3_recall_at_5pct_mean": 0.8427453574729187,
+  "v3_recall_at_5pct_std": 0.013718188045720779,
+  "v2_auprc_mean": 0.924447943,
+  "v2_recall_at_5pct_mean": 0.832667663,
+  "auprc_abs_diff": 0.0047502550024987045,
+  "recall_at_5pct_abs_diff": 0.01007769447291873,
+  "acceptance_criteria": {
+    "auprc_abs_diff_max": 0.015,
+    "recall_5pct_abs_diff_max": 0.025
+  },
+  "PASSED": true,
+  "total_wall_seconds": 318.79236912727356
+}
