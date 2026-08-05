@@ -1,7 +1,73 @@
 # AuthGuard-7702 Research Endpoint and Submission Plan
 
 Date: 2026-08-04
-Status: method development is substantially complete; independent final evidence is not.
+Status: method, project-family holds, retraining, and external controls are frozen; independent human labels remain incomplete.
+
+## 2026-08-04 execution update (authoritative)
+
+The score-blind preparation and model execution stages are complete. The primary set contains 150
+items, of which one predeclared Ambire overlap is excluded and 149 were scored by three seeds. A
+conservative, deliberately overinclusive family audit assigns the 148 anonymous nonexcluded items
+to research clusters without asserting brand ownership; the retraining pipeline reports 146
+mandatory canonical family holds and removes 607 canonical rows. This is a leakage-reduced design,
+not proof of perfect project independence.
+
+Locked retraining produced 21 checkpoints and 447 primary prediction rows. All protocol, source,
+feature, hold-plan, checkpoint, and prediction provenance checks passed before annotation was
+unlocked. Neither reviewer has submitted a post-cutoff label, so no final accuracy, AUPRC, AUROC,
+calibration, or method-superiority result exists yet.
+
+The separate, pre-scoring legitimate-control protocol is also complete. It contains three new
+projects (Tangem, Startale, and Rainbow), two observed-use controls, and two canonical-unseen
+controls. The frozen project-balanced model produced zero `WARN`, two `NO_MODEL_WARNING`, and one
+`DEFER` across the three new projects. This is encouraging descriptive evidence only: the sample is
+small, Startale has incomplete signer-relative coverage, and Rainbow shares a known runtime lineage
+with a revision-v2 family. It is not an estimate of population false-positive rate or a safety
+claim.
+
+The sole remaining evidence-collection blocker is dual independent human review and adjudication.
+The annotation gate is open, model scores remain hidden from reviewers, and both R1 and R2 have 150
+pending assignments. Once those labels are frozen, the predeclared confirmatory evaluation can be
+run once and the paper can take either the method-paper or measurement-paper branch below.
+
+## 2026-08-04 final-freeze snapshot (historical)
+
+The primary post-cutoff set is a score-blind sample of 150 exact-runtime families and remains
+untouched: all 150 items are seeded in the annotation system and have zero annotation rows. It is
+disjoint from the separate 150-item Gold-Test proxy whose provisional labels informed method
+selection. A second 150-family sample, drawn with a different seed from the 414 eligible families
+remaining after the primary selection, is now cryptographically locked as a replication reserve;
+it has no item or exact-runtime-family overlap with the primary set.
+
+The final protocol is frozen in
+`revision_v3/protocols/final_evaluation_preregistration_v1.json`. It declares full DCRG versus
+untyped guards as the single confirmatory AUPRC endpoint, uses 10,000 paired seed-aware
+signer/deployer/project-cluster bootstrap replicates, and treats all baseline, operating,
+calibration, coverage, and error-taxonomy analyses as secondary or descriptive. This prevents
+selecting the paper's hypothesis after reading the human result.
+
+The final retraining path now includes the strongest classical baseline from revision v2
+(225-bin normalized opcode histogram + 512-bin hashed opcode 4-grams with XGBoost), alongside an
+honestly named learned sequence+dense baseline. The frozen project-balanced repair is a separate
+`dcrg_project_balanced` variant with total benign-control weight 8 per eligible project. The base
+DCRG/baseline comparison does not receive these extra controls, avoiding a training-data
+confound. All control runtimes, projects, weights, bytecode hashes, feature hashes, exclusions,
+checkpoints, thresholds, and source hashes are recorded in the pre-label training manifest.
+
+Statistical dependence is no longer equated with exact-runtime uniqueness. The primary 150 items
+form 124 conservative score-blind clusters after linking repeated recovered authorities,
+shared EOA deployers, and audited project families; 19 clusters contain multiple items and the
+largest has four. These clusters, not the 150 runtime IDs, are the bootstrap unit.
+
+To make the remaining provenance audit tractable without silently automating ownership claims,
+`postcutoff_project_family_candidates.csv` now proposes the same 124 conservative research
+families: 45 items are in strong on-chain must-link clusters, 12 are verified-source singletons,
+and 93 remain explicit anonymous singletons requiring research. The proposal never edits the
+authoritative audit and warns that verified source names do not establish legitimacy or official
+brand association. Public Blockscout/Sourcify collection is complete for all 150 primary items;
+20 have verified source-name leads. At this historical snapshot the audit was only 2/150
+terminal; the authoritative execution update above supersedes that state with conservative,
+non-attribution research-family holds.
 
 ## Bottom-line reviewer verdict
 
@@ -39,8 +105,8 @@ can be written as a result rather than a goal.
    out baselines, new legitimate project families, post-cutoff signer/delegate pairs, calibration
    shift, and abstention. The interface emits `WARN`, `NO_MODEL_WARNING`, or `DEFER`; it never
    equates a low model score with safety. [Required: freeze the weight-8 development rule, collect
-   new legitimate projects, finish post-cutoff project attribution and labels, retrain after all
-   mandatory family holds, then report project-level and family-bootstrap uncertainty.]
+   new legitimate projects, family holds, and retraining are complete; independent labels and the
+   one-shot project/family-bootstrap evaluation remain required.]
 
 ## What the completed path search established
 
@@ -141,31 +207,31 @@ be genuinely untouched.
 
 ### Freeze now
 
-1. Designate the final extractor as
+1. **Done:** designate the final extractor as
    `bounded-cfg-1.3-jump-fenced-metadata-state-widening` and retain aggregate DCRG.
-2. Freeze the project-balanced benign total weight at 8; do not explore more weights after seeing
+2. **Done:** freeze the project-balanced benign total weight at 8; do not explore more weights after seeing
    new-project outcomes.
-3. Freeze all feature groups, baselines, thresholds, metrics, bootstrap unit, and exclusion rules.
-4. Version and hash the full code/configuration and record that the existing 150-item proxy is
-   development data.
+3. **Done:** freeze all feature groups, baselines, thresholds, metrics, bootstrap unit, and exclusion rules.
+4. **Done:** version and hash the full code/configuration and record that the separate 150-item
+   Gold-Test proxy is development data.
 
 ### Build untouched evidence
 
-5. Complete project attribution for the frozen post-cutoff worklist and exclude every overlapping
-   benchmark/registry family from every contributing training checkpoint.
-6. Select a new score-blind final sample after the exclusions. Include enough bounded-negative
-   and legitimate project families to estimate false warnings; do not accept an overwhelmingly
-   unsafe-only test set.
+5. **Done conservatively:** materialize score-blind research-family holds for the frozen worklist
+   and exclude every detected overlapping benchmark/registry family from contributing checkpoints.
+   Anonymous clusters remain non-attribution research groups, so the claim is leakage-reduced.
+6. **Done:** preserve the score-blind primary sample and disjoint replication reserve, plus a
+   separately frozen set of three new legitimate projects for descriptive external evaluation.
 7. Have two independent reviewers label each mandatory item without seeing model scores or source
    labels; adjudicate disagreement and preserve `UNCERTAIN` as a result.
-8. Collect additional legitimate implementations from projects not among the eight development
+8. **Done:** collect legitimate implementations from projects not among the eight development
    controls, with release, deployment, runtime, and project-family provenance.
 
 ### Run once
 
-9. Retrain sequence, capability-only, untyped-guard, full guard-aware DCRG, and weight-8 DCRG after
-   all required family/project holds. Do not revive the failed GNN, motif, or fusion paths unless a
-   new preregistered hypothesis independently requires them.
+9. **Done:** retrain sequence+dense, histogram+n-gram XGBoost, capability-only, untyped-guard, full
+   guard-aware DCRG, and weight-8 DCRG after all required family/project holds. Fusion remains
+   exploratory; do not revive the failed GNN or motif paths.
 10. Evaluate the frozen endpoints once: full versus untyped AUPRC as the representation endpoint;
     full versus strongest learned/classical baseline as performance endpoints; new-project warning
     rate; post-cutoff recall; deferral/coverage; calibration; and paired family/project intervals.
@@ -195,11 +261,13 @@ and it does not replace source audit, simulation, reputation, or transaction-bas
 
 ## Current completion status
 
-Engineering and method search: **approximately 80% complete**.
+Engineering and method search: **complete for the frozen revision-v3 experiment**.
 
-Scientific evidence required for a submission-ready paper: **approximately 55–60% complete**.
+Scientific evidence required for a submission-ready paper: **approximately 75–80% complete**.
 
-The remaining work is no longer open-ended model invention. It is independent annotation,
-project-family provenance, one frozen retraining/evaluation, and a manuscript rewrite. Those are
-mandatory: without them the work is a promising development study; with favorable results similar
-to the current-label proxy, it becomes a defensible method paper.
+The remaining work is no longer open-ended model invention or provenance engineering. It is dual
+independent human annotation/adjudication, the one-shot preregistered evaluation, and a manuscript
+rewrite whose claims follow that result. Without independent labels the work remains a strong
+development study; with favorable untouched-label results it becomes a defensible method paper. If
+the method endpoint is null, the frozen benchmark, coverage audit, legitimate-control experiment,
+and disclosed negative paths still support a narrower measurement paper.

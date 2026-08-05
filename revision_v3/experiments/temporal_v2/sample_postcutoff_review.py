@@ -32,6 +32,8 @@ def select_review_sample(
     *,
     sample_size: int = SAMPLE_SIZE,
     seed: int = SAMPLE_SEED,
+    excluded_family_ids: set[str] | None = None,
+    sample_set: str = "postcutoff",
 ) -> tuple[pd.DataFrame, dict]:
     """Sample unseen exact-runtime families without using labels or model outputs."""
     forbidden_markers = ("label", "score", "probability", "prediction", "decision")
@@ -62,13 +64,18 @@ def select_review_sample(
         ["postcutoff_exact_runtime_family", "authorization_count", "delegate_address"],
         ascending=[True, False, True],
     ).drop_duplicates("postcutoff_exact_runtime_family", keep="first")
+    excluded_family_ids = {str(value) for value in (excluded_family_ids or set())}
+    eligible_before_supplied_exclusion = len(eligible)
+    eligible = eligible[
+        ~eligible["postcutoff_exact_runtime_family"].astype(str).isin(excluded_family_ids)
+    ].copy()
 
     rng = np.random.default_rng(seed)
     order = rng.permutation(len(eligible))
     selected = eligible.iloc[order[: min(sample_size, len(eligible))]].copy()
     selected = selected.sort_values("delegate_address").reset_index(drop=True)
     selected["item_id"] = "ethereum:" + selected["delegate_address"].str.lower()
-    selected["sample_set"] = "postcutoff"
+    selected["sample_set"] = sample_set
     selected["family_id"] = selected["postcutoff_exact_runtime_family"]
     selected["chain"] = "ethereum"
     selected["address"] = selected["delegate_address"].str.lower()
@@ -87,10 +94,15 @@ def select_review_sample(
         "sample_seed": seed,
         "target_n": sample_size,
         "n_eligible_exact_runtime_families": int(len(eligible)),
+        "n_eligible_before_supplied_exclusion": int(
+            eligible_before_supplied_exclusion
+        ),
+        "n_excluded_supplied_families": int(len(excluded_family_ids)),
         "n_selected": int(len(selected)),
         "selection": (
             "simple random sample without replacement over exact-runtime families after "
-            "excluding canonical exact/similarity matches; representative is the most "
+            "excluding canonical exact/similarity matches and all supplied development "
+            "families; representative is the most "
             "frequently authorized address, then lexical address"
         ),
         "claim_boundary": (

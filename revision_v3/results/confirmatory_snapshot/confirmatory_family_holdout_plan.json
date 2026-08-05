@@ -1,0 +1,1723 @@
+{
+  "audit_sha256": "d65fdc125fd099f728de6ae6268fffb11e18f2174ba140debba20c621499f93f",
+  "canonical_dataset_sha256": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+  "claim_boundary": "This validates audit completeness and materializes holds; it does not convert conservative anonymous linkage clusters into brand attribution. Retraining must consume every listed canonical-family and control-project hold before scoring.",
+  "excluded_item_ids": [],
+  "manifest_sha256": "b69564c3096d39fbd3c57fce88c16e81a6f9caa0fea92921d26386542ba1760b",
+  "n_confirmed_items": 0,
+  "n_conservative_cluster_items": 150,
+  "n_excluded_items": 0,
+  "n_manifest_items": 150,
+  "n_postcutoff_project_families": 135,
+  "project_family_holds": {
+    "PF_ANON_001DD6F54458": {
+      "canonical_family_ids_to_hold_out": [
+        "F01300"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0125"
+      ],
+      "item_ids": [
+        "ethereum:0xe676506e974bab214e42050cd04e383fb83612dd"
+      ]
+    },
+    "PF_ANON_00B943748AE9": {
+      "canonical_family_ids_to_hold_out": [
+        "F01021"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0108"
+      ],
+      "item_ids": [
+        "ethereum:0xc09f597034f654283a05b058ee1306534b837868"
+      ]
+    },
+    "PF_ANON_029C5AC062F8": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0043"
+      ],
+      "item_ids": [
+        "ethereum:0x47ccf6cba8b6bf9a57b64222edf6cc392222f2e0"
+      ]
+    },
+    "PF_ANON_02BB4303B3F8": {
+      "canonical_family_ids_to_hold_out": [
+        "F00862",
+        "F00968"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0025"
+      ],
+      "item_ids": [
+        "ethereum:0x268fd06baf8b4198c210a122aa7ff328f1f33233",
+        "ethereum:0x36d098ba5fff034332fcafc53366354343e735ae",
+        "ethereum:0x9176de7b26bb894b3d90e8980c7fc1322ca934d4"
+      ]
+    },
+    "PF_ANON_05668178E215": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0015"
+      ],
+      "item_ids": [
+        "ethereum:0x13c43de5464d36ae6cf54f6ca3a785e05c52fca0"
+      ]
+    },
+    "PF_ANON_080E41D30E60": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0019"
+      ],
+      "item_ids": [
+        "ethereum:0x1f760b5dfe50b7b4e33533571b3cd82ee58b2d89"
+      ]
+    },
+    "PF_ANON_086733CC02AF": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0085"
+      ],
+      "item_ids": [
+        "ethereum:0x87c322a93a6cd7b1beb3dbe1f3f296cf2b8eefae"
+      ]
+    },
+    "PF_ANON_08F7002C34FB": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0038"
+      ],
+      "item_ids": [
+        "ethereum:0x399fbfea9fce84e57976c5c57d6ce7725a7f96f4"
+      ]
+    },
+    "PF_ANON_092F7B37318B": {
+      "canonical_family_ids_to_hold_out": [
+        "F00966"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0093"
+      ],
+      "item_ids": [
+        "ethereum:0x9bfb46b845e8eb31e615d320bdbcaeb55b6df38a"
+      ]
+    },
+    "PF_ANON_0A579AC998EA": {
+      "canonical_family_ids_to_hold_out": [
+        "F00892"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0039"
+      ],
+      "item_ids": [
+        "ethereum:0x3a82e647f19bfc9072f42561df9178897b0c4ae6"
+      ]
+    },
+    "PF_ANON_0D4D67BE13A0": {
+      "canonical_family_ids_to_hold_out": [
+        "F01007"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0062"
+      ],
+      "item_ids": [
+        "ethereum:0x681bcbc1fbc1c8a2f1f5b4a43e6d38c5ca220892"
+      ]
+    },
+    "PF_ANON_0D79F7E7F34A": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0087"
+      ],
+      "item_ids": [
+        "ethereum:0x8bf1ceea142840af0007317097c7f8bd80fa6b66"
+      ]
+    },
+    "PF_ANON_0DB6AD149B18": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0056"
+      ],
+      "item_ids": [
+        "ethereum:0x5c55336390029a3fb05c1a0655462ae8fc60ca4c"
+      ]
+    },
+    "PF_ANON_0E2D3B5BFC5D": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00124",
+        "F00132",
+        "F00152",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0120"
+      ],
+      "item_ids": [
+        "ethereum:0xd7af111c28250f7ea1b954a9189dc7029a162147"
+      ]
+    },
+    "PF_ANON_10677F0D8D5B": {
+      "canonical_family_ids_to_hold_out": [
+        "F00008",
+        "F00124",
+        "F01185",
+        "F01231",
+        "F01315"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0118"
+      ],
+      "item_ids": [
+        "ethereum:0xd6c3ea8b6d52c8b193aebb66fc2482b8408f98d7"
+      ]
+    },
+    "PF_ANON_10D43336736F": {
+      "canonical_family_ids_to_hold_out": [
+        "F00007"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0129"
+      ],
+      "item_ids": [
+        "ethereum:0xf32e5f1fcac29ff40f0eeb1861444e889ecbb74e"
+      ]
+    },
+    "PF_ANON_112A84594961": {
+      "canonical_family_ids_to_hold_out": [
+        "F00148"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0001"
+      ],
+      "item_ids": [
+        "ethereum:0x00000000002da3a265e6718f233b00f26bd38ef0"
+      ]
+    },
+    "PF_ANON_12D53120199E": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0123"
+      ],
+      "item_ids": [
+        "ethereum:0xded68cc370dcdefed0dcb8b507b81f50f0ce175c"
+      ]
+    },
+    "PF_ANON_136609E5D8BE": {
+      "canonical_family_ids_to_hold_out": [
+        "F01040"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0063"
+      ],
+      "item_ids": [
+        "ethereum:0x6bf06089c78db928190fc85c591ab6d0da02cda9"
+      ]
+    },
+    "PF_ANON_15CBA0EE2DCD": {
+      "canonical_family_ids_to_hold_out": [
+        "F00862"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0115"
+      ],
+      "item_ids": [
+        "ethereum:0xcc3de3ab890a913e1544be4439308d23a5b78e45"
+      ]
+    },
+    "PF_ANON_18EDDA0A774D": {
+      "canonical_family_ids_to_hold_out": [
+        "F01074"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0086"
+      ],
+      "item_ids": [
+        "ethereum:0x8b44320c6a7d9ef11385b923d9b875b652e86c24"
+      ]
+    },
+    "PF_ANON_19BB02CAE564": {
+      "canonical_family_ids_to_hold_out": [
+        "F00716"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0116"
+      ],
+      "item_ids": [
+        "ethereum:0xce330c05d5bb99d524907d6772ead85a171f4d5c"
+      ]
+    },
+    "PF_ANON_1BED35D53838": {
+      "canonical_family_ids_to_hold_out": [
+        "F00867"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0005"
+      ],
+      "item_ids": [
+        "ethereum:0x02ee251b0cf63d5f9a17134ad9cf3ecb881fa99e"
+      ]
+    },
+    "PF_ANON_1D985D8271AB": {
+      "canonical_family_ids_to_hold_out": [
+        "F00029",
+        "F00031",
+        "F00088",
+        "F00129",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0096"
+      ],
+      "item_ids": [
+        "ethereum:0xa224a1c63df33be4967f0dd294ec1ef76268b742"
+      ]
+    },
+    "PF_ANON_20AA5B402725": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0012"
+      ],
+      "item_ids": [
+        "ethereum:0x0eeac05b466f24b56e97c00b2b7194a037e8b1c5"
+      ]
+    },
+    "PF_ANON_20FEA07775FE": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0133"
+      ],
+      "item_ids": [
+        "ethereum:0xfc18af07e9d58230326560e956649d7d1769facf"
+      ]
+    },
+    "PF_ANON_214A1BBA3CAC": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0084"
+      ],
+      "item_ids": [
+        "ethereum:0x85865a99f0db671c38f10188ca390b506ec133d4"
+      ]
+    },
+    "PF_ANON_22BCE8155073": {
+      "canonical_family_ids_to_hold_out": [
+        "F00094",
+        "F00183"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0050"
+      ],
+      "item_ids": [
+        "ethereum:0x56ef4d420533e3c4c7e79c64d1f958aa89d2c3a9"
+      ]
+    },
+    "PF_ANON_2470911D5712": {
+      "canonical_family_ids_to_hold_out": [
+        "F01203"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0094"
+      ],
+      "item_ids": [
+        "ethereum:0x9e95a022e55f032de1f5e1357609579c20b04f75"
+      ]
+    },
+    "PF_ANON_2576FEBEB5A3": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0010"
+      ],
+      "item_ids": [
+        "ethereum:0x0df4cf0d2c382a656ea9565c60e37e1042958d9c"
+      ]
+    },
+    "PF_ANON_2881447CF4A1": {
+      "canonical_family_ids_to_hold_out": [
+        "F00036",
+        "F00054",
+        "F00063",
+        "F00180",
+        "F00807"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0036"
+      ],
+      "item_ids": [
+        "ethereum:0x34da365753049124461b347af2b1bcd5be9dbf64"
+      ]
+    },
+    "PF_ANON_2A0064045856": {
+      "canonical_family_ids_to_hold_out": [
+        "F00824"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0044"
+      ],
+      "item_ids": [
+        "ethereum:0x486f25007488d69c2ee67e0c11e2d64d40cea83b"
+      ]
+    },
+    "PF_ANON_2A1C2684E7BD": {
+      "canonical_family_ids_to_hold_out": [
+        "F00041"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0047"
+      ],
+      "item_ids": [
+        "ethereum:0x543acb4bb10512e57d689a101f0952b90bf1fa71"
+      ]
+    },
+    "PF_ANON_2ACF266275EC": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0064"
+      ],
+      "item_ids": [
+        "ethereum:0x6c09e04f949e3cb03fed508a7e550f3387dc5ffe"
+      ]
+    },
+    "PF_ANON_2B86B3F2B1E5": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0095"
+      ],
+      "item_ids": [
+        "ethereum:0x9ed18ba902951c16c2299ac234921380743a0a67"
+      ]
+    },
+    "PF_ANON_2C9B78308659": {
+      "canonical_family_ids_to_hold_out": [
+        "F00867"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0006"
+      ],
+      "item_ids": [
+        "ethereum:0x03fcd730e375f77483e262d052a5ad84f69c4d44"
+      ]
+    },
+    "PF_ANON_2DF86F0A3DAA": {
+      "canonical_family_ids_to_hold_out": [
+        "F00003",
+        "F00039",
+        "F00056",
+        "F00066",
+        "F01261"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0067"
+      ],
+      "item_ids": [
+        "ethereum:0x701b69eedd323659e5059127d5288d2a9f78bffb"
+      ]
+    },
+    "PF_ANON_306B3C6D9B82": {
+      "canonical_family_ids_to_hold_out": [
+        "F00786",
+        "F00806",
+        "F00966",
+        "F01146",
+        "F01166"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0058"
+      ],
+      "item_ids": [
+        "ethereum:0x5e6d47ae6c032d115fd752ca95650cfc516c6493"
+      ]
+    },
+    "PF_ANON_31E1944767F4": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0055"
+      ],
+      "item_ids": [
+        "ethereum:0x5b963a425cc0a498f2ee1e38066a2d891db6af62"
+      ]
+    },
+    "PF_ANON_3224918A27AD": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0083"
+      ],
+      "item_ids": [
+        "ethereum:0x854249aa14f6f357aeee5b7e0faffa90692de85e"
+      ]
+    },
+    "PF_ANON_32C463DB9AE9": {
+      "canonical_family_ids_to_hold_out": [
+        "F00036",
+        "F00054",
+        "F00063",
+        "F00180",
+        "F00807"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0135"
+      ],
+      "item_ids": [
+        "ethereum:0xfe01f1d8c4bc794f8fca6d7f39915c6af2bd6980"
+      ]
+    },
+    "PF_ANON_3376B5693BD1": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0126"
+      ],
+      "item_ids": [
+        "ethereum:0xebc9bedfedfbf8761819bb610e6452f502f0b65c"
+      ]
+    },
+    "PF_ANON_38DACF52EF35": {
+      "canonical_family_ids_to_hold_out": [
+        "F00059"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0017"
+      ],
+      "item_ids": [
+        "ethereum:0x1aa15d2c1683e8f831376a4a855e5017fba97f41"
+      ]
+    },
+    "PF_ANON_3A165A62A811": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0042"
+      ],
+      "item_ids": [
+        "ethereum:0x47c603a58a1d3f24a8faf6ae80ec722235cfbbb9"
+      ]
+    },
+    "PF_ANON_3A674D6CC347": {
+      "canonical_family_ids_to_hold_out": [
+        "F01137"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0071"
+      ],
+      "item_ids": [
+        "ethereum:0x75961c3f099558100617658ea8db0bbe3021054e"
+      ]
+    },
+    "PF_ANON_3D42D76CE1A3": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0097"
+      ],
+      "item_ids": [
+        "ethereum:0xa34995732725b87aa889a31af23dac5029ec019a"
+      ]
+    },
+    "PF_ANON_43600D46D480": {
+      "canonical_family_ids_to_hold_out": [
+        "F00923",
+        "F01302"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0045"
+      ],
+      "item_ids": [
+        "ethereum:0x4cb9a906b1d3ff669e08bac2effa92c51e0e2e1b"
+      ]
+    },
+    "PF_ANON_4583C2C89332": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0022"
+      ],
+      "item_ids": [
+        "ethereum:0x232830c9889435ed44935fd19f2989f1f380a4d7"
+      ]
+    },
+    "PF_ANON_47E5873D1EF9": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0102"
+      ],
+      "item_ids": [
+        "ethereum:0xb1fb48fa998ad4886320073f9cf1544c55d77dec"
+      ]
+    },
+    "PF_ANON_4A9D1C47F56F": {
+      "canonical_family_ids_to_hold_out": [
+        "F00003",
+        "F00039",
+        "F00056",
+        "F00081",
+        "F01094"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0078"
+      ],
+      "item_ids": [
+        "ethereum:0x7dd72dbec4a281b55cc5b6ebd737933d60ae4a4c"
+      ]
+    },
+    "PF_ANON_4B73B02315EF": {
+      "canonical_family_ids_to_hold_out": [
+        "F00097",
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0007"
+      ],
+      "item_ids": [
+        "ethereum:0x06d79b53a238e5f27de66b8c22175e698e3a790d",
+        "ethereum:0x1d8199e344ddf1f852c93c396a0401e919f6b450"
+      ]
+    },
+    "PF_ANON_4CD87117E1F5": {
+      "canonical_family_ids_to_hold_out": [
+        "F00041",
+        "F00902",
+        "F00953",
+        "F01234",
+        "F01243"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0051"
+      ],
+      "item_ids": [
+        "ethereum:0x5731889c08a2bb36fa8ae15f90a71bec8320eb78"
+      ]
+    },
+    "PF_ANON_4DF3BCDF5EB6": {
+      "canonical_family_ids_to_hold_out": [
+        "F00144",
+        "F01084",
+        "F01098"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0009"
+      ],
+      "item_ids": [
+        "ethereum:0x0db5c09fc1483df28c46a5517768af299bf25e25",
+        "ethereum:0x9bdfd3b60d50808f42c9c5717cc5d59962275ad9",
+        "ethereum:0xfb5451b7628d77701ccae272c5a7a48365800995"
+      ]
+    },
+    "PF_ANON_4FFBA27B3353": {
+      "canonical_family_ids_to_hold_out": [
+        "F01220"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0008"
+      ],
+      "item_ids": [
+        "ethereum:0x0aea5493ca3a2ba0a2d1dd39d957c724d3058b5b"
+      ]
+    },
+    "PF_ANON_543F860A570C": {
+      "canonical_family_ids_to_hold_out": [
+        "F00141",
+        "F01232",
+        "F01295"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0069"
+      ],
+      "item_ids": [
+        "ethereum:0x748918b511c6838e630351e8f0adc72d9e77fa22"
+      ]
+    },
+    "PF_ANON_594FBDF32CA2": {
+      "canonical_family_ids_to_hold_out": [
+        "F00059"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0128"
+      ],
+      "item_ids": [
+        "ethereum:0xf2e357ee8874272e10b3141e32e66df0eb6e9b15"
+      ]
+    },
+    "PF_ANON_5B2ACEFB952E": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0027"
+      ],
+      "item_ids": [
+        "ethereum:0x27752000c3504d3fec86d50af91f02bc013ec95e"
+      ]
+    },
+    "PF_ANON_606D4BCE092F": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0100"
+      ],
+      "item_ids": [
+        "ethereum:0xa8fe0de70524ea35c5367ed3d3025a903e19d72b"
+      ]
+    },
+    "PF_ANON_61117006B8A0": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0024"
+      ],
+      "item_ids": [
+        "ethereum:0x242e809094f7fa83763119988d84e4f4d9528713"
+      ]
+    },
+    "PF_ANON_61CB1FADA593": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0101"
+      ],
+      "item_ids": [
+        "ethereum:0xad9cca330a131cd3bf3886db21d734ec60ab3076"
+      ]
+    },
+    "PF_ANON_625482F2627E": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0132"
+      ],
+      "item_ids": [
+        "ethereum:0xfa55d2542b1b49ff2b8fd9e8d5a90874d9a3b3e5"
+      ]
+    },
+    "PF_ANON_6362162A76FE": {
+      "canonical_family_ids_to_hold_out": [
+        "F00905"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0103"
+      ],
+      "item_ids": [
+        "ethereum:0xb4409521e628373e9a4a7676d9eabc4534fc46d4"
+      ]
+    },
+    "PF_ANON_646DBB0145B7": {
+      "canonical_family_ids_to_hold_out": [
+        "F00010",
+        "F00709",
+        "F01059",
+        "F01083",
+        "F01251"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0072"
+      ],
+      "item_ids": [
+        "ethereum:0x75b93c20c18f4bf4cb7c8d5506c6eef9fc112063"
+      ]
+    },
+    "PF_ANON_65294B50A483": {
+      "canonical_family_ids_to_hold_out": [
+        "F00041",
+        "F01009"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0014"
+      ],
+      "item_ids": [
+        "ethereum:0x129541f53534def750220b2b160c5c1beb305950"
+      ]
+    },
+    "PF_ANON_66DCAA7537B6": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0127"
+      ],
+      "item_ids": [
+        "ethereum:0xf0d89d8a4492070063fd40ac5855cf4d4c8b2ecd"
+      ]
+    },
+    "PF_ANON_6920477CE306": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [
+        "Coinbase_EIP7702Proxy"
+      ],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0074"
+      ],
+      "item_ids": [
+        "ethereum:0x7702cb554e6bfb442cb743a7df23154544a7176c"
+      ]
+    },
+    "PF_ANON_6CD74C0AD803": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0066"
+      ],
+      "item_ids": [
+        "ethereum:0x6fa7b830679cc9e588042354a56b4aa1f8f8e9fe",
+        "ethereum:0xb2b5f24fd69660318b5f94b9b4e4635f2fb900c8",
+        "ethereum:0xc842b4b9b655e200ffb4d14a5d5de9d8ee669cc9"
+      ]
+    },
+    "PF_ANON_6EC41930638B": {
+      "canonical_family_ids_to_hold_out": [
+        "F00072",
+        "F00213",
+        "F00846",
+        "F00987",
+        "F01038",
+        "F01261"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0090"
+      ],
+      "item_ids": [
+        "ethereum:0x95eeb7bd0a63524a1614b374395c625dfb9dbd4a",
+        "ethereum:0xbf0031c923c47d5556ac4a08f7ff5cc1a69ba0bb"
+      ]
+    },
+    "PF_ANON_706A43A692BB": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0032"
+      ],
+      "item_ids": [
+        "ethereum:0x2e9a1e3401c708e07fcb840de2df828783ea2c2a"
+      ]
+    },
+    "PF_ANON_716B471BA637": {
+      "canonical_family_ids_to_hold_out": [
+        "F00008",
+        "F00124",
+        "F01030",
+        "F01122"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0048"
+      ],
+      "item_ids": [
+        "ethereum:0x54d3e802c4c8c45f9d273b7f1d1255c37fa3d7dc"
+      ]
+    },
+    "PF_ANON_739630587D6A": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0037"
+      ],
+      "item_ids": [
+        "ethereum:0x38065b4e87f64b77d5c943b6568372864b7e63c8"
+      ]
+    },
+    "PF_ANON_75F19D346D6C": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0082"
+      ],
+      "item_ids": [
+        "ethereum:0x830c3ca901fba71a1454a5c8ae3b7a8b04f496a7",
+        "ethereum:0xd6912cce705724bcddebdb9d1e95af14cac041d3"
+      ]
+    },
+    "PF_ANON_7890F24C70AF": {
+      "canonical_family_ids_to_hold_out": [
+        "F01137"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0046"
+      ],
+      "item_ids": [
+        "ethereum:0x4fc81313806ae594045d967f88ef936f7f041133"
+      ]
+    },
+    "PF_ANON_7D17C87C469F": {
+      "canonical_family_ids_to_hold_out": [
+        "F00007",
+        "F00709",
+        "F00740",
+        "F01083",
+        "F01165"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0109"
+      ],
+      "item_ids": [
+        "ethereum:0xc198b868065432a1f6f50eda203a9d93811d6e9b"
+      ]
+    },
+    "PF_ANON_7D40D79B7207": {
+      "canonical_family_ids_to_hold_out": [
+        "F00041",
+        "F00823",
+        "F00953",
+        "F01243",
+        "F01274"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0106"
+      ],
+      "item_ids": [
+        "ethereum:0xbe15f159dc73592b329801ebaa6ff7df38edf1c4"
+      ]
+    },
+    "PF_ANON_7D568CB4FEC6": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0113"
+      ],
+      "item_ids": [
+        "ethereum:0xc79c0c9a2e23f6aae5325393830e124ef18f2748"
+      ]
+    },
+    "PF_ANON_7F01CA6AC97F": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0105"
+      ],
+      "item_ids": [
+        "ethereum:0xbbb339a55efda7cfed812b87bfecf6959af38eb4"
+      ]
+    },
+    "PF_ANON_7FB24E5A3D26": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0134"
+      ],
+      "item_ids": [
+        "ethereum:0xfde47924c7cf623573e2ff7260f0a9f9ecceb39e"
+      ]
+    },
+    "PF_ANON_814E4AC26BFE": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00050",
+        "F00101",
+        "F00124",
+        "F00132",
+        "F00152",
+        "F00180",
+        "F00210",
+        "F00701",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0089"
+      ],
+      "item_ids": [
+        "ethereum:0x948a948d54e316a73e224a67ebbd5c9785d9766d",
+        "ethereum:0xf0eacad7efd813774d6ba2b1b1317666d18fd90d"
+      ]
+    },
+    "PF_ANON_8418F2B70C51": {
+      "canonical_family_ids_to_hold_out": [
+        "F00067"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0030"
+      ],
+      "item_ids": [
+        "ethereum:0x2c6143ff3cadde88d652f1e644b09e9f3f7aa41a"
+      ]
+    },
+    "PF_ANON_86CA5EEE7CBE": {
+      "canonical_family_ids_to_hold_out": [
+        "F00120",
+        "F00205",
+        "F01302"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0121"
+      ],
+      "item_ids": [
+        "ethereum:0xd7d20e03c9793bd1b63291eea0021c8cc096a915"
+      ]
+    },
+    "PF_ANON_8BD405B68195": {
+      "canonical_family_ids_to_hold_out": [
+        "F01230"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0114"
+      ],
+      "item_ids": [
+        "ethereum:0xc7eccbb718cf9563f92127f20ddcbb2b81589a8f"
+      ]
+    },
+    "PF_ANON_8F5015D9DB38": {
+      "canonical_family_ids_to_hold_out": [
+        "F01020"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0016"
+      ],
+      "item_ids": [
+        "ethereum:0x169f7754f731d9ab583578bc6a7c869782717c0c",
+        "ethereum:0x96da711359c6afe93a7257e4946e1f907c4c7628"
+      ]
+    },
+    "PF_ANON_9000914B0CBA": {
+      "canonical_family_ids_to_hold_out": [
+        "F00472"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0119"
+      ],
+      "item_ids": [
+        "ethereum:0xd72ec5026178f03a00603865dc79e49835c70885"
+      ]
+    },
+    "PF_ANON_903B17B3AE14": {
+      "canonical_family_ids_to_hold_out": [
+        "F00823",
+        "F00902"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0075"
+      ],
+      "item_ids": [
+        "ethereum:0x77fb3d2ff6db9dcbf1b7e0693b3c746b30499ee8"
+      ]
+    },
+    "PF_ANON_93FBB2E92CEB": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0041"
+      ],
+      "item_ids": [
+        "ethereum:0x3ed18d51c2ad302737b89f66c06ef47eb0d6257d"
+      ]
+    },
+    "PF_ANON_9477F58678F6": {
+      "canonical_family_ids_to_hold_out": [
+        "F00035",
+        "F00107",
+        "F00118",
+        "F00124",
+        "F00700"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0111"
+      ],
+      "item_ids": [
+        "ethereum:0xc4fb760331a9d78f7443813ba754f9b64307d118"
+      ]
+    },
+    "PF_ANON_9D1836332865": {
+      "canonical_family_ids_to_hold_out": [
+        "F01161"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0040"
+      ],
+      "item_ids": [
+        "ethereum:0x3d965cfdda791589ccab955498d509f2f7e30b79"
+      ]
+    },
+    "PF_ANON_9EFD790F2403": {
+      "canonical_family_ids_to_hold_out": [
+        "F00013",
+        "F00202"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0003"
+      ],
+      "item_ids": [
+        "ethereum:0x000004d1d0d37d0af6d5cbf38b8452243deb1691"
+      ]
+    },
+    "PF_ANON_A4FDA4193F8F": {
+      "canonical_family_ids_to_hold_out": [
+        "F00030",
+        "F00068",
+        "F00128",
+        "F00139",
+        "F00144",
+        "F00664",
+        "F00859",
+        "F00923",
+        "F01270",
+        "F01302"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0018"
+      ],
+      "item_ids": [
+        "ethereum:0x1f0cbf6df751f7b86980000dbd2bd0426878454b",
+        "ethereum:0xd750479e017fd6e1ff628683acd0b677c17da37a"
+      ]
+    },
+    "PF_ANON_A64F73A85DA2": {
+      "canonical_family_ids_to_hold_out": [
+        "F00008",
+        "F00017",
+        "F00031",
+        "F00809",
+        "F00887"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0033"
+      ],
+      "item_ids": [
+        "ethereum:0x2fabea3f4cb4177eb870b27415a6f9671ce347a2"
+      ]
+    },
+    "PF_ANON_A65E7F8C38B0": {
+      "canonical_family_ids_to_hold_out": [
+        "F00023",
+        "F00027",
+        "F00072",
+        "F00465"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0110"
+      ],
+      "item_ids": [
+        "ethereum:0xc452f89752420af721607ee1354d5e769c983a60"
+      ]
+    },
+    "PF_ANON_A9BE0B9CA930": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0076"
+      ],
+      "item_ids": [
+        "ethereum:0x792b53282a85a884959f70ece940e2a5108e80a5"
+      ]
+    },
+    "PF_ANON_AB98AB3E32FF": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0092"
+      ],
+      "item_ids": [
+        "ethereum:0x9bbc10cdec2ddce81b9525a4cb8248e120c79461"
+      ]
+    },
+    "PF_ANON_AC63AD06F2AD": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0029"
+      ],
+      "item_ids": [
+        "ethereum:0x2a6eec61006626b12f1bdccaa409487ed6f47bad"
+      ]
+    },
+    "PF_ANON_B24FDFBBE20B": {
+      "canonical_family_ids_to_hold_out": [
+        "F01188"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0023"
+      ],
+      "item_ids": [
+        "ethereum:0x23875aa0ead846c3e0b47337d9bb8a8e537dea72"
+      ]
+    },
+    "PF_ANON_B27E0B3EB357": {
+      "canonical_family_ids_to_hold_out": [
+        "F00960"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0068"
+      ],
+      "item_ids": [
+        "ethereum:0x72dc3c1a7827aeeedf224ea94bd027ab6a0ae4c9"
+      ]
+    },
+    "PF_ANON_B378B13FB646": {
+      "canonical_family_ids_to_hold_out": [
+        "F00035",
+        "F00129",
+        "F00180",
+        "F00711",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0070"
+      ],
+      "item_ids": [
+        "ethereum:0x74f2b03fdec0e9cc35aac867c67bc938233088fd"
+      ]
+    },
+    "PF_ANON_B384F7C497A0": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0099"
+      ],
+      "item_ids": [
+        "ethereum:0xa55a543a0e2bb81ad69128fe0dfc6c703dd5e709"
+      ]
+    },
+    "PF_ANON_B5F7EB2E5841": {
+      "canonical_family_ids_to_hold_out": [
+        "F00059"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0081"
+      ],
+      "item_ids": [
+        "ethereum:0x7fd487222215fae6a74482683d76c19c7768b469"
+      ]
+    },
+    "PF_ANON_B62ED1E479FA": {
+      "canonical_family_ids_to_hold_out": [
+        "F00008",
+        "F00046",
+        "F00124"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0124"
+      ],
+      "item_ids": [
+        "ethereum:0xe58c00943c99841717d9f62416173ba54607dbe2"
+      ]
+    },
+    "PF_ANON_B71DB5FBB373": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0057"
+      ],
+      "item_ids": [
+        "ethereum:0x5daebc0ccaf4070211984d33fc45a2f313f07199"
+      ]
+    },
+    "PF_ANON_B75D35D66B8A": {
+      "canonical_family_ids_to_hold_out": [
+        "F00041",
+        "F00823",
+        "F00902",
+        "F01234"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0079"
+      ],
+      "item_ids": [
+        "ethereum:0x7e6cf01e1879e4f7cd451269c4bb2f00afe0ace3"
+      ]
+    },
+    "PF_ANON_B862E74A7598": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0054"
+      ],
+      "item_ids": [
+        "ethereum:0x59d3ee3563a4d7e3b631af80538dacbfff1ab775"
+      ]
+    },
+    "PF_ANON_B9E592CFB028": {
+      "canonical_family_ids_to_hold_out": [
+        "F00083",
+        "F00113",
+        "F00142",
+        "F01015",
+        "F01028"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0059"
+      ],
+      "item_ids": [
+        "ethereum:0x5e75977099a2b2828eb7a9f0cb5d0fcc403049ba"
+      ]
+    },
+    "PF_ANON_BA621C19D413": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00701",
+        "F01033",
+        "F01320",
+        "F01329"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0028"
+      ],
+      "item_ids": [
+        "ethereum:0x2969d076bfb296e2ff3f4d26043457e47b01f6c7"
+      ]
+    },
+    "PF_ANON_BCAA9CBCD413": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0004"
+      ],
+      "item_ids": [
+        "ethereum:0x003eddc618e7135f6683d13e22d601f61cd7cc4e"
+      ]
+    },
+    "PF_ANON_BE87EF222A67": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0061"
+      ],
+      "item_ids": [
+        "ethereum:0x6640c1cccaf07dbe765ec05e294fe427cc92831c"
+      ]
+    },
+    "PF_ANON_C12A71323728": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0020"
+      ],
+      "item_ids": [
+        "ethereum:0x211aea658c4f2492a7586b65299f1dccf2cd66d0"
+      ]
+    },
+    "PF_ANON_C4BB90E16199": {
+      "canonical_family_ids_to_hold_out": [
+        "F00084",
+        "F00135",
+        "F00892",
+        "F01164",
+        "F01271"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0026"
+      ],
+      "item_ids": [
+        "ethereum:0x2726e47cbe369d21b6fcb4a5000697f726e3bef1"
+      ]
+    },
+    "PF_ANON_C80910307269": {
+      "canonical_family_ids_to_hold_out": [
+        "F00097"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0021"
+      ],
+      "item_ids": [
+        "ethereum:0x213fc223f2e7e1ec29a0d18bb950f9a431a5b112"
+      ]
+    },
+    "PF_ANON_CBD83D7B2B00": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0031"
+      ],
+      "item_ids": [
+        "ethereum:0x2e5d4f3751ed2f7b4e180143cf5e352043042e3b"
+      ]
+    },
+    "PF_ANON_CD19C8E39BDC": {
+      "canonical_family_ids_to_hold_out": [
+        "F00676"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0091"
+      ],
+      "item_ids": [
+        "ethereum:0x9a4cfb6bbb22112c36f9e585b47ccc27b7270f0f"
+      ]
+    },
+    "PF_ANON_D5114DB36BE4": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0117"
+      ],
+      "item_ids": [
+        "ethereum:0xd4d594c99f23b1fb9d65fdd9062854b1a1c5780b"
+      ]
+    },
+    "PF_ANON_D6060E31475E": {
+      "canonical_family_ids_to_hold_out": [
+        "F00687"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0122"
+      ],
+      "item_ids": [
+        "ethereum:0xdba6f9e5658b5f196b3665e6fce4a509701e744e"
+      ]
+    },
+    "PF_ANON_D791CA04D28D": {
+      "canonical_family_ids_to_hold_out": [
+        "F00726",
+        "F00909",
+        "F01063",
+        "F01088",
+        "F01097"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0065"
+      ],
+      "item_ids": [
+        "ethereum:0x6d979539f11dc7038f574a15eea31f3e577d47f8"
+      ]
+    },
+    "PF_ANON_DBB24F925219": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0073"
+      ],
+      "item_ids": [
+        "ethereum:0x7702aace7914e5b7237aedb3df9b12b831f5172d"
+      ]
+    },
+    "PF_ANON_DEF19FAE487B": {
+      "canonical_family_ids_to_hold_out": [
+        "F01050",
+        "F01219"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0035"
+      ],
+      "item_ids": [
+        "ethereum:0x310fb93d147888fccbc6a41f59195ecd96843907"
+      ]
+    },
+    "PF_ANON_E065E8394509": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0104"
+      ],
+      "item_ids": [
+        "ethereum:0xb8d903d63e5e6c3a31e8e239d93c859137d67bd1"
+      ]
+    },
+    "PF_ANON_E6D3C731679E": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0034"
+      ],
+      "item_ids": [
+        "ethereum:0x3079d3868ff6ed1f84cf8ca764b319844042f944",
+        "ethereum:0x821f26a3c70464bacdaca7736d9cb308078bf309",
+        "ethereum:0xead130e5dba3d46757e53c296fbb41fd207fe591"
+      ]
+    },
+    "PF_ANON_E7F72987FF1C": {
+      "canonical_family_ids_to_hold_out": [
+        "F00011",
+        "F00664",
+        "F00859",
+        "F01270",
+        "F01280"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0077"
+      ],
+      "item_ids": [
+        "ethereum:0x7c4831868fb15b3220cf567256b8e5d206674071"
+      ]
+    },
+    "PF_ANON_E94A73A9DBB2": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0080"
+      ],
+      "item_ids": [
+        "ethereum:0x7fc70a7ab70eeed2bab474737cb450cf184e454b"
+      ]
+    },
+    "PF_ANON_EA7E1AD1D5DA": {
+      "canonical_family_ids_to_hold_out": [
+        "F00663"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0098"
+      ],
+      "item_ids": [
+        "ethereum:0xa41995871891e9fb6bb81ff7793a465f8ee239e8"
+      ]
+    },
+    "PF_ANON_EAD6DE4FEF4C": {
+      "canonical_family_ids_to_hold_out": [
+        "F00027",
+        "F00039",
+        "F00072",
+        "F00213",
+        "F00845",
+        "F00987"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0011"
+      ],
+      "item_ids": [
+        "ethereum:0x0e51fd1cb32e7bf563d32889daa5bc6dd01bf390",
+        "ethereum:0x5f26f70128e32eca6e1d4a58dd4cb26532affcc7"
+      ]
+    },
+    "PF_ANON_EC44ED60A662": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00124",
+        "F00132",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0053"
+      ],
+      "item_ids": [
+        "ethereum:0x58a309b4601809dc45a58cb2c159972e955b9d6a"
+      ]
+    },
+    "PF_ANON_ED38CBACD20B": {
+      "canonical_family_ids_to_hold_out": [
+        "F00013",
+        "F00037"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0002"
+      ],
+      "item_ids": [
+        "ethereum:0x000004a52b5393195591c0a9fe4510b04cdaa8ad"
+      ]
+    },
+    "PF_ANON_F042BFE25DD3": {
+      "canonical_family_ids_to_hold_out": [
+        "F01137"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0088"
+      ],
+      "item_ids": [
+        "ethereum:0x93a81b920a9668762e463d243c12ce73003e240a"
+      ]
+    },
+    "PF_ANON_F45B7B380BA3": {
+      "canonical_family_ids_to_hold_out": [
+        "F00113",
+        "F00140",
+        "F00142",
+        "F01015",
+        "F01118"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0107"
+      ],
+      "item_ids": [
+        "ethereum:0xbea1d2836d62c1a59b224c0c67bc7155f25edb91"
+      ]
+    },
+    "PF_ANON_F684CDD71974": {
+      "canonical_family_ids_to_hold_out": [
+        "F00124"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0049"
+      ],
+      "item_ids": [
+        "ethereum:0x56aa15ae741903eae7ba1f7207318ee28965ab8d"
+      ]
+    },
+    "PF_ANON_F76B39430AA2": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00046",
+        "F00124",
+        "F00815",
+        "F01230"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0130"
+      ],
+      "item_ids": [
+        "ethereum:0xf456464cd3ac63e94e122a88ec8d2bb9605d3823"
+      ]
+    },
+    "PF_ANON_F7EACEDFB033": {
+      "canonical_family_ids_to_hold_out": [
+        "F00031",
+        "F00124",
+        "F00815"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0112"
+      ],
+      "item_ids": [
+        "ethereum:0xc71abe765d86ce1b914b25d777698650ff259f35"
+      ]
+    },
+    "PF_ANON_F8EB91396229": {
+      "canonical_family_ids_to_hold_out": [
+        "F00013",
+        "F00037"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0052"
+      ],
+      "item_ids": [
+        "ethereum:0x57733a1a6aa268c262d33995864272f5e312c663"
+      ]
+    },
+    "PF_ANON_FA6F052266D2": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0131"
+      ],
+      "item_ids": [
+        "ethereum:0xf5f53fd1f149e5546a468315ba20d80823869144"
+      ]
+    },
+    "PF_ANON_FDB84F7D93ED": {
+      "canonical_family_ids_to_hold_out": [],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0013"
+      ],
+      "item_ids": [
+        "ethereum:0x10f2bec74f9459a875094f49dc2ec2c336af9a51"
+      ]
+    },
+    "PF_ANON_FE941E3288CD": {
+      "canonical_family_ids_to_hold_out": [
+        "F00124"
+      ],
+      "control_projects_to_hold_out": [],
+      "evidence_references": [
+        "artifact:revision_v3/results/confirmatory_snapshot/confirmatory_conservative_family_link_evidence.csv#cluster=D0060"
+      ],
+      "item_ids": [
+        "ethereum:0x5f3272c6ec9c1d0b00a11e60d4949964b4e3aeac"
+      ]
+    }
+  },
+  "status": "READY_FOR_PROJECT_FAMILY_RETRAINING_HOLDS",
+  "validator_sha256": "923caee64ba4d467e414af3a46902ca2f170aa3ac66114cbd588288950753941"
+}

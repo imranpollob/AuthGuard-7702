@@ -1,5 +1,13 @@
 # Three-Contribution Submission Plan
 
+> **Superseded on 2026-08-04. Do not use this file for claims or execution.** Subsequent
+> coverage-v3, current-label stress testing, legitimate weight-8 experiments, dependence
+> clustering, and final preregistration invalidated several entries below—especially the
+> `LOW_OBSERVED_RISK` contribution, old coverage counts, old legitimate-control result, and
+> Gold-Test-as-final plan. The authoritative plan is
+> `RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md`; the frozen endpoints are
+> `revision_v3/protocols/final_evaluation_preregistration_v1.json`.
+
 Date: 2026-08-04  
 Decision: the evaluation infrastructure is ready, but the project-family audit and independent
 reviews are unfinished; the paper is not yet ready to claim semantic validity or baseline

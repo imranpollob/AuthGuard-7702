@@ -189,10 +189,14 @@ def test_human_dcrg_evaluation_uses_item_specific_thresholds_and_all_seeds():
                 "family_id": family_id,
                 "coverage": coverage,
                 "sequence_score": sequence,
+                "hist_ngram_xgb_score": sequence,
                 "dcrg_score": dcrg,
+                "dcrg_project_balanced_score": dcrg,
                 "fusion_score": fusion,
                 "sequence_threshold_5pct": threshold,
+                "hist_ngram_xgb_threshold_5pct": threshold,
                 "dcrg_threshold_5pct": threshold,
+                "dcrg_project_balanced_threshold_5pct": threshold,
                 "fusion_threshold_5pct": threshold,
                 "label": label,
             })
@@ -203,7 +207,8 @@ def test_human_dcrg_evaluation_uses_item_specific_thresholds_and_all_seeds():
     assert report["models"]["dcrg"]["mean_across_seeds"]["recall"] == 1.0
     policy = report["coverage_aware_selective_policy"]["mean_across_seeds"]
     assert policy["n_unsafe_within_low_observed_risk"] == 0.0
-    assert len(report["paired_family_bootstrap"]) == 2
+    assert len(report["paired_family_bootstrap"]) == 5
+    assert report["models"]["hist_ngram_xgb"]["mean_across_seeds"]["observed_fpr"] == 0.0
 
 
 def _synthetic_ablation_predictions() -> pd.DataFrame:

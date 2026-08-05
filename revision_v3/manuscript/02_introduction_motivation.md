@@ -57,10 +57,10 @@ to bounded-negative-vs-UNSAFE for model evaluation, with `INDETERMINATE` and
 
 ## Target contributions and validation condition
 
-Subject to adjudicated human labels and post-cutoff family evaluation, this work targets three
-contributions: (1) DCRG, an authority-relative EIP-7702 representation connecting typed guards,
-reachable capabilities, and coverage gaps; (2) a coverage-gated pre-authorization contract that
-returns `WARN`, `LOW_OBSERVED_RISK`, or `DEFER`; and (3) a provenance-audited benchmark protocol
-with family-held-out scoring, legitimate controls, real authority/delegate pairs, and paired
-uncertainty. The current inherited-label evaluation validates the implementation but does not
-yet satisfy those scientific conditions.
+Subject to adjudicated human labels, this work targets three contributions: (1) a leakage-reduced,
+temporally separated evaluation resource; (2) DCRG, a coverage-audited guard-aware EIP-7702
+representation connecting reachable capabilities, authorization evidence, and analysis gaps; and
+(3) a warning/no-model-warning/defer evaluation over family-held post-cutoff cases, legitimate
+projects, real authority/delegate pairs, calibration, and paired uncertainty. The frozen
+development-label analysis validates the implementation but does not satisfy the independent
+method-superiority condition.

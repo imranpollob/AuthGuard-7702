@@ -1,0 +1,41 @@
+{
+  "builder_sha256": "b016639d4c283c88d22e9b3d698a30b6e7f75e3e6eca31187ceaf3e8ccc27b5f",
+  "canonical_unseen_new_project_controls": [
+    "Tangem",
+    "Startale"
+  ],
+  "claim_boundary": "The registry supports descriptive warning/defer analysis on official legitimate deployments. It does not establish safety. Project, runtime, and implementation-lineage generalization are reported separately.",
+  "classification_counts": {
+    "KNOWN_LINEAGE_NEW_DEPLOYMENT": 1,
+    "NEW_IMPLEMENTATION_KNOWN_PROJECT": 1,
+    "NEW_PROJECT_INDEPENDENT_IMPLEMENTATION": 1,
+    "NEW_PROJECT_KNOWN_FRAMEWORK_LINEAGE": 1,
+    "NEW_PROJECT_OFFICIAL_IMPLEMENTATION": 1
+  },
+  "created_at_utc": "2026-08-05T01:35:11.867600+00:00",
+  "eligible_projects": [
+    "Tangem",
+    "Startale",
+    "Rainbow"
+  ],
+  "input_locks": {
+    "revision_v2/data/authguardbench_7702_v2.csv.gz": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+    "revision_v3/human_eval/gold_dev_manifest.csv": "0e1a434a35ffa660c8062fc1d25cc4b6b0f1b7a9ebad69cfec3779ff47726963",
+    "revision_v3/human_eval/gold_test_manifest.csv": "b85fe8803a33036607b6cb1d78651934779c0926caa8cf12fca7cfe8ec769dce",
+    "revision_v3/results/confirmatory_snapshot/confirmatory_review_manifest.csv": "b69564c3096d39fbd3c57fce88c16e81a6f9caa0fea92921d26386542ba1760b",
+    "revision_v3/results/postcutoff_snapshot/ethereum_candidates.csv.gz": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+    "revision_v3/results/postcutoff_snapshot/postcutoff_review_manifest.csv": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44"
+  },
+  "n_candidates_audited": 5,
+  "n_canonical_unseen_new_project_controls": 2,
+  "n_independent_lineage_controls": 1,
+  "n_new_project_controls": 3,
+  "n_new_project_deployment_only_controls": 1,
+  "n_new_project_used_controls": 2,
+  "registry_sha256": "2bd9f7a099ac9e3788c24d6993ed7d59d2ee5c3bea3bce605858873b05b6a2e0",
+  "status": "FROZEN_SCORE_BLIND_EXTERNAL_LEGITIMATE_PROJECT_REGISTRY",
+  "used_new_project_controls": [
+    "Tangem",
+    "Rainbow"
+  ]
+}

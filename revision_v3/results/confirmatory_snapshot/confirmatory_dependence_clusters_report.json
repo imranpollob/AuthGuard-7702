@@ -1,0 +1,26 @@
+{
+  "builder_sha256": "a3252467f7a9f22d30484929a62cbcafc2eabf6d65c079d23b7b62e77c59497f",
+  "claim_boundary": "These are conservative statistical-dependence must-links, not security labels or complete project ownership. Shared contract factories are deliberately not linked. Final project-family audit and all required training holds remain separate gates.",
+  "creator_kind_cache_sha256": "cd9fc44c44da5e018571bc462ddb661e54e4beae396400cbd32c2ae80207b994",
+  "creator_kind_counts": {
+    "CONTRACT": 55,
+    "EOA": 94,
+    "UNKNOWN": 1
+  },
+  "linkage_evidence_counts": {
+    "SHARED_AUTHORITY_EOA": 12,
+    "SHARED_AUTHORITY_EOA;SHARED_DEPLOYER_EOA": 2,
+    "SHARED_DEPLOYER_EOA": 12,
+    "SINGLETON_NO_MUST_LINK": 124
+  },
+  "max_cluster_size": 3,
+  "n_dependence_clusters": 135,
+  "n_items": 150,
+  "n_items_in_multi_item_clusters": 26,
+  "n_multi_item_clusters": 11,
+  "output_sha256": "d140030166a7149764d00b0e1389a94c70c7f6bdac847030e83354bf5d9a4a0d",
+  "project_family_audit_sha256": "d65fdc125fd099f728de6ae6268fffb11e18f2174ba140debba20c621499f93f",
+  "provenance_cache_sha256": "ed1b6ca9da704f711c9590a4efb185173806786a058b911d316a178fa69acffc",
+  "status": "SCORE_BLIND_DEPENDENCE_CLUSTERS_COMPLETE",
+  "worklist_sha256": "327ff7a29dfc63371e8ca3bec39ff7f5cc7f1b6886f519d8437d17a7deb7b6ef"
+}

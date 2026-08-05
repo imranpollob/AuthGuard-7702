@@ -1,0 +1,4 @@
+reviewer_id,role,stable_identity,qualification_basis,independence_attestation,conflict_of_interest_attestation,calibration_completed,guide_sha256_acknowledged,attested_at_utc
+R1,primary,,,,,,,
+R2,primary,,,,,,,
+R3,adjudicator,,,,,,,

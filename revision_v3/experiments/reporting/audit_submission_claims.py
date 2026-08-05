@@ -1,13 +1,15 @@
 """Fail-closed audit of submission claims against Revision v3 evidence gates.
 
 This is not a prose-quality checker.  It catches claims that the current artifacts cannot
-support and refuses a READY status until the two human-reviewed evaluation sets and the
-post-cutoff retraining provenance chain are complete.
+support and refuses a READY status until the preregistered post-cutoff human evaluation and
+retraining provenance chain are complete. Gold-Test is development evidence and is not allowed
+to become a second confirmatory gate after its provisional labels informed method selection.
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import os
 import re
@@ -59,6 +61,14 @@ def _json(path: Path) -> dict[str, Any] | None:
     except (OSError, json.JSONDecodeError):
         return None
     return value if isinstance(value, dict) else None
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def _finding(code: str, message: str, *, severity: str = "BLOCK", **extra) -> dict:
@@ -119,7 +129,101 @@ def _agreement_gate(root: Path, sample_set: str) -> tuple[dict, dict]:
 
 
 def _project_family_gate(root: Path) -> tuple[dict, dict]:
-    path = root / "revision_v3" / "results" / "postcutoff_snapshot" / "postcutoff_project_family_audit.csv"
+    base = root / "revision_v3" / "results" / "postcutoff_snapshot"
+    conservative_path = base / "postcutoff_project_family_audit_conservative_v1.csv"
+    conservative_report_path = base / "postcutoff_conservative_family_hold_report.json"
+    holdout_plan_path = base / "postcutoff_family_holdout_plan.json"
+    training_manifest_path = (
+        root / "revision_v3" / "results" / "postcutoff_retraining"
+        / "postcutoff_training_manifest.json"
+    )
+    conservative_report = _json(conservative_report_path)
+    holdout_plan = _json(holdout_plan_path)
+    training_manifest = _json(training_manifest_path)
+    if conservative_report is not None:
+        try:
+            with conservative_path.open(newline="") as handle:
+                rows = list(csv.DictReader(handle))
+        except OSError:
+            rows = []
+        confirmed = [row for row in rows if row.get("provenance_status") == "CONFIRMED"]
+        conservative = [
+            row for row in rows if row.get("provenance_status") == "CONSERVATIVE_CLUSTER"
+        ]
+        excluded = [row for row in rows if row.get("provenance_status") == "EXCLUDED"]
+        invalid_terminal = [
+            row for row in rows
+            if row.get("provenance_status") not in {
+                "CONFIRMED", "CONSERVATIVE_CLUSTER", "EXCLUDED"
+            }
+        ]
+        invalid_supported = [
+            row for row in confirmed + conservative
+            if not row.get("postcutoff_project_family_id", "").strip()
+            or not row.get("evidence_reference", "").strip()
+            or not row.get("auditor_id", "").strip()
+        ]
+        invalid_conservative = [
+            row for row in conservative
+            if "NO_BRAND_OWNERSHIP_CLAIM" not in row.get("evidence_notes", "")
+        ]
+        invalid_exclusions = [
+            row for row in excluded
+            if not row.get("auditor_id", "").strip()
+            or not row.get("exclusion_reason", "").strip()
+        ]
+        hashes_match = bool(
+            rows
+            and conservative_report.get("audit_sha256") == _sha256_file(conservative_path)
+            and holdout_plan is not None
+            and holdout_plan.get("status") == "READY_FOR_PROJECT_FAMILY_RETRAINING_HOLDS"
+            and holdout_plan.get("audit_sha256") == conservative_report.get("audit_sha256")
+            and training_manifest is not None
+            and training_manifest.get("holdout_plan_sha256") == _sha256_file(holdout_plan_path)
+        )
+        counts_match = bool(
+            len(rows) == conservative_report.get("n_items")
+            and len(confirmed) == conservative_report.get("status_counts", {}).get("CONFIRMED")
+            and len(conservative) == conservative_report.get("status_counts", {}).get(
+                "CONSERVATIVE_CLUSTER"
+            )
+            and len(excluded) == conservative_report.get("status_counts", {}).get("EXCLUDED")
+        )
+        okay = bool(
+            rows and conservative_report.get("status")
+            == "SCORE_BLIND_CONSERVATIVE_FAMILY_HOLD_AUDIT_MATERIALIZED"
+            and hashes_match and counts_match and not invalid_terminal
+            and not invalid_supported and not invalid_conservative and not invalid_exclusions
+        )
+        summary = {
+            "status": (
+                "COMPLETE_CONSERVATIVE_RETRAINING_HOLDS" if okay else "INCOMPLETE"
+            ),
+            "path": str(conservative_path),
+            "report": str(conservative_report_path),
+            "holdout_plan": str(holdout_plan_path),
+            "n_items": len(rows),
+            "n_confirmed": len(confirmed),
+            "n_conservative_clusters": len(conservative),
+            "n_excluded": len(excluded),
+            "n_invalid_terminal": len(invalid_terminal),
+            "n_invalid_supported": len(invalid_supported),
+            "n_invalid_conservative": len(invalid_conservative),
+            "n_invalid_exclusions": len(invalid_exclusions),
+            "hashes_match": hashes_match,
+            "counts_match": counts_match,
+            "claim_boundary": conservative_report.get("claim_boundary"),
+        }
+        if okay:
+            return summary, {}
+        return summary, _finding(
+            "INCOMPLETE_CONSERVATIVE_FAMILY_HOLDS",
+            "Conservative anonymous research-family holds must be terminal, evidence-linked, "
+            "explicitly non-attributional, hash-bound to the hold plan, and consumed by the "
+            "frozen retraining manifest.",
+        )
+
+    path = base / "postcutoff_project_family_audit.csv"
     try:
         with path.open(newline="") as handle:
             rows = list(csv.DictReader(handle))
@@ -127,10 +231,24 @@ def _project_family_gate(root: Path) -> tuple[dict, dict]:
         return {"status": "MISSING", "path": str(path)}, _finding(
             "MISSING_PROJECT_FAMILY_AUDIT", f"Missing post-cutoff project-family audit: {path}"
         )
-    # The holdout-plan validator's only admissible zero-exclusion terminal state is CONFIRMED.
-    unresolved = [row for row in rows if row.get("provenance_status") != "CONFIRMED"]
-    missing_project = [row for row in rows if not row.get("postcutoff_project_family_id", "").strip()]
-    missing_evidence = [row for row in rows if not row.get("evidence_reference", "").strip()]
+    unresolved = [
+        row for row in rows
+        if row.get("provenance_status") not in {"CONFIRMED", "EXCLUDED"}
+    ]
+    confirmed = [row for row in rows if row.get("provenance_status") == "CONFIRMED"]
+    excluded = [row for row in rows if row.get("provenance_status") == "EXCLUDED"]
+    missing_project = [
+        row for row in confirmed
+        if not row.get("postcutoff_project_family_id", "").strip()
+    ]
+    missing_evidence = [
+        row for row in confirmed if not row.get("evidence_reference", "").strip()
+    ]
+    invalid_exclusions = [
+        row for row in excluded
+        if not row.get("auditor_id", "").strip()
+        or not row.get("exclusion_reason", "").strip()
+    ]
     summary = {
         "status": "COMPLETE" if rows and not unresolved and not missing_project and not missing_evidence else "INCOMPLETE",
         "path": str(path),
@@ -138,12 +256,16 @@ def _project_family_gate(root: Path) -> tuple[dict, dict]:
         "n_unresolved": len(unresolved),
         "n_missing_project_family": len(missing_project),
         "n_missing_evidence_reference": len(missing_evidence),
+        "n_excluded": len(excluded),
+        "n_invalid_exclusions": len(invalid_exclusions),
     }
+    if invalid_exclusions:
+        summary["status"] = "INCOMPLETE"
     if summary["status"] != "COMPLETE":
         return summary, _finding(
             "INCOMPLETE_PROJECT_FAMILY_AUDIT",
-            "Every locked post-cutoff item needs a resolved project-family ID and auditable "
-            "evidence before leakage-safe retraining.",
+            "Every locked post-cutoff item must be either a provenance-confirmed project-family "
+            "member or a documented pre-label exclusion before leakage-safe retraining.",
         )
     return summary, {}
 
@@ -188,7 +310,7 @@ def audit_submission(tex_path: str | os.PathLike[str], repo_root: str | os.PathL
         evidence[name], finding = gate(root)
         if finding:
             findings.append(finding)
-    for sample_set in ("gold_test", "postcutoff"):
+    for sample_set in ("postcutoff",):
         evidence[f"{sample_set}_agreement"], finding = _agreement_gate(root, sample_set)
         if finding:
             findings.append(finding)
@@ -203,18 +325,18 @@ def audit_submission(tex_path: str | os.PathLike[str], repo_root: str | os.PathL
         "target_contributions": [
             {
                 "id": "C1",
-                "claim": "An authority-relative Delegation-Context Risk Graph that connects reachable sensitive capabilities to typed guard evidence while exposing bounded-analysis coverage.",
-                "readiness": "Currently supported only against inherited rule-derived labels; authority-specific value remains a post-cutoff hypothesis.",
+                "claim": "A leakage-reduced evaluation resource for bytecode-only EIP-7702 pre-authorization screening, with temporal/research-family holds, explicit indeterminacy, and independently adjudicated labels.",
+                "readiness": "Conservative non-attribution family holds and pre-label scoring are complete; FINAL only after dual review, adjudication, and agreement reporting.",
             },
             {
                 "id": "C2",
-                "claim": "A coverage-gated EIP-7702 pre-authorization decision contract that returns WARN, LOW_OBSERVED_RISK, or DEFER and forbids incomplete analysis from producing low risk.",
-                "readiness": "The invariant is implemented; empirical usefulness requires final selective-risk results and honest reporting of deferral and false warnings.",
+                "claim": "A coverage-audited, guard-aware Delegation-Context representation linking reachable capabilities to typed guard evidence while preserving unresolved control flow.",
+                "readiness": "Extractor validity is supported; representation superiority requires the preregistered full-minus-untyped interval on untouched human labels.",
             },
             {
                 "id": "C3",
-                "claim": "A provenance-audited evaluation protocol combining family-disjoint training-era tests, legitimate project controls, and frozen post-cutoff authority/delegate pairs with pre-label retraining and project-family uncertainty.",
-                "readiness": "FINAL only after both human-review sets, the project audit, and the post-cutoff retraining freeze are complete.",
+                "claim": "A deployment-realistic warning/NO_MODEL_WARNING/DEFER evaluation across real signer/delegate pairs and wholly new legitimate projects, without a safety-certification claim.",
+                "readiness": "The weight-8 repair, decision contract, and three-project external evaluation are frozen; post-cutoff human outcomes remain pending.",
             },
         ],
     }
@@ -232,7 +354,10 @@ def render_markdown(report: dict) -> str:
         "",
     ]
     for item in report["target_contributions"]:
-        lines.extend([f"- **{item['id']}:** {item['claim']}  ", f"  Readiness: {item['readiness']}"])
+        lines.extend([
+            f"- **{item['id']}:** {item['claim']}",
+            f"  Readiness: {item['readiness']}",
+        ])
     lines.extend(["", "## Findings", ""])
     if not report["findings"]:
         lines.append("No blocking claim/evidence mismatch detected.")

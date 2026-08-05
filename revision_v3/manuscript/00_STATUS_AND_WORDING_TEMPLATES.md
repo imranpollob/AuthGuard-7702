@@ -6,8 +6,9 @@ sourced from LLM-provisional results and are marked accordingly; none are final-
 
 > The original fusion/selective-policy draft sections predate the completed multi-path research
 > search. The retained direction is documented in
-> `reports/RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md`; `01_title_and_abstract.md` has been updated,
-> while the remaining section drafts are an audit trail until the untouched final evaluation.
+> `reports/RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md`; `01_title_and_abstract.md` and
+> `09_SUBMISSION_BLUEPRINT.md` are authoritative, while the remaining section drafts are an audit
+> trail until the untouched final evaluation.
 
 ## Two required wordings — use the correct one per context
 
@@ -38,6 +39,7 @@ manuscript while only LLM-provisional labels exist.
 | `06_provisional_results.md` | Provisional reference-label methodology + Gold-Dev/Gold-Test/cascade results | Draft, metrics=PROVISIONAL |
 | `07_temporal_and_deployment.md` | Temporal collection methodology, deployment evaluation | Draft, temporal=PARTIAL |
 | `08_artifact_limitations_ethics_conclusion.md` | Artifact description, limitations, ethics, conclusion | Draft |
+| `09_SUBMISSION_BLUEPRINT.md` | Current paper structure, evidence map, and result-contingent method/measurement branches | Authoritative pre-label blueprint |
 
 ## What is explicitly NOT filled in
 

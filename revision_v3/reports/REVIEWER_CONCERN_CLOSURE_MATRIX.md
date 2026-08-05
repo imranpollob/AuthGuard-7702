@@ -1,5 +1,11 @@
 # Reviewer-Concern Closure Matrix
 
+> **Historical matrix; superseded on 2026-08-04.** It predates coverage-v3, the no-go result for
+> low-risk certification, the post-cutoff provenance gate, dependence clusters, the classical
+> final baseline, and the preregistered human-final endpoint. Use
+> `RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md` for current status. No row below should override the
+> newer evidence boundary.
+
 **LABEL_SOURCE=LLM_PROVISIONAL where cited. STATUS=PROVISIONAL_NOT_FOR_FINAL_CLAIMS for any
 row whose evidence depends on provisional labels.**
 

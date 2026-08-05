@@ -28,7 +28,8 @@ On 1,665 unique runtimes, these corrections increase complete bounded-analysis c
 coverage repair does not improve inherited-label AUPRC, separating analyzer validity from model
 tuning. **[Replace after the single final run: on an untouched, independently adjudicated,
 family- and project-held-out test set, compare guard-aware DCRG with capability-only, untyped,
-sequence, and classical bytecode baselines using paired family-clustered intervals.]** We further
+sequence+dense, and classical bytecode baselines using paired signer/deployer/project-clustered
+intervals.]** We further
 evaluate documented legitimate projects and post-cutoff signer/delegate pairs, and map incomplete
 analysis to `DEFER`. AuthGuard-7702 is an advisory pre-authorization screener; it neither proves
 malicious intent nor certifies a delegation as safe.
@@ -39,6 +40,8 @@ malicious intent nor certifies a delegation as safe.
   sequence model by +0.04615 (95% CI [+0.00449, +0.09178]).
 - DCRG exceeds untyped guards by +0.00427 ([+0.00076, +0.01023]) but does not significantly exceed
   capability-only or histogram+n-gram XGBoost.
-- The provisional items informed method selection and therefore cannot be the final test set.
+- The provisional labels belong to the separate Gold-Test development set; they informed method
+  selection and therefore cannot be the final test set. The post-cutoff 150-item set remains
+  unlabeled and untouched.
 - A low-risk/safe tier failed; the final interface is warning/no-warning/defer, never a safety
   certificate.

@@ -48,6 +48,12 @@ MODEL_COLUMNS = {
     "dcrg": ("dcrg_score", "dcrg_threshold_5pct"),
     "dcrg_sequence_noisy_or": ("fusion_score", "fusion_threshold_5pct"),
 }
+OPTIONAL_MODEL_COLUMNS = {
+    "hist_ngram_xgb": ("hist_ngram_xgb_score", "hist_ngram_xgb_threshold_5pct"),
+    "dcrg_project_balanced": (
+        "dcrg_project_balanced_score", "dcrg_project_balanced_threshold_5pct"
+    ),
+}
 ABLATION_MODELS = tuple(FEATURE_GROUPS)
 
 
@@ -333,10 +339,17 @@ def evaluate_dcrg_predictions(
     ).drop(columns="item_id")
     selected = selected.sort_values(["sample_id", "seed"]).reset_index(drop=True)
 
+    available_model_columns = dict(MODEL_COLUMNS)
+    for model_name, columns in OPTIONAL_MODEL_COLUMNS.items():
+        if all(column in predictions.columns for column in columns):
+            available_model_columns[model_name] = columns
+        elif any(column in predictions.columns for column in columns):
+            raise ValueError(f"prediction artifact contains an incomplete {model_name} baseline")
+
     model_reports: dict[str, dict] = {}
     array_by_model: dict[str, dict[int, np.ndarray]] = {}
     flag_by_model: dict[str, dict[int, np.ndarray]] = {}
-    for model_name, (score_column, threshold_column) in MODEL_COLUMNS.items():
+    for model_name, (score_column, threshold_column) in available_model_columns.items():
         per_seed = []
         array_by_model[model_name] = {}
         flag_by_model[model_name] = {}
@@ -375,11 +388,22 @@ def evaluate_dcrg_predictions(
     family_ids = meta["family_id"].to_numpy()
     labels = meta["binary_label"].to_numpy(dtype=np.int64)
     comparisons = []
-    for candidate, baseline in (
-        ("dcrg_sequence_noisy_or", "sequence"),
-        ("dcrg_sequence_noisy_or", "dcrg"),
-    ):
-        comparison = {"candidate": candidate, "baseline": baseline}
+    comparison_specs = []
+    if "hist_ngram_xgb" in available_model_columns:
+        comparison_specs.extend([
+            ("dcrg", "hist_ngram_xgb", "SECONDARY_PERFORMANCE"),
+            ("dcrg", "sequence", "SECONDARY_PERFORMANCE"),
+        ])
+    if "dcrg_project_balanced" in available_model_columns:
+        comparison_specs.append(
+            ("dcrg_project_balanced", "dcrg", "EXPLORATORY_TRAINING_INTERVENTION")
+        )
+    comparison_specs.extend([
+        ("dcrg_sequence_noisy_or", "sequence", "EXPLORATORY_FUSION"),
+        ("dcrg_sequence_noisy_or", "dcrg", "EXPLORATORY_FUSION"),
+    ])
+    for candidate, baseline, tier in comparison_specs:
+        comparison = {"candidate": candidate, "baseline": baseline, "endpoint_tier": tier}
         for metric_name, candidate_arrays, baseline_arrays, metric_fn in (
             ("auprc", array_by_model[candidate], array_by_model[baseline], _bootstrap_auprc),
             ("recall_at_5pct", flag_by_model[candidate], flag_by_model[baseline], _recall_from_flags),
@@ -570,6 +594,15 @@ def run_evaluation(
             holdout_plan_path=str(holdout_plan_path),
             training_manifest_path=str(training_manifest_path),
             sample_lock_path=str(sample_lock_path),
+            preregistration_path=os.path.join(
+                V3, "protocols", "final_evaluation_preregistration_v1.json"
+            ),
+            dependence_clusters_path=os.path.join(
+                os.path.dirname(manifest_path), "postcutoff_dependence_clusters.csv"
+            ),
+            dependence_report_path=os.path.join(
+                os.path.dirname(manifest_path), "postcutoff_dependence_clusters_report.json"
+            ),
             canonical_dataset_path=os.path.join(
                 REPO_ROOT, "revision_v2", "data", "authguardbench_7702_v2.csv.gz"
             ),
@@ -610,6 +643,13 @@ def run_evaluation(
         require_complete=True,
     )
     validate_review_protocol(human, sample_set)
+    evaluation_human = human
+    excluded_from_scoring: list[str] = []
+    if sample_set == "postcutoff":
+        excluded_from_scoring = list(scoring_provenance.get("excluded_item_ids", []))
+        evaluation_human = human[~human["item_id"].isin(excluded_from_scoring)].copy()
+        if set(evaluation_human["item_id"]) != set(predictions["sample_id"]):
+            raise ValueError("post-cutoff scoring population differs from audited eligible labels")
     benchmark_path = os.path.join(V3, "..", "revision_v2", "data", "authguardbench_7702_v2.csv.gz")
     label_counts = human["final_label"].value_counts().sort_index().to_dict()
     return {
@@ -617,7 +657,9 @@ def run_evaluation(
         "sample_set": sample_set,
         "n_manifest_items": int(len(manifest)),
         "n_finalized_items": int(len(human)),
-        "n_binary_items": int((~human["excluded_from_binary"]).sum()),
+        "n_scored_finalized_items": int(len(evaluation_human)),
+        "n_binary_items": int((~evaluation_human["excluded_from_binary"]).sum()),
+        "excluded_from_scoring_item_ids": excluded_from_scoring,
         "final_label_counts": {str(key): int(value) for key, value in label_counts.items()},
         "inter_rater_reliability": agreement,
         "label_exclusion_rule": (
@@ -631,11 +673,11 @@ def run_evaluation(
         ),
         "scoring_provenance": scoring_provenance,
         "dcrg_evaluation": evaluate_dcrg_predictions(
-            human, predictions, bootstrap_replicates=bootstrap_replicates
+            evaluation_human, predictions, bootstrap_replicates=bootstrap_replicates
         ),
         "dcrg_representation_ablation": (
             evaluate_dcrg_ablation_predictions(
-                human, ablation_predictions, bootstrap_replicates=bootstrap_replicates
+                evaluation_human, ablation_predictions, bootstrap_replicates=bootstrap_replicates
             )
             if ablation_predictions is not None else None
         ),

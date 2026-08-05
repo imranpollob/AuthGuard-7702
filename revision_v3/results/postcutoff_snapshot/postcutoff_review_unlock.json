@@ -1,0 +1,8 @@
+{
+  "claim_boundary": "This unlock exposes no model scores or labels to reviewers.",
+  "predictions_sha256": "111f95cad8d101ec3028353b477d3e1beb248258e765153409c4104a3c4d7a77",
+  "provenance_status": "POSTCUTOFF_SCORING_PROVENANCE_VERIFIED",
+  "status": "POSTCUTOFF_REVIEW_UNLOCKED_AFTER_SCORING_FREEZE",
+  "training_manifest": "revision_v3/results/postcutoff_retraining/postcutoff_training_manifest.json",
+  "training_manifest_sha256": "79f34d13dcd4ffc5ab544ef361635ba1dd2cdb57f4fd3e151ec4f999d6c18ba6"
+}

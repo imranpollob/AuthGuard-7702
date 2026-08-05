@@ -1,0 +1,118 @@
+{
+  "analysis_rules": [
+    "Score every frozen row exactly once after all checkpoints and thresholds are frozen.",
+    "Do not tune a threshold, feature, control weight, or presentation stratum on these outcomes.",
+    "Do not pool chain deployments or authorization counts as independent samples.",
+    "Do not compute AUPRC or AUROC on the all-legitimate control set.",
+    "Do not use a significance or superiority claim from n=3 project controls.",
+    "Report Startale as deployment-only unless a separately frozen authorization collector supplies use evidence.",
+    "Report Rainbow as a known-Calibur-lineage project and never as unseen-runtime evidence.",
+    "Treat audit status as provenance metadata, not a ground-truth safety label."
+  ],
+  "claim_boundary": "These are provenance-backed bounded-negative controls. The study may report warning and defer behavior, but must not call any runtime safe, certified, benign by proof, or representative of all legitimate EIP-7702 projects.",
+  "created_at_utc": "2026-08-05T01:36:40.338077+00:00",
+  "frozen_models": [
+    "dcrg_full",
+    "dcrg_project_balanced",
+    "dcrg_untyped_guards",
+    "hist_ngram_xgb",
+    "sequence"
+  ],
+  "outputs": {
+    "aggregate": [
+      "WARN, NO_MODEL_WARNING, and DEFER counts for all three new projects",
+      "the same counts for the two observed-use projects",
+      "the same counts for the two canonical-unseen runtime families"
+    ],
+    "diagnostic": "Report Porto and Rhinestone Nexus individually, outside every new-project total.",
+    "per_control": [
+      "three-seed scores and seed mean for every frozen model",
+      "validation-derived threshold and WARN or NO_MODEL_WARNING decision",
+      "COMPLETE, PARTIAL, or UNKNOWN DCRG coverage",
+      "DEFER decision and machine-readable reason",
+      "project, runtime, use, audit, and lineage stratum fields from the registry"
+    ]
+  },
+  "parent_confirmatory_protocol": {
+    "path": "revision_v3/protocols/final_evaluation_preregistration_v1.json",
+    "relationship": "This protocol refines only the parent's descriptive external-control endpoint. It does not change the confirmatory population, model, estimand, or support rule.",
+    "sha256": "53ab75cb8594c4e59b375990c365a8795b6211ebd08876583836d0f3d9dd6d6f"
+  },
+  "predeclared_strata": {
+    "all_new_projects": {
+      "interpretation": "new project identity; runtime lineage may still be known",
+      "n": 3,
+      "projects": [
+        "Tangem",
+        "Startale",
+        "Rainbow"
+      ]
+    },
+    "canonical_unseen_runtime_families": {
+      "interpretation": "exact runtime absent from v2 and best opcode-4-gram Jaccard below 0.85; this is a leakage screen, not proof of genealogical independence",
+      "n": 2,
+      "projects": [
+        "Tangem",
+        "Startale"
+      ]
+    },
+    "documented_independent_lineage_case_study": {
+      "interpretation": "official project documentation explicitly describes a custom implementation; n=1 permits a case study only",
+      "n": 1,
+      "projects": [
+        "Tangem"
+      ]
+    },
+    "known_project_or_lineage_diagnostics": {
+      "interpretation": "Porto and Rhinestone Nexus remain diagnostic rows and may not be counted as new-project evidence",
+      "n": 2,
+      "projects": [
+        "Porto",
+        "Rhinestone Nexus"
+      ]
+    },
+    "observed_use_new_projects": {
+      "interpretation": "at least one authorization in the frozen post-cutoff window",
+      "n": 2,
+      "projects": [
+        "Tangem",
+        "Rainbow"
+      ]
+    }
+  },
+  "principal_descriptive_model": {
+    "model": "dcrg_project_balanced",
+    "threshold": "nominal 5% FPR threshold fitted only on held-out canonical fold 0",
+    "training_rule": "total bounded-negative training weight 8 per eligible development-control project; none of the controls in this registry may enter training, validation, threshold fitting, calibration, or model selection"
+  },
+  "registry": {
+    "n_audited_candidates": 5,
+    "n_new_project_controls": 3,
+    "path": "revision_v3/external_controls/final_new_legitimate_projects.csv",
+    "sha256": "2bd9f7a099ac9e3788c24d6993ed7d59d2ee5c3bea3bce605858873b05b6a2e0"
+  },
+  "schema": "authguard-external-legitimate-control-protocol-1.0",
+  "score_and_label_state_at_freeze": {
+    "external_score_directory_exists": false,
+    "n_postcutoff_annotation_rows": 0,
+    "postcutoff_training_manifest_exists": false
+  },
+  "source_locks": {
+    "revision_v3/experiments/external_controls/discover_postcutoff_legitimate_projects.py": "c2dd4506572027af2a78b32f81627a5d8d6467670720aa6af46689abeb5ae741",
+    "revision_v3/experiments/external_controls/freeze_external_control_protocol.py": "db421e91fc2f76962cbc19dd9c525f46af9bffa7fd74ad2e5b1a09776a14338e",
+    "revision_v3/experiments/external_controls/freeze_final_legitimate_projects.py": "b016639d4c283c88d22e9b3d698a30b6e7f75e3e6eca31187ceaf3e8ccc27b5f",
+    "revision_v3/external_controls/final_bytecode_cache/legit-lineage-001.hex": "65c7ceaed3f77a7d2d44c85440e00c71aeb1a592cdd04f4f3fb6d0d2617d19c4",
+    "revision_v3/external_controls/final_bytecode_cache/legit-lineage-002.hex": "88d2d610bb1f8f41db257290e121465aed6426e6e88a619c01b2ece4b3e7f6e2",
+    "revision_v3/external_controls/final_bytecode_cache/legit-new-001.hex": "eb35838205768b8441522d9633897060ce3068bb4e46a0a5fdf8e18f14b87ed7",
+    "revision_v3/external_controls/final_bytecode_cache/legit-new-002.hex": "31b863de3bb7a127efef98f86429537b79ba16493e32d56affe7078a1fb51b77",
+    "revision_v3/external_controls/final_bytecode_cache/legit-new-003.hex": "63ed38b1c438633120be351f194cc2ea6f34367f6862ca3bc9e8d5109b885f33",
+    "revision_v3/external_controls/final_new_legitimate_projects.csv": "2bd9f7a099ac9e3788c24d6993ed7d59d2ee5c3bea3bce605858873b05b6a2e0",
+    "revision_v3/external_controls/final_new_legitimate_projects_report.json": "63e75ceb2c277fd39673a442145f82ecc7aed787251b60d93ecd40d956896296",
+    "revision_v3/protocols/final_evaluation_preregistration_v1.json": "53ab75cb8594c4e59b375990c365a8795b6211ebd08876583836d0f3d9dd6d6f",
+    "revision_v3/results/legitimate_project_discovery/postcutoff_discovery_public_provenance_evidence.csv": "29825cfb553cce99b86e45a124a39ef7aca70fa0d2164d63950527f7bbc0ea02",
+    "revision_v3/results/legitimate_project_discovery/postcutoff_discovery_public_provenance_report.json": "8ac50da672b73b08b8a96d2dba67157f8c7e6089fc62157cd19e9b1aed91e616",
+    "revision_v3/results/legitimate_project_discovery/postcutoff_discovery_worklist.csv": "f3efc9cea87a2458fd83f8b9b565bb22b10b0f5f5f885cff49fd83a168f9e7de"
+  },
+  "status": "EXTERNAL_LEGITIMATE_CONTROLS_PREREGISTERED_BEFORE_SCORING",
+  "success_criterion": "Descriptive support for the operational proposal requires the project-balanced model to avoid model warnings on at least two of three new projects while preserving any coverage-triggered DEFER. This criterion cannot establish safety or population-level false-positive performance and is not a confirmatory hypothesis test."
+}

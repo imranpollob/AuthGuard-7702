@@ -3,6 +3,14 @@
 Status date: 2026-08-04
 Purpose: development roadmap and claim boundary, not manuscript-ready results.
 
+Freeze update: the final post-cutoff protocol is now preregistered before human labels. The
+primary 150-family post-cutoff set remains untouched, a disjoint 150-family replication reserve is
+locked, the strongest histogram+n-gram XGBoost baseline is included in the final retraining, and
+the project-balanced weight-8 DCRG is kept as a separately named training-intervention variant.
+The primary statistical unit is a conservative signer/deployer/project dependence cluster (124
+clusters for 150 primary items), not an exact runtime. Human results and project attribution are
+still pending, so none of this converts development outcomes into manuscript claims.
+
 ## Current reviewer verdict
 
 The project has a timely and defensible problem: **screen the runtime bytecode proposed in an

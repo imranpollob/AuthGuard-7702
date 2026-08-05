@@ -33,7 +33,7 @@ AUDIT_COLUMNS = (
     "auditor_id",
     "exclusion_reason",
 )
-ALLOWED_STATUS = {"CONFIRMED", "UNRESOLVED", "EXCLUDED"}
+ALLOWED_STATUS = {"CONFIRMED", "CONSERVATIVE_CLUSTER", "UNRESOLVED", "EXCLUDED"}
 
 
 def _sha256_file(path: str) -> str:
@@ -116,7 +116,13 @@ def validate_project_family_audit(
             errors.append(f"{item_id}: CONFIRMED requires postcutoff_project_family_id")
             continue
         if not evidence:
-            errors.append(f"{item_id}: CONFIRMED requires evidence_reference")
+            errors.append(f"{item_id}: terminal project cluster requires evidence_reference")
+        if status == "CONSERVATIVE_CLUSTER" and "NO_BRAND_OWNERSHIP_CLAIM" not in _text(
+            row["evidence_notes"]
+        ):
+            errors.append(
+                f"{item_id}: CONSERVATIVE_CLUSTER must state NO_BRAND_OWNERSHIP_CLAIM"
+            )
         related = _split_ids(row["related_canonical_family_ids"])
         unknown = sorted(set(related) - canonical_family_ids)
         if unknown:
@@ -146,15 +152,87 @@ def validate_project_family_audit(
     return {
         "status": "READY_FOR_PROJECT_FAMILY_RETRAINING_HOLDS",
         "n_manifest_items": len(manifest_ids),
-        "n_confirmed_items": sum(len(value["item_ids"]) for value in serialized.values()),
+        "n_confirmed_items": int(
+            audit["provenance_status"].astype(str).str.upper().eq("CONFIRMED").sum()
+        ),
+        "n_conservative_cluster_items": int(
+            audit["provenance_status"].astype(str).str.upper().eq(
+                "CONSERVATIVE_CLUSTER"
+            ).sum()
+        ),
         "n_excluded_items": len(excluded),
         "n_postcutoff_project_families": len(serialized),
         "excluded_item_ids": sorted(excluded),
         "project_family_holds": serialized,
         "claim_boundary": (
-            "This validates audit completeness and materializes holds; it does not verify the "
-            "truth of human-entered provenance. Retraining must consume every listed canonical "
-            "family and control-project hold before any post-cutoff scoring."
+            "This validates audit completeness and materializes holds; it does not convert "
+            "conservative anonymous linkage clusters into brand attribution. Retraining must "
+            "consume every listed canonical-family and control-project hold before scoring."
+        ),
+    }
+
+
+def summarize_project_family_audit_progress(
+    manifest: pd.DataFrame,
+    audit: pd.DataFrame,
+    canonical_family_ids: set[str],
+) -> dict:
+    """Validate completed rows without weakening the fail-closed final gate."""
+    missing = set(AUDIT_COLUMNS) - set(audit.columns)
+    if missing:
+        raise ValueError(f"project-family audit is missing columns: {sorted(missing)}")
+    if manifest["item_id"].duplicated().any() or audit["item_id"].duplicated().any():
+        raise ValueError("manifest and audit item_id values must each be unique")
+    manifest_ids = set(manifest["item_id"].astype(str))
+    audit_ids = set(audit["item_id"].astype(str))
+    if manifest_ids != audit_ids:
+        raise ValueError("audit/manifest item mismatch")
+
+    status_counts: dict[str, int] = {}
+    errors = []
+    confirmed_projects = set()
+    for row in audit.to_dict("records"):
+        item_id = _text(row["item_id"])
+        status = _text(row["provenance_status"]).upper()
+        status_counts[status] = status_counts.get(status, 0) + 1
+        if status not in ALLOWED_STATUS:
+            errors.append(f"{item_id}: invalid provenance_status {status!r}")
+            continue
+        if status == "UNRESOLVED":
+            continue
+        if not _text(row["auditor_id"]):
+            errors.append(f"{item_id}: terminal row requires auditor_id")
+        if status == "EXCLUDED":
+            if not _text(row["exclusion_reason"]):
+                errors.append(f"{item_id}: EXCLUDED requires exclusion_reason")
+            continue
+        project_id = _text(row["postcutoff_project_family_id"])
+        if not project_id or not _text(row["evidence_reference"]):
+            errors.append(f"{item_id}: terminal project cluster requires project ID and evidence")
+        else:
+            confirmed_projects.add(project_id)
+        if status == "CONSERVATIVE_CLUSTER" and "NO_BRAND_OWNERSHIP_CLAIM" not in _text(
+            row["evidence_notes"]
+        ):
+            errors.append(
+                f"{item_id}: CONSERVATIVE_CLUSTER must state NO_BRAND_OWNERSHIP_CLAIM"
+            )
+        unknown = sorted(set(_split_ids(row["related_canonical_family_ids"])) - canonical_family_ids)
+        if unknown:
+            errors.append(f"{item_id}: unknown canonical family IDs {unknown}")
+    if errors:
+        raise ValueError("project-family progress contains invalid terminal rows:\n- " + "\n- ".join(errors))
+    unresolved = status_counts.get("UNRESOLVED", 0)
+    return {
+        "status": "COMPLETE" if unresolved == 0 else "INCOMPLETE_PROJECT_FAMILY_AUDIT",
+        "n_manifest_items": len(manifest_ids),
+        "status_counts": dict(sorted(status_counts.items())),
+        "n_terminal_items": len(manifest_ids) - unresolved,
+        "n_confirmed_project_families": len(confirmed_projects),
+        "confirmed_project_family_ids": sorted(confirmed_projects),
+        "claim_boundary": (
+            "This progress report validates only completed rows. UNRESOLVED rows still fail the "
+            "final project-family gate and cannot be scored."
         ),
     }
 
@@ -165,6 +243,7 @@ def main() -> int:
     parser.add_argument("--audit", default=AUDIT_PATH)
     parser.add_argument("--plan", default=PLAN_PATH)
     parser.add_argument("--init-template", action="store_true")
+    parser.add_argument("--progress-only", action="store_true")
     args = parser.parse_args()
 
     manifest = pd.read_csv(args.manifest)
@@ -177,7 +256,11 @@ def main() -> int:
 
     audit = pd.read_csv(args.audit, keep_default_na=False)
     canonical_ids = set(pd.read_csv(CANONICAL_PATH, usecols=["family_id"])["family_id"].astype(str))
-    report = validate_project_family_audit(manifest, audit, canonical_ids)
+    report = (
+        summarize_project_family_audit_progress(manifest, audit, canonical_ids)
+        if args.progress_only else
+        validate_project_family_audit(manifest, audit, canonical_ids)
+    )
     report.update({
         "manifest_sha256": _sha256_file(args.manifest),
         "audit_sha256": _sha256_file(args.audit),

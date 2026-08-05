@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import importlib.util
 import json
 
@@ -18,6 +19,10 @@ def _load_module():
 
 
 audit = _load_module()
+
+
+def _sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def _complete_evidence(root):
@@ -96,3 +101,65 @@ def test_claim_audit_does_not_invert_explicit_safety_limitation(tmp_path):
     tex.write_text("The advisory score does not certify authorization safety.\n")
     report = audit.audit_submission(tex, tmp_path)
     assert report["status"] == "READY_FOR_SUBMISSION_CLAIMS"
+
+
+def test_claim_audit_accepts_documented_prelabel_provenance_exclusion(tmp_path):
+    _complete_evidence(tmp_path)
+    path = tmp_path / "revision_v3/results/postcutoff_snapshot/postcutoff_project_family_audit.csv"
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=[
+            "item_id", "postcutoff_project_family_id", "provenance_status",
+            "evidence_reference", "auditor_id", "exclusion_reason",
+        ])
+        writer.writeheader()
+        writer.writerow({
+            "item_id": "a", "postcutoff_project_family_id": "PF_DEV",
+            "provenance_status": "EXCLUDED", "evidence_reference": "https://example.test",
+            "auditor_id": "A1", "exclusion_reason": "USED_DURING_METHOD_DEVELOPMENT",
+        })
+    tex = tmp_path / "main.tex"
+    tex.write_text("We report a bounded warning triage evaluation.")
+    report = audit.audit_submission(tex, tmp_path)
+    assert report["status"] == "READY_FOR_SUBMISSION_CLAIMS"
+
+
+def test_claim_audit_accepts_hash_bound_nonattribution_conservative_holds(tmp_path):
+    _complete_evidence(tmp_path)
+    post = tmp_path / "revision_v3/results/postcutoff_snapshot"
+    training = tmp_path / "revision_v3/results/postcutoff_retraining"
+    conservative = post / "postcutoff_project_family_audit_conservative_v1.csv"
+    with conservative.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=[
+            "item_id", "postcutoff_project_family_id", "provenance_status",
+            "evidence_reference", "evidence_notes", "auditor_id", "exclusion_reason",
+        ])
+        writer.writeheader()
+        writer.writerow({
+            "item_id": "a", "postcutoff_project_family_id": "PF_ANON_A",
+            "provenance_status": "CONSERVATIVE_CLUSTER",
+            "evidence_reference": "artifact:score-blind-linkage#A",
+            "evidence_notes": "NO_BRAND_OWNERSHIP_CLAIM; overinclusive hold",
+            "auditor_id": "CONSERVATIVE_PIPELINE", "exclusion_reason": "",
+        })
+    report = post / "postcutoff_conservative_family_hold_report.json"
+    report.write_text(json.dumps({
+        "status": "SCORE_BLIND_CONSERVATIVE_FAMILY_HOLD_AUDIT_MATERIALIZED",
+        "audit_sha256": _sha(conservative), "n_items": 1,
+        "status_counts": {"CONFIRMED": 0, "CONSERVATIVE_CLUSTER": 1, "EXCLUDED": 0},
+        "claim_boundary": "Anonymous clusters authorize holds only; no brand attribution.",
+    }))
+    plan = post / "postcutoff_family_holdout_plan.json"
+    plan.write_text(json.dumps({
+        "status": "READY_FOR_PROJECT_FAMILY_RETRAINING_HOLDS",
+        "audit_sha256": _sha(conservative),
+    }))
+    training_manifest = json.loads((training / "postcutoff_training_manifest.json").read_text())
+    training_manifest["holdout_plan_sha256"] = _sha(plan)
+    (training / "postcutoff_training_manifest.json").write_text(json.dumps(training_manifest))
+    tex = tmp_path / "main.tex"
+    tex.write_text("We report a leakage-reduced bounded warning triage evaluation.")
+    result = audit.audit_submission(tex, tmp_path)
+    assert result["status"] == "READY_FOR_SUBMISSION_CLAIMS"
+    assert result["evidence_gates"]["project_family_audit"]["status"] == (
+        "COMPLETE_CONSERVATIVE_RETRAINING_HOLDS"
+    )

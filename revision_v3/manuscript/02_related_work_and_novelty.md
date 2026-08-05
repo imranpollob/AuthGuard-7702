@@ -20,6 +20,14 @@ history, and sometimes authorizing-account context are unavailable.
 
 ## Smart-contract graph and bytecode learning
 
+De Rosa et al., *PhishingHook* (DSN 2025), compare 16 histogram, vision, language, and
+vulnerability-model techniques for generic phishing-contract classification directly from EVM
+bytecode. It rules out any claim that AuthGuard-7702 is the first pre-interaction bytecode phishing
+classifier or the first comparison of opcode model families. Its labels and population differ from
+authorization-specific delegate review, so published cross-dataset accuracy is not a fair
+baseline. We instead retrain representative histogram+n-gram and learned sequence models using the
+same labels, family holds, thresholds, seeds, and untouched population as DCRG.
+
 Contract graphs, CFG/data-flow representations, and learned graph models are established prior
 art, including Zhuang et al. (IJCAI 2020), SCGformer (IET Blockchain 2023), COBRA (ASE 2024),
 and BugSweeper (AAAI 2026). Opcode-sequence learning and multi-view fusion are likewise not new.
@@ -31,27 +39,29 @@ hook rule, sequence models, and full DCRG are required ablations/baselines.
 ## Selective prediction
 
 Classification with a reject option and risk-coverage analysis are established, for example in
-SelectiveNet (ICML 2019) and subsequent one-sided selective-classification work. We do not
-claim a new selective-learning algorithm. The application contribution is a conservative
-pre-authorization contract: `WARN`, `LOW_OBSERVED_RISK`, or `DEFER`, where incomplete semantic
-coverage is structurally forbidden from producing a low-risk decision. Its value must be shown
-through risk-coverage curves, low-risk error audits, and legitimate-deployment controls—not by
-renaming ordinary classifier uncertainty.
+SelectiveNet (ICML 2019) and subsequent one-sided selective-classification work. We do not claim a
+new selective-learning algorithm. The attempted low-risk tier failed on development labels and was
+removed. The retained application contract emits `WARN`, `NO_MODEL_WARNING`, or `DEFER`;
+incomplete semantic coverage and seed instability can defer, and `NO_MODEL_WARNING` is never a
+safety or legitimacy judgment. Its value must be evaluated through warning/deferral behavior,
+calibration, coverage, error audits, and legitimate-project controls—not by renaming classifier
+uncertainty.
 
 ## Defensible novelty statement
 
-Subject to independent-label and post-cutoff validation, the paper's method novelty is the
-combination of (i) authority-relative guard semantics for EIP-7702 delegate execution and
-(ii) coverage-gated pre-authorization decisions. The benchmark contribution is a
-provenance-audited evaluation of that question, not a claim to the first EIP-7702 attack
-dataset. Generic CFG construction, graph learning, opcode models, noisy-OR fusion, selective
-classification, EIP-7702 phishing, ERC-4337 triggering, and cross-chain measurement are prior
-art and are cited as such.
+Subject to independent-label validation, the paper's method novelty is a coverage-audited,
+guard-aware representation for EIP-7702 delegate execution at the pre-authorization decision. The
+benchmark contribution is a provenance-audited evaluation of that question, not a claim to the
+first EIP-7702 attack dataset. Authority/protocol-actor superiority is not currently supported and
+is not required for the primary claim. Generic CFG construction, graph learning, opcode models,
+noisy-OR fusion, selective classification, EIP-7702 phishing, ERC-4337 triggering, and cross-chain
+measurement are prior art and are cited as such.
 
 Primary sources:
 
 - Huang et al., USENIX Security 2026: https://www.usenix.org/conference/usenixsecurity26/presentation/huang-mingyuan
 - Qi et al., arXiv:2512.12174: https://arxiv.org/abs/2512.12174
+- De Rosa et al., PhishingHook, DSN 2025: https://doi.org/10.1109/DSN64029.2025.00033
 - Zhuang et al., IJCAI 2020: https://doi.org/10.24963/ijcai.2020/454
 - COBRA, ASE 2024: https://arxiv.org/abs/2410.20712
 - BugSweeper, AAAI 2026: https://doi.org/10.1609/aaai.v40i1.37021

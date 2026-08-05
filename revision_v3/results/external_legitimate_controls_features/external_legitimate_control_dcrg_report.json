@@ -1,0 +1,70 @@
+{
+  "analysis_parameters": {
+    "max_states": 60000,
+    "max_states_per_pc": 96,
+    "max_symbolic_stack_values": 64,
+    "state_widen_after_visits": 8
+  },
+  "analysis_version": "bounded-cfg-1.3-jump-fenced-metadata-state-widening",
+  "authority_context_counts": {
+    "RECOVERED_FROM_FIRST_OBSERVED_AUTHORIZATION": 4,
+    "UNAVAILABLE_DEPLOYMENT_ONLY": 1
+  },
+  "builder_sha256": "f77ff82f2740dc0c83a567c43348262a7c69a0cef55e451abbecc5ca0ca46376",
+  "cfg_source_sha256": "575bdcac3563231f2433ecc176e35206d811ab58738c573c194da2dad4f80c2d",
+  "cfg_wrapper_source_sha256": "71f577ed88292431dbb96d8f35471a77e7acb2b9a12304842851d410aaf31521",
+  "claim_boundary": "Features are score-blind. Recovered authority context comes only from the first frozen observed authorization. Startale is deployment-only, has no substituted authority, and requires operational DEFER.",
+  "coverage_counts": {
+    "COMPLETE": 2,
+    "PARTIAL": 3
+  },
+  "dcrg_source_sha256": "d451cd54636c4e83fef987950512fbba43eaca193b2bcb529936ddf4b7c5c66f",
+  "feature_order": [
+    "n_functions",
+    "n_complete_functions",
+    "n_incomplete_functions",
+    "n_unguarded_sensitive",
+    "n_unguarded_call",
+    "n_unguarded_delegatecall",
+    "n_unguarded_create",
+    "n_unguarded_selfdestruct",
+    "n_unguarded_sstore",
+    "n_sensitive_without_any_recognized_guard",
+    "n_storage_condition_guarded_sensitive",
+    "n_guards",
+    "n_self_call_guards",
+    "n_signature_guards",
+    "n_storage_guards",
+    "n_hardcoded_guards",
+    "n_erc4337_entrypoint_guards",
+    "n_hardcoded_authority_matches",
+    "n_hardcoded_authority_mismatches",
+    "n_calldata_dependent_guards",
+    "n_tx_origin_guards",
+    "fallback_external_call_reachable",
+    "fallback_open_external_call",
+    "n_unreached_sensitive_sites",
+    "coverage_complete",
+    "coverage_partial",
+    "coverage_unknown"
+  ],
+  "features_sha256": "2063385d6fe0d386fc74c1076d7d7b2b13a20ada3e4204daec4c8d1e13c984da",
+  "graphs_sha256": "2520d3d459ffb2aaf8dea7b2593cedad35268b99507ca79727d4f3ab07e7fdad",
+  "n_analysis_errors": 0,
+  "n_controls": 5,
+  "n_operational_defer_required": 1,
+  "n_pairs_with_authority_match": 0,
+  "n_pairs_with_authority_mismatch": 1,
+  "n_unique_runtimes": 5,
+  "postcutoff_snapshot_sha256": "34e197d1af20270ac3932b95b35051af065ff96ce56ecc95a2e3fb0a25df327c",
+  "protocol_sha256": "116f48c3878f9dc5173ff58913a2ba03e5655d82311aef06825edaaae1c56959",
+  "registry_report_sha256": "63e75ceb2c277fd39673a442145f82ecc7aed787251b60d93ecd40d956896296",
+  "registry_sha256": "2bd9f7a099ac9e3788c24d6993ed7d59d2ee5c3bea3bce605858873b05b6a2e0",
+  "runtime_versions": {
+    "cbor2": "5.7.1",
+    "evmole": "0.9.0",
+    "python": "3.12.12"
+  },
+  "schema": "dcrg-1.1-external-controls",
+  "status": "FROZEN_SCORE_BLIND_EXTERNAL_CONTROL_DCRG_FEATURES"
+}

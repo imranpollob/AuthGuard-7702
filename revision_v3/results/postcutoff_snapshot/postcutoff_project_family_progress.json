@@ -1,0 +1,19 @@
+{
+  "audit_sha256": "41e389fd2942e305016a00bac60479d867d7abc9a68da08c91e70121ce0f3e20",
+  "canonical_dataset_sha256": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+  "claim_boundary": "This progress report validates only completed rows. UNRESOLVED rows still fail the final project-family gate and cannot be scored.",
+  "confirmed_project_family_ids": [
+    "PF_CIRCLE_USDC"
+  ],
+  "manifest_sha256": "6c9337f03a82f4ca8ebf7e42081aaf4c55181e9b4e69187a05a92fb20e15ca44",
+  "n_confirmed_project_families": 1,
+  "n_manifest_items": 150,
+  "n_terminal_items": 2,
+  "status": "INCOMPLETE_PROJECT_FAMILY_AUDIT",
+  "status_counts": {
+    "CONFIRMED": 1,
+    "EXCLUDED": 1,
+    "UNRESOLVED": 148
+  },
+  "validator_sha256": "cbebffa682ed99791401072fddfa3713343d2d18229f34dee7c4ea9377be645b"
+}

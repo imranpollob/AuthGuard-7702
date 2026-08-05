@@ -49,3 +49,17 @@ def test_postcutoff_sampling_rejects_model_or_label_columns():
     frame = pd.DataFrame([_row(1, model_score=0.9)])
     with pytest.raises(ValueError, match="score-blind sampler"):
         select_review_sample(frame, sample_size=1, seed=7)
+
+
+def test_postcutoff_sampling_excludes_development_families():
+    frame = pd.DataFrame([_row(index) for index in range(1, 7)])
+    selected, report = select_review_sample(
+        frame,
+        sample_size=3,
+        seed=7,
+        excluded_family_ids={"T0001", "T0002"},
+        sample_set="confirmatory",
+    )
+    assert set(selected["family_id"]).isdisjoint({"T0001", "T0002"})
+    assert set(selected["sample_set"]) == {"confirmatory"}
+    assert report["n_excluded_supplied_families"] == 2
