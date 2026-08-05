@@ -6,9 +6,12 @@ retain their intended EIP-7702 semantics.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
+import importlib.metadata
 import json
 import os
+import platform
 import sys
 
 import pandas as pd
@@ -23,6 +26,7 @@ from analysis.delegation_context import (  # noqa: E402
     build_delegation_context_graph,
 )
 from build_dossiers import cfg_analysis  # noqa: E402
+from evm_cfg import Analyzer  # noqa: E402
 
 RESULTS_DIR = os.path.join(V3, "results", "postcutoff_snapshot")
 SNAPSHOT_PATH = os.path.join(RESULTS_DIR, "ethereum_candidates.csv.gz")
@@ -40,7 +44,18 @@ def _sha256_file(path: str) -> str:
     return digest.hexdigest()
 
 
-def main() -> int:
+def main(argv: list[str] | tuple[str, ...] = ()) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out-dir")
+    args = parser.parse_args(argv)
+    feature_path = FEATURE_PATH
+    graph_path = GRAPH_PATH
+    report_path = REPORT_PATH
+    if args.out_dir is not None:
+        feature_path = os.path.join(args.out_dir, os.path.basename(FEATURE_PATH))
+        graph_path = os.path.join(args.out_dir, os.path.basename(GRAPH_PATH))
+        report_path = os.path.join(args.out_dir, os.path.basename(REPORT_PATH))
+    os.makedirs(os.path.dirname(os.path.abspath(report_path)), exist_ok=True)
     with open(SNAPSHOT_REPORT_PATH) as handle:
         snapshot_report = json.load(handle)
     snapshot_hash = _sha256_file(SNAPSHOT_PATH)
@@ -56,8 +71,8 @@ def main() -> int:
     analysis_error_by_hash: dict[str, str | None] = {}
     feature_rows = []
     coverage_counts: dict[str, int] = {}
-    graph_tmp = GRAPH_PATH + ".tmp"
-    feature_tmp = FEATURE_PATH + ".tmp"
+    graph_tmp = graph_path + ".tmp"
+    feature_tmp = feature_path + ".tmp"
     with open(graph_tmp, "w") as graph_handle:
         for position, row in enumerate(eligible.itertuples(index=False), 1):
             bytecode_hash = row.historical_bytecode_sha256
@@ -98,20 +113,21 @@ def main() -> int:
                 print(f"[postcutoff_dcrg] {position}/{len(eligible)}", flush=True)
 
     features = pd.DataFrame(feature_rows)
-    os.replace(graph_tmp, GRAPH_PATH)
+    os.replace(graph_tmp, graph_path)
     features.to_csv(
         feature_tmp,
         index=False,
         compression={"method": "gzip", "mtime": 0},
         lineterminator="\n",
     )
-    os.replace(feature_tmp, FEATURE_PATH)
+    os.replace(feature_tmp, feature_path)
     report = {
         "status": "UNLABELED_AUTHORITY_AWARE_DCRG_EXTRACTION",
         "schema": "dcrg-1.1",
+        "analysis_version": "bounded-cfg-1.3-jump-fenced-metadata-state-widening",
         "snapshot_sha256": snapshot_hash,
-        "features_sha256": _sha256_file(FEATURE_PATH),
-        "graphs_sha256": _sha256_file(GRAPH_PATH),
+        "features_sha256": _sha256_file(feature_path),
+        "graphs_sha256": _sha256_file(graph_path),
         "builder_sha256": _sha256_file(__file__),
         "dcrg_source_sha256": _sha256_file(os.path.join(
             V3, "src", "analysis", "delegation_context.py"
@@ -119,6 +135,23 @@ def main() -> int:
         "cfg_source_sha256": _sha256_file(os.path.join(
             V3, "experiments", "opus5_labeling", "evm_cfg.py"
         )),
+        "cfg_wrapper_source_sha256": _sha256_file(os.path.join(
+            V3, "experiments", "opus5_labeling", "build_dossiers.py"
+        )),
+        "metadata_source_sha256": _sha256_file(os.path.join(
+            V3, "src", "analysis", "solidity_metadata.py"
+        )),
+        "analysis_parameters": {
+            "max_states": Analyzer.MAX_STATES,
+            "max_states_per_pc": Analyzer.MAX_PER_PC,
+            "state_widen_after_visits": Analyzer.WIDEN_AFTER,
+            "max_symbolic_stack_values": Analyzer.MAX_STACK,
+        },
+        "runtime_versions": {
+            "python": platform.python_version(),
+            "cbor2": importlib.metadata.version("cbor2"),
+            "evmole": importlib.metadata.version("evmole"),
+        },
         "n_authority_delegate_pairs": int(len(features)),
         "n_unique_runtimes": int(len(cfg_by_hash)),
         "n_runtime_analysis_errors": int(sum(
@@ -135,21 +168,21 @@ def main() -> int:
             (features["n_erc4337_entrypoint_guards"] > 0).sum()
         ),
         "feature_order": list(DCRG_FEATURE_ORDER),
-        "features_artifact": os.path.relpath(FEATURE_PATH, REPO_ROOT),
-        "graphs_artifact": os.path.relpath(GRAPH_PATH, REPO_ROOT),
+        "features_artifact": os.path.relpath(feature_path, REPO_ROOT),
+        "graphs_artifact": os.path.relpath(graph_path, REPO_ROOT),
         "claim_boundary": (
             "This extraction establishes that real authority context is represented. It does "
             "not establish that authority features improve correct decisions; independent "
             "labels, project-family holds, retraining, and paired evaluation remain mandatory."
         ),
     }
-    report_tmp = REPORT_PATH + ".tmp"
+    report_tmp = report_path + ".tmp"
     with open(report_tmp, "w") as handle:
         json.dump(report, handle, indent=2, sort_keys=True)
-    os.replace(report_tmp, REPORT_PATH)
+    os.replace(report_tmp, report_path)
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

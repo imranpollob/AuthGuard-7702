@@ -134,6 +134,7 @@ def cfg_analysis(bytecode_hex: str) -> dict:
             "unresolved_dynamic_jumps": r["unresolved_dynamic_jumps"],
             "stack_underflows": r["stack_underflows"],
             "hit_exploration_cap": r["hit_state_cap"] or r["hit_per_pc_cap"],
+            "used_state_widening": r.get("used_state_widening", False),
             "reaches_ecrecover": r["reaches_ecrecover"],
             "guards": r["guards"][:6],
             "unguarded_sensitive": r["unguarded_sensitive"][:8],
@@ -168,6 +169,12 @@ def cfg_analysis(bytecode_hex: str) -> dict:
     return {"n_functions": len(funcs), "per_function": per_fn, "fallback_receive_paths": fb,
             "storage_layout": storage[:20],
             "static_opcode_census": census["counts"],
+            "opcode_census_boundary": {
+                key: census.get(key) for key in (
+                    "executable_bytes", "metadata_bytes", "metadata_recognized",
+                    "metadata_rejection_reason",
+                )
+            },
             "sensitive_opcodes_never_reached_by_analysis": unreached,
             "coverage_warning": (
                 "Sensitive opcodes exist in this bytecode that no traversal reached; the "

@@ -1,0 +1,70 @@
+{
+  "fatal_validity_warning": "These eight projects were used to explore and select the weighting rule. They are development controls, not final evidence; evaluate on newly collected projects.",
+  "selection": "Weight 8 is the smallest tested project-balanced value with the stable 1/30 warning outcome and the highest primary Recall@5% FPR among weights 8, 32, and 64.",
+  "status": "EXPLORATORY_DEVELOPMENT_PROJECT_WEIGHT_SENSITIVITY",
+  "summary": {
+    "project_total_weight_32": {
+      "consensus_distribution": {
+        "DEFER": 22,
+        "LOW_OBSERVED_RISK": 7,
+        "WARN": 1
+      },
+      "deployment_warn_rate": 0.03333333333333333,
+      "mean_primary_test_metrics": {
+        "auprc": 0.9523946656003932,
+        "auroc": 0.9848139466738376,
+        "observed_fpr_at_5pct": 0.051008884104343455,
+        "recall_at_5pct": 0.9766421839930867
+      },
+      "n_projects_with_any_consensus_warning": 1
+    },
+    "project_total_weight_64": {
+      "consensus_distribution": {
+        "DEFER": 22,
+        "LOW_OBSERVED_RISK": 7,
+        "WARN": 1
+      },
+      "deployment_warn_rate": 0.03333333333333333,
+      "mean_primary_test_metrics": {
+        "auprc": 0.9521512432486181,
+        "auroc": 0.9844251816244104,
+        "observed_fpr_at_5pct": 0.05176260475980499,
+        "recall_at_5pct": 0.9741382735024057
+      },
+      "n_projects_with_any_consensus_warning": 1
+    },
+    "project_total_weight_8": {
+      "consensus_distribution": {
+        "DEFER": 22,
+        "LOW_OBSERVED_RISK": 7,
+        "WARN": 1
+      },
+      "deployment_warn_rate": 0.03333333333333333,
+      "mean_primary_test_metrics": {
+        "auprc": 0.9527465059136849,
+        "auroc": 0.9849067727491494,
+        "observed_fpr_at_5pct": 0.05083892747834237,
+        "recall_at_5pct": 0.9841005445687414
+      },
+      "n_projects_with_any_consensus_warning": 1
+    },
+    "unit_runtime_weight": {
+      "consensus_distribution": {
+        "DEFER": 9,
+        "LOW_OBSERVED_RISK": 7,
+        "WARN": 14
+      },
+      "deployment_warn_rate": 0.4666666666666667,
+      "mean_primary_test_metrics": null,
+      "n_projects_with_any_consensus_warning": 3
+    }
+  },
+  "weight8_minus_unit_warn_rate": {
+    "ci_high": 0.0,
+    "ci_low": -0.8571428571428571,
+    "excludes_zero": false,
+    "method": "paired project-cluster bootstrap over eight documented projects",
+    "n_replicates": 10000,
+    "point_delta": -0.43333333333333335
+  }
+}

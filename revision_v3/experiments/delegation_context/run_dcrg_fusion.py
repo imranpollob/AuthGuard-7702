@@ -14,6 +14,7 @@ must not be presented as proof of semantic security or external validity.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -110,16 +111,21 @@ def aligned_test_sequence_scores(predictions: pd.DataFrame, test_df: pd.DataFram
 
 
 def main() -> int:
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    if not (os.path.exists(FEATURE_PATH) and os.path.exists(EXTRACTION_REPORT)):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", default=RESULTS_DIR)
+    parser.add_argument("--feature-path", default=FEATURE_PATH)
+    parser.add_argument("--extraction-report", default=EXTRACTION_REPORT)
+    args = parser.parse_args()
+    os.makedirs(args.results_dir, exist_ok=True)
+    if not (os.path.exists(args.feature_path) and os.path.exists(args.extraction_report)):
         raise SystemExit("full DCRG extraction is incomplete; run build_dcrg_features.py first")
-    with open(EXTRACTION_REPORT) as handle:
+    with open(args.extraction_report) as handle:
         extraction = json.load(handle)
     if extraction.get("status") != "COMPLETE":
         raise SystemExit(f"DCRG extraction status is {extraction.get('status')!r}, not COMPLETE")
 
     primary = load_primary_dataset()
-    features = pd.read_csv(FEATURE_PATH)
+    features = pd.read_csv(args.feature_path)
     if len(features) != len(primary) or features["sample_id"].nunique() != len(primary):
         raise RuntimeError("DCRG feature artifact does not cover the canonical primary population")
     merged = primary.merge(
@@ -229,9 +235,9 @@ def main() -> int:
             )
 
     fold_df = pd.DataFrame(fold_rows)
-    fold_path = os.path.join(RESULTS_DIR, "dcrg_fusion_fold_seed.csv")
-    prediction_path = os.path.join(RESULTS_DIR, "dcrg_fusion_predictions.csv.gz")
-    importance_path = os.path.join(RESULTS_DIR, "dcrg_feature_importance.csv")
+    fold_path = os.path.join(args.results_dir, "dcrg_fusion_fold_seed.csv")
+    prediction_path = os.path.join(args.results_dir, "dcrg_fusion_predictions.csv.gz")
+    importance_path = os.path.join(args.results_dir, "dcrg_feature_importance.csv")
     fold_df.to_csv(fold_path, index=False)
     prediction_df = pd.DataFrame(prediction_rows)
     prediction_df.to_csv(prediction_path, index=False, compression="gzip")
@@ -302,7 +308,7 @@ def main() -> int:
             "feature_importance": os.path.relpath(importance_path, REPO_ROOT),
         },
     }
-    with open(os.path.join(RESULTS_DIR, "dcrg_fusion_report.json"), "w") as handle:
+    with open(os.path.join(args.results_dir, "dcrg_fusion_report.json"), "w") as handle:
         json.dump(report, handle, indent=2, sort_keys=True)
     print(json.dumps(report, indent=2, sort_keys=True), flush=True)
     return 0

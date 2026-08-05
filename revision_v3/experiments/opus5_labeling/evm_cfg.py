@@ -37,6 +37,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, FrozenSet, List, Optional, Set, Tuple
 
+from analysis.solidity_metadata import validated_solidity_metadata_start
+
 # --------------------------------------------------------------------------------------
 # Opcode table: name, number of stack items popped, number pushed.
 # --------------------------------------------------------------------------------------
@@ -121,7 +123,9 @@ class Val:
     cmp_src: FrozenSet[str] = frozenset()
 
     def key(self) -> Tuple:
-        return (self.const, tuple(sorted(self.src)), self.cmp)
+        # Comparison provenance affects guard meaning (for example self-call versus storage
+        # authority) and therefore must participate in state equivalence.
+        return (self.const, tuple(sorted(self.src)), self.cmp, tuple(sorted(self.cmp_src)))
 
 
 UNKNOWN = Val()
@@ -240,6 +244,7 @@ class TraversalResult:
     hit_state_cap: bool = False
     stack_underflows: int = 0
     hit_per_pc_cap: bool = False
+    used_state_widening: bool = False
 
 
 class Analyzer:
@@ -247,6 +252,7 @@ class Analyzer:
 
     MAX_STATES = 60000
     MAX_PER_PC = 96
+    WIDEN_AFTER = 8
     MAX_STACK = 64
 
     def __init__(self, code: bytes, calldata_word0: Optional[int] = None,
@@ -538,6 +544,26 @@ class Analyzer:
         work: List[Tuple[int, List[Val]]] = [(entry_pc, [])]
         while work:
             pc, stack = work.pop()
+            n = per_pc.get(pc, 0)
+            if n >= self.WIDEN_AFTER:
+                # Loop counters and concrete memory offsets can generate an unbounded sequence
+                # of otherwise equivalent states.  Widen them to UNKNOWN so a conditional is
+                # explored in both directions.  Constants that are valid JUMPDESTs are retained:
+                # they commonly encode internal-call return addresses, and losing them would
+                # turn a resolvable control transfer into an incomplete one.
+                widened = [
+                    Val(
+                        const=value.const if value.const in self.jumpdests else None,
+                        src=value.src,
+                        cmp=value.cmp,
+                        cmp_src=value.cmp_src,
+                    )
+                    for value in stack
+                ]
+                if any(before.key() != after.key()
+                       for before, after in zip(stack, widened)):
+                    res.used_state_widening = True
+                stack = widened
             key = (pc, tuple(v.key() for v in stack[-8:]))
             if key in seen:
                 continue
@@ -545,7 +571,6 @@ class Analyzer:
             # memory offsets are concrete and increment each iteration. Cap revisits per
             # program counter instead of relying on the global cap alone, so a loop-heavy
             # contract still gets its non-loop paths explored.
-            n = per_pc.get(pc, 0)
             if n >= self.MAX_PER_PC:
                 res.hit_per_pc_cap = True
                 continue
@@ -561,22 +586,45 @@ class Analyzer:
 
 
 def static_opcode_census(code: bytes) -> dict:
-    """Linear-sweep census of sensitive opcodes present anywhere in the code.
+    """Linear-sweep census of sensitive opcodes in executable runtime bytes.
 
     Used as a soundness backstop for the traversal: if a `CALL`/`DELEGATECALL`/`CREATE*`/
     `SELFDESTRUCT` exists in the code but no traversal ever reached it, the analysis is
     incomplete for that item and must not be reported as "no sensitive operation found".
-    Note the sweep is over the whole byte range, so it can also count bytes inside PUSH
-    immediates or in unreachable/data regions -- it over-counts, which is the safe direction
-    for this particular use.
+    A suffix is excluded only when it passes strict Solidity CBOR metadata validation.  The
+    remaining sweep can still count instructions in unreachable/data regions -- it therefore
+    continues to over-count, which is the safe direction for this use.
     """
+    candidate_end = validated_solidity_metadata_start(code)
+    executable_end = len(code)
+    metadata_rejection_reason = None
+    if candidate_end < len(code):
+        full_instructions = disassemble(code)
+        pcs = [pc for pc, _, _ in full_instructions]
+        if candidate_end not in pcs:
+            metadata_rejection_reason = "metadata_start_not_instruction_boundary"
+        else:
+            start_index = pcs.index(candidate_end)
+            if start_index == 0 or full_instructions[start_index - 1][1] not in TERMINALS:
+                metadata_rejection_reason = "executable_fallthrough_into_metadata_possible"
+            elif any(name == "JUMPDEST" for _, name, _ in full_instructions[start_index:]):
+                metadata_rejection_reason = "metadata_contains_executable_jumpdest"
+            else:
+                executable_end = candidate_end
     counts: Dict[str, int] = {}
     sites: Dict[str, List[int]] = {}
-    for pc, name, _ in disassemble(code):
+    for pc, name, _ in disassemble(code[:executable_end]):
         if name in SENSITIVE or name in ("STATICCALL", "CALLER", "ORIGIN", "ADDRESS"):
             counts[name] = counts.get(name, 0) + 1
             sites.setdefault(name, []).append(pc)
-    return {"counts": counts, "sites": {k: v[:24] for k, v in sites.items()}}
+    return {
+        "counts": counts,
+        "sites": {k: v[:24] for k, v in sites.items()},
+        "executable_bytes": executable_end,
+        "metadata_bytes": len(code) - executable_end,
+        "metadata_recognized": executable_end < len(code),
+        "metadata_rejection_reason": metadata_rejection_reason,
+    }
 
 
 def analyze_fallback(code: bytes, known_selectors: Set[int]) -> dict:
@@ -673,6 +721,7 @@ def analyze_function(code: bytes, entry_pc: int, selector: Optional[int] = None,
         "unresolved_dynamic_jumps": full.unresolved_jumps,
         "hit_state_cap": full.hit_state_cap,
         "hit_per_pc_cap": full.hit_per_pc_cap,
+        "used_state_widening": full.used_state_widening,
         "stack_underflows": full.stack_underflows,
         "states_explored": full.states_explored,
         "reaches_ecrecover": full.reached_ecrecover,

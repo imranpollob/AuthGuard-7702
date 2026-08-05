@@ -1,0 +1,59 @@
+{
+  "artifacts": {
+    "sample_features": "revision_v3/results/delegation_context_metadata_census/dcrg_primary_features.csv.gz",
+    "unique_runtime_graphs": "revision_v3/results/delegation_context_metadata_census/dcrg_unique_runtimes.jsonl"
+  },
+  "authority_context": "UNKNOWN_IN_HISTORICAL_DATASET",
+  "canonical_input_sha256": "670decf9e49b4bfcf74cf2fe708c6564c2123156d43acfd023e535a58e0bbe0e",
+  "coverage_primary_samples": {
+    "COMPLETE": 871,
+    "PARTIAL": 1319
+  },
+  "coverage_unique_runtimes": {
+    "COMPLETE": 662,
+    "PARTIAL": 1003
+  },
+  "extractor_sha256": {
+    "delegation_context.py": "d451cd54636c4e83fef987950512fbba43eaca193b2bcb529936ddf4b7c5c66f",
+    "evm_cfg.py": "f0c117f3fe4873b4ba6f2d4fe97b21a343f972dbfd74837d4b068ff887c18842",
+    "protocol_actors.py": "2b9f6075d8c96caf44311e3bd3e1d2c2fd5a2a179e77a70c4bc951b0f1c0d805"
+  },
+  "feature_order": [
+    "n_functions",
+    "n_complete_functions",
+    "n_incomplete_functions",
+    "n_unguarded_sensitive",
+    "n_unguarded_call",
+    "n_unguarded_delegatecall",
+    "n_unguarded_create",
+    "n_unguarded_selfdestruct",
+    "n_unguarded_sstore",
+    "n_sensitive_without_any_recognized_guard",
+    "n_storage_condition_guarded_sensitive",
+    "n_guards",
+    "n_self_call_guards",
+    "n_signature_guards",
+    "n_storage_guards",
+    "n_hardcoded_guards",
+    "n_erc4337_entrypoint_guards",
+    "n_hardcoded_authority_matches",
+    "n_hardcoded_authority_mismatches",
+    "n_calldata_dependent_guards",
+    "n_tx_origin_guards",
+    "fallback_external_call_reachable",
+    "fallback_open_external_call",
+    "n_unreached_sensitive_sites",
+    "coverage_complete",
+    "coverage_partial",
+    "coverage_unknown"
+  ],
+  "limitations": [
+    "Historical rows identify delegate implementations but not authorizing EOAs; authority-dependent comparisons remain unknown.",
+    "PARTIAL and UNKNOWN coverage are retained as model inputs and must trigger selective-policy analysis rather than being interpreted as safe."
+  ],
+  "n_analysis_errors_unique": 0,
+  "n_primary_samples": 2190,
+  "n_unique_runtimes": 1665,
+  "schema_version": "dcrg-1.1",
+  "status": "COMPLETE"
+}

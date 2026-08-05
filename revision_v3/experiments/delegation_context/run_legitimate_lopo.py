@@ -8,6 +8,7 @@ whose checkpoints cannot retroactively remove project families from their traini
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -24,7 +25,7 @@ sys.path.insert(0, os.path.join(V3, "experiments", "delegation_context"))
 
 from analysis.delegation_context import DCRG_FEATURE_ORDER  # noqa: E402
 from data.loader import fold_split, load_primary_dataset  # noqa: E402
-from evaluation.metrics import threshold_at_nominal_fpr  # noqa: E402
+from evaluation.metrics import full_metrics, threshold_at_nominal_fpr  # noqa: E402
 from evaluation.selective_policy import (  # noqa: E402
     DEFER,
     LOW_OBSERVED_RISK,
@@ -44,8 +45,18 @@ def runtime_hash(bytecode: str) -> str:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", default=RESULTS_DIR)
+    parser.add_argument("--feature-path", default=os.path.join(
+        RESULTS_DIR, "dcrg_primary_features.csv.gz"
+    ))
+    parser.add_argument("--project-weight-total", type=float, default=None,
+                        help="fixed total benign weight assigned to each development project; "
+                             "default preserves unit weight per exact runtime")
+    args = parser.parse_args()
+    os.makedirs(args.results_dir, exist_ok=True)
     primary = load_primary_dataset()
-    features = pd.read_csv(os.path.join(RESULTS_DIR, "dcrg_primary_features.csv.gz"))
+    features = pd.read_csv(args.feature_path)
     merged = primary.merge(
         features[["sample_id", "coverage", *DCRG_FEATURE_ORDER]],
         on="sample_id", how="left", validate="one_to_one"
@@ -80,9 +91,10 @@ def main() -> int:
 
         for seed in SEEDS:
             for test_fold in range(5):
-                train_df, val_df, _ = fold_split(merged, test_fold)
+                train_df, val_df, test_df = fold_split(merged, test_fold)
                 train_df = train_df[~train_df["family_id"].isin(heldout_families)]
                 val_df = val_df[~val_df["family_id"].isin(heldout_families)]
+                test_df = test_df[~test_df["family_id"].isin(heldout_families)]
                 primary_train_x = train_df[list(DCRG_FEATURE_ORDER)].to_numpy(dtype=np.float32)
                 primary_train_y = train_df["label"].to_numpy(dtype=np.int64)
                 if len(dev_x):
@@ -92,12 +104,21 @@ def main() -> int:
                     ])
                 else:
                     train_x, train_y = primary_train_x, primary_train_y
+                sample_weight = np.ones(len(train_y), dtype=np.float64)
+                if len(dev_x) and args.project_weight_total is not None:
+                    project_counts = Counter(control["project"] for control in development)
+                    for offset, control in enumerate(development, start=len(primary_train_y)):
+                        sample_weight[offset] = (
+                            args.project_weight_total / project_counts[control["project"]]
+                        )
                 val_x = val_df[list(DCRG_FEATURE_ORDER)].to_numpy(dtype=np.float32)
                 val_y = val_df["label"].to_numpy(dtype=np.int64)
-                context_val, _, _, heldout_scores = calibrated_context_scores(
-                    train_x, train_y, val_x, val_y, val_x[:1], seed,
+                test_x = test_df[list(DCRG_FEATURE_ORDER)].to_numpy(dtype=np.float32)
+                test_y = test_df["label"].to_numpy(dtype=np.int64)
+                context_val, test_scores, _, heldout_scores = calibrated_context_scores(
+                    train_x, train_y, val_x, val_y, test_x, seed,
                     extra_x=heldout_x,
-                    train_sample_weight=np.ones(len(train_y), dtype=np.float64),
+                    train_sample_weight=sample_weight,
                 )
                 threshold = threshold_at_nominal_fpr(context_val, val_y, 0.05)
                 decisions = selective_decisions(
@@ -121,6 +142,10 @@ def main() -> int:
                     "n_primary_val_after_project_family_holdout": len(val_df),
                     "n_development_project_runtimes": len(development),
                     "development_projects": sorted({c["project"] for c in development}),
+                    "project_weight_total": args.project_weight_total,
+                    "primary_test_metrics": full_metrics(
+                        test_y, test_scores, context_val, val_y
+                    ),
                 })
         print(f"[legitimate_lopo] held out {heldout_project}", flush=True)
 
@@ -161,6 +186,7 @@ def main() -> int:
                     "benign row per runtime from other projects",
         "model": "DCRG-only XGBoost; frozen sequence checkpoints excluded because complete "
                  "project-family retraining is unavailable",
+        "development_project_weight_total": args.project_weight_total,
         "n_projects": len(projects),
         "n_deployments": len(per_item),
         "consensus_distribution": dict(sorted(distribution.items())),
@@ -170,11 +196,17 @@ def main() -> int:
         "split_audit": split_audit,
         "limitations": [
             "Only eight legitimate projects are available; confidence intervals are wide.",
-            "All held-out controls have PARTIAL bounded-analysis coverage.",
+            f"Held-out control coverage is {dict(sorted(Counter(item['coverage'] for item in per_item).items()))}.",
             "This evaluation measures false-warning generalization only, not malicious recall.",
         ],
     }
-    with open(os.path.join(RESULTS_DIR, "legitimate_lopo_report.json"), "w") as handle:
+    report["mean_primary_test_metrics_across_project_fold_seed_runs"] = {
+        metric: float(np.mean([
+            row["primary_test_metrics"][metric] for row in split_audit
+        ]))
+        for metric in ("auprc", "auroc", "recall_at_5pct", "observed_fpr_at_5pct")
+    }
+    with open(os.path.join(args.results_dir, "legitimate_lopo_report.json"), "w") as handle:
         json.dump(report, handle, indent=2, sort_keys=True)
     print(json.dumps({key: value for key, value in report.items()
                       if key not in {"per_item", "split_audit"}}, indent=2, sort_keys=True))

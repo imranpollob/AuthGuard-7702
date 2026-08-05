@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.metadata
 import json
 import os
+import platform
 import sys
 from collections import Counter
 
@@ -32,6 +34,7 @@ from analysis.delegation_context import (  # noqa: E402
 )
 from data.loader import load_manifest, load_primary_dataset  # noqa: E402
 from build_dossiers import cfg_analysis  # noqa: E402
+from evm_cfg import Analyzer  # noqa: E402
 
 DEFAULT_OUT = os.path.join(V3, "results", "delegation_context")
 
@@ -75,6 +78,11 @@ def analyze_runtime(bytecode_sha256: str, bytecode: str) -> dict:
         "analysis_error": error,
         "cfg_summary": {
             "n_functions": cfg.get("n_functions"),
+            "n_functions_using_state_widening": sum(
+                bool(function.get("used_state_widening"))
+                for function in (cfg.get("per_function") or [])
+            ),
+            "opcode_census_boundary": cfg.get("opcode_census_boundary"),
             "coverage_warning": cfg.get("coverage_warning"),
             "sensitive_opcodes_never_reached_by_analysis": (
                 cfg.get("sensitive_opcodes_never_reached_by_analysis")
@@ -154,9 +162,14 @@ def main() -> int:
     report = {
         "status": "COMPLETE" if args.limit is None else "SMOKE_TEST_LIMITED",
         "schema_version": "dcrg-1.1",
+        "analysis_version": "bounded-cfg-1.3-jump-fenced-metadata-state-widening",
         "authority_context": "UNKNOWN_IN_HISTORICAL_DATASET",
         "canonical_input_sha256": load_manifest()["sha256"]["benchmark_csv_gz"],
         "extractor_sha256": {
+            "build_dcrg_features.py": file_sha256(__file__),
+            "build_dossiers.py": file_sha256(os.path.join(
+                V3, "experiments", "opus5_labeling", "build_dossiers.py"
+            )),
             "delegation_context.py": file_sha256(os.path.join(
                 V3, "src", "analysis", "delegation_context.py"
             )),
@@ -166,6 +179,24 @@ def main() -> int:
             "evm_cfg.py": file_sha256(os.path.join(
                 V3, "experiments", "opus5_labeling", "evm_cfg.py"
             )),
+            "solidity_metadata.py": file_sha256(os.path.join(
+                V3, "src", "analysis", "solidity_metadata.py"
+            )),
+        },
+        "analysis_parameters": {
+            "max_states": Analyzer.MAX_STATES,
+            "max_states_per_pc": Analyzer.MAX_PER_PC,
+            "state_widen_after_visits": Analyzer.WIDEN_AFTER,
+            "max_symbolic_stack_values": Analyzer.MAX_STACK,
+            "metadata_exclusion_rule": (
+                "exact known-shape Solidity CBOR; instruction-aligned start; terminal "
+                "predecessor; no disassembled JUMPDEST in trailer"
+            ),
+        },
+        "runtime_versions": {
+            "python": platform.python_version(),
+            "cbor2": importlib.metadata.version("cbor2"),
+            "evmole": importlib.metadata.version("evmole"),
         },
         "n_primary_samples": int(len(selected_primary)),
         "n_unique_runtimes": int(len(selected_hashes)),
@@ -184,6 +215,9 @@ def main() -> int:
             "authority-dependent comparisons remain unknown.",
             "PARTIAL and UNKNOWN coverage are retained as model inputs and must trigger "
             "selective-policy analysis rather than being interpreted as safe.",
+            "Loop-state widening over-approximates varying non-control constants after eight "
+            "visits; valid JUMPDEST constants remain concrete, and unresolved transfers still "
+            "produce PARTIAL coverage.",
         ],
     }
     with open(report_path, "w") as handle:

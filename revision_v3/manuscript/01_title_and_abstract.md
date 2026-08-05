@@ -1,33 +1,44 @@
-# Title Options
+# Retained Title and Abstract Direction
 
-1. AuthGuard-7702: Coverage-Aware Pre-Authorization Screening of EIP-7702 Delegates
-2. Screening EIP-7702 Delegates: Contextual Risk Graphs, Bytecode Models, and Explicit Deferral
-3. From Bytecode Scores to Selective Decisions for EIP-7702 Authorization Risk
+Status date: 2026-08-04
+Evidence status: development only; replace bracketed outcomes after untouched human evaluation.
 
-## Abstract (provisional metric placeholders)
+## Recommended title
 
-EIP-7702 lets an externally-owned account execute delegate-contract code in the account's own
-storage, balance, and identity context. A wallet must therefore decide whether to authorize a
-delegate before transaction history, reputation, or verified source may be available. We
-present AuthGuard-7702, a coverage-aware pre-authorization screener that combines a compact
-opcode-sequence model with a typed Delegation-Context Risk Graph (DCRG). DCRG separates
-self-call, signature, stored-authority, fixed-address, caller-supplied, and `tx.origin` guards;
-records unguarded capabilities; and makes incomplete analysis explicit. A fixed monotone fusion
-feeds a selective policy that returns `WARN`, `LOW_OBSERVED_RISK`, or `DEFER`, rather than
-equating a negative classifier output with proof of safety.
+**AuthGuard-7702: Coverage-Audited Delegation-Context Analysis for Pre-Authorization Screening**
 
-On the frozen 2,190-item, 790-family engineering benchmark, the DCRG extractor completed for
-all 1,665 unique runtimes but achieved complete bounded coverage for only 30.6% of samples,
-motivating explicit deferral. **[PROVISIONAL inherited-label result: across 5 family-held-out
-folds and 3 seeds, pooled out-of-fold DCRG+sequence fusion obtains AUPRC 0.958 versus 0.902 for
-the sequence model and recall 0.933 versus 0.844 at validation-derived nominal 5%-FPR
-thresholds. A paired family bootstrap supports improvement over the sequence model, but not
-over DCRG alone.]** Because
-these inherited labels partly encode static-analysis behavior, this comparison is treated as
-an engineering diagnostic rather than independent semantic validation. The submission claim
-must be replaced or confirmed with adjudicated human labels and post-cutoff project-family
-controls before finalization.
+This title avoids unsupported claims of safety, learned graph topology, fusion superiority, or
+universal robustness. It makes the intended decision point and the retained technical
+contribution explicit.
 
-**The bracketed performance sentence is a placeholder pending independent human review,
-paired uncertainty, and post-cutoff evaluation. It must not appear as an accepted result in a
-submission until those gates pass.**
+## Provisional abstract skeleton
+
+EIP-7702 allows an externally owned account to execute delegate-contract code in the account's
+storage, balance, and identity context. This creates a security decision before authorization,
+when transaction history, reputation, and verified source code may be unavailable. We present
+AuthGuard-7702, a bytecode-only warning and triage framework built around a Delegation-Context
+Risk Graph (DCRG). DCRG links reachable sensitive capabilities to recognized guard evidence and
+preserves unresolved control flow as an explicit coverage state. Its bounded extractor combines
+conservative state widening with jump-fenced Solidity-metadata recognition: metadata is excluded
+from the opcode backstop only when its structure, instruction boundary, predecessor, and jump
+targets satisfy the stated safety conditions.
+
+On 1,665 unique runtimes, these corrections increase complete bounded-analysis coverage from
+31.1% to 63.8% without converting any previously complete runtime to partial coverage. The
+coverage repair does not improve inherited-label AUPRC, separating analyzer validity from model
+tuning. **[Replace after the single final run: on an untouched, independently adjudicated,
+family- and project-held-out test set, compare guard-aware DCRG with capability-only, untyped,
+sequence, and classical bytecode baselines using paired family-clustered intervals.]** We further
+evaluate documented legitimate projects and post-cutoff signer/delegate pairs, and map incomplete
+analysis to `DEFER`. AuthGuard-7702 is an advisory pre-authorization screener; it neither proves
+malicious intent nor certifies a delegation as safe.
+
+## Development evidence that must not be promoted to the final abstract
+
+- Treating current provisional labels as human-like, DCRG reaches 0.93885 AUPRC and exceeds the
+  sequence model by +0.04615 (95% CI [+0.00449, +0.09178]).
+- DCRG exceeds untyped guards by +0.00427 ([+0.00076, +0.01023]) but does not significantly exceed
+  capability-only or histogram+n-gram XGBoost.
+- The provisional items informed method selection and therefore cannot be the final test set.
+- A low-risk/safe tier failed; the final interface is warning/no-warning/defer, never a safety
+  certificate.

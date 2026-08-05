@@ -1,6 +1,7 @@
 """Corrected seed-aware paired family bootstrap for DCRG fusion comparisons."""
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -43,8 +44,11 @@ def arrays_by_seed(frame: pd.DataFrame, value_column: str):
 
 
 def main() -> int:
-    predictions = pd.read_csv(os.path.join(RESULTS_DIR, "dcrg_fusion_predictions.csv.gz"))
-    fold_metrics = pd.read_csv(os.path.join(RESULTS_DIR, "dcrg_fusion_fold_seed.csv"))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", default=RESULTS_DIR)
+    args = parser.parse_args()
+    predictions = pd.read_csv(os.path.join(args.results_dir, "dcrg_fusion_predictions.csv.gz"))
+    fold_metrics = pd.read_csv(os.path.join(args.results_dir, "dcrg_fusion_fold_seed.csv"))
     threshold_names = {
         "sequence": "sequence_threshold_5pct",
         "dcrg": "dcrg_threshold_5pct",
@@ -110,7 +114,7 @@ def main() -> int:
             "validity; human-final and post-cutoff evaluations remain mandatory."
         ),
     }
-    out_path = os.path.join(RESULTS_DIR, "dcrg_fusion_bootstrap.json")
+    out_path = os.path.join(args.results_dir, "dcrg_fusion_bootstrap.json")
     with open(out_path, "w") as handle:
         json.dump(report, handle, indent=2, sort_keys=True)
     print(json.dumps(report, indent=2, sort_keys=True), flush=True)

@@ -4,6 +4,11 @@ Date: 2026-08-04
 Status: implementation and inherited-label engineering evaluation complete; final scientific
 claim blocked on human-final and post-cutoff evidence.
 
+> **Superseded technical snapshot:** the coverage and legitimate-control counts below describe
+> the original bounded extractor. Use `RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md` and
+> `EXTENSIVE_RESEARCH_PATHS.md` for the retained jump-fenced v3 extractor and final path decisions.
+> This file is preserved as the audit trail that motivated the later corrections.
+
 ## Three target contributions
 
 1. **An EIP-7702 Delegation-Context Risk Graph (DCRG).** A typed representation of delegate

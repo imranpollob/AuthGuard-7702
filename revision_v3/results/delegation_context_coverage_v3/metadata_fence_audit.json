@@ -1,0 +1,26 @@
+{
+  "excluded_sensitive_or_context_opcode_bytes": {
+    "ADDRESS": 51,
+    "CALL": 76,
+    "CALLCODE": 72,
+    "CALLER": 871,
+    "CREATE": 66,
+    "CREATE2": 78,
+    "DELEGATECALL": 59,
+    "ORIGIN": 82,
+    "SELFDESTRUCT": 78,
+    "SSTORE": 66,
+    "STATICCALL": 127
+  },
+  "n_format_valid_known_shape_cbor": 1570,
+  "n_unique_runtimes": 1665,
+  "outcome_counts": {
+    "executable_fallthrough_into_metadata_possible": 18,
+    "jump_fenced_metadata_excluded": 1455,
+    "metadata_contains_executable_jumpdest": 59,
+    "metadata_start_not_instruction_boundary": 38,
+    "no_format_valid_metadata": 95
+  },
+  "safety_boundary": "A format-valid trailer is retained whenever it overlaps an instruction, can be reached by fallthrough, or contains a valid JUMPDEST instruction. This does not treat arbitrary post-STOP bytes as metadata.",
+  "status": "LABEL_FREE_ADVERSARIAL_METADATA_FENCE_AUDIT"
+}

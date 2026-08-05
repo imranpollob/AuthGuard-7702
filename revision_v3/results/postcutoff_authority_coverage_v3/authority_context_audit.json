@@ -1,0 +1,16 @@
+{
+  "fraction_pairs_with_any_authority_relative_fixed_guard_evidence": 0.4477401129943503,
+  "interpretation": "Actual signer recovery makes fixed-address guard relations decidable for many pairs, but this label-free audit cannot show that they improve classification. The observed multi-authority runtimes do not vary in these aggregate match counts.",
+  "n_pairs": 708,
+  "n_pairs_with_any_authority_relative_fixed_guard_evidence": 317,
+  "n_runtimes_observed_with_multiple_authorities": 20,
+  "n_runtimes_whose_match_features_vary_across_observed_authorities": 0,
+  "n_unique_runtimes": 673,
+  "pair_guard_relation_counts": {
+    "AUTHORITY_MATCH_ONLY": 22,
+    "AUTHORITY_MISMATCH_ONLY": 290,
+    "BOTH_MATCH_AND_MISMATCH": 5,
+    "NO_FIXED_ADDRESS_GUARD": 391
+  },
+  "status": "LABEL_FREE_AUTHORITY_CONTEXT_AUDIT"
+}

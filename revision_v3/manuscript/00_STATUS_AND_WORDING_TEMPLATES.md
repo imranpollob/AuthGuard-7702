@@ -4,6 +4,11 @@ This is a NEW workspace (`revision_v3/manuscript/`) and does **not** overwrite t
 submitted manuscript (`revision_v2/manuscript/`). All metric placeholders in this draft are
 sourced from LLM-provisional results and are marked accordingly; none are final-claim-ready.
 
+> The original fusion/selective-policy draft sections predate the completed multi-path research
+> search. The retained direction is documented in
+> `reports/RESEARCH_ENDPOINT_AND_SUBMISSION_PLAN.md`; `01_title_and_abstract.md` has been updated,
+> while the remaining section drafts are an audit trail until the untouched final evaluation.
+
 ## Two required wordings — use the correct one per context
 
 **Current, accurate description of the review process already completed (Phase 3A/3B and

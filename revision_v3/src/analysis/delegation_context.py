@@ -289,6 +289,7 @@ def build_delegation_context_graph(
                 "unresolved_dynamic_jumps": int(fn.get("unresolved_dynamic_jumps") or 0),
                 "stack_underflows": int(fn.get("stack_underflows") or 0),
                 "hit_exploration_cap": bool(fn.get("hit_exploration_cap")),
+                "used_state_widening": bool(fn.get("used_state_widening")),
             }))
             edges.append(RiskEdge(fn_id, gap_id, EdgeKind.CONTAINS.value))
             findings.add("INCOMPLETE_FUNCTION_ANALYSIS")

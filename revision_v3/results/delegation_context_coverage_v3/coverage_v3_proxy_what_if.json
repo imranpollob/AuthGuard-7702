@@ -1,0 +1,478 @@
+{
+  "ablation": {
+    "models": {
+      "cfg_capability_only": {
+        "feature_names": [
+          "n_functions",
+          "n_complete_functions",
+          "n_incomplete_functions",
+          "n_unguarded_call",
+          "n_unguarded_delegatecall",
+          "n_unguarded_create",
+          "n_unguarded_selfdestruct",
+          "n_unguarded_sstore",
+          "fallback_external_call_reachable",
+          "n_unreached_sensitive_sites",
+          "coverage_complete",
+          "coverage_partial",
+          "coverage_unknown"
+        ],
+        "mean_across_seeds": {
+          "auprc": 0.9251389195262097,
+          "auroc": 0.6949810606060606,
+          "brier": 0.426358452257446,
+          "expected_calibration_error": 0.46314347952742657,
+          "f1": 0.6412213740458016,
+          "observed_fpr": 0.05000000000000001,
+          "precision": 0.9767441860465116,
+          "recall": 0.4772727272727273
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9247069404191716,
+            "auroc": 0.6940340909090909,
+            "brier": 0.42657626760978884,
+            "expected_calibration_error": 0.46396648358382075,
+            "f1": 0.6412213740458016,
+            "observed_fpr": 0.05,
+            "precision": 0.9767441860465116,
+            "recall": 0.4772727272727273,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9249059579629186,
+            "auroc": 0.6928977272727272,
+            "brier": 0.42590270605541986,
+            "expected_calibration_error": 0.4618940745294011,
+            "f1": 0.6412213740458016,
+            "observed_fpr": 0.05,
+            "precision": 0.9767441860465116,
+            "recall": 0.4772727272727273,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9258038601965393,
+            "auroc": 0.6980113636363636,
+            "brier": 0.4265963831071292,
+            "expected_calibration_error": 0.463569880469058,
+            "f1": 0.6412213740458016,
+            "observed_fpr": 0.05,
+            "precision": 0.9767441860465116,
+            "recall": 0.4772727272727273,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived after applicable family holds"
+      },
+      "dcrg_full": {
+        "feature_names": [
+          "n_functions",
+          "n_complete_functions",
+          "n_incomplete_functions",
+          "n_unguarded_sensitive",
+          "n_unguarded_call",
+          "n_unguarded_delegatecall",
+          "n_unguarded_create",
+          "n_unguarded_selfdestruct",
+          "n_unguarded_sstore",
+          "n_sensitive_without_any_recognized_guard",
+          "n_storage_condition_guarded_sensitive",
+          "n_guards",
+          "n_self_call_guards",
+          "n_signature_guards",
+          "n_storage_guards",
+          "n_hardcoded_guards",
+          "n_erc4337_entrypoint_guards",
+          "n_hardcoded_authority_matches",
+          "n_hardcoded_authority_mismatches",
+          "n_calldata_dependent_guards",
+          "n_tx_origin_guards",
+          "fallback_external_call_reachable",
+          "fallback_open_external_call",
+          "n_unreached_sensitive_sites",
+          "coverage_complete",
+          "coverage_partial",
+          "coverage_unknown"
+        ],
+        "mean_across_seeds": {
+          "auprc": 0.9388465145439807,
+          "auroc": 0.7378787878787879,
+          "brier": 0.42914944368664837,
+          "expected_calibration_error": 0.45843991380202714,
+          "f1": 0.6582744740639478,
+          "observed_fpr": 0.05000000000000001,
+          "precision": 0.9776094276094276,
+          "recall": 0.49621212121212127
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9372913826025127,
+            "auroc": 0.7312500000000001,
+            "brier": 0.4298603647235114,
+            "expected_calibration_error": 0.46627571883605756,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9389278867067403,
+            "auroc": 0.7380681818181819,
+            "brier": 0.42930587958303856,
+            "expected_calibration_error": 0.4554024089684121,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9403202743226893,
+            "auroc": 0.7443181818181819,
+            "brier": 0.4282820867533953,
+            "expected_calibration_error": 0.45364161360161176,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived after applicable family holds"
+      },
+      "dcrg_untyped_guards": {
+        "feature_names": [
+          "n_functions",
+          "n_complete_functions",
+          "n_incomplete_functions",
+          "n_unguarded_call",
+          "n_unguarded_delegatecall",
+          "n_unguarded_create",
+          "n_unguarded_selfdestruct",
+          "n_unguarded_sstore",
+          "fallback_external_call_reachable",
+          "n_unreached_sensitive_sites",
+          "coverage_complete",
+          "coverage_partial",
+          "coverage_unknown",
+          "n_unguarded_sensitive",
+          "n_sensitive_without_any_recognized_guard",
+          "n_storage_condition_guarded_sensitive",
+          "n_guards",
+          "fallback_open_external_call"
+        ],
+        "mean_across_seeds": {
+          "auprc": 0.9345733720233831,
+          "auroc": 0.7223484848484848,
+          "brier": 0.43222093711104187,
+          "expected_calibration_error": 0.45708590953449924,
+          "f1": 0.6548948127895496,
+          "observed_fpr": 0.05000000000000001,
+          "precision": 0.9774410774410773,
+          "recall": 0.49242424242424243
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9333655721611849,
+            "auroc": 0.7170454545454545,
+            "brier": 0.43309091253265997,
+            "expected_calibration_error": 0.4575562157594746,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9350297212760597,
+            "auroc": 0.7238636363636364,
+            "brier": 0.4312235599939874,
+            "expected_calibration_error": 0.4561934649240731,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9353248226329047,
+            "auroc": 0.7261363636363636,
+            "brier": 0.4323483388064782,
+            "expected_calibration_error": 0.45750804791995,
+            "f1": 0.6515151515151516,
+            "observed_fpr": 0.05,
+            "precision": 0.9772727272727273,
+            "recall": 0.48863636363636365,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived after applicable family holds"
+      },
+      "dcrg_without_protocol_actors": {
+        "feature_names": [
+          "n_functions",
+          "n_complete_functions",
+          "n_incomplete_functions",
+          "n_unguarded_sensitive",
+          "n_unguarded_call",
+          "n_unguarded_delegatecall",
+          "n_unguarded_create",
+          "n_unguarded_selfdestruct",
+          "n_unguarded_sstore",
+          "n_sensitive_without_any_recognized_guard",
+          "n_storage_condition_guarded_sensitive",
+          "n_guards",
+          "n_self_call_guards",
+          "n_signature_guards",
+          "n_storage_guards",
+          "n_hardcoded_guards",
+          "n_calldata_dependent_guards",
+          "n_tx_origin_guards",
+          "fallback_external_call_reachable",
+          "fallback_open_external_call",
+          "n_unreached_sensitive_sites",
+          "coverage_complete",
+          "coverage_partial",
+          "coverage_unknown"
+        ],
+        "mean_across_seeds": {
+          "auprc": 0.9397556878323146,
+          "auroc": 0.7416666666666668,
+          "brier": 0.42963243011351865,
+          "expected_calibration_error": 0.45877621661805756,
+          "f1": 0.6616541353383458,
+          "observed_fpr": 0.05000000000000001,
+          "precision": 0.9777777777777777,
+          "recall": 0.5
+        },
+        "per_seed": [
+          {
+            "auprc": 0.9394637327583719,
+            "auroc": 0.7392045454545455,
+            "brier": 0.4288821655383098,
+            "expected_calibration_error": 0.46421092146424703,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7702
+          },
+          {
+            "auprc": 0.9397200630124226,
+            "auroc": 0.7420454545454546,
+            "brier": 0.43072274863194665,
+            "expected_calibration_error": 0.4568659504617003,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7703
+          },
+          {
+            "auprc": 0.9400832677261493,
+            "auroc": 0.7437500000000001,
+            "brier": 0.4292923761702995,
+            "expected_calibration_error": 0.45525177792822547,
+            "f1": 0.6616541353383458,
+            "observed_fpr": 0.05,
+            "precision": 0.9777777777777777,
+            "recall": 0.5,
+            "seed": 7704
+          }
+        ],
+        "threshold_provenance": "validation-derived after applicable family holds"
+      }
+    },
+    "n_bootstrap_replicates": 10000,
+    "novelty_decision_rule": "Typed/authority-relative representation superiority may be claimed only for a predeclared endpoint whose full-minus-ablation interval supports the direction.",
+    "paired_family_bootstrap": [
+      {
+        "auprc": {
+          "ci_high": 0.03850649862443816,
+          "ci_low": -0.005305048052214819,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.012584442183341094,
+            "7703": 0.014021928743821688,
+            "7704": 0.014516414126150012
+          },
+          "point_delta": 0.013707595017770932
+        },
+        "baseline": "cfg_capability_only",
+        "candidate": "dcrg_full",
+        "observed_fpr_at_5pct": {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.0,
+            "7704": 0.0
+          },
+          "point_delta": 0.0
+        },
+        "recall_at_5pct": {
+          "ci_high": 0.050387596899224785,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.022727272727272707,
+            "7703": 0.022727272727272707,
+            "7704": 0.011363636363636354
+          },
+          "point_delta": 0.018939393939393923
+        }
+      },
+      {
+        "auprc": {
+          "ci_high": 0.010231607194616781,
+          "ci_low": 0.00076337160616723,
+          "excludes_zero": true,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.003925810441327782,
+            "7703": 0.003898165430680667,
+            "7704": 0.004995451689784547
+          },
+          "point_delta": 0.004273142520597665
+        },
+        "baseline": "dcrg_untyped_guards",
+        "candidate": "dcrg_full",
+        "observed_fpr_at_5pct": {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.0,
+            "7704": 0.0
+          },
+          "point_delta": 0.0
+        },
+        "recall_at_5pct": {
+          "ci_high": 0.02298850574712648,
+          "ci_low": -0.01111423220973784,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.011363636363636354,
+            "7704": 0.0
+          },
+          "point_delta": 0.0037878787878787845
+        }
+      },
+      {
+        "auprc": {
+          "ci_high": 0.0008892767998157468,
+          "ci_low": -0.0032500594283316002,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": -0.0021723501558592595,
+            "7703": -0.0007921763056822906,
+            "7704": 0.00023700659654002365
+          },
+          "point_delta": -0.0009091732883338421
+        },
+        "baseline": "dcrg_without_protocol_actors",
+        "candidate": "dcrg_full",
+        "observed_fpr_at_5pct": {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.0,
+            "7704": 0.0
+          },
+          "point_delta": 0.0
+        },
+        "recall_at_5pct": {
+          "ci_high": 0.0,
+          "ci_low": -0.012658227848101278,
+          "excludes_zero": false,
+          "method": "seed_aware_paired_family_bootstrap: one family-multiset draw per replicate, shared across all seeds; per-seed deltas averaged WITHIN each replicate before taking percentiles (not averaged across independent per-seed CIs after the fact).",
+          "n_replicates": 10000,
+          "n_seeds": 3,
+          "per_seed_point_deltas": {
+            "7702": 0.0,
+            "7703": 0.0,
+            "7704": -0.011363636363636354
+          },
+          "point_delta": -0.0037878787878787845
+        }
+      }
+    ],
+    "status": "DEVELOPMENT_ONLY_CURRENT_LABEL_PROXY_ABLATION"
+  },
+  "assumption": "SAFE/UNSAFE provisional labels act as human-label proxy; UNCERTAIN is excluded.",
+  "binary_proxy_count": 108,
+  "excluded_uncertain_count": 42,
+  "fatal_validity_warning": "These 150 provisional-label items have been inspected during method development. Any method selected using this report requires a new untouched human-labeled test set.",
+  "prediction_sha256": "0e6cbe274f6fc704b92df0993a68ba4efa6102b6ee5b5861b9031c02b76308d5",
+  "status": "DEVELOPMENT_ONLY_CURRENT_LABEL_PROXY_NOT_FINAL_EVIDENCE",
+  "uncertain_sensitivity": {
+    "all_uncertain_as_negative": {
+      "full_minus_baselines": {
+        "cfg_capability_only": -0.010889384046568251,
+        "dcrg_untyped_guards": 0.008582886570499326,
+        "dcrg_without_protocol_actors": 0.0010079097483443045
+      },
+      "mean_seed_auprc": {
+        "cfg_capability_only": 0.7463927125147268,
+        "dcrg_full": 0.7355033284681586,
+        "dcrg_untyped_guards": 0.7269204418976593,
+        "dcrg_without_protocol_actors": 0.7344954187198143
+      }
+    },
+    "all_uncertain_as_unsafe": {
+      "full_minus_baselines": {
+        "cfg_capability_only": 0.013305092419444553,
+        "dcrg_untyped_guards": 0.003248543758518019,
+        "dcrg_without_protocol_actors": -0.000431133398449135
+      },
+      "mean_seed_auprc": {
+        "cfg_capability_only": 0.931315925659696,
+        "dcrg_full": 0.9446210180791406,
+        "dcrg_untyped_guards": 0.9413724743206225,
+        "dcrg_without_protocol_actors": 0.9450521514775897
+      }
+    },
+    "exclude": {
+      "full_minus_baselines": {
+        "cfg_capability_only": 0.013707595017770968,
+        "dcrg_untyped_guards": 0.004273142520597628,
+        "dcrg_without_protocol_actors": -0.0009091732883338421
+      },
+      "mean_seed_auprc": {
+        "cfg_capability_only": 0.9251389195262097,
+        "dcrg_full": 0.9388465145439807,
+        "dcrg_untyped_guards": 0.9345733720233831,
+        "dcrg_without_protocol_actors": 0.9397556878323146
+      }
+    }
+  }
+}

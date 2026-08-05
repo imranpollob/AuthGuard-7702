@@ -7,6 +7,7 @@ folds.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -48,8 +49,13 @@ def _arrays_by_seed(frame: pd.DataFrame, model_name: str, column: str):
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--results-dir", default=RESULTS_DIR)
+    parser.add_argument("--feature-path", default=FEATURE_PATH)
+    args = parser.parse_args()
+    os.makedirs(args.results_dir, exist_ok=True)
     primary = load_primary_dataset()
-    features = pd.read_csv(FEATURE_PATH)
+    features = pd.read_csv(args.feature_path)
     merged = primary.merge(
         features[["sample_id", *DCRG_FEATURE_ORDER]],
         on="sample_id",
@@ -103,9 +109,9 @@ def main() -> int:
 
     fold_frame = pd.DataFrame(fold_rows)
     prediction_frame = pd.DataFrame(prediction_rows)
-    fold_frame.to_csv(os.path.join(RESULTS_DIR, "dcrg_ablation_fold_seed.csv"), index=False)
+    fold_frame.to_csv(os.path.join(args.results_dir, "dcrg_ablation_fold_seed.csv"), index=False)
     prediction_frame.to_csv(
-        os.path.join(RESULTS_DIR, "dcrg_ablation_predictions.csv.gz"),
+        os.path.join(args.results_dir, "dcrg_ablation_predictions.csv.gz"),
         index=False,
         compression="gzip",
     )
@@ -156,7 +162,7 @@ def main() -> int:
             "they must be reevaluated against human-final and post-cutoff labels."
         ),
     }
-    report_path = os.path.join(RESULTS_DIR, "dcrg_ablation_report.json")
+    report_path = os.path.join(args.results_dir, "dcrg_ablation_report.json")
     with open(report_path, "w") as handle:
         json.dump(report, handle, indent=2, sort_keys=True)
     print(json.dumps(report, indent=2, sort_keys=True), flush=True)

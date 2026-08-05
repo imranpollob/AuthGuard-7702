@@ -1,0 +1,795 @@
+{
+  "bound": {
+    "failure_probability": 0.05,
+    "method": "one-sided Clopper-Pearson upper confidence bound",
+    "selection_population": "COMPLETE validation items only"
+  },
+  "claim_boundary": "Thresholds use inherited source-rule labels. Proxy labels are a post-selection distribution-shift diagnostic, not human evidence. A final claim requires a fresh, untouched independently labeled population.",
+  "created_at_utc": "2026-08-04T23:30:27.339637+00:00",
+  "model": "dcrg_full",
+  "results": {
+    "0.05": {
+      "gold_test_proxy_distribution_shift": {
+        "mean_across_seeds": {
+          "defer_rate": 0.4876543209876543,
+          "low_coverage": 0.10185185185185185,
+          "low_empirical_risk": 0.3636363636363636,
+          "low_risk_upper_bound_95pct": 0.6501884654280824,
+          "low_unsafe_count": 4.0,
+          "n_defer": 52.666666666666664,
+          "n_low_observed_risk": 11.0,
+          "n_warn": 44.333333333333336,
+          "warn_fpr": 0.05000000000000001,
+          "warn_recall": 0.49242424242424243
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.49074074074074076,
+            "low_coverage": 0.10185185185185185,
+            "low_empirical_risk": 0.36363636363636365,
+            "low_risk_upper_bound_95pct": 0.6501884654280824,
+            "low_unsafe_count": 4,
+            "n": 108,
+            "n_defer": 53,
+            "n_low_observed_risk": 11,
+            "n_warn": 44,
+            "seed": 7702,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          },
+          {
+            "defer_rate": 0.48148148148148145,
+            "low_coverage": 0.10185185185185185,
+            "low_empirical_risk": 0.36363636363636365,
+            "low_risk_upper_bound_95pct": 0.6501884654280824,
+            "low_unsafe_count": 4,
+            "n": 108,
+            "n_defer": 52,
+            "n_low_observed_risk": 11,
+            "n_warn": 45,
+            "seed": 7703,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.5
+          },
+          {
+            "defer_rate": 0.49074074074074076,
+            "low_coverage": 0.10185185185185185,
+            "low_empirical_risk": 0.36363636363636365,
+            "low_risk_upper_bound_95pct": 0.6501884654280824,
+            "low_unsafe_count": 4,
+            "n": 108,
+            "n_defer": 53,
+            "n_low_observed_risk": 11,
+            "n_warn": 44,
+            "seed": 7704,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          }
+        ]
+      },
+      "inherited_outer_test": {
+        "mean_across_seeds": {
+          "defer_rate": 0.5850837138508371,
+          "low_coverage": 0.0547945205479452,
+          "low_empirical_risk": 0.01667608818541549,
+          "low_risk_upper_bound_95pct": 0.05156179629739575,
+          "low_unsafe_count": 2.0,
+          "n_defer": 1281.3333333333333,
+          "n_low_observed_risk": 120.0,
+          "n_warn": 788.6666666666666,
+          "warn_fpr": 0.052631578947368425,
+          "warn_recall": 0.9789087574507107
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.5853881278538813,
+            "low_coverage": 0.05570776255707763,
+            "low_empirical_risk": 0.01639344262295082,
+            "low_risk_upper_bound_95pct": 0.050703791016574996,
+            "low_unsafe_count": 2,
+            "n": 2190,
+            "n_defer": 1282,
+            "n_low_observed_risk": 122,
+            "n_warn": 786,
+            "seed": 7702,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9779917469050894
+          },
+          {
+            "defer_rate": 0.580365296803653,
+            "low_coverage": 0.05570776255707763,
+            "low_empirical_risk": 0.01639344262295082,
+            "low_risk_upper_bound_95pct": 0.050703791016574996,
+            "low_unsafe_count": 2,
+            "n": 2190,
+            "n_defer": 1271,
+            "n_low_observed_risk": 122,
+            "n_warn": 797,
+            "seed": 7703,
+            "warn_fpr": 0.05536568694463431,
+            "warn_recall": 0.984869325997249
+          },
+          {
+            "defer_rate": 0.5894977168949772,
+            "low_coverage": 0.052968036529680365,
+            "low_empirical_risk": 0.017241379310344827,
+            "low_risk_upper_bound_95pct": 0.05327780685903724,
+            "low_unsafe_count": 2,
+            "n": 2190,
+            "n_defer": 1291,
+            "n_low_observed_risk": 116,
+            "n_warn": 783,
+            "seed": 7704,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9738651994497937
+          }
+        ]
+      }
+    },
+    "0.1": {
+      "gold_test_proxy_distribution_shift": {
+        "mean_across_seeds": {
+          "defer_rate": 0.3487654320987654,
+          "low_coverage": 0.24074074074074073,
+          "low_empirical_risk": 0.4230769230769231,
+          "low_risk_upper_bound_95pct": 0.601575845244567,
+          "low_unsafe_count": 11.0,
+          "n_defer": 37.666666666666664,
+          "n_low_observed_risk": 26.0,
+          "n_warn": 44.333333333333336,
+          "warn_fpr": 0.05000000000000001,
+          "warn_recall": 0.49242424242424243
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.35185185185185186,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 38,
+            "n_low_observed_risk": 26,
+            "n_warn": 44,
+            "seed": 7702,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          },
+          {
+            "defer_rate": 0.3425925925925926,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 37,
+            "n_low_observed_risk": 26,
+            "n_warn": 45,
+            "seed": 7703,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.5
+          },
+          {
+            "defer_rate": 0.35185185185185186,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 38,
+            "n_low_observed_risk": 26,
+            "n_warn": 44,
+            "seed": 7704,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          }
+        ]
+      },
+      "inherited_outer_test": {
+        "mean_across_seeds": {
+          "defer_rate": 0.48477929984779305,
+          "low_coverage": 0.15509893455098933,
+          "low_empirical_risk": 0.0185412749227616,
+          "low_risk_upper_bound_95pct": 0.0354697306343916,
+          "low_unsafe_count": 6.333333333333333,
+          "n_defer": 1061.6666666666667,
+          "n_low_observed_risk": 339.6666666666667,
+          "n_warn": 788.6666666666666,
+          "warn_fpr": 0.052631578947368425,
+          "warn_recall": 0.9789087574507107
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.4853881278538813,
+            "low_coverage": 0.15570776255707763,
+            "low_empirical_risk": 0.020527859237536656,
+            "low_risk_upper_bound_95pct": 0.03821041974807482,
+            "low_unsafe_count": 7,
+            "n": 2190,
+            "n_defer": 1063,
+            "n_low_observed_risk": 341,
+            "n_warn": 786,
+            "seed": 7702,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9779917469050894
+          },
+          {
+            "defer_rate": 0.4840182648401826,
+            "low_coverage": 0.15205479452054796,
+            "low_empirical_risk": 0.009009009009009009,
+            "low_risk_upper_bound_95pct": 0.023118527171778838,
+            "low_unsafe_count": 3,
+            "n": 2190,
+            "n_defer": 1060,
+            "n_low_observed_risk": 333,
+            "n_warn": 797,
+            "seed": 7703,
+            "warn_fpr": 0.05536568694463431,
+            "warn_recall": 0.984869325997249
+          },
+          {
+            "defer_rate": 0.4849315068493151,
+            "low_coverage": 0.15753424657534246,
+            "low_empirical_risk": 0.02608695652173913,
+            "low_risk_upper_bound_95pct": 0.04508024498332113,
+            "low_unsafe_count": 9,
+            "n": 2190,
+            "n_defer": 1062,
+            "n_low_observed_risk": 345,
+            "n_warn": 783,
+            "seed": 7704,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9738651994497937
+          }
+        ]
+      }
+    },
+    "0.2": {
+      "gold_test_proxy_distribution_shift": {
+        "mean_across_seeds": {
+          "defer_rate": 0.3487654320987654,
+          "low_coverage": 0.24074074074074073,
+          "low_empirical_risk": 0.4230769230769231,
+          "low_risk_upper_bound_95pct": 0.601575845244567,
+          "low_unsafe_count": 11.0,
+          "n_defer": 37.666666666666664,
+          "n_low_observed_risk": 26.0,
+          "n_warn": 44.333333333333336,
+          "warn_fpr": 0.05000000000000001,
+          "warn_recall": 0.49242424242424243
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.35185185185185186,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 38,
+            "n_low_observed_risk": 26,
+            "n_warn": 44,
+            "seed": 7702,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          },
+          {
+            "defer_rate": 0.3425925925925926,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 37,
+            "n_low_observed_risk": 26,
+            "n_warn": 45,
+            "seed": 7703,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.5
+          },
+          {
+            "defer_rate": 0.35185185185185186,
+            "low_coverage": 0.24074074074074073,
+            "low_empirical_risk": 0.4230769230769231,
+            "low_risk_upper_bound_95pct": 0.601575845244567,
+            "low_unsafe_count": 11,
+            "n": 108,
+            "n_defer": 38,
+            "n_low_observed_risk": 26,
+            "n_warn": 44,
+            "seed": 7704,
+            "warn_fpr": 0.05,
+            "warn_recall": 0.48863636363636365
+          }
+        ]
+      },
+      "inherited_outer_test": {
+        "mean_across_seeds": {
+          "defer_rate": 0.482496194824962,
+          "low_coverage": 0.1573820395738204,
+          "low_empirical_risk": 0.018273746410696165,
+          "low_risk_upper_bound_95pct": 0.03496153080746007,
+          "low_unsafe_count": 6.333333333333333,
+          "n_defer": 1056.6666666666667,
+          "n_low_observed_risk": 344.6666666666667,
+          "n_warn": 788.6666666666666,
+          "warn_fpr": 0.052631578947368425,
+          "warn_recall": 0.9789087574507107
+        },
+        "per_seed": [
+          {
+            "defer_rate": 0.4831050228310502,
+            "low_coverage": 0.15799086757990868,
+            "low_empirical_risk": 0.02023121387283237,
+            "low_risk_upper_bound_95pct": 0.03766318266792743,
+            "low_unsafe_count": 7,
+            "n": 2190,
+            "n_defer": 1058,
+            "n_low_observed_risk": 346,
+            "n_warn": 786,
+            "seed": 7702,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9779917469050894
+          },
+          {
+            "defer_rate": 0.4817351598173516,
+            "low_coverage": 0.154337899543379,
+            "low_empirical_risk": 0.008875739644970414,
+            "low_risk_upper_bound_95pct": 0.02277894574417027,
+            "low_unsafe_count": 3,
+            "n": 2190,
+            "n_defer": 1055,
+            "n_low_observed_risk": 338,
+            "n_warn": 797,
+            "seed": 7703,
+            "warn_fpr": 0.05536568694463431,
+            "warn_recall": 0.984869325997249
+          },
+          {
+            "defer_rate": 0.482648401826484,
+            "low_coverage": 0.1598173515981735,
+            "low_empirical_risk": 0.025714285714285714,
+            "low_risk_upper_bound_95pct": 0.0444424640102825,
+            "low_unsafe_count": 9,
+            "n": 2190,
+            "n_defer": 1057,
+            "n_low_observed_risk": 350,
+            "n_warn": 783,
+            "seed": 7704,
+            "warn_fpr": 0.05126452494873548,
+            "warn_recall": 0.9738651994497937
+          }
+        ]
+      }
+    }
+  },
+  "risk_targets": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "status": "DEVELOPMENT_ONLY_RISK_CONTROLLED_POLICY_EXPERIMENT",
+  "threshold_fits": [
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.0,
+          "n_validation_low": 62,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": 0.04716951137535681,
+          "threshold": 0.011780384635251074
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03076923076923077,
+          "n_validation_low": 65,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.09370678347465346,
+          "threshold": 0.18604599140211098
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.1038961038961039,
+          "n_validation_low": 77,
+          "n_validation_unsafe": 8,
+          "risk_upper_bound": 0.17966124316868057,
+          "threshold": 0.8177552159764138
+        }
+      },
+      "seed": 7702,
+      "test_fold": 0,
+      "warning_threshold_5pct_fpr": 0.3726964337236122
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03278688524590164,
+          "n_validation_low": 61,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.0996348801942324,
+          "threshold": 0.253801306312324
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.06349206349206349,
+          "n_validation_low": 63,
+          "n_validation_unsafe": 4,
+          "risk_upper_bound": 0.13942941998524516,
+          "threshold": 0.8070201951815772
+        }
+      },
+      "seed": 7702,
+      "test_fold": 1,
+      "warning_threshold_5pct_fpr": 0.19787445358890077
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.008928571428571428,
+          "n_validation_low": 112,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.04165455320087756,
+          "threshold": 0.3680896001910138
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.05128205128205128,
+          "n_validation_low": 117,
+          "n_validation_unsafe": 6,
+          "risk_upper_bound": 0.09870290749702404,
+          "threshold": 0.5365794698871835
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.13846153846153847,
+          "n_validation_low": 130,
+          "n_validation_unsafe": 18,
+          "risk_upper_bound": 0.19838186517352271,
+          "threshold": 0.9247083917541201
+        }
+      },
+      "seed": 7702,
+      "test_fold": 2,
+      "warning_threshold_5pct_fpr": 0.08641958199101622
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.02,
+          "n_validation_low": 50,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.09139813071969738,
+          "threshold": 0.6838110509481122
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.09259259259259259,
+          "n_validation_low": 54,
+          "n_validation_unsafe": 5,
+          "risk_upper_bound": 0.1848784434166947,
+          "threshold": 0.9047959015126252
+        }
+      },
+      "seed": 7702,
+      "test_fold": 3,
+      "warning_threshold_5pct_fpr": 0.25609707602455073
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.013513513513513514,
+          "n_validation_low": 74,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06250722658547939,
+          "threshold": 0.6253247429545024
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.013513513513513514,
+          "n_validation_low": 74,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06250722658547939,
+          "threshold": 0.6253247429545024
+        }
+      },
+      "seed": 7702,
+      "test_fold": 4,
+      "warning_threshold_5pct_fpr": 0.6894798400272153
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.0,
+          "n_validation_low": 62,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": 0.04716951137535681,
+          "threshold": 0.013846218465377128
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03076923076923077,
+          "n_validation_low": 65,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.09370678347465346,
+          "threshold": 0.20060283897621334
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.1038961038961039,
+          "n_validation_low": 77,
+          "n_validation_unsafe": 8,
+          "risk_upper_bound": 0.17966124316868057,
+          "threshold": 0.7921132032418657
+        }
+      },
+      "seed": 7703,
+      "test_fold": 0,
+      "warning_threshold_5pct_fpr": 0.385919933262539
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03278688524590164,
+          "n_validation_low": 61,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.0996348801942324,
+          "threshold": 0.2737914740610851
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.06349206349206349,
+          "n_validation_low": 63,
+          "n_validation_unsafe": 4,
+          "risk_upper_bound": 0.13942941998524516,
+          "threshold": 0.8464919493201275
+        }
+      },
+      "seed": 7703,
+      "test_fold": 1,
+      "warning_threshold_5pct_fpr": 0.207520507058701
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.008928571428571428,
+          "n_validation_low": 112,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.04165455320087756,
+          "threshold": 0.3410478502502351
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.05128205128205128,
+          "n_validation_low": 117,
+          "n_validation_unsafe": 6,
+          "risk_upper_bound": 0.09870290749702404,
+          "threshold": 0.551732392797968
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.13846153846153847,
+          "n_validation_low": 130,
+          "n_validation_unsafe": 18,
+          "risk_upper_bound": 0.19838186517352271,
+          "threshold": 0.9254010487456371
+        }
+      },
+      "seed": 7703,
+      "test_fold": 2,
+      "warning_threshold_5pct_fpr": 0.09112458917480659
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.02,
+          "n_validation_low": 50,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.09139813071969738,
+          "threshold": 0.6255413372287215
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.09259259259259259,
+          "n_validation_low": 54,
+          "n_validation_unsafe": 5,
+          "risk_upper_bound": 0.1848784434166947,
+          "threshold": 0.8947102095305061
+        }
+      },
+      "seed": 7703,
+      "test_fold": 3,
+      "warning_threshold_5pct_fpr": 0.2651233787985183
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.013333333333333334,
+          "n_validation_low": 75,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06169454289942645,
+          "threshold": 0.6667310687292954
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.013333333333333334,
+          "n_validation_low": 75,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06169454289942645,
+          "threshold": 0.6667310687292954
+        }
+      },
+      "seed": 7703,
+      "test_fold": 4,
+      "warning_threshold_5pct_fpr": 0.6870562701598958
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.0,
+          "n_validation_low": 62,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": 0.04716951137535681,
+          "threshold": 0.014496749146929038
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03076923076923077,
+          "n_validation_low": 65,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.09370678347465346,
+          "threshold": 0.18760301057241377
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.1038961038961039,
+          "n_validation_low": 77,
+          "n_validation_unsafe": 8,
+          "risk_upper_bound": 0.17966124316868057,
+          "threshold": 0.7849987737412658
+        }
+      },
+      "seed": 7704,
+      "test_fold": 0,
+      "warning_threshold_5pct_fpr": 0.4029802178911649
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.03278688524590164,
+          "n_validation_low": 61,
+          "n_validation_unsafe": 2,
+          "risk_upper_bound": 0.0996348801942324,
+          "threshold": 0.24652097170135934
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.06349206349206349,
+          "n_validation_low": 63,
+          "n_validation_unsafe": 4,
+          "risk_upper_bound": 0.13942941998524516,
+          "threshold": 0.8210142051834357
+        }
+      },
+      "seed": 7704,
+      "test_fold": 1,
+      "warning_threshold_5pct_fpr": 0.2146659554397304
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": 0.008928571428571428,
+          "n_validation_low": 112,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.04165455320087756,
+          "threshold": 0.34646585002651414
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.05128205128205128,
+          "n_validation_low": 117,
+          "n_validation_unsafe": 6,
+          "risk_upper_bound": 0.09870290749702404,
+          "threshold": 0.5707805308537466
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.13846153846153847,
+          "n_validation_low": 130,
+          "n_validation_unsafe": 18,
+          "risk_upper_bound": 0.19838186517352271,
+          "threshold": 0.9206581681052838
+        }
+      },
+      "seed": 7704,
+      "test_fold": 2,
+      "warning_threshold_5pct_fpr": 0.07408635710281007
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.02,
+          "n_validation_low": 50,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.09139813071969738,
+          "threshold": 0.6695408686647559
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.09259259259259259,
+          "n_validation_low": 54,
+          "n_validation_unsafe": 5,
+          "risk_upper_bound": 0.1848784434166947,
+          "threshold": 0.9045817236542211
+        }
+      },
+      "seed": 7704,
+      "test_fold": 3,
+      "warning_threshold_5pct_fpr": 0.2710155364821271
+    },
+    {
+      "low_thresholds": {
+        "0.05": {
+          "empirical_validation_risk": null,
+          "n_validation_low": 0,
+          "n_validation_unsafe": 0,
+          "risk_upper_bound": null,
+          "threshold": null
+        },
+        "0.1": {
+          "empirical_validation_risk": 0.013333333333333334,
+          "n_validation_low": 75,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06169454289942645,
+          "threshold": 0.6770545333811906
+        },
+        "0.2": {
+          "empirical_validation_risk": 0.013333333333333334,
+          "n_validation_low": 75,
+          "n_validation_unsafe": 1,
+          "risk_upper_bound": 0.06169454289942645,
+          "threshold": 0.6770545333811906
+        }
+      },
+      "seed": 7704,
+      "test_fold": 4,
+      "warning_threshold_5pct_fpr": 0.6827573329222331
+    }
+  ],
+  "warning_threshold": "validation-derived nominal 5% FPR"
+}
