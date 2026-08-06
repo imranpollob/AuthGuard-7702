@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+  "evidence_hash": "d3668e1af131150470504c65f0cfd2fa0399aa75ec4ec23d7f9070f1fb5eed6f",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unresolved_proxy_delegatecall\", \"upgradeable_admin_capability\"], \"evidence\": [\"proxy_evidence.delegatecall_count=2, eip1967_slot_present=True\", \"admin_ownership_selectors_present=['upgradeToAndCall(address,bytes)']\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4 exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as OKX_SmartWalletEntry.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall",
+      "upgradeable_admin_capability"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=2, eip1967_slot_present=True",
+      "admin_ownership_selectors_present=['upgradeToAndCall(address,bytes)']"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4 exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as OKX_SmartWalletEntry."
+  }
+}

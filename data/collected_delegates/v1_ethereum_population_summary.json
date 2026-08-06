@@ -1,0 +1,10 @@
+{
+  "chain": "ethereum",
+  "n_authorization_entries_total": 25439,
+  "n_authorization_entries_recovered_signer": 25439,
+  "n_distinct_nonzero_delegates": 87,
+  "n_notscreenable": 1,
+  "n_screenable": 86,
+  "population_csv": "/home/pollmix/Coding/AuthGuard-7702/data/collected_delegates/v1_ethereum_population.csv",
+  "authorizations_enriched_csv": "/home/pollmix/Coding/AuthGuard-7702/data/collected_delegates/v1_ethereum_authorizations_enriched.csv"
+}

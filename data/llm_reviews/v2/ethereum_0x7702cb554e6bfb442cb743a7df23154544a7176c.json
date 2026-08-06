@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x7702cb554e6bfb442cb743a7df23154544a7176c",
+  "evidence_hash": "45ac11ec2a2c3945c2a1574dbbd103f3250d62974fdaf83df8605c1499b8b752",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x7702cb554e6bfb442cb743a7df23154544a7176c.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unresolved_proxy_delegatecall\"], \"evidence\": [\"proxy_evidence.delegatecall_count=4, eip1967_slot_present=True\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x7702cb554e6bfb442cb743a7df23154544a7176c exposes unresolved_proxy_delegatecall based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as Coinbase_EIP7702Proxy.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=4, eip1967_slot_present=True"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x7702cb554e6bfb442cb743a7df23154544a7176c exposes unresolved_proxy_delegatecall based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as Coinbase_EIP7702Proxy."
+  }
+}

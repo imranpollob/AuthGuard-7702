@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x93a81b920a9668762e463d243c12ce73003e240a",
+  "evidence_hash": "76c38e9b1635cc094b1d6b50569c3dda283884fd3e432ea2951afcccfcf941b1",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x93a81b920a9668762e463d243c12ce73003e240a.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"token_movement_capability\"], \"evidence\": [\"token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True\"], \"uncertainties\": [\"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x93a81b920a9668762e463d243c12ce73003e240a exposes token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True"
+    ],
+    "uncertainties": [
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x93a81b920a9668762e463d243c12ce73003e240a exposes token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

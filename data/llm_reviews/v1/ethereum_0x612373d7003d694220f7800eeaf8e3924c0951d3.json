@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x612373d7003d694220f7800eeaf8e3924c0951d3",
+  "evidence_hash": "78f745f45587b1a6987375c7a16c58d180754ed12b446e5040580b9ef6dd572e",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v1/ethereum_0x612373d7003d694220f7800eeaf8e3924c0951d3.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unresolved_proxy_delegatecall\"], \"evidence\": [\"proxy_evidence.delegatecall_count=1, eip1967_slot_present=False\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x612373d7003d694220f7800eeaf8e3924c0951d3 exposes unresolved_proxy_delegatecall based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=1, eip1967_slot_present=False"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x612373d7003d694220f7800eeaf8e3924c0951d3 exposes unresolved_proxy_delegatecall based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

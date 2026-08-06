@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x24c71aa9aa0ce5fb95ffc0f276eced02467d4e4d",
+  "evidence_hash": "7fd9c1d0532fe7cc658b44a2d70d073dfe6921c280aaacccaf581ae705ecab86",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x24c71aa9aa0ce5fb95ffc0f276eced02467d4e4d.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x24c71aa9aa0ce5fb95ffc0f276eced02467d4e4d exposes ownership_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x24c71aa9aa0ce5fb95ffc0f276eced02467d4e4d exposes ownership_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "chain": "ethereum",
+  "address": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b",
+  "evidence_hash": "e2107648c8049554b9396461b2e2042162279ebaa9fd922e294fc4f05a6093ee",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0000fb7702036ff9f76044a501ac1aa74cbab16b.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"high\", \"risk_categories\": [], \"evidence\": [\"No DELEGATECALL, no EIP-1967 proxy slot, no admin/ownership selector, no token-movement/approval selector, no sensitive-name selector match, no SELFDESTRUCT in the disassembly.\"], \"uncertainties\": [], \"summary\": \"0x0000fb7702036ff9f76044a501ac1aa74cbab16b: no security-relevant capability was identified from the available static evidence.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "high",
+    "risk_categories": [],
+    "evidence": [
+      "No DELEGATECALL, no EIP-1967 proxy slot, no admin/ownership selector, no token-movement/approval selector, no sensitive-name selector match, no SELFDESTRUCT in the disassembly."
+    ],
+    "uncertainties": [],
+    "summary": "0x0000fb7702036ff9f76044a501ac1aa74cbab16b: no security-relevant capability was identified from the available static evidence."
+  }
+}

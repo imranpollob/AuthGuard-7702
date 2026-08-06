@@ -1,0 +1,82 @@
+{
+  "anon_id": "EV_a31eb7f54202ad57",
+  "chain": "ethereum",
+  "address": "0xc1611acedea2bf2dc7fc3c1313825da2c9ded0e5",
+  "runtime_bytecode_sha256": "57d81566f328461cfd4598037337c74445ed556cd8e1055babf263b5e7d696e3",
+  "runtime_bytecode_length_bytes": 3,
+  "opcode_count": 3,
+  "opcode_disassembly": [
+    "PUSH0",
+    "PUSH0",
+    "RETURN"
+  ],
+  "decompiled_or_source_representation": {
+    "status": "NOT_AVAILABLE_OFFLINE",
+    "reason": "No decompiler (e.g. Gigahorse) or verified-source API is wired into this offline pipeline; only linear-sweep disassembly is available."
+  },
+  "verified_source_code_availability": {
+    "status": "UNAVAILABLE",
+    "reason": "Sourcify request failed: HTTP Error 429: Too Many Requests"
+  },
+  "proxy_evidence": {
+    "is_eip7702_designator": false,
+    "designator_target_address": null,
+    "eip1967_implementation_slot_present": false,
+    "eip1967_admin_slot_present": false,
+    "eip1967_beacon_slot_present": false,
+    "has_delegatecall": false,
+    "delegatecall_count": 0,
+    "delegatecall_last_position_ratio": null,
+    "resembles_minimal_forwarder": false,
+    "admin_ownership_selectors_present": {},
+    "any_admin_ownership_selector_present": false
+  },
+  "storage_operations": {
+    "n_sstore": 0,
+    "n_sload": 0
+  },
+  "structural": {
+    "n_call": 0,
+    "n_staticcall": 0,
+    "n_delegatecall": 0,
+    "n_callcode": 0,
+    "n_create": 0,
+    "n_selfdestruct": 0,
+    "n_log": 0,
+    "n_jump": 0,
+    "n_jumpi": 0,
+    "n_jumpdest": 0,
+    "n_push": 0,
+    "has_sensitive_selector": 0.0,
+    "n_sensitive_selectors": 0
+  },
+  "token_transfer_evidence": {
+    "token_movement_selectors_present": {},
+    "any_token_movement_selector_present": false,
+    "approval_selector_present": false
+  },
+  "authorization_history": {
+    "status": "AVAILABLE_FROM_FROZEN_COLLECTOR",
+    "delegate_address": "0xc1611acedea2bf2dc7fc3c1313825da2c9ded0e5",
+    "first_observed_block": 25683716,
+    "first_observed_transaction": "0x9507e867211c0817718ec48f6c915af9a4068398051f3af8936dc647913cdf69",
+    "observed_authorization_count": 1,
+    "distinct_recovered_authorities": 1,
+    "distinct_tx_senders": 1,
+    "provenance_note": "Authorizing EOAs are recovered from EIP-7702 authorization-tuple signatures (not assumed from tx.from). These are observation counts, not a security label."
+  },
+  "transaction_history_statistics": {
+    "status": "NOT_AVAILABLE_OFFLINE",
+    "reason": "Requires a live RPC/indexer query, not performed for this packet."
+  },
+  "explorer_link": "https://etherscan.io/address/0xc1611acedea2bf2dc7fc3c1313825da2c9ded0e5",
+  "known_project": null,
+  "audit_links": {
+    "status": "NOT_AVAILABLE_OFFLINE"
+  },
+  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "deterministic_summary": "Runtime bytecode length: 3 bytes (3 decoded opcodes). Structural counts: CALL=0, STATICCALL=0, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=0.",
+  "exact_bytecode_id": "EXACT00496",
+  "bytecode_family_id": "FAM00350",
+  "bytecode_family_size": 1
+}

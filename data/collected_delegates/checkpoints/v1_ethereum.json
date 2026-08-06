@@ -1,0 +1,13 @@
+{
+  "chain": "ethereum",
+  "run_id": "v1",
+  "last_scanned_block": 25694820,
+  "n_blocks_scanned": 2001,
+  "n_type4_txs": 7368,
+  "n_authorization_entries": 25439,
+  "n_rpc_errors": 0,
+  "last_run_wall_seconds": 326.60635352134705,
+  "last_run_blocks_per_second": 6.126641378607518,
+  "last_run_n_blocks": 2001,
+  "output_csv": "/home/pollmix/Coding/AuthGuard-7702/data/collected_delegates/v1_ethereum_authorizations_raw.csv"
+}

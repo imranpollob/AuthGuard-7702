@@ -1,0 +1,23 @@
+{
+  "chain": "ethereum",
+  "address": "0xc3c89ff8589644332c916d9c6ec2883eb69d44e5",
+  "evidence_hash": "4308c83bf2c71e3b27df94560002c93616a313c51c5917ce62d246f5d0401dc2",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xc3c89ff8589644332c916d9c6ec2883eb69d44e5.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"token_movement_capability\"], \"evidence\": [\"token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False\"], \"uncertainties\": [\"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\"], \"summary\": \"0xc3c89ff8589644332c916d9c6ec2883eb69d44e5 exposes token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False"
+    ],
+    "uncertainties": [
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone."
+    ],
+    "summary": "0xc3c89ff8589644332c916d9c6ec2883eb69d44e5 exposes token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

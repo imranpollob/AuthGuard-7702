@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0xc4069ed3b92309b228682a1da37ab1cff819b757",
+  "evidence_hash": "412d4bdcd4825016a06418bafd74e7187890a1aad48b9eb76e2fce55f65af3fe",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xc4069ed3b92309b228682a1da37ab1cff819b757.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\", \"token_movement_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0xc4069ed3b92309b228682a1da37ab1cff819b757 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0xc4069ed3b92309b228682a1da37ab1cff819b757 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

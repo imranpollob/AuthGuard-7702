@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x50e8e9c7638286137c18b2edc6bfad36c6bbe66e",
+  "evidence_hash": "c63eb7d15465c76d48e06791952c8392d982b77ff0966750f5234f68342c275f",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x50e8e9c7638286137c18b2edc6bfad36c6bbe66e.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"ownership_admin_capability\", \"token_movement_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\"], \"summary\": \"0x50e8e9c7638286137c18b2edc6bfad36c6bbe66e exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=False"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone."
+    ],
+    "summary": "0x50e8e9c7638286137c18b2edc6bfad36c6bbe66e exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

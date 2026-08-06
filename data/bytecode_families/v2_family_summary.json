@@ -1,0 +1,11 @@
+{
+  "n_screenable": 752,
+  "n_notscreenable": 8,
+  "n_exact_bytecode_groups": 669,
+  "n_bytecode_families": 454,
+  "singleton_families": 407,
+  "singleton_pct": 89.6,
+  "largest_family_size": 212,
+  "similarity_threshold": 0.85,
+  "output_csv": "/home/pollmix/Coding/AuthGuard-7702/data/bytecode_families/v2_family_assignment.csv"
+}

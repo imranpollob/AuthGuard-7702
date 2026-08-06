@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0xb3c955c146e076c2082cb298b6ee173d9ccaa1a4",
+  "evidence_hash": "8dbd6d15381ca3003b5049a186ad3e6da10d1ae901e6047514f9f2cb7b62515a",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xb3c955c146e076c2082cb298b6ee173d9ccaa1a4.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\", \"token_movement_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=True\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0xb3c955c146e076c2082cb298b6ee173d9ccaa1a4 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=['transfer(address,uint256)'], approval_selector_present=True"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0xb3c955c146e076c2082cb298b6ee173d9ccaa1a4 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

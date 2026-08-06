@@ -1,0 +1,21 @@
+{
+  "chain": "ethereum",
+  "address": "0x74f2b03fdec0e9cc35aac867c67bc938233088fd",
+  "evidence_hash": "44e5cf1e7c374998a5c89482751c47c11a35c15ac38431b8edf21a0c8d13a6fb",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x74f2b03fdec0e9cc35aac867c67bc938233088fd.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [], \"evidence\": [\"No DELEGATECALL, no EIP-1967 proxy slot, no admin/ownership selector, no token-movement/approval selector, no sensitive-name selector match, no SELFDESTRUCT in the disassembly.\"], \"uncertainties\": [\"No verified source was found on Sourcify; this conclusion rests on bytecode-derived static evidence only.\"], \"summary\": \"0x74f2b03fdec0e9cc35aac867c67bc938233088fd: no security-relevant capability was identified from the available static evidence.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [],
+    "evidence": [
+      "No DELEGATECALL, no EIP-1967 proxy slot, no admin/ownership selector, no token-movement/approval selector, no sensitive-name selector match, no SELFDESTRUCT in the disassembly."
+    ],
+    "uncertainties": [
+      "No verified source was found on Sourcify; this conclusion rests on bytecode-derived static evidence only."
+    ],
+    "summary": "0x74f2b03fdec0e9cc35aac867c67bc938233088fd: no security-relevant capability was identified from the available static evidence."
+  }
+}

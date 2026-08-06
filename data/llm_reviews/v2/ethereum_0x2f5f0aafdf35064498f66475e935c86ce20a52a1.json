@@ -1,0 +1,23 @@
+{
+  "chain": "ethereum",
+  "address": "0x2f5f0aafdf35064498f66475e935c86ce20a52a1",
+  "evidence_hash": "a8148ba6a5f6a6b02d5876e16fed48351c00fdb70a941d2962dfb8051a62da5c",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x2f5f0aafdf35064498f66475e935c86ce20a52a1.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"low\", \"risk_categories\": [\"destructive_capability_selfdestruct\"], \"evidence\": [\"structural.n_selfdestruct=1, no admin/ownership selector and no DELEGATECALL found anywhere in the disassembly\"], \"uncertainties\": [\"Linear-sweep disassembly (no jump-target/CFG validation) can misdecode data bytes -- e.g. CBOR metadata, PUSH immediates, or padding -- as opcodes including SELFDESTRUCT (0xFF). This SELFDESTRUCT count is not confirmed to be reachable code.\"], \"summary\": \"0x2f5f0aafdf35064498f66475e935c86ce20a52a1's disassembly contains 1 apparent SELFDESTRUCT instruction(s) with no ownership/admin selector detected anywhere in the bytecode, i.e. no static evidence of an access-control gate on this capability -- flagged R1 despite low confidence because of the disassembler caveat above.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "low",
+    "risk_categories": [
+      "destructive_capability_selfdestruct"
+    ],
+    "evidence": [
+      "structural.n_selfdestruct=1, no admin/ownership selector and no DELEGATECALL found anywhere in the disassembly"
+    ],
+    "uncertainties": [
+      "Linear-sweep disassembly (no jump-target/CFG validation) can misdecode data bytes -- e.g. CBOR metadata, PUSH immediates, or padding -- as opcodes including SELFDESTRUCT (0xFF). This SELFDESTRUCT count is not confirmed to be reachable code."
+    ],
+    "summary": "0x2f5f0aafdf35064498f66475e935c86ce20a52a1's disassembly contains 1 apparent SELFDESTRUCT instruction(s) with no ownership/admin selector detected anywhere in the bytecode, i.e. no static evidence of an access-control gate on this capability -- flagged R1 despite low confidence because of the disassembler caveat above."
+  }
+}

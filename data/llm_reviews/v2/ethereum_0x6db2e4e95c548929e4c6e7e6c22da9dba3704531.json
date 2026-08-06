@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0x6db2e4e95c548929e4c6e7e6c22da9dba3704531",
+  "evidence_hash": "63e4b90276acd533134d02674d0f1a567c2fc72d1bd9c54af3558d7b2703792b",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x6db2e4e95c548929e4c6e7e6c22da9dba3704531.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\", \"token_movement_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x6db2e4e95c548929e4c6e7e6c22da9dba3704531 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x6db2e4e95c548929e4c6e7e6c22da9dba3704531 exposes ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

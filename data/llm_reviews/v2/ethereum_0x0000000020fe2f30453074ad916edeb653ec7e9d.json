@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0x0000000020fe2f30453074ad916edeb653ec7e9d",
+  "evidence_hash": "a1228e90a83ac7306ff4a703d1c4ac15483a66e2ccef791e25d6f07034afec7e",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0000000020fe2f30453074ad916edeb653ec7e9d.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unresolved_proxy_delegatecall\", \"upgradeable_admin_capability\"], \"evidence\": [\"proxy_evidence.delegatecall_count=6, eip1967_slot_present=True\", \"admin_ownership_selectors_present=['upgradeToAndCall(address,bytes)']\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x0000000020fe2f30453074ad916edeb653ec7e9d exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as Biconomy_Nexus_v1.3.1.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall",
+      "upgradeable_admin_capability"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=6, eip1967_slot_present=True",
+      "admin_ownership_selectors_present=['upgradeToAndCall(address,bytes)']"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x0000000020fe2f30453074ad916edeb653ec7e9d exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as Biconomy_Nexus_v1.3.1."
+  }
+}

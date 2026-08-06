@@ -122,3 +122,7 @@ coverage/
 
 .DS_Store
 revision_v2/.venv/
+
+# Large generated authorization datasets
+data/collected_delegates/v2_ethereum_authorizations_raw.csv
+data/collected_delegates/v2_ethereum_authorizations_enriched.csv

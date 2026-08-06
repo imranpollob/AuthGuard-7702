@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0x5b96f01f67da8ed90ab93df39deeecd4bb559770",
+  "evidence_hash": "cfe78b4a62436ffcb0b8116a47d7880fb88774fb6361604dd681ccd63c5d0647",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x5b96f01f67da8ed90ab93df39deeecd4bb559770.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\", \"token_approval_capability\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=[], approval_selector_present=True\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x5b96f01f67da8ed90ab93df39deeecd4bb559770 exposes ownership_admin_capability, token_approval_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_approval_capability"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=[], approval_selector_present=True"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x5b96f01f67da8ed90ab93df39deeecd4bb559770 exposes ownership_admin_capability, token_approval_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

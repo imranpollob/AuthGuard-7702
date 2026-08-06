@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0xd6cedde84be40893d153be9d467cd6ad37875b28",
+  "evidence_hash": "c7b7fe92f21e0bf979f81564677c4ee20c1fc849ca1a3fd7e98c98be9513d2a3",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v1/ethereum_0xd6cedde84be40893d153be9d467cd6ad37875b28.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unresolved_proxy_delegatecall\", \"upgradeable_admin_capability\"], \"evidence\": [\"proxy_evidence.delegatecall_count=2, eip1967_slot_present=True\", \"admin_ownership_selectors_present=['upgradeTo(address)']\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed.\"], \"summary\": \"0xd6cedde84be40893d153be9d467cd6ad37875b28 exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as ZeroDev_Kernel_v3.3_7702.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall",
+      "upgradeable_admin_capability"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=2, eip1967_slot_present=True",
+      "admin_ownership_selectors_present=['upgradeTo(address)']"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "Selector presence does not establish that the upgrade function is actually access-controlled -- no guard/reachability analysis was performed."
+    ],
+    "summary": "0xd6cedde84be40893d153be9d467cd6ad37875b28 exposes unresolved_proxy_delegatecall, upgradeable_admin_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here. Documented as ZeroDev_Kernel_v3.3_7702."
+  }
+}

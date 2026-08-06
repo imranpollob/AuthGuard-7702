@@ -1,0 +1,30 @@
+{
+  "chain": "ethereum",
+  "address": "0x0c762fa05d775603c9bc4aed9824d746e4d9a5b0",
+  "evidence_hash": "fb753113045c9a427725a3c4ee3654ed3351e319c5eb645fe711fed6005457ea",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0c762fa05d775603c9bc4aed9824d746e4d9a5b0.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"ownership_admin_capability\", \"token_approval_capability\", \"destructive_capability_selfdestruct\"], \"evidence\": [\"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=[], approval_selector_present=True\", \"structural.n_selfdestruct=1\"], \"uncertainties\": [\"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"As above, linear-sweep SELFDESTRUCT counts are not confirmed reachable code.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x0c762fa05d775603c9bc4aed9824d746e4d9a5b0 exposes ownership_admin_capability, token_approval_capability, destructive_capability_selfdestruct based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "ownership_admin_capability",
+      "token_approval_capability",
+      "destructive_capability_selfdestruct"
+    ],
+    "evidence": [
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=[], approval_selector_present=True",
+      "structural.n_selfdestruct=1"
+    ],
+    "uncertainties": [
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "As above, linear-sweep SELFDESTRUCT counts are not confirmed reachable code.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x0c762fa05d775603c9bc4aed9824d746e4d9a5b0 exposes ownership_admin_capability, token_approval_capability, destructive_capability_selfdestruct based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}

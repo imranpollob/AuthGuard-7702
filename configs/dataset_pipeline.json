@@ -1,0 +1,33 @@
+{
+  "_comment": "Config for the fresh dataset-construction workflow (docs/dataset_workflow_plan.md). Block ranges are deliberately modest by default -- public RPC throughput is ~7-8 blocks/s single endpoint (see revision_v3/src/temporal/rpc_client.py). Widen via config, not code, once the pipeline is verified end to end.",
+  "run_id": "v2",
+  "chains": ["ethereum"],
+  "block_ranges": {
+    "ethereum": {
+      "start_block": null,
+      "end_block": null,
+      "lookback_blocks": 100000,
+      "_note": "If start_block/end_block are null, the collector resolves end_block = latest, start_block = latest - lookback_blocks at run time and records the resolved values into the run manifest."
+    }
+  },
+  "sleep_between_blocks": 0.0,
+  "family_similarity_threshold": 0.85,
+  "seed": 7702,
+  "llm_model_id": "claude-sonnet-5",
+  "prompt_version": "v1",
+  "paths": {
+    "collected_delegates": "data/collected_delegates",
+    "bytecode_families": "data/bytecode_families",
+    "evidence_packages": "data/evidence_packages",
+    "llm_reviews": "data/llm_reviews",
+    "human_reviews": "data/human_reviews",
+    "gold_dataset": "data/gold_dataset",
+    "split_manifests": "data/split_manifests",
+    "bytecode_cache": "dataset_pipeline/cache/bytecode_cache.json",
+    "sourcify_cache": "dataset_pipeline/cache/sourcify_cache.json"
+  },
+  "huang_source": {
+    "contracts_xlsx": "USENIX EIP-7702 artifact/eoa_detect/get_code/contracts_with_bytecode.xlsx",
+    "detect_result_jsonl": "USENIX EIP-7702 artifact/eoa_detect/detect_result.jsonl"
+  }
+}

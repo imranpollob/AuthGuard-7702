@@ -1,0 +1,30 @@
+{
+  "chain": "ethereum",
+  "address": "0x30e40f90d3f164192d33b98acaaeec8f39ac34cb",
+  "evidence_hash": "80c96a7bc54b0f9a732f0df1e7335358d8ae2eb06f2c972962f26b04d4cb9e0c",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x30e40f90d3f164192d33b98acaaeec8f39ac34cb.json",
+  "prompt_version": "v1",
+  "model_id": "claude-sonnet-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unresolved_proxy_delegatecall\", \"ownership_admin_capability\", \"token_movement_capability\"], \"evidence\": [\"proxy_evidence.delegatecall_count=4, eip1967_slot_present=False\", \"admin_ownership_selectors_present=['owner()']\", \"token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True\"], \"uncertainties\": [\"DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.\", \"Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.\", \"Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.\", \"No verified source was found on Sourcify to corroborate bytecode-derived evidence.\"], \"summary\": \"0x30e40f90d3f164192d33b98acaaeec8f39ac34cb exposes unresolved_proxy_delegatecall, ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unresolved_proxy_delegatecall",
+      "ownership_admin_capability",
+      "token_movement_capability"
+    ],
+    "evidence": [
+      "proxy_evidence.delegatecall_count=4, eip1967_slot_present=False",
+      "admin_ownership_selectors_present=['owner()']",
+      "token_movement_selectors_present=['transfer(address,uint256)', 'transferFrom(address,address,uint256)'], approval_selector_present=True"
+    ],
+    "uncertainties": [
+      "DELEGATECALL target(s) were not statically resolved to a fixed, verifiable address; exploitability depends on what code the delegate proxies to, which can change (upgradeable proxy) or depend on runtime state.",
+      "Selector presence does not establish that this function is access-controlled -- no guard/reachability analysis was performed.",
+      "Whether token-movement functions are gated to an authorized caller (e.g. the delegating EOA itself via an execute()-style dispatcher) cannot be determined from selector presence alone.",
+      "No verified source was found on Sourcify to corroborate bytecode-derived evidence."
+    ],
+    "summary": "0x30e40f90d3f164192d33b98acaaeec8f39ac34cb exposes unresolved_proxy_delegatecall, ownership_admin_capability, token_movement_capability based on static evidence; actual exploitability depends on access-control state, proxy target, or further analysis not performed here."
+  }
+}
