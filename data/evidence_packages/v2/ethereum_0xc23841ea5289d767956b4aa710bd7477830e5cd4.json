@@ -16423,6 +16423,7 @@
     ],
     "unguarded_dangerous_by_target_provenance": {
       "calldata_target": 1,
+      "calldata_selected_stored_target": 0,
       "constant_target": 4,
       "unresolved_target": 16,
       "critical_op": 0
@@ -16573,5 +16574,19 @@
       }
     ]
   },
-  "coverage_status": "PARTIAL"
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "no proxy slot, embedded target, or getter resolved",
+    "proxy_address": "0xc23841ea5289d767956b4aa710bd7477830e5cd4",
+    "proxy_bytecode_sha256": "debfe1b5eb4e47075eeaebf526daea06af92b7ff6a8afaf8b55b939319e1ad4b",
+    "implementation_address": null,
+    "resolved_at_block": 25655042,
+    "resolved_at_block_tag": "0x1877702",
+    "authorizing_eoa_used": "0x17e3ef04e48a7fb2b308c1d9495145a790ff93ba"
+  }
 }

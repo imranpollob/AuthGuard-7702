@@ -1,0 +1,18 @@
+{
+  "n_u_contracts": 324,
+  "n_with_proxy_indicator": 56,
+  "n_resolved": 5,
+  "n_unresolved": 51,
+  "methods": {
+    "eip1967_implementation": 4,
+    "implementation_getter": 1
+  },
+  "scopes": {
+    "delegate_account": 3,
+    "authorizing_eoa": 2
+  },
+  "implementation_coverage": {
+    "PARTIAL": 5
+  },
+  "output_csv": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2_proxy_resolution.csv"
+}

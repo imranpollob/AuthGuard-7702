@@ -54,13 +54,31 @@ def main():
                        or proxy["eip1967_implementation_slot_present"] or proxy["eip1967_beacon_slot_present"]
                        or proxy["resembles_minimal_forwarder"])
         if looks_proxy:
-            targets.append((r.chain, r.address, r.evidence_path))
+            already = packet.get("proxy_resolution")
+            targets.append((r.chain, r.address, r.evidence_path, bool(already)))
 
-    print(f"[proxy] {len(u_addresses)} U contracts; {len(targets)} carry a proxy indicator")
+    done_already = sum(1 for t in targets if t[3])
+    print(f"[proxy] {len(u_addresses)} U contracts; {len(targets)} carry a proxy indicator; "
+          f"{done_already} already resolved in a previous run (skipped)", flush=True)
     cache = BytecodeCache(cfg["_resolved_paths"]["bytecode_cache"])
     clients = {}
     rows = []
-    for i, (chain, address, evidence_path) in enumerate(targets, start=1):
+    for i, (chain, address, evidence_path, already_done) in enumerate(targets, start=1):
+        if already_done:
+            with open(evidence_path) as f:
+                prior = json.load(f)
+            rec = prior["proxy_resolution"]
+            hop0 = (rec.get("hops") or [{}])[0]
+            rows.append({
+                "chain": chain, "address": address, "resolved": rec["resolved"],
+                "implementation_address": rec.get("implementation_address"),
+                "method": hop0.get("method"), "scope": hop0.get("scope"),
+                "depth_used": rec.get("depth_used"),
+                "implementation_bytecode_sha256": rec.get("implementation_bytecode_sha256"),
+                "implementation_coverage_status": rec.get("implementation_coverage_status"),
+                "unresolved_reason": rec.get("unresolved_reason"),
+            })
+            continue
         client = clients.setdefault(chain, ChainClient(chain))
         block = int(fam.loc[address, "first_observed_block"])
         block_tag = hex(block)

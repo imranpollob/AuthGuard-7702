@@ -1,11 +1,11 @@
 {
   "chain": "ethereum",
   "address": "0x0000004a25e070e8ca902cb5d6cb7c90dfd00000",
-  "evidence_hash": "f383e6586584caa52340d8a4ae4eb50df2e342522acd538a1de4058b20339b1a",
+  "evidence_hash": "f23d6dadf8bf57789cfdcc7194797cc822df7552052af40b4c26510350c8d218",
   "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0000004a25e070e8ca902cb5d6cb7c90dfd00000.json",
   "prompt_version": "v3",
   "model_id": "claude-opus-5",
-  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"2 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 5 strong guard(s) (hardcoded_address_check, storage_based_caller_check), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [\"The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist.\"], \"summary\": \"0x0000004a25e070e8ca902cb5d6cb7c90dfd00000: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"2 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 5 strong guard(s) (hardcoded_address_check, storage_based_caller_check), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [\"Some flagged path is additionally gated by a storage-derived condition (e.g. an initialized/paused flag or a stored config value). That is not caller authorization, but a reviewer should confirm the condition cannot itself act as an access control -- validated on the R1 sample as the most common secondary pattern (7 of 25).\", \"The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist.\"], \"summary\": \"0x0000004a25e070e8ca902cb5d6cb7c90dfd00000: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
   "parsed_response": {
     "proposed_label": "R1",
     "confidence": "medium",
@@ -18,6 +18,7 @@
       "control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region"
     ],
     "uncertainties": [
+      "Some flagged path is additionally gated by a storage-derived condition (e.g. an initialized/paused flag or a stored config value). That is not caller authorization, but a reviewer should confirm the condition cannot itself act as an access control -- validated on the R1 sample as the most common secondary pattern (7 of 25).",
       "The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist."
     ],
     "summary": "0x0000004a25e070e8ca902cb5d6cb7c90dfd00000: unprotected_call_to_caller_chosen_target \u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage."

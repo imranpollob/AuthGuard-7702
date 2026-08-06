@@ -1,11 +1,11 @@
 {
   "chain": "ethereum",
   "address": "0x2c3cbe3b2cf2015602045e9b4b0f180897b369c1",
-  "evidence_hash": "3b894d68d1502992f0cbcbc532fffb345ace29fb0a08899722949864663571a7",
+  "evidence_hash": "b5aa8240c2bdc28ef487ce3907f1f86a5edd82db11f1db9982e7f1b27293eb0d",
   "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x2c3cbe3b2cf2015602045e9b4b0f180897b369c1.json",
   "prompt_version": "v3",
   "model_id": "claude-opus-5",
-  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"2 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 1 strong guard(s) (self_call_check), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [], \"summary\": \"0x2c3cbe3b2cf2015602045e9b4b0f180897b369c1: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"2 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 1 strong guard(s) (self_call_check), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [\"Some flagged path is additionally gated by a storage-derived condition (e.g. an initialized/paused flag or a stored config value). That is not caller authorization, but a reviewer should confirm the condition cannot itself act as an access control -- validated on the R1 sample as the most common secondary pattern (7 of 25).\"], \"summary\": \"0x2c3cbe3b2cf2015602045e9b4b0f180897b369c1: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
   "parsed_response": {
     "proposed_label": "R1",
     "confidence": "medium",
@@ -17,7 +17,9 @@
       "the contract does contain 1 strong guard(s) (self_call_check), but none dominates the paths above",
       "control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region"
     ],
-    "uncertainties": [],
+    "uncertainties": [
+      "Some flagged path is additionally gated by a storage-derived condition (e.g. an initialized/paused flag or a stored config value). That is not caller authorization, but a reviewer should confirm the condition cannot itself act as an access control -- validated on the R1 sample as the most common secondary pattern (7 of 25)."
+    ],
     "summary": "0x2c3cbe3b2cf2015602045e9b4b0f180897b369c1: unprotected_call_to_caller_chosen_target \u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage."
   }
 }

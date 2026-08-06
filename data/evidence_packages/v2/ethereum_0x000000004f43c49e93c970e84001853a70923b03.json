@@ -14575,6 +14575,7 @@
     "analysis_notes": [],
     "unguarded_dangerous_by_target_provenance": {
       "calldata_target": 1,
+      "calldata_selected_stored_target": 0,
       "constant_target": 1,
       "unresolved_target": 4,
       "critical_op": 0

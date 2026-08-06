@@ -4,8 +4,8 @@
   "label_counts_v2": {
     "U": 324,
     "B": 305,
-    "R1": 100,
-    "R2": 23
+    "R1": 99,
+    "R2": 24
   },
   "confidence_counts_v2": {
     "medium": 715,
@@ -22,7 +22,7 @@
     "U": 45,
     "B": 4
   },
-  "n_label_changed_v2_to_v3": 665,
+  "n_label_changed_v2_to_v3": 664,
   "transition_matrix_v2_to_v3": {
     "B": {
       "B": 4,
@@ -33,13 +33,13 @@
     "R1": {
       "B": 0,
       "R1": 61,
-      "R2": 30,
+      "R2": 29,
       "U": 9
     },
     "R2": {
       "B": 0,
       "R1": 0,
-      "R2": 18,
+      "R2": 19,
       "U": 5
     },
     "U": {
@@ -51,12 +51,12 @@
   },
   "subset_v1_low_confidence": {
     "n": 367,
-    "n_changed": 364,
+    "n_changed": 363,
     "v2_labels": {
       "U": 313,
       "B": 38,
-      "R1": 13,
-      "R2": 3
+      "R1": 12,
+      "R2": 4
     }
   },
   "subset_partial_coverage": {

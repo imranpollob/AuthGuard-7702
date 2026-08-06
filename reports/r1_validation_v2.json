@@ -1,14 +1,14 @@
 {
-  "n_r1_total": 100,
+  "n_r1_total": 99,
   "n_sampled": 25,
   "verdicts": {
     "CONFIRMED": 25
   },
   "n_confirmed": 25,
-  "n_with_zero_strong_guards": 9,
-  "n_never_uses_CALLER": 5,
-  "n_reaching_ecrecover": 9,
-  "n_protected_only_by_storage_guard": 7,
+  "n_with_zero_strong_guards": 11,
+  "n_never_uses_CALLER": 7,
+  "n_reaching_ecrecover": 6,
+  "n_protected_only_by_storage_guard": 5,
   "n_traversal_incomplete": 0,
   "output_csv": "/home/pollmix/Coding/AuthGuard-7702/reports/r1_validation_v2.csv"
 }

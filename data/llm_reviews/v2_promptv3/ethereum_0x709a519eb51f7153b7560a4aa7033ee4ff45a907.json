@@ -1,7 +1,7 @@
 {
   "chain": "ethereum",
   "address": "0x709a519eb51f7153b7560a4aa7033ee4ff45a907",
-  "evidence_hash": "529beb0be0e15b77aa7191c395d3785bf3bbd85356a81deb6be1dd2cdb61f0b1",
+  "evidence_hash": "5ea709f780589613b54bb4469aeb07edd930be91eb955717d79ad128ae370f36",
   "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x709a519eb51f7153b7560a4aa7033ee4ff45a907.json",
   "prompt_version": "v3",
   "model_id": "claude-opus-5",

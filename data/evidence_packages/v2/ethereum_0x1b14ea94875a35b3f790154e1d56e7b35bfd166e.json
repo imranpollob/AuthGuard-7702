@@ -16053,6 +16053,7 @@
     ],
     "unguarded_dangerous_by_target_provenance": {
       "calldata_target": 0,
+      "calldata_selected_stored_target": 0,
       "constant_target": 0,
       "unresolved_target": 0,
       "critical_op": 0
@@ -16068,12 +16069,13 @@
     "resolved": false,
     "hops": [],
     "depth_used": 0,
-    "unresolved_reason": "proxy cycle detected at 0x1b14ea94875a35b3f790154e1d56e7b35bfd166e",
+    "unresolved_reason": "implementation pointer self-references the delegate: the account's implementation IS this delegate, so there is no separate implementation contract to analyse. This does NOT by itself resolve a runtime-computed DELEGATECALL target inside the delegate.",
     "proxy_address": "0x1b14ea94875a35b3f790154e1d56e7b35bfd166e",
     "proxy_bytecode_sha256": "4007303a656220feacced236f8a4d23ac6264b7f9f0097365f347eb75c0c0526",
     "implementation_address": null,
     "resolved_at_block": 25668021,
     "resolved_at_block_tag": "0x187a9b5",
-    "authorizing_eoa_used": "0x238315a7355437ded950f8d1e64acbf10a06d22f"
+    "authorizing_eoa_used": "0x238315a7355437ded950f8d1e64acbf10a06d22f",
+    "classification": "SELF_REFERENCE_TERMINAL"
   }
 }

@@ -16342,6 +16342,7 @@
     ],
     "unguarded_dangerous_by_target_provenance": {
       "calldata_target": 4,
+      "calldata_selected_stored_target": 0,
       "constant_target": 4,
       "unresolved_target": 10,
       "critical_op": 0

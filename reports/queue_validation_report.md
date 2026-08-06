@@ -323,6 +323,138 @@ copy with v3 labels and evidence — same 300 runtimes, same order, asserted ide
 is written alongside it as `v2_representative_gold_queue_promptv3.csv`. Its v3 composition
 (B 142, U 111, R1 41, R2 6) is an outcome of the original label-blind draw, not a new selection.
 
+## 6d. U reduction, proxy resolution, and R1 validation
+
+### Why contracts were U, and what was actually fixable
+
+Diagnosis of the 353 U labels found that only **38** were proxy-related; **316** were U because
+"dangerous capabilities present in executable code were never reached by the traversal". Two
+genuine analyzer defects were behind most of that:
+
+**Defect 1 — silent state-dedup truncation (the significant one).** The traversal deduplicated
+states on `(pc, top 8 stack items)`. Solidity compiles internal functions (including the helpers
+modifiers become) as blocks entered by JUMP with the return address pushed *below* the arguments,
+so two call sites reaching the same helper with identical top-8 but different continuations
+collapsed to one state and the second was dropped — with **no cap flag and no unresolved-jump
+count**. I verified by hand on three contracts that the unreached sites were well-formed Solidity
+call sequences (`DUP6 DUP8 GAS CALL`, `CALLER GAS CALL`), not mis-decoded data, so this was real
+under-exploration. It inflated U *and* threatened B soundness, since an unguarded path could sit
+behind a guarded one. Raising the key depth to 32 cut contracts with unreached dangerous
+operations from 27/40 to 15/40 on a random sample; beyond 32 gave no further gain.
+
+**Defect 2 — cap truncation.** Raised limits (`MAX_PER_PC` 96→512, `MAX_STATES` 60k→400k) cut
+cap-truncated contracts from 15/40 to 1/40.
+
+Together: COMPLETE coverage 399 → **428**, U 353 → **324**.
+
+### Proxy resolution (`dataset_pipeline/lib/proxy_resolver.py`, `scripts/04c_...`)
+
+Supports EIP-1967 implementation/beacon/admin slots, EIP-1822, the OpenZeppelin legacy slot,
+EIP-1167 minimal proxies, EIP-7702 designators, and `implementation()`/`masterCopy()` getters,
+resolved recursively to a bounded depth of 3, always at the delegate's first-observed
+authorization block. Both proxy and implementation addresses, bytecode hashes, block, and the
+resolution method/scope are preserved in each evidence package.
+
+An EIP-7702-specific subtlety drove the design: a delegate's DELEGATECALL executes against the
+*authorizing EOA's* storage, so the implementation slot is usually empty on the delegate's own
+account and populated per-EOA. Resolution therefore tries the delegate account first and the
+first-observed authorizing EOA second, recording which in `resolution_scope`.
+
+| Outcome | Count |
+|---|---:|
+| U contracts carrying a proxy indicator | 56 |
+| **Implementation resolved and analysed** | **5** |
+| Implementation pointer self-references the delegate (terminal, not a proxy) | 9 |
+| No proxy slot, embedded target, or getter (runtime-computed callee) | 41 |
+| RPC failure | 1 |
+
+Resolution methods: EIP-1967 implementation slot ×4, `implementation()` getter ×1; scopes:
+delegate account ×3, authorizing EOA ×2.
+
+**Honest outcome: proxy resolution changed no labels.** All five resolved implementations are
+themselves PARTIAL (three have their own unresolved DELEGATECALL, two have unresolved dynamic
+jumps), so the composed evidence stays incomplete and those contracts remain U. The nine
+"cycles" turned out to be self-references — the account's implementation *is* the delegate — and
+are now recorded as `SELF_REFERENCE_TERMINAL` rather than as a failure. The remaining 41 are
+delegates whose DELEGATECALL callee is computed at runtime (module/plugin dispatch), which no
+static slot lookup can resolve. The stage added real provenance, not label movement, and is
+reported as such.
+
+### R1 rule validation (`dataset_pipeline/validation/validate_r1_rule.py`)
+
+25 of 99 R1 contracts re-derived independently of the stored evidence.
+
+| | |
+|---|---:|
+| **CONFIRMED** | **25 / 25** |
+| Traversal incomplete | 0 |
+| Contracts with zero strong guards anywhere | 11 |
+| Contracts that never execute `CALLER` at all | 7 |
+
+For every one: the calldata-targeted CALL is reachable in the unrestricted traversal, still
+reachable when traversal is cut at every caller/signature guard, and outside the metadata region.
+Seven contracts never execute `CALLER`, so no caller-based authorization exists anywhere in them.
+
+**One systematic false-positive pattern was found and fixed.** The audited
+Alchemy SemiModularAccount7702 was initially R1. Inspection showed its surviving site had target
+provenance `['calldata','sload']` — the callee is a **stored** address *selected* by calldata
+(module/plugin dispatch), not an address the caller supplies. The caller picks among values some
+other path registered, so the danger depends on who may write that slot: a specific unresolved
+dependency, i.e. R2 by definition, not established missing protection. Target provenance is now
+split (`calldata_target` vs `calldata_selected_stored_target`) and only the former can trigger
+R1. This affected exactly 1 of 100 R1 contracts — Alchemy — which is now R2.
+
+A second, non-defect pattern was checked and deliberately left alone: in 5 of 25 cases the
+flagged path is additionally gated by a storage *condition* (initialized/paused flag). Since
+`msg.sender == storedOwner` carries `caller` provenance and is already classified strong and cut,
+these residual conditions are not caller authorization. They are surfaced to reviewers as an
+explicit uncertainty rather than silently treated as protection.
+
+### Final counts
+
+| Label | v3 (previous) | **v3 (current)** |
+|---|---:|---:|
+| R1 | 77 | **99** |
+| R2 | 20 | **24** |
+| B | 302 | **305** |
+| U | 353 | **324** |
+
+R1 rose because the traversal fixes gave 88 more contracts complete-enough analysis to be judged
+at all, not because the rule loosened — the rule was tightened.
+
+| Label | COMPLETE | PARTIAL |
+|---|---:|---:|
+| R1 | 99 | 0 |
+| R2 | 24 | 0 |
+| B | 305 | 0 |
+| U | 0 | 324 |
+
+### The eight documented projects — zero labelled R1
+
+| Project | Label | Coverage / reason |
+|---|---|---|
+| MetaMask EIP7702StatelessDeleGator | **B** | COMPLETE |
+| Alchemy SemiModularAccount7702 | **R2** | caller-selected stored callee |
+| Ambire EIP7702Account | **U** | insufficient control-flow coverage |
+| Biconomy Nexus v1.3.1 | **U** | unresolved proxy target |
+| Coinbase EIP7702Proxy | **U** | insufficient control-flow coverage |
+| OKX SmartWalletEntry | **U** | unresolved proxy target |
+| Uniswap Calibur v1.1.0 | **U** | insufficient control-flow coverage |
+| ZeroDev Kernel v3.3 | **U** | unresolved proxy target |
+
+### Pilot queue rebuilt
+
+`data/human_reviews/v2_pilot_queue.csv` — **the same 36 `review_id`s**, verified identical to the
+prior membership, with refreshed v3 evidence and labels. Cells are now `R1/COMPLETE` 11,
+`B/COMPLETE` 10, `U/PARTIAL` 9, `R2/COMPLETE` 6, across 31 families. The builder now *preserves*
+an existing pilot's membership instead of re-sampling, so labels moving cannot silently change
+which contracts a reviewer was asked to examine.
+
+The label-blind 300-row representative sample is unchanged (`v2_representative_gold_queue.csv`
+still carries its original v2 labels and identical hash order); the refreshed copy
+`v2_representative_gold_queue_promptv3.csv` holds the same 300 runtimes with v3 labels
+(B 143, U 99, R1 48, R2 10).
+
 ## 7. Status
 
 Complete: signer-recovery validation, SELFDESTRUCT investigation, extractor fixes, rubric v2 →
