@@ -1,0 +1,80 @@
+{
+  "n_reviewed_runtimes": 300,
+  "n_gold_contracts": 306,
+  "n_labeled_by_direct_review": 300,
+  "n_labeled_by_exact_bytecode_propagation": 6,
+  "n_notscreenable_held_separately": 8,
+  "n_split_groups": 223,
+  "n_families": 223,
+  "n_proxy_implementation_links": 1,
+  "label_distribution": {
+    "B": 149,
+    "U": 99,
+    "R1": 48,
+    "R2": 10
+  },
+  "split_sizes": {
+    "train": 193,
+    "val": 62,
+    "test": 51
+  },
+  "split_label_distribution": {
+    "test": {
+      "B": 35,
+      "R1": 8,
+      "U": 7,
+      "R2": 1
+    },
+    "train": {
+      "U": 80,
+      "B": 73,
+      "R1": 31,
+      "R2": 9
+    },
+    "val": {
+      "B": 41,
+      "U": 12,
+      "R1": 9
+    }
+  },
+  "split_block_ranges": {
+    "test": {
+      "min_block": 25660901,
+      "max_block": 25694941,
+      "n": 51
+    },
+    "train": {
+      "min_block": 25595134,
+      "max_block": 25692610,
+      "n": 193
+    },
+    "val": {
+      "min_block": 25624609,
+      "max_block": 25692511,
+      "n": 62
+    }
+  },
+  "temporal_cutoff_block": 25660356,
+  "all_test_contracts_at_or_after_cutoff": true,
+  "temporal_ordering_every_test_after_every_dev": false,
+  "n_groups_straddling_cutoff_kept_in_dev": 6,
+  "n_dev_contracts_observed_after_cutoff": 11,
+  "leakage_checks": {
+    "families_crossing_splits": [
+      0,
+      []
+    ],
+    "exact_hashes_crossing_splits": [
+      0,
+      []
+    ],
+    "split_groups_crossing_splits": [
+      0,
+      []
+    ]
+  },
+  "gold_csv": "/home/pollmix/Coding/AuthGuard-7702/data/gold_dataset/v2_gold_reviewed.csv",
+  "notscreenable_csv": "/home/pollmix/Coding/AuthGuard-7702/data/gold_dataset/v2_notscreenable.csv",
+  "split_manifest_csv": "/home/pollmix/Coding/AuthGuard-7702/data/split_manifests/v2_split_manifest.csv",
+  "split_manifest_sha256": "f87cf8f419e7fede843b50b47182851f2250ddd62e3e17321ef99b8cd9eb64de"
+}

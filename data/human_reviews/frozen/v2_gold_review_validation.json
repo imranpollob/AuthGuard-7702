@@ -1,0 +1,23 @@
+{
+  "source_file": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_representative_gold_queue_promptv3.csv",
+  "n_rows": 300,
+  "n_reviewed": 300,
+  "n_accepted_llm_label": 300,
+  "n_changed_label": 0,
+  "n_unresolved": 0,
+  "n_rejected": 0,
+  "rejections": [],
+  "final_label_distribution": {
+    "B": 143,
+    "U": 99,
+    "R1": 48,
+    "R2": 10
+  },
+  "final_confidence_distribution": {
+    "medium": 283,
+    "high": 17
+  },
+  "frozen_copy": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/frozen/v2_gold_review_FROZEN.csv",
+  "frozen_sha256": "8a8ad2562bdd612399d53e224e65c0815ec72b24b140c4388907507fbf2b3f97",
+  "source_sha256": "8a8ad2562bdd612399d53e224e65c0815ec72b24b140c4388907507fbf2b3f97"
+}
