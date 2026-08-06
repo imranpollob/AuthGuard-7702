@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x90288146dab49f899e87e3a54b47f3a9396c5bd6",
+  "evidence_hash": "3a9bda3d4ea98ec21440e99e6bea02ad8ff8ec6f8849f48ea04835e697a621aa",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x90288146dab49f899e87e3a54b47f3a9396c5bd6.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unresolved_call_target_provenance\"], \"evidence\": [\"3 reachable unguarded call site(s) whose callee address is neither a constant nor traceable to calldata\", \"strong guards present: 1 (signature_authorization)\"], \"uncertainties\": [\"The single blocking dependency is callee provenance: the target is computed through memory, which this analyzer does not track transitively. If it derives from calldata the path is attacker-directed; if from a fixed stored value it is not.\"], \"summary\": \"0x90288146dab49f899e87e3a54b47f3a9396c5bd6: a reachable unguarded call has an unresolved callee; that one dependency decides whether it is adequately protected.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unresolved_call_target_provenance"
+    ],
+    "evidence": [
+      "3 reachable unguarded call site(s) whose callee address is neither a constant nor traceable to calldata",
+      "strong guards present: 1 (signature_authorization)"
+    ],
+    "uncertainties": [
+      "The single blocking dependency is callee provenance: the target is computed through memory, which this analyzer does not track transitively. If it derives from calldata the path is attacker-directed; if from a fixed stored value it is not."
+    ],
+    "summary": "0x90288146dab49f899e87e3a54b47f3a9396c5bd6: a reachable unguarded call has an unresolved callee; that one dependency decides whether it is adequately protected."
+  }
+}

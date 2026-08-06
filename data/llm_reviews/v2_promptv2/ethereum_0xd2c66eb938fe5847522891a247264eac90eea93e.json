@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0xd2c66eb938fe5847522891a247264eac90eea93e",
+  "evidence_hash": "e3b8511f58f37e2bf59e51958abea1391e8be07e4015fc6e1509f1661e210a93",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xd2c66eb938fe5847522891a247264eac90eea93e.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"incomplete_control_flow_coverage\"], \"evidence\": [\"no sensitive capability was reached by the traversal, but the traversal was incomplete\", \"capabilities present in executable code but never reached: CALLx1, SSTOREx1\"], \"uncertainties\": [\"capabilities present in executable code were never reached by the traversal: CALLx1, SSTOREx1\"], \"summary\": \"0xd2c66eb938fe5847522891a247264eac90eea93e: no reachable capability found, but coverage is PARTIAL, so absence cannot be concluded from this evidence.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "incomplete_control_flow_coverage"
+    ],
+    "evidence": [
+      "no sensitive capability was reached by the traversal, but the traversal was incomplete",
+      "capabilities present in executable code but never reached: CALLx1, SSTOREx1"
+    ],
+    "uncertainties": [
+      "capabilities present in executable code were never reached by the traversal: CALLx1, SSTOREx1"
+    ],
+    "summary": "0xd2c66eb938fe5847522891a247264eac90eea93e: no reachable capability found, but coverage is PARTIAL, so absence cannot be concluded from this evidence."
+  }
+}

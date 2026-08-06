@@ -1,0 +1,30 @@
+{
+  "n_screenable_contracts": 752,
+  "n_unique_runtime_hashes": 669,
+  "dedup_saving_rows": 83,
+  "representative_gold_queue": {
+    "path": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_representative_gold_queue.csv",
+    "n_rows": 300,
+    "n_contracts_represented": 306,
+    "n_families": 223,
+    "llm_label_counts": {
+      "R2": 248,
+      "R1": 32,
+      "U": 19,
+      "B": 1
+    },
+    "selection": "uniform random over unique runtimes, seed=7702, drawn before labels were joined"
+  },
+  "diagnostic_queue": {
+    "path": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_diagnostic_queue.csv",
+    "n_rows": 309,
+    "n_contracts_represented": 385,
+    "llm_label_counts": {
+      "R2": 252,
+      "R1": 29,
+      "U": 26,
+      "B": 2
+    }
+  },
+  "all_unique_runtimes_csv": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_all_unique_runtimes.csv"
+}

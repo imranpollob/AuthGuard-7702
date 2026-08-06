@@ -2921,9 +2921,107 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 5168 bytes (2846 decoded opcodes). Contains 1 DELEGATECALL instruction(s). Contains selector(s) matching common ownership/admin/init signatures: owner(). Contains token-transfer selector(s): transfer(address,uint256). Structural counts: CALL=3, STATICCALL=1, DELEGATECALL=1, CREATE/CREATE2=0, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=4.",
   "exact_bytecode_id": "EXACT00139",
   "bytecode_family_id": "FAM00107",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 5115,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 3,
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable": {
+      "CALL": 3,
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 341,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x76e3d82b0c49f1c921d8c1093cd91c20ba23740d"
+      },
+      {
+        "pc": 1401,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x76e3d82b0c49f1c921d8c1093cd91c20ba23740d"
+      },
+      {
+        "pc": 1646,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x76e3d82b0c49f1c921d8c1093cd91c20ba23740d"
+      },
+      {
+        "pc": 2037,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x76e3d82b0c49f1c921d8c1093cd91c20ba23740d"
+      }
+    ],
+    "n_guards": 4,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 856,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 4,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "no proxy slot, embedded target, or getter resolved",
+    "proxy_address": "0x2b07c980b1c892727694098a9dd711c973b9b8f8",
+    "proxy_bytecode_sha256": "1fd0e7025c2d2a06e327a1aa89b3edfed79e973511becaf7e9d6b00cf5fff414",
+    "implementation_address": null,
+    "resolved_at_block": 25603290,
+    "resolved_at_block_tag": "0x186acda",
+    "authorizing_eoa_used": "0xc8f8463245ebb437eb51bba48e37a89e0590c727"
+  }
 }

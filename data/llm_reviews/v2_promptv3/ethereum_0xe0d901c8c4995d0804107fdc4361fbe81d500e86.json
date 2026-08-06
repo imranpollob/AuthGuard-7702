@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0xe0d901c8c4995d0804107fdc4361fbe81d500e86",
+  "evidence_hash": "7035f73996597cf1482c5142430ce0ac3c50e94c1e18a2d981f86c3b99a8d854",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe0d901c8c4995d0804107fdc4361fbe81d500e86.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"insufficient_control_flow_coverage\"], \"evidence\": [\"reachable dangerous operations found: 21\", \"strong authorization guards observed: 1 (hardcoded_address_check)\"], \"uncertainties\": [\"dangerous capabilities present in executable code were never reached by the traversal: CREATE2x1\"], \"summary\": \"0xe0d901c8c4995d0804107fdc4361fbe81d500e86: control-flow coverage is incomplete (dangerous capabilities present in executable code were never reached by the traversal: CREATE2x1), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "insufficient_control_flow_coverage"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 21",
+      "strong authorization guards observed: 1 (hardcoded_address_check)"
+    ],
+    "uncertainties": [
+      "dangerous capabilities present in executable code were never reached by the traversal: CREATE2x1"
+    ],
+    "summary": "0xe0d901c8c4995d0804107fdc4361fbe81d500e86: control-flow coverage is incomplete (dangerous capabilities present in executable code were never reached by the traversal: CREATE2x1), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

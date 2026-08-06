@@ -1,0 +1,23 @@
+{
+  "chain": "ethereum",
+  "address": "0xaa2d5a3fc0e71af1a37f4e7a16ba7bf49cb859f3",
+  "evidence_hash": "a2123c85f81984b07e23cf444430c38e73bc3f0a1432d8096544e24153d73a5a",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xaa2d5a3fc0e71af1a37f4e7a16ba7bf49cb859f3.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_to_calldata_supplied_target\"], \"evidence\": [\"reachable unguarded call-family site(s) whose target provenance is calldata: pc=1066(CALL)\", \"guards observed on the contract at all: 0\", \"control-flow coverage is COMPLETE, so the absence of a dominating guard on these paths is a positive finding rather than an unexplored region\"], \"uncertainties\": [], \"summary\": \"0xaa2d5a3fc0e71af1a37f4e7a16ba7bf49cb859f3: unguarded_call_to_calldata_supplied_target reachable from entry on a path passing no recognized caller or signature guard, under complete control-flow coverage.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_to_calldata_supplied_target"
+    ],
+    "evidence": [
+      "reachable unguarded call-family site(s) whose target provenance is calldata: pc=1066(CALL)",
+      "guards observed on the contract at all: 0",
+      "control-flow coverage is COMPLETE, so the absence of a dominating guard on these paths is a positive finding rather than an unexplored region"
+    ],
+    "uncertainties": [],
+    "summary": "0xaa2d5a3fc0e71af1a37f4e7a16ba7bf49cb859f3: unguarded_call_to_calldata_supplied_target reachable from entry on a path passing no recognized caller or signature guard, under complete control-flow coverage."
+  }
+}

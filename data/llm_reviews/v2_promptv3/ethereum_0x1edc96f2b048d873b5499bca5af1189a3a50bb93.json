@@ -1,0 +1,23 @@
+{
+  "chain": "ethereum",
+  "address": "0x1edc96f2b048d873b5499bca5af1189a3a50bb93",
+  "evidence_hash": "af0d76abcdd9bda755d039a8f7401a08af674f85e70d4e64bc66603d63a31f5d",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x1edc96f2b048d873b5499bca5af1189a3a50bb93.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [], \"evidence\": [\"every reachable dangerous operation (CALLx5) is dominated by a caller or signature guard\", \"guards: 6 strong (hardcoded_address_check, self_call_check, signature_authorization)\", \"contract reaches ecrecover (signature-based authorization present)\"], \"uncertainties\": [\"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0x1edc96f2b048d873b5499bca5af1189a3a50bb93: reachable capabilities are protected by authorization checks under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [],
+    "evidence": [
+      "every reachable dangerous operation (CALLx5) is dominated by a caller or signature guard",
+      "guards: 6 strong (hardcoded_address_check, self_call_check, signature_authorization)",
+      "contract reaches ecrecover (signature-based authorization present)"
+    ],
+    "uncertainties": [
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0x1edc96f2b048d873b5499bca5af1189a3a50bb93: reachable capabilities are protected by authorization checks under complete analysis."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x69007702764179f14f51cdce752f4f775d74e139",
+  "evidence_hash": "63db8a86a45859f11b1688a46e290dee60804565c92f70aea81fa23ba9366f73",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x69007702764179f14f51cdce752f4f775d74e139.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"2 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATEx1, CREATE2x1, SSTOREx11\"], \"summary\": \"0x69007702764179f14f51cdce752f4f775d74e139: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control). Documented as Alchemy_SemiModularAccount7702.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "2 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATEx1, CREATE2x1, SSTOREx11"
+    ],
+    "summary": "0x69007702764179f14f51cdce752f4f775d74e139: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control). Documented as Alchemy_SemiModularAccount7702."
+  }
+}

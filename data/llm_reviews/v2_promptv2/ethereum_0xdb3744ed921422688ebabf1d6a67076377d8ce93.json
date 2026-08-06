@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xdb3744ed921422688ebabf1d6a67076377d8ce93",
+  "evidence_hash": "b20d52213d1b5de2a8a39253a8c403f697c8306339248776dc4901e7591fd5d4",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xdb3744ed921422688ebabf1d6a67076377d8ce93.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: SSTOREx1; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: CALLx1\"], \"summary\": \"0xdb3744ed921422688ebabf1d6a67076377d8ce93: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: SSTOREx1; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: CALLx1"
+    ],
+    "summary": "0xdb3744ed921422688ebabf1d6a67076377d8ce93: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

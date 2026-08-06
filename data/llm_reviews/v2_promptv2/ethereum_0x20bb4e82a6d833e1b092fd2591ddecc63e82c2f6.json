@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x20bb4e82a6d833e1b092fd2591ddecc63e82c2f6",
+  "evidence_hash": "5071610aeae94603d7a90a9879e8914cb8e2c336fcd89d0678a2e5751cc58453",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x20bb4e82a6d833e1b092fd2591ddecc63e82c2f6.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx15, SSTOREx2; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; self_call_check (tx.origin == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x20bb4e82a6d833e1b092fd2591ddecc63e82c2f6: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx15, SSTOREx2; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; self_call_check (tx.origin == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x20bb4e82a6d833e1b092fd2591ddecc63e82c2f6: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

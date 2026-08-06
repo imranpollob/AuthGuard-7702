@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x331897e3f5fe6c53480bcea6ca6fc0d5c544a0bc",
+  "evidence_hash": "4b14645002303620ffa57fb27d783d5caf81fa056f9f3810a3065ff49b14686f",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x331897e3f5fe6c53480bcea6ca6fc0d5c544a0bc.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx31, SSTOREx56; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATE2x1; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x331897e3f5fe6c53480bcea6ca6fc0d5c544a0bc: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx31, SSTOREx56; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATE2x1; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x331897e3f5fe6c53480bcea6ca6fc0d5c544a0bc: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

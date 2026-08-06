@@ -312,9 +312,79 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 423 bytes (241 decoded opcodes). Contains 2 DELEGATECALL instruction(s). Structural counts: CALL=0, STATICCALL=1, DELEGATECALL=2, CREATE/CREATE2=0, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00245",
   "bytecode_family_id": "FAM00182",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 370,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": false,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": false,
+    "guards": [],
+    "n_guards": 0,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 34,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 1,
+      "critical_op": 1
+    },
+    "reachable_dangerous_count": 1,
+    "unguarded_dangerous_count": 1,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 108,
+        "op": "DELEGATECALL",
+        "impact": "delegatecall",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": []
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "no proxy slot, embedded target, or getter resolved",
+    "proxy_address": "0x535023ed14a1862444ec29d0fe07cf3092c73bc2",
+    "proxy_bytecode_sha256": "ed386e704372ba610938f3815ae346ca0988d1b04340e17ceea252f4cabfe391",
+    "implementation_address": null,
+    "resolved_at_block": 25596780,
+    "resolved_at_block_tag": "0x186936c",
+    "authorizing_eoa_used": "0x3d9c46e94375698b9da204c9f14f5c382b87f727"
+  }
 }

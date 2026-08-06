@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x0786e216d94b5dae9bd0cc502c07c6f774808c93",
+  "evidence_hash": "a37c00f62078a5d0d0d414b607794f1045b4f7e18a3b867fd75b71ed3a9f73aa",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0786e216d94b5dae9bd0cc502c07c6f774808c93.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx2; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\"], \"summary\": \"0x0786e216d94b5dae9bd0cc502c07c6f774808c93: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx2; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve."
+    ],
+    "summary": "0x0786e216d94b5dae9bd0cc502c07c6f774808c93: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

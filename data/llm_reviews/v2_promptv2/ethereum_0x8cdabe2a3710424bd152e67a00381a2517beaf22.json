@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x8cdabe2a3710424bd152e67a00381a2517beaf22",
+  "evidence_hash": "a001b07b6c3c5b302d1c4b0221a9316bc076119992b76a4018bf09812aae610b",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x8cdabe2a3710424bd152e67a00381a2517beaf22.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx5, SSTOREx34; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x8cdabe2a3710424bd152e67a00381a2517beaf22: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx5, SSTOREx34; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x8cdabe2a3710424bd152e67a00381a2517beaf22: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

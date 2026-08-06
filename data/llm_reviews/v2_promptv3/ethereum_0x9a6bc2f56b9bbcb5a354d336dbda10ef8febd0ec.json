@@ -1,0 +1,23 @@
+{
+  "chain": "ethereum",
+  "address": "0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec",
+  "evidence_hash": "068fa209fccf98dcf14590b889d4ff0717f4462999428435687cc727623483aa",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"3 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 12 strong guard(s) (caller_check), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [], \"summary\": \"0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "medium",
+    "risk_categories": [
+      "unprotected_call_to_caller_chosen_target"
+    ],
+    "evidence": [
+      "3 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard",
+      "the contract does contain 12 strong guard(s) (caller_check), but none dominates the paths above",
+      "control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region"
+    ],
+    "uncertainties": [],
+    "summary": "0x9a6bc2f56b9bbcb5a354d336dbda10ef8febd0ec: unprotected_call_to_caller_chosen_target \u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage."
+  }
+}

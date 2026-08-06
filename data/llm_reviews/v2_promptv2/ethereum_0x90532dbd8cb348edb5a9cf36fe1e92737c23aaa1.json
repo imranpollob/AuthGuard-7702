@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x90532dbd8cb348edb5a9cf36fe1e92737c23aaa1",
+  "evidence_hash": "57f394daafcdceec30969f22e408ead3e232fe08e5c2ef1f961e3c25f5d270bd",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x90532dbd8cb348edb5a9cf36fe1e92737c23aaa1.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x90532dbd8cb348edb5a9cf36fe1e92737c23aaa1: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x90532dbd8cb348edb5a9cf36fe1e92737c23aaa1: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

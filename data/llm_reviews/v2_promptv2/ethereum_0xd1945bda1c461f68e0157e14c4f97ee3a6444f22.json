@@ -1,0 +1,30 @@
+{
+  "chain": "ethereum",
+  "address": "0xd1945bda1c461f68e0157e14c4f97ee3a6444f22",
+  "evidence_hash": "c4c298e546b359238ee2323e2315525a57a4cd3a82b00cfc036aa966d1ed37c4",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xd1945bda1c461f68e0157e14c4f97ee3a6444f22.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_capability_under_incomplete_coverage\", \"unguarded_call_with_unproven_target_control\", \"unresolved_proxy_target\"], \"evidence\": [\"reachable without passing any caller/signature guard: DELEGATECALLx1\", \"1 reachable unguarded call-family site(s); 0 have a fixed constant target\"], \"uncertainties\": [\"Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.\", \"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.\", \"Coverage is PARTIAL: a reachable DELEGATECALL has an unresolved (non-constant) target\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xd1945bda1c461f68e0157e14c4f97ee3a6444f22: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unresolved_proxy_target).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_capability_under_incomplete_coverage",
+      "unguarded_call_with_unproven_target_control",
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable without passing any caller/signature guard: DELEGATECALLx1",
+      "1 reachable unguarded call-family site(s); 0 have a fixed constant target"
+    ],
+    "uncertainties": [
+      "Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.",
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.",
+      "Coverage is PARTIAL: a reachable DELEGATECALL has an unresolved (non-constant) target",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xd1945bda1c461f68e0157e14c4f97ee3a6444f22: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unresolved_proxy_target)."
+  }
+}

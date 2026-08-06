@@ -7735,9 +7735,177 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 10414 bytes (7662 decoded opcodes). Contains token-transfer selector(s): transfer(address,uint256). Contains an approve(address,uint256) selector. Structural counts: CALL=32, STATICCALL=5, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=4, SLOAD=6, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00026",
   "bytecode_family_id": "FAM00023",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 10361,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 32,
+      "SSTORE": 4
+    },
+    "sensitive_reachable": {
+      "CALL": 32,
+      "SSTORE": 4
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 372,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 381,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 725,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 739,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 813,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 939,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 953,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 1172,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 1186,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 1364,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 1484,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 1498,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      }
+    ],
+    "n_guards": 21,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 1515,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 32,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "COMPLETE"
 }

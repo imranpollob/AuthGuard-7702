@@ -1573,9 +1573,112 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 2051 bytes (1502 decoded opcodes). Contains 1 DELEGATECALL instruction(s). Structural counts: CALL=3, STATICCALL=1, DELEGATECALL=1, CREATE/CREATE2=0, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00391",
   "bytecode_family_id": "FAM00291",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 2051,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 3,
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable": {
+      "CALL": 3
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 3
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "CALL": 3
+    },
+    "sensitive_present_but_never_reached": {
+      "DELEGATECALL": 1
+    },
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [],
+    "n_guards": 0,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 413,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "dangerous capabilities present in executable code were never reached by the traversal: DELEGATECALLx1"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (metadata_contains_executable_jumpdest); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 2,
+      "unresolved_target": 1,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 3,
+    "unguarded_dangerous_count": 3,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 395,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x00005ea00ac477b1030ce78506496e8c2de24bf5"
+      },
+      {
+        "pc": 596,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x00005ea00ac477b1030ce78506496e8c2de24bf5"
+      },
+      {
+        "pc": 944,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "no proxy slot, embedded target, or getter resolved",
+    "proxy_address": "0x94182a262f20eb917289774576c6f962d8c478a1",
+    "proxy_bytecode_sha256": "21cb78452637b5f9b9448542654665b7616a82aba76b394b6002f27909e873bc",
+    "implementation_address": null,
+    "resolved_at_block": 25646651,
+    "resolved_at_block_tag": "0x187563b",
+    "authorizing_eoa_used": "0x83f8afc3874cab66ab00cb028c45d0f9beaf64b0"
+  }
 }

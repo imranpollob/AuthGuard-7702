@@ -1,0 +1,34 @@
+{
+  "chain": "ethereum",
+  "address": "0x612373d7003d694220f7800eeaf8e3924c0951d3",
+  "evidence_hash": "1d0f3a187bb4918e9cfc00b5bd157a4454160b8c98340f1f7bc0221a05006512",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x612373d7003d694220f7800eeaf8e3924c0951d3.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_capability_under_incomplete_coverage\", \"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\", \"unresolved_proxy_target\"], \"evidence\": [\"reachable without passing any caller/signature guard: DELEGATECALLx1\", \"2 reachable unguarded call-family site(s) with calldata-derived target\", \"3 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx2\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.\", \"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; a reachable DELEGATECALL has an unresolved (non-constant) target\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x612373d7003d694220f7800eeaf8e3924c0951d3: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation, unresolved_proxy_target).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_capability_under_incomplete_coverage",
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation",
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable without passing any caller/signature guard: DELEGATECALLx1",
+      "2 reachable unguarded call-family site(s) with calldata-derived target",
+      "3 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx2",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.",
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; a reachable DELEGATECALL has an unresolved (non-constant) target",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x612373d7003d694220f7800eeaf8e3924c0951d3: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation, unresolved_proxy_target)."
+  }
+}

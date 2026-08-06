@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x278b70c29c3e1cc4d3a25e4db637ac973e94f7e6",
+  "evidence_hash": "e1c86de8127dcb194633bc541735225d6ec2e0f5cc13c98cf98e192273b995c1",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x278b70c29c3e1cc4d3a25e4db637ac973e94f7e6.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"insufficient_control_flow_coverage\"], \"evidence\": [\"reachable dangerous operations found: 7\", \"strong authorization guards observed: 3 (self_call_check, storage_based_caller_check)\"], \"uncertainties\": [\"traversal hit its per-pc state cap; exploration was truncated\", \"dangerous capabilities present in executable code were never reached by the traversal: CREATEx1\"], \"summary\": \"0x278b70c29c3e1cc4d3a25e4db637ac973e94f7e6: control-flow coverage is incomplete (traversal hit its per-pc state cap; exploration was truncated), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "insufficient_control_flow_coverage"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 7",
+      "strong authorization guards observed: 3 (self_call_check, storage_based_caller_check)"
+    ],
+    "uncertainties": [
+      "traversal hit its per-pc state cap; exploration was truncated",
+      "dangerous capabilities present in executable code were never reached by the traversal: CREATEx1"
+    ],
+    "summary": "0x278b70c29c3e1cc4d3a25e4db637ac973e94f7e6: control-flow coverage is incomplete (traversal hit its per-pc state cap; exploration was truncated), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

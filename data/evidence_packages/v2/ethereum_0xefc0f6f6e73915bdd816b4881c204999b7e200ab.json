@@ -8226,9 +8226,115 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 13650 bytes (8153 decoded opcodes). Contains token-transfer selector(s): transfer(address,uint256). Structural counts: CALL=4, STATICCALL=2, DELEGATECALL=0, CREATE/CREATE2=1, SSTORE=1, SLOAD=2, SELFDESTRUCT=0, LOG=5.",
   "exact_bytecode_id": "EXACT00628",
   "bytecode_family_id": "FAM00427",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 13597,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 4,
+      "CREATE": 1,
+      "SSTORE": 1
+    },
+    "sensitive_reachable": {
+      "CALL": 4,
+      "CREATE": 1,
+      "SSTORE": 1
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 205,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0xdeadc0dec18f9f380c7c272e366a5e0b32aa1eff"
+      },
+      {
+        "pc": 301,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0xefc0f6f6e73915bdd816b4881c204999b7e200ab"
+      },
+      {
+        "pc": 1766,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 2156,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0xdeadc0dec18f9f380c7c272e366a5e0b32aa1eff"
+      },
+      {
+        "pc": 2476,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0xdeadc0dec18f9f380c7c272e366a5e0b32aa1eff"
+      },
+      {
+        "pc": 6487,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 6,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 2494,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 5,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "COMPLETE"
 }

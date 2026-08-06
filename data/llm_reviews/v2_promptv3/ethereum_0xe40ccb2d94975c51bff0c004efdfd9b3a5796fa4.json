@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4",
+  "evidence_hash": "bad9c737e176d84948a8527ef921f00cc409d811f67aebb7e29beb0344a8a063",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"unresolved_proxy_target\"], \"evidence\": [\"reachable dangerous operations found: 8\", \"strong authorization guards observed: 2 (hardcoded_address_check, zero_address_check)\"], \"uncertainties\": [\"12 dynamic JUMP target(s) could not be resolved\", \"5 stack underflow(s) during symbolic execution\", \"a reachable DELEGATECALL has an unresolved (non-constant) target\"], \"summary\": \"0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4: control-flow coverage is incomplete (12 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 8",
+      "strong authorization guards observed: 2 (hardcoded_address_check, zero_address_check)"
+    ],
+    "uncertainties": [
+      "12 dynamic JUMP target(s) could not be resolved",
+      "5 stack underflow(s) during symbolic execution",
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "summary": "0xe40ccb2d94975c51bff0c004efdfd9b3a5796fa4: control-flow coverage is incomplete (12 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

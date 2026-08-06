@@ -16412,9 +16412,211 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 24538 bytes (16336 decoded opcodes). Contains 4 DELEGATECALL instruction(s). Contains selector(s) matching common ownership/admin/init signatures: owner(). Contains token-transfer selector(s): transfer(address,uint256), transferFrom(address,address,uint256). Contains an approve(address,uint256) selector. Structural counts: CALL=29, STATICCALL=16, DELEGATECALL=4, CREATE/CREATE2=0, SSTORE=14, SLOAD=23, SELFDESTRUCT=0, LOG=2.",
   "exact_bytecode_id": "EXACT00226",
   "bytecode_family_id": "FAM00171",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 24538,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 29,
+      "DELEGATECALL": 4,
+      "SSTORE": 14
+    },
+    "sensitive_reachable": {
+      "CALL": 8,
+      "SSTORE": 4,
+      "DELEGATECALL": 2
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 606,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 837,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 845,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 852,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 860,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 865,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 1121,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 1128,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 1133,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 7425,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 7475,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x238315a7355437ded950f8d1e64acbf10a06d22f"
+      },
+      {
+        "pc": 7495,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 26,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": true,
+    "stack_underflows": 0,
+    "states_explored": 10605,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "traversal hit its per-pc state cap; exploration was truncated",
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (metadata_start_not_instruction_boundary); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 10,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "proxy cycle detected at 0x4b0fabc51ac2e9310621522944cce3b2ed8d3158",
+    "proxy_address": "0x4b0fabc51ac2e9310621522944cce3b2ed8d3158",
+    "proxy_bytecode_sha256": "278190ee566428051826caed9452ca1d66777df5f2b78fe94ecdcf7d401e068d",
+    "implementation_address": null,
+    "resolved_at_block": 25665658,
+    "resolved_at_block_tag": "0x187a07a",
+    "authorizing_eoa_used": "0x238315a7355437ded950f8d1e64acbf10a06d22f"
+  }
 }

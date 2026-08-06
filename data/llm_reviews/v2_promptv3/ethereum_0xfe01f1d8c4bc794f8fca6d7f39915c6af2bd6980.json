@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xfe01f1d8c4bc794f8fca6d7f39915c6af2bd6980",
+  "evidence_hash": "b56f9ce23363cdd564934e89ac38e4944db212dfe1e5248abae2ec3917329187",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xfe01f1d8c4bc794f8fca6d7f39915c6af2bd6980.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"insufficient_control_flow_coverage\"], \"evidence\": [\"reachable dangerous operations found: 3\", \"strong authorization guards observed: 0\"], \"uncertainties\": [\"6 dynamic JUMP target(s) could not be resolved\", \"9 stack underflow(s) during symbolic execution\"], \"summary\": \"0xfe01f1d8c4bc794f8fca6d7f39915c6af2bd6980: control-flow coverage is incomplete (6 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "insufficient_control_flow_coverage"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 3",
+      "strong authorization guards observed: 0"
+    ],
+    "uncertainties": [
+      "6 dynamic JUMP target(s) could not be resolved",
+      "9 stack underflow(s) during symbolic execution"
+    ],
+    "summary": "0xfe01f1d8c4bc794f8fca6d7f39915c6af2bd6980: control-flow coverage is incomplete (6 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

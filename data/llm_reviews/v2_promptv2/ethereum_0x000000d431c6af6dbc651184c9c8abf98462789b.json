@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x000000d431c6af6dbc651184c9c8abf98462789b",
+  "evidence_hash": "ba0b3bdbd990ec91dd0e163618a785fda18367dc07f653b951c3bcba0b97805e",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x000000d431c6af6dbc651184c9c8abf98462789b.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: 6 dynamic JUMP target(s) could not be resolved; 9 stack underflow(s) during symbolic execution\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x000000d431c6af6dbc651184c9c8abf98462789b: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: 6 dynamic JUMP target(s) could not be resolved; 9 stack underflow(s) during symbolic execution",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x000000d431c6af6dbc651184c9c8abf98462789b: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

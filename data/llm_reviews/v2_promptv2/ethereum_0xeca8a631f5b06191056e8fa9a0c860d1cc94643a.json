@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xeca8a631f5b06191056e8fa9a0c860d1cc94643a",
+  "evidence_hash": "1d7fd1d5ac709b7fb1f2339333f049a1f5e8d15c4786aeb955438a76e8e3e638",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xeca8a631f5b06191056e8fa9a0c860d1cc94643a.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xeca8a631f5b06191056e8fa9a0c860d1cc94643a: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xeca8a631f5b06191056e8fa9a0c860d1cc94643a: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

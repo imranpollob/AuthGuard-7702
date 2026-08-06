@@ -1,0 +1,24 @@
+{
+  "representative_sample_membership_unchanged": true,
+  "representative_refreshed_csv": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_representative_gold_queue_promptv3.csv",
+  "representative_label_counts_v3": {
+    "B": 142,
+    "U": 111,
+    "R1": 41,
+    "R2": 6
+  },
+  "representative_coverage_counts": {
+    "COMPLETE": 189,
+    "PARTIAL": 111
+  },
+  "pilot_queue_csv": "/home/pollmix/Coding/AuthGuard-7702/data/human_reviews/v2_pilot_queue.csv",
+  "pilot_n_rows": 36,
+  "pilot_contracts_represented": 36,
+  "pilot_cells": {
+    "B/COMPLETE": 9,
+    "R1/COMPLETE": 11,
+    "R2/COMPLETE": 6,
+    "U/PARTIAL": 10
+  },
+  "pilot_families": 31
+}

@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x8cb54eccc65cd90a85d5eb1144a4303f18226c61",
+  "evidence_hash": "c82bca0ab80e832964e088e984d590d2cb278abf69ab86549cc9e87dd8aa5147",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x8cb54eccc65cd90a85d5eb1144a4303f18226c61.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"3 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATE2x1, SSTOREx4; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x8cb54eccc65cd90a85d5eb1144a4303f18226c61: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "3 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATE2x1, SSTOREx4; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x8cb54eccc65cd90a85d5eb1144a4303f18226c61: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

@@ -14230,9 +14230,229 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 20965 bytes (14157 decoded opcodes). Contains selector(s) matching common ownership/admin/init signatures: owner(). Contains an approve(address,uint256) selector. Structural counts: CALL=4, STATICCALL=9, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=53, SLOAD=112, SELFDESTRUCT=0, LOG=23.",
   "exact_bytecode_id": "EXACT00196",
   "bytecode_family_id": "FAM00151",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 20965,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 4,
+      "SSTORE": 53
+    },
+    "sensitive_reachable": {
+      "SSTORE": 53,
+      "CALL": 4
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "SSTORE": 1,
+      "CALL": 4
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": true,
+    "guards": [
+      {
+        "pc": 2770,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2952,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3544,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3699,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 4792,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 5745,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 5913,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 5994,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 6836,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 6849,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 7528,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 7784,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 90,
+    "unresolved_dynamic_jumps": 3,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 5670,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "3 dynamic JUMP target(s) could not be resolved"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 2,
+      "constant_target": 0,
+      "unresolved_target": 2,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 4,
+    "unguarded_dangerous_count": 4,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 13428,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "memory",
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 13452,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 15348,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 15370,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "caller"
+        ],
+        "value_src": [
+          "callvalue"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 15386,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "caller"
+        ],
+        "value_src": [
+          "callvalue"
+        ],
+        "data_src": []
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL"
 }

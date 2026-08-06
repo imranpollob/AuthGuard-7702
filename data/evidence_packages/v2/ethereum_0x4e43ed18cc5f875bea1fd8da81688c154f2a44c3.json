@@ -14315,9 +14315,87 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 21583 bytes (14241 decoded opcodes). Contains token-transfer selector(s): transfer(address,uint256), transferFrom(address,address,uint256). Contains an approve(address,uint256) selector. Structural counts: CALL=68, STATICCALL=44, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=0.",
   "exact_bytecode_id": "EXACT00235",
   "bytecode_family_id": "FAM00177",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 21583,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 68
+    },
+    "sensitive_reachable": {
+      "CALL": 46
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 10376,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x000000000004444c5dc75cb358380d2e3de08a90"
+      },
+      {
+        "pc": 10383,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "origin"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (tx.origin == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 10620,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "origin"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (tx.origin == address(this)) \u2014 the canonical EIP-7702 pattern"
+      }
+    ],
+    "n_guards": 3,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": true,
+    "stack_underflows": 0,
+    "states_explored": 7977,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "traversal hit its per-pc state cap; exploration was truncated"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (metadata_start_not_instruction_boundary); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 46,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "PARTIAL"
 }

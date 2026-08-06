@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x9b783aff9a7ea3170556d6a33baa8170de0806e2",
+  "evidence_hash": "cc5414ee935894565d0f5b180b4940e8773fcabaed9d850154f77e9c07908e0d",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x9b783aff9a7ea3170556d6a33baa8170de0806e2.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x9b783aff9a7ea3170556d6a33baa8170de0806e2: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x9b783aff9a7ea3170556d6a33baa8170de0806e2: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

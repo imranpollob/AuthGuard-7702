@@ -2674,9 +2674,82 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 3859 bytes (2603 decoded opcodes). Contains 1 DELEGATECALL instruction(s). Structural counts: CALL=2, STATICCALL=3, DELEGATECALL=1, CREATE/CREATE2=0, SSTORE=0, SLOAD=1, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00188",
   "bytecode_family_id": "FAM00028",
-  "bytecode_family_size": 2
+  "bytecode_family_size": 2,
+  "reachability": {
+    "executable_bytes": 3806,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 2
+    },
+    "sensitive_reachable": {
+      "CALL": 1
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": true,
+    "guards": [
+      {
+        "pc": 1423,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x6ec5d1d7fcfe48867804c51683ec1231233b150e"
+      },
+      {
+        "pc": 1662,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 2284,
+        "kind": "strong",
+        "condition_provenance": [
+          "ecrecover",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "signature_authorization (branch depends on an ecrecover result)"
+      }
+    ],
+    "n_guards": 3,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 700,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 1,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "coverage_status": "COMPLETE"
 }

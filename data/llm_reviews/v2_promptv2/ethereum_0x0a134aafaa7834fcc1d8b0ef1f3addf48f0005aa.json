@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x0a134aafaa7834fcc1d8b0ef1f3addf48f0005aa",
+  "evidence_hash": "a00b76690b8fb38ea384b7a6f71ab1650bfa67c9d46cd8551d5b35fb0618b6fc",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0a134aafaa7834fcc1d8b0ef1f3addf48f0005aa.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx12, SSTOREx3; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); hardcoded_address_check (tx.origin compared against a fixed address literal); storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x0a134aafaa7834fcc1d8b0ef1f3addf48f0005aa: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx12, SSTOREx3; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); hardcoded_address_check (tx.origin compared against a fixed address literal); storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x0a134aafaa7834fcc1d8b0ef1f3addf48f0005aa: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

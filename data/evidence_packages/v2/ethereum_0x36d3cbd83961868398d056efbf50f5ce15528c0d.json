@@ -13590,9 +13590,326 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 23615 bytes (13517 decoded opcodes). Contains 3 DELEGATECALL instruction(s). Contains a byte sequence matching a standard EIP-1967 proxy storage slot constant. Contains selector(s) matching common ownership/admin/init signatures: upgradeToAndCall(address,bytes). Structural counts: CALL=6, STATICCALL=9, DELEGATECALL=3, CREATE/CREATE2=0, SSTORE=34, SLOAD=48, SELFDESTRUCT=0, LOG=12.",
   "exact_bytecode_id": "EXACT00164",
   "bytecode_family_id": "FAM00127",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 23615,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 6,
+      "CALLCODE": 1,
+      "DELEGATECALL": 3,
+      "SSTORE": 34
+    },
+    "sensitive_reachable": {
+      "CALL": 6,
+      "SSTORE": 33,
+      "DELEGATECALL": 2
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 5,
+      "SSTORE": 5,
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "DELEGATECALL": 1,
+      "SSTORE": 1
+    },
+    "sensitive_present_but_never_reached": {
+      "CALLCODE": 1
+    },
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": true,
+    "guards": [
+      {
+        "pc": 2683,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2856,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x0000000071727de22e5e9d8baf0edac6f37da032"
+      },
+      {
+        "pc": 3013,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3555,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3733,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3759,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3774,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3783,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3857,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3917,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "zero_address_check (msg.sender compared against address(0))",
+        "compared_address_constant": "0x0000000000000000000000000000000000000000"
+      },
+      {
+        "pc": 4138,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 4344,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 71,
+    "unresolved_dynamic_jumps": 12,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 5,
+    "states_explored": 8235,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "12 dynamic JUMP target(s) could not be resolved",
+      "5 stack underflow(s) during symbolic execution",
+      "dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx1",
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (metadata_start_not_instruction_boundary); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 4,
+      "constant_target": 0,
+      "unresolved_target": 2,
+      "critical_op": 1
+    },
+    "reachable_dangerous_count": 8,
+    "unguarded_dangerous_count": 6,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 3851,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 3884,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 5011,
+        "op": "DELEGATECALL",
+        "impact": "delegatecall",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 8248,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "sload"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      },
+      {
+        "pc": 8606,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "sload"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      },
+      {
+        "pc": 9552,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "calldata",
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 9641,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 10916,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "calldata",
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 12482,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 13060,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 15004,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL",
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": false,
+    "hops": [],
+    "depth_used": 0,
+    "unresolved_reason": "no proxy slot, embedded target, or getter resolved",
+    "proxy_address": "0x36d3cbd83961868398d056efbf50f5ce15528c0d",
+    "proxy_bytecode_sha256": "c3e88f38a107ef9feb5a0c9802b061df9b480284d52263de565018b726b266ed",
+    "implementation_address": null,
+    "resolved_at_block": 25601816,
+    "resolved_at_block_tag": "0x186a718",
+    "authorizing_eoa_used": "0x88ed7e7bc2ec308659c37485f02b4e87b69ea80e"
+  }
 }

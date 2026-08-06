@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x69e6bd1c4082403fc7917a61f6216552fc1a541d",
+  "evidence_hash": "8185615d74235428dbd893b33ffebfef7071fe2631adc282a05e24923ae78807",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x69e6bd1c4082403fc7917a61f6216552fc1a541d.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"1 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 4 strong guard(s) (calldata_comparison, self_call_check, signature_authorization), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [\"The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist.\"], \"summary\": \"0x69e6bd1c4082403fc7917a61f6216552fc1a541d: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "medium",
+    "risk_categories": [
+      "unprotected_call_to_caller_chosen_target"
+    ],
+    "evidence": [
+      "1 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard",
+      "the contract does contain 4 strong guard(s) (calldata_comparison, self_call_check, signature_authorization), but none dominates the paths above",
+      "control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region"
+    ],
+    "uncertainties": [
+      "The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist."
+    ],
+    "summary": "0x69e6bd1c4082403fc7917a61f6216552fc1a541d: unprotected_call_to_caller_chosen_target \u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage."
+  }
+}

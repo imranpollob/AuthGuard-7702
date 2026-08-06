@@ -1,0 +1,24 @@
+{
+  "run_id": "v2",
+  "chain": "ethereum",
+  "check_a_independent_reimplementation": {
+    "n_sampled": 150,
+    "n_agree": 150,
+    "n_disagree": 0,
+    "n_error": 0,
+    "agreement_rate": 1.0,
+    "disagreements": [],
+    "errors": []
+  },
+  "check_b_onchain_designator": {
+    "n_eligible_unique_authority_per_block": 145,
+    "n_checked": 120,
+    "n_confirmed_exact_designator": 118,
+    "n_authority_holds_different_delegate": 0,
+    "n_authority_has_no_delegation_code": 2,
+    "confirmation_rate": 0.9833333333333333,
+    "rpc_errors": [],
+    "other_designator_examples": [],
+    "note": "An authority holding a DIFFERENT delegate, or no code, at that block is expected for authorizations that were invalid (stale nonce) or superseded later in the same block; it is not by itself evidence of wrong recovery. A wrong recovery would instead produce addresses that essentially never carry any 0xef0100 designator."
+  }
+}

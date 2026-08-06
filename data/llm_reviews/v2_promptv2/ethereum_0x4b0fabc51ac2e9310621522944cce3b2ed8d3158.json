@@ -1,0 +1,28 @@
+{
+  "chain": "ethereum",
+  "address": "0x4b0fabc51ac2e9310621522944cce3b2ed8d3158",
+  "evidence_hash": "d3d4226770b3097857c7a9eeaa1859754a4a60222daec51c1af673cbe6484dc2",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x4b0fabc51ac2e9310621522944cce3b2ed8d3158.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\", \"unresolved_proxy_target\"], \"evidence\": [\"reachable sensitive capabilities: CALLx8, DELEGATECALLx1, SSTOREx4; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; a reachable DELEGATECALL has an unresolved (non-constant) target; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x4b0fabc51ac2e9310621522944cce3b2ed8d3158: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unresolved_proxy_target).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability",
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx8, DELEGATECALLx1, SSTOREx4; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; a reachable DELEGATECALL has an unresolved (non-constant) target; metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x4b0fabc51ac2e9310621522944cce3b2ed8d3158: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unresolved_proxy_target)."
+  }
+}

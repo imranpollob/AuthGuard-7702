@@ -1,0 +1,76 @@
+{
+  "n_total": 752,
+  "n_cached_reused": 0,
+  "label_counts_v2": {
+    "U": 324,
+    "B": 305,
+    "R1": 100,
+    "R2": 23
+  },
+  "confidence_counts_v2": {
+    "medium": 715,
+    "high": 37
+  },
+  "coverage_counts": {
+    "COMPLETE": 428,
+    "PARTIAL": 324
+  },
+  "review_index_csv": "/home/pollmix/Coding/AuthGuard-7702/data/llm_reviews/v2_review_index_promptv3.csv",
+  "label_counts_v2_prior": {
+    "R2": 642,
+    "R1": 61,
+    "U": 45,
+    "B": 4
+  },
+  "n_label_changed_v2_to_v3": 665,
+  "transition_matrix_v2_to_v3": {
+    "B": {
+      "B": 4,
+      "R1": 0,
+      "R2": 274,
+      "U": 27
+    },
+    "R1": {
+      "B": 0,
+      "R1": 61,
+      "R2": 30,
+      "U": 9
+    },
+    "R2": {
+      "B": 0,
+      "R1": 0,
+      "R2": 18,
+      "U": 5
+    },
+    "U": {
+      "B": 0,
+      "R1": 0,
+      "R2": 320,
+      "U": 4
+    }
+  },
+  "subset_v1_low_confidence": {
+    "n": 367,
+    "n_changed": 364,
+    "v2_labels": {
+      "U": 313,
+      "B": 38,
+      "R1": 13,
+      "R2": 3
+    }
+  },
+  "subset_partial_coverage": {
+    "n": 324,
+    "n_changed": 320,
+    "v2_labels": {
+      "U": 324
+    }
+  },
+  "subset_v1_R1": {
+    "n": 61,
+    "n_changed": 0,
+    "v2_labels": {
+      "R1": 61
+    }
+  }
+}

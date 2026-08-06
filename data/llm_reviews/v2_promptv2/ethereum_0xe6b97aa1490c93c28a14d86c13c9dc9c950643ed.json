@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed",
+  "evidence_hash": "94f9336700fa9db9cb5d019139189a8b32ec61d0b70228d11c1278fb86334b75",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx1; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: hardcoded_address_check (tx.origin compared against a fixed address literal)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\"], \"summary\": \"0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx1; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: hardcoded_address_check (tx.origin compared against a fixed address literal)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve."
+    ],
+    "summary": "0xe6b97aa1490c93c28a14d86c13c9dc9c950643ed: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

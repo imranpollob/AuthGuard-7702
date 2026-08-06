@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x7e6cf01e1879e4f7cd451269c4bb2f00afe0ace3",
+  "evidence_hash": "81d35109f9a8a52e556f5ec45c5b9beef8867ff3d1fe9be9c61e54107f7d0036",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x7e6cf01e1879e4f7cd451269c4bb2f00afe0ace3.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_to_fixed_callee\"], \"evidence\": [\"1 reachable unguarded call site(s), all to fixed constant callee addresses \\u2014 the caller cannot redirect them\", \"guards: 4 strong (hardcoded_address_check, self_call_check, signature_authorization)\", \"contract reaches ecrecover (signature-based authorization present)\"], \"uncertainties\": [\"Callee addresses are fixed, but calldata forwarded to those fixed callees was not modelled; a fixed callee that itself moves assets on behalf of the caller would not be distinguished here.\", \"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0x7e6cf01e1879e4f7cd451269c4bb2f00afe0ace3: dangerous operations are either guard-dominated or restricted to fixed callee addresses under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_to_fixed_callee"
+    ],
+    "evidence": [
+      "1 reachable unguarded call site(s), all to fixed constant callee addresses \u2014 the caller cannot redirect them",
+      "guards: 4 strong (hardcoded_address_check, self_call_check, signature_authorization)",
+      "contract reaches ecrecover (signature-based authorization present)"
+    ],
+    "uncertainties": [
+      "Callee addresses are fixed, but calldata forwarded to those fixed callees was not modelled; a fixed callee that itself moves assets on behalf of the caller would not be distinguished here.",
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0x7e6cf01e1879e4f7cd451269c4bb2f00afe0ace3: dangerous operations are either guard-dominated or restricted to fixed callee addresses under complete analysis."
+  }
+}

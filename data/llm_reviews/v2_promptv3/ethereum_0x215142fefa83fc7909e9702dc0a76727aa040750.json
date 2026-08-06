@@ -1,0 +1,20 @@
+{
+  "chain": "ethereum",
+  "address": "0x215142fefa83fc7909e9702dc0a76727aa040750",
+  "evidence_hash": "0920fc847ad484b7bea6e039ee10d21e271fb1cae3fd9dc5fa87e1f4796eb4cc",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x215142fefa83fc7909e9702dc0a76727aa040750.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"high\", \"risk_categories\": [], \"evidence\": [\"every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard\", \"guards: 2 strong (self_call_check)\"], \"uncertainties\": [], \"summary\": \"0x215142fefa83fc7909e9702dc0a76727aa040750: reachable capabilities are protected by authorization checks under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "high",
+    "risk_categories": [],
+    "evidence": [
+      "every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard",
+      "guards: 2 strong (self_call_check)"
+    ],
+    "uncertainties": [],
+    "summary": "0x215142fefa83fc7909e9702dc0a76727aa040750: reachable capabilities are protected by authorization checks under complete analysis."
+  }
+}

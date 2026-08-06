@@ -1,0 +1,28 @@
+{
+  "chain": "ethereum",
+  "address": "0xac9a3c7c64e865d3b547aea2aeeb436cfddb7c7b",
+  "evidence_hash": "4733b3e8b0bb4993e69990f03a1d4dce959d1f01b4d0eee43759e7f3415bdf0b",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xac9a3c7c64e865d3b547aea2aeeb436cfddb7c7b.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_capability_under_incomplete_coverage\", \"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s) with calldata-derived target\", \"1 reachable unguarded call-family site(s); 0 have a fixed constant target\"], \"uncertainties\": [\"Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.\", \"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: metadata trailer not separable (metadata_contains_executable_jumpdest); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xac9a3c7c64e865d3b547aea2aeeb436cfddb7c7b: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_capability_under_incomplete_coverage",
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s) with calldata-derived target",
+      "1 reachable unguarded call-family site(s); 0 have a fixed constant target"
+    ],
+    "uncertainties": [
+      "Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.",
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: metadata trailer not separable (metadata_contains_executable_jumpdest); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xac9a3c7c64e865d3b547aea2aeeb436cfddb7c7b: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control)."
+  }
+}

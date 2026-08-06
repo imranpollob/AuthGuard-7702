@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x8535687b766a712d89abf86a298032e4f19078dd",
+  "evidence_hash": "0c73db37ca31475a00733e384f5a48e1bb8a72854c9c00ca1af5783f965c7cbe",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x8535687b766a712d89abf86a298032e4f19078dd.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"2 reachable unguarded call-family site(s); 2 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (tx.origin compared against a fixed address literal)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x8535687b766a712d89abf86a298032e4f19078dd: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "2 reachable unguarded call-family site(s); 2 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (tx.origin compared against a fixed address literal)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x8535687b766a712d89abf86a298032e4f19078dd: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

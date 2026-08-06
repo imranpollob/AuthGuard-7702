@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x034304c387dd5bd1d129ccfc26680a8d2594db2a",
+  "evidence_hash": "89af6f3b40e62539f58fa835912719f3c858413644bc061e80e44b8b6c206cfb",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x034304c387dd5bd1d129ccfc26680a8d2594db2a.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unprotected_call_to_caller_chosen_target\"], \"evidence\": [\"1 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard\", \"the contract does contain 1 strong guard(s) (signature_authorization), but none dominates the paths above\", \"control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region\"], \"uncertainties\": [\"The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist.\"], \"summary\": \"0x034304c387dd5bd1d129ccfc26680a8d2594db2a: unprotected_call_to_caller_chosen_target \\u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "medium",
+    "risk_categories": [
+      "unprotected_call_to_caller_chosen_target"
+    ],
+    "evidence": [
+      "1 reachable call site(s) whose callee address is taken from calldata, on a path passing no caller or signature guard",
+      "the contract does contain 1 strong guard(s) (signature_authorization), but none dominates the paths above",
+      "control-flow coverage is COMPLETE, so this is an observed unprotected path rather than an unexplored region"
+    ],
+    "uncertainties": [
+      "The contract reaches ecrecover; if authorization is enforced by a signature check the traversal did not associate with these sites, protection may exist."
+    ],
+    "summary": "0x034304c387dd5bd1d129ccfc26680a8d2594db2a: unprotected_call_to_caller_chosen_target \u2014 a dangerous operation is reachable with no dominating authorization check under complete coverage."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xd0bc1e0ddd6af026838a0d32f82c7dfb39ca597e",
+  "evidence_hash": "21dba7af13f26a248b1553b637028603b95d1fc4f0a43150b7651c36f81954c3",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xd0bc1e0ddd6af026838a0d32f82c7dfb39ca597e.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: 1 dynamic JUMP target(s) could not be resolved\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xd0bc1e0ddd6af026838a0d32f82c7dfb39ca597e: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: 1 dynamic JUMP target(s) could not be resolved",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xd0bc1e0ddd6af026838a0d32f82c7dfb39ca597e: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

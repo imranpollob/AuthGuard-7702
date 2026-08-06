@@ -10309,9 +10309,336 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 15043 bytes (10233 decoded opcodes). Contains selector(s) matching common ownership/admin/init signatures: owner(), transferOwnership(address). Contains token-transfer selector(s): transfer(address,uint256). Contains an approve(address,uint256) selector. Structural counts: CALL=25, STATICCALL=14, DELEGATECALL=0, CREATE/CREATE2=2, SSTORE=10, SLOAD=22, SELFDESTRUCT=0, LOG=16.",
   "exact_bytecode_id": "EXACT00448",
   "bytecode_family_id": "FAM00323",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 15043,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 25,
+      "CALLCODE": 1,
+      "CREATE": 1,
+      "CREATE2": 1,
+      "SSTORE": 10
+    },
+    "sensitive_reachable": {
+      "CALL": 24,
+      "SSTORE": 8
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 21,
+      "SSTORE": 2
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {
+      "CALLCODE": 1,
+      "CREATE": 1,
+      "CREATE2": 1
+    },
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 997,
+        "kind": "strong",
+        "condition_provenance": [
+          "calldata",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "calldata"
+        ],
+        "semantics": "calldata_comparison (msg.sender compared against a caller-supplied value)"
+      },
+      {
+        "pc": 1027,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 1910,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 1929,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 1936,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 2017,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2022,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2091,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2194,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2384,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2562,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 2716,
+        "kind": "medium",
+        "condition_provenance": [
+          "memory",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 21,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": true,
+    "stack_underflows": 0,
+    "states_explored": 12746,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "traversal hit its per-pc state cap; exploration was truncated",
+      "dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx1, CREATEx1, CREATE2x1"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (executable_fallthrough_into_metadata_possible); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 1,
+      "constant_target": 1,
+      "unresolved_target": 19,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 24,
+    "unguarded_dangerous_count": 21,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 4824,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "memory",
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 4981,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "memory",
+          "sload"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 6504,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata",
+          "memory"
+        ],
+        "data_src": []
+      },
+      {
+        "pc": 8560,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 8835,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 9028,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      },
+      {
+        "pc": 9989,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 10998,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x000000000022d473030f116ddee9f6b43ac78ba3",
+        "value_const": 0
+      },
+      {
+        "pc": 11076,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 11492,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 11948,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      },
+      {
+        "pc": 12541,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "memory"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL"
 }

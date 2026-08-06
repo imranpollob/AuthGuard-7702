@@ -323,9 +323,302 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 496 bytes (246 decoded opcodes). Contains 2 DELEGATECALL instruction(s). Contains a byte sequence matching a standard EIP-1967 proxy storage slot constant. Contains selector(s) matching common ownership/admin/init signatures: admin(), changeAdmin(address). Structural counts: CALL=0, STATICCALL=2, DELEGATECALL=2, CREATE/CREATE2=0, SSTORE=2, SLOAD=6, SELFDESTRUCT=0, LOG=3.",
   "exact_bytecode_id": "EXACT00336",
   "bytecode_family_id": "FAM00253",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 443,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "DELEGATECALL": 2,
+      "SSTORE": 2
+    },
+    "sensitive_reachable": {
+      "DELEGATECALL": 1,
+      "SSTORE": 1
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": false,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 222,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller",
+          "sload"
+        ],
+        "compared_against_provenance": [
+          "sload"
+        ],
+        "semantics": "storage_based_caller_check (msg.sender compared against a stored authority)"
+      },
+      {
+        "pc": 283,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 324,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 434,
+        "kind": "medium",
+        "condition_provenance": [
+          "returndata",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 4,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 25,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 1,
+      "critical_op": 1
+    },
+    "reachable_dangerous_count": 1,
+    "unguarded_dangerous_count": 1,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 430,
+        "op": "DELEGATECALL",
+        "impact": "delegatecall",
+        "target_src": [
+          "sload"
+        ],
+        "value_src": [],
+        "data_src": []
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL",
+  "implementation_reachability": {
+    "executable_bytes": 23384,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 6,
+      "CALLCODE": 1,
+      "SSTORE": 52
+    },
+    "sensitive_reachable": {
+      "SSTORE": 51,
+      "CALL": 4
+    },
+    "sensitive_reachable_without_caller_guard": {},
+    "sensitive_reachable_even_ignoring_storage_guards": {},
+    "sensitive_present_but_never_reached": {
+      "CALLCODE": 1
+    },
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": true,
+    "guards": [
+      {
+        "pc": 3242,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 3331,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3688,
+        "kind": "strong",
+        "condition_provenance": [
+          "calldata",
+          "ecrecover",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "signature_authorization (branch depends on an ecrecover result)"
+      },
+      {
+        "pc": 3702,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3730,
+        "kind": "strong",
+        "condition_provenance": [
+          "ecrecover",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "signature_authorization (branch depends on an ecrecover result)"
+      },
+      {
+        "pc": 3770,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 3892,
+        "kind": "medium",
+        "condition_provenance": [
+          "tload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 3968,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 4037,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 4155,
+        "kind": "medium",
+        "condition_provenance": [
+          "calldata",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 4326,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      },
+      {
+        "pc": 4359,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 127,
+    "unresolved_dynamic_jumps": 7,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": true,
+    "stack_underflows": 23,
+    "states_explored": 43934,
+    "traversal_incomplete": true,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "7 dynamic JUMP target(s) could not be resolved",
+      "traversal hit its per-pc state cap; exploration was truncated",
+      "23 stack underflow(s) during symbolic execution",
+      "dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx1"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 4,
+    "unguarded_dangerous_count": 0,
+    "unguarded_sensitive_detail": []
+  },
+  "proxy_resolution": {
+    "resolution_attempted": true,
+    "max_depth": 3,
+    "resolved": true,
+    "hops": [
+      {
+        "target": "0xa928ab21cab2366d5e0ef73c68f85a6dc7d0cb9e",
+        "method": "eip1967_implementation",
+        "scope": "delegate_account",
+        "target_code_bytes": 23384
+      }
+    ],
+    "depth_used": 1,
+    "unresolved_reason": null,
+    "proxy_address": "0x7c27e3aecbf42879b64d76f604dc3430f4886462",
+    "proxy_bytecode_sha256": "9599631be8c05b3f3daf45b2ae5e1dd6946c23108e5000a2905b5db589841417",
+    "implementation_address": "0xa928ab21cab2366d5e0ef73c68f85a6dc7d0cb9e",
+    "resolved_at_block": 25596275,
+    "resolved_at_block_tag": "0x1869173",
+    "authorizing_eoa_used": "0x259fc09810dc6d89d722a56c91885ff2e7b58393",
+    "implementation_bytecode_sha256": "99650c2dfa98ff72495ad64a4d689a3aa4ab3670ec6e094453d55230bf44a373",
+    "implementation_bytecode_length": 23384,
+    "implementation_coverage_status": "PARTIAL"
+  }
 }

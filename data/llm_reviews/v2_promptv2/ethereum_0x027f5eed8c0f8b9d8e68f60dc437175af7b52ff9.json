@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9",
+  "evidence_hash": "10ef0488a5f198b32d1fa63f90056a7414072a015dba099e71a97f3ed5c962ba",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx1, SSTOREx1; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx1, SSTOREx1; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x027f5eed8c0f8b9d8e68f60dc437175af7b52ff9: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

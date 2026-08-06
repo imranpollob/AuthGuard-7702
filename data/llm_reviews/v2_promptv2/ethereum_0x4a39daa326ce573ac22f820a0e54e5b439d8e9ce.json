@@ -1,0 +1,28 @@
+{
+  "chain": "ethereum",
+  "address": "0x4a39daa326ce573ac22f820a0e54e5b439d8e9ce",
+  "evidence_hash": "4939143e757815c7b3e8c56d68a4a0f781cbdeee9fce88ae5f3813f752a4a471",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x4a39daa326ce573ac22f820a0e54e5b439d8e9ce.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"reachable sensitive capabilities: SSTOREx1; every reachable site is dominated by a caller/signature guard\", \"unguarded reachable state-changing ops: SSTOREx1\", \"guard semantics observed: storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: CALLx7\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x4a39daa326ce573ac22f820a0e54e5b439d8e9ce: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: SSTOREx1; every reachable site is dominated by a caller/signature guard",
+      "unguarded reachable state-changing ops: SSTOREx1",
+      "guard semantics observed: storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: CALLx7",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x4a39daa326ce573ac22f820a0e54e5b439d8e9ce: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unguarded_state_write_or_creation)."
+  }
+}

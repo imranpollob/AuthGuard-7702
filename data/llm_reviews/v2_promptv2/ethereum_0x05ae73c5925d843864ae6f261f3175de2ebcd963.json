@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x05ae73c5925d843864ae6f261f3175de2ebcd963",
+  "evidence_hash": "530b8996723a7e754f0d1a6d2a33b433aad21e33819ea3a57ad88e3a13612cd3",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x05ae73c5925d843864ae6f261f3175de2ebcd963.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx2; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: SSTOREx2\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x05ae73c5925d843864ae6f261f3175de2ebcd963: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx2; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: SSTOREx2",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x05ae73c5925d843864ae6f261f3175de2ebcd963: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

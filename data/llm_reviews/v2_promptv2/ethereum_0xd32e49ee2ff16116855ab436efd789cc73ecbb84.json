@@ -1,0 +1,28 @@
+{
+  "chain": "ethereum",
+  "address": "0xd32e49ee2ff16116855ab436efd789cc73ecbb84",
+  "evidence_hash": "fd83e1bbe83d9254df2fa3a7038973f28d0dc2f4b1d66de477ec765ac00145d9",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xd32e49ee2ff16116855ab436efd789cc73ecbb84.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"10 reachable unguarded call-family site(s); 1 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx2\", \"guard semantics observed: calldata_comparison (msg.sender compared against a caller-supplied value); storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATEx2; metadata trailer not separable (executable_fallthrough_into_metadata_possible); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xd32e49ee2ff16116855ab436efd789cc73ecbb84: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "10 reachable unguarded call-family site(s); 1 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx2",
+      "guard semantics observed: calldata_comparison (msg.sender compared against a caller-supplied value); storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated; capabilities present in executable code were never reached by the traversal: CREATEx2; metadata trailer not separable (executable_fallthrough_into_metadata_possible); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xd32e49ee2ff16116855ab436efd789cc73ecbb84: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation)."
+  }
+}

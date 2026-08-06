@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x000000009b1d0af20d8c6d0a44e162d11f9b8f00",
+  "evidence_hash": "75a775104d7d36fe3ac51d14b138404f625a0a204aa3afdc6c258527e3aab4dc",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x000000009b1d0af20d8c6d0a44e162d11f9b8f00.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"unresolved_proxy_target\"], \"evidence\": [\"reachable dangerous operations found: 7\", \"strong authorization guards observed: 8 (hardcoded_address_check, self_call_check)\"], \"uncertainties\": [\"a reachable DELEGATECALL has an unresolved (non-constant) target\"], \"summary\": \"0x000000009b1d0af20d8c6d0a44e162d11f9b8f00: control-flow coverage is incomplete (a reachable DELEGATECALL has an unresolved (non-constant) target), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 7",
+      "strong authorization guards observed: 8 (hardcoded_address_check, self_call_check)"
+    ],
+    "uncertainties": [
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "summary": "0x000000009b1d0af20d8c6d0a44e162d11f9b8f00: control-flow coverage is incomplete (a reachable DELEGATECALL has an unresolved (non-constant) target), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

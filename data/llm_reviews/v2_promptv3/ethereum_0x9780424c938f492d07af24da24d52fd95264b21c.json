@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x9780424c938f492d07af24da24d52fd95264b21c",
+  "evidence_hash": "24dc1560de515e9de1e93ab88f927c7a626acd59fa31ce1fb82ad09149c36945",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x9780424c938f492d07af24da24d52fd95264b21c.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"insufficient_control_flow_coverage\"], \"evidence\": [\"reachable dangerous operations found: 5\", \"strong authorization guards observed: 10 (caller_check, hardcoded_address_check, self_call_check, tx_origin_check)\"], \"uncertainties\": [\"1 dynamic JUMP target(s) could not be resolved\", \"dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx3, CREATE2x1, DELEGATECALLx4, SELFDESTRUCTx5\"], \"summary\": \"0x9780424c938f492d07af24da24d52fd95264b21c: control-flow coverage is incomplete (1 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "insufficient_control_flow_coverage"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 5",
+      "strong authorization guards observed: 10 (caller_check, hardcoded_address_check, self_call_check, tx_origin_check)"
+    ],
+    "uncertainties": [
+      "1 dynamic JUMP target(s) could not be resolved",
+      "dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx3, CREATE2x1, DELEGATECALLx4, SELFDESTRUCTx5"
+    ],
+    "summary": "0x9780424c938f492d07af24da24d52fd95264b21c: control-flow coverage is incomplete (1 dynamic JUMP target(s) could not be resolved), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "n_r1_investigated": 23,
+  "verdict_counts": {
+    "SOLIDITY_CBOR_METADATA": 12,
+    "EXECUTABLE_REGION_BUT_UNREACHABLE": 6,
+    "REACHABLE_GUARD_DOMINATED": 5
+  },
+  "n_with_any_reachable_selfdestruct": 5,
+  "n_with_unguarded_reachable_selfdestruct": 0,
+  "output_csv": "/home/pollmix/Coding/AuthGuard-7702/reports/selfdestruct_investigation_v2.csv"
+}

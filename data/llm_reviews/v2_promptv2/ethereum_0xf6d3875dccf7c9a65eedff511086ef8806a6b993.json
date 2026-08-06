@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0xf6d3875dccf7c9a65eedff511086ef8806a6b993",
+  "evidence_hash": "567b3ff8db5fe2c5c23ba17ce508cb9e274ff19697b0c2f821b24aa9723a8d5c",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xf6d3875dccf7c9a65eedff511086ef8806a6b993.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"guard_dominated_sensitive_capability\"], \"evidence\": [\"reachable sensitive capabilities: CALLx22; every reachable site is dominated by a caller/signature guard\", \"guard semantics observed: caller_check (msg.sender compared against an unresolved value); hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0xf6d3875dccf7c9a65eedff511086ef8806a6b993: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx22; every reachable site is dominated by a caller/signature guard",
+      "guard semantics observed: caller_check (msg.sender compared against an unresolved value); hardcoded_address_check (msg.sender compared against a fixed address literal); self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_based_caller_check (msg.sender compared against a stored authority); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0xf6d3875dccf7c9a65eedff511086ef8806a6b993: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability)."
+  }
+}

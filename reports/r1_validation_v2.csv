@@ -1,0 +1,26 @@
+address,verdict,n_calldata_sites_reachable,n_surviving_strong_guard_cut,n_surviving_storage_guard_cut,n_guards_total,n_strong_guards,n_medium_guards,guard_semantics,reaches_ecrecover,traversal_complete,contains_CALLER_opcode,contains_ORIGIN_opcode,contains_push1_0x01_possible_ecrecover,n_push20_address_constants,n_revert_sites,notes
+0x07e24e265de698fb3b2b02315f70154619a184b0,CONFIRMED,1,1,1,0,0,0,,False,True,True,False,False,0,5,
+0xe6259d8fa4535273a5bf00287f6d350c556a940d,CONFIRMED,7,6,6,1,1,0,hardcoded_address_check,False,True,True,True,False,0,27,
+0x5b89a23d1bdc8da72e47dbca5591ca0a1b90b415,CONFIRMED,2,2,2,0,0,0,,False,True,True,True,False,0,10,
+0x3e2b1f7c601300bd2a3c9a70edb1bbbf245cace0,CONFIRMED,1,1,1,0,0,0,,False,True,True,False,False,0,15,
+0x69e6bd1c4082403fc7917a61f6216552fc1a541d,CONFIRMED,3,1,1,4,4,0,calldata_comparison; self_call_check; signature_authorization,True,True,True,False,False,0,91,
+0x55e756ee933501b4ea8d7448b4521abde21f3a15,CONFIRMED,1,1,1,12,6,6,hardcoded_address_check; self_call_check; signature_authorization; storage_condition,True,True,True,False,False,0,15,
+0x5b96f01f67da8ed90ab93df39deeecd4bb559770,CONFIRMED,3,3,3,1,1,0,hardcoded_address_check,False,True,True,False,False,0,19,
+0x00bc0518486fda00d64ced8dad163e736939f3d6,CONFIRMED,1,1,1,2,2,0,caller_check; hardcoded_address_check,False,True,True,False,False,0,36,
+0x6f07dc2a99ea170f9e6f5c4f8641165bccbcc7df,CONFIRMED,1,1,1,0,0,0,,False,True,False,False,False,0,6,contract never uses CALLER: no caller-based authorization is possible anywhere
+0x44cbf40ae487e77da5d419cc8fbd7652e41af1b4,CONFIRMED,1,1,0,5,2,3,self_call_check; storage_based_caller_check; storage_condition,False,True,True,False,False,0,23,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0xe819aa682c092045377d9ac222994086af819cd1,CONFIRMED,2,2,2,0,0,0,,False,True,True,False,False,0,15,
+0x0d51a448891cb68cc94942c295fe89d40d97aab1,CONFIRMED,9,3,0,26,10,16,hardcoded_address_check; signature_authorization; storage_based_caller_check; storage_condition,True,True,True,False,False,0,149,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0x9676d9f94ece8d97cb4aec6ea3cf3a6e3ebb0b09,CONFIRMED,3,1,1,2,2,0,hardcoded_address_check,False,True,True,False,False,0,35,
+0x5ccff9b68e64e5debfa0412635598cbb7f148ddd,CONFIRMED,9,3,0,26,10,16,hardcoded_address_check; signature_authorization; storage_based_caller_check; storage_condition,True,True,True,False,False,0,150,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0x8cb7a3527e721e559a743737b536547fad469de8,CONFIRMED,2,2,2,0,0,0,,False,True,True,False,False,0,15,
+0x1e8de002381b9ff5e31941a567d00107f9c1b9f5,CONFIRMED,28,28,28,16,4,12,storage_based_caller_check; storage_condition,False,True,True,False,False,0,99,
+0x6d94554900937c5b3efb52ed21c09a4953b7c451,CONFIRMED,7,2,0,22,9,13,hardcoded_address_check; signature_authorization; storage_based_caller_check; storage_condition,True,True,True,False,False,0,123,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0x27bfd156c8c0df64e6a863c589dc9593ddac3ee2,CONFIRMED,1,1,1,0,0,0,,False,True,False,False,False,0,9,contract never uses CALLER: no caller-based authorization is possible anywhere
+0xf712684c0115a5638d861ab999a292e3f662da45,CONFIRMED,3,3,3,1,1,0,hardcoded_address_check,False,True,True,False,False,0,21,
+0x242e809094f7fa83763119988d84e4f4d9528713,CONFIRMED,1,1,0,9,4,5,calldata_comparison; self_call_check; signature_authorization; storage_condition,True,True,True,True,False,0,65,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0xaa2d5a3fc0e71af1a37f4e7a16ba7bf49cb859f3,CONFIRMED,1,1,1,0,0,0,,False,True,False,False,False,0,14,contract never uses CALLER: no caller-based authorization is possible anywhere
+0x80296ff8d1ed46f8e3c7992664d13b833504c2bb,CONFIRMED,3,1,1,4,4,0,calldata_comparison; self_call_check; signature_authorization,True,True,True,False,False,0,86,
+0xf4ad74f2bf4c8c9b1709c86893af664d3cd2da9e,CONFIRMED,7,2,0,16,6,10,hardcoded_address_check; signature_authorization; storage_condition,True,True,True,False,False,0,34,sites survive strong-guard cutting but NOT storage-guard cutting: protection may rest on a storage-derived authority check
+0x1bcc6b722dd35072823ea7f80b50442aaf57aac5,CONFIRMED,1,1,1,0,0,0,,False,True,False,False,False,0,10,contract never uses CALLER: no caller-based authorization is possible anywhere
+0xd75ba5e163fa5dd3b764f6d5c21210de3832a6ba,CONFIRMED,6,6,1,3,1,2,signature_authorization; storage_condition,True,True,False,False,False,0,21,contract never uses CALLER: no caller-based authorization is possible anywhere

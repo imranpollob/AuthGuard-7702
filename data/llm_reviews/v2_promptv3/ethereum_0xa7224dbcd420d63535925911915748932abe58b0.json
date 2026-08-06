@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xa7224dbcd420d63535925911915748932abe58b0",
+  "evidence_hash": "9966404c1684a52f0154d7dc548b35b566899af2045c46e53d2b0dec22436785",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xa7224dbcd420d63535925911915748932abe58b0.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_to_fixed_callee\"], \"evidence\": [\"1 reachable unguarded call site(s), all to fixed constant callee addresses \\u2014 the caller cannot redirect them\", \"guards: 3 strong (hardcoded_address_check)\"], \"uncertainties\": [\"Callee addresses are fixed, but calldata forwarded to those fixed callees was not modelled; a fixed callee that itself moves assets on behalf of the caller would not be distinguished here.\", \"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0xa7224dbcd420d63535925911915748932abe58b0: dangerous operations are either guard-dominated or restricted to fixed callee addresses under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_to_fixed_callee"
+    ],
+    "evidence": [
+      "1 reachable unguarded call site(s), all to fixed constant callee addresses \u2014 the caller cannot redirect them",
+      "guards: 3 strong (hardcoded_address_check)"
+    ],
+    "uncertainties": [
+      "Callee addresses are fixed, but calldata forwarded to those fixed callees was not modelled; a fixed callee that itself moves assets on behalf of the caller would not be distinguished here.",
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0xa7224dbcd420d63535925911915748932abe58b0: dangerous operations are either guard-dominated or restricted to fixed callee addresses under complete analysis."
+  }
+}

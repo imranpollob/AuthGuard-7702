@@ -1,0 +1,27 @@
+{
+  "chain": "ethereum",
+  "address": "0x47e747f5e8cb5819c966292dd969d989ae9dea5e",
+  "evidence_hash": "895712cdf86361f14cff1cb88fbdc2c39231c1b5c67c00b991df54b4d634b5a6",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x47e747f5e8cb5819c966292dd969d989ae9dea5e.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"2 reachable unguarded call-family site(s); 2 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx1\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x47e747f5e8cb5819c966292dd969d989ae9dea5e: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "2 reachable unguarded call-family site(s); 2 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx1",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x47e747f5e8cb5819c966292dd969d989ae9dea5e: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation)."
+  }
+}

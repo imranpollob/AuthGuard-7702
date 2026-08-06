@@ -1811,9 +1811,131 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 2725 bytes (1740 decoded opcodes). Structural counts: CALL=4, STATICCALL=1, DELEGATECALL=0, CREATE/CREATE2=2, SSTORE=0, SLOAD=0, SELFDESTRUCT=0, LOG=2.",
   "exact_bytecode_id": "EXACT00219",
   "bytecode_family_id": "FAM00166",
-  "bytecode_family_size": 2
+  "bytecode_family_size": 2,
+  "reachability": {
+    "executable_bytes": 2672,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 4
+    },
+    "sensitive_reachable": {
+      "CALL": 4
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 3
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "CALL": 3
+    },
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": true,
+    "guards": [
+      {
+        "pc": 209,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 796,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "caller_check (msg.sender compared against an unresolved value)"
+      },
+      {
+        "pc": 955,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x4337084d9e255ff0702461cf8895ce9e3b5ff108"
+      },
+      {
+        "pc": 2387,
+        "kind": "strong",
+        "condition_provenance": [
+          "ecrecover",
+          "memory",
+          "returndata"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "signature_authorization (branch depends on an ecrecover result)"
+      }
+    ],
+    "n_guards": 4,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 692,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 1,
+      "constant_target": 2,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 4,
+    "unguarded_dangerous_count": 3,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 431,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x696ada227454bd0bf38e8605ab7bacc02a293605",
+        "value_const": 0
+      },
+      {
+        "pc": 689,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x696ada227454bd0bf38e8605ab7bacc02a293605",
+        "value_const": 0
+      },
+      {
+        "pc": 2578,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      }
+    ]
+  },
+  "coverage_status": "COMPLETE"
 }

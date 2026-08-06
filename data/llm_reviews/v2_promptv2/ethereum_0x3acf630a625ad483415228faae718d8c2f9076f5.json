@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x3acf630a625ad483415228faae718d8c2f9076f5",
+  "evidence_hash": "1fd12a88deab80621c66a2969b8c85cc77fdd400e7e46da8d84d0251bf580e35",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x3acf630a625ad483415228faae718d8c2f9076f5.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: SELFDESTRUCTx1, SSTOREx1; metadata trailer not separable (metadata_contains_executable_jumpdest); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x3acf630a625ad483415228faae718d8c2f9076f5: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: capabilities present in executable code were never reached by the traversal: SELFDESTRUCTx1, SSTOREx1; metadata trailer not separable (metadata_contains_executable_jumpdest); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x3acf630a625ad483415228faae718d8c2f9076f5: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control)."
+  }
+}

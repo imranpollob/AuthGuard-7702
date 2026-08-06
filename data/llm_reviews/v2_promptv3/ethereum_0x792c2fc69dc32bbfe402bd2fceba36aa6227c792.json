@@ -1,0 +1,22 @@
+{
+  "chain": "ethereum",
+  "address": "0x792c2fc69dc32bbfe402bd2fceba36aa6227c792",
+  "evidence_hash": "5c9ddad381a8a55832db31abbac6449e4ca719a90f0d9a1196f5012015d8729e",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x792c2fc69dc32bbfe402bd2fceba36aa6227c792.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [], \"evidence\": [\"no dangerous operation (CALL/DELEGATECALL/CALLCODE/CREATE/SELFDESTRUCT) is reachable from the entry point\", \"analysis complete: 230 symbolic states, no unresolved jumps, no truncation\"], \"uncertainties\": [\"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0x792c2fc69dc32bbfe402bd2fceba36aa6227c792: no dangerous operation is reachable and the analysis was complete.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [],
+    "evidence": [
+      "no dangerous operation (CALL/DELEGATECALL/CALLCODE/CREATE/SELFDESTRUCT) is reachable from the entry point",
+      "analysis complete: 230 symbolic states, no unresolved jumps, no truncation"
+    ],
+    "uncertainties": [
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0x792c2fc69dc32bbfe402bd2fceba36aa6227c792: no dangerous operation is reachable and the analysis was complete."
+  }
+}

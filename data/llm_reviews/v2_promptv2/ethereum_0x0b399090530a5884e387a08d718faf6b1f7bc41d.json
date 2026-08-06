@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x0b399090530a5884e387a08d718faf6b1f7bc41d",
+  "evidence_hash": "132d465fc5608a138aa2db9ada72ce4dcdbef48b2f81156e7f0d4301b7c9243f",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x0b399090530a5884e387a08d718faf6b1f7bc41d.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"guard_dominated_sensitive_capability\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"reachable sensitive capabilities: CALLx1, SSTOREx5; every reachable site is dominated by a caller/signature guard\", \"unguarded reachable state-changing ops: SSTOREx1\", \"guard semantics observed: self_call_check (msg.sender == address(this)) \\u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve.\"], \"summary\": \"0x0b399090530a5884e387a08d718faf6b1f7bc41d: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "guard_dominated_sensitive_capability",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "reachable sensitive capabilities: CALLx1, SSTOREx5; every reachable site is dominated by a caller/signature guard",
+      "unguarded reachable state-changing ops: SSTOREx1",
+      "guard semantics observed: self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern; signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Guard strength was not verified: a guard comparing msg.sender against a stored authority is only as strong as whatever can write that storage slot, which this analysis does not resolve."
+    ],
+    "summary": "0x0b399090530a5884e387a08d718faf6b1f7bc41d: reachable sensitive capability whose exploitability is conditional (guard_dominated_sensitive_capability, unguarded_state_write_or_creation)."
+  }
+}

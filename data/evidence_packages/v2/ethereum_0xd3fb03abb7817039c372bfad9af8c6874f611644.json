@@ -8226,9 +8226,198 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 11559 bytes (8151 decoded opcodes). Contains selector(s) matching common ownership/admin/init signatures: owner(). Contains token-transfer selector(s): transfer(address,uint256). Structural counts: CALL=12, STATICCALL=12, DELEGATECALL=0, CREATE/CREATE2=1, SSTORE=1, SLOAD=0, SELFDESTRUCT=0, LOG=14.",
   "exact_bytecode_id": "EXACT00551",
   "bytecode_family_id": "FAM00380",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 11559,
+    "metadata_bytes": 0,
+    "metadata_recognized": false,
+    "sensitive_present_in_executable_region": {
+      "CALL": 12,
+      "CALLCODE": 2,
+      "CREATE2": 1,
+      "SSTORE": 1
+    },
+    "sensitive_reachable": {
+      "CALL": 12
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "CALL": 1
+    },
+    "sensitive_present_but_never_reached": {
+      "CALLCODE": 2,
+      "CREATE2": 1,
+      "SSTORE": 1
+    },
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 827,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 1385,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 2487,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 2815,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 2867,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 3895,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 3947,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 5709,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 6417,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 6469,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 6885,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      },
+      {
+        "pc": 6937,
+        "kind": "strong",
+        "condition_provenance": [
+          "caller"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "hardcoded_address_check (msg.sender compared against a fixed address literal)",
+        "compared_address_constant": "0x08828f29cdc46ffd5bea7ddf92946498918ee501"
+      }
+    ],
+    "n_guards": 12,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 3254,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "dangerous capabilities present in executable code were never reached by the traversal: CALLCODEx2, CREATE2x1"
+    ],
+    "analysis_notes": [
+      "metadata trailer not separable (executable_fallthrough_into_metadata_possible); tail opcode counts may include non-executable bytes"
+    ],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 1,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 12,
+    "unguarded_dangerous_count": 1,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 252,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "selfbalance"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x4cfcc7aa6c619a9cb15abeef0d9f98f83a7cd96e"
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL"
 }

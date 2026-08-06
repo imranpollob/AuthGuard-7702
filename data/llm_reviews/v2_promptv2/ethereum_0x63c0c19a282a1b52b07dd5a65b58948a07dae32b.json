@@ -1,0 +1,24 @@
+{
+  "chain": "ethereum",
+  "address": "0x63c0c19a282a1b52b07dd5a65b58948a07dae32b",
+  "evidence_hash": "a52a396232116966132500d0c4c5c37ab819e3e074e72ef17b76f808458a20d8",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x63c0c19a282a1b52b07dd5a65b58948a07dae32b.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 1 have a fixed constant target\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); signature_authorization (branch depends on an ecrecover result)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\"], \"summary\": \"0x63c0c19a282a1b52b07dd5a65b58948a07dae32b: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control). Documented as MetaMask_EIP7702StatelessDeleGator.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 1 have a fixed constant target",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); signature_authorization (branch depends on an ecrecover result)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence."
+    ],
+    "summary": "0x63c0c19a282a1b52b07dd5a65b58948a07dae32b: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control). Documented as MetaMask_EIP7702StatelessDeleGator."
+  }
+}

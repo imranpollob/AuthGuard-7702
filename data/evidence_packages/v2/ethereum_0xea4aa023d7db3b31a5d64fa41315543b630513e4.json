@@ -132,9 +132,76 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 133 bytes (58 decoded opcodes). Contains 1 DELEGATECALL instruction(s). Pattern resembles a minimal forwarding proxy (short bytecode, no SSTORE). Contains a byte sequence matching a standard EIP-1967 proxy storage slot constant. Structural counts: CALL=0, STATICCALL=0, DELEGATECALL=1, CREATE/CREATE2=0, SSTORE=0, SLOAD=1, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00611",
   "bytecode_family_id": "FAM00413",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 80,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "DELEGATECALL": 1
+    },
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": false,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": true,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 71,
+        "kind": "medium",
+        "condition_provenance": [
+          "returndata",
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 1,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 3,
+    "traversal_incomplete": false,
+    "coverage_status": "PARTIAL",
+    "coverage_reasons": [
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 0,
+      "constant_target": 0,
+      "unresolved_target": 1,
+      "critical_op": 1
+    },
+    "reachable_dangerous_count": 1,
+    "unguarded_dangerous_count": 1,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 63,
+        "op": "DELEGATECALL",
+        "impact": "delegatecall",
+        "target_src": [
+          "sload"
+        ],
+        "value_src": [],
+        "data_src": []
+      }
+    ]
+  },
+  "coverage_status": "PARTIAL"
 }

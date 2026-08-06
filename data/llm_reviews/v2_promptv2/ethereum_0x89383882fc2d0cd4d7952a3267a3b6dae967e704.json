@@ -1,0 +1,26 @@
+{
+  "chain": "ethereum",
+  "address": "0x89383882fc2d0cd4d7952a3267a3b6dae967e704",
+  "evidence_hash": "d7f923dc3c503e038c286363b8694a226bcb7402352b4d6a65729fd56d8d16d7",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x89383882fc2d0cd4d7952a3267a3b6dae967e704.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"1 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx1\", \"guard semantics observed: storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\"], \"summary\": \"0x89383882fc2d0cd4d7952a3267a3b6dae967e704: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "1 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx1",
+      "guard semantics observed: storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence."
+    ],
+    "summary": "0x89383882fc2d0cd4d7952a3267a3b6dae967e704: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation)."
+  }
+}

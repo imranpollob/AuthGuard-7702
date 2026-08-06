@@ -3602,9 +3602,154 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 5695 bytes (3529 decoded opcodes). Contains token-transfer selector(s): transfer(address,uint256). Structural counts: CALL=6, STATICCALL=2, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=2, SLOAD=3, SELFDESTRUCT=0, LOG=5.",
   "exact_bytecode_id": "EXACT00212",
   "bytecode_family_id": "FAM00163",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 5642,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 6,
+      "SSTORE": 2
+    },
+    "sensitive_reachable": {
+      "CALL": 6,
+      "SSTORE": 2
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 5,
+      "SSTORE": 1
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "CALL": 4
+    },
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": true,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [
+      {
+        "pc": 2541,
+        "kind": "strong",
+        "condition_provenance": [
+          "address",
+          "caller"
+        ],
+        "compared_against_provenance": [
+          "address"
+        ],
+        "semantics": "self_call_check (msg.sender == address(this)) \u2014 the canonical EIP-7702 pattern"
+      },
+      {
+        "pc": 4743,
+        "kind": "medium",
+        "condition_provenance": [
+          "sload"
+        ],
+        "compared_against_provenance": [],
+        "semantics": "storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+      }
+    ],
+    "n_guards": 2,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 1163,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 2,
+      "constant_target": 2,
+      "unresolved_target": 1,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 6,
+    "unguarded_dangerous_count": 5,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 162,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "callvalue"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x52c99accbaf0659df23ddbfbe9dfa64fb2732e6b"
+      },
+      {
+        "pc": 347,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "callvalue"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0x52c99accbaf0659df23ddbfbe9dfa64fb2732e6b"
+      },
+      {
+        "pc": 1185,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      },
+      {
+        "pc": 1634,
+        "op": "SSTORE",
+        "impact": "storage_write",
+        "target_src": [],
+        "value_src": [
+          "sload"
+        ],
+        "data_src": [],
+        "storage_slot": "0x0"
+      },
+      {
+        "pc": 1847,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [
+          "calldata"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      },
+      {
+        "pc": 2375,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "selfbalance"
+        ],
+        "data_src": [
+          "memory"
+        ]
+      }
+    ]
+  },
+  "coverage_status": "COMPLETE"
 }

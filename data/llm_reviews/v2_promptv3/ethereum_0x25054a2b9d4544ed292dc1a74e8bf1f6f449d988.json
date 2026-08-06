@@ -1,0 +1,21 @@
+{
+  "chain": "ethereum",
+  "address": "0x25054a2b9d4544ed292dc1a74e8bf1f6f449d988",
+  "evidence_hash": "5915bdb2fa90fa73380577cd71d1bc7f8714f1a2ac8a6788405b1ce4e199c36c",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x25054a2b9d4544ed292dc1a74e8bf1f6f449d988.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"high\", \"risk_categories\": [], \"evidence\": [\"every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard\", \"guards: 1 strong (signature_authorization)\", \"contract reaches ecrecover (signature-based authorization present)\"], \"uncertainties\": [], \"summary\": \"0x25054a2b9d4544ed292dc1a74e8bf1f6f449d988: reachable capabilities are protected by authorization checks under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "high",
+    "risk_categories": [],
+    "evidence": [
+      "every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard",
+      "guards: 1 strong (signature_authorization)",
+      "contract reaches ecrecover (signature-based authorization present)"
+    ],
+    "uncertainties": [],
+    "summary": "0x25054a2b9d4544ed292dc1a74e8bf1f6f449d988: reachable capabilities are protected by authorization checks under complete analysis."
+  }
+}

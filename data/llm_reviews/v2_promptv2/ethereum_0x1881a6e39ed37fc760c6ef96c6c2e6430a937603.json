@@ -1,0 +1,22 @@
+{
+  "chain": "ethereum",
+  "address": "0x1881a6e39ed37fc760c6ef96c6c2e6430a937603",
+  "evidence_hash": "e19b11c5932cd3f06735aafcd44f6751076831536f65c06342fd28cd42f3a6d5",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x1881a6e39ed37fc760c6ef96c6c2e6430a937603.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [], \"evidence\": [\"no CALL/DELEGATECALL/CALLCODE/CREATE/SELFDESTRUCT/SSTORE site was reachable from the entry point\", \"executable region 24 bytes (metadata 0 bytes); 1 symbolic states explored with no unresolved jumps\"], \"uncertainties\": [\"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0x1881a6e39ed37fc760c6ef96c6c2e6430a937603: no security-relevant capability was reachable and the control-flow analysis was complete. This is not a universal-safety claim.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [],
+    "evidence": [
+      "no CALL/DELEGATECALL/CALLCODE/CREATE/SELFDESTRUCT/SSTORE site was reachable from the entry point",
+      "executable region 24 bytes (metadata 0 bytes); 1 symbolic states explored with no unresolved jumps"
+    ],
+    "uncertainties": [
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0x1881a6e39ed37fc760c6ef96c6c2e6430a937603: no security-relevant capability was reachable and the control-flow analysis was complete. This is not a universal-safety claim."
+  }
+}

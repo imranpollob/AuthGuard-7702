@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0x11e7af2c7a0431a975a7fa1f5d696cb252cbd3f0",
+  "evidence_hash": "9da137ed57474e9ad0fcd42a196904e967fb49f3cf14a5260b0b37bdccd3f7b7",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x11e7af2c7a0431a975a7fa1f5d696cb252cbd3f0.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"U\", \"confidence\": \"medium\", \"risk_categories\": [\"unresolved_proxy_target\"], \"evidence\": [\"reachable dangerous operations found: 17\", \"strong authorization guards observed: 7 (storage_based_caller_check)\"], \"uncertainties\": [\"traversal hit its per-pc state cap; exploration was truncated\", \"a reachable DELEGATECALL has an unresolved (non-constant) target\"], \"summary\": \"0x11e7af2c7a0431a975a7fa1f5d696cb252cbd3f0: control-flow coverage is incomplete (traversal hit its per-pc state cap; exploration was truncated), so whether the reachable capabilities are protected cannot be determined.\"}",
+  "parsed_response": {
+    "proposed_label": "U",
+    "confidence": "medium",
+    "risk_categories": [
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable dangerous operations found: 17",
+      "strong authorization guards observed: 7 (storage_based_caller_check)"
+    ],
+    "uncertainties": [
+      "traversal hit its per-pc state cap; exploration was truncated",
+      "a reachable DELEGATECALL has an unresolved (non-constant) target"
+    ],
+    "summary": "0x11e7af2c7a0431a975a7fa1f5d696cb252cbd3f0: control-flow coverage is incomplete (traversal hit its per-pc state cap; exploration was truncated), so whether the reachable capabilities are protected cannot be determined."
+  }
+}

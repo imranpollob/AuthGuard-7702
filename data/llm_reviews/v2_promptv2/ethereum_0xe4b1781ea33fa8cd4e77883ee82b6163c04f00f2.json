@@ -1,0 +1,25 @@
+{
+  "chain": "ethereum",
+  "address": "0xe4b1781ea33fa8cd4e77883ee82b6163c04f00f2",
+  "evidence_hash": "5a53331f77adda63f4849e9c1c669d05777e43db117e9595eb7052191138de96",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe4b1781ea33fa8cd4e77883ee82b6163c04f00f2.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R1\", \"confidence\": \"medium\", \"risk_categories\": [\"unguarded_call_to_calldata_supplied_target\"], \"evidence\": [\"reachable unguarded call-family site(s) whose target provenance is calldata: pc=2796(CALL), pc=4563(CALL)\", \"guards observed on the contract at all: 25\", \"control-flow coverage is COMPLETE, so the absence of a dominating guard on these paths is a positive finding rather than an unexplored region\"], \"uncertainties\": [\"The contract reaches ecrecover somewhere; if authorization is enforced by a signature check that this traversal did not tie to these sites, the capability may be protected in a way this analysis did not model.\"], \"summary\": \"0xe4b1781ea33fa8cd4e77883ee82b6163c04f00f2: unguarded_call_to_calldata_supplied_target reachable from entry on a path passing no recognized caller or signature guard, under complete control-flow coverage.\"}",
+  "parsed_response": {
+    "proposed_label": "R1",
+    "confidence": "medium",
+    "risk_categories": [
+      "unguarded_call_to_calldata_supplied_target"
+    ],
+    "evidence": [
+      "reachable unguarded call-family site(s) whose target provenance is calldata: pc=2796(CALL), pc=4563(CALL)",
+      "guards observed on the contract at all: 25",
+      "control-flow coverage is COMPLETE, so the absence of a dominating guard on these paths is a positive finding rather than an unexplored region"
+    ],
+    "uncertainties": [
+      "The contract reaches ecrecover somewhere; if authorization is enforced by a signature check that this traversal did not tie to these sites, the capability may be protected in a way this analysis did not model."
+    ],
+    "summary": "0xe4b1781ea33fa8cd4e77883ee82b6163c04f00f2: unguarded_call_to_calldata_supplied_target reachable from entry on a path passing no recognized caller or signature guard, under complete control-flow coverage."
+  }
+}

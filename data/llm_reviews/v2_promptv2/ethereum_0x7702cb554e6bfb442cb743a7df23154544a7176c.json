@@ -1,0 +1,34 @@
+{
+  "chain": "ethereum",
+  "address": "0x7702cb554e6bfb442cb743a7df23154544a7176c",
+  "evidence_hash": "0a983d050c8c55ae995e922b7a454dcdf8d389d4b47b8b93e77c24f8682abbc0",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x7702cb554e6bfb442cb743a7df23154544a7176c.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_capability_under_incomplete_coverage\", \"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\", \"unresolved_proxy_target\"], \"evidence\": [\"reachable without passing any caller/signature guard: DELEGATECALLx3\", \"1 reachable unguarded call-family site(s) with calldata-derived target\", \"4 reachable unguarded call-family site(s); 3 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx1\", \"guard semantics observed: signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.\", \"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.\", \"Coverage is PARTIAL: a reachable DELEGATECALL has an unresolved (non-constant) target\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x7702cb554e6bfb442cb743a7df23154544a7176c: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation, unresolved_proxy_target). Documented as Coinbase_EIP7702Proxy.\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_capability_under_incomplete_coverage",
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation",
+      "unresolved_proxy_target"
+    ],
+    "evidence": [
+      "reachable without passing any caller/signature guard: DELEGATECALLx3",
+      "1 reachable unguarded call-family site(s) with calldata-derived target",
+      "4 reachable unguarded call-family site(s); 3 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx1",
+      "guard semantics observed: signature_authorization (branch depends on an ecrecover result); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.",
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "A reachable DELEGATECALL has a non-constant target: the code actually executed in the EOA's context depends on runtime state and may be upgradeable.",
+      "Coverage is PARTIAL: a reachable DELEGATECALL has an unresolved (non-constant) target",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x7702cb554e6bfb442cb743a7df23154544a7176c: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation, unresolved_proxy_target). Documented as Coinbase_EIP7702Proxy."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "chain": "ethereum",
+  "address": "0x563f842256263621947cad4deb105e0eaf2deee3",
+  "evidence_hash": "45c7323dea801729bb595743ac744b38d5ba02074b4ae73326d88492430bfb3d",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x563f842256263621947cad4deb105e0eaf2deee3.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"2 reachable unguarded call-family site(s); 0 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx17\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x563f842256263621947cad4deb105e0eaf2deee3: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "2 reachable unguarded call-family site(s); 0 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx17",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: metadata trailer not separable (metadata_start_not_instruction_boundary); opcode counts may include non-executable bytes",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x563f842256263621947cad4deb105e0eaf2deee3: reachable sensitive capability whose exploitability is conditional (unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation)."
+  }
+}

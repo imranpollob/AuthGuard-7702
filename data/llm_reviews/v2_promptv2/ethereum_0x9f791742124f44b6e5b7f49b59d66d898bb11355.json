@@ -1,0 +1,31 @@
+{
+  "chain": "ethereum",
+  "address": "0x9f791742124f44b6e5b7f49b59d66d898bb11355",
+  "evidence_hash": "29b88e27a188c31b395748c41d5c6694fddecf4d521ee086c2dee0614629c8a7",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0x9f791742124f44b6e5b7f49b59d66d898bb11355.json",
+  "prompt_version": "v2",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"R2\", \"confidence\": \"low\", \"risk_categories\": [\"unguarded_capability_under_incomplete_coverage\", \"unguarded_call_with_unproven_target_control\", \"unguarded_state_write_or_creation\"], \"evidence\": [\"2 reachable unguarded call-family site(s) with calldata-derived target\", \"10 reachable unguarded call-family site(s); 7 have a fixed constant target\", \"unguarded reachable state-changing ops: SSTOREx2\", \"guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)\"], \"uncertainties\": [\"Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.\", \"Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.\", \"Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated\", \"No verified source on Sourcify to corroborate the bytecode evidence.\"], \"summary\": \"0x9f791742124f44b6e5b7f49b59d66d898bb11355: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation).\"}",
+  "parsed_response": {
+    "proposed_label": "R2",
+    "confidence": "low",
+    "risk_categories": [
+      "unguarded_capability_under_incomplete_coverage",
+      "unguarded_call_with_unproven_target_control",
+      "unguarded_state_write_or_creation"
+    ],
+    "evidence": [
+      "2 reachable unguarded call-family site(s) with calldata-derived target",
+      "10 reachable unguarded call-family site(s); 7 have a fixed constant target",
+      "unguarded reachable state-changing ops: SSTOREx2",
+      "guard semantics observed: hardcoded_address_check (msg.sender compared against a fixed address literal); storage_condition (e.g. initialized flag, paused flag, or an authority slot)"
+    ],
+    "uncertainties": [
+      "Control-flow coverage is PARTIAL, so an unexplored region may contain the guard that dominates these sites. Not escalated to R1 for that reason.",
+      "Target provenance is a constant or memory-derived value. Memory provenance is not tracked transitively back to calldata, so an attacker-chosen target cannot be ruled out or confirmed from this evidence.",
+      "Coverage is PARTIAL: traversal hit its per-pc state cap; exploration was truncated",
+      "No verified source on Sourcify to corroborate the bytecode evidence."
+    ],
+    "summary": "0x9f791742124f44b6e5b7f49b59d66d898bb11355: reachable sensitive capability whose exploitability is conditional (unguarded_capability_under_incomplete_coverage, unguarded_call_with_unproven_target_control, unguarded_state_write_or_creation)."
+  }
+}

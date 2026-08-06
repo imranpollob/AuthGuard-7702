@@ -1,0 +1,22 @@
+{
+  "chain": "ethereum",
+  "address": "0xe23d241796adb810fda75e8efcf70e053acba355",
+  "evidence_hash": "ac1a85b72f1c419938780b167edf517b5e33776a1a2b2bc0eba8e3d31285bd86",
+  "evidence_path": "/home/pollmix/Coding/AuthGuard-7702/data/evidence_packages/v2/ethereum_0xe23d241796adb810fda75e8efcf70e053acba355.json",
+  "prompt_version": "v3",
+  "model_id": "claude-opus-5",
+  "raw_response": "{\"proposed_label\": \"B\", \"confidence\": \"medium\", \"risk_categories\": [], \"evidence\": [\"every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard\", \"guards: 6 strong (hardcoded_address_check, self_call_check)\"], \"uncertainties\": [\"No verified source on Sourcify; conclusion rests on bytecode evidence only.\"], \"summary\": \"0xe23d241796adb810fda75e8efcf70e053acba355: reachable capabilities are protected by authorization checks under complete analysis.\"}",
+  "parsed_response": {
+    "proposed_label": "B",
+    "confidence": "medium",
+    "risk_categories": [],
+    "evidence": [
+      "every reachable dangerous operation (CALLx1) is dominated by a caller or signature guard",
+      "guards: 6 strong (hardcoded_address_check, self_call_check)"
+    ],
+    "uncertainties": [
+      "No verified source on Sourcify; conclusion rests on bytecode evidence only."
+    ],
+    "summary": "0xe23d241796adb810fda75e8efcf70e053acba355: reachable capabilities are protected by authorization checks under complete analysis."
+  }
+}

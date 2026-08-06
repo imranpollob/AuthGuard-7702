@@ -1127,9 +1127,79 @@
   "audit_links": {
     "status": "NOT_AVAILABLE_OFFLINE"
   },
-  "packet_generator_version": "revision_v3.evidence.packet_builder.v2",
+  "packet_generator_version": "dataset_pipeline.evidence.reachability.v2",
   "deterministic_summary": "Runtime bytecode length: 1703 bytes (1054 decoded opcodes). Contains token-transfer selector(s): transfer(address,uint256). Structural counts: CALL=2, STATICCALL=1, DELEGATECALL=0, CREATE/CREATE2=0, SSTORE=0, SLOAD=1, SELFDESTRUCT=0, LOG=1.",
   "exact_bytecode_id": "EXACT00095",
   "bytecode_family_id": "FAM00073",
-  "bytecode_family_size": 1
+  "bytecode_family_size": 1,
+  "reachability": {
+    "executable_bytes": 1650,
+    "metadata_bytes": 53,
+    "metadata_recognized": true,
+    "sensitive_present_in_executable_region": {
+      "CALL": 2
+    },
+    "sensitive_reachable": {
+      "CALL": 2
+    },
+    "sensitive_reachable_without_caller_guard": {
+      "CALL": 2
+    },
+    "sensitive_reachable_even_ignoring_storage_guards": {
+      "CALL": 2
+    },
+    "sensitive_present_but_never_reached": {},
+    "used_state_widening": false,
+    "uncorroborated_guardcut_sites_discarded": [],
+    "reachable_delegatecall_with_unresolved_target": false,
+    "reaches_ecrecover": false,
+    "guards": [],
+    "n_guards": 0,
+    "unresolved_dynamic_jumps": 0,
+    "hit_state_cap": false,
+    "hit_per_pc_cap": false,
+    "stack_underflows": 0,
+    "states_explored": 190,
+    "traversal_incomplete": false,
+    "coverage_status": "COMPLETE",
+    "coverage_reasons": [],
+    "analysis_notes": [],
+    "unguarded_dangerous_by_target_provenance": {
+      "calldata_target": 1,
+      "constant_target": 1,
+      "unresolved_target": 0,
+      "critical_op": 0
+    },
+    "reachable_dangerous_count": 2,
+    "unguarded_dangerous_count": 2,
+    "unguarded_sensitive_detail": [
+      {
+        "pc": 203,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [],
+        "value_src": [
+          "selfbalance"
+        ],
+        "data_src": [
+          "memory"
+        ],
+        "target_const": "0xa7c91c2911206de0d3054372d6af188fb11af07a"
+      },
+      {
+        "pc": 680,
+        "op": "CALL",
+        "impact": "external_call_or_value_transfer",
+        "target_src": [
+          "calldata"
+        ],
+        "value_src": [],
+        "data_src": [
+          "memory"
+        ],
+        "value_const": 0
+      }
+    ]
+  },
+  "coverage_status": "COMPLETE"
 }
