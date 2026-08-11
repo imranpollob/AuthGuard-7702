@@ -1,0 +1,24 @@
+    0x0: PUSH1     0x80
+    0x2: PUSH1     0x40
+    0x4: MSTORE    
+    0x5: PUSH0     
+    0x6: DUP1      
+    0x7: REVERT    
+    0x8: INVALID   
+    0x9: LOG2      
+    0xa: PUSH5     0x6970667358
+   0x10: MISSING   
+   0x11: SLT       
+   0x12: SHA3      
+   0x13: MISSING   
+   0x14: PUSH4     0xd2a2d3f9
+   0x19: MISSING   
+   0x1a: PUSH22    0x6daa236a66142319617299a96ea42a4ad066136c3ea7
+   0x31: RETURNDATASIZE
+   0x32: MISSING   
+   0x33: PUSH5     0x736f6c6343
+   0x39: STOP      
+   0x3a: ADDMOD    
+   0x3b: BYTE      
+   0x3c: STOP      
+   0x3d: CALLER    

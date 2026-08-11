@@ -1,0 +1,8 @@
+0x29b	balanceOf(address)
+0x3a5	flashLoan(uint256,uint256,address,bytes)
+0x435	balanceOf(address)
+0x686	transfer(address,uint256)
+0x77f	approve(address,uint256)
+0x8be	balanceOf(address)
+0xa78	approve(address,uint256)
+0xbb7	balanceOf(address)

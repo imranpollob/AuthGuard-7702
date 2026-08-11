@@ -1,0 +1,7 @@
+unit_key,model,layout,aggregation,token_budget,trainable_params,serialized_bytes_untrained,reference
+flat_control_2048:7702:0,flat_control_2048,flat,flat,2048,29985,122961,False
+flat_control_16384:7702:0,flat_control_16384,flat,flat,16384,29985,122961,False
+chunk_attention_control_2048:7702:0,chunk_attention_control_2048,chunk,attention,2048,30050,123721,False
+chunk_mean_control_16384:7702:0,chunk_mean_control_16384,chunk,mean,16384,29985,122961,False
+chunk_attention_control_16384:7702:0,chunk_attention_control_16384,chunk,attention,16384,30050,123721,False
+authguard_reference_16384:7702:0,authguard_reference_16384,chunk,attention,16384,181877,737100,True

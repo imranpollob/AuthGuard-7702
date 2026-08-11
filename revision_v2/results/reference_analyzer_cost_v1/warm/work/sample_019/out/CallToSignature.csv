@@ -1,0 +1,5 @@
+0x7b	deposit()
+0xecc	transferFrom(address,address,uint256)
+0x3c55	approve(address,uint256)
+0x3c9e	approve(address,uint256)
+0x3cad	approve(address,uint256)

@@ -1,0 +1,667 @@
+{
+  "protocol": "adaptive_attack_v2",
+  "corpus": "revision_v2/data/authguardbench_7702_v2.csv.gz (PRIMARY_EVALUATION)",
+  "operating_point": "nominal 5% FPR from validation negatives",
+  "seeds": [
+    7702
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "authguard_seq",
+    "flat_cnn",
+    "hist_ngram_xgb"
+  ],
+  "query_budget": 64,
+  "beam_width": 4,
+  "max_depth": 4,
+  "max_byte_overhead": 2.0,
+  "fixed_comparators": [
+    "M1",
+    "M2",
+    "M3",
+    "F25",
+    "F50",
+    "F100",
+    "F200"
+  ],
+  "actions": [
+    "metadata",
+    "address",
+    "selector",
+    "neutral25",
+    "flood25",
+    "flood50",
+    "flood100",
+    "flood200"
+  ],
+  "sources_attacked": 727,
+  "donor_ledger_rows": 194654,
+  "summary": {
+    "authguard_seq": {
+      "F100": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 45,
+        "ASR": 0.07364975450081833,
+        "unconditional_evasion_rate": 0.22145804676753783,
+        "score_reduction_mean": 0.045711610305868414,
+        "score_reduction_median": 0.0126391630947712,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.9717520106840492,
+        "byte_overhead_p95": 0.9930327048813399,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.5722772277227722,
+        "transfer_to_hist_ngram_xgb_ASR": 0.49777777777777776
+      },
+      "F200": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 81,
+        "ASR": 0.132569558101473,
+        "unconditional_evasion_rate": 0.2668500687757909,
+        "score_reduction_mean": 0.09049287891350777,
+        "score_reduction_median": 0.035072954608848184,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 1.9429524984347881,
+        "byte_overhead_p95": 1.9859314233180902,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.7485148514851485,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6466666666666666,
+        "ASR_family_CI": {
+          "point": 0.132569558101473,
+          "CI95": [
+            0.08128827107518527,
+            0.19561821047942154
+          ],
+          "replicates": 10000
+        }
+      },
+      "F25": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 18,
+        "ASR": 0.029459901800327332,
+        "unconditional_evasion_rate": 0.1843191196698762,
+        "score_reduction_mean": 0.010077988322058808,
+        "score_reduction_median": 0.0020354908431614582,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.24318444610068074,
+        "byte_overhead_p95": 0.2482834386157649,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.18217821782178217,
+        "transfer_to_hist_ngram_xgb_ASR": 0.19111111111111112
+      },
+      "F50": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 27,
+        "ASR": 0.044189852700491,
+        "unconditional_evasion_rate": 0.1939477303988996,
+        "score_reduction_mean": 0.018524851874738648,
+        "score_reduction_median": 0.00449222455440812,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.4860398311218762,
+        "byte_overhead_p95": 0.49651635244066994,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.3207920792079208,
+        "transfer_to_hist_ngram_xgb_ASR": 0.3511111111111111
+      },
+      "M1": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 0,
+        "ASR": 0.0,
+        "unconditional_evasion_rate": 0.15130674002751032,
+        "score_reduction_mean": -0.009398530151789436,
+        "score_reduction_median": -0.0005905369054375331,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": null,
+        "byte_overhead_mean": 0.00028475684086086916,
+        "byte_overhead_p95": 0.0,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.027722772277227723,
+        "transfer_to_hist_ngram_xgb_ASR": 0.03111111111111111
+      },
+      "M2": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 7,
+        "ASR": 0.011456628477905073,
+        "unconditional_evasion_rate": 0.15680880330123798,
+        "score_reduction_mean": -0.004862567006898954,
+        "score_reduction_median": 0.0007657947483451499,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.14257425742574256,
+        "transfer_to_hist_ngram_xgb_ASR": 0.11777777777777777
+      },
+      "M3": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 8,
+        "ASR": 0.01309328968903437,
+        "unconditional_evasion_rate": 0.15818431911966988,
+        "score_reduction_mean": -0.0030010719902957526,
+        "score_reduction_median": 0.000880907216378457,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.13663366336633664,
+        "transfer_to_hist_ngram_xgb_ASR": 0.14444444444444443
+      },
+      "beam_search": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 93,
+        "ASR": 0.15220949263502456,
+        "unconditional_evasion_rate": 0.2874828060522696,
+        "score_reduction_mean": 0.11123541956606238,
+        "score_reduction_median": 0.04240640788590777,
+        "queries_mean": 28.559834938101787,
+        "successful_queries_to_first_mean": 6.473118279569892,
+        "byte_overhead_mean": 1.653418308516896,
+        "byte_overhead_p95": 1.9891194514833705,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.803960396039604,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6488888888888888,
+        "ASR_family_CI": {
+          "point": 0.15220949263502456,
+          "CI95": [
+            0.0987454367796989,
+            0.21937866097078684
+          ],
+          "replicates": 10000
+        }
+      },
+      "fixed_oracle_best": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 84,
+        "ASR": 0.13747954173486088,
+        "unconditional_evasion_rate": 0.2751031636863824,
+        "score_reduction_mean": 0.10118193712625033,
+        "score_reduction_median": 0.038246808733535365,
+        "queries_mean": 7.0,
+        "successful_queries_to_first_mean": 7.0,
+        "byte_overhead_mean": 1.7085655745253712,
+        "byte_overhead_p95": 1.9850799147055902,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.7663366336633664,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6222222222222222,
+        "ASR_family_CI": {
+          "point": 0.13747954173486088,
+          "CI95": [
+            0.08719346049046321,
+            0.20083926406757122
+          ],
+          "replicates": 10000
+        }
+      },
+      "random_search": {
+        "sources": 727,
+        "clean_detected_sources": 611,
+        "attack_successes": 115,
+        "ASR": 0.18821603927986907,
+        "unconditional_evasion_rate": 0.3177441540577717,
+        "score_reduction_mean": 0.1417818524135959,
+        "score_reduction_median": 0.06660475501865493,
+        "queries_mean": 50.51856946354883,
+        "successful_queries_to_first_mean": 8.356521739130434,
+        "byte_overhead_mean": 1.6729776052479555,
+        "byte_overhead_p95": 1.9871370819551635,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.8376237623762376,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6755555555555556,
+        "ASR_family_CI": {
+          "point": 0.18821603927986907,
+          "CI95": [
+            0.12861108832640142,
+            0.26149169183085835
+          ],
+          "replicates": 10000
+        }
+      }
+    },
+    "flat_cnn": {
+      "F100": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 289,
+        "ASR": 0.5722772277227722,
+        "unconditional_evasion_rate": 0.6960110041265475,
+        "score_reduction_mean": 0.22654795413955914,
+        "score_reduction_median": 0.1583467859264463,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.9717520106840492,
+        "byte_overhead_p95": 0.9930327048813399,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.49777777777777776,
+        "transfer_to_authguard_seq_ASR": 0.07364975450081833
+      },
+      "F200": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 378,
+        "ASR": 0.7485148514851485,
+        "unconditional_evasion_rate": 0.8225584594222833,
+        "score_reduction_mean": 0.34110835942884593,
+        "score_reduction_median": 0.3442654508041478,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 1.9429524984347881,
+        "byte_overhead_p95": 1.9859314233180902,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6466666666666666,
+        "transfer_to_authguard_seq_ASR": 0.132569558101473,
+        "ASR_family_CI": {
+          "point": 0.7485148514851485,
+          "CI95": [
+            0.6351794493608653,
+            0.8436366597571809
+          ],
+          "replicates": 10000
+        }
+      },
+      "F25": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 92,
+        "ASR": 0.18217821782178217,
+        "unconditional_evasion_rate": 0.4030261348005502,
+        "score_reduction_mean": 0.06706253457848411,
+        "score_reduction_median": 0.009579864022685625,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.24318444610068074,
+        "byte_overhead_p95": 0.2482834386157649,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.19111111111111112,
+        "transfer_to_authguard_seq_ASR": 0.029459901800327332
+      },
+      "F50": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 162,
+        "ASR": 0.3207920792079208,
+        "unconditional_evasion_rate": 0.517193947730399,
+        "score_reduction_mean": 0.12085666753723989,
+        "score_reduction_median": 0.032994182310468134,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.4860398311218762,
+        "byte_overhead_p95": 0.49651635244066994,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.3511111111111111,
+        "transfer_to_authguard_seq_ASR": 0.044189852700491
+      },
+      "M1": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 14,
+        "ASR": 0.027722772277227723,
+        "unconditional_evasion_rate": 0.29573590096286106,
+        "score_reduction_mean": -0.01341072970644561,
+        "score_reduction_median": -0.00793843232239344,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.00028475684086086916,
+        "byte_overhead_p95": 0.0,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.03111111111111111,
+        "transfer_to_authguard_seq_ASR": 0.0
+      },
+      "M2": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 72,
+        "ASR": 0.14257425742574256,
+        "unconditional_evasion_rate": 0.36176066024759285,
+        "score_reduction_mean": 0.0338573803316349,
+        "score_reduction_median": -0.0020757459902208675,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.11777777777777777,
+        "transfer_to_authguard_seq_ASR": 0.011456628477905073
+      },
+      "M3": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 69,
+        "ASR": 0.13663366336633664,
+        "unconditional_evasion_rate": 0.3535075653370014,
+        "score_reduction_mean": 0.035541557242983655,
+        "score_reduction_median": -0.005147866978047255,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.14444444444444443,
+        "transfer_to_authguard_seq_ASR": 0.01309328968903437
+      },
+      "beam_search": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 456,
+        "ASR": 0.902970297029703,
+        "unconditional_evasion_rate": 0.9325997248968363,
+        "score_reduction_mean": 0.4808394886161395,
+        "score_reduction_median": 0.5033184654970954,
+        "queries_mean": 31.40990371389271,
+        "successful_queries_to_first_mean": 5.892543859649122,
+        "byte_overhead_mean": 1.3768883506101053,
+        "byte_overhead_p95": 1.9821594616020286,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.6022222222222222,
+        "transfer_to_authguard_seq_ASR": 0.10638297872340426,
+        "ASR_family_CI": {
+          "point": 0.902970297029703,
+          "CI95": [
+            0.8482301828455675,
+            0.949029813152592
+          ],
+          "replicates": 10000
+        }
+      },
+      "fixed_oracle_best": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 416,
+        "ASR": 0.8237623762376237,
+        "unconditional_evasion_rate": 0.8775790921595599,
+        "score_reduction_mean": 0.40386093128382783,
+        "score_reduction_median": 0.3999606276684657,
+        "queries_mean": 7.0,
+        "successful_queries_to_first_mean": 7.0,
+        "byte_overhead_mean": 1.4083986304478149,
+        "byte_overhead_p95": 1.980027539412132,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.5644444444444444,
+        "transfer_to_authguard_seq_ASR": 0.09819967266775777,
+        "ASR_family_CI": {
+          "point": 0.8237623762376237,
+          "CI95": [
+            0.7424719954433263,
+            0.8930693069306931
+          ],
+          "replicates": 10000
+        }
+      },
+      "random_search": {
+        "sources": 727,
+        "clean_detected_sources": 505,
+        "attack_successes": 473,
+        "ASR": 0.9366336633663367,
+        "unconditional_evasion_rate": 0.9559834938101788,
+        "score_reduction_mean": 0.5093857764257476,
+        "score_reduction_median": 0.544784361406181,
+        "queries_mean": 50.51856946354883,
+        "successful_queries_to_first_mean": 4.061310782241015,
+        "byte_overhead_mean": 1.3837777585240378,
+        "byte_overhead_p95": 1.9814211826372912,
+        "structural_validity_rate": 1.0,
+        "transfer_to_hist_ngram_xgb_ASR": 0.5577777777777778,
+        "transfer_to_authguard_seq_ASR": 0.10965630114566285,
+        "ASR_family_CI": {
+          "point": 0.9366336633663367,
+          "CI95": [
+            0.8970581819115081,
+            0.9704564431148419
+          ],
+          "replicates": 10000
+        }
+      }
+    },
+    "hist_ngram_xgb": {
+      "F100": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 224,
+        "ASR": 0.49777777777777776,
+        "unconditional_evasion_rate": 0.6533700137551581,
+        "score_reduction_mean": 0.20900719188242717,
+        "score_reduction_median": 0.16424529331584053,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.9717520106840492,
+        "byte_overhead_p95": 0.9930327048813399,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.5722772277227722,
+        "transfer_to_authguard_seq_ASR": 0.07364975450081833
+      },
+      "F200": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 291,
+        "ASR": 0.6466666666666666,
+        "unconditional_evasion_rate": 0.7537826685006878,
+        "score_reduction_mean": 0.287063865126684,
+        "score_reduction_median": 0.23897679640996639,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 1.9429524984347881,
+        "byte_overhead_p95": 1.9859314233180902,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.7485148514851485,
+        "transfer_to_authguard_seq_ASR": 0.132569558101473,
+        "ASR_family_CI": {
+          "point": 0.6466666666666666,
+          "CI95": [
+            0.5784300476947536,
+            0.7176081885941508
+          ],
+          "replicates": 10000
+        }
+      },
+      "F25": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 86,
+        "ASR": 0.19111111111111112,
+        "unconditional_evasion_rate": 0.4649243466299862,
+        "score_reduction_mean": 0.08407321714054711,
+        "score_reduction_median": 0.052862829395324606,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.24318444610068074,
+        "byte_overhead_p95": 0.2482834386157649,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.18217821782178217,
+        "transfer_to_authguard_seq_ASR": 0.029459901800327332
+      },
+      "F50": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 158,
+        "ASR": 0.3511111111111111,
+        "unconditional_evasion_rate": 0.5680880330123796,
+        "score_reduction_mean": 0.15153106323339077,
+        "score_reduction_median": 0.10383520263508372,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.4860398311218762,
+        "byte_overhead_p95": 0.49651635244066994,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.3207920792079208,
+        "transfer_to_authguard_seq_ASR": 0.044189852700491
+      },
+      "M1": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 14,
+        "ASR": 0.03111111111111111,
+        "unconditional_evasion_rate": 0.3658872077028886,
+        "score_reduction_mean": -0.01338051427970617,
+        "score_reduction_median": -0.007564731793910595,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.00028475684086086916,
+        "byte_overhead_p95": 0.0,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.027722772277227723,
+        "transfer_to_authguard_seq_ASR": 0.0
+      },
+      "M2": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 53,
+        "ASR": 0.11777777777777777,
+        "unconditional_evasion_rate": 0.405777166437414,
+        "score_reduction_mean": 0.052021729262367096,
+        "score_reduction_median": 0.03353473857496958,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.14257425742574256,
+        "transfer_to_authguard_seq_ASR": 0.011456628477905073
+      },
+      "M3": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 65,
+        "ASR": 0.14444444444444443,
+        "unconditional_evasion_rate": 0.4140302613480055,
+        "score_reduction_mean": 0.06109327175275509,
+        "score_reduction_median": 0.03568575105719399,
+        "queries_mean": 1.0,
+        "successful_queries_to_first_mean": 1.0,
+        "byte_overhead_mean": 0.1948344508999065,
+        "byte_overhead_p95": 0.19863193896343068,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.13663366336633664,
+        "transfer_to_authguard_seq_ASR": 0.01309328968903437
+      },
+      "beam_search": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 426,
+        "ASR": 0.9466666666666667,
+        "unconditional_evasion_rate": 0.9669876203576341,
+        "score_reduction_mean": 0.42455383249096496,
+        "score_reduction_median": 0.3993924963595334,
+        "queries_mean": 31.584594222833562,
+        "successful_queries_to_first_mean": 6.55868544600939,
+        "byte_overhead_mean": 1.2396676747661357,
+        "byte_overhead_p95": 1.9799828424363741,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.6792079207920793,
+        "transfer_to_authguard_seq_ASR": 0.09819967266775777,
+        "ASR_family_CI": {
+          "point": 0.9466666666666667,
+          "CI95": [
+            0.9154929577464789,
+            0.9713543220465394
+          ],
+          "replicates": 10000
+        }
+      },
+      "fixed_oracle_best": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 371,
+        "ASR": 0.8244444444444444,
+        "unconditional_evasion_rate": 0.8913342503438789,
+        "score_reduction_mean": 0.36889523877475205,
+        "score_reduction_median": 0.3267503046020196,
+        "queries_mean": 7.0,
+        "successful_queries_to_first_mean": 7.0,
+        "byte_overhead_mean": 1.226335005379664,
+        "byte_overhead_p95": 1.9807056229327453,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.601980198019802,
+        "transfer_to_authguard_seq_ASR": 0.09328968903436989,
+        "ASR_family_CI": {
+          "point": 0.8244444444444444,
+          "CI95": [
+            0.7586189551099701,
+            0.8809523809523809
+          ],
+          "replicates": 10000
+        }
+      },
+      "random_search": {
+        "sources": 727,
+        "clean_detected_sources": 450,
+        "attack_successes": 443,
+        "ASR": 0.9844444444444445,
+        "unconditional_evasion_rate": 0.9903713892709766,
+        "score_reduction_mean": 0.4483736616161091,
+        "score_reduction_median": 0.4378159731110737,
+        "queries_mean": 50.51856946354883,
+        "successful_queries_to_first_mean": 4.643340857787811,
+        "byte_overhead_mean": 1.3550272615943588,
+        "byte_overhead_p95": 1.9799828424363741,
+        "structural_validity_rate": 1.0,
+        "transfer_to_flat_cnn_ASR": 0.7049504950495049,
+        "transfer_to_authguard_seq_ASR": 0.11292962356792144,
+        "ASR_family_CI": {
+          "point": 0.9844444444444445,
+          "CI95": [
+            0.9692671394799054,
+            0.9956046365914787
+          ],
+          "replicates": 10000
+        }
+      }
+    }
+  },
+  "paired_family_clustered": {
+    "flat_cnn_minus_authguard_seq::beam_search": {
+      "point": 0.7749469214437368,
+      "CI95": [
+        0.6967573393891522,
+        0.8452689785458932
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 471
+    },
+    "hist_ngram_xgb_minus_authguard_seq::beam_search": {
+      "point": 0.8443396226415094,
+      "CI95": [
+        0.778711338397572,
+        0.8956050624133148
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 424
+    },
+    "flat_cnn_minus_authguard_seq::F200": {
+      "point": 0.643312101910828,
+      "CI95": [
+        0.5208713158835009,
+        0.7566617531266594
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 471
+    },
+    "hist_ngram_xgb_minus_authguard_seq::F200": {
+      "point": 0.5495283018867925,
+      "CI95": [
+        0.47578284873021714,
+        0.623597723240686
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 424
+    }
+  }
+}

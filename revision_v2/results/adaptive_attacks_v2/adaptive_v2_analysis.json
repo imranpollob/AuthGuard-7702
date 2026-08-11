@@ -1,0 +1,378 @@
+{
+  "table": [
+    {
+      "target": "authguard_seq",
+      "method": "F200",
+      "clean_detection_rate": 0.8431911966987621,
+      "ASR_foldseed_mean": 0.13706641959650132,
+      "ASR_foldseed_sd": 0.01146691453673659,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.12017400761283306,
+      "ASR_pooled_CI_low": 0.07777717782577394,
+      "ASR_pooled_CI_high": 0.1738188155638919,
+      "eligible": 1839,
+      "byte_overhead_mean": 1.9429524984347881,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.11618394551416496
+    },
+    {
+      "target": "authguard_seq",
+      "method": "fixed_oracle_best",
+      "clean_detection_rate": 0.8431911966987621,
+      "ASR_foldseed_mean": 0.15665566625976066,
+      "ASR_foldseed_sd": 0.00850206619459818,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.13648722131593258,
+      "ASR_pooled_CI_low": 0.09255683715583565,
+      "ASR_pooled_CI_high": 0.1912765803671538,
+      "eligible": 1839,
+      "byte_overhead_mean": 1.6638273368601713,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.1350025718041847
+    },
+    {
+      "target": "authguard_seq",
+      "method": "random_search",
+      "clean_detection_rate": 0.8431911966987621,
+      "ASR_foldseed_mean": 0.20908660125030362,
+      "ASR_foldseed_sd": 0.012998287664371702,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.18053289831430125,
+      "ASR_pooled_CI_low": 0.1296385485577821,
+      "ASR_pooled_CI_high": 0.2441564418256351,
+      "eligible": 1839,
+      "byte_overhead_mean": 1.636086309825776,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.18522770356565058
+    },
+    {
+      "target": "authguard_seq",
+      "method": "beam_search",
+      "clean_detection_rate": 0.8431911966987621,
+      "ASR_foldseed_mean": 0.16682951049661465,
+      "ASR_foldseed_sd": 0.011811687566210195,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.14573137574768896,
+      "ASR_pooled_CI_low": 0.1008560161710567,
+      "ASR_pooled_CI_high": 0.2024849974027394,
+      "eligible": 1839,
+      "byte_overhead_mean": 1.647451836157024,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.14931256183155464
+    },
+    {
+      "target": "emulator_logreg",
+      "method": "F200",
+      "clean_detection_rate": 0.8253094910591472,
+      "ASR_foldseed_mean": 0.1776377254360895,
+      "ASR_foldseed_sd": 0.0,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.18166666666666667,
+      "ASR_pooled_CI_low": 0.09552815813245852,
+      "ASR_pooled_CI_high": 0.2872208519035144,
+      "eligible": 1800,
+      "byte_overhead_mean": 1.9429524984347881,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.0711829666002987
+    },
+    {
+      "target": "emulator_logreg",
+      "method": "fixed_oracle_best",
+      "clean_detection_rate": 0.8253094910591472,
+      "ASR_foldseed_mean": 0.3372012370534101,
+      "ASR_foldseed_sd": 0.0,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.3433333333333333,
+      "ASR_pooled_CI_low": 0.23350446771796143,
+      "ASR_pooled_CI_high": 0.45543650793650786,
+      "eligible": 1800,
+      "byte_overhead_mean": 0.8369286854509955,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.1891435455682305
+    },
+    {
+      "target": "emulator_logreg",
+      "method": "random_search",
+      "clean_detection_rate": 0.8253094910591472,
+      "ASR_foldseed_mean": 0.5402438284206295,
+      "ASR_foldseed_sd": 0.011355367661240129,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.5361111111111111,
+      "ASR_pooled_CI_low": 0.42323295007487505,
+      "ASR_pooled_CI_high": 0.6439882189882189,
+      "eligible": 1800,
+      "byte_overhead_mean": 1.1384166773262243,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.32550244280113994
+    },
+    {
+      "target": "emulator_logreg",
+      "method": "beam_search",
+      "clean_detection_rate": 0.8253094910591472,
+      "ASR_foldseed_mean": 0.4574690619324501,
+      "ASR_foldseed_sd": 0.0,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.45166666666666666,
+      "ASR_pooled_CI_low": 0.3312368972746331,
+      "ASR_pooled_CI_high": 0.5744063449848024,
+      "eligible": 1800,
+      "byte_overhead_mean": 1.2151858603377657,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.2674574385226988
+    },
+    {
+      "target": "flat_cnn",
+      "method": "F200",
+      "clean_detection_rate": 0.7216872994039432,
+      "ASR_foldseed_mean": 0.7754153789219602,
+      "ASR_foldseed_sd": 0.00646031886439339,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.7503176620076238,
+      "ASR_pooled_CI_low": 0.6428154235204976,
+      "ASR_pooled_CI_high": 0.840419013969846,
+      "eligible": 1574,
+      "byte_overhead_mean": 1.9429524984347881,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.35949700239884624
+    },
+    {
+      "target": "flat_cnn",
+      "method": "fixed_oracle_best",
+      "clean_detection_rate": 0.7216872994039432,
+      "ASR_foldseed_mean": 0.8383739690208168,
+      "ASR_foldseed_sd": 0.0015709062993018324,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.8214739517153749,
+      "ASR_pooled_CI_low": 0.7445604018697263,
+      "ASR_pooled_CI_high": 0.8845923643575577,
+      "eligible": 1574,
+      "byte_overhead_mean": 1.3544410692974174,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.4240911496337222
+    },
+    {
+      "target": "flat_cnn",
+      "method": "random_search",
+      "clean_detection_rate": 0.7216872994039432,
+      "ASR_foldseed_mean": 0.9530056651066334,
+      "ASR_foldseed_sd": 0.005186748299092372,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.9447268106734434,
+      "ASR_pooled_CI_low": 0.9135600791518848,
+      "ASR_pooled_CI_high": 0.9716694642394302,
+      "eligible": 1574,
+      "byte_overhead_mean": 1.3066554408538815,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.526887745020216
+    },
+    {
+      "target": "flat_cnn",
+      "method": "beam_search",
+      "clean_detection_rate": 0.7216872994039432,
+      "ASR_foldseed_mean": 0.9187591886581205,
+      "ASR_foldseed_sd": 0.007178777111672669,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.9072426937738246,
+      "ASR_pooled_CI_low": 0.850209237639076,
+      "ASR_pooled_CI_high": 0.9524915266512166,
+      "eligible": 1574,
+      "byte_overhead_mean": 1.3452244170621186,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.49860230588642507
+    },
+    {
+      "target": "hist_ngram_xgb",
+      "method": "F200",
+      "clean_detection_rate": 0.6368638239339752,
+      "ASR_foldseed_mean": 0.749075145850075,
+      "ASR_foldseed_sd": 0.019905551955844734,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.6774658027357812,
+      "ASR_pooled_CI_low": 0.6164501452494874,
+      "ASR_pooled_CI_high": 0.7385804383788254,
+      "eligible": 1389,
+      "byte_overhead_mean": 1.9429524984347881,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.28987062485067305
+    },
+    {
+      "target": "hist_ngram_xgb",
+      "method": "fixed_oracle_best",
+      "clean_detection_rate": 0.6368638239339752,
+      "ASR_foldseed_mean": 0.8879625953797999,
+      "ASR_foldseed_sd": 0.008617679396087936,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.8459323254139669,
+      "ASR_pooled_CI_low": 0.7876496028361233,
+      "ASR_pooled_CI_high": 0.8951858741072138,
+      "eligible": 1389,
+      "byte_overhead_mean": 1.2349704218592819,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.3680788505399241
+    },
+    {
+      "target": "hist_ngram_xgb",
+      "method": "random_search",
+      "clean_detection_rate": 0.6368638239339752,
+      "ASR_foldseed_mean": 0.9899167023977474,
+      "ASR_foldseed_sd": 0.001323070329996654,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.986321094312455,
+      "ASR_pooled_CI_low": 0.9751609751315075,
+      "ASR_pooled_CI_high": 0.9946020712157753,
+      "eligible": 1389,
+      "byte_overhead_mean": 1.3302736347653001,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.44970829730488177
+    },
+    {
+      "target": "hist_ngram_xgb",
+      "method": "beam_search",
+      "clean_detection_rate": 0.6368638239339752,
+      "ASR_foldseed_mean": 0.9638364130910603,
+      "ASR_foldseed_sd": 0.0021067528080030372,
+      "n_seeds": 3,
+      "zero_events": false,
+      "ASR_pooled": 0.9503239740820735,
+      "ASR_pooled_CI_low": 0.9217872972025809,
+      "ASR_pooled_CI_high": 0.9731318357537362,
+      "eligible": 1389,
+      "byte_overhead_mean": 1.2621328125295166,
+      "structural_validity": 1.0,
+      "score_reduction_mean": 0.4247921711548375
+    }
+  ],
+  "paired_contrasts": {
+    "emulator_logreg_minus_authguard_seq::F200": {
+      "point": 0.082010582010582,
+      "CI95": [
+        -0.04692838537261933,
+        0.21820902638935996
+      ],
+      "excludes_zero": false,
+      "n_paired_eligible": 1512
+    },
+    "flat_cnn_minus_authguard_seq::F200": {
+      "point": 0.6492287055667337,
+      "CI95": [
+        0.5386532317522733,
+        0.7460682684093018
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1491
+    },
+    "hist_ngram_xgb_minus_authguard_seq::F200": {
+      "point": 0.5831435079726651,
+      "CI95": [
+        0.5219959065537272,
+        0.6409666933875572
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1317
+    },
+    "emulator_logreg_minus_authguard_seq::fixed_oracle_best": {
+      "point": 0.2208994708994709,
+      "CI95": [
+        0.06705311588921282,
+        0.3691335630932946
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512
+    },
+    "flat_cnn_minus_authguard_seq::fixed_oracle_best": {
+      "point": 0.7075788061703555,
+      "CI95": [
+        0.6265562209134254,
+        0.7823800227388324
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1491
+    },
+    "hist_ngram_xgb_minus_authguard_seq::fixed_oracle_best": {
+      "point": 0.7425968109339408,
+      "CI95": [
+        0.6701006944188208,
+        0.8037309275303
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1317
+    },
+    "emulator_logreg_minus_authguard_seq::random_search": {
+      "point": 0.36044973544973546,
+      "CI95": [
+        0.1884281460077357,
+        0.517569411725533
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512
+    },
+    "flat_cnn_minus_authguard_seq::random_search": {
+      "point": 0.7860496311200537,
+      "CI95": [
+        0.7268354462233191,
+        0.8376789571516227
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1491
+    },
+    "hist_ngram_xgb_minus_authguard_seq::random_search": {
+      "point": 0.8443432042520881,
+      "CI95": [
+        0.7863302040159291,
+        0.8899731786075431
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1317
+    },
+    "emulator_logreg_minus_authguard_seq::beam_search": {
+      "point": 0.330026455026455,
+      "CI95": [
+        0.16119134126572185,
+        0.488041593996089
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512
+    },
+    "flat_cnn_minus_authguard_seq::beam_search": {
+      "point": 0.7820254862508383,
+      "CI95": [
+        0.7158101436265709,
+        0.8408919524895146
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1491
+    },
+    "hist_ngram_xgb_minus_authguard_seq::beam_search": {
+      "point": 0.8428246013667426,
+      "CI95": [
+        0.7882118618351018,
+        0.8855466677467042
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1317
+    }
+  },
+  "transfer_asr": {
+    "authguard_seq->flat_cnn": 0.7820838627700127,
+    "authguard_seq->hist_ngram_xgb": 0.6731461483081354,
+    "flat_cnn->hist_ngram_xgb": 0.5961123110151187,
+    "flat_cnn->authguard_seq": 0.08754758020663404,
+    "hist_ngram_xgb->flat_cnn": 0.6524777636594663,
+    "hist_ngram_xgb->authguard_seq": 0.08374116367591082
+  }
+}

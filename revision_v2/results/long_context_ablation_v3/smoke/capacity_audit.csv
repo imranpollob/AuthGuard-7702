@@ -1,0 +1,13 @@
+model,condition,token_budget,n,inputs_exceeding_budget,fraction_exceeding_budget,max_condition_opcode_count,max_retained_token_count,median_original_to_condition_ratio
+authguard_reference_16384,F200,16384,8,0,0.0,4866,4866,0.3079546592089293
+authguard_reference_16384,M0,16384,8,0,0.0,1680,1680,1.0
+chunk_attention_control_16384,F200,16384,8,0,0.0,4866,4866,0.3079546592089293
+chunk_attention_control_16384,M0,16384,8,0,0.0,1680,1680,1.0
+chunk_attention_control_2048,F200,2048,8,3,0.375,4866,1880,0.3079546592089293
+chunk_attention_control_2048,M0,2048,8,0,0.0,1680,1680,1.0
+chunk_mean_control_16384,F200,16384,8,0,0.0,4866,4866,0.3079546592089293
+chunk_mean_control_16384,M0,16384,8,0,0.0,1680,1680,1.0
+flat_control_16384,F200,16384,8,0,0.0,4866,4866,0.3079546592089293
+flat_control_16384,M0,16384,8,0,0.0,1680,1680,1.0
+flat_control_2048,F200,2048,8,3,0.375,4866,2048,0.3079546592089293
+flat_control_2048,M0,2048,8,0,0.0,1680,1680,1.0

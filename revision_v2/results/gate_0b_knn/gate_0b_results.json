@@ -1,0 +1,265 @@
+{
+  "index_params": {
+    "num_perm": 256,
+    "kgram": 4,
+    "hash": "blake2b-64 salted",
+    "built_from": "training folds only, rebuilt per outer fold"
+  },
+  "n_rows": 2190,
+  "n_families": 790,
+  "summary": {
+    "knn_minhash_k1": {
+      "auprc_macro": 0.5406446633885564,
+      "auroc_macro": 0.73581703422491,
+      "auprc_pooled": 0.5262380136118898,
+      "recall_at_5fpr": 0.0,
+      "fpr_at_that_point": 0.0
+    },
+    "knn_minhash_k3": {
+      "auprc_macro": 0.5972290363960583,
+      "auroc_macro": 0.7868676168619141,
+      "auprc_pooled": 0.5927993087146091,
+      "recall_at_5fpr": 0.0,
+      "fpr_at_that_point": 0.0
+    },
+    "knn_minhash_k5": {
+      "auprc_macro": 0.6120731105626263,
+      "auroc_macro": 0.7913082831589903,
+      "auprc_pooled": 0.613993827614114,
+      "recall_at_5fpr": 0.0,
+      "fpr_at_that_point": 0.0
+    },
+    "knn_opcode_hist_cos_k1": {
+      "auprc_macro": 0.5050978738583407,
+      "auroc_macro": 0.7147367299922356,
+      "auprc_pooled": 0.4973437951439267,
+      "recall_at_5fpr": 0.0,
+      "fpr_at_that_point": 0.0
+    },
+    "knn_opcode_hist_cos_k3": {
+      "auprc_macro": 0.5343303219239864,
+      "auroc_macro": 0.7390374624634191,
+      "auprc_pooled": 0.529705942153732,
+      "recall_at_5fpr": 0.11691884456671252,
+      "fpr_at_that_point": 0.04442925495557074
+    },
+    "knn_opcode_hist_cos_k5": {
+      "auprc_macro": 0.5519899114116162,
+      "auroc_macro": 0.7367878037791609,
+      "auprc_pooled": 0.5428702629150266,
+      "recall_at_5fpr": 0.2063273727647868,
+      "fpr_at_that_point": 0.04921394395078606
+    }
+  },
+  "best_model": "knn_minhash_k5",
+  "paired_bootstrap_vs_authguard_seq": {
+    "knn_minhash_k5": {
+      "mean_delta_auprc": -0.30228685447820336,
+      "ci95": [
+        -0.3797142355060357,
+        -0.22636437548943328
+      ],
+      "replicates": 1998,
+      "excludes_zero": true
+    }
+  },
+  "latency": {
+    "index_build_all_rows_seconds": 8.925705603003735,
+    "mean_query_ms_per_test_row": 0.6784044234031221,
+    "note": "query = full test-vs-train signature comparison, no ANN structure"
+  },
+  "similarity_strata": [
+    {
+      "model": "knn_minhash_k1",
+      "sim_bin": ">0.9",
+      "n": 27,
+      "n_pos": 5,
+      "prevalence": 0.18518518518518517,
+      "auprc": 0.18518518518518517
+    },
+    {
+      "model": "knn_minhash_k1",
+      "sim_bin": "0.7-0.9",
+      "n": 955,
+      "n_pos": 361,
+      "prevalence": 0.37801047120418846,
+      "auprc": 0.6630758650917516
+    },
+    {
+      "model": "knn_minhash_k1",
+      "sim_bin": "0.5-0.7",
+      "n": 724,
+      "n_pos": 240,
+      "prevalence": 0.3314917127071823,
+      "auprc": 0.5189879968387929
+    },
+    {
+      "model": "knn_minhash_k1",
+      "sim_bin": "<0.5",
+      "n": 484,
+      "n_pos": 121,
+      "prevalence": 0.25,
+      "auprc": 0.29775022956841135
+    },
+    {
+      "model": "knn_minhash_k3",
+      "sim_bin": ">0.9",
+      "n": 27,
+      "n_pos": 5,
+      "prevalence": 0.18518518518518517,
+      "auprc": 0.18518518518518517
+    },
+    {
+      "model": "knn_minhash_k3",
+      "sim_bin": "0.7-0.9",
+      "n": 955,
+      "n_pos": 361,
+      "prevalence": 0.37801047120418846,
+      "auprc": 0.7494421810635192
+    },
+    {
+      "model": "knn_minhash_k3",
+      "sim_bin": "0.5-0.7",
+      "n": 724,
+      "n_pos": 240,
+      "prevalence": 0.3314917127071823,
+      "auprc": 0.5859077670997991
+    },
+    {
+      "model": "knn_minhash_k3",
+      "sim_bin": "<0.5",
+      "n": 484,
+      "n_pos": 121,
+      "prevalence": 0.25,
+      "auprc": 0.28558618589184603
+    },
+    {
+      "model": "knn_minhash_k5",
+      "sim_bin": ">0.9",
+      "n": 27,
+      "n_pos": 5,
+      "prevalence": 0.18518518518518517,
+      "auprc": 0.18518518518518517
+    },
+    {
+      "model": "knn_minhash_k5",
+      "sim_bin": "0.7-0.9",
+      "n": 955,
+      "n_pos": 361,
+      "prevalence": 0.37801047120418846,
+      "auprc": 0.7475024041715683
+    },
+    {
+      "model": "knn_minhash_k5",
+      "sim_bin": "0.5-0.7",
+      "n": 724,
+      "n_pos": 240,
+      "prevalence": 0.3314917127071823,
+      "auprc": 0.6265075977791152
+    },
+    {
+      "model": "knn_minhash_k5",
+      "sim_bin": "<0.5",
+      "n": 484,
+      "n_pos": 121,
+      "prevalence": 0.25,
+      "auprc": 0.3140357312843079
+    },
+    {
+      "model": "knn_opcode_hist_cos_k1",
+      "sim_bin": ">0.9",
+      "n": 2171,
+      "n_pos": 727,
+      "prevalence": 0.33486872409028096,
+      "auprc": 0.49842277522380907
+    },
+    {
+      "model": "knn_opcode_hist_cos_k1",
+      "sim_bin": "0.7-0.9",
+      "n": 16,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k1",
+      "sim_bin": "0.5-0.7",
+      "n": 2,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k1",
+      "sim_bin": "<0.5",
+      "n": 1,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k3",
+      "sim_bin": ">0.9",
+      "n": 2171,
+      "n_pos": 727,
+      "prevalence": 0.33486872409028096,
+      "auprc": 0.5303300148596577
+    },
+    {
+      "model": "knn_opcode_hist_cos_k3",
+      "sim_bin": "0.7-0.9",
+      "n": 16,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k3",
+      "sim_bin": "0.5-0.7",
+      "n": 2,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k3",
+      "sim_bin": "<0.5",
+      "n": 1,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k5",
+      "sim_bin": ">0.9",
+      "n": 2171,
+      "n_pos": 727,
+      "prevalence": 0.33486872409028096,
+      "auprc": 0.5435413326295346
+    },
+    {
+      "model": "knn_opcode_hist_cos_k5",
+      "sim_bin": "0.7-0.9",
+      "n": 16,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k5",
+      "sim_bin": "0.5-0.7",
+      "n": 2,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    },
+    {
+      "model": "knn_opcode_hist_cos_k5",
+      "sim_bin": "<0.5",
+      "n": 1,
+      "n_pos": 0,
+      "prevalence": 0.0,
+      "auprc": NaN
+    }
+  ]
+}

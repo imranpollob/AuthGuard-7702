@@ -1,0 +1,8 @@
+0xe5d	allowance(address,address)
+0xeca	balanceOf(address)
+0xf6a	transferFrom(address,address,uint256)
+0x10a5	balanceOf(address)
+0x112a	transfer(address,uint256)
+0x850S0x16c	transferFrom(address,address,uint256)
+0x743S0x16c	allowance(address,address)
+0x7b0S0x16c	balanceOf(address)

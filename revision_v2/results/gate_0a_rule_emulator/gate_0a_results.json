@@ -1,0 +1,192 @@
+{
+  "seeds": [
+    7702,
+    7703,
+    7704
+  ],
+  "n_rows": 2190,
+  "n_families": 790,
+  "features": [
+    "has_selfdestruct",
+    "n_hardcoded_addresses",
+    "balance_sweep",
+    "immutable_call_target",
+    "has_caller_guard",
+    "erc20_selector_present",
+    "code_bytes",
+    "unique_opcode_count",
+    "n_external_call_ops",
+    "has_external_call",
+    "has_dispatcher",
+    "has_fallback_path",
+    "fallback_reaches_external_call",
+    "fallback_reaches_external_call_over",
+    "n_fallback_reachable_blocks"
+  ],
+  "aggregation": "macro over folds then over seeds (matches run_baseline_v2.py)",
+  "seed_means": {
+    "decision_tree_d4": {
+      "auprc_macro_mean": 0.8613709188404307,
+      "auprc_macro_sd": 1.3597399555105182e-16,
+      "auroc_macro_mean": 0.9556745720677956,
+      "auprc_pooled_mean": 0.8253865039891447,
+      "recall5_mean": 0.45529573590096284,
+      "recall_oof_thr_mean": 0.29298486932599727,
+      "fpr_oof_thr_mean": 0.039644565960355434
+    },
+    "logreg_l2": {
+      "auprc_macro_mean": 0.9106356177689104,
+      "auprc_macro_sd": 1.3597399555105182e-16,
+      "auroc_macro_mean": 0.96607636217028,
+      "auprc_pooled_mean": 0.9051203163334035,
+      "recall5_mean": 0.7730398899587345,
+      "recall_oof_thr_mean": 0.7739569005043557,
+      "fpr_oof_thr_mean": 0.05035315561631351
+    },
+    "fallback_reaches_external_call_over": {
+      "auprc_macro_mean": 0.7518985865174522,
+      "auprc_macro_sd": 0.0,
+      "auroc_macro_mean": 0.9205898406166856,
+      "auprc_pooled_mean": 0.7579410903404206,
+      "recall5_mean": 0.0,
+      "recall_oof_thr_mean": 0.9958734525447043,
+      "fpr_oof_thr_mean": 0.15652768284347232
+    }
+  },
+  "paired_bootstrap_vs_authguard_seq": {
+    "decision_tree_d4": {
+      "mean_delta_auprc": -0.06727064916612284,
+      "ci95": [
+        -0.124866020270011,
+        -0.008064944742103371
+      ],
+      "replicates": 1998,
+      "excludes_zero": true
+    },
+    "logreg_l2": {
+      "mean_delta_auprc": -0.021124140424400334,
+      "ci95": [
+        -0.07804801133765298,
+        0.03534178680659612
+      ],
+      "replicates": 1998,
+      "excludes_zero": false
+    },
+    "fallback_reaches_external_call_over": {
+      "mean_delta_auprc": -0.1877282489197058,
+      "ci95": [
+        -0.2596089873172402,
+        -0.11263632118310761
+      ],
+      "replicates": 1998,
+      "excludes_zero": true
+    }
+  },
+  "latency": {
+    "featurize_all_wall_seconds": 7.347359293984482,
+    "n_contracts": 2190,
+    "per_contract_ms_median": 2.6258519937982783,
+    "per_contract_ms_mean": 3.6494075940572657,
+    "per_contract_ms_p95": 11.33257024048362,
+    "note": "pure-Python linear sweep + CFG; not an optimised implementation"
+  },
+  "trees": {
+    "fold_0": "|--- fallback_reaches_external_call_over <= 0.500\n|   |--- class: 0\n|--- fallback_reaches_external_call_over >  0.500\n|   |--- n_fallback_reachable_blocks <= 8.500\n|   |   |--- n_external_call_ops <= 4.500\n|   |   |   |--- n_fallback_reachable_blocks <= 7.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- n_fallback_reachable_blocks >  7.500\n|   |   |   |   |--- class: 0\n|   |   |--- n_external_call_ops >  4.500\n|   |   |   |--- n_fallback_reachable_blocks <= 6.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- n_fallback_reachable_blocks >  6.500\n|   |   |   |   |--- class: 1\n|   |--- n_fallback_reachable_blocks >  8.500\n|   |   |--- has_dispatcher <= 0.500\n|   |   |   |--- class: 0\n|   |   |--- has_dispatcher >  0.500\n|   |   |   |--- n_fallback_reachable_blocks <= 25.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_fallback_reachable_blocks >  25.500\n|   |   |   |   |--- class: 1\n",
+    "fold_1": "|--- fallback_reaches_external_call_over <= 0.500\n|   |--- erc20_selector_present <= 0.500\n|   |   |--- class: 0\n|   |--- erc20_selector_present >  0.500\n|   |   |--- n_fallback_reachable_blocks <= 10.500\n|   |   |   |--- class: 0\n|   |   |--- n_fallback_reachable_blocks >  10.500\n|   |   |   |--- code_bytes <= 1984.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- code_bytes >  1984.500\n|   |   |   |   |--- class: 0\n|--- fallback_reaches_external_call_over >  0.500\n|   |--- has_dispatcher <= 0.500\n|   |   |--- class: 0\n|   |--- has_dispatcher >  0.500\n|   |   |--- n_fallback_reachable_blocks <= 6.500\n|   |   |   |--- immutable_call_target <= 0.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- immutable_call_target >  0.500\n|   |   |   |   |--- class: 1\n|   |   |--- n_fallback_reachable_blocks >  6.500\n|   |   |   |--- n_fallback_reachable_blocks <= 20.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_fallback_reachable_blocks >  20.500\n|   |   |   |   |--- class: 1\n",
+    "fold_2": "|--- fallback_reaches_external_call_over <= 0.500\n|   |--- erc20_selector_present <= 0.500\n|   |   |--- class: 0\n|   |--- erc20_selector_present >  0.500\n|   |   |--- n_fallback_reachable_blocks <= 10.500\n|   |   |   |--- class: 0\n|   |   |--- n_fallback_reachable_blocks >  10.500\n|   |   |   |--- code_bytes <= 1984.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- code_bytes >  1984.500\n|   |   |   |   |--- class: 0\n|--- fallback_reaches_external_call_over >  0.500\n|   |--- n_fallback_reachable_blocks <= 6.500\n|   |   |--- n_hardcoded_addresses <= 7.000\n|   |   |   |--- class: 0\n|   |   |--- n_hardcoded_addresses >  7.000\n|   |   |   |--- code_bytes <= 1584.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- code_bytes >  1584.500\n|   |   |   |   |--- class: 0\n|   |--- n_fallback_reachable_blocks >  6.500\n|   |   |--- has_dispatcher <= 0.500\n|   |   |   |--- class: 0\n|   |   |--- has_dispatcher >  0.500\n|   |   |   |--- n_fallback_reachable_blocks <= 20.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_fallback_reachable_blocks >  20.500\n|   |   |   |   |--- class: 1\n",
+    "fold_3": "|--- fallback_reaches_external_call_over <= 0.500\n|   |--- n_fallback_reachable_blocks <= 10.500\n|   |   |--- has_fallback_path <= 0.500\n|   |   |   |--- class: 0\n|   |   |--- has_fallback_path >  0.500\n|   |   |   |--- class: 0\n|   |--- n_fallback_reachable_blocks >  10.500\n|   |   |--- code_bytes <= 1984.500\n|   |   |   |--- code_bytes <= 1945.000\n|   |   |   |   |--- class: 0\n|   |   |   |--- code_bytes >  1945.000\n|   |   |   |   |--- class: 1\n|   |   |--- code_bytes >  1984.500\n|   |   |   |--- n_external_call_ops <= 7.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- n_external_call_ops >  7.500\n|   |   |   |   |--- class: 0\n|--- fallback_reaches_external_call_over >  0.500\n|   |--- n_fallback_reachable_blocks <= 6.500\n|   |   |--- class: 0\n|   |--- n_fallback_reachable_blocks >  6.500\n|   |   |--- has_dispatcher <= 0.500\n|   |   |   |--- class: 0\n|   |   |--- has_dispatcher >  0.500\n|   |   |   |--- n_fallback_reachable_blocks <= 22.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_fallback_reachable_blocks >  22.500\n|   |   |   |   |--- class: 1\n",
+    "fold_4": "|--- fallback_reaches_external_call_over <= 0.500\n|   |--- n_fallback_reachable_blocks <= 10.500\n|   |   |--- has_fallback_path <= 0.500\n|   |   |   |--- class: 0\n|   |   |--- has_fallback_path >  0.500\n|   |   |   |--- class: 0\n|   |--- n_fallback_reachable_blocks >  10.500\n|   |   |--- code_bytes <= 1987.500\n|   |   |   |--- code_bytes <= 1945.000\n|   |   |   |   |--- class: 0\n|   |   |   |--- code_bytes >  1945.000\n|   |   |   |   |--- class: 1\n|   |   |--- code_bytes >  1987.500\n|   |   |   |--- n_external_call_ops <= 7.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- n_external_call_ops >  7.500\n|   |   |   |   |--- class: 0\n|--- fallback_reaches_external_call_over >  0.500\n|   |--- has_dispatcher <= 0.500\n|   |   |--- class: 0\n|   |--- has_dispatcher >  0.500\n|   |   |--- n_fallback_reachable_blocks <= 6.500\n|   |   |   |--- immutable_call_target <= 0.500\n|   |   |   |   |--- class: 0\n|   |   |   |--- immutable_call_target >  0.500\n|   |   |   |   |--- class: 1\n|   |   |--- n_fallback_reachable_blocks >  6.500\n|   |   |   |--- n_external_call_ops <= 1.500\n|   |   |   |   |--- class: 1\n|   |   |   |--- n_external_call_ops >  1.500\n|   |   |   |   |--- class: 1\n"
+  },
+  "top_families_seq_advantage": [
+    {
+      "family_id": "F01073",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.8246575342465754
+    },
+    {
+      "family_id": "F00956",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.8168949771689498
+    },
+    {
+      "family_id": "F01308",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.8127853881278538
+    },
+    {
+      "family_id": "F00704",
+      "n": 7,
+      "pos": 0,
+      "seq_advantage": 0.8013698630136987
+    },
+    {
+      "family_id": "F00866",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.786986301369863
+    },
+    {
+      "family_id": "F01313",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.734703196347032
+    },
+    {
+      "family_id": "F01152",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.7342465753424657
+    },
+    {
+      "family_id": "F00751",
+      "n": 4,
+      "pos": 0,
+      "seq_advantage": 0.6906392694063928
+    },
+    {
+      "family_id": "F00405",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.6771689497716895
+    },
+    {
+      "family_id": "F00779",
+      "n": 3,
+      "pos": 0,
+      "seq_advantage": 0.6499999999999999
+    },
+    {
+      "family_id": "F00800",
+      "n": 2,
+      "pos": 0,
+      "seq_advantage": 0.6226027397260274
+    },
+    {
+      "family_id": "F00972",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.6207762557077625
+    },
+    {
+      "family_id": "F00730",
+      "n": 4,
+      "pos": 0,
+      "seq_advantage": 0.6196347031963471
+    },
+    {
+      "family_id": "F00935",
+      "n": 1,
+      "pos": 0,
+      "seq_advantage": 0.5933789954337899
+    },
+    {
+      "family_id": "F00767",
+      "n": 2,
+      "pos": 0,
+      "seq_advantage": 0.5894977168949772
+    }
+  ]
+}

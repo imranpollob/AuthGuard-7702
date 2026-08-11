@@ -1,0 +1,6 @@
+seed,fold,model,threshold_05
+7704,0,emulator_logreg,0.8377327867835411
+7704,1,emulator_logreg,0.0839932650937046
+7704,2,emulator_logreg,0.6722747523170792
+7704,3,emulator_logreg,0.843137216562728
+7704,4,emulator_logreg,0.7873964211563192

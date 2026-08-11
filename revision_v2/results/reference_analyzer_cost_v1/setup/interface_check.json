@@ -1,0 +1,13 @@
+{
+  "help_sha256": "6159f9f8cb3c563d4149dad822e9d496cf07496a4dbff962f4c73515e02dbfc7",
+  "required_flags": [
+    "--results_file",
+    "--working_dir",
+    "--cache_dir",
+    "--jobs",
+    "--timeout_secs",
+    "--restart",
+    "--reuse_datalog_bin"
+  ],
+  "status": "PASS"
+}

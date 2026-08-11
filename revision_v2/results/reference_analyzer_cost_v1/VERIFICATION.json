@@ -1,0 +1,9 @@
+{
+  "image": "ghcr.io/nevillegrech/gigahorse-toolchain@sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+  "manifest_sha256": "26dbccb92a8de05e1b0e57440acbfd2e6f7a36b202eed71aa9b11d994bd1a794",
+  "per_contract_sha256": "eef56afd7581033aaa4479b6a51257f3b0422c07d234d5ab7be95dc9a9e69cdb",
+  "report_sha256": "72cbdb947bf184f38cce15c0463ea47d76abb0ee8f448b97252b3875e646c7b1",
+  "status": "PASS",
+  "summary_sha256": "4ce95472ac90295c74e71b60980a3f90813f96fffe92dfc9ffe1a91d8920fbcd",
+  "warm_records": 60
+}

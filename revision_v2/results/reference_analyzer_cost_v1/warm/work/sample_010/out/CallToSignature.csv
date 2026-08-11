@@ -1,0 +1,7 @@
+0x593	safeTransferFrom(address,address,uint256)
+0xb30	safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)
+0xbcb	balanceOf(address)
+0xcfc	transfer(address,uint256)
+0xe40	safeTransferFrom(address,address,uint256,uint256,bytes)
+0xee5	balanceOf(address)
+0x1003	transfer(address,uint256)

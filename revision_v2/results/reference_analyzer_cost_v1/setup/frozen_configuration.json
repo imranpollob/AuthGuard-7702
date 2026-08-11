@@ -1,0 +1,18 @@
+{
+  "benchmark": "revision_v2/data/authguardbench_7702_v2.csv.gz",
+  "cold_sample": "sample_021.hex",
+  "image": "ghcr.io/nevillegrech/gigahorse-toolchain@sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+  "image_config_id": "sha256:9c1e6a36fa9fa80e756f67897c4b7003f455bb1e9a7a86233d619555aa20848f",
+  "image_digest": "sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+  "input_count": 60,
+  "input_hashes_sha256": "bcdc83402cf1b0e1ff1ef987aa566d81c10a2deab45ba161c67cd22e4316d8c6",
+  "jobs": 1,
+  "manifest": "revision_v2/experiments/reference_analyzer_cost_v1/sample/sample_manifest.csv",
+  "manifest_sha256": "26dbccb92a8de05e1b0e57440acbfd2e6f7a36b202eed71aa9b11d994bd1a794",
+  "smoke_sample": "sample_048.hex",
+  "timeout_seconds": {
+    "cold": 120,
+    "smoke": 30,
+    "warm": 120
+  }
+}

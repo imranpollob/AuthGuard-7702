@@ -1,0 +1,80 @@
+usage: gigahorse.py [-h] [-S [BINARY]] [-C [CLIENT]] [-P [PRE_CLIENT]]
+                    [-r [FILE]] [-w [DIR]] [--cache_dir [DIR]] [-j [NUM]]
+                    [-k [NUM]] [-T [SECONDS]]
+                    [--minimum_client_time [SECONDS]] [-M SOUFFLE_MACROS]
+                    [--enable_limitsize] [--disable_inline] [-q [QUIET]]
+                    [--rerun_clients] [--restart] [--debug]
+                    [--reuse_datalog_bin] [-i]
+                    [--tac_gen_config [TAC_GEN_CONFIG]] [-cd [NUM]]
+                    [--early_cloning] [--disable_precise_fallback]
+                    [--disable_scalable_fallback]
+                    DIR [DIR ...]
+
+A batch analyzer for EVM bytecode programs.
+
+positional arguments:
+  DIR                   The location to grab contracts from (as bytecode
+                        files). Accepts both filenames and directories. All
+                        contract filenames should be unique.
+
+options:
+  -h, --help            show this help message and exit
+  -S [BINARY], --souffle_bin [BINARY]
+                        the location of the souffle binary.
+  -C [CLIENT], --client [CLIENT]
+                        additional clients to run after decompilation.
+  -P [PRE_CLIENT], --pre-client [PRE_CLIENT]
+                        additional clients to run before decompilation.
+  -r [FILE], --results_file [FILE]
+                        the location to write the results.
+  -w [DIR], --working_dir [DIR]
+                        the location to were temporary files are placed.
+  --cache_dir [DIR]     the location to were temporary files are placed.
+  -j [NUM], --jobs [NUM]
+                        The number of subprocesses to run at once.
+  -k [NUM], --skip [NUM]
+                        Skip the the analysis of the first NUM contracts.
+  -T [SECONDS], --timeout_secs [SECONDS]
+                        Forcibly halt decompilation/analysis of a single
+                        contact after the specified number of seconds.
+                        Separate timers for decompilation and anaysis.
+  --minimum_client_time [SECONDS]
+                        Minimum time to allow each client to run.
+  -M SOUFFLE_MACROS, --souffle_macros SOUFFLE_MACROS
+                        Prepocessor macro definitions to pass to Souffle using
+                        the -M parameter
+  --enable_limitsize    Adds a limitsize (see souffle documentation) that
+                        limits the outputsof certain key decompiler relations
+                        to improve scalability.Can make decompilation output
+                        more incomplete and imprecise.
+  --disable_inline      Disables the inlining of small functions performed
+                        after TAC code is generated (to increase the amount of
+                        high level inferences produced by the memory and
+                        storage modeling components).
+  -q [QUIET], --quiet [QUIET]
+                        Silence output.
+  --rerun_clients       Rerun client analyses. Only attempts to decompile if
+                        it hasn't tried in the current working dir.
+  --restart             Erase working dir and decompile/analyze from scratch.
+  --debug               Various minor changes to aid development. Halts on
+                        souffle compilation failure.
+  --reuse_datalog_bin   Do not recompile the datalog binaries.
+  -i, --interpreted     Run souffle in interpreted mode.
+  --tac_gen_config [TAC_GEN_CONFIG]
+                        the location of the TAC generation configuration file
+  -cd [NUM], --context_depth [NUM]
+                        Override the maximum context depth for decompilation
+                        (default is 20).
+  --early_cloning       Adds a cloning pre-process step (targetting blocks
+                        that can cause imprecision) to the decompilation
+                        pipeline.
+  --disable_precise_fallback
+                        Disables the precise fallback configuration (same as
+                        the --early_cloning flag) that kicks off if
+                        decompilation with the default (transactional) config
+                        is successful but produces imprecise results.
+  --disable_scalable_fallback
+                        Disables the scalable fallback configuration (using a
+                        hybrid-precise context configuration) that kicks off
+                        if decompilation with the default (transactional)
+                        config takes up more than half of the total timeout.

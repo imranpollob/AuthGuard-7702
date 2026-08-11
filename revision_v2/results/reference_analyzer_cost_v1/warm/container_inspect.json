@@ -1,0 +1,266 @@
+[
+  {
+    "AppArmorProfile": "docker-default",
+    "Args": [
+      "-j",
+      "1",
+      "-T",
+      "120",
+      "-r",
+      "/run_output/results.json",
+      "-w",
+      "/run_output/work",
+      "--cache_dir",
+      "/cache",
+      "--restart",
+      "--reuse_datalog_bin",
+      "/inputs"
+    ],
+    "Config": {
+      "AttachStderr": true,
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "Cmd": [
+        "-j",
+        "1",
+        "-T",
+        "120",
+        "-r",
+        "/run_output/results.json",
+        "-w",
+        "/run_output/work",
+        "--cache_dir",
+        "/cache",
+        "--restart",
+        "--reuse_datalog_bin",
+        "/inputs"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/opt/gigahorse/gigahorse-toolchain/gigahorse.py"
+      ],
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "DEBIAN_FRONTEND=noninteractive"
+      ],
+      "Hostname": "d885dfc6bfa3",
+      "Image": "ghcr.io/nevillegrech/gigahorse-toolchain@sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+      "Labels": {
+        "org.opencontainers.image.created": "2024-08-24T10:25:37.738Z",
+        "org.opencontainers.image.description": "A binary lifter and analysis framework for Ethereum smart contracts",
+        "org.opencontainers.image.licenses": "NOASSERTION",
+        "org.opencontainers.image.ref.name": "ubuntu",
+        "org.opencontainers.image.revision": "ae29a8cc7f6ca6457647184ee5a641044e41af0f",
+        "org.opencontainers.image.source": "https://github.com/nevillegrech/gigahorse-toolchain",
+        "org.opencontainers.image.title": "gigahorse-toolchain",
+        "org.opencontainers.image.url": "https://github.com/nevillegrech/gigahorse-toolchain",
+        "org.opencontainers.image.version": "master"
+      },
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "1000:1000",
+      "Volumes": null,
+      "WorkingDir": ""
+    },
+    "Created": "2026-07-26T00:19:44.74697907Z",
+    "Driver": "overlay2",
+    "ExecIDs": null,
+    "GraphDriver": {
+      "Data": {
+        "ID": "d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b",
+        "LowerDir": "/var/lib/docker/overlay2/e1d9ae9a39c587c7ad6fd301f8fdde756119577abb97bfdf50108906e15f50b3-init/diff:/var/lib/docker/overlay2/b977301ed0ca319a7ae31c20d3ee711b0c99c9997c0dba92902e1b29b681d97d/diff:/var/lib/docker/overlay2/6419dfc8e05a87370e8c96949904f8dbb01c0f8f4bf7286c3d06f758c6cb8eb6/diff:/var/lib/docker/overlay2/b658cff74ae8e89b02e3972ba16670e0266495d1b25f9482aac86799f4254dbd/diff:/var/lib/docker/overlay2/ed3641eeca67b5e068108035af86a02309cb39562f169e21dc1e63d7af2c59d7/diff:/var/lib/docker/overlay2/c420275842eaea78d0eeea55c895fb93047bb975cee8e851441da5460a772273/diff:/var/lib/docker/overlay2/cb451dafaee4121dcf123b00d1d153dc9bb2a5c33310d5fec60ba60f2fbd21a2/diff:/var/lib/docker/overlay2/44ee3e380df3dd339bf353faa09f4c894d665eed70015cd87d850c36002e5365/diff:/var/lib/docker/overlay2/8c68fb2ccdcc74fbdb750c91fe9374c57ff810122cb8408595e0cfabfa27ab6a/diff:/var/lib/docker/overlay2/5f912e09b8a88ad2a124b089593d9dfac86b83830c733ad4a7997167e74ac6b9/diff:/var/lib/docker/overlay2/337d622664ac91888d209cc6571419d27198ebb344ce7399ba8112ad72cecf36/diff:/var/lib/docker/overlay2/2d75c3f39bb93adc7293eda0b6274d9318b80629c181829ae332b294ab8fe59a/diff:/var/lib/docker/overlay2/9ee07aea31c0f33c6a5a0380e60767fd91d2868bef825f891c2774c350e20908/diff:/var/lib/docker/overlay2/bc6e1b2c045310c257b5bd183389c8c8fa844a08e68569d21e2338a01354d618/diff:/var/lib/docker/overlay2/d247be8bd04d09c728b1c7cbe7842d360bad8611bb6576716e9bb5ce6a12eec1/diff:/var/lib/docker/overlay2/e198425b522b8defb558e9591a80a1fa3b6122081f03eb1fc00f96a81712a9a9/diff:/var/lib/docker/overlay2/a06d0cc0e51a2023e8544989d91a05f3ae39dca780008ae3511f7b80dbe74e9f/diff:/var/lib/docker/overlay2/019e20a764a9954478ac774d8d32308a420a92e5df4031d8e73a9a83dcf7dc3f/diff:/var/lib/docker/overlay2/2ab3dd744071ce7e8a181085800defd5254d2438073369ff7fa2eb369084f225/diff:/var/lib/docker/overlay2/161d12bfd72d760d8edbff97a4a4ed5eb49b8b943e57c8c692b6ba87c12972ac/diff",
+        "MergedDir": "/var/lib/docker/overlay2/e1d9ae9a39c587c7ad6fd301f8fdde756119577abb97bfdf50108906e15f50b3/merged",
+        "UpperDir": "/var/lib/docker/overlay2/e1d9ae9a39c587c7ad6fd301f8fdde756119577abb97bfdf50108906e15f50b3/diff",
+        "WorkDir": "/var/lib/docker/overlay2/e1d9ae9a39c587c7ad6fd301f8fdde756119577abb97bfdf50108906e15f50b3/work"
+      },
+      "Name": "overlay2"
+    },
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": null,
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceWriteIOps": [],
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "CapAdd": null,
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": [],
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 0,
+      "MemoryReservation": 0,
+      "MemorySwap": 0,
+      "MemorySwappiness": null,
+      "Mounts": [
+        {
+          "ReadOnly": true,
+          "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/experiments/reference_analyzer_cost_v1/sample/inputs",
+          "Target": "/inputs",
+          "Type": "bind"
+        },
+        {
+          "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/reference_analyzer_cost_v1/cache",
+          "Target": "/cache",
+          "Type": "bind"
+        },
+        {
+          "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/reference_analyzer_cost_v1/warm",
+          "Target": "/run_output",
+          "Type": "bind"
+        }
+      ],
+      "NanoCpus": 0,
+      "NetworkMode": "bridge",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": [],
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "HostnamePath": "/var/lib/docker/containers/d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b/hostname",
+    "HostsPath": "/var/lib/docker/containers/d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b/hosts",
+    "Id": "d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b",
+    "Image": "sha256:9c1e6a36fa9fa80e756f67897c4b7003f455bb1e9a7a86233d619555aa20848f",
+    "LogPath": "/var/lib/docker/containers/d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b/d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b-json.log",
+    "MountLabel": "",
+    "Mounts": [
+      {
+        "Destination": "/run_output",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/reference_analyzer_cost_v1/warm",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/experiments/reference_analyzer_cost_v1/sample/inputs",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/cache",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/pollmix/Coding/AuthGuard-7702/revision_v2/results/reference_analyzer_cost_v1/cache",
+        "Type": "bind"
+      }
+    ],
+    "Name": "/authguard-gh-warm-305703-1785025184732485572",
+    "NetworkSettings": {
+      "Networks": {
+        "bridge": {
+          "Aliases": null,
+          "DNSNames": null,
+          "DriverOpts": null,
+          "EndpointID": "",
+          "Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "GwPriority": 0,
+          "IPAMConfig": null,
+          "IPAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "Links": null,
+          "MacAddress": "",
+          "NetworkID": "7b0ef1596882dbbf7718a9e763bea17608f0b5f0bad99af952162a8dfa2d614f"
+        }
+      },
+      "Ports": {},
+      "SandboxID": "",
+      "SandboxKey": ""
+    },
+    "Path": "/opt/gigahorse/gigahorse-toolchain/gigahorse.py",
+    "Platform": "linux",
+    "ProcessLabel": "",
+    "ResolvConfPath": "/var/lib/docker/containers/d885dfc6bfa3870761e3eeb2ce686297e40c5efe05e01510efe228353b237b8b/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-07-26T00:23:14.936115867Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-07-26T00:19:44.802971608Z",
+      "Status": "exited"
+    }
+  }
+]

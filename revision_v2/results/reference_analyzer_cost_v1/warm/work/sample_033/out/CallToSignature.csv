@@ -1,0 +1,7 @@
+0x4ca	approve(address,uint256)
+0x771	balanceOf(address)
+0x8d1	transfer(address,uint256)
+0x98d	transfer(address,uint256)
+0xa97	approve(address,uint256)
+0xba7	exactInput((bytes,address,uint256,uint256,uint256))
+0xc68	balanceOf(address)

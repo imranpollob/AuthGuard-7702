@@ -1,0 +1,83 @@
+[
+    {
+        "Id": "sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+        "RepoTags": [
+            "ghcr.io/nevillegrech/gigahorse-toolchain@sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743"
+        ],
+        "RepoDigests": [
+            "ghcr.io/nevillegrech/gigahorse-toolchain@sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2024-08-24T10:26:20.935303147Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 1182288996,
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:1b9b7346fee7abbc7f5538eaa23548bd05a45abe8daf6794024be0c8ad7d60bb",
+                "sha256:6d970a8dbc5d72fae45c1f374d176faf17dbcc6f9d71c734397c5d806900d1c5",
+                "sha256:2d45587ad311abecd8c98bdea6ca9cf5220b4f733bc8c6e1a2e9785b3e587109",
+                "sha256:c6357903b7baa4b74cf50c7d632a4cb7ea0053a874016e8c0e45e8822bcefac7",
+                "sha256:0203524fb2e761a098b26da943f0e7dc8349f06cb5a5b1eaeb12e6a3ba860486",
+                "sha256:4ef982b0aa1acddcde61d032cb4aa1f8aef4a3279e28327ea314084ddbbde553",
+                "sha256:7e3ab5144c7b3c3393dbc1df5205d8f7d15e78c7362d5c087f9374ea5dfd502b",
+                "sha256:44f222b4f1c34042377f768edcab3091a01c64b3825f6f3490c5f887f32527df",
+                "sha256:a513666b6ea22dfcd189d523406f47b0adb4a2a34bfb8df45b8cfafce191aff5",
+                "sha256:557266a86882769e77c7c22efc3a46aecae02138f0dac79ba12f4aa77392d484",
+                "sha256:8f13b8480d183dbcb43cb70adf955f9a54f2000e93a6dc53dda76547cb044fde",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:9f6bf245a60f9a0b6ad4bae8696f9f05038526094188757eac8a1a12201e57cd",
+                "sha256:d93f701ee5621d7630973f266d3255754e92d777902fdfda4a1e8828d6cd3b25",
+                "sha256:d8ed2f43a6e69b72b978dc8361b6d4730e85d92e85c0cbda0d809ebb44be359d",
+                "sha256:a6fb0d00386350326ce4b2d55876b5f083698ed86b093412e6a7976550fca176",
+                "sha256:b5088b08b7bdc85f40077ab64353dc5c23df78b644a2300ee019665d1694ced1",
+                "sha256:5cd644c6a696998f4ba6c88cff20017896382549c9f085f9ce7744c2a04fd2c6"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-07-25T23:55:04.101993368Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "digest": "sha256:f676ca8aaf88acd47be27ed1967acddc9c99acdd041b34e79472cfb028910743",
+            "size": 4316
+        },
+        "Config": {
+            "ArgsEscaped": true,
+            "Cmd": [
+                "-h"
+            ],
+            "Entrypoint": [
+                "/opt/gigahorse/gigahorse-toolchain/gigahorse.py"
+            ],
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "DEBIAN_FRONTEND=noninteractive"
+            ],
+            "Labels": {
+                "org.opencontainers.image.created": "2024-08-24T10:25:37.738Z",
+                "org.opencontainers.image.description": "A binary lifter and analysis framework for Ethereum smart contracts",
+                "org.opencontainers.image.licenses": "NOASSERTION",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.revision": "ae29a8cc7f6ca6457647184ee5a641044e41af0f",
+                "org.opencontainers.image.source": "https://github.com/nevillegrech/gigahorse-toolchain",
+                "org.opencontainers.image.title": "gigahorse-toolchain",
+                "org.opencontainers.image.url": "https://github.com/nevillegrech/gigahorse-toolchain",
+                "org.opencontainers.image.version": "master"
+            },
+            "OnBuild": null,
+            "User": "gigahorse",
+            "Volumes": null,
+            "WorkingDir": ""
+        }
+    }
+]

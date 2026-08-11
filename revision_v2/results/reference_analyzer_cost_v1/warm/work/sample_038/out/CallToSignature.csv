@@ -1,0 +1,5 @@
+0x9c0	balanceOf(address)
+0x5c6S0x1ba	ownerOf(uint256)
+0x6e5S0x1ba	safeTransferFrom(address,address,uint256)
+0x7d5S0x1e3	balanceOf(address,uint256)
+0x8cfS0x1e3	safeTransferFrom(address,address,uint256,uint256,bytes)

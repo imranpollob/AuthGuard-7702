@@ -1,0 +1,61 @@
+{
+  "population": "live Ethereum EIP-7702 delegates, blocks 25595134-25695421",
+  "window_utc": "2026-07-23T11:27:59Z..2026-08-06T10:50:47Z",
+  "n_screenable": 752,
+  "n_unique_bytecode": 669,
+  "exact_bytecode_overlap_with_benchmark": 0,
+  "leakage_gate": {
+    "threshold": 0.85,
+    "n_at_or_above": 70,
+    "fraction": 0.09308510638297872,
+    "max_similarity": 1.0,
+    "median_similarity": 0.265625,
+    "p95_similarity": 0.9765625
+  },
+  "artifacts": 15,
+  "note": "No labels are asserted for this population; these are operating-point transfer statistics, not detection metrics.",
+  "summary": {
+    "01": {
+      "flag_rate": {
+        "mean": 0.0949468085106383,
+        "sd": 0.02055055560678832
+      },
+      "flag_rate_leakage_clean": {
+        "mean": 0.08758553274682307,
+        "sd": 0.02402107823090521
+      },
+      "flag_rate_authorization_weighted": {
+        "mean": 0.05892496664733434,
+        "sd": 0.008095819823846488
+      }
+    },
+    "05": {
+      "flag_rate": {
+        "mean": 0.2026595744680851,
+        "sd": 0.035737397940937936
+      },
+      "flag_rate_leakage_clean": {
+        "mean": 0.1986314760508309,
+        "sd": 0.0392606697667604
+      },
+      "flag_rate_authorization_weighted": {
+        "mean": 0.09442772925373459,
+        "sd": 0.00964974691064804
+      }
+    },
+    "10": {
+      "flag_rate": {
+        "mean": 0.3268617021276596,
+        "sd": 0.018511606316907545
+      },
+      "flag_rate_leakage_clean": {
+        "mean": 0.33274682306940373,
+        "sd": 0.020745022709123633
+      },
+      "flag_rate_authorization_weighted": {
+        "mean": 0.14647870709869237,
+        "sd": 0.018788378209605622
+      }
+    }
+  }
+}
