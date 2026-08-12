@@ -26,12 +26,12 @@
 
 \begin{document}
 
-\title{Screening EIP-7702 Delegates under an\\Execution-Audited Adaptive Adversary}
+\title{Pre-Authorization Screening of EIP-7702 Delegates\\under an Execution-Audited Adaptive Adversary}
 
 \maketitle
 
 \begin{abstract}
-EIP-7702 lets an Ethereum externally owned account delegate execution to smart-contract code, creating a security decision over a program the adversary authored, at a moment when history, reputation, and verified source are frequently unavailable. We ask whether runtime bytecode alone supports screening at that boundary, and we show that the answer depends entirely on how the screener is evaluated. On an audited, family-disjoint benchmark of 2,190 delegates in 790 bytecode-similarity families, a 181k-token hierarchical attention model and a 15-feature logistic regression are statistically indistinguishable on clean bytecode ($\Delta$AUPRC $-0.021$, 95\% CI $[-0.078,+0.035]$), so clean metrics cannot select between them. We therefore evaluate a score-aware adaptive adversary that composes bytecode transformations under a 64-query budget, and---critically---we audit the transformation space itself: an independent real-EVM audit across \textbf{120 distinct bytecode families} finds flooding (3464/3464), metadata rewrite (866/866), and neutral instruction insertion (866/866) preserve externally visible execution behaviour on every audited call. Restricting the adversary to that audit-supported action space, the two clean-equivalent screeners separate decisively: across three seeds, 1,503 paired observations and 209 families, the emulator suffers \textbf{+0.370} higher attack success (95\% CI $[+0.208,+0.520]$), and end-to-end robust recall---the fraction of positives detected cleanly \emph{and} still detected after the strongest attack---is \textbf{0.679 versus 0.378}. Widening to a broader stress-test space that includes transformations with weaker preservation evidence adds little: only 12--13\% of its successes are unreachable within the audited space at the same budget. Parameter-matched controls and direct attention-mass measurements attribute the advantage to selective aggregation rather than capacity. We conclude that adaptive, preservation-aware evaluation should be standard practice for learned security screening over attacker-authored programs.
+EIP-7702 lets an Ethereum externally owned account delegate execution to smart-contract code, creating a security decision over a program the adversary authored, at a moment when history, reputation, and verified source are frequently unavailable. We ask whether runtime bytecode alone supports screening at that boundary, and we show that the answer depends entirely on how the screener is evaluated. On an audited, family-disjoint benchmark of 2,190 delegates in 790 bytecode-similarity families, a 63K-parameter hierarchical attention model and a 15-feature logistic regression are statistically indistinguishable on clean bytecode ($\Delta$AUPRC $-0.021$, 95\% CI $[-0.078,+0.035]$), so clean metrics cannot select between them. We therefore evaluate a score-aware adaptive adversary that composes bytecode transformations under a 64-query budget, and---critically---we audit the transformation space itself: an independent real-EVM audit across \textbf{120 distinct bytecode families} finds flooding (3464/3464), metadata rewrite (866/866), and neutral instruction insertion (866/866) preserve externally visible execution behaviour on every audited call. Restricting the adversary to that audit-supported action space, the two clean-indistinguishable screeners separate decisively: across three seeds, 1,503 paired observations and 209 families, the emulator suffers \textbf{+0.370} higher attack success (95\% CI $[+0.208,+0.520]$), and end-to-end robust recall---the fraction of positives detected cleanly \emph{and} still detected after the strongest attack---is \textbf{0.679 versus 0.378}. Widening to a broader stress-test space that includes transformations with weaker preservation evidence adds little: only 12--13\% of its successes were not also reproduced within the audited space at the same 64-query budget. Parameter-matched controls and direct attention-mass measurements attribute the advantage to selective aggregation rather than capacity. We conclude that adaptive, preservation-aware evaluation should be standard practice for learned security screening over attacker-authored programs.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -193,13 +193,15 @@ Figure~\ref{fig:decision} places AuthGuard-7702 at the authorization boundary. A
 
 \subsection{Design Under an Adversarial Requirement}
 
-The design follows from the adversary model rather than from architectural ambition. Because the attacker controls program length and can append arbitrary content cheaply, the aggregation step must not let appended bytes dilute or dominate the risk signal. This yields three requirements, each tied to an attack and each tested in Section~\ref{sec:rq4}:
+The design follows from the adversary model rather than from architectural ambition. Because the attacker controls program length and can append arbitrary content cheaply, the aggregation step must not let appended bytes dilute or dominate the risk signal. This yields three design hypotheses, each tied to an attack:
 
 \begin{enumerate}
 \item \emph{Full-stream coverage.} Fixed-window models can be evaded by pushing the payload past the window, so the model must see the whole program rather than a prefix.
 \item \emph{Local order sensitivity.} Histogram and $n$-gram representations discard instruction order, which order-preserving rewrites exploit; local convolutions retain short ordered motifs.
 \item \emph{Length-robust selective aggregation.} Uniform pooling over a longer program dilutes evidence in proportion to appended content. Learned attention can concentrate on the informative region largely independently of how much padding surrounds it.
 \end{enumerate}
+
+Section~\ref{sec:rq4} tests these hypotheses and they are not equally supported. Hypothesis~3 receives the strongest and most direct evidence, from parameter-matched controls under both flooding and adaptive attack and from direct measurement of attention mass. Hypothesis~1 is \emph{not} established: the coverage contrast is inconclusive in both conditions. Hypothesis~2 is supported only indirectly, by the margin of order-sensitive models over histogram and $n$-gram representations, and is not isolated by a dedicated control. We therefore rest the design claim on selective aggregation alone.
 
 \subsection{Hierarchical Opcode-Sequence Model}
 
@@ -417,7 +419,7 @@ C & full stress test & .5635 & .1810 & $+.3826$ & [+.223, +.524] \\
 \end{tabular}
 \end{table}
 
-Under the audit-supported Tier-B adversary, the clean-equivalent emulator suffers \textbf{0.370 higher attack success than AuthGuard-Seq, with a family-clustered 95\% CI of $[+0.208,+0.520]$ across three seeds}. All three intervals exclude zero. Figure~\ref{fig:strength} shows the gap widening with adversary strength.
+Under the audit-supported Tier-B adversary, the clean-indistinguishable emulator suffers \textbf{0.370 higher attack success than AuthGuard-Seq, with a family-clustered 95\% CI of $[+0.208,+0.520]$ across three seeds}. All three intervals exclude zero. Figure~\ref{fig:strength} shows the gap widening with adversary strength.
 
 \begin{figure}[t]
 \centering
@@ -430,7 +432,7 @@ Under the audit-supported Tier-B adversary, the clean-equivalent emulator suffer
 
 ASR is conditional on each model's own clean detections, which differ. We therefore also report \emph{robust recall}: the fraction of \emph{all} positive observations that are detected on clean bytecode \emph{and} remain detected after the strongest attack in the tier. It was computed directly from source-level outcomes and agrees with $\text{clean}\times(1-\text{ASR})$ to numerical precision.
 
-Under the audited Tier-B adversary, \textbf{AuthGuard-Seq retains approximately 68\% end-to-end robust recall (0.6786) against approximately 38\% (0.3783) for the clean-equivalent emulator}; the flat convolutional and gradient-boosted screeners retain 0.0440 and 0.0096 respectively at seed 7702. Robust recall is the number a deployment cares about, because it charges the screener for both missed detections and successful evasions on a single common denominator.
+Under the audited Tier-B adversary, \textbf{AuthGuard-Seq retains approximately 68\% end-to-end robust recall (0.6786) against approximately 38\% (0.3783) for the clean-indistinguishable emulator}; the flat convolutional and gradient-boosted screeners retain 0.0440 and 0.0096 respectively at seed 7702. Robust recall is a deployment-relevant end-to-end metric, because it charges the screener for both missed detections and successful evasions on a single common denominator; precision, calibration, alert volume, and latency remain separately relevant.
 
 \subsection{RQ3: What the Broader Action Space Adds}
 \label{sec:rq3}
@@ -441,12 +443,33 @@ Moving from Tier B to Tier C raises the paired difference only from $+0.3699$ to
 
 We state the interpretation precisely: this does not show that the weaker-preservation primitives are logically necessary or unnecessary for any particular evasion. It shows that, for the evaluated 64-query attacker, the large robustness separation is already present under the independently audit-supported Tier-B action space, and expanding to the full space yields only a modest additional increase in attack success.
 
-\paragraph*{Adaptive composition versus fixed perturbation} A fixed multi-level flooding oracle already produces a statistically supported separation on the historical records: $+0.184$ with CI $[+0.035,+0.330]$, whereas a single Flood-200\% transformation alone does not ($+0.082$, CI $[-0.047,+0.218]$). Under adaptive composition over the audited space the gap grows to $+0.370$. The accurate methodological conclusion is therefore not that fixed transformations are uninformative, but that \textbf{fixed perturbation testing materially underestimates the robustness gap that adaptive composition exposes}---by roughly a factor of two between the fixed flooding oracle and the audited adaptive adversary.
+\paragraph*{Adaptive composition versus fixed perturbation} The cleanest form of this comparison is internal to Table~\ref{tab:central}, since both rows use the same frozen checkpoints, the same paired population, and the same bootstrap procedure. Tier A is an exhaustive fixed oracle over four flooding levels and yields a paired gap of $+0.2083$ (CI $[+0.076,+0.334]$); Tier B adds adaptive composition over the same audited transformation classes and yields $+0.3699$ (CI $[+0.208,+0.520]$). Adaptive composition therefore widens the measured separation by roughly $0.16$ within a single experiment, with no mixing of experimental populations.
+
+The historical records point the same way at the weaker end of the scale: a single Flood-200\% transformation alone does not separate the two screeners ($+0.082$, CI $[-0.047,+0.218]$), while a fixed multi-level flooding oracle does ($+0.184$, CI $[+0.035,+0.330]$). The accurate methodological conclusion is therefore not that fixed transformations are uninformative, but that \textbf{fixed perturbation testing materially underestimates the robustness gap that adaptive composition exposes}.
 
 \subsection{RQ4: Does the Mechanism Explain the Difference?}
 \label{sec:rq4}
 
-\paragraph*{Parameter-matched controls} A separate controlled study matches five variants at roughly 30,000 parameters, isolating token budget, layout, and aggregation. On clean bytecode a flat encoder given the same 16,384-token budget is at least as good as chunk attention---the hierarchy contrast is $-0.018$ with CI $[-0.040,+0.018]$, spanning zero---so we do not claim clean superiority for hierarchy. Under flooding the ordering inverts: attention over mean pooling gives $+0.180$ AUPRC (CI $[+0.135,+0.232]$) and $+0.541$ Recall@5\% (CI $[+0.474,+0.631]$), and chunking over flat gives $+0.098$ (CI $[+0.059,+0.154]$). Coverage alone is inconclusive in both conditions. The best clean model is the worst model under attack.
+\paragraph*{Parameter-matched controls under flooding} A separate controlled study matches five variants at roughly 30,000 parameters, isolating token budget, layout, and aggregation. On clean bytecode a flat encoder given the same 16,384-token budget is at least as good as chunk attention---the hierarchy contrast is $-0.018$ with CI $[-0.040,+0.018]$, spanning zero---so we do not claim clean superiority for hierarchy. Under flooding the ordering inverts: attention over mean pooling gives $+0.180$ AUPRC (CI $[+0.135,+0.232]$) and $+0.541$ Recall@5\% (CI $[+0.474,+0.631]$), and chunking over flat gives $+0.098$ (CI $[+0.059,+0.154]$). Coverage alone is inconclusive in both conditions. The best clean model is the worst model under attack.
+
+\paragraph*{Parameter-matched controls under adaptive attack} Flooding robustness alone would leave open whether selective aggregation also matters against a searching adversary. We therefore attacked the matched variants directly (Table~\ref{tab:matched}). At approximately equal capacity and identical token budget, the attention control is evaded on 7.5\% of its cleanly detected observations while the flat and mean-pooled controls are evaded on 88.9\% and 98.6\%, with paired differences against the reference configuration of $+0.710$ (CI $[+0.636,+0.772]$) and $+0.838$ (CI $[+0.775,+0.884]$). Capacity is held fixed across these three rows, so the separation is attributable to the aggregation rule rather than to model size. These are stored-artifact results at seed 7702 and are not pooled with the regenerated tier experiment.
+
+\begin{table}[t]
+\centering
+\caption{Parameter-matched aggregation controls under adaptive attack (stored artifact, seed 7702, 5 folds, marginal ASR). Capacity and token budget are held fixed; only the aggregation rule differs.}
+\label{tab:matched}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Aggregation (16{,}384 tokens) & Params & Clean det. & Random ASR & Beam ASR \\
+\midrule
+\textbf{Chunk attention} & 30{,}050 & .8473 & \textbf{.0747} & \textbf{.0682} \\
+Flat (single window) & 29{,}985 & .8308 & .8891 & .7053 \\
+Chunk mean pooling & 29{,}985 & .7689 & .9857 & .9231 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph*{Attention mass} Because the model exposes its chunk weights, the aggregation argument can be measured rather than inferred. For all 727 held-out positives, scored by each fold's own checkpoint, we recorded the fraction of attention mass falling on chunks composed entirely of appended donor bytes. Uniform weighting has no learned parameters, so its mass on appended chunks is exactly their share of the chunk count; this is an \emph{analytic reference}, not a separately trained measurement. Under Flood-200\% appended content occupies 63.1\% of chunks while attention places 37.6\% of its mass there, a gap of 25.5 percentage points that widens monotonically with flooding volume (8.2, 14.7, 22.1, 25.5 points at 25\%, 50\%, 100\%, 200\%). This is consistent with the observed robustness advantage and provides mechanistic evidence that selective aggregation resists dilution by appended content. It is also partial: attention still assigns more than a third of its weight to content carrying no signal, which is consistent with a residual attack success rate well above zero.
 
@@ -472,14 +495,14 @@ We assert no labels for this population, so its flag rate is not a false-positiv
 
 \paragraph*{Cost and staged triage} Across 1,500 complete screening calls on one CPU thread, the full local path has median latency 4.121\,ms, p95 14.547\,ms, and p99 21.429\,ms. For the deeper-analysis stage we measured a pinned Gigahorse decompiler image on 60 deterministic family-distinct inputs: all 60 succeeded, with warm median 2.687\,s and p95 5.618\,s. The median ratio is 652$\times$.
 
-The value of this gap is not aggregate throughput. It is that the authorization decision is interactive and synchronous: a newly encountered delegate is a cache miss by construction, and a multi-second decompilation cannot sit in front of a user waiting to sign. Millisecond screening allows every proposed delegate to be assessed at signing time and expensive semantic analysis to be reserved for escalated cases. Three scoping statements are essential: this measures decompilation and lifting only, with \textbf{no downstream client rule executed}; it is not the analyzer of Huang et al.; and it is not a comparison of accuracy or substitutability. The speedup accrues to fast bytecode-level screening in general---the 2.626\,ms emulator is also an instance---so it is not unique to AuthGuard-Seq.
+The value of this gap is not aggregate throughput. It is that the authorization decision is interactive and synchronous: a delegate not previously seen by the screening service is a cache miss, and a multi-second decompilation cannot sit in front of a user waiting to sign. Millisecond screening allows every proposed delegate to be assessed at signing time and expensive semantic analysis to be reserved for escalated cases. Three scoping statements are essential: this measures decompilation and lifting only, with \textbf{no downstream client rule executed}; it is not the analyzer of Huang et al.; and it is not a comparison of accuracy or substitutability. The speedup accrues to fast bytecode-level screening in general---the 2.626\,ms emulator is also an instance---so it is not unique to AuthGuard-Seq.
 
 \section{Discussion}
 \label{sec:discussion}
 
 \paragraph*{What the results support} Clean accuracy is achievable by very cheap models on this task, so it is a poor basis for choosing a screener. Robustness to an adversary who authors the bytecode is not cheaply achievable, separates otherwise-equivalent screeners by a wide margin, and is only partly visible to fixed perturbation testing. Because the separation is established over an independently audited action space, the result does not rest on transformations whose behaviour we cannot vouch for---and the Tier-C analysis shows the weaker-evidence primitives were never carrying the claim.
 
-\paragraph*{Implications for practice} A wallet or screening service should evaluate candidate screeners against a score-aware adaptive adversary restricted to an audited transformation set, and should report robust recall rather than clean recall alone. On this benchmark that criterion selects a different model than clean AUPRC does.
+\paragraph*{Implications for practice} A wallet or screening service should evaluate candidate screeners against a score-aware adaptive adversary restricted to an audited transformation set, and should report robust recall alongside clean recall. The precise methodological point is not that the two criteria rank the models differently---AuthGuard-Seq leads on both clean AUPRC and robust recall---but that \textbf{clean AUPRC does not statistically distinguish it from the cheap emulator, while audited adaptive evaluation separates the two by a large and statistically supported margin}. Clean metrics leave the choice underdetermined; the audited adversarial criterion resolves it.
 
 \paragraph*{What we do not claim} We claim no architectural novelty; every component is standard. We do not claim clean superiority for hierarchy over a parameter-matched flat encoder, which our own ablation does not support. We do not claim formal semantic equivalence for any transformation. We do not claim robustness against white-box gradient attacks, adaptive retraining, or arbitrary attacker-authored transformations; the claim is scoped to a query-budgeted adaptive adversary over the evaluated transformation space, with Tier B and Tier C reported separately.
 
@@ -500,7 +523,13 @@ The value of this gap is not aggregate throughput. It is that the authorization 
 \section{AI Disclosure}
 \label{sec:ai}
 
-In accordance with venue policy we disclose the role of AI tools in this work. AI coding assistants were used substantively in implementing the experimental harnesses, analysis scripts, and figure generation, and in drafting and editing the manuscript text. Experimental design, tier definitions, the preservation-audit protocol, and all scientific claims were author-directed. No AI system generated, imputed, or estimated any reported numerical result: every value in this paper was produced by executed code over frozen data and model artefacts, recorded in a machine-readable results ledger with seed scope, fold scope, denominator, and provenance, and verified by the authors against that ledger. Frozen-artifact integrity checks were run before and after every experiment. The authors take full responsibility for the contents of the paper.
+In accordance with venue policy we identify the AI tools used and the parts of this work they materially influenced.
+
+\textbf{Tool.} Anthropic Claude, accessed through the Claude Code command-line assistant, was the only AI system used.
+
+\textbf{Materially influenced parts.} (i) \emph{Implementation}: the adaptive-attack harness, the execution-preservation audit harness, the checkpoint regeneration and freezing pipeline, the statistical analysis scripts, and the figure-generation code were written with substantial AI assistance. (ii) \emph{Analysis}: the tabulation, bootstrap, and consistency-audit scripts that produce the reported values were likewise AI-assisted. (iii) \emph{Methodology}: AI assistance contributed materially to the design of this revision's experimental plan, including the partition of the transformation space into evidence-graded tiers, the choice to audit each transformation class separately against a real EVM, the decision to evaluate all tiers against a single frozen checkpoint, and the adoption of robust recall as an end-to-end metric. These methodological elements are described in Sections~\ref{sec:tiers}, \ref{sec:replication}, and~\ref{sec:preservation} of the body. (iv) \emph{Writing}: the manuscript was drafted and edited with AI assistance throughout.
+
+\textbf{Boundaries and verification.} All research questions, claim scoping, and final scientific judgements were author-directed, and the authors reviewed and accepted or rejected every AI-proposed design decision. No AI system generated, imputed, extrapolated, or estimated any reported numerical result. Every value in this paper was produced by executed code over frozen data and model artefacts, recorded in a machine-readable ledger carrying value, confidence interval, denominator, seed scope, fold scope, and provenance, and verified programmatically against that ledger before submission. Frozen-artifact integrity checks were run before and after every experiment. The authors take full responsibility for the contents of the paper, including all AI-assisted portions.
 
 \section{Conclusion}
 \label{sec:conclusion}

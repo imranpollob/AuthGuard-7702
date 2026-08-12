@@ -167,3 +167,35 @@ Genuine, reviewer-facing, after the rewrite:
 8. **Production controls are effectively n=5** after excluding the three registry projects
    that overlap training families.
 9. **Page length.** 11 pages against a 10-page limit; compression pass still required.
+
+
+---
+
+## 7. Post-review corrections (second pass)
+
+Applied after reviewer inspection of the first rewrite. Build re-verified: 11 pages,
+0 errors, 0 overfull boxes, 0 undefined references. Audits re-run: 29/29 original checks
+plus 18/18 new checks, and the new matched-capacity table verified against frozen data.
+
+| # | Issue | Correction |
+|---|---|---|
+| 1 | Abstract said "181k-token hierarchical attention model" — conflated the discredited inflated parameter count with token capacity | Now "63K-parameter hierarchical attention model" |
+| 2 | Discussion claimed robust evaluation "selects a different model than clean AUPRC" — **false**: AuthGuard-Seq leads on both clean AUPRC (.924) and robust recall | Replaced with the correct and stronger claim: clean AUPRC does not *statistically distinguish* AuthGuard-Seq from the emulator, whereas audited adaptive evaluation separates them by a large supported margin. Clean metrics leave the choice underdetermined; the audited criterion resolves it |
+| 3 | Abstract said 12–13% of Tier-C successes were "unreachable" within Tier B — stronger than the evidence | Now "not also reproduced within the audited space at the same 64-query budget", matching the precise formulation already used in RQ3 |
+| 4 | RQ3 compared the *historical* fixed oracle (+.184) against the *regenerated* Tier-B gap (+.370), mixing populations | Now leads with the within-experiment comparison from Table VI: Tier A +.2083 → Tier B +.3699, same frozen checkpoints, same paired population, same bootstrap. Historical Flood-200-only (+.082, CI spans zero) retained as supporting evidence at the weaker end |
+| 5 | Mechanism claim rested on flooding-only ablation plus attention mass | Restored the matched-capacity **adaptive** result as Table VII: at ~30K parameters and identical token budget, attention .0747 vs flat .8891 vs mean .9857 random-search ASR; paired +0.710 and +0.838 against the reference configuration. Capacity held fixed, so the separation is attributable to the aggregation rule. Labelled stored-artifact, seed 7702, not pooled with the regenerated tiers |
+| 6 | "clean-equivalent emulator" implied a formal equivalence test | Replaced globally with "clean-indistinguishable emulator" (evidence is a non-significant difference, CI spanning zero, not an equivalence test with a prespecified margin) |
+| 7 | §IV claimed three design requirements "each tested" | Now three design *hypotheses*, with explicit statement that hypothesis 3 (selective aggregation) has the strongest direct support, hypothesis 1 (coverage) is **not established**, and hypothesis 2 (order sensitivity) is supported only indirectly and not isolated by a dedicated control |
+| 8 | AI disclosure was generic and understated the role | Now names the tool (Anthropic Claude via Claude Code), enumerates materially influenced parts across implementation, analysis, **methodology**, and writing, cross-references the body sections where the AI-influenced methodology appears, and states verification boundaries |
+| w1 | Title | "Pre-Authorization Screening of EIP-7702 Delegates under an Execution-Audited Adaptive Adversary" — "pre-authorization" is the clearest distinction from FinDet and conventional vulnerability detection |
+| w2 | "Robust recall is the number a deployment cares about" | "a deployment-relevant end-to-end metric", noting precision, calibration, alert volume, and latency remain separately relevant |
+| w3 | "a newly encountered delegate is a cache miss by construction" | "a delegate not previously seen by the screening service is a cache miss" |
+
+**Net effect on claims.** Items 2, 4, and 5 each *strengthen* the paper: item 2 replaces a
+false claim with a defensible and sharper one; item 4 removes cross-population mixing from
+the central methodological argument; item 5 extends the mechanism evidence from flooding to
+the adaptive adversary at matched capacity. Items 1, 3, 6, and 7 remove overstatements.
+
+**Page structure.** The conclusion ends on page 10 with the bibliography running onto page 11,
+which is compatible with a 10-page limit that excludes references. A compression pass is
+still advisable but may no longer be strictly required.
