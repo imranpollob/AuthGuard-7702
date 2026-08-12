@@ -26,26 +26,28 @@
 
 \begin{document}
 
-\title{Pre-Authorization Screening of EIP-7702 Delegates\\under an Adaptive Adversary}
+\title{Screening EIP-7702 Delegates under an\\Execution-Audited Adaptive Adversary}
 
 \maketitle
 
 \begin{abstract}
-EIP-7702 lets an Ethereum externally owned account delegate code execution to a smart contract, creating a security decision at authorization time when behavioral history, reputation, and verified source code may all be unavailable while the delegate's runtime bytecode is already observable. We study whether that bytecode alone supports pre-authorization risk screening, and we argue that the usual measure of such a screener---clean classification accuracy---does not answer the question that matters. On an audited, family-disjoint benchmark of 2,190 observed delegates in 790 bytecode-similarity families, four very different screeners reach comparable clean performance, including a 15-feature logistic regression that is statistically indistinguishable from our neural model. Under a query-budgeted adaptive adversary restricted to structurally valid, bounded-overhead bytecode edits, they separate sharply: attack success rises to 0.986 for a histogram gradient-boosting model and 0.945 for a flat convolutional encoder, while our hierarchical chunk-attention model, AuthGuard-Seq, holds at 0.181. Crucially, a fixed-transformation study---the standard protocol in prior bytecode security learning---cannot distinguish AuthGuard-Seq from the cheap emulator at all ($+0.082$, 95\% CI $[-0.047,+0.218]$); only adaptive search resolves them ($+0.360$, CI $[+0.188,+0.518]$). Parameter-matched ablations attribute the difference to length-invariant attention aggregation rather than to sequence coverage or hierarchy as such. We further report the first operational measurement of such a screener on live delegation traffic---752 Ethereum delegates observed over a two-week window disjoint from the benchmark at the bytecode-family level---and a measured 652$\times$ cost gap against a reference decompiler that motivates millisecond screening ahead of selective deep analysis.
+EIP-7702 lets an Ethereum externally owned account delegate execution to smart-contract code, creating a security decision over a program the adversary authored, at a moment when history, reputation, and verified source are frequently unavailable. We ask whether runtime bytecode alone supports screening at that boundary, and we show that the answer depends entirely on how the screener is evaluated. On an audited, family-disjoint benchmark of 2,190 delegates in 790 bytecode-similarity families, a 181k-token hierarchical attention model and a 15-feature logistic regression are statistically indistinguishable on clean bytecode ($\Delta$AUPRC $-0.021$, 95\% CI $[-0.078,+0.035]$), so clean metrics cannot select between them. We therefore evaluate a score-aware adaptive adversary that composes bytecode transformations under a 64-query budget, and---critically---we audit the transformation space itself: an independent real-EVM audit across \textbf{120 distinct bytecode families} finds flooding (3464/3464), metadata rewrite (866/866), and neutral instruction insertion (866/866) preserve externally visible execution behaviour on every audited call. Restricting the adversary to that audit-supported action space, the two clean-equivalent screeners separate decisively: across three seeds, 1,503 paired observations and 209 families, the emulator suffers \textbf{+0.370} higher attack success (95\% CI $[+0.208,+0.520]$), and end-to-end robust recall---the fraction of positives detected cleanly \emph{and} still detected after the strongest attack---is \textbf{0.679 versus 0.378}. Widening to a broader stress-test space that includes transformations with weaker preservation evidence adds little: only 12--13\% of its successes are unreachable within the audited space at the same budget. Parameter-matched controls and direct attention-mass measurements attribute the advantage to selective aggregation rather than capacity. We conclude that adaptive, preservation-aware evaluation should be standard practice for learned security screening over attacker-authored programs.
 \end{abstract}
 
 \begin{IEEEkeywords}
-EIP-7702, Ethereum, smart contract security, bytecode analysis, adversarial robustness, trust in delegated execution, security evaluation methodology
+EIP-7702, Ethereum, smart contract security, bytecode analysis, adversarial robustness, execution preservation, trust in delegated execution, security evaluation methodology
 \end{IEEEkeywords}
 
 \section{Introduction}
 \label{sec:intro}
 
-Ethereum traditionally separates externally owned accounts (EOAs), controlled by user keys, from smart contracts that carry executable logic. EIP-7702 changes this by letting an EOA delegate code execution while keeping its address~\cite{eip7702}. This enables transaction batching, gas sponsorship, and programmable authorization, but it also moves execution authority over an account's assets, approvals, and transaction behavior to third-party code. Authorizing an unsafe delegate is therefore a trust decision made under information scarcity: a newly deployed delegate may have no transaction history, no reputation, and no verified source, yet its runtime bytecode can already be fetched from chain. Figure~\ref{fig:riskwindow} shows this window.
+Ethereum separates externally owned accounts (EOAs), controlled by user keys, from smart contracts carrying executable logic. EIP-7702 dissolves that separation by letting an EOA delegate execution while keeping its address~\cite{eip7702}. This enables transaction batching, gas sponsorship, and programmable authorization, but it also transfers execution authority over an account's assets, approvals, and transaction behaviour to third-party code. Authorizing an unsafe delegate is a trust decision taken when the usual bases for trust are frequently absent by construction: a delegate deployed minutes earlier has no history, no reputation, and often no verified source, while its runtime bytecode is already retrievable on chain. Figure~\ref{fig:riskwindow} shows this window.
 
-This paper asks whether bytecode alone supports screening at that boundary, and how such a screener should be evaluated. Our central claim is that the second question determines the answer to the first. Pre-authorization screening is an adversarial setting by construction: the attacker writes the bytecode being screened and can pad, reorder, or rewrite it for little more than deployment gas. A screener that is accurate on unmodified code but collapses under cheap edits provides no protection against the adversary it exists to stop.
+Two properties make this setting unusual. First, the artefact being screened is \emph{authored by the adversary}, so any screener faces an attacker who can rewrite its input for little more than deployment gas. Second, the decision is interactive: it must be made in the moment before a signature. A screener that is accurate on unmodified code but yields to cheap edits provides no protection against the adversary it exists to stop, and a trust signal an adversary can manufacture is worse than no signal, because absence of warning reads as assurance.
 
-We find this distinction is not hypothetical. Four screeners spanning gradient boosting, flat convolution, hand-engineered control-flow features, and hierarchical attention reach broadly similar clean performance on our benchmark, and a 15-feature logistic regression is statistically indistinguishable from our neural model ($\Delta$AUPRC $-0.021$, 95\% CI $[-0.078,+0.035]$). Under a query-budgeted adaptive attacker they separate by a factor of five. More pointedly, the protocol used throughout prior bytecode security learning---evaluating on one fixed transformation---cannot separate our model from the cheap emulator at all, while adaptive search separates them decisively. The evaluation instrument, not the model, is what resolves the question.
+This paper's central finding is that the evaluation protocol, not the model, determines what one concludes. We show that on clean bytecode a 15-feature logistic regression over hand-coded opcode and control-flow features is statistically indistinguishable from a hierarchical attention model ($\Delta$AUPRC $-0.021$, 95\% CI $[-0.078,+0.035]$), so clean classification metrics cannot justify choosing one over the other. Under a score-aware adaptive adversary the two separate by a wide, statistically supported margin.
+
+The obvious objection to any such robustness claim is that the transformations may not preserve what the code actually does. We address this directly rather than by caveat. We audit each transformation class against a real EVM and separate an \emph{audit-supported} action space---flooding, metadata rewrite, neutral instruction insertion---from a broader stress-test space that additionally rewrites embedded addresses and function selectors, for which preservation evidence is materially weaker. The audit covers 120 distinct bytecode families and 5,196 transformed executions, with no observed preservation failure in any of the three audit-supported classes. The headline security result is then stated over the audited space, where it is best evidenced, and we show separately that the broader space adds only modestly to attack success.
 
 \begin{figure}[t]
 \centering
@@ -54,66 +56,71 @@ We find this distinction is not hypothetical. Four screeners spanning gradient b
 \label{fig:riskwindow}
 \end{figure}
 
-We present AuthGuard-7702, a bytecode-only screening framework producing a calibrated score and warning tier, built around AuthGuard-Seq: a compact hierarchical model that disassembles runtime bytecode, splits the opcode stream into 256-token chunks, encodes local order with shared convolutions, and aggregates chunk evidence with learned attention. It uses 63{,}266 active parameters, processes up to 16{,}384 opcodes, and consumes no transaction history, source code, address identity, or reputation metadata.
+We present AuthGuard-7702, a bytecode-only screening framework producing a calibrated score and warning tier, built around AuthGuard-Seq: a compact hierarchical model that disassembles runtime bytecode, splits the opcode stream into 256-token chunks, encodes local order with shared convolutions, and aggregates chunk evidence with learned attention. The reference configuration uses 63,266 active parameters, processes up to 16,384 opcodes, and consumes no transaction history, source code, address identity, or reputation metadata.
 
-A second concern is dependence among contract samples. Code duplication inflates measured performance of learned models of code~\cite{allamanis2019duplication}, and contract corpora contain redeployments and near-duplicate variants that let row-level random splits place related programs on both sides of a split~\cite{tesseract2019}. We audit the source data, build bytecode-similarity families, keep identical and related bytecode within one fold, and exclude observations with unreliable source verdicts.
+A second methodological concern is dependence among contract samples. Code duplication inflates measured performance of learned models of code~\cite{allamanis2019duplication}, and contract corpora contain redeployments and near-duplicate variants that let row-level random splits place related programs on both sides of a split~\cite{tesseract2019}. We audit the source data, build bytecode-similarity families, keep identical and related bytecode within one fold, and exclude observations with unreliable source verdicts.
 
-The study makes three contributions.
+The study makes four contributions.
 
 \begin{itemize}
-    \item \textbf{An adversarial evaluation methodology for bytecode security classifiers, and the design finding it yields.} We contribute a query-budgeted adaptive attack over a defined bytecode action space with bounded byte overhead, per-candidate structural validity checking, and a bounded execution-preservation audit, applied across four architecture families with cross-model transfer. It shows that fixed-transformation evaluation is insufficient to rank screeners, and parameter-matched ablations attribute robustness specifically to length-invariant attention aggregation.
-    \item \textbf{An audited benchmark and evaluation protocol, with a live temporal holdout.} AuthGuardBench-7702 combines 2,190 audited delegates in 790 families under family-disjoint cross-validation with external benign controls, an audited-implementation registry, and 752 independently collected live Ethereum delegates from a strictly later two-week window, disjoint at the family level. We release the protocol, split and family assignments, per-row predictions, donor provenance, and deterministic reconstruction scripts; redistribution of the third-party bytecode itself is pending license review, so we are careful to claim a reproducible evaluation pipeline rather than a distributable dataset.
-    \item \textbf{Operational evidence for staged triage.} We measure the complete local screening path at 4.121\,ms median against a pinned reference decompiler at 2.687\,s median---a 652$\times$ gap---and report flag rates on live delegation traffic weighted by observed authorization volume.
+    \item \textbf{An adaptive evaluation methodology with independent preservation auditing.} We contribute a query-budgeted, score-aware adaptive protocol over attacker-controlled EVM bytecode---composing transformations under a bounded byte budget with enforced structural validity---paired with a real-EVM execution-preservation audit across 120 bytecode families that partitions the action space by the strength of its behavioural evidence. The pairing is the contribution: robustness results are reported over an action space that has been independently audited, not merely asserted.
+    \item \textbf{Evidence that adaptive evaluation changes model selection.} Clean evaluation leaves a cheap interpretable emulator statistically tied with the learned model. Under the audit-supported adaptive adversary the paired difference is $+0.370$ with 95\% CI $[+0.208,+0.520]$ across three seeds, and robust recall is $0.679$ versus $0.378$. Fixed perturbation testing recovers only part of this gap, so it materially understates the security-relevant separation.
+    \item \textbf{A mechanism finding.} Parameter-matched controls and direct measurement of attention mass show that selective aggregation, rather than capacity, is associated with resistance to attacker-controlled dilution and composition.
+    \item \textbf{Operational evidence.} We report calibrated behaviour on an independently collected later temporal population of 752 delegates with explicit family-overlap auditing, and a measured cost boundary against a reference decompiler that motivates millisecond screening ahead of selective deeper analysis.
 \end{itemize}
 
-We do not claim architectural novelty. Every component of AuthGuard-Seq is standard; the contribution is the adversarial requirement that motivates the design, the evaluation that isolates which mechanism satisfies it, and the honest negative controls that bound what the model adds.
+We claim no architectural novelty. Every component of AuthGuard-Seq is standard; the contribution is the adversarial requirement that motivates the design, the audited evaluation that isolates which mechanism satisfies it, and the negative controls that bound what the model adds.
 
 \section{Background and Related Work}
 \label{sec:related}
 
 \subsection{EIP-7702 and the Authorization Boundary}
 
-EIP-7702 introduces authorization tuples through which an EOA delegates code execution while keeping its address. For each valid tuple a delegation indicator formatted as $\code{0xef0100}\Vert\code{address}$ is written to the authorizing EOA's code field, and subsequent code-executing operations resolve and run the code at the referenced delegate~\cite{eip7702}. The object worth screening is therefore the delegate's runtime bytecode, not the 23-byte indicator. Once authorized, that code executes in the EOA's context, which makes the pre-signature moment the natural automation point.
+EIP-7702 introduces authorization tuples through which an EOA delegates execution while keeping its address. For each valid tuple a delegation indicator formatted as $\code{0xef0100}\Vert\code{address}$ is written to the authorizing EOA's code field, and subsequent code-executing operations resolve and run the code at the referenced delegate~\cite{eip7702}. The object worth screening is therefore the delegate's runtime bytecode, not the 23-byte indicator. Once authorized, that code executes in the EOA's context, which makes the pre-signature moment the natural automation point.
 
-Huang et al. combine transaction analysis with cross-contract static analysis to characterize EIP-7702 malicious behavior~\cite{huang2026darkside}; Qi et al. study delegation-based phishing and protocol defenses~\cite{qi2025eip7702}. Neither investigates learned screening of proposed delegate bytecode before authorization.
+Huang et al. combine transaction analysis with cross-contract static analysis to characterize EIP-7702 malicious behaviour~\cite{huang2026darkside}; Qi et al. study delegation-based phishing and protocol defenses~\cite{qi2025eip7702}. Neither investigates learned screening of proposed delegate bytecode before authorization.
 
-\subsection{Learning from Smart-Contract Bytecode}
+\subsection{Learning over Contract Code, and How Robustness Is Evaluated}
 
-ContractWard uses opcode bigrams with conventional learners~\cite{contractward2021}, Eth2Vec learns contract-wide bytecode representations~\cite{eth2vec2022}, PhishingHook evaluates bytecode and opcode representations for phishing-contract classification~\cite{phishinghook2025}, and more recent work combines bytecode features with control-flow-graph analysis~\cite{smartbugbert2025}. Surveys identify representation, dataset construction, and evaluation design as recurring determinants of reported performance~\cite{wang2026review}.
+Early learning-based contract security work reports clean classification metrics: ContractWard uses opcode bigrams with conventional learners~\cite{contractward2021}, Eth2Vec learns contract-wide bytecode representations~\cite{eth2vec2022}, PhishingHook evaluates bytecode and opcode representations for phishing-contract classification~\cite{phishinghook2025}, and later work combines bytecode features with control-flow-graph analysis~\cite{smartbugbert2025}. Surveys identify representation, dataset construction, and evaluation design as recurring determinants of reported performance~\cite{wang2026review}.
 
-These works share an evaluation posture: they report clean classification metrics and do not evaluate an adversary who controls the input program. That is the gap this paper addresses. Since the attacker authors the bytecode, clean metrics measure the easy case. Table~\ref{tab:related} summarizes the positioning.
+More recent systems do evaluate robustness, and it would be inaccurate to characterise the field as reporting clean metrics alone. FinDet detects adversarial exploiter contracts from bytecode alone at the pre-deployment stage, using LLM-derived semantic interpretation with uncertainty estimation, and reports robustness to unseen attack patterns and to feature obfuscation~\cite{findet2025}. ContractShield targets multi-label vulnerability detection in \emph{obfuscated} contracts, fusing source code, opcode sequences, and control-flow graphs, and evaluates resilience under obfuscation applied at both source and bytecode level~\cite{contractshield2026}. ORACAL combines control-flow, data-flow, and call graphs with causal reasoning and reports an attack success rate of approximately 3\% under adversarial attack against baselines in the 10.9--18.7\% range~\cite{oracal2026}.
+
+Our setting differs along three axes, and we state the distinction narrowly. \emph{Task}: FinDet screens contracts that attack other contracts, while ContractShield and ORACAL detect vulnerabilities in the contract under analysis; we screen a proposed delegate for the authority it would acquire over a user's account, a decision taken by the account holder before signing. \emph{Inputs}: ContractShield consumes source code alongside opcode and graph modalities and ORACAL consumes graph representations, whereas the pre-authorization setting supplies only deployed runtime bytecode; FinDet shares this bytecode-only constraint. \emph{Adversary}: to our knowledge these evaluations apply predefined obfuscation or perturbation sets, and do not report a \emph{score-aware} attacker that repeatedly queries the screener and adaptively composes transformations to drive its score below the deployment threshold; nor do they report execution-preservation auditing that separates transformations by the strength of their behavioural evidence. We therefore do not claim the first adversarial evaluation of a contract classifier. We claim the narrower and precise contribution of a query-budgeted adaptive adversary over an independently execution-audited transformation space, applied to the EIP-7702 pre-authorization decision. Table~\ref{tab:related} summarises the positioning.
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative prior work}
+\caption{Positioning against representative prior work}
 \label{tab:related}
 \begin{threeparttable}
 \scriptsize
-\begin{tabularx}{\columnwidth}{@{}X c c c c@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccccc@{}}
 \toprule
-Work & EIP-7702 & Bytecode ML & Pre-auth. & Adaptive adv. \\
+Work & EIP-7702 & Bytecode & Pre-auth. & Adaptive & Preservation \\
+ & & only & screening & attacker & audited \\
 \midrule
-Huang et al.~\cite{huang2026darkside} & \checkmark & -- & -- & -- \\
-Qi et al.~\cite{qi2025eip7702} & \checkmark & -- & -- & -- \\
-PhishingHook~\cite{phishinghook2025} & -- & \checkmark & -- & -- \\
-Eth2Vec~\cite{eth2vec2022} & -- & \checkmark & -- & -- \\
-ContractWard~\cite{contractward2021} & -- & \checkmark & -- & -- \\
-SmartBugBert~\cite{smartbugbert2025} & -- & \checkmark & -- & -- \\
-\textbf{AuthGuard-7702} & \checkmark & \checkmark & \checkmark & \checkmark \\
+Huang et al.~\cite{huang2026darkside} & \checkmark & -- & -- & -- & -- \\
+Qi et al.~\cite{qi2025eip7702} & \checkmark & -- & -- & -- & -- \\
+PhishingHook~\cite{phishinghook2025} & -- & \checkmark & -- & -- & -- \\
+Eth2Vec~\cite{eth2vec2022} & -- & \checkmark & -- & -- & -- \\
+ContractWard~\cite{contractward2021} & -- & \checkmark & -- & -- & -- \\
+FinDet~\cite{findet2025} & -- & \checkmark & -- & fixed & -- \\
+ContractShield~\cite{contractshield2026} & -- & -- & -- & fixed & -- \\
+ORACAL~\cite{oracal2026} & -- & -- & -- & fixed & -- \\
+\textbf{AuthGuard-7702} & \checkmark & \checkmark & \checkmark & \textbf{score-aware} & \textbf{\checkmark} \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \begin{tablenotes}[flushleft]
 \scriptsize
-\item[] ``Adaptive adv.'' denotes evaluation against an attacker who searches over input modifications with knowledge of the screener's scores, as opposed to a fixed predefined transformation.
+\item[] ``Adaptive'' distinguishes a predefined perturbation set (\emph{fixed}) from an attacker that observes the screener's scores and searches over compositions (\emph{score-aware}). ``Preservation audited'' denotes independent execution-level validation of the transformations used in the robustness evaluation.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \subsection{Static Analysis and Security-ML Evaluation}
 
-Learned screening complements rather than replaces semantic analysis. Gigahorse decompiles EVM bytecode for declarative analysis~\cite{gigahorse2019} and Securify derives semantic dependencies and checks security patterns~\cite{securify2018}. Our reference labels originate from a decompiler-based rule~\cite{huang2026darkside}; our question is whether that signal can be approximated from opcode sequences fast enough for interactive screening, and whether such an approximation survives an adversary.
-
-Methodology matters as much as modeling. TESSERACT shows how dependence and distribution bias inflate security-classification results~\cite{tesseract2019}. We isolate identical and similar bytecode families across folds, and we interpret transformed executable inputs only within their demonstrated preservation guarantees, following problem-space adversarial-ML guidance~\cite{pierazzi2020}.
+Learned screening complements rather than replaces semantic analysis. Gigahorse decompiles EVM bytecode for declarative analysis~\cite{gigahorse2019} and Securify derives semantic dependencies and checks security patterns~\cite{securify2018}. Our reference labels originate from a decompiler-based rule~\cite{huang2026darkside}; our question is whether that signal can be approximated from opcode sequences fast enough for interactive screening, and whether such an approximation survives an adversary. TESSERACT shows how dependence and distribution bias inflate security-classification results~\cite{tesseract2019}; we isolate identical and similar bytecode families across folds and interpret transformed executable inputs only within their demonstrated preservation guarantees, following problem-space adversarial-ML guidance~\cite{pierazzi2020}.
 
 \begin{figure*}[t]
 \centering
@@ -138,54 +145,65 @@ s(b)\in[0,1].
 \label{eq:score}
 \end{equation}
 
-The positive class consists of delegates flagged by the source study's static-analysis rule, which identifies decompiled reachability from standardized inbound hooks---\code{receive()}, \code{fallback()}, and token-reception callbacks---to predefined value-moving external-call patterns~\cite{huang2026darkside}. The negative class is delegates from the same pool that were not flagged. Because an unflagged verdict does not establish benign semantics, the task is screening for source-analyzer-identified structural risk, not proving malicious intent, exploitability, or safety. We use ``source-flagged'' rather than ``malicious'' throughout.
+The positive class consists of delegates flagged by the source study's static-analysis rule, which identifies decompiled reachability from standardized inbound hooks---\code{receive()}, \code{fallback()}, and token-reception callbacks---to predefined value-moving external-call patterns~\cite{huang2026darkside}. The negative class is delegates from the same pool that were not flagged. Because an unflagged verdict does not establish benign semantics, the task is screening for a source-analyzer-identified structural condition, not proving malicious intent, exploitability, or safety. We write ``source-flagged'' rather than ``malicious'' throughout.
 
-This label provenance is a real limitation, and we address it in two ways rather than one. First, we scope every claim to the reference condition. Second, and more importantly, our headline result is a \emph{relative} comparison among architectures evaluated against a shared label under a shared adversary. Whatever the label denotes, the ranking of screeners under attack is a statement about the screeners, and does not require the label to be adjudicated ground truth. This is the principal reason we organize the paper around adversarial robustness rather than absolute detection quality.
+This label provenance is a genuine limitation, and the paper's design responds to it structurally rather than rhetorically. Our headline result is a \emph{relative} comparison among screeners evaluated against a shared label under a shared, audited adversary. Whatever the label denotes, the ranking of screeners under attack is a statement about the screeners and does not require the label to be adjudicated ground truth. This is the principal reason the paper is organised around adversarial robustness rather than absolute detection quality.
 
-From negative validation scores we derive thresholds $\tau_1\geq\tau_5\geq\tau_{10}$ for nominal 1\%, 5\%, and 10\% false-positive-rate (FPR) operating points, mapping scores to \textsc{High}, \textsc{Warning}, \textsc{Caution}, and \textsc{Low-Observed-Risk}. Because thresholds are estimated on finite validation sets, realized FPR can differ from nominal, and Section~\ref{sec:rq3} measures how far.
+From negative validation scores we derive thresholds $\tau_1\geq\tau_5\geq\tau_{10}$ for nominal 1\%, 5\%, and 10\% false-positive-rate (FPR) operating points, mapping scores to \textsc{High}, \textsc{Warning}, \textsc{Caution}, and \textsc{Low-Observed-Risk}. All attack results below use the nominal 5\% operating point.
 
 \subsection{Information Boundary}
 
-The model observes only the ordered opcode sequence derived from runtime bytecode. PUSH immediate operands are skipped, so the representation captures opcode identity and order rather than embedded constants. The model receives no transaction history, balances, approvals, graph or address identity, source code, family or fold identifiers, or any field used to construct the reference labels. This boundary is deliberate: the intended case is a delegate with no historical or identity evidence. AuthGuard-7702 is an advisory first-stage screener; it does not resolve proxy state, simulate transactions, infer off-chain intent, or certify safety.
+The model observes only the ordered opcode sequence derived from runtime bytecode. PUSH immediate operands are skipped, so the representation captures opcode identity and order rather than embedded constants. The model receives no transaction history, balances, approvals, graph or address identity, source code, family or fold identifiers, or any field used to construct the reference labels. AuthGuard-7702 is an advisory first-stage screener; it does not resolve proxy state, simulate transactions, infer off-chain intent, or certify safety.
 
 \subsection{Adversary Model}
 
-We consider an adversary who wants a delegate whose runtime code exhibits the reference risk condition to be authorized, and who therefore wants that code to score below the wallet's warning threshold. The adversary \textbf{authors the bytecode}. We grant them:
+The adversary wants a delegate whose runtime code exhibits the reference condition to score below the wallet's warning threshold, and \textbf{authors the bytecode}. We grant:
 
 \begin{itemize}
-\item \emph{Score access.} They may query the screener and observe its output, as they can for any locally deployed or publicly reachable model. We bound this at 64 queries per contract.
-\item \emph{Edit capability.} They may append content, rewrite metadata, and rewrite embedded address and selector immediates, composing up to four such actions.
-\item \emph{A cost budget.} Edits are capped at $2\times$ the original executable size, since deployment cost scales with code size.
+\item \emph{Score access.} The adversary may query the screener and observe its output, bounded at 64 queries per contract.
+\item \emph{Edit capability.} The adversary may append content, rewrite metadata, insert neutral instructions, and---in the broader stress-test space only---rewrite embedded address and selector immediates, composing up to four actions with at most one flooding action.
+\item \emph{A cost budget.} Appended content is capped at $2\times$ the original executable size, so the transformed program is at most approximately $3\times$ the original size. Empirically, Flood-200\% candidates have a median final-to-original size ratio of 2.962 (p95 2.986, maximum 3.001, $n=13{,}086$).
 \end{itemize}
 
-We do \emph{not} grant white-box gradient access or the ability to retrain the defender's model. The defender is a wallet or security service that fetches the proposed delegate's runtime bytecode and applies AuthGuard-7702 before authorization; we assume correct retrieval and trusted model parameters. Compromise of the wallet, signing key, retrieval infrastructure, or screener is out of scope.
+We do \emph{not} grant white-box gradient access or the ability to retrain the defender's model. Score access with a bounded query budget is the appropriate model for a screening service, and is deliberately conservative for a screener shipped inside a wallet client, where a determined adversary could extract parameters and mount white-box attacks; results below are correspondingly lower bounds on evadability for client-side deployment.
 
-\paragraph*{Where this model is and is not adequate} Score access with a bounded query budget is the right model for a screening \emph{service}, where the adversary observes verdicts but not weights. It is deliberately conservative for a screener shipped inside a wallet client, where a determined adversary can extract the parameters and mount white-box gradient attacks. We make this boundary explicit rather than eliding it: the results below are lower bounds on evadability for client-side deployment, and the strongest claim they support is a \emph{relative} one---how architectures compare when the attacker can search over bytecode edits. Closing the white-box case is necessary future work before a client-side deployment claim would be justified, and we do not make one.
+\subsection{Attack Tiers and Their Evidentiary Status}
+\label{sec:tiers}
 
-The model can only detect risk observable from runtime bytecode. Behavior depending on dynamic state, transaction context, unresolved proxy targets, external counterparties, or off-chain intent may remain invisible.
+The transformations available to the adversary do not carry equal behavioural evidence, and treating them as interchangeable would be the central weakness of any robustness claim here. We therefore partition the action space into three nested tiers by the strength of that evidence, audit the tiers independently (Section~\ref{sec:preservation}), and report the primary security result over the audited space.
+
+\begin{description}
+\item[Tier A --- audit-supported flooding oracle.] Appending a \code{STOP} followed by deterministic donor bytes at 25\%, 50\%, 100\%, or 200\% of the source executable length. Because only one flooding action is permitted, Tier A is evaluated as an exhaustive per-source oracle over the four levels rather than as a compositional search.
+\item[Tier B --- audit-supported compositional adversary.] Flooding, metadata rewrite, and neutral instruction insertion, composed adaptively. Every transformation class in Tier B carries independent execution-preservation support. \textbf{Tier B is the paper's headline adversary.}
+\item[Tier C --- full stress test.] Tier B plus rewriting of embedded address and function-selector immediates. These additional primitives have materially weaker preservation evidence and Tier C is therefore reported as a structural-validity stress test, not as the foundation of the primary claim.
+\end{description}
+
+Tiers B and C run two search strategies under an identical 64-query budget: a seeded \emph{random search} over sampled action sequences and a score-guided \emph{beam search} with width 4 and depth 4. Both are deterministic given the seed. We report the maximum over strategies, so a weak guided search cannot flatter the defence.
+
+Three constraints keep the attack honest. Every candidate must be \textbf{structurally valid}---it must disassemble and satisfy an opcode-skeleton preservation check against the source. Every candidate must respect the byte budget above. Flooding donors are drawn from partition-isolated pools such that a donor never shares the recipient's bytecode family and never crosses the train/validation/test boundary, with per-segment provenance recorded.
+
+An attack \emph{succeeds} on an observation if the clean score is at or above the model's own validation-derived 5\% FPR threshold and the adversarial score falls below it. Attack success rate (ASR) is computed over observations the model detects cleanly, since a source it never flagged cannot be evaded.
 
 \section{AuthGuard-7702}
 \label{sec:system}
 
 \subsection{Screening Workflow}
 
-Figure~\ref{fig:decision} places AuthGuard-7702 at the authorization boundary. A wallet resolves the proposed delegate address, retrieves runtime bytecode, and invokes the local path before the user signs. The pipeline normalizes and disassembles the bytecode, runs AuthGuard-Seq, applies validation-fitted calibration and thresholds, and returns a score, warning tier, and auxiliary bytecode evidence. Offline, the training path constructs family-disjoint folds, trains the model, and fits the temperature and FPR thresholds on validation data only; the resulting artifact is what the online path loads.
-
-Auxiliary evidence is extracted separately from raw bytecode and includes code length, opcode counts, call-family instructions, storage writes, contract-creation instructions, and recognized token-transfer or approval selectors. These observations and the learned attention weights indicate influential regions; they are not causal explanations or control-flow proofs.
+Figure~\ref{fig:decision} places AuthGuard-7702 at the authorization boundary. A wallet resolves the proposed delegate address, retrieves runtime bytecode, and invokes the local path before the user signs. The pipeline normalizes and disassembles the bytecode, runs AuthGuard-Seq, applies validation-fitted calibration and thresholds, and returns a score, warning tier, and auxiliary bytecode evidence. Offline, the training path constructs family-disjoint folds, trains the model, and fits the temperature and FPR thresholds on validation data only.
 
 \subsection{Design Under an Adversarial Requirement}
 
-The design follows from the adversary model rather than from architectural ambition. Because the attacker controls program length and can append arbitrary content cheaply, the aggregation step must not let appended bytes dilute or dominate the risk signal. This yields three requirements, each tied to an attack and each tested in Section~\ref{sec:rq1}:
+The design follows from the adversary model rather than from architectural ambition. Because the attacker controls program length and can append arbitrary content cheaply, the aggregation step must not let appended bytes dilute or dominate the risk signal. This yields three requirements, each tied to an attack and each tested in Section~\ref{sec:rq4}:
 
 \begin{enumerate}
 \item \emph{Full-stream coverage.} Fixed-window models can be evaded by pushing the payload past the window, so the model must see the whole program rather than a prefix.
 \item \emph{Local order sensitivity.} Histogram and $n$-gram representations discard instruction order, which order-preserving rewrites exploit; local convolutions retain short ordered motifs.
-\item \emph{Length-invariant, selective aggregation.} Mean pooling over a longer program dilutes evidence proportionally to appended content. Learned attention can concentrate on the informative region regardless of how much padding surrounds it.
+\item \emph{Length-robust selective aggregation.} Uniform pooling over a longer program dilutes evidence in proportion to appended content. Learned attention can concentrate on the informative region largely independently of how much padding surrounds it.
 \end{enumerate}
 
 \subsection{Hierarchical Opcode-Sequence Model}
 
-AuthGuard-Seq begins with deterministic linear-sweep EVM disassembly. Recognized opcodes map to stable token IDs, undefined bytes use a dedicated token, and padding uses a separate ID. PUSH immediates are skipped by instruction width. Tokenization does not terminate at the first linear \code{STOP}, so trailing regions are not discarded because of an early stopping opcode. The sequence is split into chunks of length $L=256$, at most $K=64$ chunks. The longest benchmark program has 16{,}081 opcodes and fits the 16{,}384-token capacity, so every benchmark contract is processed in full; longer contracts outside the benchmark retain evenly spaced chunks rather than a prefix.
+AuthGuard-Seq begins with deterministic linear-sweep EVM disassembly. Recognized opcodes map to stable token IDs, undefined bytes use a dedicated token, and padding uses a separate ID. PUSH immediates are skipped by instruction width. Tokenization does not terminate at the first linear \code{STOP}, so trailing regions are not discarded because of an early stopping opcode. The sequence is split into chunks of length $L=256$, at most $K=64$ chunks. The longest benchmark program has 16,081 opcodes and fits the 16,384-token capacity, so every benchmark contract is processed in full.
 
 Each chunk is embedded into 32 dimensions, processed by a kernel-5 convolution followed by a kernel-3 dilated convolution with dilation 2, and reduced by masked maximum pooling to a 64-dimensional $h_k$. Learned attention aggregates valid chunks:
 
@@ -201,36 +219,42 @@ where $w$ is learned and $K_b$ is the number of non-padding chunks. The aggregat
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{figure-2-fixed.png}
-\caption{AuthGuard-Seq: chunked opcode encoding, shared local convolutional encoders, and learned chunk attention. Attention aggregation is the mechanism the ablation in Table~\ref{tab:ablation} isolates as responsible for robustness under bytecode flooding.}
+\caption{AuthGuard-Seq: chunked opcode encoding, shared local convolutional encoders, and learned chunk attention. Selective aggregation is the mechanism isolated in Section~\ref{sec:rq4}.}
 \label{fig:encoder}
 \end{figure*}
 
-\paragraph*{Parameter accounting} AuthGuard-Seq is the sequence-only configuration of a fusion architecture that also defines $n$-gram and dense-structural branches. Those branches are constructed but receive no gradient in this configuration, so a naive parameter sum over the module overstates the model and, worse, reports an identical count for configurations that differ. We report parameters that are actually on the trained forward path, verified by checking which tensors receive gradient: \textbf{63{,}266} for AuthGuard-Seq, against 108{,}225 for the $n$-gram variant and 75{,}595 for the dense-structural variant. The serialized checkpoint used for timing is 742{,}625\,bytes because it stores all constructed branches.
+\paragraph*{Parameter accounting} AuthGuard-Seq is the sequence-only configuration of a fusion architecture that also defines $n$-gram and dense-structural branches. Those branches are constructed but receive no gradient in this configuration, so a naive parameter sum overstates the model and reports an identical count for configurations that differ. We report parameters on the trained forward path, verified by checking which tensors receive gradient: \textbf{63,266} for the reference AuthGuard-Seq configuration, against 108,225 for the $n$-gram variant and 75,595 for the dense-structural variant.
 
 \section{Benchmark and Methodology}
 \label{sec:method}
 
 \subsection{Audited Benchmark Construction}
 
-\textit{AuthGuardBench-7702} contains 3,082 audited observations partitioned before evaluation (Table~\ref{tab:dataset}). The primary population derives from the EIP-7702 delegate dataset and analyzer outputs of Huang et al.~\cite{huang2026darkside}; after auditing it holds 2,190 delegates, 727 source-flagged and 1,463 unflagged. External controls contribute 797 benign-labeled general Ethereum contracts from the PhishingHook-derived source~\cite{phishinghook2025}, and eight audited production EIP-7702 implementations provide named qualitative controls. A further 90 observations are excluded because their original unflagged verdicts came from truncated or failed bytecode retrieval: we identified 89 negatives truncated at a spreadsheet cell limit and one timeout string stored in place of bytecode. Although the runtimes were recoverable, the verdicts had not been established on repaired inputs.
+\textit{AuthGuardBench-7702} contains 3,082 audited observations partitioned before evaluation (Table~\ref{tab:dataset}). The primary population derives from the EIP-7702 delegate dataset and analyzer outputs of Huang et al.~\cite{huang2026darkside}; after auditing it holds 2,190 delegates, 727 source-flagged and 1,463 unflagged. External controls contribute 797 benign-labeled general Ethereum contracts from the PhishingHook-derived source~\cite{phishinghook2025}, and five curated production EIP-7702 implementations serve as in-benchmark qualitative controls. A further 90 observations are excluded because their original unflagged verdicts came from truncated or failed bytecode retrieval: 89 negatives truncated at a spreadsheet cell limit and one timeout string stored in place of bytecode.
 
-Section~\ref{sec:rq3} adds a fourth population collected independently for this work: 752 screenable Ethereum delegates observed in a two-week window strictly later than the benchmark.
+Separately from the benchmark, we maintain an \emph{audited-implementation registry} of named production EIP-7702 and account-abstraction deployments: 8 projects, 45 address rows across chains, 30 unique runtime bytecodes. The registry is not part of the 3,082 benchmark observations and is never pooled with them; it is used only for the qualitative check in Section~\ref{sec:rq5}.
+
+Section~\ref{sec:rq5} adds a fourth population collected independently for this work: 752 screenable Ethereum delegates observed in a two-week window strictly later than the benchmark.
 
 \begin{table}[t]
 \centering
-\caption{Audited benchmark populations}
+\caption{Benchmark populations. The audited-implementation registry is a separate resource and is not included in the 3,082 total.}
 \label{tab:dataset}
 \scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r X r@{}}
+\begin{tabularx}{\columnwidth}{@{}X r X@{}}
 \toprule
-Population & $n$ & Reference status & Families \\
+Population & $n$ & Reference status \\
 \midrule
-Primary evaluation & 2,190 & 727 flagged / 1,463 unflagged & 790 \\
-External benign control & 797 & Benign-labeled & -- \\
-Audited implementations & 8 & Named production delegates & -- \\
-Excluded uncertain input & 90 & Unreliable source verdict & -- \\
+Primary evaluation & 2,190 & 727 flagged / 1,463 unflagged \\
+External benign control & 797 & Benign-labeled \\
+Qualitative production control & 5 & Curated legitimate implementations \\
+Excluded uncertain input & 90 & Unreliable source verdict \\
 \midrule
-Live temporal holdout & 752 & Unlabeled & 454 \\
+\textbf{Benchmark total} & \textbf{3,082} & \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Separate resources, not part of the benchmark total}} \\
+Audited-implementation registry & 45 & 8 projects, 30 unique bytecodes \\
+Live temporal holdout & 752 & Unlabeled, 669 unique bytecodes \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -239,40 +263,44 @@ Live temporal holdout & 752 & Unlabeled & 454 \\
 
 Runtime bytecode is linearly disassembled and represented as opcode 4-gram sets. Deterministic 128-permutation BLAKE2b MinHash signatures with a fixed 0.85 agreement threshold define similarity links, merged by union-find into 790 families. Identical bytecode with conflicting reference labels is quarantined before modeling.
 
-We use five fixed family-disjoint outer folds. For test fold $f$, fold $(f+1)\bmod 5$ is validation and the remaining three are training. No family or identical bytecode crosses folds. Each configuration is repeated with seeds 7702, 7703, and 7704; results average five folds within a seed and then report mean and sample standard deviation across the three seed-level means.
+We use five fixed family-disjoint outer folds. For test fold $f$, fold $(f+1)\bmod 5$ is validation and the remaining three are training. No family or identical bytecode crosses folds. Configurations are repeated with seeds 7702, 7703, and 7704.
 
-\subsection{Adaptive Attack Protocol}
-\label{sec:attackproto}
+\subsection{Frozen Models and Replication}
+\label{sec:replication}
 
-The attack searches over compositions of eight actions: metadata rewrite; embedded address rewrite; function-selector rewrite; neutral instruction insertion; and flooding that appends a \code{STOP} followed by deterministic donor bytes at 25\%, 50\%, 100\%, or 200\% of the source executable length. At most one flooding action and at most four actions total may compose.
+Every attack tier for a given (model, seed, fold) is evaluated against the \emph{same} frozen checkpoint, so tier differences cannot be confounded by retraining. Checkpoints were produced by the unmodified training procedure and persisted with weights, calibration temperature, all three thresholds, environment, and content hashes.
 
-Two search strategies share a 64-query budget per contract: a seeded \emph{random search} over sampled action sequences, and a score-guided \emph{beam search} with width 4 and depth 4 that expands the lowest-scoring candidates. Both are deterministic given the seed. We additionally evaluate each fixed transformation alone and a per-source oracle over the seven fixed conditions.
-
-Three constraints keep the attack honest. Every candidate must be \textbf{structurally valid}, i.e. disassemble and satisfy an opcode-skeleton preservation check against the source. Every candidate must respect a \textbf{$2\times$ byte-overhead cap}. Flooding donors are drawn from partition-isolated pools such that a donor never shares the recipient's bytecode family and never crosses the train/validation/test boundary, with full provenance recorded per segment.
-
-An attack \emph{succeeds} on a source if the clean score is at or above the model's own validation-derived 5\% FPR threshold and the adversarial score falls below it. Attack success rate (ASR) is computed over sources the model detects cleanly, since a source it never flagged cannot be evaded. Each architecture is attacked as the target in turn, and each target's best candidate is scored by the other models to give transfer rates.
-
-\paragraph*{Execution preservation} A bounded audit of 100 calls across ten delegates compares source and transformed execution. Flooding preserved recorded execution behavior in 100/100 calls. Address-immediate rewriting preserved only 23/100, so conditions involving it are reported as representation stress, not behavior-preserving, and we mark them accordingly. We claim bounded empirical preservation for flooding, not universal semantic equivalence.
+As a replication check, the frozen models were re-evaluated under the original attack protocol. At seed 7702 the maximum absolute difference from the prior run across all models and metrics is $0.011$; the two deterministic estimators---the logistic-regression emulator and the gradient-boosted model---reproduce exactly ($\Delta = 0.0000$ on clean detection, beam ASR, and random ASR), and the residual drift is confined to the two stochastically trained neural models. A data, fold, preprocessing, or hyperparameter mismatch would have moved the deterministic estimators too, so the tier evaluation rests on models generated by the same underlying pipeline.
 
 \subsection{Baselines, Training, and Statistics}
 
-The clean comparison evaluates seven predefined configurations under identical folds, validation rotation, seeds, early stopping, calibration, and operating points. Nonhierarchical neural baselines use a 2,048-position opcode view obtained by uniform sampling across the whole stream; AuthGuard-Seq processes complete streams in at most 64 chunks of 256 tokens. Neural models use class-weighted binary cross-entropy with positive-class weight equal to the training-fold negative-to-positive ratio, AdamW at learning rate $10^{-3}$, weight decay $10^{-4}$, gradient clipping at 5, at most 30 epochs, and validation-AUPRC early stopping with patience 5. Temperature scaling is fit on validation logits only and thresholds derive only from negative validation examples. Test labels never influence model selection, calibration, or thresholds.
+The clean comparison evaluates seven predefined configurations under identical folds, validation rotation, seeds, early stopping, calibration, and operating points. Neural models use class-weighted binary cross-entropy, AdamW at learning rate $10^{-3}$, weight decay $10^{-4}$, gradient clipping at 5, at most 30 epochs, and validation-AUPRC early stopping with patience 5. Temperature scaling is fit on validation logits only and thresholds derive only from negative validation examples. Test labels never influence model selection, calibration, or thresholds.
 
-AUPRC is the primary ranking metric because the population is imbalanced and the metric emphasizes positive-class ranking; AUROC and calibrated Brier score are secondary. Operational behavior is Recall@5\% FPR. For inferential comparisons the bytecode family is the resampling unit: families are resampled with replacement within each outer test fold and the same multiplicities apply to both members of a pair. \textbf{Replicate counts differ by experiment and we state them per table}: 10{,}000 for primary clean comparisons, 2{,}000 for the mechanism ablation, and 1{,}998 for the cheap-baseline controls.
+For inferential comparisons the bytecode family is the resampling unit: families are resampled with replacement and the same multiplicities apply to both members of a pair. \textbf{Replicate counts differ by experiment and are stated per table}: 10,000 for the clean and attack comparisons, 2,000 for the mechanism ablation, and 1,998 for the cheap-baseline controls.
+
+\paragraph*{Marginal versus paired statistics} Two distinct quantities appear below and are never interchanged. A \emph{marginal} ASR is computed over one model's own cleanly-detected observations. A \emph{paired} contrast is computed over the intersection of observations that \emph{both} compared models detect cleanly, and is the mean of per-observation differences on that shared population. The two differ because the models do not detect the same sources.
 
 \section{Evaluation}
 \label{sec:evaluation}
 
-We ask four questions. RQ1: what does clean screening actually require, and which mechanism supplies it? RQ2: which screeners survive an adversary who writes the bytecode? RQ3: do calibrated operating points transfer across time and population? RQ4: is staged triage operationally justified?
+Five questions. RQ2 is the central one.
 
-\subsection{RQ1: Clean Screening and What It Fails to Distinguish}
+\begin{itemize}
+\item \textbf{RQ1} What does clean evaluation actually distinguish?
+\item \textbf{RQ2} Does the robustness advantage survive an execution-preservation-supported adversary?
+\item \textbf{RQ3} What does the broader, weaker-evidence action space add?
+\item \textbf{RQ4} Does the mechanism explain the difference?
+\item \textbf{RQ5} How does the screener behave operationally?
+\end{itemize}
+
+\subsection{RQ1: What Clean Evaluation Distinguishes}
 \label{sec:rq1}
 
-Table~\ref{tab:clean} reports clean family-disjoint results. AuthGuard-Seq ranks first at $0.924\pm0.014$ AUPRC and $0.833\pm0.016$ Recall@5\% FPR with held-out FPR $0.052\pm0.007$. Stated operationally, that recall means roughly \textbf{one in six source-flagged delegates is not surfaced} at the recommended operating point even on unmodified bytecode---a first-stage triage layer, not a gate. Family-clustered paired bootstrap over 10{,}000 replicates supports the margin over Flat CNN ($+0.039$ AUPRC, CI $[+0.009,+0.073]$; $+0.121$ recall, CI $[+0.050,+0.190]$) and over histogram+$n$-gram XGBoost ($+0.091$ AUPRC, CI $[+0.045,+0.140]$).
+Table~\ref{tab:clean} reports clean family-disjoint results. AuthGuard-Seq ranks first at $0.924\pm0.014$ AUPRC and $0.833\pm0.016$ Recall@5\% FPR. Stated operationally, that recall means roughly one in six source-flagged delegates is not surfaced at the recommended operating point even on unmodified bytecode---a first-stage triage layer, not a gate.
 
 \begin{table}[t]
 \centering
-\caption{Clean family-disjoint performance. Parameters for fusion configurations are active-path counts (Section~\ref{sec:system}).}
+\caption{Clean family-disjoint performance (3 seeds $\times$ 5 folds, marginal). Parameters for fusion configurations are active-path counts.}
 \label{tab:clean}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -291,266 +319,193 @@ Transformer & 425{,}217 & .563$\pm$.031 & .730$\pm$.019 & .208$\pm$.013 & .239$\
 \end{tabular}
 \end{table}
 
-\paragraph*{A cheap baseline matches the neural model} We deliberately construct a strong trivial competitor: an L2 logistic regression over 15 hand-coded opcode and control-flow features, including a conservative and an over-approximate variant of ``does a fallback path reach an external call.'' It reaches $0.911$ AUPRC against AuthGuard-Seq's $0.924$, and the paired family-clustered difference is $-0.021$ with 95\% CI $[-0.078,+0.035]$, which \textbf{spans zero}. It also runs faster: 2.626\,ms versus 4.121\,ms median. A single boolean---over-approximate fallback-to-external-call reachability---achieves recall 0.996 at precision 0.760 on its own.
+\paragraph*{A cheap baseline is statistically tied} We deliberately construct a strong trivial competitor: an L2 logistic regression over 15 hand-coded opcode and control-flow features, including a conservative and an over-approximate variant of ``does a fallback path reach an external call.'' It reaches $0.911$ AUPRC against AuthGuard-Seq's $0.924$, and the paired family-clustered difference is $-0.021$ with 95\% CI $[-0.078,+0.035]$, which \textbf{spans zero}. It also runs faster: 2.626\,ms versus 4.121\,ms median. A single boolean---over-approximate fallback-to-external-call reachability---achieves recall 0.996 at precision 0.760 on its own.
 
 We report this as a result, not a caveat. On clean bytecode the reference condition is cheaply recoverable, and clean accuracy alone does not justify a learned sequence model. A memorization control confirms the split is sound rather than the task being trivially near-duplicate: $k$-NN over MinHash signatures reaches only $0.612$ AUPRC, $-0.302$ against AuthGuard-Seq with CI $[-0.380,-0.226]$.
 
-\paragraph*{Which mechanism matters} Table~\ref{tab:ablation} reports a separate controlled study in which five variants are matched at roughly 30{,}000 parameters, isolating token budget, layout, and aggregation, and evaluated both clean and under Flood-200\%. Two findings stand out. On clean bytecode, a flat encoder given the same 16{,}384-token budget is at least as good as chunk attention---the hierarchy contrast is $-0.018$ with CI $[-0.040,+0.018]$, spanning zero---so we do not claim clean superiority for hierarchy. Under flooding the ordering inverts sharply: attention over mean pooling gives $+0.180$ AUPRC (CI $[+0.135,+0.232]$) and $+0.541$ Recall@5\% (CI $[+0.474,+0.631]$), and chunking over flat gives $+0.098$ (CI $[+0.059,+0.154]$). Coverage alone is inconclusive in both conditions.
+The rest of the paper follows from this: if clean metrics cannot select between a 15-feature regression and a hierarchical neural model, the selection must be made on a criterion that matters at an attacker-controlled boundary.
 
-\begin{table}[t]
-\centering
-\caption{Parameter-matched mechanism ablation (separate controlled run; 3 seeds $\times$ 5 folds; contrasts use 2,000 family-clustered replicates).}
-\label{tab:ablation}
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Variant & Params & Clean & F200 & F200 R@5\% \\
-\midrule
-Flat control (2K) & 29{,}985 & .879$\pm$.005 & .532$\pm$.017 & .148$\pm$.013 \\
-Flat control (16K) & 29{,}985 & \textbf{.936$\pm$.003} & .810$\pm$.014 & .506$\pm$.038 \\
-Chunk attention (2K) & 30{,}050 & .902$\pm$.003 & .897$\pm$.009 & .817$\pm$.022 \\
-Chunk mean (16K) & 29{,}985 & .879$\pm$.005 & .728$\pm$.020 & .274$\pm$.031 \\
-Chunk attention (16K) & 30{,}050 & .918$\pm$.007 & \textbf{.908$\pm$.001} & \textbf{.815$\pm$.039} \\
-AuthGuard-Seq (deployed) & 63{,}266 & .914$\pm$.013 & .894$\pm$.006 & .786$\pm$.021 \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{Mechanism contrasts ($\Delta$AUPRC, 95\% CI)}} \\
-& & Clean & \multicolumn{2}{r}{Flood-200\%} \\
-Coverage (16K$-$2K) & & $+.015$ & \multicolumn{2}{r}{$+.011$ $[-.005,+.025]$} \\
- & & \tiny$[-.003,+.030]$ & & \\
-Attention ($-$mean) & & $+.039$ & \multicolumn{2}{r}{$\mathbf{+.180}$ $[+.135,+.232]$} \\
- & & \tiny$[+.007,+.064]$ & & \\
-Hierarchy ($-$flat) & & $-.018$ & \multicolumn{2}{r}{$\mathbf{+.098}$ $[+.059,+.154]$} \\
- & & \tiny$[-.040,+.018]$ & & \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The clean column of Table~\ref{tab:ablation} is the paper's thesis in miniature: the best clean model is the worst model under attack.
-
-\paragraph*{The mechanism, measured directly} The ablation establishes \emph{that} attention aggregation matters; it does not show \emph{why}. The design argument in Section~\ref{sec:system} is that attention can concentrate on the informative region while uniform weighting must dilute evidence in proportion to appended content. Because the model exposes its chunk weights, we can test this rather than infer it. For all 727 held-out positives, scored by each fold's own checkpoint, we recorded the fraction of attention mass falling on chunks composed entirely of appended donor bytes. Uniform weighting has no learned parameters, so its mass on appended chunks is exactly their share of the chunk count---the analytic baseline the chunk-mean control realizes empirically.
-
-Figure~\ref{fig:dilution} shows the result. Under Flood-200\%, appended content occupies 63.1\% of chunks, but attention places only 37.6\% of its mass there, resisting 25.5 percentage points of dilution; the gap widens monotonically with flooding volume (8.2, 14.7, 22.1, and 25.5 points at 25\%, 50\%, 100\%, and 200\%). The mechanism is real and it is also \emph{partial}: attention still assigns more than a third of its weight to content that carries no signal, which is a direct explanation of why the residual attack success rate in Section~\ref{sec:rq2} is 0.181 rather than zero.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig-attention-dilution.pdf}
-\caption{Attention mass landing on appended donor chunks, against the uniform-weighting baseline that mean pooling is forced to. All 727 held-out positives, each scored by its own fold's checkpoint. The shaded gap is the dilution the learned aggregation resists.}
-\label{fig:dilution}
-\end{figure}
-
-\subsection{RQ2: Robustness to an Adaptive Adversary}
+\subsection{RQ2: Robustness under an Execution-Audited Adversary}
 \label{sec:rq2}
 
-We attacked four architectures across three seeds and five folds under the protocol of Section~\ref{sec:attackproto}, producing 87{,}240 attack records over 727 source contracts. Table~\ref{tab:asr} reports attack success.
+\subsubsection{Execution-preservation audit}
+\label{sec:preservation}
+
+Before reporting robustness we establish what the transformations do. Each class was audited against a real EVM: for each delegate we execute a calldata suite---empty calldata, the zero selector, and up to eight selectors discovered in the bytecode---against the original and the transformed runtime, and compare externally visible behaviour. A call is \emph{preserved} when failure status, return data, the set and count of external calls, the set of storage writes, and the log count all match. Delegates are sampled one per bytecode family for family diversity.
 
 \begin{table}[t]
 \centering
-\caption{Attack success rate by target and strategy (727 sources, 64-query budget, $\le 2\times$ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI. Upper block: 3 seeds $\times$ 5 folds. Middle and lower blocks: seed 7702, 5 folds.}
-\label{tab:asr}
+\caption{Execution-preservation audit. 120 delegates, one per bytecode family, real-EVM traces, Wilson 95\% intervals.}
+\label{tab:preservation}
+\scriptsize
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}lrrrl@{}}
 \toprule
-Target & Clean det. & Flood-200\% & Beam & \textbf{Random} \\
+Transformation class & Families & Calls & Preserved & Wilson 95\% \\
 \midrule
-\textbf{AuthGuard-Seq} & \textbf{.843} & \textbf{.120} & \textbf{.146} & \textbf{.181} \\
- & & \tiny[.078,.174] & \tiny[.101,.202] & \tiny[.130,.244] \\
-15-feature emulator & .825 & .182 & .452 & .536 \\
- & & \tiny[.096,.287] & \tiny[.331,.574] & \tiny[.423,.644] \\
-Flat CNN & .722 & .750 & .907 & .945 \\
- & & \tiny[.643,.840] & \tiny[.850,.952] & \tiny[.914,.972] \\
-Hist.+4-gram XGBoost & .637 & .677 & .950 & .986 \\
- & & \tiny[.616,.739] & \tiny[.922,.973] & \tiny[.975,.995] \\
+\multicolumn{5}{@{}l}{\emph{Tier A / Tier B --- audit-supported}} \\
+Flooding (25--200\%) & 120 & 3{,}464 & \textbf{3{,}464} & [0.9989, 1.0000] \\
+Metadata rewrite & 120 & 866 & \textbf{866} & [0.9956, 1.0000] \\
+Neutral insertion & 120 & 866 & \textbf{866} & [0.9956, 1.0000] \\
 \midrule
-\multicolumn{5}{@{}l}{\emph{With flooding-augmented training}} \\
-\textbf{AuthGuard-Seq + aug.} & .839 & \textbf{.039} & \textbf{.051} & \textbf{.062} \\
- & & \tiny[.005,.085] & \tiny[.018,.096] & \tiny[.025,.112] \\
-Flat CNN + aug. & .644 & .682 & .882 & .927 \\
- & & \tiny[.558,.788] & \tiny[.817,.936] & \tiny[.881,.967] \\
-Hist.+4-gram XGB + aug. & .670 & .530 & .840 & .940 \\
- & & \tiny[.451,.610] & \tiny[.780,.894] & \tiny[.904,.969] \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{Parameter-matched controls ($\approx$30K params, cf. Table~\ref{tab:ablation})}} \\
-Chunk attention 16K & .847 & .045 & .068 & \textbf{.075} \\
- & & \tiny[.018,.083] & \tiny[.032,.119] & \tiny[.037,.126] \\
-Flat control 16K & .831 & .422 & .705 & .889 \\
- & & \tiny[.355,.496] & \tiny[.639,.772] & \tiny[.851,.925] \\
-Chunk mean 16K & .769 & .723 & .923 & .986 \\
- & & \tiny[.667,.781] & \tiny[.894,.950] & \tiny[.976,.994] \\
+\multicolumn{5}{@{}l}{\emph{Tier C only --- weaker evidence}} \\
+Address rewrite & 10 & 100 & 23 & not promoted \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-AuthGuard-Seq is simultaneously the best clean detector (0.843 detected at the 5\% operating point) and by far the hardest to evade (0.181 under the strongest attack). Paired family-clustered contrasts against AuthGuard-Seq under random search are $+0.786$ (CI $[+0.727,+0.838]$) for Flat CNN and $+0.844$ (CI $[+0.786,+0.890]$) for XGBoost.
+Table~\ref{tab:preservation} reports the outcome: \textbf{no preservation failure was observed in any of the three audit-supported classes}, across 5,196 transformed executions and 120 distinct families. The failure taxonomy is consequently empty. Coverage includes the inbound hooks the reference rule keys on---for flooding, 480 empty-calldata executions reaching \code{receive()}/\code{fallback()} and 480 zero-selector executions---and 788 flooding calls whose original trace actually reached an external call. Address-immediate rewriting preserved only 23 of 100 audited calls in the same harness and is therefore \emph{not} promoted; it remains confined to Tier C.
 
-\paragraph*{Random search beats guided search} On every target, seeded random search outperforms score-guided beam search (e.g. 0.181 versus 0.146 against AuthGuard-Seq, 0.986 versus 0.950 against XGBoost). The beam follows first-step score reductions into a local optimum while random search explores more diverse compositions on the same budget. We report the \emph{maximum} over strategies as the attack result, so a weak guided search cannot flatter the defence: the reported ASR is the best of two budget-matched attackers, and it is the undirected one that is stronger here. This also means the numbers in Table~\ref{tab:asr} should be read as lower bounds on what a better-designed search would achieve.
+We describe Tier B as an \emph{independently audited, empirically execution-preservation-supported} action space. We do not claim formal semantic equivalence: the evidence is bounded empirical preservation over a finite calldata suite, not a proof.
 
-\paragraph*{Fixed transformations cannot rank these models} The decisive comparison is between AuthGuard-Seq and the cheap emulator, which were statistically tied on clean data. Table~\ref{tab:fixedvsadaptive} shows their gap as a function of attack strength.
+\subsubsection{Attack success across tiers}
+
+Table~\ref{tab:tiers} reports marginal results per model and tier against frozen checkpoints. AuthGuard-Seq and the emulator were evaluated at three seeds; Flat CNN and the gradient-boosted model at seed 7702. Rows are never ranked across differing seed scopes.
 
 \begin{table}[t]
 \centering
-\caption{Emulator $-$ AuthGuard-Seq ASR, by attack strength. Paired, family-clustered, 1,512 eligible sources.}
-\label{tab:fixedvsadaptive}
+\caption{Marginal attack success and robust recall by tier, against frozen checkpoints. Lower ASR and higher robust recall are better. Family-clustered 95\% CIs, 10,000 replicates. \textbf{Seed scope differs by model and is stated per row.}}
+\label{tab:tiers}
 \scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r c@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llrrlrr@{}}
 \toprule
-Attack strength & $\Delta$ASR (95\% CI) & Excludes 0 \\
+Model & Tier & Clean & ASR & 95\% CI & Robust & Seeds \\
+ & & det. & & & recall & \\
 \midrule
-Fixed Flood-200\% & $+.082$ $[-.047,+.218]$ & \textbf{no} \\
-Best of 7 fixed transforms & $+.221$ $[+.067,+.369]$ & yes \\
-Beam search, 64 queries & $+.330$ $[+.161,+.488]$ & yes \\
-Random search, 64 queries & $+.360$ $[+.188,+.518]$ & yes \\
+\multirow{3}{*}{\textbf{AuthGuard-Seq}}
+ & A & .8450 & \textbf{.1492} & [.105, .203] & \textbf{.7189} & 3 \\
+ & \textbf{B} & .8450 & \textbf{.1970} & [.148, .256] & \textbf{.6786} & 3 \\
+ & C & .8450 & .2084 & [.158, .268] & .6690 & 3 \\
+\midrule
+\multirow{3}{*}{15-feature emulator}
+ & A & .8253 & .3083 & [.218, .413] & .5708 & 3 \\
+ & \textbf{B} & .8253 & \textbf{.5417} & [.427, .645] & \textbf{.3783} & 3 \\
+ & C & .8253 & .5722 & [.461, .675] & .3530 & 3 \\
+\midrule
+\multirow{3}{*}{Flat CNN}
+ & A & .6836 & .8109 & [.718, .889] & .1293 & 1 \\
+ & B & .6836 & .9356 & [.893, .972] & .0440 & 1 \\
+ & C & .6836 & .9477 & [.914, .978] & .0358 & 1 \\
+\midrule
+\multirow{3}{*}{Hist.+4-gram XGB}
+ & A & .6190 & .8111 & [.754, .866] & .1169 & 1 \\
+ & B & .6190 & .9844 & [.967, .997] & .0096 & 1 \\
+ & C & .6190 & .9911 & [.981, .998] & .0055 & 1 \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
-Under a single fixed transformation---the protocol used throughout prior bytecode security learning, and in the earlier version of this work---a 15-feature logistic regression and a hierarchical neural model are \textbf{indistinguishable}. The separation appears only under adaptive search and grows monotonically with attack strength, as Figure~\ref{fig:strength} shows. This is the strongest justification we can offer for the methodology itself: it is not decoration around a model result, it is the only instrument in this study that resolves the comparison.
+\subsubsection{The central comparison}
+
+The decisive comparison is between the two screeners that clean evaluation could not separate. Table~\ref{tab:central} reports the paired contrast over the intersection of observations both models detect cleanly.
+
+\begin{table}[t]
+\centering
+\caption{Central paired comparison: emulator minus AuthGuard-Seq. Three seeds, 1,503 paired observations, 209 bytecode families. \textbf{Paired statistics over the shared clean-detected population; not the marginal values of Table~\ref{tab:tiers}.}}
+\label{tab:central}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrl@{}}
+\toprule
+Tier & Adversary & Emulator & AuthGuard & Difference & 95\% CI \\
+\midrule
+A & flooding oracle & .3353 & .1271 & $+.2083$ & [+.076, +.334] \\
+\textbf{B} & \textbf{audited adaptive} & \textbf{.5369} & \textbf{.1670} & $\mathbf{+.3699}$ & \textbf{[+.208, +.520]} \\
+C & full stress test & .5635 & .1810 & $+.3826$ & [+.223, +.524] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under the audit-supported Tier-B adversary, the clean-equivalent emulator suffers \textbf{0.370 higher attack success than AuthGuard-Seq, with a family-clustered 95\% CI of $[+0.208,+0.520]$ across three seeds}. All three intervals exclude zero. Figure~\ref{fig:strength} shows the gap widening with adversary strength.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig-attack-strength.pdf}
-\caption{Attack success against attacker strength. The models that are close under a fixed transformation separate under budgeted adaptive search.}
+\caption{Attack success against adversary strength for the historical stored-artifact comparison. Models that are close under a single fixed transformation separate under budgeted adaptive search.}
 \label{fig:strength}
 \end{figure}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.98\textwidth]{fig-clean-vs-asr.pdf}
-\caption{Clean detection and worst-case attack success for every evaluated configuration, ordered by robustness. Clean detection spans a narrow band and does not order the models; attack success spans almost the full range. The three configurations with attention aggregation occupy the robust end regardless of parameter count or training scheme.}
-\label{fig:cleanvsasr}
-\end{figure*}
+\subsubsection{Robust recall}
 
-\paragraph*{Can training substitute for architecture?} The natural objection to an architectural claim is that robustness might come from training data rather than design: augment the baselines with flooded examples and the gap may close. We tested this directly. Each model was retrained with its training set doubled by one flooding-augmented copy of every training contract, drawn from train-partition donors with fractions cycled over 25--200\% so the augmented set spans the flooding range. Results are the lower block of Table~\ref{tab:asr}.
+ASR is conditional on each model's own clean detections, which differ. We therefore also report \emph{robust recall}: the fraction of \emph{all} positive observations that are detected on clean bytecode \emph{and} remain detected after the strongest attack in the tier. It was computed directly from source-level outcomes and agrees with $\text{clean}\times(1-\text{ASR})$ to numerical precision.
 
-Augmentation does help---against the transformation it was trained on. Under fixed Flood-200\% it cuts Flat CNN from 0.750 to 0.682 and XGBoost from 0.677 to 0.530. Under adaptive search it barely moves: Flat CNN 0.945 to 0.927, XGBoost 0.986 to 0.940. Both augmented baselines remain worse than clean-trained AuthGuard-Seq by $+0.774$ (CI $[+0.697,+0.841]$) and $+0.786$ (CI $[+0.703,+0.852]$) respectively, intervals excluding zero. Augmentation therefore does not substitute for the architecture. It is also not free for the baselines: Flat CNN loses clean detection (0.722 to 0.644) while buying almost no adaptive robustness---the familiar robustness--accuracy tension.
+Under the audited Tier-B adversary, \textbf{AuthGuard-Seq retains approximately 68\% end-to-end robust recall (0.6786) against approximately 38\% (0.3783) for the clean-equivalent emulator}; the flat convolutional and gradient-boosted screeners retain 0.0440 and 0.0096 respectively at seed 7702. Robust recall is the number a deployment cares about, because it charges the screener for both missed detections and successful evasions on a single common denominator.
 
-The same intervention behaves completely differently on the attention model. AuthGuard-Seq falls from 0.181 to \textbf{0.062} under adaptive search ($-0.133$, CI $[-0.194,-0.086]$) at essentially no clean cost (0.843 to 0.839). Augmentation and attention aggregation are complementary rather than alternative: the augmented data helps when the architecture can exploit it. We note this is also a third instance of the paper's methodological point---judged only on fixed Flood-200\%, augmentation would look like a substantial defence for the baselines, and under adaptive evaluation it is not.
-
-\paragraph*{The mechanism claim holds under adaptive attack} Section~\ref{sec:rq1} attributed robustness to attention aggregation using clean and fixed-flooding evaluation. Since we argue fixed transformations are an insufficient instrument, we re-tested that attribution with the adaptive attack on the same parameter-matched controls (lower block of Table~\ref{tab:asr}). At roughly 30{,}000 parameters each, chunk attention reaches 0.075 adaptive ASR against 0.889 for the flat control and 0.986 for chunk mean---a thirteenfold gap to mean pooling at matched capacity, with paired contrasts of $+0.837$ (CI $[+0.775,+0.884]$) and $+0.710$ (CI $[+0.636,+0.772]$) against AuthGuard-Seq. The mechanism attribution is therefore not an artefact of the weaker protocol.
-
-One result runs against expectation and we report it as such: the 30{,}050-parameter matched attention control is \emph{more} robust than the 63{,}266-parameter deployed model ($-0.129$, CI $[-0.189,-0.081]$) at equal clean detection (0.847 versus 0.843). On this evidence the smaller matched configuration, not the larger reference architecture, is the one a deployment should use.
-
-\paragraph*{Transfer is asymmetric} Table~\ref{tab:transfer} scores each target's best beam-search candidate against the other models. Attacks constructed against AuthGuard-Seq transfer to Flat CNN at 0.782 and XGBoost at 0.673, while attacks constructed against those models transfer to AuthGuard-Seq at only 0.088 and 0.084. Evasive directions found against flat aggregation do not generalize to attention aggregation, though the converse holds freely. This is independent evidence that the robustness gap reflects the representation rather than a fortunate threshold.
-
-\begin{table}[t]
-\centering
-\caption{Cross-model transfer of beam-search attacks. Row: model the attack was optimized against. Column: model scoring the resulting bytecode.}
-\label{tab:transfer}
-\scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r r r@{}}
-\toprule
-Optimized against $\downarrow$ / scored by $\rightarrow$ & AuthGuard-Seq & Flat CNN & XGBoost \\
-\midrule
-AuthGuard-Seq & -- & .782 & .673 \\
-Flat CNN & \textbf{.088} & -- & .596 \\
-Hist.+4-gram XGBoost & \textbf{.084} & .652 & -- \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-For completeness, under the fixed conditions of the earlier protocol AuthGuard-Seq retains $0.920\pm0.007$ AUPRC under Flood-200\% and $0.912\pm0.005$ under the combined rewrite-and-flood condition, against $0.535\pm0.013$ and $0.525\pm0.011$ for Flat CNN. As Table~\ref{tab:fixedvsadaptive} shows, those numbers are real but not discriminative.
-
-\subsection{RQ3: Transfer Across Populations and Time}
+\subsection{RQ3: What the Broader Action Space Adds}
 \label{sec:rq3}
 
-\paragraph*{External benign controls} Applying primary validation thresholds to 797 benign-labeled general Ethereum contracts yields FPR $0.015\pm0.004$, $0.065\pm0.012$, and $0.169\pm0.021$ at the nominal 1\%, 5\%, and 10\% points. The 5\% threshold transfers with moderate drift; the 10\% point degrades substantially.
+Tier C adds address and selector rewriting, whose preservation evidence is weak. If the robustness separation depended on those primitives, the headline claim would rest on transformations we cannot support. It does not.
 
-\paragraph*{A live temporal holdout} The benchmark carries no timestamp, so temporal generalization was previously untestable. We therefore collected an independent population: scanning 100{,}444 Ethereum blocks yielded 1{,}335{,}391 authorization entries and 752 screenable distinct delegates first observed between 2026-07-23 and 2026-08-06, strictly later than the benchmark, with 669 unique runtime bytecodes.
+Moving from Tier B to Tier C raises the paired difference only from $+0.3699$ to $+0.3826$, and among Tier-C successful evasions the fraction \emph{not} reproduced by Tier B within the same 64-query budget is 46/384 (12.0\%) for AuthGuard-Seq and 137/1030 (13.3\%) for the emulator; the corresponding figures for the flat convolutional and gradient-boosted screeners are 14/471 (3.0\%) and 5/446 (1.1\%).
 
-Exact bytecode-hash overlap with the entire benchmark is zero. That is not sufficient evidence of novelty: applying the benchmark's own 0.85 MinHash family threshold, \textbf{70 of 752 (9.3\%)} live delegates would join a training family, one at similarity 1.000---identical opcode 4-gram profile differing only in immediates. We report the family-level gate and give leakage-clean figures alongside.
+We state the interpretation precisely: this does not show that the weaker-preservation primitives are logically necessary or unnecessary for any particular evasion. It shows that, for the evaluated 64-query attacker, the large robustness separation is already present under the independently audit-supported Tier-B action space, and expanding to the full space yields only a modest additional increase in attack success.
 
-We assert no labels for this population. What we measure is operating-point behavior: what fraction of a real delegate stream each frozen checkpoint flags at its own thresholds (Table~\ref{tab:temporal}).
+\paragraph*{Adaptive composition versus fixed perturbation} A fixed multi-level flooding oracle already produces a statistically supported separation on the historical records: $+0.184$ with CI $[+0.035,+0.330]$, whereas a single Flood-200\% transformation alone does not ($+0.082$, CI $[-0.047,+0.218]$). Under adaptive composition over the audited space the gap grows to $+0.370$. The accurate methodological conclusion is therefore not that fixed transformations are uninformative, but that \textbf{fixed perturbation testing materially underestimates the robustness gap that adaptive composition exposes}---by roughly a factor of two between the fixed flooding oracle and the audited adaptive adversary.
 
-\begin{table}[t]
+\subsection{RQ4: Does the Mechanism Explain the Difference?}
+\label{sec:rq4}
+
+\paragraph*{Parameter-matched controls} A separate controlled study matches five variants at roughly 30,000 parameters, isolating token budget, layout, and aggregation. On clean bytecode a flat encoder given the same 16,384-token budget is at least as good as chunk attention---the hierarchy contrast is $-0.018$ with CI $[-0.040,+0.018]$, spanning zero---so we do not claim clean superiority for hierarchy. Under flooding the ordering inverts: attention over mean pooling gives $+0.180$ AUPRC (CI $[+0.135,+0.232]$) and $+0.541$ Recall@5\% (CI $[+0.474,+0.631]$), and chunking over flat gives $+0.098$ (CI $[+0.059,+0.154]$). Coverage alone is inconclusive in both conditions. The best clean model is the worst model under attack.
+
+\paragraph*{Attention mass} Because the model exposes its chunk weights, the aggregation argument can be measured rather than inferred. For all 727 held-out positives, scored by each fold's own checkpoint, we recorded the fraction of attention mass falling on chunks composed entirely of appended donor bytes. Uniform weighting has no learned parameters, so its mass on appended chunks is exactly their share of the chunk count; this is an \emph{analytic reference}, not a separately trained measurement. Under Flood-200\% appended content occupies 63.1\% of chunks while attention places 37.6\% of its mass there, a gap of 25.5 percentage points that widens monotonically with flooding volume (8.2, 14.7, 22.1, 25.5 points at 25\%, 50\%, 100\%, 200\%). This is consistent with the observed robustness advantage and provides mechanistic evidence that selective aggregation resists dilution by appended content. It is also partial: attention still assigns more than a third of its weight to content carrying no signal, which is consistent with a residual attack success rate well above zero.
+
+\begin{figure}[t]
 \centering
-\caption{Live temporal holdout: flag rates over 752 delegates and 15 frozen checkpoints. No labels asserted.}
-\label{tab:temporal}
-\scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r r r@{}}
-\toprule
-Nominal point & By contract & Leakage-clean & Authorization-weighted \\
-\midrule
-1\% & 9.5\%$\pm$2.1 & 8.8\% & \textbf{5.9\%} \\
-5\% & 20.3\%$\pm$3.6 & 19.9\% & \textbf{9.4\%} \\
-10\% & 32.7\%$\pm$1.9 & 33.3\% & \textbf{14.6\%} \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\includegraphics[width=\columnwidth]{fig-attention-dilution.pdf}
+\caption{Attention mass on appended donor chunks against the uniform-weighting analytic reference. All 727 held-out positives, each scored by its own fold's checkpoint.}
+\label{fig:dilution}
+\end{figure}
 
-The deployment-relevant figure is the authorization-weighted one, because a wallet's users encounter delegates in proportion to how often they are actually authorized, not in proportion to how many distinct delegates exist. On that basis the nominal 5\% point flags \textbf{9.4\%} of live authorization volume and the nominal 1\% point flags \textbf{5.9\%}; the latter is a plausible deployment setting for an advisory tier. The weighted rates are roughly half the per-contract rates because high-volume delegates are predominantly popular wallet-infrastructure implementations that score low, while the long tail of rarely-authorized delegates carries most of the flags.
+\paragraph*{Training cannot substitute for aggregation} A natural objection is that robustness might come from training data rather than design. Retraining each model with its training set doubled by flooding-augmented copies helps against the fixed transformation it was trained on but not against adaptive search: at seed 7702 the flat convolutional screener moves from .945 to .927 marginal random-search ASR and the gradient-boosted model from .986 to .940, both remaining far worse than clean-trained AuthGuard-Seq. The same intervention on AuthGuard-Seq reduces its marginal ASR from .1882 to .0623 at essentially no clean cost (.8404 to .8391), a paired reduction of $-0.133$ with CI $[-0.194,-0.086]$ over the 593 shared observations. Augmentation and selective aggregation are complementary rather than alternative. All figures in this paragraph are seed 7702 only, and the paired contrast is computed on the shared clean-detected population, not by subtracting the marginal values.
 
-Two further readings are required. First, thresholds drift substantially: the nominal 5\% point flags 20.3\% of distinct live delegates, far above the 6.5\% seen on curated benign controls, so population-specific recalibration is mandatory before deployment. Second, this stream is real mixed traffic containing genuinely risky delegates, so 20.3\% is a flag rate, not a false-positive rate, and cannot be decomposed without labels---we deliberately do not report it as a false-alarm measurement.
+\subsection{RQ5: Operational Behaviour}
+\label{sec:rq5}
 
-\paragraph*{Audited implementations} Across eight named production EIP-7702 implementations, three occur within primary training families; scoring current checkpoints on those would leak, so we exclude them from any aggregate and report them only descriptively. Of the remainder, none is flagged at the 5\% point, though several fall in the \textsc{Caution} band at the 10\% point. We treat this as a qualitative check, not a false-alarm estimate; $n=8$ cannot support one.
+\paragraph*{External and production controls} Applying primary validation thresholds to 797 benign-labeled general Ethereum contracts yields FPR $0.015\pm0.004$, $0.065\pm0.012$, and $0.169\pm0.021$ at the nominal 1\%, 5\%, and 10\% points. Across the audited-implementation registry, three of the eight named projects fall within primary training families; scoring current checkpoints on those would leak, so they are excluded from any aggregate and reported descriptively only. Of the remainder, none is flagged at the 5\% point, though several fall in the \textsc{Caution} band at 10\%. With five leakage-clean projects this is a qualitative check, not a false-alarm estimate.
 
-\subsection{RQ4: Operational Cost and Staged Triage}
+\paragraph*{A later temporal population} The benchmark carries no timestamp, so temporal generalization was previously untestable. We collected an independent population: scanning 100,444 Ethereum blocks yielded 1,335,391 authorization entries and 752 screenable distinct delegates first observed over a two-week window strictly later than the benchmark, with 669 unique runtime bytecodes.
 
-Across 1{,}500 complete screening calls on one CPU thread, the full local path has median latency 4.121\,ms, p95 14.547\,ms, and p99 21.429\,ms; forward inference alone is 0.950\,ms median and model loading 7.690\,ms, amortizable in a persistent process. Measurements exclude RPC access, node latency, wallet rendering, and user interaction.
+Exact bytecode-hash overlap with the entire benchmark is zero. That is not sufficient evidence of novelty, and we audit it explicitly rather than claiming disjointness: applying the benchmark's own 0.85 MinHash family threshold, \textbf{70 of 752 (9.3\%)} live delegates would join a training family, one at similarity 1.000. This is therefore an \emph{independently collected later temporal population with explicit family-overlap auditing}, and we report leakage-clean figures over the 682 delegates below the threshold alongside the full population.
 
-The timed artifact is the seed-7702, fold-0 cross-validation checkpoint, used here for cost measurement rather than as a released model. A deployed screener would be a single model retrained on all folds with calibration and thresholds fit on a held-out split drawn from the intended deployment population, following the recalibration finding of Section~\ref{sec:rq3}; we report cross-validation artifacts throughout because every accuracy and robustness number in this paper is a held-out estimate, and a fully retrained model would have no untouched data left to evaluate it on.
+We assert no labels for this population, so its flag rate is not a false-positive rate---it is real mixed traffic containing genuinely risky delegates. The deployment-relevant figure is weighted by observed authorization volume, because users encounter delegates in proportion to how often they are authorized: the nominal 5\% point flags 9.4\% of live authorization volume and the nominal 1\% point flags 5.9\%. By distinct contract the same points flag 20.3\% and 9.5\% (leakage-clean: 19.9\% and 8.8\%), so population-specific recalibration is mandatory before deployment. The gap between per-contract and per-authorization rates arises because high-volume delegates are predominantly popular wallet-infrastructure implementations that score low.
 
-For the deeper-analysis side of a staged pipeline, we measured a pinned official Gigahorse decompiler image on 60 deterministic family-distinct inputs. All 60 succeeded, with warm median 2.687\,s, p95 5.618\,s, maximum 28.067\,s, 210.59\,s total warm serial wall time, and 275.7\,MB peak memory; a separate cold run including Datalog compilation took 264.23\,s at 10.9\,GB peak.
+\paragraph*{Cost and staged triage} Across 1,500 complete screening calls on one CPU thread, the full local path has median latency 4.121\,ms, p95 14.547\,ms, and p99 21.429\,ms. For the deeper-analysis stage we measured a pinned Gigahorse decompiler image on 60 deterministic family-distinct inputs: all 60 succeeded, with warm median 2.687\,s and p95 5.618\,s. The median ratio is 652$\times$.
 
-\begin{table}[t]
-\centering
-\caption{Measured cost of the two stages of a staged pipeline. Screening: single CPU thread, AMD Ryzen 5 3600, PyTorch 2.9. Reference decompiler: pinned Gigahorse image, 60 family-distinct inputs, one job.}
-\label{tab:cost}
-\scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r r r@{}}
-\toprule
-Scope & Calls & Median & p95 \\
-\midrule
-Full local screening path & 1,500 & \textbf{4.121\,ms} & 14.547\,ms \\
-\quad forward inference only & 195 & 0.950\,ms & 1.585\,ms \\
-\quad model load (amortizable) & 10 & 7.690\,ms & 9.716\,ms \\
-\midrule
-Reference decompiler (warm) & 60 & \textbf{2.687\,s} & 5.618\,s \\
-\quad cold, incl. Datalog compile & 1 & 264.23\,s & -- \\
-\midrule
-\textbf{Median ratio} & & \textbf{652$\times$} & \\
-\bottomrule
-\end{tabularx}
-\end{table}
+The value of this gap is not aggregate throughput. It is that the authorization decision is interactive and synchronous: a newly encountered delegate is a cache miss by construction, and a multi-second decompilation cannot sit in front of a user waiting to sign. Millisecond screening allows every proposed delegate to be assessed at signing time and expensive semantic analysis to be reserved for escalated cases. Three scoping statements are essential: this measures decompilation and lifting only, with \textbf{no downstream client rule executed}; it is not the analyzer of Huang et al.; and it is not a comparison of accuracy or substitutability. The speedup accrues to fast bytecode-level screening in general---the 2.626\,ms emulator is also an instance---so it is not unique to AuthGuard-Seq.
 
-The median ratio against the full local screening path is \textbf{652$\times$} (Table~\ref{tab:cost}). This supports staged triage: millisecond screening at the authorization boundary, with deeper semantic analysis reserved for escalated cases. Three scoping statements are essential. This measures decompilation and lifting only; \textbf{no downstream client rule was executed}. It is not the exact analyzer of Huang et al., and it is not a comparison of accuracy, utility, or substitutability. And the speedup accrues to fast bytecode-level screening in general---the 2.626\,ms emulator of Section~\ref{sec:rq1} is also an instance---so it is not a property unique to AuthGuard-Seq.
-
-\section{Discussion and Limitations}
+\section{Discussion}
 \label{sec:discussion}
 
-\subsection{What the Results Support}
+\paragraph*{What the results support} Clean accuracy is achievable by very cheap models on this task, so it is a poor basis for choosing a screener. Robustness to an adversary who authors the bytecode is not cheaply achievable, separates otherwise-equivalent screeners by a wide margin, and is only partly visible to fixed perturbation testing. Because the separation is established over an independently audited action space, the result does not rest on transformations whose behaviour we cannot vouch for---and the Tier-C analysis shows the weaker-evidence primitives were never carrying the claim.
 
-The results support a division of labor: rapid learned screening prioritizes delegates for static analysis, symbolic execution, history checks, or human review, rather than acting as a proof engine. They also support a narrower and more useful claim about what such a screener needs. Clean accuracy is achievable by very cheap models, so it is a poor basis for choosing one. Robustness to an adversary who authors the bytecode is not cheaply achievable, separates architectures by a factor of five, and is invisible to the fixed-transformation protocol prior work uses.
+\paragraph*{Implications for practice} A wallet or screening service should evaluate candidate screeners against a score-aware adaptive adversary restricted to an audited transformation set, and should report robust recall rather than clean recall alone. On this benchmark that criterion selects a different model than clean AUPRC does.
 
-\paragraph*{Trust establishment under delegated execution} EIP-7702 changes what a signature means. Before it, authorizing a transaction committed a user to one state transition they could in principle inspect; after it, authorizing a delegation commits them to whatever a third-party program does with their account until revoked. That shifts the security question from transaction validation to \emph{counterparty assessment}, and it does so at a moment when the usual bases for trust---history, reputation, audit status, verified source---are frequently absent by construction, because the delegate may have been deployed minutes earlier. Bytecode screening is best understood as a substitute trust signal for exactly that gap: it cannot establish that a delegate is safe, but it can supply evidence where no other evidence exists yet, and it can do so in milliseconds at the moment the decision is made. This framing also explains why adversarial robustness is the property that matters. A trust signal an adversary can cheaply manufacture is worse than no signal, because it converts absence of warning into false assurance. The same argument applies to any learned trust signal over attacker-authored artifacts, which is why we regard the evaluation methodology rather than the specific model as the transferable contribution.
-
-We emphasize what we do not claim. We claim no architectural novelty; every component is standard. We do not claim clean superiority for hierarchy over a parameter-matched flat encoder, which our own ablation does not support. We do not claim robustness against white-box gradient attacks, adaptive retraining, or arbitrary semantics-preserving transformations, none of which we evaluated.
+\paragraph*{What we do not claim} We claim no architectural novelty; every component is standard. We do not claim clean superiority for hierarchy over a parameter-matched flat encoder, which our own ablation does not support. We do not claim formal semantic equivalence for any transformation. We do not claim robustness against white-box gradient attacks, adaptive retraining, or arbitrary attacker-authored transformations; the claim is scoped to a query-budgeted adaptive adversary over the evaluated transformation space, with Tier B and Tier C reported separately.
 
 \subsection{Limitations}
 
-\emph{Label provenance.} Reference labels encode a decompiler-derived structural condition, not adjudicated malicious intent. Our relative, adversarial framing reduces but does not eliminate dependence on that condition: the ranking under attack is a statement about screeners, but the clean numbers and the detected-source pool still inherit the rule's definition. Independent adjudication by multiple human reviewers remains the right next step and was out of scope here.
+\emph{Label provenance.} Reference labels encode a decompiler-derived structural condition rather than adjudicated malicious intent. The relative, adversarial framing reduces but does not eliminate dependence on that condition: the ranking under attack is a statement about screeners, but clean numbers and the detected-source pool still inherit the rule's definition. Independent human adjudication remains the right next step.
 
-\emph{Family threshold.} The 0.85 MinHash threshold is a choice. A memorization control shows only 1.2\% of test rows have a $>0.9$-similar training neighbor, but 43.6\% fall in the 0.7--0.9 band, where $k$-NN reaches 0.66--0.75 AUPRC. Substantial near-duplicate structure therefore crosses folds below the threshold, and reported generalization should be read with that in mind.
+\emph{Preservation evidence.} The audit is empirical, not a semantic-equivalence proof, and covers a finite calldata suite. It is nonetheless substantially stronger than a spot check: 5,196 audited transformed executions across 120 distinct bytecode families with no observed failure in the three audit-supported classes, including coverage of the inbound hooks the reference rule keys on. Address and selector rewriting remain weakly supported and are confined to Tier C.
 
-\emph{Attack scope.} The adversary is score-access, bounded-overhead, and restricted to eight actions composed at most four deep with a 64-query budget. Stronger adversaries---gradient-based, higher budget, or with novel action primitives---are unevaluated, and the 0.181 residual ASR means roughly one in five detected risky delegates is already evadable within our own threat model.
+\emph{Adversary scope.} The adversary is score-access, bounded-overhead, and restricted to the evaluated action space at a 64-query budget with at most four composed actions. White-box and higher-budget adversaries are unevaluated. AuthGuard-Seq's residual Tier-B ASR of 0.197 means roughly one in five detected risky delegates is still evadable within our own threat model.
 
-\emph{Preservation.} Flooding preserved execution in 100/100 audited calls, but the audit covers ten delegates. Address-immediate rewriting preserved only 23/100 and is reported as representation stress throughout.
+\emph{Replication depth.} AuthGuard-Seq and the emulator---the central comparison---were evaluated at three seeds. The flat convolutional and gradient-boosted screeners were evaluated at seed 7702 only in the tier analysis, as were the augmentation and parameter-matched blocks. We do not imply identical replication depth across all four models, and do not rank across differing seed scopes.
 
-\emph{Live population.} The temporal holdout is unlabeled, Ethereum-only, and two weeks long, whereas the benchmark spans seven chains. It measures operating-point transfer, not detection quality, and its 9.3\% family-level overlap with training bytecode is disclosed rather than removed from the primary figure.
+\emph{Live population.} The temporal holdout is unlabeled, Ethereum-only, and two weeks long, whereas the benchmark spans seven chains. It measures operating-point transfer, not detection quality, and its 9.3\% family-level overlap with training bytecode is measured and reported rather than removed from the headline figure.
 
-\emph{Variance.} Three training seeds inform the primary clean and adaptive-attack results. The augmented-training and parameter-matched control blocks of Table~\ref{tab:asr} are single-seed (7702) across all five folds, so their confidence intervals reflect family resampling but not seed variability; the effects there are large relative to the seed spread observed elsewhere (at most 0.020 in fold-then-seed ASR), but we do not claim seed-level stability for them. Elsewhere in this project, cuDNN algorithm selection moved a comparable recall metric by up to 0.026, so reported deviations may understate cross-hardware variability.
+\emph{Family threshold.} The 0.85 MinHash threshold is a design choice. A memorization control shows only 1.2\% of test rows have a $>0.9$-similar training neighbour, but 43.6\% fall in the 0.7--0.9 band, so near-duplicate structure does cross folds below the threshold.
 
-\subsection{Ethics and Responsible Disclosure}
+\section{AI Disclosure}
+\label{sec:ai}
 
-This work analyzes publicly deployed on-chain bytecode and public transaction data; no private data, user accounts, or credentials were accessed, and no contracts were deployed, invoked, or interacted with on any live network. The adaptive attack operates entirely offline on locally stored bytecode against locally trained models. We report attack success rates against our own screeners to establish an evaluation methodology, and the transformation primitives used---appending dead code, rewriting metadata---are already documented in the prior literature we cite and are not novel offensive capability. Reference labels derive from a published academic artifact~\cite{huang2026darkside}; we identify no previously undisclosed vulnerable contract, and we name production implementations only as legitimate controls, never as risky. The authors declare no conflicts of interest.
-
-\subsection{Artifact Availability}
-
-The evaluation protocol, family and fold assignments, per-row predictions for every experiment, donor provenance ledgers, attack traces, and SHA-256 manifests are prepared for release, together with deterministic reconstruction scripts for the corpus. We do not redistribute the third-party bytecode corpus itself pending license review of the source artifact, and provide reconstruction instructions with content hashes instead. Reproducibility caveats we can state now: three training seeds inform all reported deviations; bootstrap replicate counts differ per experiment as noted per table; and of the four SHA-256 records accompanying the reference-decompiler measurement, the three scientific outputs verify exactly while the manifest's self-recorded hash is unreproducible because the manifest enumerates the verification file that in turn records it.
+In accordance with venue policy we disclose the role of AI tools in this work. AI coding assistants were used substantively in implementing the experimental harnesses, analysis scripts, and figure generation, and in drafting and editing the manuscript text. Experimental design, tier definitions, the preservation-audit protocol, and all scientific claims were author-directed. No AI system generated, imputed, or estimated any reported numerical result: every value in this paper was produced by executed code over frozen data and model artefacts, recorded in a machine-readable results ledger with seed scope, fold scope, denominator, and provenance, and verified by the authors against that ledger. Frozen-artifact integrity checks were run before and after every experiment. The authors take full responsibility for the contents of the paper.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We presented AuthGuard-7702, a bytecode-only pre-authorization screening framework for EIP-7702 delegation, and evaluated it against an adversary who writes the bytecode being screened. On an audited family-disjoint benchmark, four architectures reach comparable clean performance and a 15-feature logistic regression is statistically indistinguishable from our neural model. Under a query-budgeted adaptive attacker they separate decisively: attack success reaches 0.986 and 0.945 for gradient-boosting and flat convolutional screeners while AuthGuard-Seq holds at 0.181, with parameter-matched ablations attributing the difference to length-invariant attention aggregation. The comparison that matters is invisible to fixed-transformation evaluation, which is what prior work in this area reports. We additionally contribute a live temporal holdout of 752 independently collected delegates with family-level disjointness accounting, and a measured 652$\times$ cost gap against a reference decompiler that motivates millisecond screening ahead of selective deep analysis. We read these results as evidence that adversarial evaluation should be the default for learned smart-contract security screening, not an optional extension of it.
+We evaluated bytecode-only pre-authorization screening for EIP-7702 delegation against an adversary who authors the code being screened. Clean performance alone is insufficient to select a screener: a 15-feature logistic regression is statistically indistinguishable from a hierarchical attention model on unmodified bytecode. Under a query-budgeted adaptive adversary restricted to an independently execution-audited transformation space---flooding, metadata rewrite, and neutral insertion, preserving externally visible behaviour on all 5,196 audited executions across 120 bytecode families---the two separate decisively: a paired difference of $+0.370$ in attack success with 95\% CI $[+0.208,+0.520]$ over three seeds, and end-to-end robust recall of 0.679 against 0.378. Expanding to a broader space containing weaker-preservation transformations changes the result only modestly, and parameter-matched controls together with direct attention-mass measurements identify selective aggregation, not capacity, as the associated mechanism. Adaptive, preservation-aware evaluation is therefore not an optional extension for learned security screening over attacker-authored programs; on this task it is what determines which screener one should choose.
 
 \begin{thebibliography}{00}
 
@@ -558,13 +513,13 @@ We presented AuthGuard-7702, a bytecode-only pre-authorization screening framewo
 V. Buterin, S. Wilson, A. Dietrichs, and lightclient, ``EIP-7702: Set Code for EOAs,'' \emph{Ethereum Improvement Proposals}, no. 7702, May 2024. [Online]. Available: \url{https://eips.ethereum.org/EIPS/eip-7702}
 
 \bibitem{huang2026darkside}
-M. Huang, H. Liu, S. Yang, D. Wu, and S. Wang, ``Revealing the Dark Side of Smart Accounts: An Empirical Study of EIP-7702 Incurred Risks in Blockchain Ecosystem,'' in \emph{Proc. 35th USENIX Security Symposium (USENIX Security 26)}, 2026, to appear.
+M. Huang, H. Liu, S. Yang, D. Wu, and S. Wang, ``Revealing the Dark Side of Smart Accounts: An Empirical Study of EIP-7702 Incurred Risks in Blockchain Ecosystem,'' in \emph{Proc. 35th USENIX Security Symposium}, 2026, to appear.
 
 \bibitem{qi2025eip7702}
 M. Qi, Q. Wang, R. Li, T. Zhu, and S. Chen, ``EIP-7702 Phishing Attack,'' \emph{arXiv preprint arXiv:2512.12174}, Dec. 2025.
 
 \bibitem{phishinghook2025}
-P. De Rosa, S. Queyrut, Y.-D. Bromberg, P. Felber, and V. Schiavoni, ``PhishingHook: Catching Phishing Ethereum Smart Contracts Leveraging EVM Opcodes,'' in \emph{Proc. 2025 55th Annu. IEEE/IFIP Int. Conf. Dependable Systems and Networks (DSN)}, Naples, Italy, 2025, pp. 222--232.
+P. De Rosa, S. Queyrut, Y.-D. Bromberg, P. Felber, and V. Schiavoni, ``PhishingHook: Catching Phishing Ethereum Smart Contracts Leveraging EVM Opcodes,'' in \emph{Proc. 55th Annu. IEEE/IFIP Int. Conf. Dependable Systems and Networks (DSN)}, Naples, Italy, 2025, pp. 222--232.
 
 \bibitem{contractward2021}
 W. Wang, J. Song, G. Xu, Y. Li, H. Wang, and C. Su, ``ContractWard: Automated Vulnerability Detection Models for Ethereum Smart Contracts,'' \emph{IEEE Trans. Netw. Sci. Eng.}, vol. 8, no. 2, pp. 1133--1144, Apr.--Jun. 2021.
@@ -572,11 +527,20 @@ W. Wang, J. Song, G. Xu, Y. Li, H. Wang, and C. Su, ``ContractWard: Automated Vu
 \bibitem{eth2vec2022}
 N. Ashizawa, N. Yanai, J. P. Cruz, and S. Okamura, ``Eth2Vec: Learning Contract-Wide Code Representations for Vulnerability Detection on Ethereum Smart Contracts,'' \emph{Blockchain: Research and Applications}, vol. 3, no. 4, art. no. 100101, Dec. 2022.
 
+\bibitem{findet2025}
+Y. Liu, X. Su, H. Wu, S. Li, Y. Cheng, F. Xu, and S. Zhong, ``Generic Adversarial Smart Contract Detection with Semantics and Uncertainty-Aware LLM,'' \emph{arXiv preprint arXiv:2509.18934}, Sep. 2025.
+
+\bibitem{contractshield2026}
+M.-D. Tran-Duong, N. H. Phong, N. C. Thanh, D. M. Trung, T. Truong-Huu, V.-H. Pham, and P. T. Duy, ``ContractShield: Bridging Semantic-Structural Gaps via Hierarchical Cross-Modal Fusion for Multi-Label Vulnerability Detection in Obfuscated Smart Contracts,'' \emph{arXiv preprint arXiv:2604.02771}, 2026.
+
+\bibitem{oracal2026}
+T. D. M. Dai, T. H. M. Le, M. A. Babar, V.-H. Pham, and P. T. Duy, ``ORACAL: A Robust and Explainable Multimodal Framework for Smart Contract Vulnerability Detection with Causal Graph Enrichment,'' \emph{arXiv preprint arXiv:2603.28128}, 2026.
+
 \bibitem{allamanis2019duplication}
 M. Allamanis, ``The Adverse Effects of Code Duplication in Machine Learning Models of Code,'' in \emph{Proc. ACM Onward!}, 2019, pp. 143--153.
 
 \bibitem{tesseract2019}
-F. Pendlebury, F. Pierazzi, R. Jordaney, J. Kinder, and L. Cavallaro, ``TESSERACT: Eliminating Experimental Bias in Malware Classification across Space and Time,'' in \emph{Proc. 28th USENIX Security Symposium (USENIX Security 19)}, Santa Clara, CA, USA, 2019, pp. 729--746.
+F. Pendlebury, F. Pierazzi, R. Jordaney, J. Kinder, and L. Cavallaro, ``TESSERACT: Eliminating Experimental Bias in Malware Classification across Space and Time,'' in \emph{Proc. 28th USENIX Security Symposium}, Santa Clara, CA, USA, 2019, pp. 729--746.
 
 \bibitem{smartbugbert2025}
 J. Bu, W. Li, Z. Li, Z. Zhang, and X. Li, ``SmartBugBert: BERT-Enhanced Vulnerability Detection for Smart Contract Bytecode,'' \emph{arXiv preprint arXiv:2504.05002}, Apr. 2025.
@@ -585,13 +549,13 @@ J. Bu, W. Li, Z. Li, Z. Zhang, and X. Li, ``SmartBugBert: BERT-Enhanced Vulnerab
 B. Wang, Y. Tong, S. Ji, H. Dong, X. Luo, and P. Zhang, ``A Review of Learning-Based Smart Contract Vulnerability Detection: A Perspective on Code Representation,'' \emph{ACM Trans. Softw. Eng. Methodol.}, vol. 35, no. 6, 2026.
 
 \bibitem{gigahorse2019}
-N. Grech, L. Brent, B. Scholz, and Y. Smaragdakis, ``Gigahorse: Thorough, Declarative Decompilation of Smart Contracts,'' in \emph{Proc. 2019 IEEE/ACM 41st Int. Conf. Software Engineering (ICSE)}, Montreal, QC, Canada, 2019, pp. 1176--1186.
+N. Grech, L. Brent, B. Scholz, and Y. Smaragdakis, ``Gigahorse: Thorough, Declarative Decompilation of Smart Contracts,'' in \emph{Proc. IEEE/ACM 41st Int. Conf. Software Engineering (ICSE)}, Montreal, QC, Canada, 2019, pp. 1176--1186.
 
 \bibitem{securify2018}
-P. Tsankov, A. Dan, D. Drachsler-Cohen, A. Gervais, F. B\"unzli, and M. Vechev, ``Securify: Practical Security Analysis of Smart Contracts,'' in \emph{Proc. 2018 ACM SIGSAC Conf. Computer and Communications Security (CCS)}, Toronto, ON, Canada, 2018, pp. 67--82.
+P. Tsankov, A. Dan, D. Drachsler-Cohen, A. Gervais, F. B\"unzli, and M. Vechev, ``Securify: Practical Security Analysis of Smart Contracts,'' in \emph{Proc. ACM SIGSAC Conf. Computer and Communications Security (CCS)}, Toronto, ON, Canada, 2018, pp. 67--82.
 
 \bibitem{pierazzi2020}
-F. Pierazzi, F. Pendlebury, J. Cortellazzi, and L. Cavallaro, ``Intriguing Properties of Adversarial ML Attacks in the Problem Space,'' in \emph{Proc. 2020 IEEE Symp. Security and Privacy (SP)}, San Francisco, CA, USA, 2020, pp. 1332--1349.
+F. Pierazzi, F. Pendlebury, J. Cortellazzi, and L. Cavallaro, ``Intriguing Properties of Adversarial ML Attacks in the Problem Space,'' in \emph{Proc. IEEE Symp. Security and Privacy (SP)}, San Francisco, CA, USA, 2020, pp. 1332--1349.
 
 \bibitem{guo2017calibration}
 C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, ``On Calibration of Modern Neural Networks,'' in \emph{Proc. ICML}, 2017, pp. 1321--1330.

@@ -1,0 +1,390 @@
+{
+  "phase": "0.2 restricted fixed oracles from stored scores",
+  "script": "revision_v2/experiments/sprint_phase0/phase0_fixed_oracles.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "input_files": [
+    "attack_per_row_seed7702.csv.gz",
+    "attack_per_row_seed7702_emulator.csv.gz",
+    "attack_per_row_seed7703.csv.gz",
+    "attack_per_row_seed7703_emulator.csv.gz",
+    "attack_per_row_seed7704.csv.gz",
+    "attack_per_row_seed7704_emulator.csv.gz"
+  ],
+  "nboot": 10000,
+  "tier_definitions": {
+    "A_fixed": [
+      "F25",
+      "F50",
+      "F100",
+      "F200"
+    ],
+    "B_fixed_available": [
+      "F25",
+      "F50",
+      "F100",
+      "F200",
+      "M1"
+    ],
+    "C_fixed": [
+      "F25",
+      "F50",
+      "F100",
+      "F200",
+      "M1",
+      "M2",
+      "M3"
+    ]
+  },
+  "condition_semantics": {
+    "M1": "metadata rewrite alone",
+    "M2": "metadata + address rewrite + flood 20%",
+    "M3": "metadata + address + selector rewrite + flood 20%",
+    "F25/F50/F100/F200": "flooding alone at 25/50/100/200%",
+    "neutral insertion": "NOT available as a fixed condition (adaptive action only)"
+  },
+  "tier_c_reproduction_gate": {
+    "n_compared": 8724,
+    "score_mismatches": 0,
+    "attack_success_mismatches": 0,
+    "max_abs_score_delta": 0.0,
+    "passed": true
+  },
+  "rows": [
+    {
+      "model": "authguard_seq",
+      "tier": "A_fixed",
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.1343121261555193,
+      "CI95": [
+        0.089863055913353,
+        0.1897471619118847
+      ],
+      "n_eligible": 1839,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.7299403943145346,
+      "robust_recall_product": 0.7299403943145346,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "A_fixed",
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3016666666666667,
+      "CI95": [
+        0.20071637673816362,
+        0.4124213204229128
+      ],
+      "n_eligible": 1800,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.5763411279229711,
+      "robust_recall_product": 0.5763411279229711,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "A_fixed",
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8100381194409149,
+      "CI95": [
+        0.7334672384030557,
+        0.8777843526763637
+      ],
+      "n_eligible": 1574,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.13709307657038056,
+      "robust_recall_product": 0.13709307657038056,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "A_fixed",
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8394528437724982,
+      "CI95": [
+        0.7787584988128642,
+        0.8905710461884567
+      ],
+      "n_eligible": 1389,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.10224667583677212,
+      "robust_recall_product": 0.10224667583677213,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "tier": "B_fixed_available",
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.1343121261555193,
+      "CI95": [
+        0.09003600800433186,
+        0.19103576779078538
+      ],
+      "n_eligible": 1839,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.7299403943145346,
+      "robust_recall_product": 0.7299403943145346,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "B_fixed_available",
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3016666666666667,
+      "CI95": [
+        0.19782031792531557,
+        0.41234293893957574
+      ],
+      "n_eligible": 1800,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.5763411279229711,
+      "robust_recall_product": 0.5763411279229711,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "B_fixed_available",
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8100381194409149,
+      "CI95": [
+        0.7302818012559563,
+        0.8772057384451775
+      ],
+      "n_eligible": 1574,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.13709307657038056,
+      "robust_recall_product": 0.13709307657038056,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "B_fixed_available",
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8408927285817135,
+      "CI95": [
+        0.7815051039305451,
+        0.8916868257600523
+      ],
+      "n_eligible": 1389,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.10132966529115085,
+      "robust_recall_product": 0.10132966529115082,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "tier": "C_fixed",
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.13648722131593258,
+      "CI95": [
+        0.09219751757849905,
+        0.19234846831244207
+      ],
+      "n_eligible": 1839,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.7281063732232921,
+      "robust_recall_product": 0.7281063732232921,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "C_fixed",
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3433333333333333,
+      "CI95": [
+        0.2340397036474164,
+        0.45662702834459223
+      ],
+      "n_eligible": 1800,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.5419532324621733,
+      "robust_recall_product": 0.5419532324621734,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "C_fixed",
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8214739517153749,
+      "CI95": [
+        0.7467162852018212,
+        0.8859063684012496
+      ],
+      "n_eligible": 1574,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.12883998165978908,
+      "robust_recall_product": 0.12883998165978908,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "C_fixed",
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8459323254139669,
+      "CI95": [
+        0.7873948355802338,
+        0.8940218357659719
+      ],
+      "n_eligible": 1389,
+      "n_source_seed_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.09812012838147639,
+      "robust_recall_product": 0.09812012838147638,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "phase": "0.3 paired fixed-oracle ladder",
+  "script": "revision_v2/experiments/sprint_phase0/phase0_paired_ladder.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "input_files": [
+    "attack_per_row_seed7702.csv.gz",
+    "attack_per_row_seed7702_emulator.csv.gz",
+    "attack_per_row_seed7703.csv.gz",
+    "attack_per_row_seed7703_emulator.csv.gz",
+    "attack_per_row_seed7704.csv.gz",
+    "attack_per_row_seed7704_emulator.csv.gz"
+  ],
+  "nboot": 10000,
+  "seed_scope": [
+    7702,
+    7703,
+    7704
+  ],
+  "fold_scope": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "provenance": "stored_artifact",
+  "ladder": [
+    {
+      "condition": "Flood-200 only",
+      "emulator_ASR": 0.19907407407407407,
+      "authguard_ASR": 0.11706349206349206,
+      "difference": 0.082010582010582,
+      "CI95": [
+        -0.04661073623119937,
+        0.2181034613822992
+      ],
+      "excludes_zero": false,
+      "n_paired_eligible": 1512,
+      "n_paired_shared_keys": 2181,
+      "n_families": 209,
+      "n_distinct_sources": 727,
+      "replicates": 10000
+    },
+    {
+      "condition": "Tier A fixed oracle (flooding)",
+      "emulator_ASR": 0.31283068783068785,
+      "authguard_ASR": 0.12896825396825398,
+      "difference": 0.18386243386243387,
+      "CI95": [
+        0.034791409346595824,
+        0.329960682273369
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512,
+      "n_paired_shared_keys": 2181,
+      "n_families": 209,
+      "n_distinct_sources": 727,
+      "replicates": 10000
+    },
+    {
+      "condition": "Tier B fixed oracle (flooding + metadata)",
+      "emulator_ASR": 0.31283068783068785,
+      "authguard_ASR": 0.12896825396825398,
+      "difference": 0.18386243386243387,
+      "CI95": [
+        0.03526872737399053,
+        0.3299439760985736
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512,
+      "n_paired_shared_keys": 2181,
+      "n_families": 209,
+      "n_distinct_sources": 727,
+      "replicates": 10000
+    },
+    {
+      "condition": "Tier C fixed oracle (all seven)",
+      "emulator_ASR": 0.3525132275132275,
+      "authguard_ASR": 0.13161375661375663,
+      "difference": 0.2208994708994709,
+      "CI95": [
+        0.06407536577161464,
+        0.3743591752347093
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1512,
+      "n_paired_shared_keys": 2181,
+      "n_families": 209,
+      "n_distinct_sources": 727,
+      "replicates": 10000
+    }
+  ],
+  "eligible_population_derivation": {
+    "distinct_source_contracts": 727,
+    "seeds": [
+      7702,
+      7703,
+      7704
+    ],
+    "source_seed_observations": 2181,
+    "cleanly_detected_by_both": 1512,
+    "note": "The published 'eligible sources' figure counts source-seed observations, not distinct contracts: 727 contracts x 3 seeds = 2181 observations, of which this many are cleanly detected by both models."
+  }
+}

@@ -1,0 +1,1222 @@
+{
+  "phase": "1.2-1.5 factual repairs",
+  "script": "revision_v2/experiments/sprint_phase1/phase1_facts.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "provenance": "stored_artifact",
+  "robust_recall": [
+    {
+      "model": "authguard_seq",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 2181,
+      "n_survived": 1592,
+      "robust_recall_direct": 0.7299403943145346,
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.1343121261555193,
+      "robust_recall_product": 0.7299403943145346,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 2181,
+      "n_survived": 1592,
+      "robust_recall_direct": 0.7299403943145346,
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.1343121261555193,
+      "robust_recall_product": 0.7299403943145346,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 2181,
+      "n_survived": 1588,
+      "robust_recall_direct": 0.7281063732232921,
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.13648722131593258,
+      "robust_recall_product": 0.7281063732232921,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 2181,
+      "n_survived": 1501,
+      "robust_recall_direct": 0.6882164144887666,
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.18379554105492116,
+      "robust_recall_product": 0.6882164144887667,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 2181,
+      "n_survived": 1473,
+      "robust_recall_direct": 0.6753782668500687,
+      "clean_detection": 0.8431911966987621,
+      "ASR": 0.19902120717781402,
+      "robust_recall_product": 0.6753782668500689,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 2181,
+      "n_survived": 1257,
+      "robust_recall_direct": 0.5763411279229711,
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3016666666666667,
+      "robust_recall_product": 0.5763411279229711,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 2181,
+      "n_survived": 1257,
+      "robust_recall_direct": 0.5763411279229711,
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3016666666666667,
+      "robust_recall_product": 0.5763411279229711,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 2181,
+      "n_survived": 1182,
+      "robust_recall_direct": 0.5419532324621733,
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.3433333333333333,
+      "robust_recall_product": 0.5419532324621734,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 2181,
+      "n_survived": 770,
+      "robust_recall_direct": 0.35304906006419073,
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.5722222222222222,
+      "robust_recall_product": 0.3530490600641908,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "emulator_logreg",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 2181,
+      "n_survived": 709,
+      "robust_recall_direct": 0.32508023842274186,
+      "clean_detection": 0.8253094910591472,
+      "ASR": 0.6061111111111112,
+      "robust_recall_product": 0.3250802384227418,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 2181,
+      "n_survived": 299,
+      "robust_recall_direct": 0.13709307657038056,
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8100381194409149,
+      "robust_recall_product": 0.13709307657038056,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 2181,
+      "n_survived": 299,
+      "robust_recall_direct": 0.13709307657038056,
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8100381194409149,
+      "robust_recall_product": 0.13709307657038056,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 2181,
+      "n_survived": 281,
+      "robust_recall_direct": 0.12883998165978908,
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.8214739517153749,
+      "robust_recall_product": 0.12883998165978908,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 2181,
+      "n_survived": 76,
+      "robust_recall_direct": 0.03484640073360844,
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.951715374841169,
+      "robust_recall_product": 0.03484640073360846,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 2181,
+      "n_survived": 54,
+      "robust_recall_direct": 0.024759284731774415,
+      "clean_detection": 0.7216872994039432,
+      "ASR": 0.96569250317662,
+      "robust_recall_product": 0.02475928473177445,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 2181,
+      "n_survived": 223,
+      "robust_recall_direct": 0.10224667583677212,
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8394528437724982,
+      "robust_recall_product": 0.10224667583677213,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 2181,
+      "n_survived": 221,
+      "robust_recall_direct": 0.10132966529115085,
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8408927285817135,
+      "robust_recall_product": 0.10132966529115082,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 2181,
+      "n_survived": 214,
+      "robust_recall_direct": 0.09812012838147639,
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.8459323254139669,
+      "robust_recall_product": 0.09812012838147638,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 2181,
+      "n_survived": 14,
+      "robust_recall_direct": 0.006419073819348923,
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.9899208063354932,
+      "robust_recall_product": 0.006419073819348913,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 2181,
+      "n_survived": 12,
+      "robust_recall_direct": 0.005502063273727648,
+      "clean_detection": 0.6368638239339752,
+      "ASR": 0.9913606911447084,
+      "robust_recall_product": 0.00550206327372768,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq_aug",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 583,
+      "robust_recall_direct": 0.8019257221458047,
+      "clean_detection": 0.8390646492434664,
+      "ASR": 0.04426229508196721,
+      "robust_recall_product": 0.8019257221458047,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq_aug",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 583,
+      "robust_recall_direct": 0.8019257221458047,
+      "clean_detection": 0.8390646492434664,
+      "ASR": 0.04426229508196721,
+      "robust_recall_product": 0.8019257221458047,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq_aug",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 583,
+      "robust_recall_direct": 0.8019257221458047,
+      "clean_detection": 0.8390646492434664,
+      "ASR": 0.04426229508196721,
+      "robust_recall_product": 0.8019257221458047,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq_aug",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 572,
+      "robust_recall_direct": 0.7867950481430537,
+      "clean_detection": 0.8390646492434664,
+      "ASR": 0.06229508196721312,
+      "robust_recall_product": 0.7867950481430537,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "authguard_seq_aug",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 571,
+      "robust_recall_direct": 0.7854195323246217,
+      "clean_detection": 0.8390646492434664,
+      "ASR": 0.06393442622950819,
+      "robust_recall_product": 0.7854195323246218,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_attention_16384",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 579,
+      "robust_recall_direct": 0.796423658872077,
+      "clean_detection": 0.8473177441540578,
+      "ASR": 0.060064935064935064,
+      "robust_recall_product": 0.7964236588720771,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_attention_16384",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 579,
+      "robust_recall_direct": 0.796423658872077,
+      "clean_detection": 0.8473177441540578,
+      "ASR": 0.060064935064935064,
+      "robust_recall_product": 0.7964236588720771,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_attention_16384",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 577,
+      "robust_recall_direct": 0.7936726272352133,
+      "clean_detection": 0.8473177441540578,
+      "ASR": 0.0633116883116883,
+      "robust_recall_product": 0.7936726272352133,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_attention_16384",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 570,
+      "robust_recall_direct": 0.7840440165061898,
+      "clean_detection": 0.8473177441540578,
+      "ASR": 0.07467532467532467,
+      "robust_recall_product": 0.7840440165061898,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_attention_16384",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 569,
+      "robust_recall_direct": 0.782668500687758,
+      "clean_detection": 0.8473177441540578,
+      "ASR": 0.0762987012987013,
+      "robust_recall_product": 0.782668500687758,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_mean_16384",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 101,
+      "robust_recall_direct": 0.13892709766162312,
+      "clean_detection": 0.7689133425034388,
+      "ASR": 0.8193202146690519,
+      "robust_recall_product": 0.1389270976616231,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_mean_16384",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 101,
+      "robust_recall_direct": 0.13892709766162312,
+      "clean_detection": 0.7689133425034388,
+      "ASR": 0.8193202146690519,
+      "robust_recall_product": 0.1389270976616231,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_mean_16384",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 100,
+      "robust_recall_direct": 0.1375515818431912,
+      "clean_detection": 0.7689133425034388,
+      "ASR": 0.8211091234347049,
+      "robust_recall_product": 0.13755158184319116,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_mean_16384",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 5,
+      "robust_recall_direct": 0.0068775790921595595,
+      "clean_detection": 0.7689133425034388,
+      "ASR": 0.9910554561717353,
+      "robust_recall_product": 0.00687757909215952,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "chunk_mean_16384",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 4,
+      "robust_recall_direct": 0.005502063273727648,
+      "clean_detection": 0.7689133425034388,
+      "ASR": 0.9928443649373881,
+      "robust_recall_product": 0.0055020632737276835,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn_aug",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 109,
+      "robust_recall_direct": 0.1499312242090784,
+      "clean_detection": 0.6437414030261348,
+      "ASR": 0.7670940170940171,
+      "robust_recall_product": 0.14993122420907837,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn_aug",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 109,
+      "robust_recall_direct": 0.1499312242090784,
+      "clean_detection": 0.6437414030261348,
+      "ASR": 0.7670940170940171,
+      "robust_recall_product": 0.14993122420907837,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn_aug",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 104,
+      "robust_recall_direct": 0.14305364511691884,
+      "clean_detection": 0.6437414030261348,
+      "ASR": 0.7777777777777778,
+      "robust_recall_product": 0.14305364511691884,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn_aug",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 28,
+      "robust_recall_direct": 0.03851444291609354,
+      "clean_detection": 0.6437414030261348,
+      "ASR": 0.9401709401709402,
+      "robust_recall_product": 0.038514442916093544,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_cnn_aug",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 18,
+      "robust_recall_direct": 0.024759284731774415,
+      "clean_detection": 0.6437414030261348,
+      "ASR": 0.9615384615384616,
+      "robust_recall_product": 0.024759284731774397,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_control_16384",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 257,
+      "robust_recall_direct": 0.3535075653370014,
+      "clean_detection": 0.8308115543328748,
+      "ASR": 0.5745033112582781,
+      "robust_recall_product": 0.35350756533700134,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_control_16384",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 256,
+      "robust_recall_direct": 0.35213204951856947,
+      "clean_detection": 0.8308115543328748,
+      "ASR": 0.5761589403973509,
+      "robust_recall_product": 0.35213204951856947,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_control_16384",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 240,
+      "robust_recall_direct": 0.33012379642365886,
+      "clean_detection": 0.8308115543328748,
+      "ASR": 0.6026490066225165,
+      "robust_recall_product": 0.3301237964236589,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_control_16384",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 65,
+      "robust_recall_direct": 0.08940852819807428,
+      "clean_detection": 0.8308115543328748,
+      "ASR": 0.8923841059602649,
+      "robust_recall_product": 0.08940852819807432,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "flat_control_16384",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 51,
+      "robust_recall_direct": 0.07015130674002751,
+      "clean_detection": 0.8308115543328748,
+      "ASR": 0.9155629139072847,
+      "robust_recall_product": 0.07015130674002754,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb_aug",
+      "attack_set": "TierA_fixed_flooding",
+      "n_positive_observations": 727,
+      "n_survived": 161,
+      "robust_recall_direct": 0.22145804676753783,
+      "clean_detection": 0.6698762035763411,
+      "ASR": 0.6694045174537988,
+      "robust_recall_product": 0.2214580467675378,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb_aug",
+      "attack_set": "TierB_fixed_flooding_metadata",
+      "n_positive_observations": 727,
+      "n_survived": 160,
+      "robust_recall_direct": 0.2200825309491059,
+      "clean_detection": 0.6698762035763411,
+      "ASR": 0.6714579055441479,
+      "robust_recall_product": 0.2200825309491059,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb_aug",
+      "attack_set": "TierC_fixed_all_seven",
+      "n_positive_observations": 727,
+      "n_survived": 157,
+      "robust_recall_direct": 0.21595598349381018,
+      "clean_detection": 0.6698762035763411,
+      "ASR": 0.6776180698151951,
+      "robust_recall_product": 0.21595598349381015,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb_aug",
+      "attack_set": "TierC_adaptive_best",
+      "n_positive_observations": 727,
+      "n_survived": 25,
+      "robust_recall_direct": 0.0343878954607978,
+      "clean_detection": 0.6698762035763411,
+      "ASR": 0.9486652977412731,
+      "robust_recall_product": 0.034387895460797825,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    },
+    {
+      "model": "hist_ngram_xgb_aug",
+      "attack_set": "TierC_all_evaluated",
+      "n_positive_observations": 727,
+      "n_survived": 19,
+      "robust_recall_direct": 0.026134800550206328,
+      "clean_detection": 0.6698762035763411,
+      "ASR": 0.9609856262833676,
+      "robust_recall_product": 0.026134800550206307,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact"
+    }
+  ],
+  "benchmark_audit": {
+    "file": "data/authguardbench_7702_v2.csv.gz",
+    "categories_in_file": {
+      "PRIMARY_EVALUATION": 2190,
+      "EXTERNAL_BENIGN_CONTROL": 797,
+      "QUALITATIVE_CONTROL": 5,
+      "EXCLUDED_UNCERTAIN_INPUT": 90
+    },
+    "sum_of_categories_in_file": 3082,
+    "actual_rows_in_file": 3082,
+    "manuscript_claim_3082": 3082,
+    "manuscript_table_production_controls": 8,
+    "production_registry_rows": 45,
+    "production_registry_unique_projects": 8,
+    "production_registry_unique_bytecode": 30,
+    "duplicate_sample_ids": 0,
+    "duplicate_sample_id_values": [],
+    "hashes_appearing_in_multiple_populations": 2,
+    "example_cross_population_hashes": [
+      "425d3a94fd8e638bba0fb33f659cdbbdf94cb2ab17995dd625333851d18f6b06",
+      "f8509565a392f64880b55e62a6ca8d021416057e56bd1e9630062b1dc3149347"
+    ],
+    "provenance": "stored_artifact"
+  },
+  "byte_budget": {
+    "enforcing_code": "def valid(self, candidate):\n        try:\n            raw = bytes.fromhex(candidate)\n        except ValueError:\n            return False\n        overhead = (len(raw) - self.original_size) / max(self.original_size, 1)\n        if len(raw) > self.original_size * (1 + MAX_OVERHEAD) + 1 or overhead < -1e-9:\n            return False\n        if not mut.verify_preservation(self.original, bytearray(raw)):\n            return False\n        ops, _, _ = disasm(candidate)\n        return bool(ops) and len(candidate) % 2 == 0",
+    "MAX_OVERHEAD": 2.0,
+    "rule_as_implemented": "len(final_bytes) <= original_size * (1 + MAX_OVERHEAD) + 1, i.e. ADDED bytes <= 2x original, FINAL size <= 3x original (+1 byte for the STOP guard)",
+    "byte_overhead_column_definition": "(len(candidate)//2 - original_size) / original_size = added/original, NOT final/original",
+    "f200_final_over_original": {
+      "n": 13086,
+      "median": 2.9616928128420286,
+      "p95": 2.986081654294804,
+      "max": 3.001432664756447,
+      "min": 2.541484716157205
+    },
+    "provenance": "stored_artifact"
+  },
+  "live_holdout": {
+    "total_live_delegates": 752,
+    "unique_runtime_bytecodes": 669,
+    "exact_hash_overlap_with_benchmark": 0,
+    "family_overlap_at_0_85": 70,
+    "leakage_clean_denominator": 682,
+    "leakage_clean_formula": "clean_mask = max_minhash_sim_to_primary < 0.85 (line 168)",
+    "leakage_gate_json": {
+      "threshold": 0.85,
+      "n_at_or_above": 70,
+      "fraction": 0.09308510638297872,
+      "max_similarity": 1.0,
+      "median_similarity": 0.265625,
+      "p95_similarity": 0.9765625
+    },
+    "flag_rates_by_operating_point": {
+      "1": {
+        "flag_rate": {
+          "mean": 0.09494680851063826,
+          "sd": 0.02055055560678832
+        },
+        "flag_rate_leakage_clean": {
+          "mean": 0.08758553274682301,
+          "sd": 0.024021078230905206
+        },
+        "flag_rate_authorization_weighted": {
+          "mean": 0.0589249666473343,
+          "sd": 0.008095819823846481
+        },
+        "alerts_per_1000_authorizations": {
+          "mean": 58.924966647334344,
+          "sd": 8.095819823846487
+        }
+      },
+      "5": {
+        "flag_rate": {
+          "mean": 0.20265957446808505,
+          "sd": 0.03573739794093792
+        },
+        "flag_rate_leakage_clean": {
+          "mean": 0.1986314760508309,
+          "sd": 0.03926066976676041
+        },
+        "flag_rate_authorization_weighted": {
+          "mean": 0.09442772925373455,
+          "sd": 0.009649746910648044
+        },
+        "alerts_per_1000_authorizations": {
+          "mean": 94.42772925373458,
+          "sd": 9.649746910648041
+        }
+      },
+      "10": {
+        "flag_rate": {
+          "mean": 0.3268617021276596,
+          "sd": 0.01851160631690753
+        },
+        "flag_rate_leakage_clean": {
+          "mean": 0.3327468230694037,
+          "sd": 0.02074502270912361
+        },
+        "flag_rate_authorization_weighted": {
+          "mean": 0.14647870709869235,
+          "sd": 0.018788378209605616
+        },
+        "alerts_per_1000_authorizations": {
+          "mean": 146.47870709869238,
+          "sd": 18.78837820960563
+        }
+      }
+    },
+    "n_checkpoints": 15,
+    "seed_scope": [
+      7702,
+      7703,
+      7704
+    ],
+    "fold_scope": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "provenance": "stored_artifact"
+  }
+}

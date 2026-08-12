@@ -1,0 +1,108 @@
+{
+  "phase": "2 expanded execution-preservation audit",
+  "script": "revision_v2/experiments/sprint_phase2/expanded_preservation_audit.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "provenance": "regenerated_experiment",
+  "equivalence_definition": "same_failed AND same_return AND same_calls AND same_call_count AND same_sstore AND same_logs, imported unchanged from exec_validation",
+  "scope_note": "Bounded empirical execution preservation over the tested calldata suite. Entry coverage includes empty calldata (receive/fallback) and the zero selector (fallback); it does not prove preservation of the reference risk condition itself.",
+  "excluded_from_preservation_tier": [
+    "address rewrite",
+    "selector rewrite"
+  ],
+  "wall_seconds": 15.605257511138916,
+  "summary": {
+    "flooding": {
+      "delegates_tested": 120,
+      "distinct_families": 120,
+      "calls_tested": 3464,
+      "preserved_calls": 3464,
+      "failed_calls": 0,
+      "preservation_rate": 1.0,
+      "wilson95": [
+        0.998892221605508,
+        0.9999999999999999
+      ],
+      "failure_taxonomy": {
+        "same_failed_violated": 0,
+        "same_return_violated": 0,
+        "same_calls_violated": 0,
+        "same_call_count_violated": 0,
+        "same_sstore_violated": 0,
+        "same_logs_violated": 0,
+        "not_comparable": 0
+      },
+      "entry_class_coverage": {
+        "discovered_selector": 2504,
+        "empty_calldata_receive_or_fallback": 480,
+        "zero_selector_fallback": 480
+      },
+      "risk_relevant_execution": {
+        "calls_where_original_reached_external_call": 788,
+        "calls_where_original_reached_sstore": 72
+      },
+      "candidate_construction_failures": 0
+    },
+    "metadata_rewrite": {
+      "delegates_tested": 120,
+      "distinct_families": 120,
+      "calls_tested": 866,
+      "preserved_calls": 866,
+      "failed_calls": 0,
+      "preservation_rate": 1.0,
+      "wilson95": [
+        0.995583563720107,
+        0.9999999999999999
+      ],
+      "failure_taxonomy": {
+        "same_failed_violated": 0,
+        "same_return_violated": 0,
+        "same_calls_violated": 0,
+        "same_call_count_violated": 0,
+        "same_sstore_violated": 0,
+        "same_logs_violated": 0,
+        "not_comparable": 0
+      },
+      "entry_class_coverage": {
+        "discovered_selector": 626,
+        "empty_calldata_receive_or_fallback": 120,
+        "zero_selector_fallback": 120
+      },
+      "risk_relevant_execution": {
+        "calls_where_original_reached_external_call": 197,
+        "calls_where_original_reached_sstore": 18
+      },
+      "candidate_construction_failures": 0
+    },
+    "neutral_insertion": {
+      "delegates_tested": 120,
+      "distinct_families": 120,
+      "calls_tested": 866,
+      "preserved_calls": 866,
+      "failed_calls": 0,
+      "preservation_rate": 1.0,
+      "wilson95": [
+        0.995583563720107,
+        0.9999999999999999
+      ],
+      "failure_taxonomy": {
+        "same_failed_violated": 0,
+        "same_return_violated": 0,
+        "same_calls_violated": 0,
+        "same_call_count_violated": 0,
+        "same_sstore_violated": 0,
+        "same_logs_violated": 0,
+        "not_comparable": 0
+      },
+      "entry_class_coverage": {
+        "discovered_selector": 626,
+        "empty_calldata_receive_or_fallback": 120,
+        "zero_selector_fallback": 120
+      },
+      "risk_relevant_execution": {
+        "calls_where_original_reached_external_call": 197,
+        "calls_where_original_reached_sstore": 18
+      },
+      "candidate_construction_failures": 0
+    }
+  }
+}

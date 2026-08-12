@@ -1,0 +1,335 @@
+{
+  "authguard_seq_seed7702_only": {
+    "F200": 0.132569558101473,
+    "fixed_oracle_best": 0.13747954173486088,
+    "beam_search": 0.15220949263502456,
+    "random_search": 0.18821603927986907,
+    "clean_detection": 0.8404401650618982,
+    "n_eligible": 611,
+    "seed_scope": [
+      7702
+    ],
+    "fold_scope": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "provenance": "stored_artifact"
+  },
+  "contrast_variants": {
+    "3seed_clean_vs_aug::random_search": {
+      "label": "aug (seed7702) vs clean AuthGuard (all seeds present in file)",
+      "left": "authguard_seq_aug",
+      "right": "authguard_seq",
+      "method": "random_search",
+      "left_ASR_on_shared": 0.04384485666104553,
+      "right_ASR_on_shared": 0.17706576728499157,
+      "paired_difference": -0.13322091062394603,
+      "CI95": [
+        -0.19393008228179334,
+        -0.08641835016835019
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 593,
+      "seeds": [
+        7702
+      ]
+    },
+    "seed7702_like_for_like::random_search": {
+      "label": "aug vs clean AuthGuard, both seed 7702 only",
+      "left": "authguard_seq_aug",
+      "right": "authguard_seq",
+      "method": "random_search",
+      "left_ASR_on_shared": 0.04384485666104553,
+      "right_ASR_on_shared": 0.17706576728499157,
+      "paired_difference": -0.13322091062394603,
+      "CI95": [
+        -0.19393008228179334,
+        -0.08641835016835019
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 593,
+      "seeds": [
+        7702
+      ]
+    },
+    "seed7702_30K_like_for_like::random_search": {
+      "label": "30K matched attention vs clean AuthGuard, both seed 7702 only",
+      "left": "chunk_attention_16384",
+      "right": "authguard_seq",
+      "method": "random_search",
+      "left_ASR_on_shared": 0.05201342281879195,
+      "right_ASR_on_shared": 0.18120805369127516,
+      "paired_difference": -0.12919463087248323,
+      "CI95": [
+        -0.18939432512497686,
+        -0.08104178102699736
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 596,
+      "seeds": [
+        7702
+      ]
+    },
+    "3seed_clean_vs_aug::beam_search": {
+      "label": "aug (seed7702) vs clean AuthGuard (all seeds present in file)",
+      "left": "authguard_seq_aug",
+      "right": "authguard_seq",
+      "method": "beam_search",
+      "left_ASR_on_shared": 0.03204047217537943,
+      "right_ASR_on_shared": 0.1433389544688027,
+      "paired_difference": -0.11129848229342328,
+      "CI95": [
+        -0.16885679509386264,
+        -0.0663258259104747
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 593,
+      "seeds": [
+        7702
+      ]
+    },
+    "seed7702_like_for_like::beam_search": {
+      "label": "aug vs clean AuthGuard, both seed 7702 only",
+      "left": "authguard_seq_aug",
+      "right": "authguard_seq",
+      "method": "beam_search",
+      "left_ASR_on_shared": 0.03204047217537943,
+      "right_ASR_on_shared": 0.1433389544688027,
+      "paired_difference": -0.11129848229342328,
+      "CI95": [
+        -0.16885679509386264,
+        -0.0663258259104747
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 593,
+      "seeds": [
+        7702
+      ]
+    },
+    "seed7702_30K_like_for_like::beam_search": {
+      "label": "30K matched attention vs clean AuthGuard, both seed 7702 only",
+      "left": "chunk_attention_16384",
+      "right": "authguard_seq",
+      "method": "beam_search",
+      "left_ASR_on_shared": 0.04530201342281879,
+      "right_ASR_on_shared": 0.14597315436241612,
+      "paired_difference": -0.10067114093959731,
+      "CI95": [
+        -0.15942202343804174,
+        -0.055072140269151144
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 596,
+      "seeds": [
+        7702
+      ]
+    }
+  },
+  "marginal_table_values": {
+    "authguard_seq": {
+      "random_search": 0.18053289831430125,
+      "beam_search": 0.14573137574768896,
+      "clean_detection": 0.8431911966987621,
+      "seeds": [
+        7702,
+        7703,
+        7704
+      ],
+      "n_eligible_random": 1839
+    },
+    "authguard_seq_aug": {
+      "random_search": 0.06229508196721312,
+      "beam_search": 0.05081967213114754,
+      "clean_detection": 0.8390646492434664,
+      "seeds": [
+        7702
+      ],
+      "n_eligible_random": 610
+    },
+    "chunk_attention_16384": {
+      "random_search": 0.07467532467532467,
+      "beam_search": 0.06818181818181818,
+      "clean_detection": 0.8473177441540578,
+      "seeds": [
+        7702
+      ],
+      "n_eligible_random": 616
+    }
+  },
+  "row_to_seed_scope_map": [
+    {
+      "table_row": "authguard_seq",
+      "file_group": "main_3seed",
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 2181,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "emulator_logreg",
+      "file_group": "main_3seed",
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 2181,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "flat_cnn",
+      "file_group": "main_3seed",
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 2181,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "hist_ngram_xgb",
+      "file_group": "main_3seed",
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 2181,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "authguard_seq_aug",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "chunk_attention_16384",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "chunk_mean_16384",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "flat_cnn_aug",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "flat_control_16384",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    },
+    {
+      "table_row": "hist_ngram_xgb_aug",
+      "file_group": "ext_seed7702",
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_source_seed_observations": 727,
+      "n_distinct_sources": 727
+    }
+  ],
+  "provenance": "stored_artifact",
+  "script": "revision_v2/experiments/sprint_phase1/phase1_seed_scope.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee"
+}
