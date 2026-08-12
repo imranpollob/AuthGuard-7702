@@ -47,6 +47,8 @@ sys.path.insert(0, os.path.join(ROOT, "pipeline"))
 def _load(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
+    # Register before exec: @dataclass resolves annotations via sys.modules[cls.__module__].
+    sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
 
@@ -63,13 +65,16 @@ from authguard7702.policy import WarningPolicy  # noqa: E402
 from frozen import verify as verify_frozen  # noqa: E402
 from pools import DonorPools, make_variant_isolated, mut  # noqa: E402
 from search import ACTIONS, FLOOD_ACTIONS, beam_search, random_search  # noqa: E402
-from scorers import (AuthGuardSeqScorer, EmulatorLogRegScorer, FlatCNNScorer,  # noqa: E402
-                     HistNgramXGBScorer, logit_from_proba)
+from ag_features import featurize, build_sensitive_selector_set  # noqa: E402
+from scorers import (AuthGuardSeqScorer, ControlledCNNScorer,  # noqa: E402
+                     EmulatorLogRegScorer, FlatCNNScorer, HistNgramXGBScorer,
+                     logit_from_proba, tokens_of)
 from sklearn.linear_model import LogisticRegression  # noqa: E402
 from sklearn.pipeline import make_pipeline  # noqa: E402
 from sklearn.preprocessing import StandardScaler  # noqa: E402
 from xgboost import XGBClassifier  # noqa: E402
 
+SENS = build_sensitive_selector_set()
 SEED = 7702
 SEEDS = [7702, 7703, 7704]
 QUERY_BUDGET = 64
@@ -204,6 +209,52 @@ def donor_frame(bench):
     return keep.reset_index(drop=True)
 
 
+ablation = _load("long_context_v3", os.path.join(
+    RV2, "experiments", "long_context_ablation_v3", "run_long_context_ablation_v3.py"))
+
+# Parameter-matched controls from the mechanism ablation, so the same variants can be
+# attacked adaptively rather than only under fixed transformations.
+CONTROLLED_SPECS = {
+    "flat_control_16384": ("flat", 16_384),
+    "chunk_mean_16384": ("mean", 16_384),
+    "chunk_attention_16384": ("attention", 16_384),
+}
+AUG_FRACTIONS = ["F25", "F50", "F100", "F200"]
+
+
+class ExtendedTokenStore:
+    """Token store over the corpus plus appended augmented rows."""
+
+    def __init__(self, base, extra_tokens, extra_auxiliary):
+        self.base = base
+        self.extra = list(extra_tokens)
+        self.n_base = len(base.offsets) - 1
+        self.auxiliary = np.vstack([base.auxiliary, np.asarray(extra_auxiliary)])
+
+    def row(self, index):
+        index = int(index)
+        return (self.base.row(index) if index < self.n_base
+                else self.extra[index - self.n_base])
+
+
+def augmentation_variants(frame, indices, pools, fold, sids, families, y):
+    """One flooded variant per training row, drawn only from train-role donor pools.
+
+    Fractions are cycled deterministically so the augmented set spans the flooding range
+    rather than a single magnitude, which gives the augmented baseline its strongest form.
+    """
+    hexes = []
+    for position, index in enumerate(indices):
+        source = frame.iloc[int(index)]
+        row = dict(sid=sids[index], family_id=families[index],
+                   address=source["address"], chain=source["chain"],
+                   bytecode=source["runtime_bytecode"], y=int(y[index]))
+        condition = AUG_FRACTIONS[position % len(AUG_FRACTIONS)]
+        hexes.append(make_variant_isolated(pools, row, fold, "train", condition,
+                                           "adaptive_v2_augment"))
+    return hexes
+
+
 _EMULATOR_CACHE = {}
 
 
@@ -228,6 +279,83 @@ def build_pools(bench):
 
 
 # -------------------------------------------------------------------------- model fitting
+def _controlled_batches(indices, store, labels, aggregation, budget, batch_size,
+                        shuffle, rng):
+    """Yield padded chunk batches for the parameter-matched controls."""
+    order = np.array(indices, dtype=int)
+    if shuffle:
+        order = order[rng.permutation(len(order))]
+    spec = ablation.SPECS[{"flat": "flat_control_16384",
+                           "mean": "chunk_mean_control_16384",
+                           "attention": "chunk_attention_control_16384"}[aggregation]]
+    for start in range(0, len(order), batch_size):
+        picked = order[start:start + batch_size]
+        rows = [ablation.select_representation(store.row(int(i)), spec) for i in picked]
+        width = max(r.shape[1] for r in rows)
+        depth = max(len(r) for r in rows)
+        chunks = np.full((len(rows), depth, width), 0, dtype=np.int64)
+        mask = np.zeros((len(rows), depth), dtype=bool)
+        for i, r in enumerate(rows):
+            chunks[i, :len(r), :r.shape[1]] = r
+            mask[i, :len(r)] = True
+        yield (picked, torch.from_numpy(chunks).long(), torch.from_numpy(mask).bool(),
+               torch.tensor([float(labels[int(i)]) for i in picked], dtype=torch.float32))
+
+
+def train_controlled(aggregation, budget, store, labels, train_idx, val_idx, device,
+                     seed, epochs, patience=5, batch_size=16):
+    """Train a parameter-matched ablation control under the shared protocol."""
+    ablation.set_seed(seed)
+    model = ablation.ControlledSequenceCNN(aggregation).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+    pos_weight = float((labels[train_idx] == 0).sum() /
+                       max((labels[train_idx] == 1).sum(), 1))
+    loss_fn = torch.nn.BCEWithLogitsLoss(
+        pos_weight=torch.tensor([pos_weight], device=device, dtype=torch.float32))
+    rng = np.random.default_rng(seed)
+
+    def infer(indices):
+        model.eval()
+        out_idx, out_y, out_logit = [], [], []
+        with torch.no_grad():
+            for picked, chunks, mask, lab in _controlled_batches(
+                    indices, store, labels, aggregation, budget, 32, False, rng):
+                logits = model(chunks=chunks.to(device), chunk_mask=mask.to(device),
+                               dense=None, ngram=None)["risk_logit"]
+                out_idx.extend(picked.tolist())
+                out_y.extend(lab.tolist())
+                out_logit.extend(logits.cpu().numpy().tolist())
+        return np.asarray(out_y), np.asarray(out_logit)
+
+    best_ap, best_state, stale = -np.inf, None, 0
+    for _epoch in range(1, epochs + 1):
+        model.train()
+        for _picked, chunks, mask, lab in _controlled_batches(
+                train_idx, store, labels, aggregation, budget, batch_size, True, rng):
+            logits = model(chunks=chunks.to(device), chunk_mask=mask.to(device),
+                           dense=None, ngram=None)["risk_logit"]
+            loss = loss_fn(logits, lab.to(device))
+            if not torch.isfinite(loss):
+                raise FloatingPointError("non-finite loss in controlled variant")
+            optimizer.zero_grad(set_to_none=True)
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
+            optimizer.step()
+        y_val, val_logits = infer(val_idx)
+        from sklearn.metrics import average_precision_score
+        ap = float(average_precision_score(y_val, val_logits))
+        if ap > best_ap + 1e-5:
+            best_ap, stale = ap, 0
+            best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+        else:
+            stale += 1
+            if stale >= patience:
+                break
+    model.load_state_dict(best_state)
+    y_val, val_logits = infer(val_idx)
+    return model, val_logits, y_val
+
+
 def fit_fold_models(frame, features, token_store, y, folds, fold, seed, device, args):
     """Train the three architectures on one outer fold and calibrate on validation only."""
     val_fold = (fold + 1) % 5
@@ -242,43 +370,89 @@ def fit_fold_models(frame, features, token_store, y, folds, fold, seed, device, 
     source_indices = np.arange(len(frame))
     scorers, policies = {}, {}
 
+    # Flooding-augmented training arrays, built once per fold if any model requests them.
+    aug = None
+    if any(name.endswith("_aug") for name in args.models):
+        aug_hexes = augmentation_variants(frame, train_idx, args.pools, fold,
+                                          args.sids, args.families, y)
+        aug_tokens = [tokens_of(h) for h in aug_hexes]
+        aug_dense, aug_ngram, _ = featurize(aug_hexes, sens=SENS)
+        aug_aux = np.zeros((len(aug_hexes), token_store.auxiliary.shape[1]),
+                           dtype=np.float32)
+        n_base = len(frame)
+        aug = dict(
+            hexes=aug_hexes,
+            y=np.concatenate([y, y[train_idx]]),
+            Xd=np.vstack([Xd, aug_dense.astype(np.float32)]),
+            Xn=np.vstack([Xn, aug_ngram.astype(np.float32)]),
+            store=ExtendedTokenStore(token_store, aug_tokens, aug_aux),
+            train_idx=np.concatenate([train_idx,
+                                      np.arange(n_base, n_base + len(aug_hexes))]),
+            source_indices=np.arange(n_base + len(aug_hexes)))
+        print(f"[adaptive-v2] fold {fold}: augmented training set "
+              f"{len(train_idx)} -> {len(aug['train_idx'])} rows", flush=True)
+
     for name in args.models:
-        if name == "authguard_seq":
+        augmented = name.endswith("_aug")
+        base_name = name[:-4] if augmented else name
+        a = aug if augmented else None
+        A_y = a["y"] if a else y
+        A_Xd = a["Xd"] if a else Xd
+        A_Xn = a["Xn"] if a else Xn
+        A_store = a["store"] if a else token_store
+        A_train = a["train_idx"] if a else train_idx
+        A_src = a["source_indices"] if a else source_indices
+        A_rows = len(A_y)
+
+        if base_name in CONTROLLED_SPECS:
+            aggregation, budget = CONTROLLED_SPECS[base_name]
+            net, val_logits, y_val = train_controlled(
+                aggregation, budget, A_store, A_y, A_train, val_idx, device,
+                seed + fold, args.epochs)
+            temperature = fusion.fit_temperature(val_logits, y_val)
+            scorers[name] = ControlledCNNScorer(
+                net, device, temperature,
+                "flat" if aggregation == "flat" else "chunk", budget, name)
+        elif base_name == "authguard_seq":
             config = replace(FusionConfig(), active_views=(True, False, False))
-            loaders = [fusion.make_loaders(idx, source_indices, token_store, Xd, Xn, y,
+            loaders = [fusion.make_loaders(idx, A_src, A_store, A_Xd, A_Xn, A_y,
                                            mean, scale, 256, 64, 16, shuffle=shuffle)
-                       for idx, shuffle in ((train_idx, True), (val_idx, False))]
+                       for idx, shuffle in ((A_train, True), (val_idx, False))]
             net, _, _ = fusion.train_model(config, loaders[0], loaders[1], device,
                                            seed + fold, args.epochs, 5, 1e-3, 0.0, 0.0)
             _, y_val, val_logits, _, _ = fusion.predict_logits(net, loaders[1], device)
             temperature = fusion.fit_temperature(val_logits, y_val)
             scorers[name] = AuthGuardSeqScorer(net, device, temperature)
-        elif name == "flat_cnn":
-            matrix, lengths = baseline.build_flat_matrix(token_store, len(frame), 2048)
-            train_loader = baseline.flat_loader(train_idx, matrix, lengths, y, 32, True)
-            val_loader = baseline.flat_loader(val_idx, matrix, lengths, y, 32, False)
+        elif base_name == "flat_cnn":
+            matrix, lengths = baseline.build_flat_matrix(A_store, A_rows, 2048)
+            train_loader = baseline.flat_loader(A_train, matrix, lengths, A_y, 32, True)
+            val_loader = baseline.flat_loader(val_idx, matrix, lengths, A_y, 32, False)
             net, _ = baseline.train_flat(baseline.FLAT_CTORS["flat_cnn"], train_loader,
                                          val_loader, device, seed + fold, pos_weight)
             _, y_val, val_logits = baseline.predict_flat(net, val_loader, device)
             temperature = fusion.fit_temperature(val_logits, y_val)
             scorers[name] = FlatCNNScorer(net, device, temperature)
-        elif name == "emulator_logreg":
+        elif base_name == "emulator_logreg":
             emulator_matrix = emulator_feature_matrix(frame)
+            if a is not None:
+                import emulator_features
+                emulator_matrix = np.vstack([
+                    emulator_matrix, emulator_features.featurize(a["hexes"])])
             model = make_pipeline(
                 StandardScaler(),
                 LogisticRegression(penalty="l2", C=1.0, max_iter=5000,
                                    random_state=seed, class_weight="balanced"))
-            model.fit(emulator_matrix[train_idx], y[train_idx])
+            model.fit(emulator_matrix[A_train], A_y[A_train])
             val_logits = logit_from_proba(model.predict_proba(emulator_matrix[val_idx])[:, 1])
-            y_val = y[val_idx]
+            y_val = A_y[val_idx]
             temperature = fusion.fit_temperature(val_logits, y_val)
             scorers[name] = EmulatorLogRegScorer(model, temperature)
-        elif name == "hist_ngram_xgb":
-            hist_ngram = np.hstack([Xd[:, :225], Xn]).astype(np.float32)
+        elif base_name == "hist_ngram_xgb":
+            hist_ngram = np.hstack([A_Xd[:, :225], A_Xn]).astype(np.float32)
             model = XGBClassifier(random_state=seed, **fusion.XGB_HP)
-            model.fit(hist_ngram[train_idx], y[train_idx])
+            model.fit(hist_ngram[A_train], A_y[A_train])
             val_logits = logit_from_proba(model.predict_proba(hist_ngram[val_idx])[:, 1])
-            y_val = y[val_idx]
+            y_val = A_y[val_idx]
             temperature = fusion.fit_temperature(val_logits, y_val)
             scorers[name] = HistNgramXGBScorer(model, temperature)
         else:
@@ -526,6 +700,7 @@ def main():
     for seed in args.seeds:
         for fold in args.folds:
             pools.assert_disjoint(fold)
+            args.pools, args.sids, args.families = pools, sids, families
             thresholds = run_fold(frame, features, token_store, y, folds, families, sids,
                                   pools, fold, seed, device, args, rows)
             for name, value in thresholds.items():

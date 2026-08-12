@@ -144,6 +144,62 @@ class FlatCNNScorer(Scorer):
         return np.asarray(out, dtype=float)
 
 
+class ControlledCNNScorer(Scorer):
+    """Parameter-matched ablation control (flat / chunk-mean / chunk-attention).
+
+    Wraps the same `ControlledSequenceCNN` used by the mechanism ablation so that those
+    variants can be attacked under the identical adaptive protocol, closing the gap between
+    the ablation (fixed transformations only) and the adaptive evaluation.
+    """
+
+    def __init__(self, model, device, temperature, layout, budget, name,
+                 batch_size=16):
+        super().__init__(temperature)
+        self.model = model.to(device).eval()
+        self.device = device
+        self.layout = layout
+        self.budget = int(budget)
+        self.name = name
+        self.batch_size = batch_size
+
+    def _represent(self, bytecode_hex):
+        tokens = tokens_of(bytecode_hex)
+        if self.layout == "flat":
+            if len(tokens) > self.budget:
+                chosen = np.linspace(0, len(tokens) - 1, self.budget).round().astype(int)
+                tokens = tokens[chosen]
+            return tokens.reshape(1, -1)
+        count = int(np.ceil(len(tokens) / CHUNK_SIZE))
+        chunks = np.full((count, CHUNK_SIZE), PAD_ID, dtype=np.int64)
+        for index in range(count):
+            part = tokens[index * CHUNK_SIZE:(index + 1) * CHUNK_SIZE]
+            chunks[index, :len(part)] = part
+        max_chunks = self.budget // CHUNK_SIZE
+        if len(chunks) > max_chunks:
+            chosen = np.linspace(0, len(chunks) - 1, max_chunks).round().astype(int)
+            chunks = chunks[chosen]
+        return chunks
+
+    def logits(self, hexes):
+        out = []
+        with torch.no_grad():
+            for start in range(0, len(hexes), self.batch_size):
+                rows = [self._represent(h) for h in hexes[start:start + self.batch_size]]
+                width = max(r.shape[1] for r in rows)
+                depth = max(len(r) for r in rows)
+                chunks = np.full((len(rows), depth, width), PAD_ID, dtype=np.int64)
+                mask = np.zeros((len(rows), depth), dtype=bool)
+                for i, r in enumerate(rows):
+                    chunks[i, :len(r), :r.shape[1]] = r
+                    mask[i, :len(r)] = True
+                output = self.model(
+                    chunks=torch.from_numpy(chunks).long().to(self.device),
+                    chunk_mask=torch.from_numpy(mask).bool().to(self.device),
+                    dense=None, ngram=None)
+                out.extend(output["risk_logit"].detach().cpu().numpy().tolist())
+        return np.asarray(out, dtype=float)
+
+
 class EmulatorLogRegScorer(Scorer):
     """L2 logistic regression over the 15 hand-coded rule-emulator features (Gate 0A).
 

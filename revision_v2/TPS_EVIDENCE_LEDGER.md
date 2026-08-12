@@ -90,6 +90,88 @@ contrast above.
 
 ---
 
+## 1a. Adversarial training and matched controls under adaptive attack **FINAL** (newly run)
+
+Seed 7702, all 5 folds, same protocol as §1. Answers the two structural objections in
+`TPS_REVIEWER_READINESS.md` §2.1 and §2.2.
+
+### Does augmentation substitute for architecture? **No.**
+
+Training set doubled with one flooding-augmented copy per training contract, train-partition
+donors, fractions cycled 25--200%.
+
+| Target | Clean det. | Fixed F200 | Random search | vs clean AuthGuard-Seq (random) |
+|---|---:|---:|---:|---|
+| Flat CNN | .722 | .750 | .945 | +0.786 [+0.727,+0.838] |
+| **Flat CNN + aug** | .644 | .682 | **.927** | **+0.774 [+0.697,+0.841]** |
+| XGBoost | .637 | .677 | .986 | +0.844 [+0.786,+0.890] |
+| **XGBoost + aug** | .670 | .530 | **.940** | **+0.786 [+0.703,+0.852]** |
+| AuthGuard-Seq | .843 | .120 | .181 | — |
+| **AuthGuard-Seq + aug** | .839 | .039 | **.062** | **−0.133 [−0.194,−0.086]** |
+
+Three findings worth stating separately:
+1. Augmentation helps against **the transform it was trained on** (Flat CNN F200 .750→.682,
+   XGB .677→.530) and barely against adaptive search (.945→.927, .986→.940). Augmented
+   baselines remain ~0.78 worse than clean-trained AuthGuard-Seq, CIs excluding zero.
+2. It **costs Flat CNN clean detection** (.722→.644) while buying almost no adaptive
+   robustness — the robustness/accuracy tension, which the attention model escapes
+   (.843→.839 clean, .181→.062 ASR).
+3. This is a **third instance of the paper's methodological point**: judged on fixed
+   Flood-200% alone, augmentation looks like a substantial defence for the baselines.
+
+### Does the mechanism attribution survive the adaptive protocol? **Yes.**
+
+Parameter-matched at ~30K, so this closes the gap where the ablation used only fixed
+transformations.
+
+| Control | Params | Clean det. | Random search ASR | vs AuthGuard-Seq |
+|---|---:|---:|---:|---|
+| **Chunk attention 16K** | 30,050 | .847 | **.075** | −0.129 [−0.189,−0.081] |
+| Flat control 16K | 29,985 | .831 | .889 | +0.710 [+0.636,+0.772] |
+| Chunk mean 16K | 29,985 | .769 | .986 | +0.837 [+0.775,+0.884] |
+
+Thirteenfold gap from attention to mean pooling at matched capacity, under adaptive attack.
+
+**Unexpected and worth acting on:** the 30,050-parameter matched attention control is
+*more* robust than the 63,266-parameter deployed model (−0.129, CI excludes zero) at equal
+clean detection. On this evidence the smaller configuration is the one to deploy.
+
+**Caveat to state in the paper:** both blocks are **single-seed (7702)**, five folds. CIs
+reflect family resampling, not seed variability. Stated in Limitations.
+
+---
+
+## 1b. Attention-dilution mechanism **FINAL** (newly run this session)
+
+Code: `revision_v2/experiments/attention_dilution_v1/run_attention_dilution.py`.
+Results: `revision_v2/results/attention_dilution_v1/`.
+
+Answers the reviewer question "the ablation shows *that* attention matters, but not *why*."
+All 727 held-out positives, each scored by its own fold's frozen checkpoint (5 folds, seed
+7702). Measures the fraction of attention mass landing on chunks composed entirely of
+appended donor bytes. Uniform weighting has no learned parameters, so its mass on appended
+chunks is exactly their share of the chunk count — the analytic baseline that the
+chunk-mean control realizes empirically.
+
+| Flooding | Appended share of chunks | **Attention mass on appended** | Uniform baseline | Dilution resisted |
+|---|---:|---:|---:|---:|
+| 25% | 0.180 | **0.098** | 0.180 | 0.082 |
+| 50% | 0.302 | **0.156** | 0.302 | 0.147 |
+| 100% | 0.465 | **0.245** | 0.465 | 0.221 |
+| 200% | 0.631 | **0.376** | 0.631 | 0.255 |
+
+The gap widens monotonically. Attention consistently places ~55–60% of the weight uniform
+pooling would assign to appended content.
+
+**Report the partiality, not just the gap.** At Flood-200% attention still assigns 37.6% of
+its mass to content carrying no signal. That is the direct mechanistic explanation for why
+the residual ASR is 0.181 rather than zero, and it should be stated as such — it converts a
+weakness into an explained one.
+
+In the paper as Figure 4 (`fig-attention-dilution.pdf`) plus a paragraph in RQ1.
+
+---
+
 ## 2. Mechanism ablation **FINAL** (recovered, independently re-verified)
 
 Recovered from commit `699ab37` to `revision_v2/{experiments,results,protocols}/long_context_ablation_v3`.

@@ -50,12 +50,12 @@
 \newlabel{tab:related}{{I}{2}{Comparison with representative prior work}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Learning from Smart-Contract Bytecode}{2}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Static Analysis and Security-ML Evaluation}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {III}Problem Formulation and Threat Model}{2}{section.3}\protected@file@percent }
-\newlabel{sec:problem}{{III}{2}{Problem Formulation and Threat Model}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Pre-Authorization Screening Task}{2}{subsection.3.1}\protected@file@percent }
 \citation{huang2026darkside}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces AuthGuard-7702 system overview: the online screening path at the authorization boundary and the offline family-disjoint training and calibration path.}}{3}{figure.2}\protected@file@percent }
 \newlabel{fig:decision}{{2}{3}{AuthGuard-7702 system overview: the online screening path at the authorization boundary and the offline family-disjoint training and calibration path}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Problem Formulation and Threat Model}{3}{section.3}\protected@file@percent }
+\newlabel{sec:problem}{{III}{3}{Problem Formulation and Threat Model}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Pre-Authorization Screening Task}{3}{subsection.3.1}\protected@file@percent }
 \newlabel{eq:score}{{1}{3}{Pre-Authorization Screening Task}{equation.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Information Boundary}{3}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Adversary Model}{3}{subsection.3.3}\protected@file@percent }
@@ -70,43 +70,48 @@
 \@writefile{toc}{\contentsline {section}{\numberline {V}Benchmark and Methodology}{4}{section.5}\protected@file@percent }
 \newlabel{sec:method}{{V}{4}{Benchmark and Methodology}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Audited Benchmark Construction}{4}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Families, Duplicates, and Splits}{4}{subsection.5.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces AuthGuard-Seq: chunked opcode encoding, shared local convolutional encoders, and learned chunk attention. Attention aggregation is the mechanism the ablation in Table\nobreakspace  {}\ref  {tab:ablation} isolates as responsible for robustness under bytecode flooding.}}{5}{figure.3}\protected@file@percent }
 \newlabel{fig:encoder}{{3}{5}{AuthGuard-Seq: chunked opcode encoding, shared local convolutional encoders, and learned chunk attention. Attention aggregation is the mechanism the ablation in Table~\ref {tab:ablation} isolates as responsible for robustness under bytecode flooding}{figure.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Audited benchmark populations}}{5}{table.2}\protected@file@percent }
 \newlabel{tab:dataset}{{II}{5}{Audited benchmark populations}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Families, Duplicates, and Splits}{5}{subsection.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Adaptive Attack Protocol}{5}{subsection.5.3}\protected@file@percent }
 \newlabel{sec:attackproto}{{\mbox  {V-C}}{5}{Adaptive Attack Protocol}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Baselines, Training, and Statistics}{5}{subsection.5.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Clean family-disjoint performance. Parameters for fusion configurations are active-path counts (Section\nobreakspace  {}\ref  {sec:system}).}}{6}{table.3}\protected@file@percent }
-\newlabel{tab:clean}{{III}{6}{Clean family-disjoint performance. Parameters for fusion configurations are active-path counts (Section~\ref {sec:system})}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Baselines, Training, and Statistics}{6}{subsection.5.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Evaluation}{6}{section.6}\protected@file@percent }
 \newlabel{sec:evaluation}{{VI}{6}{Evaluation}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}RQ1: Clean Screening and What It Fails to Distinguish}{6}{subsection.6.1}\protected@file@percent }
 \newlabel{sec:rq1}{{\mbox  {VI-A}}{6}{RQ1: Clean Screening and What It Fails to Distinguish}{subsection.6.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Parameter-matched mechanism ablation (separate controlled run; 3 seeds $\times $ 5 folds; contrasts use 2,000 family-clustered replicates).}}{6}{table.4}\protected@file@percent }
-\newlabel{tab:ablation}{{IV}{6}{Parameter-matched mechanism ablation (separate controlled run; 3 seeds $\times $ 5 folds; contrasts use 2,000 family-clustered replicates)}{table.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: Robustness to an Adaptive Adversary}{6}{subsection.6.2}\protected@file@percent }
-\newlabel{sec:rq2}{{\mbox  {VI-B}}{6}{RQ2: Robustness to an Adaptive Adversary}{subsection.6.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Attack success rate by target and strategy (3 seeds $\times $ 5 folds, 727 sources, 64-query budget, $\le 2\times $ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI.}}{7}{table.5}\protected@file@percent }
-\newlabel{tab:asr}{{V}{7}{Attack success rate by target and strategy (3 seeds $\times $ 5 folds, 727 sources, 64-query budget, $\le 2\times $ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI}{table.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Emulator $-$ AuthGuard-Seq ASR, by attack strength. Paired, family-clustered, 1,512 eligible sources.}}{7}{table.6}\protected@file@percent }
-\newlabel{tab:fixedvsadaptive}{{VI}{7}{Emulator $-$ AuthGuard-Seq ASR, by attack strength. Paired, family-clustered, 1,512 eligible sources}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Cross-model transfer of beam-search attacks. Row: model the attack was optimized against. Column: model scoring the resulting bytecode.}}{7}{table.7}\protected@file@percent }
-\newlabel{tab:transfer}{{VII}{7}{Cross-model transfer of beam-search attacks. Row: model the attack was optimized against. Column: model scoring the resulting bytecode}{table.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Live temporal holdout: flag rates over 752 delegates and 15 frozen checkpoints. No labels asserted.}}{7}{table.8}\protected@file@percent }
-\newlabel{tab:temporal}{{VIII}{7}{Live temporal holdout: flag rates over 752 delegates and 15 frozen checkpoints. No labels asserted}{table.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ3: Transfer Across Populations and Time}{7}{subsection.6.3}\protected@file@percent }
-\newlabel{sec:rq3}{{\mbox  {VI-C}}{7}{RQ3: Transfer Across Populations and Time}{subsection.6.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Clean family-disjoint performance. Parameters for fusion configurations are active-path counts (Section\nobreakspace  {}\ref  {sec:system}).}}{6}{table.3}\protected@file@percent }
+\newlabel{tab:clean}{{III}{6}{Clean family-disjoint performance. Parameters for fusion configurations are active-path counts (Section~\ref {sec:system})}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Parameter-matched mechanism ablation (separate controlled run; 3 seeds $\times $ 5 folds; contrasts use 2,000 family-clustered replicates).}}{7}{table.4}\protected@file@percent }
+\newlabel{tab:ablation}{{IV}{7}{Parameter-matched mechanism ablation (separate controlled run; 3 seeds $\times $ 5 folds; contrasts use 2,000 family-clustered replicates)}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Attention mass landing on appended donor chunks, against the uniform-weighting baseline that mean pooling is forced to. All 727 held-out positives, each scored by its own fold's checkpoint. The shaded gap is the dilution the learned aggregation resists.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:dilution}{{4}{7}{Attention mass landing on appended donor chunks, against the uniform-weighting baseline that mean pooling is forced to. All 727 held-out positives, each scored by its own fold's checkpoint. The shaded gap is the dilution the learned aggregation resists}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ2: Robustness to an Adaptive Adversary}{7}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:rq2}{{\mbox  {VI-B}}{7}{RQ2: Robustness to an Adaptive Adversary}{subsection.6.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Attack success rate by target and strategy (727 sources, 64-query budget, $\le 2\times $ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI. Upper block: 3 seeds $\times $ 5 folds. Middle and lower blocks: seed 7702, 5 folds.}}{7}{table.5}\protected@file@percent }
+\newlabel{tab:asr}{{V}{7}{Attack success rate by target and strategy (727 sources, 64-query budget, $\le 2\times $ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI. Upper block: 3 seeds $\times $ 5 folds. Middle and lower blocks: seed 7702, 5 folds}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Emulator $-$ AuthGuard-Seq ASR, by attack strength. Paired, family-clustered, 1,512 eligible sources.}}{8}{table.6}\protected@file@percent }
+\newlabel{tab:fixedvsadaptive}{{VI}{8}{Emulator $-$ AuthGuard-Seq ASR, by attack strength. Paired, family-clustered, 1,512 eligible sources}{table.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Attack success against attacker strength. The models that are close under a fixed transformation separate under budgeted adaptive search.}}{8}{figure.5}\protected@file@percent }
+\newlabel{fig:strength}{{5}{8}{Attack success against attacker strength. The models that are close under a fixed transformation separate under budgeted adaptive search}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Cross-model transfer of beam-search attacks. Row: model the attack was optimized against. Column: model scoring the resulting bytecode.}}{8}{table.7}\protected@file@percent }
+\newlabel{tab:transfer}{{VII}{8}{Cross-model transfer of beam-search attacks. Row: model the attack was optimized against. Column: model scoring the resulting bytecode}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ3: Transfer Across Populations and Time}{8}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:rq3}{{\mbox  {VI-C}}{8}{RQ3: Transfer Across Populations and Time}{subsection.6.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Clean detection and worst-case attack success for every evaluated configuration, ordered by robustness. Clean detection spans a narrow band and does not order the models; attack success spans almost the full range. The three configurations with attention aggregation occupy the robust end regardless of parameter count or training scheme.}}{9}{figure.6}\protected@file@percent }
+\newlabel{fig:cleanvsasr}{{6}{9}{Clean detection and worst-case attack success for every evaluated configuration, ordered by robustness. Clean detection spans a narrow band and does not order the models; attack success spans almost the full range. The three configurations with attention aggregation occupy the robust end regardless of parameter count or training scheme}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Live temporal holdout: flag rates over 752 delegates and 15 frozen checkpoints. No labels asserted.}}{9}{table.8}\protected@file@percent }
+\newlabel{tab:temporal}{{VIII}{9}{Live temporal holdout: flag rates over 752 delegates and 15 frozen checkpoints. No labels asserted}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ4: Operational Cost and Staged Triage}{9}{subsection.6.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Measured cost of the two stages of a staged pipeline. Screening: single CPU thread, AMD Ryzen 5 3600, PyTorch 2.9. Reference decompiler: pinned Gigahorse image, 60 family-distinct inputs, one job.}}{10}{table.9}\protected@file@percent }
+\newlabel{tab:cost}{{IX}{10}{Measured cost of the two stages of a staged pipeline. Screening: single CPU thread, AMD Ryzen 5 3600, PyTorch 2.9. Reference decompiler: pinned Gigahorse image, 60 family-distinct inputs, one job}{table.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion and Limitations}{10}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{VII}{10}{Discussion and Limitations}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}What the Results Support}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Limitations}{10}{subsection.7.2}\protected@file@percent }
 \citation{huang2026darkside}
-\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Measured cost of the two stages of a staged pipeline. Screening: single CPU thread, AMD Ryzen 5 3600, PyTorch 2.9. Reference decompiler: pinned Gigahorse image, 60 family-distinct inputs, one job.}}{8}{table.9}\protected@file@percent }
-\newlabel{tab:cost}{{IX}{8}{Measured cost of the two stages of a staged pipeline. Screening: single CPU thread, AMD Ryzen 5 3600, PyTorch 2.9. Reference decompiler: pinned Gigahorse image, 60 family-distinct inputs, one job}{table.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ4: Operational Cost and Staged Triage}{8}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion and Limitations}{8}{section.7}\protected@file@percent }
-\newlabel{sec:discussion}{{VII}{8}{Discussion and Limitations}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}What the Results Support}{8}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Limitations}{8}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethics and Responsible Disclosure}{8}{subsection.7.3}\protected@file@percent }
 \bibcite{eip7702}{1}
 \bibcite{huang2026darkside}{2}
 \bibcite{qi2025eip7702}{3}
@@ -121,8 +126,9 @@
 \bibcite{securify2018}{12}
 \bibcite{pierazzi2020}{13}
 \bibcite{guo2017calibration}{14}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Artifact Availability}{9}{subsection.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{9}{section.8}\protected@file@percent }
-\newlabel{sec:conclusion}{{VIII}{9}{Conclusion}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{References}{9}{section*.11}\protected@file@percent }
-\gdef \@abspage@last{9}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethics and Responsible Disclosure}{11}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Artifact Availability}{11}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{11}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{VIII}{11}{Conclusion}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{References}{11}{section*.16}\protected@file@percent }
+\gdef \@abspage@last{11}

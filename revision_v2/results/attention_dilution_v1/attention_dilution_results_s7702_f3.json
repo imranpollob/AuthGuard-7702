@@ -1,0 +1,60 @@
+{
+  "seed": 7702,
+  "fold": 3,
+  "n_sources": 93,
+  "fractions": [
+    0.0,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "note": "attention_mass_on_appended is measured; mean_pool_on_appended is the analytic value for uniform chunk weighting, equal to the appended share of chunks",
+  "summary": [
+    {
+      "flood_fraction": 0.0,
+      "n": 93,
+      "appended_chunk_share": 0.0,
+      "attention_on_appended": 0.0,
+      "attention_on_appended_sd": 0.0,
+      "mean_pool_on_appended": 0.0,
+      "dilution_resisted": 0.0
+    },
+    {
+      "flood_fraction": 0.25,
+      "n": 93,
+      "appended_chunk_share": 0.16272586443114756,
+      "attention_on_appended": 0.07093098718592877,
+      "attention_on_appended_sd": 0.08345199352772674,
+      "mean_pool_on_appended": 0.16272586443114756,
+      "dilution_resisted": 0.09179487724521879
+    },
+    {
+      "flood_fraction": 0.5,
+      "n": 93,
+      "appended_chunk_share": 0.2804519889364263,
+      "attention_on_appended": 0.11086176636738963,
+      "attention_on_appended_sd": 0.1029081873054302,
+      "mean_pool_on_appended": 0.2804519889364263,
+      "dilution_resisted": 0.16959022256903666
+    },
+    {
+      "flood_fraction": 1.0,
+      "n": 93,
+      "appended_chunk_share": 0.45114205530788476,
+      "attention_on_appended": 0.1717388171862851,
+      "attention_on_appended_sd": 0.13312709829703132,
+      "mean_pool_on_appended": 0.45114205530788476,
+      "dilution_resisted": 0.2794032381215997
+    },
+    {
+      "flood_fraction": 2.0,
+      "n": 93,
+      "appended_chunk_share": 0.6243042056590213,
+      "attention_on_appended": 0.27781074033469283,
+      "attention_on_appended_sd": 0.1568004512089437,
+      "mean_pool_on_appended": 0.6243042056590213,
+      "dilution_resisted": 0.3464934653243285
+    }
+  ]
+}

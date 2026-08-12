@@ -62,7 +62,7 @@ The study makes three contributions.
 
 \begin{itemize}
     \item \textbf{An adversarial evaluation methodology for bytecode security classifiers, and the design finding it yields.} We contribute a query-budgeted adaptive attack over a defined bytecode action space with bounded byte overhead, per-candidate structural validity checking, and a bounded execution-preservation audit, applied across four architecture families with cross-model transfer. It shows that fixed-transformation evaluation is insufficient to rank screeners, and parameter-matched ablations attribute robustness specifically to length-invariant attention aggregation.
-    \item \textbf{An audited benchmark with a live temporal holdout.} AuthGuardBench-7702 combines 2,190 audited delegates in 790 families under family-disjoint cross-validation with external benign controls, an audited-implementation registry, and 752 independently collected live Ethereum delegates from a strictly later two-week window, disjoint at the family level.
+    \item \textbf{An audited benchmark and evaluation protocol, with a live temporal holdout.} AuthGuardBench-7702 combines 2,190 audited delegates in 790 families under family-disjoint cross-validation with external benign controls, an audited-implementation registry, and 752 independently collected live Ethereum delegates from a strictly later two-week window, disjoint at the family level. We release the protocol, split and family assignments, per-row predictions, donor provenance, and deterministic reconstruction scripts; redistribution of the third-party bytecode itself is pending license review, so we are careful to claim a reproducible evaluation pipeline rather than a distributable dataset.
     \item \textbf{Operational evidence for staged triage.} We measure the complete local screening path at 4.121\,ms median against a pinned reference decompiler at 2.687\,s median---a 652$\times$ gap---and report flag rates on live delegation traffic weighted by observed authorization volume.
 \end{itemize}
 
@@ -159,6 +159,8 @@ We consider an adversary who wants a delegate whose runtime code exhibits the re
 \end{itemize}
 
 We do \emph{not} grant white-box gradient access or the ability to retrain the defender's model. The defender is a wallet or security service that fetches the proposed delegate's runtime bytecode and applies AuthGuard-7702 before authorization; we assume correct retrieval and trusted model parameters. Compromise of the wallet, signing key, retrieval infrastructure, or screener is out of scope.
+
+\paragraph*{Where this model is and is not adequate} Score access with a bounded query budget is the right model for a screening \emph{service}, where the adversary observes verdicts but not weights. It is deliberately conservative for a screener shipped inside a wallet client, where a determined adversary can extract the parameters and mount white-box gradient attacks. We make this boundary explicit rather than eliding it: the results below are lower bounds on evadability for client-side deployment, and the strongest claim they support is a \emph{relative} one---how architectures compare when the attacker can search over bytecode edits. Closing the white-box case is necessary future work before a client-side deployment claim would be justified, and we do not make one.
 
 The model can only detect risk observable from runtime bytecode. Behavior depending on dynamic state, transaction context, unresolved proxy targets, external counterparties, or off-chain intent may remain invisible.
 
@@ -266,7 +268,7 @@ We ask four questions. RQ1: what does clean screening actually require, and whic
 \subsection{RQ1: Clean Screening and What It Fails to Distinguish}
 \label{sec:rq1}
 
-Table~\ref{tab:clean} reports clean family-disjoint results. AuthGuard-Seq ranks first at $0.924\pm0.014$ AUPRC and $0.833\pm0.016$ Recall@5\% FPR with held-out FPR $0.052\pm0.007$. Family-clustered paired bootstrap over 10{,}000 replicates supports the margin over Flat CNN ($+0.039$ AUPRC, CI $[+0.009,+0.073]$; $+0.121$ recall, CI $[+0.050,+0.190]$) and over histogram+$n$-gram XGBoost ($+0.091$ AUPRC, CI $[+0.045,+0.140]$).
+Table~\ref{tab:clean} reports clean family-disjoint results. AuthGuard-Seq ranks first at $0.924\pm0.014$ AUPRC and $0.833\pm0.016$ Recall@5\% FPR with held-out FPR $0.052\pm0.007$. Stated operationally, that recall means roughly \textbf{one in six source-flagged delegates is not surfaced} at the recommended operating point even on unmodified bytecode---a first-stage triage layer, not a gate. Family-clustered paired bootstrap over 10{,}000 replicates supports the margin over Flat CNN ($+0.039$ AUPRC, CI $[+0.009,+0.073]$; $+0.121$ recall, CI $[+0.050,+0.190]$) and over histogram+$n$-gram XGBoost ($+0.091$ AUPRC, CI $[+0.045,+0.140]$).
 
 \begin{table}[t]
 \centering
@@ -326,6 +328,17 @@ Hierarchy ($-$flat) & & $-.018$ & \multicolumn{2}{r}{$\mathbf{+.098}$ $[+.059,+.
 
 The clean column of Table~\ref{tab:ablation} is the paper's thesis in miniature: the best clean model is the worst model under attack.
 
+\paragraph*{The mechanism, measured directly} The ablation establishes \emph{that} attention aggregation matters; it does not show \emph{why}. The design argument in Section~\ref{sec:system} is that attention can concentrate on the informative region while uniform weighting must dilute evidence in proportion to appended content. Because the model exposes its chunk weights, we can test this rather than infer it. For all 727 held-out positives, scored by each fold's own checkpoint, we recorded the fraction of attention mass falling on chunks composed entirely of appended donor bytes. Uniform weighting has no learned parameters, so its mass on appended chunks is exactly their share of the chunk count---the analytic baseline the chunk-mean control realizes empirically.
+
+Figure~\ref{fig:dilution} shows the result. Under Flood-200\%, appended content occupies 63.1\% of chunks, but attention places only 37.6\% of its mass there, resisting 25.5 percentage points of dilution; the gap widens monotonically with flooding volume (8.2, 14.7, 22.1, and 25.5 points at 25\%, 50\%, 100\%, and 200\%). The mechanism is real and it is also \emph{partial}: attention still assigns more than a third of its weight to content that carries no signal, which is a direct explanation of why the residual attack success rate in Section~\ref{sec:rq2} is 0.181 rather than zero.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig-attention-dilution.pdf}
+\caption{Attention mass landing on appended donor chunks, against the uniform-weighting baseline that mean pooling is forced to. All 727 held-out positives, each scored by its own fold's checkpoint. The shaded gap is the dilution the learned aggregation resists.}
+\label{fig:dilution}
+\end{figure}
+
 \subsection{RQ2: Robustness to an Adaptive Adversary}
 \label{sec:rq2}
 
@@ -333,10 +346,10 @@ We attacked four architectures across three seeds and five folds under the proto
 
 \begin{table}[t]
 \centering
-\caption{Attack success rate by target and strategy (3 seeds $\times$ 5 folds, 727 sources, 64-query budget, $\le 2\times$ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI.}
+\caption{Attack success rate by target and strategy (727 sources, 64-query budget, $\le 2\times$ byte overhead, 100\% structural validity). Lower is better. Pooled ASR with family-clustered 95\% CI. Upper block: 3 seeds $\times$ 5 folds. Middle and lower blocks: seed 7702, 5 folds.}
 \label{tab:asr}
-\scriptsize
-\begin{tabularx}{\columnwidth}{@{}X r r r r@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
 Target & Clean det. & Flood-200\% & Beam & \textbf{Random} \\
 \midrule
@@ -348,13 +361,29 @@ Flat CNN & .722 & .750 & .907 & .945 \\
  & & \tiny[.643,.840] & \tiny[.850,.952] & \tiny[.914,.972] \\
 Hist.+4-gram XGBoost & .637 & .677 & .950 & .986 \\
  & & \tiny[.616,.739] & \tiny[.922,.973] & \tiny[.975,.995] \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{With flooding-augmented training}} \\
+\textbf{AuthGuard-Seq + aug.} & .839 & \textbf{.039} & \textbf{.051} & \textbf{.062} \\
+ & & \tiny[.005,.085] & \tiny[.018,.096] & \tiny[.025,.112] \\
+Flat CNN + aug. & .644 & .682 & .882 & .927 \\
+ & & \tiny[.558,.788] & \tiny[.817,.936] & \tiny[.881,.967] \\
+Hist.+4-gram XGB + aug. & .670 & .530 & .840 & .940 \\
+ & & \tiny[.451,.610] & \tiny[.780,.894] & \tiny[.904,.969] \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Parameter-matched controls ($\approx$30K params, cf. Table~\ref{tab:ablation})}} \\
+Chunk attention 16K & .847 & .045 & .068 & \textbf{.075} \\
+ & & \tiny[.018,.083] & \tiny[.032,.119] & \tiny[.037,.126] \\
+Flat control 16K & .831 & .422 & .705 & .889 \\
+ & & \tiny[.355,.496] & \tiny[.639,.772] & \tiny[.851,.925] \\
+Chunk mean 16K & .769 & .723 & .923 & .986 \\
+ & & \tiny[.667,.781] & \tiny[.894,.950] & \tiny[.976,.994] \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 AuthGuard-Seq is simultaneously the best clean detector (0.843 detected at the 5\% operating point) and by far the hardest to evade (0.181 under the strongest attack). Paired family-clustered contrasts against AuthGuard-Seq under random search are $+0.786$ (CI $[+0.727,+0.838]$) for Flat CNN and $+0.844$ (CI $[+0.786,+0.890]$) for XGBoost.
 
-\paragraph*{Random search beats guided search} On every target, seeded random search outperforms score-guided beam search (e.g. 0.181 versus 0.146 against AuthGuard-Seq, 0.986 versus 0.950 against XGBoost). The beam follows first-step score reductions into a local optimum while random search explores more diverse compositions on the same budget. We therefore report the maximum over strategies as the attack result; quoting the guided search alone would understate the adversary.
+\paragraph*{Random search beats guided search} On every target, seeded random search outperforms score-guided beam search (e.g. 0.181 versus 0.146 against AuthGuard-Seq, 0.986 versus 0.950 against XGBoost). The beam follows first-step score reductions into a local optimum while random search explores more diverse compositions on the same budget. We report the \emph{maximum} over strategies as the attack result, so a weak guided search cannot flatter the defence: the reported ASR is the best of two budget-matched attackers, and it is the undirected one that is stronger here. This also means the numbers in Table~\ref{tab:asr} should be read as lower bounds on what a better-designed search would achieve.
 
 \paragraph*{Fixed transformations cannot rank these models} The decisive comparison is between AuthGuard-Seq and the cheap emulator, which were statistically tied on clean data. Table~\ref{tab:fixedvsadaptive} shows their gap as a function of attack strength.
 
@@ -375,7 +404,31 @@ Random search, 64 queries & $+.360$ $[+.188,+.518]$ & yes \\
 \end{tabularx}
 \end{table}
 
-Under a single fixed transformation---the protocol used throughout prior bytecode security learning, and in the earlier version of this work---a 15-feature logistic regression and a hierarchical neural model are \textbf{indistinguishable}. The separation appears only under adaptive search and grows monotonically with attack strength. This is the strongest justification we can offer for the methodology itself: it is not decoration around a model result, it is the only instrument in this study that resolves the comparison.
+Under a single fixed transformation---the protocol used throughout prior bytecode security learning, and in the earlier version of this work---a 15-feature logistic regression and a hierarchical neural model are \textbf{indistinguishable}. The separation appears only under adaptive search and grows monotonically with attack strength, as Figure~\ref{fig:strength} shows. This is the strongest justification we can offer for the methodology itself: it is not decoration around a model result, it is the only instrument in this study that resolves the comparison.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig-attack-strength.pdf}
+\caption{Attack success against attacker strength. The models that are close under a fixed transformation separate under budgeted adaptive search.}
+\label{fig:strength}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{fig-clean-vs-asr.pdf}
+\caption{Clean detection and worst-case attack success for every evaluated configuration, ordered by robustness. Clean detection spans a narrow band and does not order the models; attack success spans almost the full range. The three configurations with attention aggregation occupy the robust end regardless of parameter count or training scheme.}
+\label{fig:cleanvsasr}
+\end{figure*}
+
+\paragraph*{Can training substitute for architecture?} The natural objection to an architectural claim is that robustness might come from training data rather than design: augment the baselines with flooded examples and the gap may close. We tested this directly. Each model was retrained with its training set doubled by one flooding-augmented copy of every training contract, drawn from train-partition donors with fractions cycled over 25--200\% so the augmented set spans the flooding range. Results are the lower block of Table~\ref{tab:asr}.
+
+Augmentation does help---against the transformation it was trained on. Under fixed Flood-200\% it cuts Flat CNN from 0.750 to 0.682 and XGBoost from 0.677 to 0.530. Under adaptive search it barely moves: Flat CNN 0.945 to 0.927, XGBoost 0.986 to 0.940. Both augmented baselines remain worse than clean-trained AuthGuard-Seq by $+0.774$ (CI $[+0.697,+0.841]$) and $+0.786$ (CI $[+0.703,+0.852]$) respectively, intervals excluding zero. Augmentation therefore does not substitute for the architecture. It is also not free for the baselines: Flat CNN loses clean detection (0.722 to 0.644) while buying almost no adaptive robustness---the familiar robustness--accuracy tension.
+
+The same intervention behaves completely differently on the attention model. AuthGuard-Seq falls from 0.181 to \textbf{0.062} under adaptive search ($-0.133$, CI $[-0.194,-0.086]$) at essentially no clean cost (0.843 to 0.839). Augmentation and attention aggregation are complementary rather than alternative: the augmented data helps when the architecture can exploit it. We note this is also a third instance of the paper's methodological point---judged only on fixed Flood-200\%, augmentation would look like a substantial defence for the baselines, and under adaptive evaluation it is not.
+
+\paragraph*{The mechanism claim holds under adaptive attack} Section~\ref{sec:rq1} attributed robustness to attention aggregation using clean and fixed-flooding evaluation. Since we argue fixed transformations are an insufficient instrument, we re-tested that attribution with the adaptive attack on the same parameter-matched controls (lower block of Table~\ref{tab:asr}). At roughly 30{,}000 parameters each, chunk attention reaches 0.075 adaptive ASR against 0.889 for the flat control and 0.986 for chunk mean---a thirteenfold gap to mean pooling at matched capacity, with paired contrasts of $+0.837$ (CI $[+0.775,+0.884]$) and $+0.710$ (CI $[+0.636,+0.772]$) against AuthGuard-Seq. The mechanism attribution is therefore not an artefact of the weaker protocol.
+
+One result runs against expectation and we report it as such: the 30{,}050-parameter matched attention control is \emph{more} robust than the 63{,}266-parameter deployed model ($-0.129$, CI $[-0.189,-0.081]$) at equal clean detection (0.847 versus 0.843). On this evidence the smaller matched configuration, not the larger reference architecture, is the one a deployment should use.
 
 \paragraph*{Transfer is asymmetric} Table~\ref{tab:transfer} scores each target's best beam-search candidate against the other models. Attacks constructed against AuthGuard-Seq transfer to Flat CNN at 0.782 and XGBoost at 0.673, while attacks constructed against those models transfer to AuthGuard-Seq at only 0.088 and 0.084. Evasive directions found against flat aggregation do not generalize to attention aggregation, though the converse holds freely. This is independent evidence that the robustness gap reflects the representation rather than a fortunate threshold.
 
@@ -424,13 +477,17 @@ Nominal point & By contract & Leakage-clean & Authorization-weighted \\
 \end{tabularx}
 \end{table}
 
-Two readings are required. Thresholds drift substantially: the nominal 5\% point flags 20.3\% of live delegates, far above the 6.5\% seen on curated benign controls. But this stream is real mixed traffic containing genuinely risky delegates, so 20.3\% is a flag rate, not a false-positive rate, and cannot be decomposed without labels. Weighted by observed authorization volume---what a wallet's users actually encounter---the figure falls to 9.4\%, because high-volume delegates are predominantly popular wallet-infrastructure implementations that score low. The gap between per-contract and per-authorization rates is itself a deployment-relevant observation, and it argues that population-specific recalibration is mandatory before deployment.
+The deployment-relevant figure is the authorization-weighted one, because a wallet's users encounter delegates in proportion to how often they are actually authorized, not in proportion to how many distinct delegates exist. On that basis the nominal 5\% point flags \textbf{9.4\%} of live authorization volume and the nominal 1\% point flags \textbf{5.9\%}; the latter is a plausible deployment setting for an advisory tier. The weighted rates are roughly half the per-contract rates because high-volume delegates are predominantly popular wallet-infrastructure implementations that score low, while the long tail of rarely-authorized delegates carries most of the flags.
+
+Two further readings are required. First, thresholds drift substantially: the nominal 5\% point flags 20.3\% of distinct live delegates, far above the 6.5\% seen on curated benign controls, so population-specific recalibration is mandatory before deployment. Second, this stream is real mixed traffic containing genuinely risky delegates, so 20.3\% is a flag rate, not a false-positive rate, and cannot be decomposed without labels---we deliberately do not report it as a false-alarm measurement.
 
 \paragraph*{Audited implementations} Across eight named production EIP-7702 implementations, three occur within primary training families; scoring current checkpoints on those would leak, so we exclude them from any aggregate and report them only descriptively. Of the remainder, none is flagged at the 5\% point, though several fall in the \textsc{Caution} band at the 10\% point. We treat this as a qualitative check, not a false-alarm estimate; $n=8$ cannot support one.
 
 \subsection{RQ4: Operational Cost and Staged Triage}
 
 Across 1{,}500 complete screening calls on one CPU thread, the full local path has median latency 4.121\,ms, p95 14.547\,ms, and p99 21.429\,ms; forward inference alone is 0.950\,ms median and model loading 7.690\,ms, amortizable in a persistent process. Measurements exclude RPC access, node latency, wallet rendering, and user interaction.
+
+The timed artifact is the seed-7702, fold-0 cross-validation checkpoint, used here for cost measurement rather than as a released model. A deployed screener would be a single model retrained on all folds with calibration and thresholds fit on a held-out split drawn from the intended deployment population, following the recalibration finding of Section~\ref{sec:rq3}; we report cross-validation artifacts throughout because every accuracy and robustness number in this paper is a held-out estimate, and a fully retrained model would have no untouched data left to evaluate it on.
 
 For the deeper-analysis side of a staged pipeline, we measured a pinned official Gigahorse decompiler image on 60 deterministic family-distinct inputs. All 60 succeeded, with warm median 2.687\,s, p95 5.618\,s, maximum 28.067\,s, 210.59\,s total warm serial wall time, and 275.7\,MB peak memory; a separate cold run including Datalog compilation took 264.23\,s at 10.9\,GB peak.
 
@@ -464,6 +521,8 @@ The median ratio against the full local screening path is \textbf{652$\times$} (
 
 The results support a division of labor: rapid learned screening prioritizes delegates for static analysis, symbolic execution, history checks, or human review, rather than acting as a proof engine. They also support a narrower and more useful claim about what such a screener needs. Clean accuracy is achievable by very cheap models, so it is a poor basis for choosing one. Robustness to an adversary who authors the bytecode is not cheaply achievable, separates architectures by a factor of five, and is invisible to the fixed-transformation protocol prior work uses.
 
+\paragraph*{Trust establishment under delegated execution} EIP-7702 changes what a signature means. Before it, authorizing a transaction committed a user to one state transition they could in principle inspect; after it, authorizing a delegation commits them to whatever a third-party program does with their account until revoked. That shifts the security question from transaction validation to \emph{counterparty assessment}, and it does so at a moment when the usual bases for trust---history, reputation, audit status, verified source---are frequently absent by construction, because the delegate may have been deployed minutes earlier. Bytecode screening is best understood as a substitute trust signal for exactly that gap: it cannot establish that a delegate is safe, but it can supply evidence where no other evidence exists yet, and it can do so in milliseconds at the moment the decision is made. This framing also explains why adversarial robustness is the property that matters. A trust signal an adversary can cheaply manufacture is worse than no signal, because it converts absence of warning into false assurance. The same argument applies to any learned trust signal over attacker-authored artifacts, which is why we regard the evaluation methodology rather than the specific model as the transferable contribution.
+
 We emphasize what we do not claim. We claim no architectural novelty; every component is standard. We do not claim clean superiority for hierarchy over a parameter-matched flat encoder, which our own ablation does not support. We do not claim robustness against white-box gradient attacks, adaptive retraining, or arbitrary semantics-preserving transformations, none of which we evaluated.
 
 \subsection{Limitations}
@@ -478,7 +537,7 @@ We emphasize what we do not claim. We claim no architectural novelty; every comp
 
 \emph{Live population.} The temporal holdout is unlabeled, Ethereum-only, and two weeks long, whereas the benchmark spans seven chains. It measures operating-point transfer, not detection quality, and its 9.3\% family-level overlap with training bytecode is disclosed rather than removed from the primary figure.
 
-\emph{Variance.} Three training seeds inform every reported standard deviation. Elsewhere in this project, cuDNN algorithm selection moved a comparable recall metric by up to 0.026, so reported deviations may understate cross-hardware variability.
+\emph{Variance.} Three training seeds inform the primary clean and adaptive-attack results. The augmented-training and parameter-matched control blocks of Table~\ref{tab:asr} are single-seed (7702) across all five folds, so their confidence intervals reflect family resampling but not seed variability; the effects there are large relative to the seed spread observed elsewhere (at most 0.020 in fold-then-seed ASR), but we do not claim seed-level stability for them. Elsewhere in this project, cuDNN algorithm selection moved a comparable recall metric by up to 0.026, so reported deviations may understate cross-hardware variability.
 
 \subsection{Ethics and Responsible Disclosure}
 

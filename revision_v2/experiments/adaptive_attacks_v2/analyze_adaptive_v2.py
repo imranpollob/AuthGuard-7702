@@ -21,9 +21,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RV2 = os.path.abspath(os.path.join(HERE, "..", ".."))
 OUT = os.path.join(RV2, "results", "adaptive_attacks_v2")
 NBOOT = 10_000
-ORDER = ["authguard_seq", "emulator_logreg", "flat_cnn", "hist_ngram_xgb"]
-LABELS = {"authguard_seq": "AuthGuard-Seq", "emulator_logreg": "15-feature emulator (logreg)",
-          "flat_cnn": "Flat CNN", "hist_ngram_xgb": "Hist.+4-gram XGBoost"}
+ORDER = ["authguard_seq", "authguard_seq_aug", "emulator_logreg",
+         "flat_cnn", "flat_cnn_aug", "hist_ngram_xgb", "hist_ngram_xgb_aug",
+         "chunk_attention_16384", "chunk_mean_16384", "flat_control_16384"]
+LABELS = {"authguard_seq": "AuthGuard-Seq",
+          "authguard_seq_aug": "AuthGuard-Seq + flood-augmented training",
+          "emulator_logreg": "15-feature emulator (logreg)",
+          "flat_cnn": "Flat CNN", "flat_cnn_aug": "Flat CNN + flood-augmented training",
+          "hist_ngram_xgb": "Hist.+4-gram XGBoost",
+          "hist_ngram_xgb_aug": "Hist.+4-gram XGBoost + flood-augmented training",
+          "chunk_attention_16384": "Ablation: chunk attention 16K",
+          "chunk_mean_16384": "Ablation: chunk mean 16K",
+          "flat_control_16384": "Ablation: flat control 16K"}
 METHOD_LABELS = {"F200": "Flood-200% (fixed)", "fixed_oracle_best": "Best fixed transform",
                  "random_search": "Random search", "beam_search": "Beam search (adaptive)"}
 
