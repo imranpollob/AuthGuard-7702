@@ -1,0 +1,55 @@
+{
+  "phase": "4 tiered attack on frozen regenerated checkpoints",
+  "script": "revision_v2/experiments/sprint_phase4/run_tiered_attack.py",
+  "provenance": "regenerated_experiment",
+  "checkpoint_dir": "results/sprint_phase3/checkpoints",
+  "seed": 7702,
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "authguard_seq",
+    "emulator_logreg",
+    "flat_cnn",
+    "hist_ngram_xgb"
+  ],
+  "tiers": [
+    "A",
+    "B",
+    "C"
+  ],
+  "budget": 64,
+  "tier_actions": {
+    "A": [
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50"
+    ],
+    "B": [
+      "metadata",
+      "neutral25",
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50"
+    ],
+    "C": [
+      "metadata",
+      "address",
+      "selector",
+      "neutral25",
+      "flood25",
+      "flood50",
+      "flood100",
+      "flood200"
+    ]
+  },
+  "n_attack_rows": 14540,
+  "n_query_rows": 409566,
+  "wall_seconds": 4722.083181381226
+}

@@ -1,0 +1,574 @@
+{
+  "phase": "4 tiered attack analysis (regenerated checkpoints)",
+  "script": "revision_v2/experiments/sprint_phase4/analyze_tiered.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "provenance": "regenerated_experiment",
+  "nboot": 10000,
+  "seed_scope": [
+    7702,
+    7703,
+    7704
+  ],
+  "fold_scope": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "tier_table": [
+    {
+      "model": "authguard_seq",
+      "tier": "A",
+      "clean_detection": 0.8450252177900046,
+      "ASR_fixed_flood_oracle": 0.14921323928377644,
+      "ASR_best_of": 0.14921323928377644,
+      "CI95": [
+        0.10523443961952027,
+        0.20292977941491044
+      ],
+      "n_eligible": 1843,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.7189362677670793,
+      "robust_recall_product": 0.7189362677670794,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "authguard_seq",
+      "tier": "B",
+      "clean_detection": 0.8450252177900046,
+      "ASR_beam_search": 0.15897992403689637,
+      "ASR_random_search": 0.19696147585458493,
+      "ASR_best_of": 0.19696147585458493,
+      "CI95": [
+        0.14757778546550762,
+        0.2561742693172406
+      ],
+      "n_eligible": 1843,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.6785878037597433,
+      "robust_recall_product": 0.6785878037597433,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "authguard_seq",
+      "tier": "C",
+      "clean_detection": 0.8450252177900046,
+      "ASR_beam_search": 0.15897992403689637,
+      "ASR_random_search": 0.20672816060770483,
+      "ASR_best_of": 0.20835594139989147,
+      "CI95": [
+        0.1577009848551307,
+        0.2682417383806006
+      ],
+      "n_eligible": 1843,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.6689591930307198,
+      "robust_recall_product": 0.6689591930307199,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "A",
+      "clean_detection": 0.8253094910591472,
+      "ASR_fixed_flood_oracle": 0.30833333333333335,
+      "ASR_best_of": 0.30833333333333335,
+      "CI95": [
+        0.21817750969409735,
+        0.41279134752018853
+      ],
+      "n_eligible": 1800,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.5708390646492435,
+      "robust_recall_product": 0.5708390646492435,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "B",
+      "clean_detection": 0.8253094910591472,
+      "ASR_beam_search": 0.43166666666666664,
+      "ASR_random_search": 0.5416666666666666,
+      "ASR_best_of": 0.5416666666666666,
+      "CI95": [
+        0.4269378549949883,
+        0.6454265107682418
+      ],
+      "n_eligible": 1800,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.3782668500687758,
+      "robust_recall_product": 0.3782668500687758,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "emulator_logreg",
+      "tier": "C",
+      "clean_detection": 0.8253094910591472,
+      "ASR_beam_search": 0.45166666666666666,
+      "ASR_random_search": 0.5361111111111111,
+      "ASR_best_of": 0.5722222222222222,
+      "CI95": [
+        0.46148669121000846,
+        0.6752941731341606
+      ],
+      "n_eligible": 1800,
+      "n_observations": 2181,
+      "n_families": 209,
+      "robust_recall_direct": 0.35304906006419073,
+      "robust_recall_product": 0.3530490600641908,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "A",
+      "clean_detection": 0.6836313617606602,
+      "ASR_fixed_flood_oracle": 0.8108651911468813,
+      "ASR_best_of": 0.8108651911468813,
+      "CI95": [
+        0.7183091019233682,
+        0.8893621728488044
+      ],
+      "n_eligible": 497,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.12929848693259974,
+      "robust_recall_product": 0.12929848693259974,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "B",
+      "clean_detection": 0.6836313617606602,
+      "ASR_beam_search": 0.8893360160965795,
+      "ASR_random_search": 0.9356136820925554,
+      "ASR_best_of": 0.9356136820925554,
+      "CI95": [
+        0.8933587929249135,
+        0.9720003731343283
+      ],
+      "n_eligible": 497,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.04401650618982118,
+      "robust_recall_product": 0.04401650618982116,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "flat_cnn",
+      "tier": "C",
+      "clean_detection": 0.6836313617606602,
+      "ASR_beam_search": 0.9114688128772636,
+      "ASR_random_search": 0.937625754527163,
+      "ASR_best_of": 0.9476861167002012,
+      "CI95": [
+        0.9138653495105907,
+        0.9780445687572223
+      ],
+      "n_eligible": 497,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.03576341127922971,
+      "robust_recall_product": 0.03576341127922972,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "A",
+      "clean_detection": 0.6189821182943603,
+      "ASR_fixed_flood_oracle": 0.8111111111111111,
+      "ASR_best_of": 0.8111111111111111,
+      "CI95": [
+        0.7538118127020427,
+        0.8662280701754386
+      ],
+      "n_eligible": 450,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.11691884456671252,
+      "robust_recall_product": 0.1169188445667125,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "B",
+      "clean_detection": 0.6189821182943603,
+      "ASR_beam_search": 0.94,
+      "ASR_random_search": 0.9844444444444445,
+      "ASR_best_of": 0.9844444444444445,
+      "CI95": [
+        0.9674405965621841,
+        0.9972901560096682
+      ],
+      "n_eligible": 450,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.009628610729023384,
+      "robust_recall_product": 0.009628610729023376,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "tier": "C",
+      "clean_detection": 0.6189821182943603,
+      "ASR_beam_search": 0.9466666666666667,
+      "ASR_random_search": 0.9844444444444445,
+      "ASR_best_of": 0.9911111111111112,
+      "CI95": [
+        0.9805555555555555,
+        0.9980843827608185
+      ],
+      "n_eligible": 450,
+      "n_observations": 727,
+      "n_families": 209,
+      "robust_recall_direct": 0.005502063273727648,
+      "robust_recall_product": 0.005502063273727614,
+      "seed_scope": [
+        7702
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "regenerated_experiment"
+    }
+  ],
+  "paired_contrasts": [
+    {
+      "tier": "A",
+      "left": "emulator_logreg",
+      "right": "authguard_seq",
+      "left_ASR": 0.33532934131736525,
+      "right_ASR": 0.1270791749833666,
+      "difference": 0.20825016633399868,
+      "CI95": [
+        0.0757279352694569,
+        0.3341837060577936
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1503,
+      "n_families": 209,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "B",
+      "left": "emulator_logreg",
+      "right": "authguard_seq",
+      "left_ASR": 0.5369261477045908,
+      "right_ASR": 0.16699933466400532,
+      "difference": 0.3699268130405855,
+      "CI95": [
+        0.20790328732981692,
+        0.5195357752422421
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1503,
+      "n_families": 209,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "C",
+      "left": "emulator_logreg",
+      "right": "authguard_seq",
+      "left_ASR": 0.5635395874916833,
+      "right_ASR": 0.18097139055222888,
+      "difference": 0.38256819693945443,
+      "CI95": [
+        0.2226198519789576,
+        0.5237306761664061
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 1503,
+      "n_families": 209,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "A",
+      "left": "flat_cnn",
+      "right": "authguard_seq",
+      "left_ASR": 0.8058455114822547,
+      "right_ASR": 0.1127348643006263,
+      "difference": 0.6931106471816284,
+      "CI95": [
+        0.5929697599648311,
+        0.7843574113225276
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 479,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "B",
+      "left": "flat_cnn",
+      "right": "authguard_seq",
+      "left_ASR": 0.9331941544885177,
+      "right_ASR": 0.15031315240083507,
+      "difference": 0.7828810020876826,
+      "CI95": [
+        0.7075173474522812,
+        0.8473286664865229
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 479,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "C",
+      "left": "flat_cnn",
+      "right": "authguard_seq",
+      "left_ASR": 0.9478079331941545,
+      "right_ASR": 0.16075156576200417,
+      "difference": 0.7870563674321504,
+      "CI95": [
+        0.7099677965538993,
+        0.8504283489096572
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 479,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "A",
+      "left": "hist_ngram_xgb",
+      "right": "authguard_seq",
+      "left_ASR": 0.8033175355450237,
+      "right_ASR": 0.08767772511848342,
+      "difference": 0.7156398104265402,
+      "CI95": [
+        0.6420411501377411,
+        0.782608695652174
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 422,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "B",
+      "left": "hist_ngram_xgb",
+      "right": "authguard_seq",
+      "left_ASR": 0.9834123222748815,
+      "right_ASR": 0.12796208530805686,
+      "difference": 0.8554502369668247,
+      "CI95": [
+        0.7828741808650066,
+        0.9086541276346604
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 422,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    },
+    {
+      "tier": "C",
+      "left": "hist_ngram_xgb",
+      "right": "authguard_seq",
+      "left_ASR": 0.990521327014218,
+      "right_ASR": 0.13033175355450238,
+      "difference": 0.8601895734597157,
+      "CI95": [
+        0.7912427143497639,
+        0.9115062878435025
+      ],
+      "excludes_zero": true,
+      "n_paired_eligible": 422,
+      "n_families": 209,
+      "seed_scope": [
+        7702
+      ],
+      "provenance": "regenerated_experiment"
+    }
+  ],
+  "tier_c_only": [
+    {
+      "model": "authguard_seq",
+      "n_tierC_successes": 384,
+      "n_tierC_only": 46,
+      "fraction_tierC_only": 0.11979166666666667,
+      "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+    },
+    {
+      "model": "emulator_logreg",
+      "n_tierC_successes": 1030,
+      "n_tierC_only": 137,
+      "fraction_tierC_only": 0.13300970873786408,
+      "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+    },
+    {
+      "model": "flat_cnn",
+      "n_tierC_successes": 471,
+      "n_tierC_only": 14,
+      "fraction_tierC_only": 0.029723991507430998,
+      "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "n_tierC_successes": 446,
+      "n_tierC_only": 5,
+      "fraction_tierC_only": 0.011210762331838564,
+      "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+    }
+  ]
+}

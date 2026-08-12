@@ -1,0 +1,3873 @@
+{
+  "sprint": "AuthGuard-7702 final 2-day coding sprint",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "generated_by": "revision_v2/experiments/sprint_phase6/freeze.py",
+  "blocks_are_never_merged": "stored_artifact values were recomputed from historical attack records whose models no longer exist; regenerated_experiment values come from the Phase 3 checkpoints. Never average across blocks.",
+  "stored_artifact": {
+    "phase0_fixed_oracles": {
+      "phase": "0.2 restricted fixed oracles from stored scores",
+      "script": "revision_v2/experiments/sprint_phase0/phase0_fixed_oracles.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "input_files": [
+        "attack_per_row_seed7702.csv.gz",
+        "attack_per_row_seed7702_emulator.csv.gz",
+        "attack_per_row_seed7703.csv.gz",
+        "attack_per_row_seed7703_emulator.csv.gz",
+        "attack_per_row_seed7704.csv.gz",
+        "attack_per_row_seed7704_emulator.csv.gz"
+      ],
+      "nboot": 10000,
+      "tier_definitions": {
+        "A_fixed": [
+          "F25",
+          "F50",
+          "F100",
+          "F200"
+        ],
+        "B_fixed_available": [
+          "F25",
+          "F50",
+          "F100",
+          "F200",
+          "M1"
+        ],
+        "C_fixed": [
+          "F25",
+          "F50",
+          "F100",
+          "F200",
+          "M1",
+          "M2",
+          "M3"
+        ]
+      },
+      "condition_semantics": {
+        "M1": "metadata rewrite alone",
+        "M2": "metadata + address rewrite + flood 20%",
+        "M3": "metadata + address + selector rewrite + flood 20%",
+        "F25/F50/F100/F200": "flooding alone at 25/50/100/200%",
+        "neutral insertion": "NOT available as a fixed condition (adaptive action only)"
+      },
+      "tier_c_reproduction_gate": {
+        "n_compared": 8724,
+        "score_mismatches": 0,
+        "attack_success_mismatches": 0,
+        "max_abs_score_delta": 0.0,
+        "passed": true
+      },
+      "rows": [
+        {
+          "model": "authguard_seq",
+          "tier": "A_fixed",
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.1343121261555193,
+          "CI95": [
+            0.089863055913353,
+            0.1897471619118847
+          ],
+          "n_eligible": 1839,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.7299403943145346,
+          "robust_recall_product": 0.7299403943145346,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "A_fixed",
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3016666666666667,
+          "CI95": [
+            0.20071637673816362,
+            0.4124213204229128
+          ],
+          "n_eligible": 1800,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.5763411279229711,
+          "robust_recall_product": 0.5763411279229711,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "A_fixed",
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8100381194409149,
+          "CI95": [
+            0.7334672384030557,
+            0.8777843526763637
+          ],
+          "n_eligible": 1574,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.13709307657038056,
+          "robust_recall_product": 0.13709307657038056,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "A_fixed",
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8394528437724982,
+          "CI95": [
+            0.7787584988128642,
+            0.8905710461884567
+          ],
+          "n_eligible": 1389,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.10224667583677212,
+          "robust_recall_product": 0.10224667583677213,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "B_fixed_available",
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.1343121261555193,
+          "CI95": [
+            0.09003600800433186,
+            0.19103576779078538
+          ],
+          "n_eligible": 1839,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.7299403943145346,
+          "robust_recall_product": 0.7299403943145346,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "B_fixed_available",
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3016666666666667,
+          "CI95": [
+            0.19782031792531557,
+            0.41234293893957574
+          ],
+          "n_eligible": 1800,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.5763411279229711,
+          "robust_recall_product": 0.5763411279229711,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "B_fixed_available",
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8100381194409149,
+          "CI95": [
+            0.7302818012559563,
+            0.8772057384451775
+          ],
+          "n_eligible": 1574,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.13709307657038056,
+          "robust_recall_product": 0.13709307657038056,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "B_fixed_available",
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8408927285817135,
+          "CI95": [
+            0.7815051039305451,
+            0.8916868257600523
+          ],
+          "n_eligible": 1389,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.10132966529115085,
+          "robust_recall_product": 0.10132966529115082,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "C_fixed",
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.13648722131593258,
+          "CI95": [
+            0.09219751757849905,
+            0.19234846831244207
+          ],
+          "n_eligible": 1839,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.7281063732232921,
+          "robust_recall_product": 0.7281063732232921,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "C_fixed",
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3433333333333333,
+          "CI95": [
+            0.2340397036474164,
+            0.45662702834459223
+          ],
+          "n_eligible": 1800,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.5419532324621733,
+          "robust_recall_product": 0.5419532324621734,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "C_fixed",
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8214739517153749,
+          "CI95": [
+            0.7467162852018212,
+            0.8859063684012496
+          ],
+          "n_eligible": 1574,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.12883998165978908,
+          "robust_recall_product": 0.12883998165978908,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "C_fixed",
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8459323254139669,
+          "CI95": [
+            0.7873948355802338,
+            0.8940218357659719
+          ],
+          "n_eligible": 1389,
+          "n_source_seed_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.09812012838147639,
+          "robust_recall_product": 0.09812012838147638,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        }
+      ]
+    },
+    "phase0_paired_ladder": {
+      "phase": "0.3 paired fixed-oracle ladder",
+      "script": "revision_v2/experiments/sprint_phase0/phase0_paired_ladder.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "input_files": [
+        "attack_per_row_seed7702.csv.gz",
+        "attack_per_row_seed7702_emulator.csv.gz",
+        "attack_per_row_seed7703.csv.gz",
+        "attack_per_row_seed7703_emulator.csv.gz",
+        "attack_per_row_seed7704.csv.gz",
+        "attack_per_row_seed7704_emulator.csv.gz"
+      ],
+      "nboot": 10000,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact",
+      "ladder": [
+        {
+          "condition": "Flood-200 only",
+          "emulator_ASR": 0.19907407407407407,
+          "authguard_ASR": 0.11706349206349206,
+          "difference": 0.082010582010582,
+          "CI95": [
+            -0.04661073623119937,
+            0.2181034613822992
+          ],
+          "excludes_zero": false,
+          "n_paired_eligible": 1512,
+          "n_paired_shared_keys": 2181,
+          "n_families": 209,
+          "n_distinct_sources": 727,
+          "replicates": 10000
+        },
+        {
+          "condition": "Tier A fixed oracle (flooding)",
+          "emulator_ASR": 0.31283068783068785,
+          "authguard_ASR": 0.12896825396825398,
+          "difference": 0.18386243386243387,
+          "CI95": [
+            0.034791409346595824,
+            0.329960682273369
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1512,
+          "n_paired_shared_keys": 2181,
+          "n_families": 209,
+          "n_distinct_sources": 727,
+          "replicates": 10000
+        },
+        {
+          "condition": "Tier B fixed oracle (flooding + metadata)",
+          "emulator_ASR": 0.31283068783068785,
+          "authguard_ASR": 0.12896825396825398,
+          "difference": 0.18386243386243387,
+          "CI95": [
+            0.03526872737399053,
+            0.3299439760985736
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1512,
+          "n_paired_shared_keys": 2181,
+          "n_families": 209,
+          "n_distinct_sources": 727,
+          "replicates": 10000
+        },
+        {
+          "condition": "Tier C fixed oracle (all seven)",
+          "emulator_ASR": 0.3525132275132275,
+          "authguard_ASR": 0.13161375661375663,
+          "difference": 0.2208994708994709,
+          "CI95": [
+            0.06407536577161464,
+            0.3743591752347093
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1512,
+          "n_paired_shared_keys": 2181,
+          "n_families": 209,
+          "n_distinct_sources": 727,
+          "replicates": 10000
+        }
+      ],
+      "eligible_population_derivation": {
+        "distinct_source_contracts": 727,
+        "seeds": [
+          7702,
+          7703,
+          7704
+        ],
+        "source_seed_observations": 2181,
+        "cleanly_detected_by_both": 1512,
+        "note": "The published 'eligible sources' figure counts source-seed observations, not distinct contracts: 727 contracts x 3 seeds = 2181 observations, of which this many are cleanly detected by both models."
+      }
+    },
+    "phase0_winner_composition": {
+      "phase": "0.4 winner-composition statistics (Tier-C adaptive winners)",
+      "script": "revision_v2/experiments/sprint_phase0/phase0_winner_composition.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "input_files": [
+        "attack_per_row_seed7702.csv.gz",
+        "attack_per_row_seed7702_emulator.csv.gz",
+        "attack_per_row_seed7703.csv.gz",
+        "attack_per_row_seed7703_emulator.csv.gz",
+        "attack_per_row_seed7704.csv.gz",
+        "attack_per_row_seed7704_emulator.csv.gz"
+      ],
+      "methods": [
+        "random_search",
+        "beam_search"
+      ],
+      "provenance": "stored_artifact",
+      "caveat": "Winner-only records. A winner containing a weak-preservation primitive does not prove no Tier-A/B attack existed for that source; Tier-A/B-only fractions are lower bounds on restricted-search ASR.",
+      "per_model": [
+        {
+          "model": "authguard_seq",
+          "n_successful_winners": 600,
+          "pct_only_tierA_actions": 0.07333333333333333,
+          "pct_only_tierB_actions": 0.31333333333333335,
+          "pct_contains_address": 0.55,
+          "pct_contains_selector": 0.325,
+          "pct_contains_address_or_selector": 0.6866666666666666,
+          "pct_contains_flooding": 1.0,
+          "pct_contains_metadata": 0.715,
+          "pct_contains_neutral25": 0.2816666666666667,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact",
+          "interpretation": "winner composition; lower bound"
+        },
+        {
+          "model": "emulator_logreg",
+          "n_successful_winners": 1778,
+          "pct_only_tierA_actions": 0.06917885264341957,
+          "pct_only_tierB_actions": 0.4651293588301462,
+          "pct_contains_address": 0.38976377952755903,
+          "pct_contains_selector": 0.2761529808773903,
+          "pct_contains_address_or_selector": 0.5348706411698537,
+          "pct_contains_flooding": 0.9988751406074241,
+          "pct_contains_metadata": 0.6524184476940382,
+          "pct_contains_neutral25": 0.5095613048368954,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact",
+          "interpretation": "winner composition; lower bound"
+        },
+        {
+          "model": "flat_cnn",
+          "n_successful_winners": 2915,
+          "pct_only_tierA_actions": 0.09742710120068611,
+          "pct_only_tierB_actions": 0.3941680960548885,
+          "pct_contains_address": 0.4631217838765009,
+          "pct_contains_selector": 0.28130360205831906,
+          "pct_contains_address_or_selector": 0.6058319039451114,
+          "pct_contains_flooding": 0.9993138936535163,
+          "pct_contains_metadata": 0.5917667238421955,
+          "pct_contains_neutral25": 0.4542024013722127,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact",
+          "interpretation": "winner composition; lower bound"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "n_successful_winners": 2690,
+          "pct_only_tierA_actions": 0.0687732342007435,
+          "pct_only_tierB_actions": 0.4171003717472119,
+          "pct_contains_address": 0.44535315985130114,
+          "pct_contains_selector": 0.27026022304832714,
+          "pct_contains_address_or_selector": 0.5828996282527881,
+          "pct_contains_flooding": 0.9992565055762082,
+          "pct_contains_metadata": 0.6460966542750929,
+          "pct_contains_neutral25": 0.5576208178438662,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact",
+          "interpretation": "winner composition; lower bound"
+        }
+      ],
+      "top_compositions": {
+        "authguard_seq": [
+          {
+            "composition": "flood200+address+metadata",
+            "count": 78
+          },
+          {
+            "composition": "flood200+metadata",
+            "count": 71
+          },
+          {
+            "composition": "flood200",
+            "count": 39
+          },
+          {
+            "composition": "selector+flood200",
+            "count": 18
+          },
+          {
+            "composition": "address+flood200",
+            "count": 16
+          }
+        ],
+        "emulator_logreg": [
+          {
+            "composition": "flood200+metadata",
+            "count": 123
+          },
+          {
+            "composition": "flood200",
+            "count": 84
+          },
+          {
+            "composition": "metadata+flood200",
+            "count": 75
+          },
+          {
+            "composition": "neutral25+flood100+metadata",
+            "count": 60
+          },
+          {
+            "composition": "neutral25+flood100",
+            "count": 45
+          }
+        ],
+        "flat_cnn": [
+          {
+            "composition": "flood200",
+            "count": 216
+          },
+          {
+            "composition": "flood200+metadata",
+            "count": 171
+          },
+          {
+            "composition": "flood200+address+metadata",
+            "count": 168
+          },
+          {
+            "composition": "neutral25+flood100",
+            "count": 90
+          },
+          {
+            "composition": "address+flood200",
+            "count": 87
+          }
+        ],
+        "hist_ngram_xgb": [
+          {
+            "composition": "flood200",
+            "count": 152
+          },
+          {
+            "composition": "flood200+address+metadata",
+            "count": 119
+          },
+          {
+            "composition": "flood200+metadata",
+            "count": 110
+          },
+          {
+            "composition": "metadata+flood200",
+            "count": 96
+          },
+          {
+            "composition": "neutral25+flood100",
+            "count": 88
+          }
+        ]
+      }
+    },
+    "phase1_seed_scope": {
+      "authguard_seq_seed7702_only": {
+        "F200": 0.132569558101473,
+        "fixed_oracle_best": 0.13747954173486088,
+        "beam_search": 0.15220949263502456,
+        "random_search": 0.18821603927986907,
+        "clean_detection": 0.8404401650618982,
+        "n_eligible": 611,
+        "seed_scope": [
+          7702
+        ],
+        "fold_scope": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "provenance": "stored_artifact"
+      },
+      "contrast_variants": {
+        "3seed_clean_vs_aug::random_search": {
+          "label": "aug (seed7702) vs clean AuthGuard (all seeds present in file)",
+          "left": "authguard_seq_aug",
+          "right": "authguard_seq",
+          "method": "random_search",
+          "left_ASR_on_shared": 0.04384485666104553,
+          "right_ASR_on_shared": 0.17706576728499157,
+          "paired_difference": -0.13322091062394603,
+          "CI95": [
+            -0.19393008228179334,
+            -0.08641835016835019
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 593,
+          "seeds": [
+            7702
+          ]
+        },
+        "seed7702_like_for_like::random_search": {
+          "label": "aug vs clean AuthGuard, both seed 7702 only",
+          "left": "authguard_seq_aug",
+          "right": "authguard_seq",
+          "method": "random_search",
+          "left_ASR_on_shared": 0.04384485666104553,
+          "right_ASR_on_shared": 0.17706576728499157,
+          "paired_difference": -0.13322091062394603,
+          "CI95": [
+            -0.19393008228179334,
+            -0.08641835016835019
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 593,
+          "seeds": [
+            7702
+          ]
+        },
+        "seed7702_30K_like_for_like::random_search": {
+          "label": "30K matched attention vs clean AuthGuard, both seed 7702 only",
+          "left": "chunk_attention_16384",
+          "right": "authguard_seq",
+          "method": "random_search",
+          "left_ASR_on_shared": 0.05201342281879195,
+          "right_ASR_on_shared": 0.18120805369127516,
+          "paired_difference": -0.12919463087248323,
+          "CI95": [
+            -0.18939432512497686,
+            -0.08104178102699736
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 596,
+          "seeds": [
+            7702
+          ]
+        },
+        "3seed_clean_vs_aug::beam_search": {
+          "label": "aug (seed7702) vs clean AuthGuard (all seeds present in file)",
+          "left": "authguard_seq_aug",
+          "right": "authguard_seq",
+          "method": "beam_search",
+          "left_ASR_on_shared": 0.03204047217537943,
+          "right_ASR_on_shared": 0.1433389544688027,
+          "paired_difference": -0.11129848229342328,
+          "CI95": [
+            -0.16885679509386264,
+            -0.0663258259104747
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 593,
+          "seeds": [
+            7702
+          ]
+        },
+        "seed7702_like_for_like::beam_search": {
+          "label": "aug vs clean AuthGuard, both seed 7702 only",
+          "left": "authguard_seq_aug",
+          "right": "authguard_seq",
+          "method": "beam_search",
+          "left_ASR_on_shared": 0.03204047217537943,
+          "right_ASR_on_shared": 0.1433389544688027,
+          "paired_difference": -0.11129848229342328,
+          "CI95": [
+            -0.16885679509386264,
+            -0.0663258259104747
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 593,
+          "seeds": [
+            7702
+          ]
+        },
+        "seed7702_30K_like_for_like::beam_search": {
+          "label": "30K matched attention vs clean AuthGuard, both seed 7702 only",
+          "left": "chunk_attention_16384",
+          "right": "authguard_seq",
+          "method": "beam_search",
+          "left_ASR_on_shared": 0.04530201342281879,
+          "right_ASR_on_shared": 0.14597315436241612,
+          "paired_difference": -0.10067114093959731,
+          "CI95": [
+            -0.15942202343804174,
+            -0.055072140269151144
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 596,
+          "seeds": [
+            7702
+          ]
+        }
+      },
+      "marginal_table_values": {
+        "authguard_seq": {
+          "random_search": 0.18053289831430125,
+          "beam_search": 0.14573137574768896,
+          "clean_detection": 0.8431911966987621,
+          "seeds": [
+            7702,
+            7703,
+            7704
+          ],
+          "n_eligible_random": 1839
+        },
+        "authguard_seq_aug": {
+          "random_search": 0.06229508196721312,
+          "beam_search": 0.05081967213114754,
+          "clean_detection": 0.8390646492434664,
+          "seeds": [
+            7702
+          ],
+          "n_eligible_random": 610
+        },
+        "chunk_attention_16384": {
+          "random_search": 0.07467532467532467,
+          "beam_search": 0.06818181818181818,
+          "clean_detection": 0.8473177441540578,
+          "seeds": [
+            7702
+          ],
+          "n_eligible_random": 616
+        }
+      },
+      "row_to_seed_scope_map": [
+        {
+          "table_row": "authguard_seq",
+          "file_group": "main_3seed",
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 2181,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "emulator_logreg",
+          "file_group": "main_3seed",
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 2181,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "flat_cnn",
+          "file_group": "main_3seed",
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 2181,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "hist_ngram_xgb",
+          "file_group": "main_3seed",
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 2181,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "authguard_seq_aug",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "chunk_attention_16384",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "chunk_mean_16384",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "flat_cnn_aug",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "flat_control_16384",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        },
+        {
+          "table_row": "hist_ngram_xgb_aug",
+          "file_group": "ext_seed7702",
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "n_source_seed_observations": 727,
+          "n_distinct_sources": 727
+        }
+      ],
+      "provenance": "stored_artifact",
+      "script": "revision_v2/experiments/sprint_phase1/phase1_seed_scope.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee"
+    },
+    "phase1_facts": {
+      "phase": "1.2-1.5 factual repairs",
+      "script": "revision_v2/experiments/sprint_phase1/phase1_facts.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "provenance": "stored_artifact",
+      "robust_recall": [
+        {
+          "model": "authguard_seq",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 2181,
+          "n_survived": 1592,
+          "robust_recall_direct": 0.7299403943145346,
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.1343121261555193,
+          "robust_recall_product": 0.7299403943145346,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 2181,
+          "n_survived": 1592,
+          "robust_recall_direct": 0.7299403943145346,
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.1343121261555193,
+          "robust_recall_product": 0.7299403943145346,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 2181,
+          "n_survived": 1588,
+          "robust_recall_direct": 0.7281063732232921,
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.13648722131593258,
+          "robust_recall_product": 0.7281063732232921,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 2181,
+          "n_survived": 1501,
+          "robust_recall_direct": 0.6882164144887666,
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.18379554105492116,
+          "robust_recall_product": 0.6882164144887667,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 2181,
+          "n_survived": 1473,
+          "robust_recall_direct": 0.6753782668500687,
+          "clean_detection": 0.8431911966987621,
+          "ASR": 0.19902120717781402,
+          "robust_recall_product": 0.6753782668500689,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 2181,
+          "n_survived": 1257,
+          "robust_recall_direct": 0.5763411279229711,
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3016666666666667,
+          "robust_recall_product": 0.5763411279229711,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 2181,
+          "n_survived": 1257,
+          "robust_recall_direct": 0.5763411279229711,
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3016666666666667,
+          "robust_recall_product": 0.5763411279229711,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 2181,
+          "n_survived": 1182,
+          "robust_recall_direct": 0.5419532324621733,
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.3433333333333333,
+          "robust_recall_product": 0.5419532324621734,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 2181,
+          "n_survived": 770,
+          "robust_recall_direct": 0.35304906006419073,
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.5722222222222222,
+          "robust_recall_product": 0.3530490600641908,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "emulator_logreg",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 2181,
+          "n_survived": 709,
+          "robust_recall_direct": 0.32508023842274186,
+          "clean_detection": 0.8253094910591472,
+          "ASR": 0.6061111111111112,
+          "robust_recall_product": 0.3250802384227418,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 2181,
+          "n_survived": 299,
+          "robust_recall_direct": 0.13709307657038056,
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8100381194409149,
+          "robust_recall_product": 0.13709307657038056,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 2181,
+          "n_survived": 299,
+          "robust_recall_direct": 0.13709307657038056,
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8100381194409149,
+          "robust_recall_product": 0.13709307657038056,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 2181,
+          "n_survived": 281,
+          "robust_recall_direct": 0.12883998165978908,
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.8214739517153749,
+          "robust_recall_product": 0.12883998165978908,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 2181,
+          "n_survived": 76,
+          "robust_recall_direct": 0.03484640073360844,
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.951715374841169,
+          "robust_recall_product": 0.03484640073360846,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 2181,
+          "n_survived": 54,
+          "robust_recall_direct": 0.024759284731774415,
+          "clean_detection": 0.7216872994039432,
+          "ASR": 0.96569250317662,
+          "robust_recall_product": 0.02475928473177445,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 2181,
+          "n_survived": 223,
+          "robust_recall_direct": 0.10224667583677212,
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8394528437724982,
+          "robust_recall_product": 0.10224667583677213,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 2181,
+          "n_survived": 221,
+          "robust_recall_direct": 0.10132966529115085,
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8408927285817135,
+          "robust_recall_product": 0.10132966529115082,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 2181,
+          "n_survived": 214,
+          "robust_recall_direct": 0.09812012838147639,
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.8459323254139669,
+          "robust_recall_product": 0.09812012838147638,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 2181,
+          "n_survived": 14,
+          "robust_recall_direct": 0.006419073819348923,
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.9899208063354932,
+          "robust_recall_product": 0.006419073819348913,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 2181,
+          "n_survived": 12,
+          "robust_recall_direct": 0.005502063273727648,
+          "clean_detection": 0.6368638239339752,
+          "ASR": 0.9913606911447084,
+          "robust_recall_product": 0.00550206327372768,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq_aug",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 583,
+          "robust_recall_direct": 0.8019257221458047,
+          "clean_detection": 0.8390646492434664,
+          "ASR": 0.04426229508196721,
+          "robust_recall_product": 0.8019257221458047,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq_aug",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 583,
+          "robust_recall_direct": 0.8019257221458047,
+          "clean_detection": 0.8390646492434664,
+          "ASR": 0.04426229508196721,
+          "robust_recall_product": 0.8019257221458047,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq_aug",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 583,
+          "robust_recall_direct": 0.8019257221458047,
+          "clean_detection": 0.8390646492434664,
+          "ASR": 0.04426229508196721,
+          "robust_recall_product": 0.8019257221458047,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq_aug",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 572,
+          "robust_recall_direct": 0.7867950481430537,
+          "clean_detection": 0.8390646492434664,
+          "ASR": 0.06229508196721312,
+          "robust_recall_product": 0.7867950481430537,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "authguard_seq_aug",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 571,
+          "robust_recall_direct": 0.7854195323246217,
+          "clean_detection": 0.8390646492434664,
+          "ASR": 0.06393442622950819,
+          "robust_recall_product": 0.7854195323246218,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_attention_16384",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 579,
+          "robust_recall_direct": 0.796423658872077,
+          "clean_detection": 0.8473177441540578,
+          "ASR": 0.060064935064935064,
+          "robust_recall_product": 0.7964236588720771,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_attention_16384",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 579,
+          "robust_recall_direct": 0.796423658872077,
+          "clean_detection": 0.8473177441540578,
+          "ASR": 0.060064935064935064,
+          "robust_recall_product": 0.7964236588720771,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_attention_16384",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 577,
+          "robust_recall_direct": 0.7936726272352133,
+          "clean_detection": 0.8473177441540578,
+          "ASR": 0.0633116883116883,
+          "robust_recall_product": 0.7936726272352133,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_attention_16384",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 570,
+          "robust_recall_direct": 0.7840440165061898,
+          "clean_detection": 0.8473177441540578,
+          "ASR": 0.07467532467532467,
+          "robust_recall_product": 0.7840440165061898,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_attention_16384",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 569,
+          "robust_recall_direct": 0.782668500687758,
+          "clean_detection": 0.8473177441540578,
+          "ASR": 0.0762987012987013,
+          "robust_recall_product": 0.782668500687758,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_mean_16384",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 101,
+          "robust_recall_direct": 0.13892709766162312,
+          "clean_detection": 0.7689133425034388,
+          "ASR": 0.8193202146690519,
+          "robust_recall_product": 0.1389270976616231,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_mean_16384",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 101,
+          "robust_recall_direct": 0.13892709766162312,
+          "clean_detection": 0.7689133425034388,
+          "ASR": 0.8193202146690519,
+          "robust_recall_product": 0.1389270976616231,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_mean_16384",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 100,
+          "robust_recall_direct": 0.1375515818431912,
+          "clean_detection": 0.7689133425034388,
+          "ASR": 0.8211091234347049,
+          "robust_recall_product": 0.13755158184319116,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_mean_16384",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 5,
+          "robust_recall_direct": 0.0068775790921595595,
+          "clean_detection": 0.7689133425034388,
+          "ASR": 0.9910554561717353,
+          "robust_recall_product": 0.00687757909215952,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "chunk_mean_16384",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 4,
+          "robust_recall_direct": 0.005502063273727648,
+          "clean_detection": 0.7689133425034388,
+          "ASR": 0.9928443649373881,
+          "robust_recall_product": 0.0055020632737276835,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn_aug",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 109,
+          "robust_recall_direct": 0.1499312242090784,
+          "clean_detection": 0.6437414030261348,
+          "ASR": 0.7670940170940171,
+          "robust_recall_product": 0.14993122420907837,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn_aug",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 109,
+          "robust_recall_direct": 0.1499312242090784,
+          "clean_detection": 0.6437414030261348,
+          "ASR": 0.7670940170940171,
+          "robust_recall_product": 0.14993122420907837,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn_aug",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 104,
+          "robust_recall_direct": 0.14305364511691884,
+          "clean_detection": 0.6437414030261348,
+          "ASR": 0.7777777777777778,
+          "robust_recall_product": 0.14305364511691884,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn_aug",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 28,
+          "robust_recall_direct": 0.03851444291609354,
+          "clean_detection": 0.6437414030261348,
+          "ASR": 0.9401709401709402,
+          "robust_recall_product": 0.038514442916093544,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_cnn_aug",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 18,
+          "robust_recall_direct": 0.024759284731774415,
+          "clean_detection": 0.6437414030261348,
+          "ASR": 0.9615384615384616,
+          "robust_recall_product": 0.024759284731774397,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_control_16384",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 257,
+          "robust_recall_direct": 0.3535075653370014,
+          "clean_detection": 0.8308115543328748,
+          "ASR": 0.5745033112582781,
+          "robust_recall_product": 0.35350756533700134,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_control_16384",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 256,
+          "robust_recall_direct": 0.35213204951856947,
+          "clean_detection": 0.8308115543328748,
+          "ASR": 0.5761589403973509,
+          "robust_recall_product": 0.35213204951856947,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_control_16384",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 240,
+          "robust_recall_direct": 0.33012379642365886,
+          "clean_detection": 0.8308115543328748,
+          "ASR": 0.6026490066225165,
+          "robust_recall_product": 0.3301237964236589,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_control_16384",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 65,
+          "robust_recall_direct": 0.08940852819807428,
+          "clean_detection": 0.8308115543328748,
+          "ASR": 0.8923841059602649,
+          "robust_recall_product": 0.08940852819807432,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "flat_control_16384",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 51,
+          "robust_recall_direct": 0.07015130674002751,
+          "clean_detection": 0.8308115543328748,
+          "ASR": 0.9155629139072847,
+          "robust_recall_product": 0.07015130674002754,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb_aug",
+          "attack_set": "TierA_fixed_flooding",
+          "n_positive_observations": 727,
+          "n_survived": 161,
+          "robust_recall_direct": 0.22145804676753783,
+          "clean_detection": 0.6698762035763411,
+          "ASR": 0.6694045174537988,
+          "robust_recall_product": 0.2214580467675378,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb_aug",
+          "attack_set": "TierB_fixed_flooding_metadata",
+          "n_positive_observations": 727,
+          "n_survived": 160,
+          "robust_recall_direct": 0.2200825309491059,
+          "clean_detection": 0.6698762035763411,
+          "ASR": 0.6714579055441479,
+          "robust_recall_product": 0.2200825309491059,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb_aug",
+          "attack_set": "TierC_fixed_all_seven",
+          "n_positive_observations": 727,
+          "n_survived": 157,
+          "robust_recall_direct": 0.21595598349381018,
+          "clean_detection": 0.6698762035763411,
+          "ASR": 0.6776180698151951,
+          "robust_recall_product": 0.21595598349381015,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb_aug",
+          "attack_set": "TierC_adaptive_best",
+          "n_positive_observations": 727,
+          "n_survived": 25,
+          "robust_recall_direct": 0.0343878954607978,
+          "clean_detection": 0.6698762035763411,
+          "ASR": 0.9486652977412731,
+          "robust_recall_product": 0.034387895460797825,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        },
+        {
+          "model": "hist_ngram_xgb_aug",
+          "attack_set": "TierC_all_evaluated",
+          "n_positive_observations": 727,
+          "n_survived": 19,
+          "robust_recall_direct": 0.026134800550206328,
+          "clean_detection": 0.6698762035763411,
+          "ASR": 0.9609856262833676,
+          "robust_recall_product": 0.026134800550206307,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "stored_artifact"
+        }
+      ],
+      "benchmark_audit": {
+        "file": "data/authguardbench_7702_v2.csv.gz",
+        "categories_in_file": {
+          "PRIMARY_EVALUATION": 2190,
+          "EXTERNAL_BENIGN_CONTROL": 797,
+          "QUALITATIVE_CONTROL": 5,
+          "EXCLUDED_UNCERTAIN_INPUT": 90
+        },
+        "sum_of_categories_in_file": 3082,
+        "actual_rows_in_file": 3082,
+        "manuscript_claim_3082": 3082,
+        "manuscript_table_production_controls": 8,
+        "production_registry_rows": 45,
+        "production_registry_unique_projects": 8,
+        "production_registry_unique_bytecode": 30,
+        "duplicate_sample_ids": 0,
+        "duplicate_sample_id_values": [],
+        "hashes_appearing_in_multiple_populations": 2,
+        "example_cross_population_hashes": [
+          "425d3a94fd8e638bba0fb33f659cdbbdf94cb2ab17995dd625333851d18f6b06",
+          "f8509565a392f64880b55e62a6ca8d021416057e56bd1e9630062b1dc3149347"
+        ],
+        "provenance": "stored_artifact"
+      },
+      "byte_budget": {
+        "enforcing_code": "def valid(self, candidate):\n        try:\n            raw = bytes.fromhex(candidate)\n        except ValueError:\n            return False\n        overhead = (len(raw) - self.original_size) / max(self.original_size, 1)\n        if len(raw) > self.original_size * (1 + MAX_OVERHEAD) + 1 or overhead < -1e-9:\n            return False\n        if not mut.verify_preservation(self.original, bytearray(raw)):\n            return False\n        ops, _, _ = disasm(candidate)\n        return bool(ops) and len(candidate) % 2 == 0",
+        "MAX_OVERHEAD": 2.0,
+        "rule_as_implemented": "len(final_bytes) <= original_size * (1 + MAX_OVERHEAD) + 1, i.e. ADDED bytes <= 2x original, FINAL size <= 3x original (+1 byte for the STOP guard)",
+        "byte_overhead_column_definition": "(len(candidate)//2 - original_size) / original_size = added/original, NOT final/original",
+        "f200_final_over_original": {
+          "n": 13086,
+          "median": 2.9616928128420286,
+          "p95": 2.986081654294804,
+          "max": 3.001432664756447,
+          "min": 2.541484716157205
+        },
+        "provenance": "stored_artifact"
+      },
+      "live_holdout": {
+        "total_live_delegates": 752,
+        "unique_runtime_bytecodes": 669,
+        "exact_hash_overlap_with_benchmark": 0,
+        "family_overlap_at_0_85": 70,
+        "leakage_clean_denominator": 682,
+        "leakage_clean_formula": "clean_mask = max_minhash_sim_to_primary < 0.85 (line 168)",
+        "leakage_gate_json": {
+          "threshold": 0.85,
+          "n_at_or_above": 70,
+          "fraction": 0.09308510638297872,
+          "max_similarity": 1.0,
+          "median_similarity": 0.265625,
+          "p95_similarity": 0.9765625
+        },
+        "flag_rates_by_operating_point": {
+          "1": {
+            "flag_rate": {
+              "mean": 0.09494680851063826,
+              "sd": 0.02055055560678832
+            },
+            "flag_rate_leakage_clean": {
+              "mean": 0.08758553274682301,
+              "sd": 0.024021078230905206
+            },
+            "flag_rate_authorization_weighted": {
+              "mean": 0.0589249666473343,
+              "sd": 0.008095819823846481
+            },
+            "alerts_per_1000_authorizations": {
+              "mean": 58.924966647334344,
+              "sd": 8.095819823846487
+            }
+          },
+          "5": {
+            "flag_rate": {
+              "mean": 0.20265957446808505,
+              "sd": 0.03573739794093792
+            },
+            "flag_rate_leakage_clean": {
+              "mean": 0.1986314760508309,
+              "sd": 0.03926066976676041
+            },
+            "flag_rate_authorization_weighted": {
+              "mean": 0.09442772925373455,
+              "sd": 0.009649746910648044
+            },
+            "alerts_per_1000_authorizations": {
+              "mean": 94.42772925373458,
+              "sd": 9.649746910648041
+            }
+          },
+          "10": {
+            "flag_rate": {
+              "mean": 0.3268617021276596,
+              "sd": 0.01851160631690753
+            },
+            "flag_rate_leakage_clean": {
+              "mean": 0.3327468230694037,
+              "sd": 0.02074502270912361
+            },
+            "flag_rate_authorization_weighted": {
+              "mean": 0.14647870709869235,
+              "sd": 0.018788378209605616
+            },
+            "alerts_per_1000_authorizations": {
+              "mean": 146.47870709869238,
+              "sd": 18.78837820960563
+            }
+          }
+        },
+        "n_checkpoints": 15,
+        "seed_scope": [
+          7702,
+          7703,
+          7704
+        ],
+        "fold_scope": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "provenance": "stored_artifact"
+      }
+    }
+  },
+  "regenerated_experiment": {
+    "phase2_preservation_audit": {
+      "phase": "2 expanded execution-preservation audit",
+      "script": "revision_v2/experiments/sprint_phase2/expanded_preservation_audit.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "provenance": "regenerated_experiment",
+      "equivalence_definition": "same_failed AND same_return AND same_calls AND same_call_count AND same_sstore AND same_logs, imported unchanged from exec_validation",
+      "scope_note": "Bounded empirical execution preservation over the tested calldata suite. Entry coverage includes empty calldata (receive/fallback) and the zero selector (fallback); it does not prove preservation of the reference risk condition itself.",
+      "excluded_from_preservation_tier": [
+        "address rewrite",
+        "selector rewrite"
+      ],
+      "wall_seconds": 15.605257511138916,
+      "summary": {
+        "flooding": {
+          "delegates_tested": 120,
+          "distinct_families": 120,
+          "calls_tested": 3464,
+          "preserved_calls": 3464,
+          "failed_calls": 0,
+          "preservation_rate": 1.0,
+          "wilson95": [
+            0.998892221605508,
+            0.9999999999999999
+          ],
+          "failure_taxonomy": {
+            "same_failed_violated": 0,
+            "same_return_violated": 0,
+            "same_calls_violated": 0,
+            "same_call_count_violated": 0,
+            "same_sstore_violated": 0,
+            "same_logs_violated": 0,
+            "not_comparable": 0
+          },
+          "entry_class_coverage": {
+            "discovered_selector": 2504,
+            "empty_calldata_receive_or_fallback": 480,
+            "zero_selector_fallback": 480
+          },
+          "risk_relevant_execution": {
+            "calls_where_original_reached_external_call": 788,
+            "calls_where_original_reached_sstore": 72
+          },
+          "candidate_construction_failures": 0
+        },
+        "metadata_rewrite": {
+          "delegates_tested": 120,
+          "distinct_families": 120,
+          "calls_tested": 866,
+          "preserved_calls": 866,
+          "failed_calls": 0,
+          "preservation_rate": 1.0,
+          "wilson95": [
+            0.995583563720107,
+            0.9999999999999999
+          ],
+          "failure_taxonomy": {
+            "same_failed_violated": 0,
+            "same_return_violated": 0,
+            "same_calls_violated": 0,
+            "same_call_count_violated": 0,
+            "same_sstore_violated": 0,
+            "same_logs_violated": 0,
+            "not_comparable": 0
+          },
+          "entry_class_coverage": {
+            "discovered_selector": 626,
+            "empty_calldata_receive_or_fallback": 120,
+            "zero_selector_fallback": 120
+          },
+          "risk_relevant_execution": {
+            "calls_where_original_reached_external_call": 197,
+            "calls_where_original_reached_sstore": 18
+          },
+          "candidate_construction_failures": 0
+        },
+        "neutral_insertion": {
+          "delegates_tested": 120,
+          "distinct_families": 120,
+          "calls_tested": 866,
+          "preserved_calls": 866,
+          "failed_calls": 0,
+          "preservation_rate": 1.0,
+          "wilson95": [
+            0.995583563720107,
+            0.9999999999999999
+          ],
+          "failure_taxonomy": {
+            "same_failed_violated": 0,
+            "same_return_violated": 0,
+            "same_calls_violated": 0,
+            "same_call_count_violated": 0,
+            "same_sstore_violated": 0,
+            "same_logs_violated": 0,
+            "not_comparable": 0
+          },
+          "entry_class_coverage": {
+            "discovered_selector": 626,
+            "empty_calldata_receive_or_fallback": 120,
+            "zero_selector_fallback": 120
+          },
+          "risk_relevant_execution": {
+            "calls_where_original_reached_external_call": 197,
+            "calls_where_original_reached_sstore": 18
+          },
+          "candidate_construction_failures": 0
+        }
+      }
+    },
+    "phase3_checkpoint_manifest": {
+      "phase": "3 regenerate and freeze primary checkpoints",
+      "script": "revision_v2/experiments/sprint_phase3/regenerate_checkpoints.py",
+      "seed": 7702,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "models": [
+        "authguard_seq",
+        "emulator_logreg",
+        "flat_cnn",
+        "hist_ngram_xgb"
+      ],
+      "environment": {
+        "python": "3.12.12",
+        "torch": "2.9.0+cu128",
+        "cuda": "12.8",
+        "cudnn": 91002,
+        "device_name": "NVIDIA GeForce RTX 2080 SUPER",
+        "numpy": "2.3.4",
+        "pandas": "2.3.3",
+        "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+        "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+        "deterministic_algorithms": "left at original setting (False) \u2014 recipe not modified"
+      },
+      "provenance": "regenerated_experiment",
+      "wall_seconds": 112.9343478679657,
+      "checkpoints": [
+        {
+          "model": "authguard_seq",
+          "seed": 7702,
+          "fold": 0,
+          "path": "results/sprint_phase3/checkpoints/authguard_seq_s7702_f0.pt",
+          "sha256": "8b12521c4d2dfa2cf165890b3db52a32d8c6e68f75a4367f1b9003d6f2486771",
+          "bytes": 738073,
+          "temperature": 1.2435499429702759,
+          "threshold_01": 0.9862277167244313,
+          "threshold_05": 0.7485265626653399,
+          "threshold_10": 0.298291801077583,
+          "architecture": "AuthGuardFusion",
+          "n_parameters": 181877
+        },
+        {
+          "model": "emulator_logreg",
+          "seed": 7702,
+          "fold": 0,
+          "path": "results/sprint_phase3/checkpoints/emulator_logreg_s7702_f0.pt",
+          "sha256": "a74a9b8d05b94a30efeb149bf52beb3efaa7456b3511b76a05a4d4c2378ccc54",
+          "bytes": 2291,
+          "temperature": 1.6661614179611206,
+          "threshold_01": 0.8921141686726249,
+          "threshold_05": 0.8377327867835411,
+          "threshold_10": 0.7697521040458325,
+          "architecture": "Pipeline",
+          "n_parameters": null
+        },
+        {
+          "model": "flat_cnn",
+          "seed": 7702,
+          "fold": 0,
+          "path": "results/sprint_phase3/checkpoints/flat_cnn_s7702_f0.pt",
+          "sha256": "7f4d659349b1d37e7adae874c23238bc3141b021e5e955d8d812bc577d58d730",
+          "bytes": 620883,
+          "temperature": 1.5378144979476929,
+          "threshold_01": 0.8081257059536553,
+          "threshold_05": 0.6540538239584343,
+          "threshold_10": 0.5242875321829945,
+          "architecture": "FlatCNN",
+          "n_parameters": 154177
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "seed": 7702,
+          "fold": 0,
+          "path": "results/sprint_phase3/checkpoints/hist_ngram_xgb_s7702_f0.pt",
+          "sha256": "621c9b565492a74d1f33c70f362c52decad149d148688f3a6695e6c79c7e58bc",
+          "bytes": 375573,
+          "temperature": 2.4310619831085205,
+          "threshold_01": 0.7513715031904613,
+          "threshold_05": 0.640753488243003,
+          "threshold_10": 0.3918352043307266,
+          "architecture": "XGBClassifier",
+          "n_parameters": null
+        },
+        {
+          "model": "authguard_seq",
+          "seed": 7702,
+          "fold": 1,
+          "path": "results/sprint_phase3/checkpoints/authguard_seq_s7702_f1.pt",
+          "sha256": "5c84481b865ec94cc15e440698c0e7cd334e8c6a83d1f52ba34bf4a1a899d143",
+          "bytes": 738073,
+          "temperature": 1.9279452562332153,
+          "threshold_01": 0.9433019873944657,
+          "threshold_05": 0.6473249431386765,
+          "threshold_10": 0.040148544017605786,
+          "architecture": "AuthGuardFusion",
+          "n_parameters": 181877
+        },
+        {
+          "model": "emulator_logreg",
+          "seed": 7702,
+          "fold": 1,
+          "path": "results/sprint_phase3/checkpoints/emulator_logreg_s7702_f1.pt",
+          "sha256": "b1841712832920714780c70956c9c039fc2f3ae8bd95861926c1b0c8ff0784ba",
+          "bytes": 2291,
+          "temperature": 0.7604113817214966,
+          "threshold_01": 0.9549308428171458,
+          "threshold_05": 0.0839932650937046,
+          "threshold_10": 0.015490575699579495,
+          "architecture": "Pipeline",
+          "n_parameters": null
+        },
+        {
+          "model": "flat_cnn",
+          "seed": 7702,
+          "fold": 1,
+          "path": "results/sprint_phase3/checkpoints/flat_cnn_s7702_f1.pt",
+          "sha256": "7a3a8f9c2f7730e0572e04ca94655b674c3d3ee25290f350ed4d2bbaca09a2f6",
+          "bytes": 620883,
+          "temperature": 1.3881206512451172,
+          "threshold_01": 0.9604194213746283,
+          "threshold_05": 0.4474284751668334,
+          "threshold_10": 0.3104904475078803,
+          "architecture": "FlatCNN",
+          "n_parameters": 154177
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "seed": 7702,
+          "fold": 1,
+          "path": "results/sprint_phase3/checkpoints/hist_ngram_xgb_s7702_f1.pt",
+          "sha256": "8f93c8b7f57a48d1cb10c59630a0c3acec2958f1ec46ca91bac126c9c66d5ec4",
+          "bytes": 383267,
+          "temperature": 1.5303634405136108,
+          "threshold_01": 0.8787852269452561,
+          "threshold_05": 0.3225230533758856,
+          "threshold_10": 0.20203362674217593,
+          "architecture": "XGBClassifier",
+          "n_parameters": null
+        },
+        {
+          "model": "authguard_seq",
+          "seed": 7702,
+          "fold": 2,
+          "path": "results/sprint_phase3/checkpoints/authguard_seq_s7702_f2.pt",
+          "sha256": "8c2b3d37a9dcda5fca0f045217eca29c4adafeffbff89df5ebd54b45620870a4",
+          "bytes": 738073,
+          "temperature": 1.2666161060333252,
+          "threshold_01": 0.9001500007978442,
+          "threshold_05": 0.8533798244839303,
+          "threshold_10": 0.5997471925711927,
+          "architecture": "AuthGuardFusion",
+          "n_parameters": 181877
+        },
+        {
+          "model": "emulator_logreg",
+          "seed": 7702,
+          "fold": 2,
+          "path": "results/sprint_phase3/checkpoints/emulator_logreg_s7702_f2.pt",
+          "sha256": "124e08846bffb9d18709269992ca1dc174c5a6cb293fda7fc56d3994167000ad",
+          "bytes": 2291,
+          "temperature": 1.0729213953018188,
+          "threshold_01": 0.9197144593490981,
+          "threshold_05": 0.6722747523170792,
+          "threshold_10": 0.35644262795419857,
+          "architecture": "Pipeline",
+          "n_parameters": null
+        },
+        {
+          "model": "flat_cnn",
+          "seed": 7702,
+          "fold": 2,
+          "path": "results/sprint_phase3/checkpoints/flat_cnn_s7702_f2.pt",
+          "sha256": "4f57f263e284f7ee2136f08c2a3770c0b203142c95e878e47e3565b7a03bbfe3",
+          "bytes": 620883,
+          "temperature": 1.8055307865142822,
+          "threshold_01": 0.750739284613398,
+          "threshold_05": 0.5885039355504178,
+          "threshold_10": 0.4101406940575919,
+          "architecture": "FlatCNN",
+          "n_parameters": 154177
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "seed": 7702,
+          "fold": 2,
+          "path": "results/sprint_phase3/checkpoints/hist_ngram_xgb_s7702_f2.pt",
+          "sha256": "ac50528026bbac4e38afaea597e773505cf50ca43b806436401c7481fdd7e410",
+          "bytes": 400291,
+          "temperature": 1.0770620107650757,
+          "threshold_01": 0.8454703245300387,
+          "threshold_05": 0.36027445709272615,
+          "threshold_10": 0.36027445709272615,
+          "architecture": "XGBClassifier",
+          "n_parameters": null
+        },
+        {
+          "model": "authguard_seq",
+          "seed": 7702,
+          "fold": 3,
+          "path": "results/sprint_phase3/checkpoints/authguard_seq_s7702_f3.pt",
+          "sha256": "cdb798b391475dd377ce4766d431cd4f1f8dbaec820fc3e6882b2ff469810ea8",
+          "bytes": 738073,
+          "temperature": 1.44551420211792,
+          "threshold_01": 0.970943600799935,
+          "threshold_05": 0.9026253522044809,
+          "threshold_10": 0.6499849094827822,
+          "architecture": "AuthGuardFusion",
+          "n_parameters": 181877
+        },
+        {
+          "model": "emulator_logreg",
+          "seed": 7702,
+          "fold": 3,
+          "path": "results/sprint_phase3/checkpoints/emulator_logreg_s7702_f3.pt",
+          "sha256": "d0c14adbca78c3321b57952f2d376dba4987b2d8cd4a2a8309f99b56d63ad3bd",
+          "bytes": 2291,
+          "temperature": 1.101357340812683,
+          "threshold_01": 0.9937478802493147,
+          "threshold_05": 0.843137216562728,
+          "threshold_10": 0.18754495352741618,
+          "architecture": "Pipeline",
+          "n_parameters": null
+        },
+        {
+          "model": "flat_cnn",
+          "seed": 7702,
+          "fold": 3,
+          "path": "results/sprint_phase3/checkpoints/flat_cnn_s7702_f3.pt",
+          "sha256": "1c6f73e5a070e689e183f9325e6357518a73680a12f5e7f298dc65e3ede5dd2b",
+          "bytes": 620883,
+          "temperature": 2.3808252811431885,
+          "threshold_01": 0.9038125167192486,
+          "threshold_05": 0.5832197241896999,
+          "threshold_10": 0.41054421279651326,
+          "architecture": "FlatCNN",
+          "n_parameters": 154177
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "seed": 7702,
+          "fold": 3,
+          "path": "results/sprint_phase3/checkpoints/hist_ngram_xgb_s7702_f3.pt",
+          "sha256": "0bb9afeaf93417abaf47c004bd133a99c3f727eae7b3d27491173a88a5574904",
+          "bytes": 378280,
+          "temperature": 2.458563804626465,
+          "threshold_01": 0.8879302278130297,
+          "threshold_05": 0.5980496473090754,
+          "threshold_10": 0.44219805197828593,
+          "architecture": "XGBClassifier",
+          "n_parameters": null
+        },
+        {
+          "model": "authguard_seq",
+          "seed": 7702,
+          "fold": 4,
+          "path": "results/sprint_phase3/checkpoints/authguard_seq_s7702_f4.pt",
+          "sha256": "bd61915287bcf9aec4031fcae92a6090ae7fda3e8d4f48949f62e7a34b586ddd",
+          "bytes": 738073,
+          "temperature": 2.3203792572021484,
+          "threshold_01": 0.8865896942446216,
+          "threshold_05": 0.5002514733554401,
+          "threshold_10": 0.25985188371861434,
+          "architecture": "AuthGuardFusion",
+          "n_parameters": 181877
+        },
+        {
+          "model": "emulator_logreg",
+          "seed": 7702,
+          "fold": 4,
+          "path": "results/sprint_phase3/checkpoints/emulator_logreg_s7702_f4.pt",
+          "sha256": "526f7b3d1b18d5d64553a6afc5e7af8f052e465167b646c0775b91962c318deb",
+          "bytes": 2291,
+          "temperature": 1.6758711338043213,
+          "threshold_01": 0.9641517687481554,
+          "threshold_05": 0.7873964211563192,
+          "threshold_10": 0.34264686930863386,
+          "architecture": "Pipeline",
+          "n_parameters": null
+        },
+        {
+          "model": "flat_cnn",
+          "seed": 7702,
+          "fold": 4,
+          "path": "results/sprint_phase3/checkpoints/flat_cnn_s7702_f4.pt",
+          "sha256": "53124162f53d7d19f96ae0304ac6dca8b6061f7d0d1de5614ed0b503ed281f38",
+          "bytes": 620883,
+          "temperature": 2.2237815856933594,
+          "threshold_01": 0.8304368598723764,
+          "threshold_05": 0.7138019689002307,
+          "threshold_10": 0.6021734964117245,
+          "architecture": "FlatCNN",
+          "n_parameters": 154177
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "seed": 7702,
+          "fold": 4,
+          "path": "results/sprint_phase3/checkpoints/hist_ngram_xgb_s7702_f4.pt",
+          "sha256": "0acd2f92b423494e9a008a62f5d5f28bd6313ec93837ae5e7012f55d71e84ddf",
+          "bytes": 367179,
+          "temperature": 3.458652973175049,
+          "threshold_01": 0.5732812559382432,
+          "threshold_05": 0.31144241476208573,
+          "threshold_10": 0.27088374314713426,
+          "architecture": "XGBClassifier",
+          "n_parameters": null
+        }
+      ]
+    },
+    "phase4_analysis": {
+      "phase": "4 tiered attack analysis (regenerated checkpoints)",
+      "script": "revision_v2/experiments/sprint_phase4/analyze_tiered.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "provenance": "regenerated_experiment",
+      "nboot": 10000,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tier_table": [
+        {
+          "model": "authguard_seq",
+          "tier": "A",
+          "clean_detection": 0.8450252177900046,
+          "ASR_fixed_flood_oracle": 0.14921323928377644,
+          "ASR_best_of": 0.14921323928377644,
+          "CI95": [
+            0.10523443961952027,
+            0.20292977941491044
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.7189362677670793,
+          "robust_recall_product": 0.7189362677670794,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "B",
+          "clean_detection": 0.8450252177900046,
+          "ASR_beam_search": 0.15897992403689637,
+          "ASR_random_search": 0.19696147585458493,
+          "ASR_best_of": 0.19696147585458493,
+          "CI95": [
+            0.14757778546550762,
+            0.2561742693172406
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.6785878037597433,
+          "robust_recall_product": 0.6785878037597433,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "C",
+          "clean_detection": 0.8450252177900046,
+          "ASR_beam_search": 0.15897992403689637,
+          "ASR_random_search": 0.20672816060770483,
+          "ASR_best_of": 0.20835594139989147,
+          "CI95": [
+            0.1577009848551307,
+            0.2682417383806006
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.6689591930307198,
+          "robust_recall_product": 0.6689591930307199,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "A",
+          "clean_detection": 0.8253094910591472,
+          "ASR_fixed_flood_oracle": 0.30833333333333335,
+          "ASR_best_of": 0.30833333333333335,
+          "CI95": [
+            0.21817750969409735,
+            0.41279134752018853
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.5708390646492435,
+          "robust_recall_product": 0.5708390646492435,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "B",
+          "clean_detection": 0.8253094910591472,
+          "ASR_beam_search": 0.43166666666666664,
+          "ASR_random_search": 0.5416666666666666,
+          "ASR_best_of": 0.5416666666666666,
+          "CI95": [
+            0.4269378549949883,
+            0.6454265107682418
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.3782668500687758,
+          "robust_recall_product": 0.3782668500687758,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "C",
+          "clean_detection": 0.8253094910591472,
+          "ASR_beam_search": 0.45166666666666666,
+          "ASR_random_search": 0.5361111111111111,
+          "ASR_best_of": 0.5722222222222222,
+          "CI95": [
+            0.46148669121000846,
+            0.6752941731341606
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.35304906006419073,
+          "robust_recall_product": 0.3530490600641908,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "A",
+          "clean_detection": 0.6836313617606602,
+          "ASR_fixed_flood_oracle": 0.8108651911468813,
+          "ASR_best_of": 0.8108651911468813,
+          "CI95": [
+            0.7183091019233682,
+            0.8893621728488044
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.12929848693259974,
+          "robust_recall_product": 0.12929848693259974,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "B",
+          "clean_detection": 0.6836313617606602,
+          "ASR_beam_search": 0.8893360160965795,
+          "ASR_random_search": 0.9356136820925554,
+          "ASR_best_of": 0.9356136820925554,
+          "CI95": [
+            0.8933587929249135,
+            0.9720003731343283
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.04401650618982118,
+          "robust_recall_product": 0.04401650618982116,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "C",
+          "clean_detection": 0.6836313617606602,
+          "ASR_beam_search": 0.9114688128772636,
+          "ASR_random_search": 0.937625754527163,
+          "ASR_best_of": 0.9476861167002012,
+          "CI95": [
+            0.9138653495105907,
+            0.9780445687572223
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.03576341127922971,
+          "robust_recall_product": 0.03576341127922972,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "A",
+          "clean_detection": 0.6189821182943603,
+          "ASR_fixed_flood_oracle": 0.8111111111111111,
+          "ASR_best_of": 0.8111111111111111,
+          "CI95": [
+            0.7538118127020427,
+            0.8662280701754386
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.11691884456671252,
+          "robust_recall_product": 0.1169188445667125,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "B",
+          "clean_detection": 0.6189821182943603,
+          "ASR_beam_search": 0.94,
+          "ASR_random_search": 0.9844444444444445,
+          "ASR_best_of": 0.9844444444444445,
+          "CI95": [
+            0.9674405965621841,
+            0.9972901560096682
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.009628610729023384,
+          "robust_recall_product": 0.009628610729023376,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "C",
+          "clean_detection": 0.6189821182943603,
+          "ASR_beam_search": 0.9466666666666667,
+          "ASR_random_search": 0.9844444444444445,
+          "ASR_best_of": 0.9911111111111112,
+          "CI95": [
+            0.9805555555555555,
+            0.9980843827608185
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.005502063273727648,
+          "robust_recall_product": 0.005502063273727614,
+          "seed_scope": [
+            7702
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        }
+      ],
+      "paired_contrasts": [
+        {
+          "tier": "A",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.33532934131736525,
+          "right_ASR": 0.1270791749833666,
+          "difference": 0.20825016633399868,
+          "CI95": [
+            0.0757279352694569,
+            0.3341837060577936
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "B",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.5369261477045908,
+          "right_ASR": 0.16699933466400532,
+          "difference": 0.3699268130405855,
+          "CI95": [
+            0.20790328732981692,
+            0.5195357752422421
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "C",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.5635395874916833,
+          "right_ASR": 0.18097139055222888,
+          "difference": 0.38256819693945443,
+          "CI95": [
+            0.2226198519789576,
+            0.5237306761664061
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "A",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.8058455114822547,
+          "right_ASR": 0.1127348643006263,
+          "difference": 0.6931106471816284,
+          "CI95": [
+            0.5929697599648311,
+            0.7843574113225276
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "B",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.9331941544885177,
+          "right_ASR": 0.15031315240083507,
+          "difference": 0.7828810020876826,
+          "CI95": [
+            0.7075173474522812,
+            0.8473286664865229
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "C",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.9478079331941545,
+          "right_ASR": 0.16075156576200417,
+          "difference": 0.7870563674321504,
+          "CI95": [
+            0.7099677965538993,
+            0.8504283489096572
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "A",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.8033175355450237,
+          "right_ASR": 0.08767772511848342,
+          "difference": 0.7156398104265402,
+          "CI95": [
+            0.6420411501377411,
+            0.782608695652174
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "B",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.9834123222748815,
+          "right_ASR": 0.12796208530805686,
+          "difference": 0.8554502369668247,
+          "CI95": [
+            0.7828741808650066,
+            0.9086541276346604
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "tier": "C",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.990521327014218,
+          "right_ASR": 0.13033175355450238,
+          "difference": 0.8601895734597157,
+          "CI95": [
+            0.7912427143497639,
+            0.9115062878435025
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209,
+          "seed_scope": [
+            7702
+          ],
+          "provenance": "regenerated_experiment"
+        }
+      ],
+      "tier_c_only": [
+        {
+          "model": "authguard_seq",
+          "n_tierC_successes": 384,
+          "n_tierC_only": 46,
+          "fraction_tierC_only": 0.11979166666666667,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "emulator_logreg",
+          "n_tierC_successes": 1030,
+          "n_tierC_only": 137,
+          "fraction_tierC_only": 0.13300970873786408,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "flat_cnn",
+          "n_tierC_successes": 471,
+          "n_tierC_only": 14,
+          "fraction_tierC_only": 0.029723991507430998,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "n_tierC_successes": 446,
+          "n_tierC_only": 5,
+          "fraction_tierC_only": 0.011210762331838564,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        }
+      ]
+    },
+    "phase4_run_meta": {
+      "phase": "4 tiered attack on frozen regenerated checkpoints",
+      "script": "revision_v2/experiments/sprint_phase4/run_tiered_attack.py",
+      "provenance": "regenerated_experiment",
+      "checkpoint_dir": "results/sprint_phase3/checkpoints",
+      "seed": 7702,
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "models": [
+        "authguard_seq",
+        "emulator_logreg",
+        "flat_cnn",
+        "hist_ngram_xgb"
+      ],
+      "tiers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "budget": 64,
+      "tier_actions": {
+        "A": [
+          "flood100",
+          "flood200",
+          "flood25",
+          "flood50"
+        ],
+        "B": [
+          "metadata",
+          "neutral25",
+          "flood100",
+          "flood200",
+          "flood25",
+          "flood50"
+        ],
+        "C": [
+          "metadata",
+          "address",
+          "selector",
+          "neutral25",
+          "flood25",
+          "flood50",
+          "flood100",
+          "flood200"
+        ]
+      },
+      "n_attack_rows": 14540,
+      "n_query_rows": 409566,
+      "wall_seconds": 4722.083181381226
+    },
+    "phase5_analysis": {
+      "phase": "5 multi-seed extension (all seeds pooled; AuthGuard+emulator have 3 seeds, Flat CNN/XGBoost 1 seed)",
+      "script": "revision_v2/experiments/sprint_phase4/analyze_tiered.py",
+      "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+      "provenance": "regenerated_experiment",
+      "nboot": 10000,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tier_table": [
+        {
+          "model": "authguard_seq",
+          "tier": "A",
+          "clean_detection": 0.8450252177900046,
+          "ASR_fixed_flood_oracle": 0.14921323928377644,
+          "ASR_best_of": 0.14921323928377644,
+          "CI95": [
+            0.10523443961952027,
+            0.20292977941491044
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.7189362677670793,
+          "robust_recall_product": 0.7189362677670794,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "B",
+          "clean_detection": 0.8450252177900046,
+          "ASR_beam_search": 0.15897992403689637,
+          "ASR_random_search": 0.19696147585458493,
+          "ASR_best_of": 0.19696147585458493,
+          "CI95": [
+            0.14757778546550762,
+            0.2561742693172406
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.6785878037597433,
+          "robust_recall_product": 0.6785878037597433,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "authguard_seq",
+          "tier": "C",
+          "clean_detection": 0.8450252177900046,
+          "ASR_beam_search": 0.15897992403689637,
+          "ASR_random_search": 0.20672816060770483,
+          "ASR_best_of": 0.20835594139989147,
+          "CI95": [
+            0.1577009848551307,
+            0.2682417383806006
+          ],
+          "n_eligible": 1843,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.6689591930307198,
+          "robust_recall_product": 0.6689591930307199,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "A",
+          "clean_detection": 0.8253094910591472,
+          "ASR_fixed_flood_oracle": 0.30833333333333335,
+          "ASR_best_of": 0.30833333333333335,
+          "CI95": [
+            0.21817750969409735,
+            0.41279134752018853
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.5708390646492435,
+          "robust_recall_product": 0.5708390646492435,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "B",
+          "clean_detection": 0.8253094910591472,
+          "ASR_beam_search": 0.43166666666666664,
+          "ASR_random_search": 0.5416666666666666,
+          "ASR_best_of": 0.5416666666666666,
+          "CI95": [
+            0.4269378549949883,
+            0.6454265107682418
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.3782668500687758,
+          "robust_recall_product": 0.3782668500687758,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "emulator_logreg",
+          "tier": "C",
+          "clean_detection": 0.8253094910591472,
+          "ASR_beam_search": 0.45166666666666666,
+          "ASR_random_search": 0.5361111111111111,
+          "ASR_best_of": 0.5722222222222222,
+          "CI95": [
+            0.46148669121000846,
+            0.6752941731341606
+          ],
+          "n_eligible": 1800,
+          "n_observations": 2181,
+          "n_families": 209,
+          "robust_recall_direct": 0.35304906006419073,
+          "robust_recall_product": 0.3530490600641908,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "A",
+          "clean_detection": 0.6836313617606602,
+          "ASR_fixed_flood_oracle": 0.8108651911468813,
+          "ASR_best_of": 0.8108651911468813,
+          "CI95": [
+            0.7183091019233682,
+            0.8893621728488044
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.12929848693259974,
+          "robust_recall_product": 0.12929848693259974,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "B",
+          "clean_detection": 0.6836313617606602,
+          "ASR_beam_search": 0.8893360160965795,
+          "ASR_random_search": 0.9356136820925554,
+          "ASR_best_of": 0.9356136820925554,
+          "CI95": [
+            0.8933587929249135,
+            0.9720003731343283
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.04401650618982118,
+          "robust_recall_product": 0.04401650618982116,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "flat_cnn",
+          "tier": "C",
+          "clean_detection": 0.6836313617606602,
+          "ASR_beam_search": 0.9114688128772636,
+          "ASR_random_search": 0.937625754527163,
+          "ASR_best_of": 0.9476861167002012,
+          "CI95": [
+            0.9138653495105907,
+            0.9780445687572223
+          ],
+          "n_eligible": 497,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.03576341127922971,
+          "robust_recall_product": 0.03576341127922972,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "A",
+          "clean_detection": 0.6189821182943603,
+          "ASR_fixed_flood_oracle": 0.8111111111111111,
+          "ASR_best_of": 0.8111111111111111,
+          "CI95": [
+            0.7538118127020427,
+            0.8662280701754386
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.11691884456671252,
+          "robust_recall_product": 0.1169188445667125,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "B",
+          "clean_detection": 0.6189821182943603,
+          "ASR_beam_search": 0.94,
+          "ASR_random_search": 0.9844444444444445,
+          "ASR_best_of": 0.9844444444444445,
+          "CI95": [
+            0.9674405965621841,
+            0.9972901560096682
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.009628610729023384,
+          "robust_recall_product": 0.009628610729023376,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "tier": "C",
+          "clean_detection": 0.6189821182943603,
+          "ASR_beam_search": 0.9466666666666667,
+          "ASR_random_search": 0.9844444444444445,
+          "ASR_best_of": 0.9911111111111112,
+          "CI95": [
+            0.9805555555555555,
+            0.9980843827608185
+          ],
+          "n_eligible": 450,
+          "n_observations": 727,
+          "n_families": 209,
+          "robust_recall_direct": 0.005502063273727648,
+          "robust_recall_product": 0.005502063273727614,
+          "seed_scope": [
+            7702,
+            7703,
+            7704
+          ],
+          "fold_scope": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "provenance": "regenerated_experiment"
+        }
+      ],
+      "paired_contrasts": [
+        {
+          "tier": "A",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.33532934131736525,
+          "right_ASR": 0.1270791749833666,
+          "difference": 0.20825016633399868,
+          "CI95": [
+            0.0757279352694569,
+            0.3341837060577936
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209
+        },
+        {
+          "tier": "B",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.5369261477045908,
+          "right_ASR": 0.16699933466400532,
+          "difference": 0.3699268130405855,
+          "CI95": [
+            0.20790328732981692,
+            0.5195357752422421
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209
+        },
+        {
+          "tier": "C",
+          "left": "emulator_logreg",
+          "right": "authguard_seq",
+          "left_ASR": 0.5635395874916833,
+          "right_ASR": 0.18097139055222888,
+          "difference": 0.38256819693945443,
+          "CI95": [
+            0.2226198519789576,
+            0.5237306761664061
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 1503,
+          "n_families": 209
+        },
+        {
+          "tier": "A",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.8058455114822547,
+          "right_ASR": 0.1127348643006263,
+          "difference": 0.6931106471816284,
+          "CI95": [
+            0.5929697599648311,
+            0.7843574113225276
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209
+        },
+        {
+          "tier": "B",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.9331941544885177,
+          "right_ASR": 0.15031315240083507,
+          "difference": 0.7828810020876826,
+          "CI95": [
+            0.7075173474522812,
+            0.8473286664865229
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209
+        },
+        {
+          "tier": "C",
+          "left": "flat_cnn",
+          "right": "authguard_seq",
+          "left_ASR": 0.9478079331941545,
+          "right_ASR": 0.16075156576200417,
+          "difference": 0.7870563674321504,
+          "CI95": [
+            0.7099677965538993,
+            0.8504283489096572
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 479,
+          "n_families": 209
+        },
+        {
+          "tier": "A",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.8033175355450237,
+          "right_ASR": 0.08767772511848342,
+          "difference": 0.7156398104265402,
+          "CI95": [
+            0.6420411501377411,
+            0.782608695652174
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209
+        },
+        {
+          "tier": "B",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.9834123222748815,
+          "right_ASR": 0.12796208530805686,
+          "difference": 0.8554502369668247,
+          "CI95": [
+            0.7828741808650066,
+            0.9086541276346604
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209
+        },
+        {
+          "tier": "C",
+          "left": "hist_ngram_xgb",
+          "right": "authguard_seq",
+          "left_ASR": 0.990521327014218,
+          "right_ASR": 0.13033175355450238,
+          "difference": 0.8601895734597157,
+          "CI95": [
+            0.7912427143497639,
+            0.9115062878435025
+          ],
+          "excludes_zero": true,
+          "n_paired_eligible": 422,
+          "n_families": 209
+        }
+      ],
+      "tier_c_only": [
+        {
+          "model": "authguard_seq",
+          "n_tierC_successes": 384,
+          "n_tierC_only": 46,
+          "fraction_tierC_only": 0.11979166666666667,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "emulator_logreg",
+          "n_tierC_successes": 1030,
+          "n_tierC_only": 137,
+          "fraction_tierC_only": 0.13300970873786408,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "flat_cnn",
+          "n_tierC_successes": 471,
+          "n_tierC_only": 14,
+          "fraction_tierC_only": 0.029723991507430998,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        },
+        {
+          "model": "hist_ngram_xgb",
+          "n_tierC_successes": 446,
+          "n_tierC_only": 5,
+          "fraction_tierC_only": 0.011210762331838564,
+          "interpretation": "fraction of Tier-C successes not achieved by Tier B within the same 64-query budget; not a claim of logical necessity"
+        }
+      ],
+      "seed_scope_caveat": "authguard_seq and emulator_logreg: seeds 7702/7703/7704. flat_cnn and hist_ngram_xgb: seed 7702 only. Do not rank across differing seed scopes."
+    }
+  },
+  "missing_inputs": []
+}

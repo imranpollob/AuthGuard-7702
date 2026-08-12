@@ -1,0 +1,215 @@
+{
+  "phase": "0.4 winner-composition statistics (Tier-C adaptive winners)",
+  "script": "revision_v2/experiments/sprint_phase0/phase0_winner_composition.py",
+  "git_commit": "8ebce5f7221147b0620ff41ef1879799797addee",
+  "input_files": [
+    "attack_per_row_seed7702.csv.gz",
+    "attack_per_row_seed7702_emulator.csv.gz",
+    "attack_per_row_seed7703.csv.gz",
+    "attack_per_row_seed7703_emulator.csv.gz",
+    "attack_per_row_seed7704.csv.gz",
+    "attack_per_row_seed7704_emulator.csv.gz"
+  ],
+  "methods": [
+    "random_search",
+    "beam_search"
+  ],
+  "provenance": "stored_artifact",
+  "caveat": "Winner-only records. A winner containing a weak-preservation primitive does not prove no Tier-A/B attack existed for that source; Tier-A/B-only fractions are lower bounds on restricted-search ASR.",
+  "per_model": [
+    {
+      "model": "authguard_seq",
+      "n_successful_winners": 600,
+      "pct_only_tierA_actions": 0.07333333333333333,
+      "pct_only_tierB_actions": 0.31333333333333335,
+      "pct_contains_address": 0.55,
+      "pct_contains_selector": 0.325,
+      "pct_contains_address_or_selector": 0.6866666666666666,
+      "pct_contains_flooding": 1.0,
+      "pct_contains_metadata": 0.715,
+      "pct_contains_neutral25": 0.2816666666666667,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact",
+      "interpretation": "winner composition; lower bound"
+    },
+    {
+      "model": "emulator_logreg",
+      "n_successful_winners": 1778,
+      "pct_only_tierA_actions": 0.06917885264341957,
+      "pct_only_tierB_actions": 0.4651293588301462,
+      "pct_contains_address": 0.38976377952755903,
+      "pct_contains_selector": 0.2761529808773903,
+      "pct_contains_address_or_selector": 0.5348706411698537,
+      "pct_contains_flooding": 0.9988751406074241,
+      "pct_contains_metadata": 0.6524184476940382,
+      "pct_contains_neutral25": 0.5095613048368954,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact",
+      "interpretation": "winner composition; lower bound"
+    },
+    {
+      "model": "flat_cnn",
+      "n_successful_winners": 2915,
+      "pct_only_tierA_actions": 0.09742710120068611,
+      "pct_only_tierB_actions": 0.3941680960548885,
+      "pct_contains_address": 0.4631217838765009,
+      "pct_contains_selector": 0.28130360205831906,
+      "pct_contains_address_or_selector": 0.6058319039451114,
+      "pct_contains_flooding": 0.9993138936535163,
+      "pct_contains_metadata": 0.5917667238421955,
+      "pct_contains_neutral25": 0.4542024013722127,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact",
+      "interpretation": "winner composition; lower bound"
+    },
+    {
+      "model": "hist_ngram_xgb",
+      "n_successful_winners": 2690,
+      "pct_only_tierA_actions": 0.0687732342007435,
+      "pct_only_tierB_actions": 0.4171003717472119,
+      "pct_contains_address": 0.44535315985130114,
+      "pct_contains_selector": 0.27026022304832714,
+      "pct_contains_address_or_selector": 0.5828996282527881,
+      "pct_contains_flooding": 0.9992565055762082,
+      "pct_contains_metadata": 0.6460966542750929,
+      "pct_contains_neutral25": 0.5576208178438662,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ],
+      "fold_scope": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "provenance": "stored_artifact",
+      "interpretation": "winner composition; lower bound"
+    }
+  ],
+  "top_compositions": {
+    "authguard_seq": [
+      {
+        "composition": "flood200+address+metadata",
+        "count": 78
+      },
+      {
+        "composition": "flood200+metadata",
+        "count": 71
+      },
+      {
+        "composition": "flood200",
+        "count": 39
+      },
+      {
+        "composition": "selector+flood200",
+        "count": 18
+      },
+      {
+        "composition": "address+flood200",
+        "count": 16
+      }
+    ],
+    "emulator_logreg": [
+      {
+        "composition": "flood200+metadata",
+        "count": 123
+      },
+      {
+        "composition": "flood200",
+        "count": 84
+      },
+      {
+        "composition": "metadata+flood200",
+        "count": 75
+      },
+      {
+        "composition": "neutral25+flood100+metadata",
+        "count": 60
+      },
+      {
+        "composition": "neutral25+flood100",
+        "count": 45
+      }
+    ],
+    "flat_cnn": [
+      {
+        "composition": "flood200",
+        "count": 216
+      },
+      {
+        "composition": "flood200+metadata",
+        "count": 171
+      },
+      {
+        "composition": "flood200+address+metadata",
+        "count": 168
+      },
+      {
+        "composition": "neutral25+flood100",
+        "count": 90
+      },
+      {
+        "composition": "address+flood200",
+        "count": 87
+      }
+    ],
+    "hist_ngram_xgb": [
+      {
+        "composition": "flood200",
+        "count": 152
+      },
+      {
+        "composition": "flood200+address+metadata",
+        "count": 119
+      },
+      {
+        "composition": "flood200+metadata",
+        "count": 110
+      },
+      {
+        "composition": "metadata+flood200",
+        "count": 96
+      },
+      {
+        "composition": "neutral25+flood100",
+        "count": 88
+      }
+    ]
+  }
+}
