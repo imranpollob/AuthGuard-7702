@@ -1,0 +1,74 @@
+{
+  "7702": {
+    "searched_rows": 4362,
+    "distinct_actions_used": [
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50",
+      "metadata",
+      "neutral25"
+    ],
+    "empty_sequence_rows": 159,
+    "tier_c_actions_observed": [],
+    "excluded_from_statistics": [
+      "F100",
+      "F200",
+      "F25",
+      "F50",
+      "M1",
+      "M2",
+      "M3",
+      "fixed_oracle_best"
+    ],
+    "excluded_row_count": 17448
+  },
+  "7703": {
+    "searched_rows": 4362,
+    "distinct_actions_used": [
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50",
+      "metadata",
+      "neutral25"
+    ],
+    "empty_sequence_rows": 35,
+    "tier_c_actions_observed": [],
+    "excluded_from_statistics": [
+      "F100",
+      "F200",
+      "F25",
+      "F50",
+      "M1",
+      "M2",
+      "M3",
+      "fixed_oracle_best"
+    ],
+    "excluded_row_count": 17448
+  },
+  "7704": {
+    "searched_rows": 4362,
+    "distinct_actions_used": [
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50",
+      "metadata",
+      "neutral25"
+    ],
+    "empty_sequence_rows": 36,
+    "tier_c_actions_observed": [],
+    "excluded_from_statistics": [
+      "F100",
+      "F200",
+      "F25",
+      "F50",
+      "M1",
+      "M2",
+      "M3",
+      "fixed_oracle_best"
+    ],
+    "excluded_row_count": 17448
+  }
+}

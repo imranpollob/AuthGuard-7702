@@ -1,0 +1,99 @@
+{
+  "seed": 7704,
+  "audit": {
+    "actions_before": [
+      "metadata",
+      "address",
+      "selector",
+      "neutral25",
+      "flood25",
+      "flood50",
+      "flood100",
+      "flood200"
+    ],
+    "actions_after": [
+      "metadata",
+      "neutral25",
+      "flood25",
+      "flood50",
+      "flood100",
+      "flood200"
+    ],
+    "excluded": [
+      "address",
+      "selector"
+    ],
+    "flood_actions_unchanged": [
+      "flood100",
+      "flood200",
+      "flood25",
+      "flood50"
+    ]
+  },
+  "checks": [
+    {
+      "check": "action list is exactly Tier B",
+      "passed": true,
+      "detail": "['metadata', 'neutral25', 'flood25', 'flood50', 'flood100', 'flood200']"
+    },
+    {
+      "check": "address excluded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "selector excluded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "random search cannot sample address/selector",
+      "passed": true,
+      "detail": "['flood100', 'flood200', 'flood25', 'flood50', 'metadata', 'neutral25']"
+    },
+    {
+      "check": "random search respects max depth",
+      "passed": true,
+      "detail": "3"
+    },
+    {
+      "check": "random search respects one-flooding rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "beam search cannot expand address/selector",
+      "passed": true,
+      "detail": "['flood100', 'flood200', 'flood25', 'flood50', 'metadata', 'neutral25']"
+    },
+    {
+      "check": "query budget is 64",
+      "passed": true,
+      "detail": "64"
+    },
+    {
+      "check": "beam width is 4",
+      "passed": true,
+      "detail": "4"
+    },
+    {
+      "check": "max depth is 4",
+      "passed": true,
+      "detail": "4"
+    },
+    {
+      "check": "byte overhead cap is 2.0",
+      "passed": true,
+      "detail": "2.0"
+    },
+    {
+      "check": "flood levels unchanged",
+      "passed": true,
+      "detail": "['flood100', 'flood200', 'flood25', 'flood50']"
+    }
+  ],
+  "query_budget": 64,
+  "beam_width": 4,
+  "max_depth": 4,
+  "max_byte_overhead": 2.0
+}
