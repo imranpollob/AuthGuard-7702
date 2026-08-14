@@ -1,0 +1,50 @@
+{
+  "theta080::authguard_seq": {
+    "theta": 0.8,
+    "model": "authguard_seq",
+    "identical_clean_scores_across_seeds": false,
+    "identical_attack_outcomes_across_seeds": false,
+    "seeds_are_independent_replicates": true,
+    "note": "stochastic fit: across-seed SD is a genuine dispersion estimate"
+  },
+  "theta080::emulator_logreg": {
+    "theta": 0.8,
+    "model": "emulator_logreg",
+    "identical_clean_scores_across_seeds": true,
+    "identical_attack_outcomes_across_seeds": true,
+    "seeds_are_independent_replicates": false,
+    "note": "deterministic fit: across-seed SD is 0 by construction, not a stability estimate"
+  },
+  "theta085::authguard_seq": {
+    "theta": 0.85,
+    "model": "authguard_seq",
+    "identical_clean_scores_across_seeds": false,
+    "identical_attack_outcomes_across_seeds": false,
+    "seeds_are_independent_replicates": true,
+    "note": "stochastic fit: across-seed SD is a genuine dispersion estimate"
+  },
+  "theta085::emulator_logreg": {
+    "theta": 0.85,
+    "model": "emulator_logreg",
+    "identical_clean_scores_across_seeds": true,
+    "identical_attack_outcomes_across_seeds": true,
+    "seeds_are_independent_replicates": false,
+    "note": "deterministic fit: across-seed SD is 0 by construction, not a stability estimate"
+  },
+  "theta090::authguard_seq": {
+    "theta": 0.9,
+    "model": "authguard_seq",
+    "identical_clean_scores_across_seeds": false,
+    "identical_attack_outcomes_across_seeds": false,
+    "seeds_are_independent_replicates": true,
+    "note": "stochastic fit: across-seed SD is a genuine dispersion estimate"
+  },
+  "theta090::emulator_logreg": {
+    "theta": 0.9,
+    "model": "emulator_logreg",
+    "identical_clean_scores_across_seeds": true,
+    "identical_attack_outcomes_across_seeds": true,
+    "seeds_are_independent_replicates": false,
+    "note": "deterministic fit: across-seed SD is 0 by construction, not a stability estimate"
+  }
+}

@@ -1,0 +1,4 @@
+family_threshold,paired_observations,paired_families,median_nearest_train_similarity,p90,p95,maximum,n_test_above_0_90,pct_test_above_0_90,n_test_above_own_threshold,pct_test_above_own_threshold
+0.8,549,141,0.6484375,0.765625,0.78125,0.796875,0,0.0,0,0.0
+0.85,532,140,0.6796875,0.8125,0.828125,0.84375,0,0.0,0,0.0
+0.9,499,172,0.765625,0.8828125,0.890625,0.8984375,0,0.0,0,0.0
