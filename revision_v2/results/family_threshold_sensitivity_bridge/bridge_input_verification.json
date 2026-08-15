@@ -1,0 +1,38 @@
+{
+  "expected": {
+    "primary_rows": 2190,
+    "source_flagged": 727,
+    "unflagged": 1463,
+    "families": 790,
+    "families_spanning_folds": 0,
+    "exact_groups_spanning_folds": 0,
+    "family_ids_match_theta085_recomputed": true
+  },
+  "observed": {
+    "primary_rows": 2190,
+    "source_flagged": 727,
+    "unflagged": 1463,
+    "families": 790,
+    "fold_id_column_used": "fold_id (frozen benchmark, unmodified)",
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "families_spanning_folds": 0,
+    "exact_bytecode_groups": 1665,
+    "exact_groups_spanning_folds": 0,
+    "family_ids_match_theta085_recomputed": true,
+    "family_id_differing_rows": 0,
+    "rows_per_fold": {
+      "0.0": 446,
+      "1.0": 446,
+      "2.0": 427,
+      "3.0": 447,
+      "4.0": 424
+    },
+    "PASS": true
+  }
+}
