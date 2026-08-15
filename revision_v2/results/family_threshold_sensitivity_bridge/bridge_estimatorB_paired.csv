@@ -1,0 +1,2 @@
+estimator,tier,left,right,left_ASR,right_ASR,difference,ci_low,ci_high,excludes_zero,n_paired_eligible,n_families,seed_scope
+B_main_paper_pooled,B,emulator_logreg,authguard_seq,0.5382619974059663,0.17185473411154345,0.3664072632944228,0.21103958940532802,0.5179355388460345,True,1542,209,"[7702, 7703, 7704]"

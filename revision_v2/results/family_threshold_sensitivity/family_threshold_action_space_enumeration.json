@@ -1,0 +1,58 @@
+{
+  "action_space": [
+    "metadata",
+    "neutral25",
+    "flood25",
+    "flood50",
+    "flood100",
+    "flood200"
+  ],
+  "max_depth": 4,
+  "query_budget": 64,
+  "total_allowed_sequences": 48,
+  "allowed_sequences_by_depth": {
+    "1": 6,
+    "2": 18,
+    "3": 24
+  },
+  "budget_exceeds_space": true,
+  "consequence": "random search enumerates the entire Tier-B composition space, so the reported strongest-attack ASR is the exact optimum over that space at depth<=4 rather than a search-limited estimate; beam search explores a subset and cannot exceed it",
+  "observed": {
+    "theta080_s7702": {
+      "distinct_winning_sequences": 42,
+      "max_queries_consumed": 44
+    },
+    "theta080_s7703": {
+      "distinct_winning_sequences": 39,
+      "max_queries_consumed": 44
+    },
+    "theta080_s7704": {
+      "distinct_winning_sequences": 40,
+      "max_queries_consumed": 44
+    },
+    "theta085_s7702": {
+      "distinct_winning_sequences": 36,
+      "max_queries_consumed": 44
+    },
+    "theta085_s7703": {
+      "distinct_winning_sequences": 36,
+      "max_queries_consumed": 44
+    },
+    "theta085_s7704": {
+      "distinct_winning_sequences": 38,
+      "max_queries_consumed": 44
+    },
+    "theta090_s7702": {
+      "distinct_winning_sequences": 38,
+      "max_queries_consumed": 44
+    },
+    "theta090_s7703": {
+      "distinct_winning_sequences": 38,
+      "max_queries_consumed": 44
+    },
+    "theta090_s7704": {
+      "distinct_winning_sequences": 40,
+      "max_queries_consumed": 44
+    }
+  }
+}

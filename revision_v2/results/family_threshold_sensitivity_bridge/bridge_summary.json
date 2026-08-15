@@ -1,0 +1,544 @@
+{
+  "experiment": "theta=0.85 bridge on frozen benchmark fold_id",
+  "git_commit": "acf1b966dfc49eaac0792505e54744a701d66fa8",
+  "seeds": [
+    7702,
+    7703,
+    7704
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": [
+    "authguard_seq",
+    "emulator_logreg"
+  ],
+  "fold_source": "revision_v2/data/authguardbench_7702_v2.csv.gz::fold_id (unmodified)",
+  "family_source": "frozen benchmark family_id (== theta=0.85 assignment)",
+  "action_space": [
+    "metadata",
+    "neutral25",
+    "flood25",
+    "flood50",
+    "flood100",
+    "flood200"
+  ],
+  "excluded_actions": [
+    "address",
+    "selector"
+  ],
+  "query_budget": 64,
+  "beam_width": 4,
+  "max_depth": 4,
+  "max_byte_overhead": 2.0,
+  "bootstrap_replicates": 10000,
+  "action_verification": {
+    "7702": {
+      "searched_rows": 2908,
+      "distinct_actions_used": [
+        "flood100",
+        "flood200",
+        "flood25",
+        "flood50",
+        "metadata",
+        "neutral25"
+      ],
+      "tier_c_actions_observed": [],
+      "excluded_from_statistics": [
+        "F100",
+        "F200",
+        "F25",
+        "F50",
+        "M1",
+        "M2",
+        "M3",
+        "fixed_oracle_best"
+      ]
+    },
+    "7703": {
+      "searched_rows": 2908,
+      "distinct_actions_used": [
+        "flood100",
+        "flood200",
+        "flood25",
+        "flood50",
+        "metadata",
+        "neutral25"
+      ],
+      "tier_c_actions_observed": [],
+      "excluded_from_statistics": [
+        "F100",
+        "F200",
+        "F25",
+        "F50",
+        "M1",
+        "M2",
+        "M3",
+        "fixed_oracle_best"
+      ]
+    },
+    "7704": {
+      "searched_rows": 2908,
+      "distinct_actions_used": [
+        "flood100",
+        "flood200",
+        "flood25",
+        "flood50",
+        "metadata",
+        "neutral25"
+      ],
+      "tier_c_actions_observed": [],
+      "excluded_from_statistics": [
+        "F100",
+        "F200",
+        "F25",
+        "F50",
+        "M1",
+        "M2",
+        "M3",
+        "fixed_oracle_best"
+      ]
+    }
+  },
+  "fold_verification": {
+    "7702": {
+      "sources": 727,
+      "rows_matching_frozen_fold_id": 727,
+      "rows_matching_regenerated_theta085_fold": 367,
+      "uses_frozen_folds": true
+    },
+    "7703": {
+      "sources": 727,
+      "rows_matching_frozen_fold_id": 727,
+      "rows_matching_regenerated_theta085_fold": 367,
+      "uses_frozen_folds": true
+    },
+    "7704": {
+      "sources": 727,
+      "rows_matching_frozen_fold_id": 727,
+      "rows_matching_regenerated_theta085_fold": 367,
+      "uses_frozen_folds": true
+    }
+  },
+  "source_files": {
+    "7702": "results/adaptive_attacks_v2/attack_per_row_bridge085_s7702.csv.gz",
+    "7703": "results/adaptive_attacks_v2/attack_per_row_bridge085_s7703.csv.gz",
+    "7704": "results/adaptive_attacks_v2/attack_per_row_bridge085_s7704.csv.gz"
+  },
+  "estimator_A": {
+    "per_seed": [
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7702,
+        "model": "authguard_seq",
+        "architecture": "AuthGuard-Seq",
+        "clean_detected_rate": 0.8514442916093535,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 619,
+        "n_eligible_families": 191,
+        "random_ASR": 0.14054927302100162,
+        "beam_ASR": 0.11631663974151858,
+        "strongest_ASR": 0.14054927302100162,
+        "robust_recall": 0.7317744154057771,
+        "successful_evasions": 87,
+        "unsuccessful_attacks": 532,
+        "invalid_attacks": 0
+      },
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7702,
+        "model": "emulator_logreg",
+        "architecture": "15-feature LR",
+        "clean_detected_rate": 0.8253094910591472,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 600,
+        "n_eligible_families": 160,
+        "random_ASR": 0.5416666666666666,
+        "beam_ASR": 0.43166666666666664,
+        "strongest_ASR": 0.5416666666666666,
+        "robust_recall": 0.3782668500687758,
+        "successful_evasions": 325,
+        "unsuccessful_attacks": 275,
+        "invalid_attacks": 0
+      },
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7703,
+        "model": "authguard_seq",
+        "architecture": "AuthGuard-Seq",
+        "clean_detected_rate": 0.8473177441540578,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 616,
+        "n_eligible_families": 187,
+        "random_ASR": 0.21915584415584416,
+        "beam_ASR": 0.17207792207792208,
+        "strongest_ASR": 0.21915584415584416,
+        "robust_recall": 0.6616231086657497,
+        "successful_evasions": 135,
+        "unsuccessful_attacks": 481,
+        "invalid_attacks": 0
+      },
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7703,
+        "model": "emulator_logreg",
+        "architecture": "15-feature LR",
+        "clean_detected_rate": 0.8253094910591472,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 600,
+        "n_eligible_families": 160,
+        "random_ASR": 0.5416666666666666,
+        "beam_ASR": 0.43166666666666664,
+        "strongest_ASR": 0.5416666666666666,
+        "robust_recall": 0.3782668500687758,
+        "successful_evasions": 325,
+        "unsuccessful_attacks": 275,
+        "invalid_attacks": 0
+      },
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7704,
+        "model": "authguard_seq",
+        "architecture": "AuthGuard-Seq",
+        "clean_detected_rate": 0.8720770288858322,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 634,
+        "n_eligible_families": 185,
+        "random_ASR": 0.18769716088328076,
+        "beam_ASR": 0.13722397476340695,
+        "strongest_ASR": 0.18769716088328076,
+        "robust_recall": 0.7083906464924347,
+        "successful_evasions": 119,
+        "unsuccessful_attacks": 515,
+        "invalid_attacks": 0
+      },
+      {
+        "estimator": "A_sensitivity",
+        "seed": 7704,
+        "model": "emulator_logreg",
+        "architecture": "15-feature LR",
+        "clean_detected_rate": 0.8253094910591472,
+        "n_positive_observations": 727,
+        "n_eligible_observations": 600,
+        "n_eligible_families": 160,
+        "random_ASR": 0.5416666666666666,
+        "beam_ASR": 0.43166666666666664,
+        "strongest_ASR": 0.5416666666666666,
+        "robust_recall": 0.3782668500687758,
+        "successful_evasions": 325,
+        "unsuccessful_attacks": 275,
+        "invalid_attacks": 0
+      }
+    ],
+    "contrasts": [
+      {
+        "label": "bridge085_seed7702",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "random_search",
+        "left_ASR_on_common": 0.5369261477045908,
+        "right_ASR_on_common": 0.1437125748502994,
+        "difference": 0.3932135728542914,
+        "ci_low": 0.22176363783494,
+        "ci_high": 0.5465131605836432,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 501,
+        "n_families_eligible": 146,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7702,
+        "scope": "per_seed"
+      },
+      {
+        "label": "bridge085_seed7702",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "beam_search",
+        "left_ASR_on_common": 0.4491017964071856,
+        "right_ASR_on_common": 0.11976047904191617,
+        "difference": 0.32934131736526945,
+        "ci_low": 0.1603902453900421,
+        "ci_high": 0.49069293478260856,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 501,
+        "n_families_eligible": 146,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7702,
+        "scope": "per_seed"
+      },
+      {
+        "label": "bridge085_seed7703",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "random_search",
+        "left_ASR_on_common": 0.5375722543352601,
+        "right_ASR_on_common": 0.21772639691714837,
+        "difference": 0.3198458574181118,
+        "ci_low": 0.13612565445026178,
+        "ci_high": 0.4926569260905156,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 519,
+        "n_families_eligible": 147,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7703,
+        "scope": "per_seed"
+      },
+      {
+        "label": "bridge085_seed7703",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "beam_search",
+        "left_ASR_on_common": 0.44701348747591524,
+        "right_ASR_on_common": 0.1811175337186898,
+        "difference": 0.2658959537572254,
+        "ci_low": 0.08668589554129372,
+        "ci_high": 0.43781264133876074,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 519,
+        "n_families_eligible": 147,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7703,
+        "scope": "per_seed"
+      },
+      {
+        "label": "bridge085_seed7704",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "random_search",
+        "left_ASR_on_common": 0.5402298850574713,
+        "right_ASR_on_common": 0.1532567049808429,
+        "difference": 0.38697318007662834,
+        "ci_low": 0.24278779231625836,
+        "ci_high": 0.5295296408063205,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 522,
+        "n_families_eligible": 147,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7704,
+        "scope": "per_seed"
+      },
+      {
+        "label": "bridge085_seed7704",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "beam_search",
+        "left_ASR_on_common": 0.4482758620689655,
+        "right_ASR_on_common": 0.11302681992337164,
+        "difference": 0.33524904214559387,
+        "ci_low": 0.18448414291449217,
+        "ci_high": 0.48258744100977713,
+        "excludes_zero": true,
+        "n_common_observations": 727,
+        "n_paired_eligible": 522,
+        "n_families_eligible": 147,
+        "bootstrap_replicates": 10000,
+        "estimator": "A_sensitivity",
+        "seed": 7704,
+        "scope": "per_seed"
+      },
+      {
+        "estimator": "A_sensitivity",
+        "scope": "three_seed",
+        "label": "three_seed_family_clustered_seed_averaged",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "random_search",
+        "difference": 0.3510436432637571,
+        "ci_low": 0.19071893391792075,
+        "ci_high": 0.5024687989877259,
+        "excludes_zero": true,
+        "n_sources": 527,
+        "n_families_eligible": 152,
+        "estimator_note": "per-source difference averaged over seeds, then family-clustered bootstrap"
+      },
+      {
+        "estimator": "A_sensitivity",
+        "scope": "three_seed",
+        "label": "three_seed_family_clustered_seed_averaged",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "beam_search",
+        "difference": 0.2969639468690702,
+        "ci_low": 0.13176453655728265,
+        "ci_high": 0.453993223552047,
+        "excludes_zero": true,
+        "n_sources": 527,
+        "n_families_eligible": 152,
+        "estimator_note": "per-source difference averaged over seeds, then family-clustered bootstrap"
+      },
+      {
+        "estimator": "A_sensitivity",
+        "scope": "three_seed",
+        "label": "three_seed_mean_of_seed_level_estimates",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "beam_search",
+        "difference": 0.31016210442269626,
+        "sd_across_seeds": 0.031393676370394905,
+        "min_seed_effect": 0.2658959537572254,
+        "max_seed_effect": 0.33524904214559387,
+        "all_seeds_positive": true,
+        "all_seed_cis_exclude_zero": true
+      },
+      {
+        "estimator": "A_sensitivity",
+        "scope": "three_seed",
+        "label": "three_seed_mean_of_seed_level_estimates",
+        "contrast": "emulator_logreg - authguard_seq",
+        "method": "random_search",
+        "difference": 0.36667753678301046,
+        "sd_across_seeds": 0.03321285162511031,
+        "min_seed_effect": 0.3198458574181118,
+        "max_seed_effect": 0.3932135728542914,
+        "all_seeds_positive": true,
+        "all_seed_cis_exclude_zero": true
+      }
+    ]
+  },
+  "estimator_B": {
+    "marginals": [
+      {
+        "estimator": "B_main_paper_pooled",
+        "tier": "B",
+        "model": "authguard_seq",
+        "architecture": "AuthGuard-Seq",
+        "clean_detection": 0.8569463548830811,
+        "ASR_random_search": 0.18245050829320492,
+        "ASR_beam_search": 0.14178705189941146,
+        "ASR_best_of": 0.18245050829320492,
+        "n_eligible": 1869,
+        "n_eligible_families": 197,
+        "seed_scope": [
+          7702,
+          7703,
+          7704
+        ]
+      },
+      {
+        "estimator": "B_main_paper_pooled",
+        "tier": "B",
+        "model": "emulator_logreg",
+        "architecture": "15-feature LR",
+        "clean_detection": 0.8253094910591472,
+        "ASR_random_search": 0.5416666666666666,
+        "ASR_beam_search": 0.43166666666666664,
+        "ASR_best_of": 0.5416666666666666,
+        "n_eligible": 1800,
+        "n_eligible_families": 160,
+        "seed_scope": [
+          7702,
+          7703,
+          7704
+        ]
+      }
+    ],
+    "paired": {
+      "estimator": "B_main_paper_pooled",
+      "tier": "B",
+      "left": "emulator_logreg",
+      "right": "authguard_seq",
+      "left_ASR": 0.5382619974059663,
+      "right_ASR": 0.17185473411154345,
+      "difference": 0.3664072632944228,
+      "ci_low": 0.21103958940532802,
+      "ci_high": 0.5179355388460345,
+      "excludes_zero": true,
+      "n_paired_eligible": 1542,
+      "n_families": 209,
+      "seed_scope": [
+        7702,
+        7703,
+        7704
+      ]
+    }
+  },
+  "comparison_with_frozen_main": {
+    "authguard_ASR": {
+      "frozen": 0.19696147585458493,
+      "bridge": 0.18245050829320492,
+      "delta": -0.014510967561380012
+    },
+    "lr_ASR": {
+      "frozen": 0.5416666666666666,
+      "bridge": 0.5416666666666666,
+      "delta": 0.0
+    },
+    "paired": {
+      "frozen": 0.3699268130405855,
+      "bridge": 0.3664072632944228,
+      "delta": -0.003519549746162698
+    },
+    "ci": {
+      "frozen": [
+        0.20790328732981692,
+        0.5195357752422421
+      ],
+      "bridge": [
+        0.21103958940532802,
+        0.5179355388460345
+      ]
+    },
+    "n_paired": {
+      "frozen": 1503,
+      "bridge": 1542
+    },
+    "n_families": {
+      "frozen": 209,
+      "bridge": 209
+    }
+  },
+  "clean_metrics_internal": [
+    {
+      "seed": 7702,
+      "model": "authguard_seq",
+      "AUPRC": 0.9221780109971753,
+      "AUROC": 0.9575990786224746,
+      "Brier": 0.08075196026872186,
+      "recall_at_5pct_nominal_fpr": 0.8506180748304109
+    },
+    {
+      "seed": 7702,
+      "model": "emulator_logreg",
+      "AUPRC": 0.9153133851060856,
+      "AUROC": 0.9689881734640432,
+      "Brier": 0.06044439313448652,
+      "recall_at_5pct_nominal_fpr": 0.8270165257152222
+    },
+    {
+      "seed": 7703,
+      "model": "authguard_seq",
+      "AUPRC": 0.9115314502897887,
+      "AUROC": 0.9433718868990418,
+      "Brier": 0.08066413860714525,
+      "recall_at_5pct_nominal_fpr": 0.8524646895407454
+    },
+    {
+      "seed": 7703,
+      "model": "emulator_logreg",
+      "AUPRC": 0.9153133851060856,
+      "AUROC": 0.9689881734640432,
+      "Brier": 0.06044439313448652,
+      "recall_at_5pct_nominal_fpr": 0.8270165257152222
+    },
+    {
+      "seed": 7704,
+      "model": "authguard_seq",
+      "AUPRC": 0.9529792778936711,
+      "AUROC": 0.979389012973099,
+      "Brier": 0.05510736699903875,
+      "recall_at_5pct_nominal_fpr": 0.8670073352977994
+    },
+    {
+      "seed": 7704,
+      "model": "emulator_logreg",
+      "AUPRC": 0.9153133851060856,
+      "AUROC": 0.9689881734640432,
+      "Brier": 0.06044439313448652,
+      "recall_at_5pct_nominal_fpr": 0.8270165257152222
+    }
+  ]
+}

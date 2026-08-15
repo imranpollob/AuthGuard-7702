@@ -1,0 +1,4 @@
+n_families,singleton_families,singleton_pct,multi_member_families,median_family_size,mean_family_size,max_family_size,top10_family_sizes,observations,theta,tag,source_flagged,unflagged,families_all_positive,families_all_negative,families_mixed,exact_duplicate_groups,exact_dup_groups_spanning_families,exact_dup_groups_spanning_folds,families_spanning_folds
+701,413,58.92,288,1.0,3.124108416547789,70,"[70, 58, 49, 46, 36, 35, 32, 32, 31, 31]",2190,0.8,theta080,727,1463,158,517,26,1665,0,0,0
+790,477,60.38,313,1.0,2.7721518987341773,58,"[58, 49, 48, 39, 35, 32, 32, 32, 31, 26]",2190,0.85,theta085,727,1463,184,581,25,1665,0,0,0
+928,613,66.06,315,1.0,2.3599137931034484,48,"[48, 48, 42, 35, 34, 28, 28, 27, 26, 26]",2190,0.9,theta090,727,1463,240,672,16,1665,0,0,0
