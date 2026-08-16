@@ -36,14 +36,14 @@ GRID = "#dcdcd8"
 plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "DejaVu Serif"],
-    "font.size": 8,
-    "axes.labelsize": 8,
-    "axes.titlesize": 8,
-    "xtick.labelsize": 7,
-    "ytick.labelsize": 7,
-    "legend.fontsize": 7,
+    "font.size": 7,
+    "axes.labelsize": 7,
+    "axes.titlesize": 7,
+    "xtick.labelsize": 6,
+    "ytick.labelsize": 6,
+    "legend.fontsize": 6,
     "axes.edgecolor": MUTED,
-    "axes.linewidth": 0.6,
+    "axes.linewidth": 0.5,
     "xtick.color": INK_2,
     "ytick.color": INK_2,
     "text.color": INK,
@@ -59,7 +59,7 @@ def style_axes(ax, ygrid=True):
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     if ygrid:
-        ax.yaxis.grid(True, color=GRID, linewidth=0.5, zorder=0)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.4, zorder=0)
     ax.set_axisbelow(True)
 
 
@@ -116,29 +116,29 @@ def fig_clean_vs_asr(frame, path):
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
-    ax.xaxis.grid(True, color=GRID, linewidth=0.5, zorder=0)
+    ax.xaxis.grid(True, color=GRID, linewidth=0.4, zorder=0)
     ax.set_axisbelow(True)
     for i, (t, clean, worst) in enumerate(rows):
-        ax.plot([clean, worst], [i, i], color=GRID, linewidth=1.4, zorder=1,
+        ax.plot([clean, worst], [i, i], color=GRID, linewidth=1.0, zorder=1,
                 solid_capstyle="round")
-        ax.scatter(clean, i, s=34, facecolor="white", edgecolor=AQUA, marker="o",
-                   linewidth=1.4, zorder=3)
-        ax.scatter(worst, i, s=34,
+        ax.scatter(clean, i, s=26, facecolor="white", edgecolor=AQUA, marker="o",
+                   linewidth=1.0, zorder=3)
+        ax.scatter(worst, i, s=26,
                    facecolor=BLUE if t in attention else "white",
                    edgecolor=BLUE if t in attention else ORANGE,
-                   marker="D" if t in attention else "s", linewidth=1.4, zorder=3)
+                   marker="D" if t in attention else "s", linewidth=1.0, zorder=3)
     ax.set_yticks(range(len(rows)))
-    ax.set_yticklabels([labels[t] for t, _, _ in rows], fontsize=7)
+    ax.set_yticklabels([labels[t] for t, _, _ in rows], fontsize=6)
     ax.tick_params(axis="y", length=0)
     ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(-0.7, len(rows) - 0.3)
     ax.set_xlabel("Rate")
-    ax.scatter([], [], s=34, facecolor="white", edgecolor=AQUA, marker="o",
-               linewidth=1.4, label="clean detection @ 5% FPR")
-    ax.scatter([], [], s=34, facecolor=BLUE, edgecolor=BLUE, marker="D",
-               linewidth=1.4, label="attack success (attention)")
-    ax.scatter([], [], s=34, facecolor="white", edgecolor=ORANGE, marker="s",
-               linewidth=1.4, label="attack success (other)")
+    ax.scatter([], [], s=26, facecolor="white", edgecolor=AQUA, marker="o",
+               linewidth=1.0, label="clean detection @ 5% FPR")
+    ax.scatter([], [], s=26, facecolor=BLUE, edgecolor=BLUE, marker="D",
+               linewidth=1.0, label="attack success (attention)")
+    ax.scatter([], [], s=26, facecolor="white", edgecolor=ORANGE, marker="s",
+               linewidth=1.0, label="attack success (other)")
     ax.legend(frameon=False, bbox_to_anchor=(0, 1.01, 1, 0.12), loc="lower left",
               ncol=3, handletextpad=0.4, borderpad=0.2, columnspacing=1.4)
     fig.savefig(path)
@@ -164,8 +164,8 @@ def fig_attack_strength(frame, path):
         if target not in set(frame.target_model):
             continue
         ys = [asr(frame, target, m) for m in order]
-        ax.plot(x, ys, color=colour, linewidth=1.6, linestyle=dash, marker=marker,
-                markersize=4.5, markerfacecolor="white", markeredgewidth=1.3,
+        ax.plot(x, ys, color=colour, linewidth=1.1, linestyle=dash, marker=marker,
+                markersize=3.4, markerfacecolor="white", markeredgewidth=0.9,
                 markeredgecolor=colour, label=label, zorder=3)
     ax.set_xticks(x); ax.set_xticklabels(ticks)
     ax.set_ylabel("Attack success rate")
@@ -190,14 +190,14 @@ def fig_attention_dilution(path):
     style_axes(ax)
     ax.fill_between(x, measured, baseline, color=BLUE, alpha=0.12, zorder=1,
                     label="dilution resisted")
-    ax.plot(x, baseline, color=ORANGE, linewidth=1.6, linestyle="--", marker="s",
-            markersize=4.5, markerfacecolor="white", markeredgewidth=1.3,
+    ax.plot(x, baseline, color=ORANGE, linewidth=1.1, linestyle="--", marker="s",
+            markersize=3.4, markerfacecolor="white", markeredgewidth=0.9,
             markeredgecolor=ORANGE, label="uniform weighting (mean pooling)", zorder=3)
-    ax.plot(x, measured, color=BLUE, linewidth=1.8, marker="o", markersize=4.5,
-            markerfacecolor="white", markeredgewidth=1.3, markeredgecolor=BLUE,
+    ax.plot(x, measured, color=BLUE, linewidth=1.2, marker="o", markersize=3.4,
+            markerfacecolor="white", markeredgewidth=0.9, markeredgecolor=BLUE,
             label="learned chunk attention", zorder=4)
     ax.annotate(f"{baseline[-1] - measured[-1]:.2f}", (x[-1], (baseline[-1] + measured[-1]) / 2),
-                textcoords="offset points", xytext=(-30, -2), fontsize=7, color=BLUE)
+                textcoords="offset points", xytext=(-26, -2), fontsize=6, color=BLUE)
     ax.set_xlabel("Appended donor bytes (% of original)")
     ax.set_ylabel("Attention mass on appended chunks")
     ax.set_xticks(x)
