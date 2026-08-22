@@ -34,6 +34,8 @@ INK, INK_2, MUTED = "#0b0b0b", "#52514e", "#8a8a85"
 GRID = "#dcdcd8"
 
 plt.rcParams.update({
+    "pdf.fonttype": 42,      # embed as Type 42/TrueType, not Type 3 (journal requirement)
+    "ps.fonttype": 42,
     "font.family": "serif",
     "font.serif": ["Times New Roman", "DejaVu Serif"],
     "font.size": 7,
@@ -192,14 +194,14 @@ def fig_attention_dilution(path):
                     label="dilution resisted")
     ax.plot(x, baseline, color=ORANGE, linewidth=1.1, linestyle="--", marker="s",
             markersize=3.4, markerfacecolor="white", markeredgewidth=0.9,
-            markeredgecolor=ORANGE, label="uniform weighting (mean pooling)", zorder=3)
+            markeredgecolor=ORANGE, label="uniform chunk weighting", zorder=3)
     ax.plot(x, measured, color=BLUE, linewidth=1.2, marker="o", markersize=3.4,
             markerfacecolor="white", markeredgewidth=0.9, markeredgecolor=BLUE,
             label="learned chunk attention", zorder=4)
     ax.annotate(f"{baseline[-1] - measured[-1]:.2f}", (x[-1], (baseline[-1] + measured[-1]) / 2),
                 textcoords="offset points", xytext=(-26, -2), fontsize=6, color=BLUE)
     ax.set_xlabel("Appended donor bytes (% of original)")
-    ax.set_ylabel("Attention mass on appended chunks")
+    ax.set_ylabel("Aggregation mass on appended chunks")
     ax.set_xticks(x)
     ax.set_ylim(-0.03, 0.72)
     ax.legend(frameon=False, loc="upper left", handletextpad=0.5, borderpad=0.2)
